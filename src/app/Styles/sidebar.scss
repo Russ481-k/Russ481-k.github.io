@@ -1,0 +1,49 @@
+.sidebar {
+    width: 20%;
+    min-width: 250px;
+    background-color: rgba(255, 255, 255, 0.1);
+    align-items: center;
+    color: white;
+    padding: 30px 1%;
+    .profile_top{
+      display:flex;
+      justify-content: center;
+      margin: auto;
+      .profile_image{
+        border-radius: 100%;
+        border: 5px solid rgb(255, 255, 255);
+        margin-bottom: 10px;
+        }
+      }
+      .profile_text{
+        margin-bottom: 20px;
+        
+        .profile_name{
+          text-align: center;
+          margin-bottom: 10px;
+        }
+        .profile_position{
+          text-align: left;
+
+        }
+        .profile_social{
+          text-align: left;
+
+        }
+        .profile_email{
+          text-align: left;
+
+        }
+        .profile_workplace{
+          text-align: left;
+        }
+      }
+    .nav {
+      justify-content: space-between;
+      a {
+        margin-right: 5px;
+      }
+
+    }
+  }
+  

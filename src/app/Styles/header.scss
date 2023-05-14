@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(80, 80, 80, 0.9);
+  align-items: center;
+  color: white;
+  padding-left: 5%;
+  padding-right: 5%;
+  height: 40px;
+  position: sticky;
+  top: 0;
+  .header_left {
+    width: 15%;
+    min-width: 250px;
+    text-align: center;
+    color: rgb(160,236,253);
+  }
+  .header_mid {
+
+  }
+  .header_right {
+    text-align: center;
+    min-width: 250px;
+    width: 15%;
+  }
+  .nav {
+    justify-content: space-between;
+    a {
+
+    }
+  }
+}
