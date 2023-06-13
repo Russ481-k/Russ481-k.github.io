@@ -1,18 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
-import "./Styles/side_index.scss";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
 export function TopButton() {
   const [ScrollY, setScrollY] = useState(0);
-  const [BtnStatus, setBtnStatus] = useState(false); // 버튼 상태
+  const [, setBtnStatus] = useState(false); // 버튼 상태
 
   const handleFollow = () => {
-    setScrollY(window.pageYOffset);
+    setScrollY(window.scrollY);
     if (ScrollY > 100) {
-      // 100 이상이면 버튼이 보이게
       setBtnStatus(true);
     } else {
-      // 100 이하면 버튼이 사라지게
       setBtnStatus(false);
     }
   };
@@ -36,14 +35,18 @@ export function TopButton() {
       window.removeEventListener("scroll", handleFollow);
     };
   });
-
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
-    <>
-      {BtnStatus && (
-        <button className="top_button" type="button" onClick={handleTop}>
-          Top
-        </button>
-      )}
-    </>
+    <button
+      className="top_button"
+      data-aos-easing="ease-in-out"
+      data-aos="fade-left"
+      type="button"
+      onClick={handleTop}
+    >
+      Top
+    </button>
   );
 }
