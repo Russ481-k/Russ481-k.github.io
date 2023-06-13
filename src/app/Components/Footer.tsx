@@ -6,6 +6,7 @@ export const Footer = () => {
       <h1>Bin&apos;s Space</h1>
       </div>
       <div className="footer_mid">
+      ⓒ 2023. Russell.Youn™ All rights reserved. 
       </div>
       <div className="footer_right">
       <nav className="nav">

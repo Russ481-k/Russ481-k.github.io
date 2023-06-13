@@ -1,7 +1,5 @@
-import React from "react";
 import Post from "../Posts/Post";
-import "../Styles/post_container.scss"
-
+import "../Styles/post_container.scss";
 
 export const PostContainer = () => {
   const posts = [
@@ -55,14 +53,18 @@ export const PostContainer = () => {
       title: "My Second Post",
       content: `This is my second blog post. I'm still learning, but I'm having a lot of fun.`,
     },
-
   ];
 
   return (
     <div className="post_container">
       <h1>PostContainer</h1>
       {posts.map((post) => (
-        <Post key={post.id} title={post.title} content={post.content} />
+        <Post
+          className="post"
+          content={post.content}
+          key={post.id}
+          title={post.title}
+        />
       ))}
     </div>
   );
@@ -73,7 +75,7 @@ export async function getServerSideProps() {
   // 로컬에 있는 마크다운 파일을 가져오는 getAllPosts 과정은 이후에 설명하겠습니다.
   // const posts = getAllPosts(['slug', 'title', 'date']);
 
-  // getStaticProps에서 반환하는 객체는 페이지 컴포넌트의 props로 넘어갑니다.                                  
+  // getStaticProps에서 반환하는 객체는 페이지 컴포넌트의 props로 넘어갑니다.
   return {
     props: {
       // posts,

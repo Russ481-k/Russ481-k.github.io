@@ -6,7 +6,7 @@ export const Sidebar = () => {
       <div className="profile_top">
         <Image
           className="profile_image"
-          src="/images/profile.jpeg"
+          src="/images/profile2.jpg"
           width={200}
           height={200}
           alt="profile"
@@ -14,16 +14,14 @@ export const Sidebar = () => {
       </div>
       <div className="profile_text">
         <h1 className="profile_name">Russ</h1>
-
         <h5 className="profile_social">
-          BLOG :
-          <a href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab">
-            {" "}
+          BLOG : 
+          <a className="profile_social_notion" href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab">
             Notion
           </a>
         </h5>
         <h5 className="profile_email">
-          EMAIL :<button>yunsubin481@gmail.com</button>
+          EMAIL :yunsubin481@gmail.com
         </h5>
         <h5 className="profile_social">
           POSITION : Frontend
@@ -35,7 +33,7 @@ export const Sidebar = () => {
          */}
       </div>
       <div className="profile_interests">
-        <h3>INTERESTS</h3>
+        <h3>CATEGORY</h3>
         <div>category_1</div>
         <div>category_2</div>
         <div>category_3</div>
