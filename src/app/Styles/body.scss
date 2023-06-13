@@ -9,9 +9,27 @@
 }
 .top_button {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.180);
   border-radius: 100%;
-  border: 4px solid rgba(255, 255, 255, 0.148);
+  border: 4px solid rgba(255, 255, 255, 0.250);
+  bottom: 2.5%;
+  color: white;
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  height: 50px;
+  padding: 0;
+  position: fixed;
+  right: 4%;
+  text-align: center;
+  width: 50px;
+  z-index: 1;
+}
+.chat_button {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.180);
+  border-radius: 100%;
+  border: 4px solid rgba(255, 255, 255, 0.250);
   bottom: 2.5%;
   color: white;
   display: block;
@@ -23,5 +41,5 @@
   right: 1%;
   text-align: center;
   width: 50px;
-  z-index: 1;
+  z-index: 2;
 }
