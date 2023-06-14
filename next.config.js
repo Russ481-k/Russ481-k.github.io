@@ -4,4 +4,11 @@ const nextConfig = {
   swcMinify: true,
 };
 
-module.exports = nextConfig;
+const debug = process.env.NODE_ENV !== "production";
+const name = "Russ481-k.github.io";
+
+module.exports = {
+  assetPrefix: !debug ? `https://${name}` : "",
+  basePath: !debug ? `/${name}` : "",
+  ...nextConfig,
+};
