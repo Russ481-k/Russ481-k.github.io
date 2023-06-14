@@ -18,16 +18,18 @@ export const ChatModal = ({ isOpen }: Props) => {
     <div className="chat_modal" data-aos="fade-up-left">
       <div className="chat_modal_content">
         <div className="chat_modal_header">
-          <h2>Chat</h2>
+          <h2>Contect me here</h2>
           <button onClick={handleChatModalClose}>X</button>
         </div>
         <div className="chat_modal_body">
-          <p>Chat with us!</p>
-        </div>
-        <div className="chat_modal_footer">
+          <div className="chat_modal_body_conversation"></div>
           <form>
-            <input type="text" placeholder="Type your message here..." />
-            <button type="submit">Send</button>
+            <input
+              className="text_area"
+              type="text"
+              placeholder="Type your message here..."
+            />
+            <button type="submit"></button>
           </form>
         </div>
       </div>
