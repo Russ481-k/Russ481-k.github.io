@@ -5,16 +5,26 @@ const nextConfig = {
   output: "export",
   images: {
     unoptimized: true,
-    domains: ["your-domain.com"],
+    domains: ["russ-sbyoon.vercel.app"],
   },
   trailingSlash: true,
 };
 
-const debug = process.env.NODE_ENV !== "production";
+// GitHub Pages와 Vercel 환경 구분
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
 const repository = "Russ481-k.github.io";
+
+let assetPrefix = "";
+let basePath = "";
+
+if (isGithubActions) {
+  // GitHub Pages 배포 시
+  assetPrefix = `/${repository}/`;
+  basePath = `/${repository}`;
+}
 
 module.exports = {
   ...nextConfig,
-  assetPrefix: !debug ? `/${repository}/` : "",
-  basePath: !debug ? `/${repository}` : "",
+  assetPrefix,
+  basePath,
 };

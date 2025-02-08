@@ -1,12 +1,12 @@
 {
-  "name": "my-blog",
+  "name": "russ481-k-github-io",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve@latest out",
-    "predeploy": "next build && mkdir -p out && touch out/.nojekyll",
+    "predeploy": "next build && mkdir -p out",
     "deploy": "gh-pages -d out",
     "lint": "next lint"
   },
