@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "predeploy": "next build && mkdir -p out && touch out/.nojekyll",
     "deploy": "gh-pages -d out",
     "lint": "next lint"
@@ -32,6 +32,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "serve": "^14.2.1"
   }
 }
