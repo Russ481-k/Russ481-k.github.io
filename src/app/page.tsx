@@ -4,6 +4,7 @@ import { Header } from "./Components/Header";
 import { TopButton } from "./TopButton";
 
 import "./Styles/main.scss";
+import { getAllPosts } from "@/utils/posts";
 
 export default function Home() {
   return (
