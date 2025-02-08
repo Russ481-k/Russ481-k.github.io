@@ -1,4 +1,8 @@
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
+import { SiNotion } from "react-icons/si";
 import "../Styles/footer.scss";
+
 export const Footer = () => {
   return (
     <div className="footer">
@@ -9,11 +13,26 @@ export const Footer = () => {
         ⓒ 2023. Russell.Youn™ All rights reserved.
       </div>
       <div className="footer_right">
-        <nav className="nav">
-          <a href="/">Notion</a>
-          <a href="/about">Post</a>
-          <a href="/about"></a>
-        </nav>
+        <div className="social_links">
+          <Link
+            href="https://github.com/Russ481-k"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social_link"
+            aria-label="GitHub Profile"
+          >
+            <FaGithub />
+          </Link>
+          <Link
+            href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social_link"
+            aria-label="Notion Page"
+          >
+            <SiNotion />
+          </Link>
+        </div>
       </div>
     </div>
   );

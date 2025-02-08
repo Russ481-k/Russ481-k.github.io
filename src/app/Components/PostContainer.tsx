@@ -1,84 +1,120 @@
-import Post from "../Posts/Post";
-import "../Styles/post_container.scss";
+"use client";
 
-export const PostContainer = () => {
-  const posts = [
-    {
-      id: 1,
-      title: "My First Post",
-      content: `This is my first blog post. I'm excited to start writing about my favorite things, like web development and learning new technologies.`,
+import { useEffect, useState, useMemo, useCallback } from "react";
+import { Post as PostType } from "@/types/post";
+import Post from "../Posts/Post";
+import { useDebounce } from "@/hooks/useDebounce";
+import "../Styles/post_container.scss";
+import { categories } from "@/data/categories";
+
+interface PostContainerProps {
+  selectedCategory: string;
+  searchTerm: string;
+  onSearchChange: (value: string) => void;
+  onSearchResults: (results: string[]) => void;
+  posts: PostType[]; // 또는 더 구체적인 타입 (예: Post[])
+}
+
+const categoryOrder = [
+  "about",
+  "career",
+  "projects",
+  "architecture",
+  "database",
+  "backend",
+  "frontend",
+];
+
+export const PostContainer = ({
+  selectedCategory,
+  searchTerm: externalSearchTerm,
+  onSearchChange,
+  onSearchResults,
+  posts: externalPosts, // 외부에서 받은 posts 사용
+}: PostContainerProps) => {
+  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const currentCategory = categories.find((cat) => cat.id === selectedCategory);
+
+  // searchTerm state를 제거하고 props로 받은 값 사용
+  const debouncedSearchTerm = useDebounce(externalSearchTerm, 300);
+
+  // 필터링 로직 메모이제이션
+  const filteredPosts = useMemo(() => {
+    // 먼저 카테고리로 필터링
+    const categoryFiltered =
+      selectedCategory === "all"
+        ? externalPosts
+        : externalPosts.filter((post) => post.category === selectedCategory);
+
+    // 그 다음 검색어로 필터링
+    const searchFiltered = categoryFiltered.filter(
+      (post) =>
+        post.plainContent
+          ?.toLowerCase()
+          .includes(debouncedSearchTerm.toLowerCase()) ||
+        post.title?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+        post.description
+          ?.toLowerCase()
+          .includes(debouncedSearchTerm.toLowerCase())
+    );
+
+    // 전체보기일 때만 카테고리 순서대로 정렬
+    if (selectedCategory === "all") {
+      return searchFiltered.sort((a, b) => {
+        const aIndex = categoryOrder.indexOf(a.category);
+        const bIndex = categoryOrder.indexOf(b.category);
+        return bIndex - aIndex;
+      });
+    }
+
+    return searchFiltered;
+  }, [externalPosts, debouncedSearchTerm, selectedCategory]);
+
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onSearchChange(e.target.value);
     },
-    {
-      id: 2,
-      title: "My Second Post",
-      content: `This is my second blog post. I'm still learning, but I'm having a lot of fun.`,
-    },
-    {
-      id: 3,
-      title: "My First Post",
-      content: `This is my first blog post. I'm excited to start writing about my favorite things, like web development and learning new technologies.`,
-    },
-    {
-      id: 4,
-      title: "My Second Post",
-      content: `This is my second blog post. I'm still learning, but I'm having a lot of fun.`,
-    },
-    {
-      id: 5,
-      title: "My First Post",
-      content: `This is my first blog post. I'm excited to start writing about my favorite things, like web development and learning new technologies.`,
-    },
-    {
-      id: 6,
-      title: "My Second Post",
-      content: `This is my second blog post. I'm still learning, but I'm having a lot of fun.`,
-    },
-    {
-      id: 7,
-      title: "My First Post",
-      content: `This is my first blog post. I'm excited to start writing about my favorite things, like web development and learning new technologies.`,
-    },
-    {
-      id: 8,
-      title: "My Second Post",
-      content: `This is my second blog post. I'm still learning, but I'm having a lot of fun.`,
-    },
-    {
-      id: 9,
-      title: "My First Post",
-      content: `This is my first blog post. I'm excited to start writing about my favorite things, like web development and learning new technologies.`,
-    },
-    {
-      id: 10,
-      title: "My Second Post",
-      content: `This is my second blog post. I'm still learning, but I'm having a lot of fun.`,
-    },
-  ];
+    [onSearchChange]
+  );
+
+  // 검색 결과 텍스트 추출
+  useEffect(() => {
+    // 필터링된 포스트가 없으면 모든 포스트의 키워드 사용
+    const postsToUse =
+      filteredPosts.length === 0 ? externalPosts : filteredPosts;
+
+    const texts = postsToUse.map(
+      (post) => `${post.title} ${post.plainContent} ${post.description}`
+    );
+    setSearchResults(texts);
+    onSearchResults(texts);
+  }, [filteredPosts, externalPosts, onSearchResults]);
 
   return (
     <div className="post_container">
-      <h1>PostContainer</h1>
-      {posts.map((post) => (
+      <div className="category_header">
+        <div className="category_info">
+          <h2>{currentCategory?.name || "전체 글"}</h2>
+          <p>{currentCategory?.description}</p>
+        </div>
+        <div className="search_container">
+          <input
+            type="text"
+            placeholder="Search"
+            value={externalSearchTerm}
+            onChange={handleSearchChange}
+            className="search_input"
+          />
+        </div>
+        <div className="post_count">총 {filteredPosts.length}개의 글</div>
+      </div>
+      {filteredPosts.map((post: PostType) => (
         <Post
-          className="post"
-          content={post.content}
-          key={post.id}
-          title={post.title}
+          key={`${post.id}-${selectedCategory}`}
+          {...post}
+          searchTerm={debouncedSearchTerm}
         />
       ))}
     </div>
   );
 };
-
-export async function getServerSideProps() {
-  // 게시물 데이터들을 가져옵니다.
-  // 로컬에 있는 마크다운 파일을 가져오는 getAllPosts 과정은 이후에 설명하겠습니다.
-  // const posts = getAllPosts(['slug', 'title', 'date']);
-
-  // getStaticProps에서 반환하는 객체는 페이지 컴포넌트의 props로 넘어갑니다.
-  return {
-    props: {
-      // posts,
-    },
-  };
-}

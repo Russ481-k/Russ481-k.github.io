@@ -4,17 +4,15 @@ import { Header } from "./Components/Header";
 import { TopButton } from "./TopButton";
 
 import "./Styles/main.scss";
-import { ChatButton } from "./ChatButton";
 
 export default function Home() {
   return (
     <div>
       <main>
         <div className="scroll_container">
-          <Header></Header>
-          <Body></Body>
-          <TopButton/>
-          <ChatButton/>
+          <Header />
+          <Body />
+          <TopButton />
           <Footer></Footer>
         </div>
       </main>

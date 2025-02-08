@@ -1,30 +1,117 @@
 .header {
-  align-items: center;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.11);
-  color: white;
-  display: flex;
-  height: 40px;
-  justify-content: space-between;
-  padding-left: 5%;
-  padding-right: 5%;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  z-index: 20;
-  .header_left {
-    color: white;
-    min-width: 250px;
-    text-align: center;
-    width: 15%;
-  }
-  .header_right {
-    min-width: 250px;
-    text-align: center;
-    width: 15%;
-  }
-  .nav {
+  background-color: rgba(14, 41, 84, 0.65);
+  backdrop-filter: blur(10px);
+  transition: all 0.5s ease-in-out;
+  z-index: 100;
+  height: 40px;
+
+  &.expanded {
+    height: 100vh;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgb(14, 41, 84), rgb(31, 93, 140));
+
+    .header_content {
+      .title {
+        font-size: 5rem;
+        color: white;
+        margin: 0;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+        cursor: pointer;
+        text-align: center;
+        transform-origin: center;
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      }
+    }
   }
+
+  .header_content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+
+    .title {
+      min-width: 240px;
+      font-size: 1.5rem;
+      color: white;
+      margin: 0;
+      text-align: center;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          color: #b7edf6;
+        }
+      }
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      min-width: 240px;
+      justify-content: center;
+      padding-right: 12px;
+      align-items: center;
+
+      button,
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+        background: none;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+
+        &:hover {
+          color: #b7edf6;
+        }
+      }
+
+      .icon_links {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        gap: 12px;
+        .icon_link {
+          padding: 8px;
+          width: 24px;
+          height: 24px;
+          font-size: 1.2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            color: #b7edf6;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Body 컴포넌트에 여백 추가
+.body {
+  margin-top: 40px; // 헤더 높이만큼 여백
 }
