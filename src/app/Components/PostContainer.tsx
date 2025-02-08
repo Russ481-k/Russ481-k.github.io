@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { Post as PostType } from "@/types/post";
-import Post from "../posts/Post";
+import Post from "@/app/Components/Post";
 import { useDebounce } from "@/hooks/useDebounce";
 import "../Styles/post_container.scss";
 import { categories } from "@/data/categories";
@@ -63,7 +63,7 @@ export const PostContainer = ({
       return searchFiltered.sort((a, b) => {
         const aIndex = categoryOrder.indexOf(a.category);
         const bIndex = categoryOrder.indexOf(b.category);
-        return bIndex - aIndex;
+        return aIndex - bIndex;
       });
     }
 

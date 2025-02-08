@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
+import type { ReactElement } from "react";
 import "../Styles/post_modal.scss";
 
 interface PortfolioModalProps {
@@ -13,7 +14,7 @@ export const PortfolioModal = ({ isOpen, onClose }: PortfolioModalProps) => {
 
   if (!isOpen) return null;
 
-  const modalContent = (
+  const modalContent: ReactElement = (
     <div className="modal_overlay" onClick={onClose}>
       <div className="modal_content" onClick={(e) => e.stopPropagation()}>
         <div className="modal_header">
@@ -33,6 +34,7 @@ export const PortfolioModal = ({ isOpen, onClose }: PortfolioModalProps) => {
   );
 
   return createPortal(
+    // @ts-ignore
     modalContent,
     document.getElementById("modal-root") || document.body
   );

@@ -4,6 +4,7 @@ import { PostContainer } from "./PostContainer";
 import { Sidebar } from "./Sidebar";
 import { SideIndex } from "./SideIndex";
 import "../Styles/body.scss";
+import { Post } from "@/types/post";
 
 export const Body = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -12,38 +13,48 @@ export const Body = () => {
   );
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    const fetchCategoryCounts = async () => {
+    const fetchPosts = async () => {
       try {
         const response = await fetch("/api/posts");
-        const posts = await response.json();
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const postsData = await response.json();
 
-        // 카테고리별 포스트 수 계산
-        const counts = posts.reduce(
-          (acc: Record<string, number>, post: any) => {
-            acc.all = (acc.all || 0) + 1;
-            if (post.category) {
-              acc[post.category] = (acc[post.category] || 0) + 1;
-            }
-            return acc;
-          },
-          {}
-        );
+        if (!Array.isArray(postsData)) {
+          console.error("Posts is not an array:", postsData);
+          return;
+        }
+
+        setPosts(postsData);
+
+        // 카테고리 카운트 계산 수정
+        const counts = postsData.reduce((acc, post) => {
+          // 전체 포스트 수 카운트
+          acc.all = (acc.all || 0) + 1;
+
+          // 각 카테고리별 카운트
+          const category = post.category || "uncategorized";
+          acc[category] = (acc[category] || 0) + 1;
+
+          return acc;
+        }, {} as Record<string, number>);
 
         setCategoryCounts(counts);
-        setPosts(posts);
       } catch (error) {
-        console.error("Failed to fetch category counts:", error);
+        console.error("Failed to fetch posts:", error);
       }
     };
 
-    fetchCategoryCounts();
+    fetchPosts();
   }, []);
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
+    setSearchTerm("");
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -52,6 +63,10 @@ export const Body = () => {
 
   const handleKeywordSelect = (keyword: string) => {
     setSearchTerm(keyword);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (

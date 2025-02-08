@@ -45,7 +45,9 @@ thumbnail: "/images/profile1.jpg"
 - 대규모 로그 데이터 분석 및 시각화 시스템 구축
 - Next.js, PostgreSQL, Prisma, Docker, ChakraUI
 - 기획 및 디자인 포함 기여도 100%
-  **2024-01 ~ 2024-05**
+
+**2024-01 ~ 2024-05**
+
 - 금융 ERP 시스템 마이그레이션
 - 레거시 시스템을 React와 Flask 기반으로 현대화
 - 실시간 금융 데이터 처리 및 성능 최적화

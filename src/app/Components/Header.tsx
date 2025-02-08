@@ -1,37 +1,27 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import { PostModal } from "./PostModal";
-import { getPostImage } from "@/utils/getPostImage";
-import { FaGithub } from "react-icons/fa";
-import { SiNotion } from "react-icons/si";
+import dynamic from "next/dynamic";
+
 import "../Styles/header.scss";
+import type { Post } from "@/types/post";
+
+// 모달 컴포넌트를 동적으로 import
+const PostModal = dynamic(
+  () => import("./PostModal").then((mod) => mod.default),
+  {
+    loading: () => <div>Loading...</div>,
+    ssr: false,
+  }
+);
 
 export const Header = () => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [isInitial, setIsInitial] = useState(true);
   const [isIntroOpen, setIsIntroOpen] = useState(false);
   const [isExperienceOpen, setIsExperienceOpen] = useState(false);
-
-  const introPost = {
-    id: "intro",
-    title: "Introduction",
-    content: `<h2>안녕하세요! 프론트엔드 개발자입니다.</h2>
-              <p>새로운 기술을 배우고 적용하는 것을 좋아하며, 사용자 경험을 개선하는데 관심이 많습니다.</p>
-              <h3>기술 스택</h3>
-              <ul>
-                <li>React, Next.js, TypeScript</li>
-                <li>HTML5, CSS3, JavaScript</li>
-                <li>Git, GitHub</li>
-              </ul>`,
-    plainContent: "",
-    date: new Date().toISOString(),
-    description: "개발자 소개",
-    category: "about",
-    tags: ["Frontend", "React", "Next.js"],
-    searchTerm: "",
-    thumbnail: "/images/profile.jpg",
-  };
+  const [introPost, setIntroPost] = useState<Post | null>(null);
 
   const experiencePost = {
     id: "experience",
@@ -56,6 +46,17 @@ export const Header = () => {
     searchTerm: "",
     thumbnail: "/images/experience.jpg",
   };
+
+  useEffect(() => {
+    const fetchIntroPost = async () => {
+      const response = await fetch("/api/post/about-me");
+      if (response.ok) {
+        const post = await response.json();
+        setIntroPost(post);
+      }
+    };
+    fetchIntroPost();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,8 +96,12 @@ export const Header = () => {
         </h1>
         {!isExpanded && (
           <nav className="nav">
-            <button onClick={() => setIsIntroOpen(true)}>Intro</button>
-            <button onClick={() => setIsExperienceOpen(true)}>Work</button>
+            <Link href="#" onClick={() => setIsIntroOpen(true)}>
+              Intro
+            </Link>
+            <Link href="#" onClick={() => setIsExperienceOpen(true)}>
+              Work
+            </Link>
             <Link
               href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab"
               target="_blank"
@@ -109,16 +114,24 @@ export const Header = () => {
           </nav>
         )}
       </div>
-      <PostModal
-        post={introPost}
-        isOpen={isIntroOpen}
-        onClose={() => setIsIntroOpen(false)}
-      />
-      <PostModal
-        post={experiencePost}
-        isOpen={isExperienceOpen}
-        onClose={() => setIsExperienceOpen(false)}
-      />
+      {introPost && isIntroOpen && (
+        <Suspense fallback={<div>Loading...</div>}>
+          <PostModal
+            post={introPost}
+            isOpen={isIntroOpen}
+            onClose={() => setIsIntroOpen(false)}
+          />
+        </Suspense>
+      )}
+      {isExperienceOpen && (
+        <Suspense fallback={<div>Loading...</div>}>
+          <PostModal
+            post={experiencePost}
+            isOpen={isExperienceOpen}
+            onClose={() => setIsExperienceOpen(false)}
+          />
+        </Suspense>
+      )}
     </header>
   );
 };

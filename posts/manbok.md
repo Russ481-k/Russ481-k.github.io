@@ -1,7 +1,7 @@
 ---
 title: "공인중개 웹사이트"
 date: "2024-03-20"
-category: "project"
+category: "projects"
 description: "공인중개 웹사이트 개발"
 tags: ["React", " JavaScript"]
 thumbnail: "/images/manbok/manbok.gif"

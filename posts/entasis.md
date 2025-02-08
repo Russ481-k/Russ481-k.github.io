@@ -1,7 +1,7 @@
 ---
 title: "Entasis"
 date: "2024-03-20"
-category: "project"
+category: "projects"
 description: "가상자산 거래소 개발"
 tags: ["React", "NicePay", "TypeScript", "React Hook Form"]
 thumbnail: "/images/mobyn/mobyn_dashboard.gif"

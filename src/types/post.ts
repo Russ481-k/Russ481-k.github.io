@@ -1,14 +1,14 @@
-export type Post = {
+export interface Post {
   id: string;
   title: string;
-  date: string;
   content: string;
   plainContent: string;
+  date: string;
   description: string;
   category: string;
   tags: string[];
   thumbnail?: string;
-};
+}
 
 export interface Category {
   id: string;

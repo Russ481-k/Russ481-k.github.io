@@ -1,7 +1,7 @@
 ---
 title: "FDS 기획"
 date: "2024-03-20"
-category: "project"
+category: "projects"
 description: "블록체인 기반 가상자산 거래의 이상 탐지 시스템 설계"
 tags: ["Blockchain", "FDS", "Security", "AI"]
 thumbnail: "/images/solidity.webp"

@@ -1,7 +1,7 @@
 ---
 title: "전자고지 시스템 개발"
 date: "2024-03-20"
-category: "project"
+category: "projects"
 description: "카카오/네이버/KT 전자문서 발송 및 통계 시스템"
 tags: ["React", "NicePay", "TypeScript", "React Hook Form"]
 thumbnail: "/images/mobyn/mobyn_dashboard.gif"
@@ -20,7 +20,7 @@ thumbnail: "/images/mobyn/mobyn_dashboard.gif"
    - 발송 상태 모니터링
 
 ![3](/images/mobyn/mobyn_document_payment.gif)
-_결제 정보 관리 및 처리_
+(결제 정보 관리 및 처리)
 
 2. **결제 시스템 연동**
    - NICEpay 결제 모듈 통합
@@ -29,25 +29,26 @@ _결제 정보 관리 및 처리_
    - 환불 프로세스 지원
 
 ![5](/images/mobyn/mobyn_stats_1.gif)
-_일별/월별 발송량 통계 분석_
+(일별/월별 발송량 통계 분석)
 
 ![6](/images/mobyn/mobyn_stats_2.gif)
-_플랫폼별 발송 성공률 분석_
+(플랫폼별 발송 성공률 분석)
 
 ![7](/images/mobyn/mobyn_stats_3.gif)
-_결제 전환율 및 매출 분석_
+(결제 전환율 및 매출 분석)
 
 ![8](/images/mobyn/mobyn_stats_4.gif)
-_기간별 상세 통계 리포트_
+(기간별 상세 통계 리포트)
 
 3. **통계 대시보드**
-   - 발송 현황 분석
-   - 플랫폼별 성공률 추적
-   - 결제 전환율 모니터링
-   - 기간별 통계 리포트
+
+- 발송 현황 분석
+- 플랫폼별 성공률 추적
+- 결제 전환율 모니터링
+- 기간별 통계 리포트
 
 ![2](/images/mobyn/mobyn_document_management.gif)
-_문서 템플릿 관리 및 편집_
+(문서 템플릿 관리 및 편집)
 
 4. **발송 관리 시스템**
    - 대상자 그룹 관리
@@ -56,7 +57,7 @@ _문서 템플릿 관리 및 편집_
    - 발송 상태 모니터링
 
 ![9](/images/mobyn/mobyn_status.gif)
-_실시간 발송 상태 모니터링_
+(실시간 발송 상태 모니터링)
 
 5. **발송 제목 및 내용 관리**
    - 발송 제목 및 내용 관리
@@ -66,7 +67,7 @@ _실시간 발송 상태 모니터링_
    - 발송 상태 모니터링
 
 ![10](/images/mobyn/mobyn_subject.gif)
-_발송 제목 및 내용 관리_
+(발송 제목 및 내용 관리)
 
 6. **발송 대상자 관리**
    - 대상자 그룹 관리
@@ -75,7 +76,7 @@ _발송 제목 및 내용 관리_
    - 발송 상태 모니터링
 
 ![4](/images/mobyn/mobyn_send.gif)
-_대량 발송 프로세스 실행_
+(대량 발송 프로세스 실행)
 
 7. **발송 예약 관리**
    - 발송 예약 관리

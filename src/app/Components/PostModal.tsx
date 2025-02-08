@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import "../Styles/post_modal.scss";
 import Image from "next/image";
 import { getPostImage } from "@/utils/getPostImage";
+import { ModalPortal } from "./ModalPortal";
 
 interface PostModalProps {
   post: Post;
@@ -85,8 +86,7 @@ export const PostModal = ({ post, isOpen, onClose }: PostModalProps) => {
     </div>
   );
 
-  return createPortal(
-    modalContent,
-    document.getElementById("modal-root") || document.body
-  );
+  return <ModalPortal>{modalContent}</ModalPortal>;
 };
+
+export default PostModal;
