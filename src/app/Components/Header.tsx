@@ -91,7 +91,7 @@ export const Header = () => {
     <header className={`header ${isExpanded ? "expanded" : ""}`}>
       <div className="header_content">
         <h1 className="title">
-          <Link href="/">Bin's Space</Link>
+          <Link href="/">Bin&apos;s Space</Link>
         </h1>
         {!isExpanded && (
           <nav className="nav">
