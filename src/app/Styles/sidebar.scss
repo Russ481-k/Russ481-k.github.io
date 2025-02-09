@@ -19,7 +19,7 @@
 
   .contents {
     position: fixed;
-    top: 60px;
+    top: 46px;
     width: inherit;
     max-height: calc(100vh - 60px);
     padding: 12px;
@@ -43,16 +43,13 @@
     .profile_top {
       display: flex;
       justify-content: center;
-      margin: auto;
       .profile_image {
         border-radius: 100%;
-        margin-bottom: 10px;
+        border: 2px solid #b7edf6;
       }
     }
     .profile_text {
-      margin-bottom: 12px;
       .profile_name {
-        margin-bottom: 10px;
         text-align: center;
       }
       .profile_position {
@@ -76,22 +73,22 @@
     }
 
     .profile_categories {
-      margin-top: 12px;
+      margin-top: 16px;
       overflow-y: auto;
     }
   }
   .nav {
     justify-content: space-between;
     a {
-      margin-right: 5px;
+      margin-right: 6px;
     }
   }
 }
 
 .category_item {
   cursor: pointer;
-  padding: 10px;
-  margin: 5px 0;
+  padding: 8px;
+  margin: 4px 6px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
   display: flex;
