@@ -4,6 +4,7 @@
   min-width: 240px;
   width: 240px;
   position: relative;
+  padding-right: 5px;
 
   ::-webkit-scrollbar {
     width: 5px;
@@ -13,7 +14,7 @@
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-image: linear-gradient(180deg, #2e6b99 0%, #2e6b99 99%);
+    background-image: linear-gradient(180deg, #ffffff46 0%, #ffffffbb 99%);
   }
 
   .contents {
