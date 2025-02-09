@@ -1,0 +1,96 @@
+.mobile_header {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #b7edf6;
+      flex: 0 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+
+      .categories {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0 20px;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        .category_item {
+          display: flex;
+          flex: 1;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          gap: 1px;
+          color: rgba(255, 255, 255, 0.7);
+          padding: 4px 8px;
+          border-radius: 16px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          white-space: nowrap;
+          transition: all 0.2s ease;
+          background: none;
+          border: none;
+          margin: 0;
+
+          &:hover {
+            color: #b7edf6;
+          }
+
+          &.active {
+            background: rgba(183, 237, 246, 0.1);
+            color: #b7edf6;
+          }
+        }
+      }
+    }
+
+    .profile {
+      flex: 0 0 auto;
+
+      .profile_image {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 1px solid #b7edf6;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: scale(1.05);
+          border-width: 2px;
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,8 @@ import { Sidebar } from "./Sidebar";
 import { SideIndex } from "./SideIndex";
 import "../Styles/body.scss";
 import { Post } from "@/types/post";
+import { MobileHeader } from "./MobileHeader";
+import { categories } from "@/data/categories";
 
 export const Body = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -71,7 +73,14 @@ export const Body = () => {
 
   return (
     <div className="body">
+      <MobileHeader
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategorySelect={handleCategorySelect}
+        categoryCounts={categoryCounts}
+      />
       <Sidebar
+        categories={categories}
         onCategorySelect={handleCategorySelect}
         selectedCategory={selectedCategory}
         categoryCounts={categoryCounts}

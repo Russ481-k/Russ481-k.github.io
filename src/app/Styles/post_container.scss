@@ -5,8 +5,38 @@
   max-width: 80%;
   z-index: 0;
   flex: 1;
-  margin: 0 auto;
+  margin: 0;
   padding: 8px;
+
+  @media screen and (max-width: 1280px) {
+    max-width: 100%;
+    padding: 12px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  .posts_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+
+    @media screen and (max-width: 1280px) {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
 
   .post {
     background-color: rgba(255, 255, 255, 0.061);
@@ -24,16 +54,28 @@
     display: grid;
     grid-template-columns: 260px 1fr;
     gap: 24px;
+    overflow: hidden;
 
-    &:hover {
-      transform: scale(1.5);
-      background-color: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      z-index: 200;
+    @media screen and (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 260px 1fr;
+      height: auto;
+      min-height: 286px;
+      gap: 16px;
+      padding: 16px;
 
-      .post_content,
       .post_image_container {
-        transform: scale(1);
+        width: 100%;
+        height: 260px;
+      }
+
+      .post_content {
+        width: 100%;
+        padding: 0;
+      }
+
+      &:hover {
+        transform: scale(1.2);
       }
     }
 
@@ -44,6 +86,7 @@
     .post_image_container,
     .post_content {
       transition: inherit;
+      overflow: hidden;
     }
 
     .post_image_container {
@@ -57,6 +100,12 @@
       align-items: center;
       justify-content: center;
       background-color: rgba(255, 255, 255, 0.05);
+
+      @media screen and (max-width: 1024px) {
+        width: 100%;
+        height: 100%;
+      }
+
       .post_image {
         width: 100% !important;
         height: 100% !important;
@@ -80,6 +129,35 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+
+        @media screen and (max-width: 1280px) {
+          flex-direction: column;
+          gap: 8px;
+
+          .title_section {
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+
+            h1 {
+              margin-bottom: 8px;
+              font-size: 20px;
+            }
+
+            .tags {
+              margin-bottom: 4px;
+              width: 100%;
+              flex-wrap: wrap;
+              gap: 6px;
+            }
+          }
+
+          .date {
+            align-self: flex-end;
+            opacity: 0.8;
+          }
+        }
 
         .title_section {
           display: flex;
@@ -181,6 +259,24 @@
         }
       }
     }
+
+    @media screen and (max-width: 768px) {
+      grid-template-rows: 200px 1fr;
+      padding: 12px;
+      gap: 12px;
+
+      .post_image_container {
+        height: 200px;
+      }
+
+      .post_content {
+        padding: 0;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 
   .category_header {
@@ -198,6 +294,9 @@
       align-items: center;
       gap: 12px;
       width: 230px;
+      @media screen and (max-width: 1024px) {
+        width: 200px;
+      }
 
       h2 {
         margin: 0;
@@ -227,6 +326,10 @@
       flex: 1;
       max-width: 600px;
       margin: 0 20px;
+
+      @media screen and (max-width: 1024px) {
+        margin: 0 8px;
+      }
 
       .search_input {
         width: 100%;
@@ -264,11 +367,12 @@
 
 @media (max-width: 768px) {
   .post_container {
-    padding: 16px;
-
+    width: 100%;
+    min-width: 100%;
+    padding: 16px 0;
     .post {
       grid-template-columns: 1fr;
-
+      height: 460px;
       .post_image_container {
         height: 200px;
       }

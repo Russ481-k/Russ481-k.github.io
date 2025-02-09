@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../Styles/side_index.scss";
 import { FaCode } from "react-icons/fa";
 import {
@@ -314,6 +314,7 @@ export const SideIndex = ({
   const [keywords, setKeywords] = useState<
     Array<{ word: string; count: number; isTechStack: boolean }>
   >([]);
+  const keywordListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (searchResults.length > 0) {
@@ -407,28 +408,35 @@ export const SideIndex = ({
     }
   }, [searchResults]);
 
+  const renderKeywords = () => {
+    return keywords.map(({ word, count, isTechStack }) => (
+      <div
+        key={word}
+        className={`keyword_item ${isTechStack ? "tech_stack" : ""}`}
+        onClick={() => onKeywordSelect(word)}
+      >
+        <span className="word">
+          {isTechStack && (
+            <span className="tech_icon">
+              {techStackIcons[word] || techStackIcons.Default}
+            </span>
+          )}
+          {word}
+        </span>
+        <span className="count">{count}</span>
+      </div>
+    ));
+  };
+
   return (
     <div className="side_index">
       <div className="contents">
-        <h3>Keyword</h3>
-        <div className="keyword_list">
-          {keywords.map(({ word, count, isTechStack }) => (
-            <div
-              key={word}
-              className={`keyword_item ${isTechStack ? "tech_stack" : ""}`}
-              onClick={() => onKeywordSelect(word)}
-            >
-              <span className="word">
-                {isTechStack && (
-                  <span className="tech_icon">
-                    {techStackIcons[word] || techStackIcons.Default}
-                  </span>
-                )}
-                {word}
-              </span>
-              <span className="count">{count}</span>
-            </div>
-          ))}
+        <h3>Keywords</h3>
+        <div className="keyword_list" ref={keywordListRef}>
+          <div className="keywords_container">
+            {renderKeywords()}
+            {renderKeywords()} {/* 키워드 리스트 복제 */}
+          </div>
         </div>
       </div>
     </div>

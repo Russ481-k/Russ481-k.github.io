@@ -35,6 +35,10 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --breakpoint-desktop: 1280px;
+  --breakpoint-tablet: 1024px;
+  --breakpoint-mobile: 768px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -107,5 +111,23 @@ body::-webkit-scrollbar-thumb {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 12px;
   }
 }

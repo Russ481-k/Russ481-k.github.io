@@ -48,7 +48,6 @@
     .keyword_list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
       max-height: 650px;
       overflow-y: auto;
       padding-right: 4px;
@@ -62,6 +61,7 @@
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.2s ease;
+        margin-bottom: 4px;
 
         &:hover {
           background-color: rgba(255, 255, 255, 0.1);
@@ -103,5 +103,130 @@
         }
       }
     }
+  }
+
+  // 1280px 브레이크포인트
+  @media screen and (max-width: 1280px) {
+    min-width: 220px;
+    width: 220px;
+
+    .contents {
+      padding: 12px;
+      max-height: 680px;
+    }
+  }
+
+  // 1024px 브레이크포인트 (태블릿)
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    min-width: 100%;
+    margin: 0;
+    position: fixed;
+    top: 40px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #0000005c;
+    backdrop-filter: blur(8px);
+
+    .contents {
+      position: relative;
+      top: 0;
+      width: 100%;
+      max-height: none;
+      padding: 0 16px;
+      background: none;
+      margin: 0 auto;
+
+      h3 {
+        display: none;
+      }
+
+      .keyword_list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 16px;
+        max-height: none;
+        overflow-x: hidden;
+        padding: 8px 0;
+        position: relative;
+        width: 100%;
+
+        .keywords_container {
+          display: flex;
+          gap: 16px;
+          animation: scrollKeywords 180s linear infinite;
+          padding: 0 8px;
+
+          &:hover {
+            animation-play-state: paused;
+          }
+        }
+
+        .keyword_item {
+          flex: 0 0 auto;
+          white-space: nowrap;
+          background: none;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 4px 12px;
+          border-radius: 16px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: rgba(183, 237, 246, 0.232);
+            transform: translateY(-2px);
+          }
+
+          .count {
+            display: none;
+          }
+
+          .word {
+            font-size: 0.9rem;
+            color: #b7edf6;
+          }
+        }
+
+        // 스크롤바 숨기기
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+  }
+
+  // 768px 브레이크포인트 (모바일)
+  @media screen and (max-width: 768px) {
+    top: 36px;
+
+    .contents {
+      padding: 0 12px;
+
+      .keyword_list {
+        gap: 12px;
+        padding: 6px 0;
+
+        .keyword_item {
+          padding: 4px 8px;
+
+          .word {
+            font-size: 0.85rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 자동 스크롤 애니메이션
+@keyframes scrollKeywords {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }

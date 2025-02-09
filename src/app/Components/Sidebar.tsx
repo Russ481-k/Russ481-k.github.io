@@ -4,9 +4,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "../Styles/sidebar.scss";
 import Image from "next/image";
-import { categories } from "@/data/categories";
 
 interface SidebarProps {
+  categories: {
+    id: string;
+    name: string;
+    description: string;
+    externalLink?: string;
+  }[];
   onCategorySelect: (category: string) => void;
   selectedCategory: string;
   categoryCounts: {
@@ -15,6 +20,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({
+  categories,
   onCategorySelect,
   selectedCategory,
   categoryCounts,
