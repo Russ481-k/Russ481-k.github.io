@@ -10,7 +10,7 @@ export const Footer = () => {
         <h1>Bin&apos;s Space</h1>
       </div>
       <div className="footer_mid">
-        ⓒ 2023. Russell.Youn™ All rights reserved.
+        © 2024 Bin&apos;s Space. All rights reserved.
       </div>
       <div className="footer_right">
         <div className="social_links">
@@ -21,7 +21,7 @@ export const Footer = () => {
             className="social_link"
             aria-label="GitHub Profile"
           >
-            <FaGithub />
+            <FaGithub size={16} />
           </Link>
           <Link
             href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab"
@@ -30,7 +30,7 @@ export const Footer = () => {
             className="social_link"
             aria-label="Notion Page"
           >
-            <SiNotion />
+            <SiNotion size={16} />
           </Link>
         </div>
       </div>
