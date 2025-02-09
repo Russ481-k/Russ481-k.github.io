@@ -37,11 +37,12 @@
       display: flex;
       align-items: center;
       gap: 8px;
-
-      a {
-        color: inherit;
-        transition: color 0.2s ease;
-
+      .social_links {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
         &:hover {
           color: #b7edf6;
         }
@@ -71,6 +72,9 @@
         display: flex;
         gap: 8px;
         justify-content: center;
+        &:hover {
+          color: #b7edf6;
+        }
       }
     }
   }
