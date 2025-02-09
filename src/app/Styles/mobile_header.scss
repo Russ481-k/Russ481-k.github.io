@@ -1,5 +1,129 @@
 .mobile_header {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  transition: height 0.3s ease;
+  height: 36px;
+
+  &.expanded {
+    height: auto;
+    padding: 0 16px;
+  }
+
+  .category_button {
+    width: 100%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background: none;
+    border: none;
+    color: #b7edf6;
+    font-size: 1.1rem;
+    cursor: pointer;
+
+    .count {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-left: 6px;
+    }
+
+    .arrow {
+      transition: transform 0.3s ease;
+      font-size: 0.8rem;
+      margin-left: 6px;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .category_dropdown {
+    position: relative;
+    z-index: 1000;
+
+    .category_button {
+      width: 100%;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background: none;
+      border: none;
+      color: #b7edf6;
+      font-size: 1.1rem;
+      cursor: pointer;
+
+      .count {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-left: 6px;
+        margin-bottom: 6px;
+      }
+
+      .arrow {
+        transition: transform 0.3s ease;
+        font-size: 0.8rem;
+        margin-left: 6px;
+
+        &.open {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .category_list {
+      position: absolute;
+      width: 100%;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: #1e1e1ee7;
+      backdrop-filter: blur(8px);
+      margin-top: 0;
+      padding: 8px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+      .category_item {
+        width: 100%;
+        margin: 0;
+        padding: 12px 16px;
+        border: none;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0px;
+        cursor: pointer;
+        pointer-events: auto;
+        transition: all 0.2s ease;
+        .count {
+          font-size: 0.9rem;
+          opacity: 0.7;
+          margin-left: 6px;
+        }
+
+        &:hover {
+          background: rgba(183, 237, 246, 0.2);
+        }
+
+        &.active {
+          background: rgba(183, 237, 246, 0.3);
+          color: #b7edf6;
+        }
+      }
+    }
+  }
 
   @media screen and (max-width: 768px) {
     display: flex;
@@ -23,19 +147,24 @@
     }
 
     .nav {
-      display: flex;
+      display: block;
       align-items: center;
       justify-content: center;
       flex: 1;
       position: relative;
 
+      .mobile_header_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
       .category_dropdown {
         position: relative;
-        justify-content: right;
 
         .dropdown_button {
           justify-content: center;
-          width: 120px;
+          width: 100%;
           display: flex;
           align-items: center;
           gap: 6px;
@@ -43,13 +172,14 @@
           border: none;
           color: #b7edf6;
           padding: 4px 12px;
-          border-radius: 4px;
           font-size: 0.9rem;
           cursor: pointer;
+          text-align: center;
 
           .chevron {
             transition: transform 0.2s ease;
             font-size: 0.8rem;
+            margin-left: 6px;
 
             &.open {
               transform: rotate(180deg);
@@ -63,7 +193,6 @@
           left: 50%;
           transform: translateX(-50%);
           background: rgba(0, 0, 0, 0.95);
-          border-radius: 8px;
           padding: 8px;
           min-width: 160px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -104,6 +233,7 @@
 
     .profile {
       position: relative;
+      margin-left: 28px;
 
       .profile_button {
         background: none;

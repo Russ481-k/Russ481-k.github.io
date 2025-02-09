@@ -10,7 +10,6 @@
 
   @media screen and (max-width: 1280px) {
     max-width: 100%;
-    padding: 12px;
   }
 
   @media screen and (max-width: 1024px) {
@@ -175,8 +174,29 @@
 
           .tags {
             display: flex;
+            gap: 8px;
             flex-wrap: wrap;
-            gap: 4px;
+
+            .tag {
+              background: rgba(183, 237, 246, 0.1);
+              color: #b7edf6;
+              padding: 4px 8px;
+              border-radius: 4px;
+              font-size: 0.85rem;
+              transition: all 0.2s ease;
+
+              &:hover {
+                background: rgba(183, 237, 246, 0.2);
+              }
+            }
+
+            .more_tags {
+              background: rgba(255, 255, 255, 0.1);
+              color: rgba(255, 255, 255, 0.6);
+              padding: 4px 8px;
+              border-radius: 4px;
+              font-size: 0.85rem;
+            }
           }
         }
 

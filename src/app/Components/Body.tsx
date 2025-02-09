@@ -74,9 +74,8 @@ export const Body = () => {
   return (
     <div className="body">
       <MobileHeader
-        categories={categories}
         selectedCategory={selectedCategory}
-        onCategorySelect={handleCategorySelect}
+        onCategoryChange={handleCategorySelect}
         categoryCounts={categoryCounts}
       />
       <Sidebar

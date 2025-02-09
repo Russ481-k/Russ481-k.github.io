@@ -88,7 +88,7 @@ export const Sidebar = ({
 
         <div className="profile_categories">
           <h3>CATEGORY</h3>
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <div
               key={category.id}
               className={`category_item ${

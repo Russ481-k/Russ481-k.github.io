@@ -63,6 +63,10 @@
         transition: all 0.2s ease;
         margin-bottom: 4px;
 
+        @media screen and (max-width: 1024px) {
+          margin-bottom: 0px;
+        }
+
         &:hover {
           background-color: rgba(255, 255, 255, 0.1);
         }
@@ -203,15 +207,14 @@
     top: 36px;
 
     .contents {
-      padding: 0 12px;
-
+      padding: 0px;
+      height: 36px;
       .keyword_list {
         gap: 12px;
         padding: 6px 0;
 
         .keyword_item {
           padding: 4px 8px;
-
           .word {
             font-size: 0.85rem;
           }

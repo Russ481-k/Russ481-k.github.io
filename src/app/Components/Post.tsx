@@ -39,6 +39,9 @@ const Post = (props: PostProps) => {
     setIsModalOpen(true);
   };
 
+  const visibleTags = tags?.slice(0, 3) || [];
+  const remainingTags = tags?.length > 3 ? tags.length - 3 : 0;
+
   return (
     <>
       <div
@@ -66,9 +69,14 @@ const Post = (props: PostProps) => {
             <div className="title_section">
               <h1>{highlightText(title, searchTerm)}</h1>
               <div className="tags">
-                {tags.map((tag) => (
-                  <Tag key={tag} name={tag} />
+                {visibleTags.map((tag, index) => (
+                  <span key={index} className="tag">
+                    {tag}
+                  </span>
                 ))}
+                {remainingTags > 0 && (
+                  <span className="more_tags">+{remainingTags}</span>
+                )}
               </div>
             </div>
             <span className="date">{formattedDate}</span>
@@ -77,7 +85,7 @@ const Post = (props: PostProps) => {
             className="markdown-content"
             dangerouslySetInnerHTML={{
               __html: searchTerm
-                ? highlightText(props.plainContent, searchTerm)
+                ? highlightText(props.content, searchTerm)
                 : props.content,
             }}
           />

@@ -51,12 +51,20 @@
     justify-content: space-between;
     padding: 0 5%;
 
+    @media screen and (max-width: 1280px) {
+      padding: 0 12px;
+    }
+
     .title {
       min-width: 240px;
       font-size: 1.5rem;
       color: white;
       margin: 0;
       text-align: center;
+
+      @media screen and (max-width: 1280px) {
+        min-width: 220px;
+      }
 
       a {
         color: inherit;
@@ -70,11 +78,14 @@
 
     .nav {
       display: flex;
-      gap: 20px;
       width: 240px;
-      justify-content: center;
+      justify-content: space-around;
       padding-right: 12px;
       align-items: center;
+
+      @media screen and (max-width: 1280px) {
+        width: 220px;
+      }
 
       button,
       a {
