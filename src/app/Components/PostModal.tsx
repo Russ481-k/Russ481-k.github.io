@@ -12,9 +12,19 @@ interface PostModalProps {
   post: Post;
   isOpen: boolean;
   onClose: () => void;
+  prevPost?: Post | null; // 이전 포스트
+  nextPost?: Post | null; // 다음 포스트
+  onPostChange: (post: Post) => void; // 포스트 변경 핸들러
 }
 
-export const PostModal = ({ post, isOpen, onClose }: PostModalProps) => {
+export const PostModal = ({
+  post,
+  isOpen,
+  onClose,
+  prevPost,
+  nextPost,
+  onPostChange,
+}: PostModalProps) => {
   useEffect(() => {
     if (isOpen) {
       // 현재 스크롤 위치 저장
@@ -52,10 +62,35 @@ export const PostModal = ({ post, isOpen, onClose }: PostModalProps) => {
     <div className="modal_overlay" onClick={onClose}>
       <div className="modal_content" onClick={(e) => e.stopPropagation()}>
         <div className="modal_header">
+          {prevPost && (
+            <button
+              className="nav_button prev"
+              onClick={() => onPostChange(prevPost)}
+            >
+              <div className="nav_info">
+                <div className="nav_info_left">
+                  <span className="arrow">←</span>
+                  <span className="label">이전 포스트</span>
+                </div>
+                <span className="title">{prevPost.title}</span>
+              </div>
+            </button>
+          )}
           <h2>{post.title}</h2>
-          <button className="close_button" onClick={onClose}>
-            ×
-          </button>
+          {nextPost && (
+            <button
+              className="nav_button next"
+              onClick={() => onPostChange(nextPost)}
+            >
+              <div className="nav_info">
+                <div className="nav_info_right">
+                  <span className="label">다음 포스트</span>
+                  <span className="arrow">→</span>
+                </div>
+                <span className="title">{nextPost.title}</span>
+              </div>
+            </button>
+          )}
         </div>
         <div className="modal_meta">
           <div className="tags">
@@ -81,6 +116,11 @@ export const PostModal = ({ post, isOpen, onClose }: PostModalProps) => {
             className="content"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+        </div>
+        <div className="modal_footer">
+          <button className="close_button" onClick={onClose}>
+            닫기
+          </button>
         </div>
       </div>
     </div>

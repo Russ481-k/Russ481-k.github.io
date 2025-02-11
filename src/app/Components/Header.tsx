@@ -120,6 +120,9 @@ export const Header = () => {
             post={introPost}
             isOpen={isIntroOpen}
             onClose={() => setIsIntroOpen(false)}
+            prevPost={null}
+            nextPost={null}
+            onPostChange={() => {}}
           />
         </Suspense>
       )}
@@ -129,6 +132,9 @@ export const Header = () => {
             post={experiencePost}
             isOpen={isExperienceOpen}
             onClose={() => setIsExperienceOpen(false)}
+            prevPost={null}
+            nextPost={null}
+            onPostChange={() => {}}
           />
         </Suspense>
       )}

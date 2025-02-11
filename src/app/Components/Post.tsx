@@ -5,8 +5,8 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import { highlightText } from "@/utils/highlightText";
 import { getPostImage } from "@/utils/getPostImage";
-import { Tag } from "@/app/Components/Tag";
 import { PostModal } from "../Components/PostModal";
+import type { Post } from "@/types/post";
 
 interface PostProps {
   id: string;
@@ -19,6 +19,7 @@ interface PostProps {
   tags: string[];
   searchTerm: string;
   thumbnail?: string;
+  posts: Post[];
 }
 
 const Post = (props: PostProps) => {
@@ -30,6 +31,7 @@ const Post = (props: PostProps) => {
     month: "long",
     day: "numeric",
   });
+  const [currentPost, setCurrentPost] = useState(props);
 
   useEffect(() => {
     AOS.init();
@@ -41,6 +43,26 @@ const Post = (props: PostProps) => {
 
   const visibleTags = tags?.slice(0, 3) || [];
   const remainingTags = tags?.length > 3 ? tags.length - 3 : 0;
+
+  const getAdjacentPosts = (currentPost: PostProps) => {
+    const sortedPosts = props.posts.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    const currentIndex = sortedPosts.findIndex(
+      (post) => post.id === currentPost.id
+    );
+
+    return {
+      prevPost:
+        currentIndex < sortedPosts.length - 1
+          ? sortedPosts[currentIndex + 1]
+          : null,
+      nextPost: currentIndex > 0 ? sortedPosts[currentIndex - 1] : null,
+    };
+  };
+
+  const { prevPost, nextPost } = getAdjacentPosts(currentPost);
 
   return (
     <>
@@ -92,9 +114,18 @@ const Post = (props: PostProps) => {
         </div>
       </div>
       <PostModal
-        post={props}
+        post={currentPost}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        prevPost={prevPost}
+        nextPost={nextPost}
+        onPostChange={(newPost) => {
+          setCurrentPost({
+            ...newPost,
+            searchTerm: props.searchTerm,
+            posts: props.posts,
+          });
+        }}
       />
     </>
   );

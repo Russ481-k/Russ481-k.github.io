@@ -113,6 +113,7 @@ export const PostContainer = ({
           key={`${post.id}-${selectedCategory}`}
           {...post}
           searchTerm={debouncedSearchTerm}
+          posts={filteredPosts}
         />
       ))}
     </div>
