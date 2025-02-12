@@ -1,0 +1,860 @@
+[
+  {
+    "id": "about-me",
+    "title": "개발자 윤수빈입니다.",
+    "content": "<h2 id=\"heading-0\">About Me</h2>\n<p>금융공학과 데이터 처리에 특화된 풀스택 엔지니어입니다. Next.js, Python, Java를 활용하여 대규모 데이터 처리 및 금융 시스템을 구축하며, 알고리즘 최적화와 안정적인 웹 솔루션 개발에 중점을 두고 있습니다.</p>\n<p>다양한 프로젝트 경험을 통해 복잡한 데이터 구조를 효율적으로 처리하고, 금융 모델을 실시간으로 구현하는 데 강점을 가지고 있습니다. 금융 플랫폼 개발에 있어 혁신적인 접근을 추구하며, 확장성 있는 웹 애플리케이션과 데이터를 활용한 전략적 시스템 구축을 통해 비즈니스 가치를 창출하고자 합니다.</p>\n<h2 id=\"heading-1\">Contact</h2>\n<ul>\n<li><strong>Location</strong>: Busan, South Korea</li>\n<li><strong>E-mail</strong>: yunsubin481@gmail.com</li>\n<li><strong>Notion</strong>: <a href=\"https://binsspace.notion.site/Bin-s-Space\">Bin's Space</a></li>\n</ul>\n<h2 id=\"heading-2\">Research &amp; Studies</h2>\n<ul>\n<li><strong>금융공학</strong>: 투자론, 거시경제, 회계 연구</li>\n<li><strong>컴퓨터 과학</strong>: 자료구조, 네트워크, 데이터베이스, AI 연구</li>\n<li><strong>블록체인</strong>: STO 기반 증권형 토큰 거래소, NFT 거래소 프로젝트 연구</li>\n</ul>\n<h2 id=\"heading-3\">Education</h2>\n<ul>\n<li><strong>2018 - 2019</strong>: Bachelor of Business (독학학위제)\n<ul>\n<li>금융공학, 투자론, 거시경제, 회계 전공</li>\n</ul>\n</li>\n<li><strong>2019 - 2024</strong>: Bachelor of Computer Science (독학학위제)\n<ul>\n<li>자료구조, 네트워크, 데이터베이스, AI 전공</li>\n</ul>\n</li>\n<li><strong>2022 - 2023</strong>: BootCamp BlockChain (CodeStates)\n<ul>\n<li>STO, NFT, DeFi 플랫폼 개발 과정 수료</li>\n</ul>\n</li>\n</ul>\n<h2 id=\"heading-4\">Experience</h2>\n<h3 id=\"heading-5\">VISIONTEC (FullStack Developer)</h3>\n<p><strong>2024-05 ~ 2025-01</strong></p>\n<ul>\n<li>삼성화재, 한양대학교 데이터 관리 시스템 총괄</li>\n<li>실시간 데이터 처리 속도 최적화 (800건/초 → 25,000건/초)</li>\n<li>대규모 로그 데이터 분석 및 시각화 시스템 구축</li>\n<li>Next.js, PostgreSQL, Prisma, Docker, ChakraUI</li>\n<li>기획 및 디자인 포함 기여도 100%</li>\n</ul>\n<p><strong>2024-01 ~ 2024-05</strong></p>\n<ul>\n<li>금융 ERP 시스템 마이그레이션</li>\n<li>레거시 시스템을 React와 Flask 기반으로 현대화</li>\n<li>실시간 금융 데이터 처리 및 성능 최적화</li>\n<li>React, ChakraUI, Python Flask, MariaDB</li>\n<li>기여도 35%</li>\n</ul>\n<h3 id=\"heading-6\">IDINO (FullStack Developer)</h3>\n<p><strong>2024-05 ~ 현재</strong></p>\n<ul>\n<li>학사행정 시스템 개발</li>\n<li>마산대학교, 강원대학교, 여주대학교 장학생 관리 시스템 개발</li>\n<li>기업 협업 및 자문 결재 시스템 개발</li>\n<li>교원 평가 관리 및 학생 평가 관리 시스템 구축</li>\n<li>JAVA JSP, WebSquare, MySQL</li>\n<li>기여도 35%</li>\n</ul>\n<h3 id=\"heading-7\">KT, NAVER, KAKAO 연동 (Frontend Developer)</h3>\n<p><strong>2023-09 ~ 2024-01</strong></p>\n<ul>\n<li>문자 대량 발송 상담 챗봇 관리 시스템 개발</li>\n<li>Redux를 이용한 사용자 데이터 및 권한 관리 기능 구현</li>\n<li>KT API를 통한 대량 문자 발송 기능 구현</li>\n<li>카카오톡 알림톡 대량 발송 기능 구현</li>\n<li>챗봇 시나리오 및 템플릿 관리 기능 구현</li>\n<li>기여도 90%</li>\n</ul>\n<h3 id=\"heading-8\">NICEpay, 반응형 웹 (Frontend Developer)</h3>\n<p><strong>2023-04 ~ 2023-09</strong></p>\n<ul>\n<li>전자문서 및 전자고지 발송 기능 개발</li>\n<li>NICEpay 결제 기능 연동</li>\n<li>통계 페이지 및 반응형 웹 기능 개발</li>\n</ul>\n<p><img src=\"/images/profile3.jpg\" alt=\"Profile Image 3\"></p>\n<h2 id=\"heading-9\">Core Competencies</h2>\n<h3 id=\"heading-10\">금융 시스템 개발 전문성</h3>\n<p>복잡한 금융 모델을 실시간으로 처리하고 시각화하는 시스템 개발에 전문성을 보유하고 있습니다.\n대규모 데이터 처리 시스템 구축 경험을 통해, 금융 시장의 빠른 변화에 대응할 수 있는 확장성 있는 솔루션을 제공합니다.</p>\n<h3 id=\"heading-11\">지속적인 학습과 혁신</h3>\n<p>금융 시장과 기술의 빠른 변화에 대응하기 위해 끊임없이 새로운 것을 학습하고 있습니다.\n독학으로 금융공학과 컴퓨터 과학을 습득했으며, 블록체인과 같은 최신 기술을 금융 시스템에 접목시키는 시도를 지속하고 있습니다.</p>\n<h3 id=\"heading-12\">문제 해결 능력</h3>\n<p>복잡한 금융 데이터 처리 문제를 분석하고 효과적인 해결책을 찾아내는 과정에서 큰 성과를 이루어냈습니다.\n삼성화재와 한양대학교 프로젝트에서 데이터 처리 속도를 획기적으로 향상시킨 경험은 문제 해결에 대한 자신감을 더해주었습니다.</p>\n<h3 id=\"heading-13\">건강한 신체 관리</h3>\n<p>지속적인 성과 창출을 위해 체력 관리를 중요하게 생각합니다.\n주 5회, 하루 1시간 30분의 꾸준한 운동을 통해 업무 효율성과 집중력을 유지하고 있습니다.</p>\n",
+    "date": "2024-03-20",
+    "category": "about",
+    "tags": [
+      "Full Stack",
+      "Next.js",
+      "Python",
+      "Financial"
+    ],
+    "description": "Hello! 👋 I am a Full Stack Engineer specialized in Financial Engineering and Data Processing.",
+    "thumbnail": "/images/profile1.jpg",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "About Me",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "Contact",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 262
+      },
+      {
+        "id": "heading-2",
+        "text": "Research & Studies",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 425
+      },
+      {
+        "id": "heading-3",
+        "text": "Education",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 588
+      },
+      {
+        "id": "heading-4",
+        "text": "Experience",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 751
+      },
+      {
+        "id": "heading-5",
+        "text": "VISIONTEC (FullStack Developer)",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 811
+      },
+      {
+        "id": "heading-6",
+        "text": "IDINO (FullStack Developer)",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1255
+      },
+      {
+        "id": "heading-7",
+        "text": "KT, NAVER, KAKAO 연동 (Frontend Developer)",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1531
+      },
+      {
+        "id": "heading-8",
+        "text": "NICEpay, 반응형 웹 (Frontend Developer)",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1807
+      },
+      {
+        "id": "heading-9",
+        "text": "Core Competencies",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 2082
+      },
+      {
+        "id": "heading-10",
+        "text": "금융 시스템 개발 전문성",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2142
+      },
+      {
+        "id": "heading-11",
+        "text": "지속적인 학습과 혁신",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2258
+      },
+      {
+        "id": "heading-12",
+        "text": "문제 해결 능력",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2374
+      },
+      {
+        "id": "heading-13",
+        "text": "건강한 신체 관리",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2490
+      }
+    ],
+    "totalHeight": 2546
+  },
+  {
+    "id": "convention_document",
+    "title": "Convention Document",
+    "content": "<h2 id=\"heading-0\">1. 목적</h2>\n<ol>\n<li>개발 표준화: 프론트엔드 개발에 일관성을 부여하여 코드의 가독성과 유지보수성을 높입니다.</li>\n<li>팀 협업 강화: 개발자들 간의 협업을 원활하게 하고 의사소통을 개선합니다.</li>\n<li>새로운 개발자 온보딩: 새로 합류한 개발자가 프로젝트에 빠르게 적응하고 효율적으로 개발할 수 있도록 돕습니다.</li>\n<li>코드 품질 향상: 일관된 코딩 스타일과 최적화 기법을 적용하여 코드의 품질을 향상시킵니다.</li>\n<li>유지보수성 강화: 일관된 구조와 명명 규칙을 통해 코드의 가독성을 높이고 유지보수를 용이하게 합니다.</li>\n</ol>\n<h2 id=\"heading-1\">2. 코딩 스타일 가이드</h2>\n<h3 id=\"heading-2\">2.1. 들여쓰기</h3>\n<ol>\n<li>Prettier의 기본설정으로 들여쓰기 합니다.</li>\n</ol>\n<h3 id=\"heading-3\">2.2. 변수와 상수</h3>\n<p>변수와 상수는 프론트엔드 개발에서 중요한 개념입니다. 이 섹션에서는 변수와 상수의 사용에 대한 가이드라인을 설명합니다.</p>\n<ol>\n<li>변수명과 상수명\n<ul>\n<li>변수명과 상수명은 의미를 명확하게 전달할 수 있도록 짓는 것이 좋습니다.</li>\n<li>변수명과 상수명은 영문을 사용하여 작성합니다.</li>\n<li>여러 단어로 이루어진 경우에는 단어 사이를 카멜케이스로 구분합니다. 예: myVariable, userName</li>\n</ul>\n</li>\n<li>변수의 선언과 할당\n<ul>\n<li>변수를 선언할 때에는 let 키워드를 사용합니다. 예: let count = 0;</li>\n<li>변수의 값은 필요에 따라 언제든지 변경할 수 있습니다.</li>\n</ul>\n</li>\n<li>상수의 선언과 할당\n<ul>\n<li>상수를 선언할 때에는 const 키워드를 사용합니다. 예: const PI = 3.14;</li>\n<li>상수는 한 번 할당된 값은 변경할 수 없습니다.</li>\n</ul>\n</li>\n<li>변수와 상수의 초기화\n<ul>\n<li>변수와 상수는 선언과 동시에 초기값을 할당하는 것이 좋습니다.</li>\n<li>초기화되지 않은 변수나 상수는 의도치 않은 동작을 야기할 수 있으므로 주의해야 합니다.</li>\n</ul>\n</li>\n</ol>\n<p>변수와 상수는 프로그램의 데이터를 저장하고 조작하는 데에 필수적인 요소입니다. 적절하게 변수와 상수를 활용하여 가독성 높은 코드를 작성하고, 필요에 따라 값의 변경 여부를 고려하여 변수와 상수를 선택하시기 바랍니다.</p>\n<h3 id=\"heading-4\">2.3. 함수와 메서드</h3>\n<p>함수와 메서드는 프론트엔드 개발에서 코드의 재사용성과 모듈화를 위해 중요한 요소입니다. 이 섹션에서는 함수와 메서드의 사용에 대한 가이드라인을 제시합니다.</p>\n<ol>\n<li>함수와 메서드의 정의\n<ul>\n<li>함수는 독립적으로 동작하는 코드 블록입니다. 주어진 입력을 받아서 처리하고, 결과를 반환할 수 있습니다.</li>\n<li>메서드는 객체에 속해 있는 함수로, 객체의 상태를 조작하거나 객체의 동작을 수행합니다.</li>\n</ul>\n</li>\n<li>함수와 메서드의 명명 규칙\n<ul>\n<li>함수와 메서드의 이름은 동사 형태로 짓는 것이 일반적입니다. 예: calculateTotal, loginUser</li>\n<li>함수와 메서드의 이름은 의미를 명확하게 전달할 수 있도록 작성해야 합니다.</li>\n<li>여러 단어로 이루어진 경우에는 카멜 케이스(camelCase)를 사용하여 작성합니다. 예: calculateTaxAmount, loginUserWithCredentials</li>\n</ul>\n</li>\n<li>함수와 메서드의 매개변수\n<ul>\n<li>함수와 메서드는 필요한 입력값을 매개변수(parameter)로 받을 수 있습니다.</li>\n<li>매개변수의 이름은 변수와 동일한 명명 규칙을 따르며, 입력값의 의미를 잘 표현할 수 있도록 작성해야 합니다.</li>\n</ul>\n</li>\n<li>함수와 메서드의 반환값\n<ul>\n<li>함수와 메서드는 필요에 따라 결과값을 반환할 수 있습니다.</li>\n<li>반환값의 타입은 명확하게 정의하고, 함수 또는 메서드의 목적과 일치하는 데이터를 반환해야 합니다.</li>\n</ul>\n</li>\n<li>함수와 메서드의 범위\n<ul>\n<li>함수와 메서드는 선언된 블록(scope) 내에서 유효합니다. 함수 내부에서 선언된 변수는 함수 내에서만 사용할 수 있으며, 함수 외부에서는 접근할 수 없습니다.</li>\n</ul>\n</li>\n</ol>\n<p>함수와 메서드는 코드의 재사용성과 유지보수성을 높여주는 도구입니다. 적절하게 함수와 메서드를 활용하여 코드를 구성하고, 가독성과 유연성을 고려하여 함수와 메서드를 설계하시기 바랍니다.</p>\n<h3 id=\"heading-5\">2.4. 컴포넌트</h3>\n<p>클래스와 컴포넌트는 객체지향 프로그래밍과 리액트 프론트엔드 개발에서 중요한 개념입니다. 이 섹션에서는 클래스와 컴포넌트의 사용에 대한 가이드라인을 제시합니다.</p>\n<ol>\n<li>컴포넌트의 정의\n<ul>\n<li>컴포넌트는 UI의 독립적인 구성 요소입니다. 화면에 특정한 기능을 가진 모듈 형태로 나타낼 수 있습니다.</li>\n<li>리액트에서 컴포넌트는 클래스로 정의될 수도 있고, 함수로 정의될 수도 있습니다. 클래스 컴포넌트와 함수형 컴포넌트가 있습니다.</li>\n</ul>\n</li>\n<li>컴포넌트의 명명 규칙\n<ul>\n<li>컴포넌트의 이름은 대문자로 시작해야 합니다.</li>\n<li>컴포넌트의 이름은 명사나 명사구로 짓는 것이 일반적입니다. 예: User, LoginForm, Header</li>\n</ul>\n</li>\n<li>상속과 확장성\n<ul>\n<li>컴포넌트는 상속을 통해 기존의 컴포넌트를 확장할 수 있습니다. 이를 통해 코드의 재사용성과 확장성을 높일 수 있습니다.</li>\n<li>상속을 사용할 때는 상속받은 컴포넌트의 기능을 잘 이해하고, 필요한 부분을 재정의하여 사용해야 합니다.</li>\n</ul>\n</li>\n</ol>\n<p>컴포넌트는 객체지향 개념과 리액트 개발에서 핵심적인 역할을 수행합니다.컴포넌트를 잘 이해하고 적절하게 활용하여 유지보수 가능하고 확장성 있는 코드를 작성해야 합니다.</p>\n<h3 id=\"heading-6\">2.5. 주석</h3>\n<p>주석은 코드에 대한 설명이나 추가 정보를 제공하기 위해 사용됩니다. 올바른 주석 작성은 코드의 가독성과 유지보수성을 향상시키는 데 도움이 됩니다. 아래는 주석 작성에 대한 가이드라인입니다.</p>\n<ol>\n<li>주석의 목적\n<ul>\n<li>주석의 사용을 최대한 지양하며 필수적인 경우에만 사용합니다.</li>\n<li>중요한 사항이나 추후에 작업을 필요로하는 부분을 강조하는 주석을 작성합니다.</li>\n</ul>\n</li>\n<li>주석의 작성 규칙\n<ul>\n<li>주석은 명확하고 간결하게 작성되어야 합니다.</li>\n<li>주석은 코드에 비해 적절한 수로 작성되어야 합니다. 과도한 주석은 코드를 가독성이 떨어뜨릴 수 있습니다.</li>\n<li>주석은 필요한 부분에 작성되어야 하며, 필요 없는 주석은 삭제되어야 합니다.</li>\n<li>주석은 코드의 변경에 따라 업데이트되어야 합니다.</li>\n</ul>\n</li>\n</ol>\n<p>주석은 코드를 이해하고 유지보수하기 쉽게 만들어줍니다. 주석을 적절하게 작성하여 코드를 더욱 명확하고 의미 있는 형태로 유지해야 합니다.</p>\n<h3 id=\"heading-7\">2.6. 네이밍 규칙</h3>\n<p>일관된 네이밍 규칙은 코드의 가독성과 일관성을 유지하는 데 중요합니다. 아래는 네이밍 규칙에 대한 가이드라인입니다.</p>\n<ol>\n<li>변수와 상수 네이밍\n<ul>\n<li>의미 전달: 변수와 상수의 이름은 해당 값을 잘 설명해야 합니다. 다른 개발자들이 이름만으로 변수의 역할과 용도를 이해할 수 있어야 합니다.</li>\n<li>카멜 케이스: 변수와 상수의 이름은 카멜 케이스를 사용합니다. 첫 단어는 소문자로 시작하고, 이후 단어의 첫 글자는 대문자로 작성합니다. 예: firstName, userAge</li>\n<li>가독성: 변수의 길이는 적절하게 설정해야 합니다. 너무 짧으면 의미 전달이 어려우며, 너무 길면 가독성이 저하될 수 있습니다.</li>\n</ul>\n</li>\n<li>함수와 메서드 네이밍\n<ul>\n<li>동사 형태: 함수와 메서드의 이름은 동사로 시작해야 합니다. 동작하는 기능을 잘 설명하는 동사를 선택합니다. 예: getUserData, calculateTotal</li>\n<li>카멜 케이스: 함수와 메서드의 이름은 카멜 케이스를 사용합니다. 첫 단어는 소문자로 시작하고, 이후 단어의 첫 글자는 대문자로 작성합니다. 예: fetchData, updateProfile</li>\n</ul>\n</li>\n<li>컴포넌트 네이밍\n<ul>\n<li>파스칼 케이스: 컴포넌트의 이름은 파스칼 케이스를 사용합니다. 모든 단어의 첫 글자를 대문자로 작성하고, 단어 사이에는 공백이 없습니다. 예: UserService, HomePage</li>\n<li>명확한 역할: 클래스와 컴포넌트의 이름은 해당 역할을 명확하게 전달해야 합니다. 다른 개발자들이 이름만으로 해당 클래스나 컴포넌트의 역할을 이해할 수 있어야 합니다.</li>\n</ul>\n</li>\n<li>폴더 디렉토리 파일 네이밍: routes와 type폴더를 제외하고 src의 모든 폴더 내의 파일의 이름은 index로 통일합니다.\n<ul>\n<li>컴포넌트 폴더\n<ul>\n<li>대문자와 파스칼 케이스: 파일의 이름은 첫 글자를 대문자로 작성하고, 단어 사이에는 공백이 없습니다</li>\n</ul>\n</li>\n<li>이외의 폴더\n<ul>\n<li>소문자와 하이픈: 파일의 이름은 소문자로 작성하며, 여러 단어는 하이픈으로 구분합니다. 예: user-service.js, home-page.tsx</li>\n</ul>\n</li>\n<li>파일 확장자: 파일의 확장자는 해당 파일의 유형에 맞게 설정합니다. 예: .ts, .tsx</li>\n</ul>\n</li>\n</ol>\n<p>일관된 네이밍 규칙을 따르면 코드의 가독성이 향상되고 협업 시에도 일관성을 유지할 수 있습니다. 모든 개발자들이 네이밍 규칙을 공유하고 준수하도록 합니다.</p>\n<h3 id=\"heading-8\">2.7. 코드 포맷팅</h3>\n<p>일관된 코드 포맷팅은 가독성을 향상시키고 협업을 용이하게 만듭니다.</p>\n<p>아래는 코드 포맷팅에 대한 가이드라인이며 순서대로 구성됩니다.</p>\n<ul>\n<li>\n<p>대분류(1,2,3…)를 기준으로 한 줄 띄웁니다.</p>\n</li>\n<li>\n<p>소분류(a,b,c…)는 띄우지 않습니다.</p>\n<ol>\n<li>\n<p>import Module</p>\n<pre><code class=\"language-jsx\">import {\n  Box,\n  Flex,\n  FormControl,\n  FormLabel,\n  Input,\n} from \"@chakra-ui/react\";\nimport { useMemo } from \"react\";\nimport { useForm } from \"react-hook-form\";\n\n</code><p><code class=\"language-jsx\">import { CodeSelect } from \"@mobyen-frontend/common\";<br>import useUserRoles from \"features/user/hooks/useUserRoles\";<br></code></p></pre><p></p><ol>\n<li>외부 모듈: from 이후를 기준, 알파벳 순으로 정렬합니다.</li>\n<li>내부 모듈: from 이후를 기준, 알파벳 순으로 정렬합니다.</li>\n</ol>\n</li>\n<li>\n<p>interface: 스코프 내에 있는 내용을 알파벳 순서대로 정렬합니다.</p>\n<pre><code class=\"language-jsx\">interface SearchPanelProps {\n  isSearching: boolean;\n  onChange: (param: {\n    email: string | null,\n    ext: string | null,\n    mobile: string | null,\n    name: string | null,\n    tel: string | null,\n    userRole: string | null,\n    useYN: string | null,\n  }) =&gt; void;\n  onReset: () =&gt; void;\n}\n</code></pre>\n</li>\n<li>\n<p>defaultProps: 스코프 내에 있는 내용을 알파벳 순서대로 정렬합니다.</p>\n<pre><code class=\"language-jsx\">const defaultProps = {\n  isSearching: false,\n  onChange(_param: {\n    email: null,\n    ext: null,\n    mobile: null,\n    name: null,\n    tel: null,\n    userRole: null,\n    useYN: null,\n  }) {},\n  onReset() {},\n};\n</code></pre>\n</li>\n<li>\n<p>component</p>\n<pre><code class=\"language-jsx\">function SearchPanel({ isSearching, onChange, onReset }: SearchPanelProps) {\n  const { handleSubmit, register, reset, resetField } = useForm&lt;{\n    search: string;\n    searchType?: \"email\" | \"ext\" | \"mobile\" | \"name\" | \"tel\";\n    useYN: string;\n    userRole: string;\n  }&gt;();\n\n<p>  const { data: userRoles } = useUserRoles({ publicYN: \"Y\" });</p><p>  const handleFormSubmit = handleSubmit(<br>    ({ search, searchType, userRole, useYN }) =&gt; {<br>      let email = null;<br>      let ext = null;<br>      let mobile = null;<br>      let name = null;<br>      let tel = null;<br>      if (searchType) {<br>        email = searchType === \"email\" ? search : null;<br>        ext = searchType === \"ext\" ? search : null;<br>        mobile = searchType === \"mobile\" ? search : null;<br>        name = searchType === \"name\" ? search : null;<br>        tel = searchType === \"tel\" ? search : null;<br>      } else {<br>        resetField(\"search\");<br>      }<br>      onChange({<br>        email: email ?? null,<br>        ext: ext ?? null,<br>        mobile: mobile ?? null,<br>        name: name ?? null,<br>        tel: tel ?? null,<br>        userRole: userRole ? userRole : null,<br>        useYN: useYN ? useYN : null,<br>      });<br>    }<br>  );</p><p>  const handleResetButtonClick = () =&gt; {<br>    reset();<br>    onReset();<br>  };</p><p>  const userRoleOptions = useMemo(<br>    () =&gt;<br>      userRoles?.map((role) =&gt; ({<br>        code: String(role.id),<br>        name: role.name ?? \"\",<br>      })) ?? [],<br>    [userRoles]<br>  );<br>  const searchTypeOption = [<br>    {<br>      code: \"name\",<br>      name: \"이름\",<br>    },<br>    {<br>      code: \"email\",<br>      name: \"이메일\",<br>    },<br>    {<br>      code: \"tel\",<br>      name: \"전화번호\",<br>    },<br>    {<br>      code: \"ext\",<br>      name: \"내선번호\",<br>    },<br>    {<br>      code: \"mobile\",<br>      name: \"휴대폰번호\",<br>    },<br>  ];</p></code><p><code class=\"language-jsx\">  return (<br>    &lt;Flex<br>      as=\"form\"<br>      flexDirection=\"column\"<br>      gap={2}<br>      onSubmit={handleFormSubmit}<br>      width=\"100%\"<br>    &gt;<br>      &lt;Box<br>        borderBottomColor=\"black\"<br>        borderBottomWidth=\"1px\"<br>        borderTopColor=\"black\"<br>        borderTopWidth=\"1px\"<br>        p={3}<br>      &gt;<br>        &lt;FormControl&gt;<br>          &lt;FormLabel fontSize=\"xs\" fontWeight=\"bold\" htmlFor=\"userRole\"&gt;<br>            검색조건<br>          &lt;/FormLabel&gt;<br>          &lt;Flex flexWrap=\"wrap\" gap={2}&gt;<br>            &lt;CodeSelect<br>              codes={userRoleOptions}<br>              flex={{ md: 1 }}<br>              id=\"userRole\"<br>              minWidth={{ md: \"150px\" }}<br>              maxWidth={{ lg: \"200px\" }}<br>              placeholder=\"권한\"<br>              {...register(\"userRole\")}<br>            /&gt;<br>            &lt;CodeSelect<br>              codes={[<br>                { code: \"Y\", name: \"사용\" },<br>                { code: \"N\", name: \"미사용\" },<br>              ]}<br>              flex={{ sm: 1 }}<br>              id=\"useYN\"<br>              maxWidth={{ lg: \"200px\" }}<br>              minWidth={{ md: \"150px\" }}<br>              placeholder=\"사용여부\"<br>              {...register(\"useYN\")}<br>            /&gt;<br>            &lt;CodeSelect<br>              codes={searchTypeOption}<br>              flex={{ sm: 1 }}<br>              id=\"searchType\"<br>              maxWidth={{ lg: \"170px\" }}<br>              minWidth={{ md: \"130px\" }}<br>              placeholder=\"검색조건\"<br>              {...register(\"searchType\")}<br>            /&gt;<br>            &lt;Input<br>              flex={{ md: 2 }}<br>              id=\"search\"<br>              maxWidth={{ lg: \"300px\" }}<br>              minWidth={{ md: \"200px\" }}<br>              placeholder=\"검색어\"<br>              {...register(\"search\")}<br>            /&gt;<br>            &lt;Input<br>              disabled={isSearching}<br>              hidden<br>              id=\"searchButton\"<br>              type=\"submit\"<br>            /&gt;<br>            &lt;Input<br>              hidden<br>              id=\"resetButton\"<br>              type=\"button\"<br>              onClick={handleResetButtonClick}<br>            /&gt;<br>          &lt;/Flex&gt;<br>        &lt;/FormControl&gt;<br>      &lt;/Box&gt;<br>    &lt;/Flex&gt;<br>  );<br>}<br></code></p></pre><p></p><ol>\n<li>리액트 훅: 선언 명을 기준, 알파벳 순으로 정렬합니다.</li>\n<li>커스텀 훅: 선언 명을 기준, 알파벳 순으로 정렬합니다.</li>\n<li>useState: 첫 번째 상태변수를 기준, 알파벳 순으로 정렬합니다.</li>\n<li>function: 선언 명을 기준, 알파벳 순으로 정렬합니다.</li>\n<li>useEffect</li>\n<li>watch 함수</li>\n</ol>\n</li>\n<li>\n<p>defaultProps</p>\n<pre><code class=\"language-jsx\">SearchPanel.defaultProps = defaultProps;\n</code></pre>\n</li>\n<li>\n<p>export default</p>\n<pre><code class=\"language-jsx\">export default SearchPanel;\n</code></pre>\n</li>\n</ol>\n</li>\n</ul>\n<h3 id=\"heading-9\">2.8. 에러 처리</h3>\n<p>애플리케이션에서 발생하는 에러를 적절히 처리하는 것은 안정성과 예외 상황에 대한 대응력을 향상시킵니다. 아래는 에러 처리에 대한 가이드라인입니다.</p>\n<ol>\n<li>예외 처리: 예외 상황이 발생할 수 있는 코드 블록에는 적절한 예외 처리를 구현합니다. 이는 try-catch 문을 사용하여 예외를 캐치하고, 적절한 로그 메시지를 출력하거나 사용자에게 에러 메시지를 표시하는 등의 처리를 수행합니다.</li>\n<li>에러 핸들링: 애플리케이션의 최상위 수준에서 에러 핸들링을 구현합니다. 이는 예상치 못한 예외 상황이 발생했을 때 알림을 표시하고, 사용자에게 적절한 안내를 제공하는 등의 처리를 수행합니다.</li>\n<li>로깅: 에러 발생 시 로그를 기록하고 추적 가능한 정보를 포함시킵니다. 이는 디버깅과 문제 해결에 도움을 줄 수 있습니다.</li>\n<li>사용자 피드백: 에러 발생 시 사용자에게 적절한 피드백을 제공합니다. 이는 사용자가 문제 상황을 이해하고 대처할 수 있도록 도움을 줄 수 있습니다.</li>\n<li>예외 처리 모듈: 애플리케이션에서 공통적으로 발생하는 예외 상황에 대한 처리를 모듈화하여 재사용성을 높일 수 있습니다.</li>\n</ol>\n<p>애플리케이션에서 발생할 수 있는 예외 상황을 사전에 고려하고, 적절한 에러 처리를 구현하여 안정성과 사용자 경험을 개선하는 것이 좋습니다.</p>\n<h2 id=\"heading-10\">3. 프로젝트 구조</h2>\n<h3 id=\"heading-11\">3.1. 파일 및 폴더 구조</h3>\n<pre><code class=\"language-jsx\">- `package`: 프로젝트의 루트 디렉토리\n    - `app`: 애플리케이션의 소스 코드와 관련된 디렉토리\n        - `node_modules`: 프로젝트의 의존성 패키지들이 설치되는 디렉토리\n        - `public`: 정적 파일이 위치하는 디렉토리\n        - `src`: 소스 코드가 위치하는 디렉토리입니다.\n            - `api`: 서버 API와 통신하는 코드가 위치하는 디렉토리입니다.\n            - `assets`: 애플리케이션에서 사용되는 정적 리소스(이미지, 아이콘 등)가 위치\n            - `components`: 재사용 가능한 React 컴포넌트들이 위치하는 디렉토리\n            - `features`: 애플리케이션의 기능별로 구성된 모듈이 위치하는 디렉토리\n            - `libs`: 애플리케이션에서 사용되는 유틸리티 함수, 헬퍼 클래스 등이 위치\n            - `redux`: 리덕스의 리듀서, 액션, 미들웨어 등이 포함됩니다.\n            - `routes`: 라우팅과 관련된 코드가 위치하는 디렉토리입니다.\n            - `type`: 타입 정의 파일이 위치하는 디렉토리입니다.\n            - `App.css`: 애플리케이션 전체에 적용되는 CSS 스타일을 정의\n            - `App.test.tsx`: 애플리케이션의 테스트 코드가 위치하는 파일\n            - `index.css`: index.html 파일에서 사용되는 전역 CSS 스타일을 정의하는 파일\n            - `index.tsx`: React DOM 렌더링을 수행하는 코드가 이 파일에 포함됩니다.\n            - `react-app-env.d.ts`: Create React App에 의해 자동 생성되는 TypeScript 환경 설정 파일\n            - `reportWebVitals.ts`: 웹 애플리케이션의 성능 측정을 위한 코드가 위치하는 파일\n            - `setupProxy.js`: 개발 환경에서 프록시 설정을 위한 파일, 개발 서버와 API 서버 간의 통신을 프록시하는데 사용됩니다.\n            - `setupTest.ts`: 테스트 환경 설정을 위한 파일\n            - `theme.ts`: 애플리케이션의 테마 설정을 관리하는 파일\n    - `common`: 재사용되는 코드나 모듈들을 관리하는 디렉토리\n        - `dist`: 재사용되는 코드의 빌드 결과물이 위치하는 디렉토리\n        - `src`: 재사용되는 코드의 소스 파일들이 위치하는 디렉토리\n        - `package.json`: 재사용되는 코드의 의존성 패키지들을 관리하는 파일\n        - `tsconfig.json`: 재사용되는 코드의 TypeScript 환경 설정 파일\n</code></pre>\n<h3 id=\"heading-12\">3.2. 모듈화와 컴포넌트 구성</h3>\n<p>모듈화와 컴포넌트 구성은 코드의 재사용성과 유지보수성을 높이는 중요한 요소입니다. 아래는 모듈화와 컴포넌트 구성에 대한 가이드라인입니다.</p>\n<ol>\n<li>모듈화:\n<ul>\n<li>기능 단위로 모듈을 분리하여 개발합니다. 각 모듈은 특정 기능을 수행하도록 설계되며, 관련된 코드와 리소스를 포함해야 합니다.</li>\n<li>모듈 간의 의존성을 최소화하고, 각 모듈이 독립적으로 작동할 수 있도록 설계합니다. 이는 모듈 간의 결합도를 낮추고 유연성을 높일 수 있습니다.</li>\n<li>모듈의 인터페이스를 명확하게 정의하고, 다른 모듈에서 재사용할 수 있는 API를 제공합니다.</li>\n<li>모듈의 구현을 추상화하고, 내부 구현의 변경에 유연하게 대처할 수 있도록 설계합니다.</li>\n</ul>\n</li>\n<li>컴포넌트 구성:\n<ul>\n<li>컴포넌트는 UI 요소의 재사용 가능한 조합입니다. 비슷한 동작을 하는 UI 요소들을 하나의 컴포넌트로 추상화하고, 필요에 따라 다양한 속성을 통해 재사용할 수 있도록 설계합니다.</li>\n<li>컴포넌트는 단일 책임 원칙을 준수하고, 가능한 한 작고 재사용 가능한 형태로 구성합니다. 이는 컴포넌트의 이해와 유지보수를 용이하게 합니다.</li>\n<li>컴포넌트 간의 계층 구조를 구성하여, 복잡한 UI를 단순화하고 관리 가능한 단위로 분할합니다. 이는 코드의 가독성과 유지보수성을 향상시킵니다.</li>\n<li>컴포넌트의 인터페이스를 명확하게 정의하고, 다른 컴포넌트와의 상호작용을 규정합니다.</li>\n<li>컴포넌트 간의 상태 공유를 최소화하고, 필요한 데이터는 프로퍼티로 전달하여 컴포넌트 간의 독립성을 유지합니다.</li>\n</ul>\n</li>\n</ol>\n<p>모듈화와 컴포넌트 구성은 코드의 구조를 개선하고, 재사용 가능한 코드의 양을 늘리는데 중요한 역할을 합니다. 적절한 모듈화와 컴포넌트 구성을 통해 개발 생산성과 코드 품질을 향상시킬 수 있습니다.</p>\n<h3 id=\"heading-13\">3.3. 상태 관리</h3>\n<p>상태 관리는 애플리케이션에서 데이터의 상태를 효과적으로 관리하는 것을 의미합니다. 아래는 상태 관리에 대한 가이드라인입니다.</p>\n<ol>\n<li>단일 소스로 상태 관리하기:\n<ul>\n<li>애플리케이션의 모든 상태를 단일한 곳에서 관리하는 것이 중요합니다. 이를 통해 상태의 일관성을 유지하고, 데이터의 중복을 피할 수 있습니다.</li>\n<li>상태 관리 라이브러리인 Redux 사용하여 상태를 중앙 집중화합니다.</li>\n</ul>\n</li>\n<li>상태의 불변성 유지:\n<ul>\n<li>상태는 불변성을 유지해야 합니다. 이는 상태를 직접 수정하지 않고 새로운 상태를 생성하여 업데이트하는 방식으로 작업해야 함을 의미합니다.</li>\n</ul>\n</li>\n<li>컴포넌트와 상태의 연결:\n<ul>\n<li>상태 관리 라이브러리를 활용하면 컴포넌트와 상태를 쉽게 연결할 수 있습니다. 이를 통해 상태의 변경을 자동으로 감지하고 컴포넌트를 업데이트할 수 있습니다.</li>\n<li>React의 Context API, ReactQuery 등을 활용하여 컴포넌트와 상태를 연결하고 패칭합니다.</li>\n</ul>\n</li>\n<li>비동기 상태 관리:\n<ul>\n<li>비동기 작업과 관련된 상태를 효과적으로 관리해야 합니다. API 호출, 비동기 데이터 로딩 등의 작업을 처리하는데 있어서 상태 관리 라이브러리의 비동기 처리 기능을 활용할 수 있습니다.</li>\n<li>Redux-Thunk를 사용하여 비동기 작업을 처리합니다.</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-14\">3.4. 라우팅</h3>\n<p>라우팅은 사용자가 애플리케이션 내에서 다른 페이지 또는 뷰로 이동할 수 있는 기능을 제공하는 것입니다. 아래는 라우팅에 대한 가이드라인입니다.</p>\n<ol>\n<li>라우팅 라이브러리 선택:\n<ul>\n<li>React 애플리케이션에서 라우팅을 구현하기 위해 React Router 라우팅 라이브러리를 사용합니다.</li>\n</ul>\n</li>\n<li>라우팅 구성:\n<ul>\n<li>라우팅은 URL 경로와 해당 경로에 연결된 컴포넌트를 매핑하는 방식으로 구성됩니다.</li>\n<li>라우터 컴포넌트를 사용하여 URL 경로와 컴포넌트를 매핑하고, 필요에 따라 중첩된 라우트와 파라미터를 처리할 수 있습니다.</li>\n</ul>\n</li>\n<li>네비게이션:\n<ul>\n<li>사용자가 다른 페이지로 이동할 수 있도록 네비게이션 기능을 구현합니다.</li>\n<li>useNavigate와 react-router-dom의 Navigate를 사용하여 라우터를 조작하여 네비게이션을 처리합니다.</li>\n</ul>\n</li>\n<li>보안과 권한 관리:\n<ul>\n<li>라우팅 시 보안 및 권한 관리가 필요한 경우, 인증 여부를 확인하고 접근 권한을 제어합니다.\n<ul>\n<li>AppLayout: 토큰인증이 요구되는 접근 영역</li>\n<li>NonAuthenticationLayout: 비인증 상태 접근 영역</li>\n</ul>\n</li>\n<li>보호된 라우트, 권한 검사 및 리다이렉션과 같은 기능을 구현하여 보안과 권한 관리를 처리할 수 있습니다.</li>\n</ul>\n</li>\n</ol>\n<p>라우팅은 사용자 경험을 향상시키고, 애플리케이션 내의 다양한 기능과 페이지 간의 이동을 가능하게 합니다. 적절한 라우팅 구현은 사용자의 효율성과 편의성을 높이는 데 중요한 역할을 합니다.</p>\n<h2 id=\"heading-15\">4. 리소스 관리</h2>\n<h3 id=\"heading-16\">4.1. 이미지 및 아이콘</h3>\n<p>이미지 및 아이콘은 애플리케이션에서 시각적인 요소를 추가하고 사용자 경험을 향상시키는 데 중요한 역할을 합니다. 아래는 이미지 및 아이콘 사용에 대한 가이드라인입니다.</p>\n<ol>\n<li>이미지 사용:\n<ul>\n<li>애플리케이션에서 이미지를 사용하여 콘텐츠를 시각적으로 표현할 수 있습니다.</li>\n<li>이미지를 삽입할 때는 최적화된 이미지를 사용하여 로딩 속도를 개선하고, 반응형 디자인에 맞게 이미지 크기를 조정해야 합니다.</li>\n<li>이미지에 대체 텍스트를 제공하여 시각 장애인이나 이미지 로딩에 실패한 경우에도 콘텐츠를 이해할 수 있도록 해야 합니다.</li>\n</ul>\n</li>\n<li>아이콘 사용:\n<ul>\n<li>아이콘은 작고 간결한 그래픽 요소로서 애플리케이션에서 기능이나 상태를 시각적으로 나타내는 데 유용합니다.</li>\n<li>아이콘 라이브러리로 Font Awesome를 사용합니다.</li>\n<li>아이콘은 의미를 명확하게 전달해야 하므로, 사용 시 해당 아이콘의 의미와 사용 범위를 이해하고 적절하게 활용해야 합니다.</li>\n</ul>\n</li>\n<li>이미지 및 아이콘 관리:\n<ul>\n<li>이미지 및 아이콘은 프로젝트의 assets 디렉토리에서 관리됩니다.</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-17\">4.2. 스타일시트.</h3>\n<p>스타일시트는 애플리케이션의 외관과 레이아웃을 결정하는 중요한 요소입니다. Chakra UI와 같은 스타일시트 라이브러리를 사용하면 일관된 디자인 시스템을 구축하고 UI 개발을 효율적으로 진행할 수 있습니다. 아래는 Chakra UI를 사용한 스타일시트 작성에 대한 가이드라인입니다.</p>\n<ol>\n<li>Chakra UI:\n<ul>\n<li>프로젝트에 Chakra UI가 설치되어있습니다.</li>\n<li>ChakraProvider는 애플리케이션의 최상위에 Chakra UI가 적용되어 있습니다.</li>\n</ul>\n</li>\n<li>컴포넌트 스타일링:\n<ul>\n<li>Chakra UI는 다양한 사전 정의된 컴포넌트와 스타일 프로퍼티를 제공합니다. 이를 활용하여 컴포넌트를 스타일링할 수 있습니다.</li>\n<li>스타일 프로퍼티를 사용하여 컴포넌트의 스타일을 변경하거나 커스터마이징할 수 있습니다.</li>\n<li>Chakra UI의 ThemeProvider를 사용하여 테마 설정을 관리하고 커스텀 테마를 적용할 수 있습니다.</li>\n</ul>\n</li>\n<li>반응형 디자인:\n<ul>\n<li>Chakra UI는 반응형 디자인을 지원하여 다양한 장치와 화면 크기에 대응할 수 있습니다.</li>\n<li>\"@chakra-ui/media-query\" 모듈을 사용하여 미디어 쿼리를 활용할 수 있습니다. 이를 활용하여 특정 화면 크기에 대한 스타일 조정합니다.</li>\n</ul>\n</li>\n<li>커스텀 컴포넌트:\n<ul>\n<li>필요에 따라 Chakra UI의 컴포넌트를 확장하여 커스텀 컴포넌트를 생성합니다.</li>\n<li>커스텀 컴포넌트를 생성하여 재사용성과 코드 유지 보수성을 향상킵니다.</li>\n</ul>\n</li>\n</ol>\n<p>Chakra UI를 사용하여 스타일시트를 작성하면 일관된 디자인 시스템을 구축하고 개발 생산성을 높일 수 있습니다. 적절하게 활용하여 사용자 인터페이스를 구성하고 디자인 요소를 일관되게 관리해야 합니다.</p>\n<h3 id=\"heading-18\">4.3. 외부 라이브러리와 의존성 관리</h3>\n<p>모던한 프론트엔드 애플리케이션 개발에는 종종 외부 라이브러리와 의존성이 필요합니다. 이러한 라이브러리와 의존성을 효율적으로 관리하고 활용하는 것이 중요합니다. 아래는 몇 가지 널리 사용되는 라이브러리와 의존성에 대한 간단한 소개입니다:</p>\n<ol>\n<li>emotion:\n<ul>\n<li>emotion은 CSS-in-JS 라이브러리로, JavaScript 코드 내에서 CSS 스타일을 작성할 수 있습니다. 컴포넌트 단위로 스타일을 캡슐화하여 유지보수 및 재사용성을 높일 수 있습니다.</li>\n</ul>\n</li>\n<li>reduxjs:\n<ul>\n<li>reduxjs는 상태 관리 라이브러리로, 애플리케이션의 상태를 중앙에서 관리하고 예측 가능한 상태 변화를 제공합니다. redux를 사용하여 복잡한 애플리케이션 상태를 효과적으로 관리할 수 있습니다.</li>\n</ul>\n</li>\n<li>ag-grid-react:\n<ul>\n<li>ag-grid-react는 강력한 그리드 컴포넌트 라이브러리로, 테이블 형태의 데이터를 표시하고 조작할 수 있습니다. 유연한 기능과 다양한 커스터마이징 옵션을 제공하여 데이터 그리드를 구축할 수 있습니다.</li>\n</ul>\n</li>\n<li>axios:\n<ul>\n<li>axios는 HTTP 클라이언트 라이브러리로, 비동기적으로 서버와 데이터 통신을 할 수 있습니다. REST API와의 상호작용이나 데이터 요청 처리에 유용합니다.</li>\n</ul>\n</li>\n<li>date-fns:\n<ul>\n<li>date-fns는 JavaScript 날짜 유틸리티 라이브러리로, 날짜와 시간 관련 작업을 쉽게 처리할 수 있습니다. 날짜 형식 변환, 날짜 계산, 로컬라이징 등 다양한 기능을 제공합니다.</li>\n</ul>\n</li>\n<li>framer-motion:\n<ul>\n<li>framer-motion은 React용 모션 및 애니메이션 라이브러리로, 화면 전환 및 요소 애니메이션을 부드럽게 구현할 수 있습니다. 유연한 애니메이션 효과와 상호작용을 제공합니다.</li>\n</ul>\n</li>\n<li>lodash:\n<ul>\n<li>lodash는 JavaScript 유틸리티 라이브러리로, 다양한 유용한 함수들을 제공합니다. 배열, 객체, 함수 등을 다루는 다양한 작업에 활용할 수 있습니다.</li>\n</ul>\n</li>\n<li>quill:\n<ul>\n<li>quill은 리치 텍스트 에디터 라이브러리로, 사용자가 서식 있는 텍스트를 작성하고 편집할 수 있는 기능을 제공합니다. 이미지, 표, 링크 등을 삽입할 수 있는 다양한 기능을 제공합니다.</li>\n</ul>\n</li>\n<li>react-datepicker:\n<ul>\n<li>react-datepicker는 React용 날짜 선택 컴포넌트 라이브러리로, 사용자가 날짜를 선택하고 입력할 수 있는 기능을 제공합니다. 다양한 날짜 형식과 옵션을 설정할 수 있습니다.</li>\n</ul>\n</li>\n<li>web-vitals:\n<ul>\n<li>web-vitals는 웹 애플리케이션의 성능 지표를 측정하는 라이브러리로, 사용자 경험을 평가하고 개선하는 데 도움을 줍니다. 측정된 지표를 통해 성능 최적화에 대한 통찰력을 얻을 수 있습니다.</li>\n</ul>\n</li>\n<li>xlsx:\n<ul>\n<li>xlsx는 Excel 파일을 다루는 라이브러리로, 데이터를 읽고 쓰는 기능을 제공합니다. Excel 파일 형식을 다루는 다양한 작업을 수행할 수 있습니다.</li>\n</ul>\n</li>\n<li>monaco-editor:\n<ul>\n<li>monaco-editor는 웹 기반의 텍스트 편집기 라이브러리로, 문법 강조, 자동 완성, 신택스 검증 등 다양한 기능을 제공합니다. 개발자용 IDE나 코드 에디터에 적용할 수 있습니다.</li>\n</ul>\n</li>\n</ol>\n<p>이러한 외부 라이브러리와 의존성을 적절하게 활용하여 개발 생산성을 향상시키고 애플리케이션에 필요한 기능을 구현할 수 있습니다. 의존성 관리와 버전 업데이트에 주의하여 안정성과 호환성을 유지하는 것이 중요합니다. 6. framer-motion:</p>\n<ul>\n<li>framer-motion은 React용 모션 및 애니메이션 라이브러리로, 화면 전환 및 요소 애니메이션을 부드럽게 구현할 수 있습니다. 유연한 애니메이션 효과와 상호작용을 제공합니다.</li>\n</ul>\n<ol start=\"7\">\n<li>lodash:\n<ul>\n<li>lodash는 JavaScript 유틸리티 라이브러리로, 다양한 유용한 함수들을 제공합니다. 배열, 객체, 함수 등을 다루는 다양한 작업에 활용할 수 있습니다.</li>\n</ul>\n</li>\n<li>quill:\n<ul>\n<li>quill은 리치 텍스트 에디터 라이브러리로, 사용자가 서식 있는 텍스트를 작성하고 편집할 수 있는 기능을 제공합니다. 이미지, 표, 링크 등을 삽입할 수 있는 다양한 기능을 제공합니다.</li>\n</ul>\n</li>\n<li>react-datepicker:\n<ul>\n<li>react-datepicker는 React용 날짜 선택 컴포넌트 라이브러리로, 사용자가 날짜를 선택하고 입력할 수 있는 기능을 제공합니다. 다양한 날짜 형식과 옵션을 설정할 수 있습니다.</li>\n</ul>\n</li>\n<li>web-vitals:\n<ul>\n<li>web-vitals는 웹 애플리케이션의 성능 지표를 측정하는 라이브러리로, 사용자 경험을 평가하고 개선하는 데 도움을 줍니다. 측정된 지표를 통해 성능 최적화에 대한 통찰력을 얻을 수 있습니다.</li>\n</ul>\n</li>\n<li>xlsx:\n<ul>\n<li>xlsx는 Excel 파일을 다루는 라이브러리로, 데이터를 읽고 쓰는 기능을 제공합니다. Excel 파일 형식을 다루는 다양한 작업을 수행할 수 있습니다.</li>\n</ul>\n</li>\n<li>monaco-editor:\n<ul>\n<li>monaco-editor는 웹 기반의 텍스트 편집기 라이브러리로, 문법 강조, 자동 완성, 신택스 검증 등 다양한 기능을 제공합니다. 개발자용 IDE나 코드 에디터에 적용할 수 있습니다.</li>\n</ul>\n</li>\n</ol>\n<p>이러한 외부 라이브러리와 의존성을 적절하게 활용하여 개발 생산성을 향상시키고 애플리케이션에 필요한 기능을 구현할 수 있습니다. 의존성 관리와 버전 업데이트에 주의하여 안정성과 호환성을 유지하는 것이 중요합니다.</p>\n",
+    "date": "2024-03-20",
+    "category": "frontend",
+    "tags": [
+      "Convention",
+      "Document"
+    ],
+    "description": "개발 규칙",
+    "thumbnail": "/images/convention.png",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "1. 목적",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "2. 코딩 스타일 가이드",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 286
+      },
+      {
+        "id": "heading-2",
+        "text": "2.1. 들여쓰기",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 346
+      },
+      {
+        "id": "heading-3",
+        "text": "2.2. 변수와 상수",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 446
+      },
+      {
+        "id": "heading-4",
+        "text": "2.3. 함수와 메서드",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 730
+      },
+      {
+        "id": "heading-5",
+        "text": "2.4. 컴포넌트",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1038
+      },
+      {
+        "id": "heading-6",
+        "text": "2.5. 주석",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1298
+      },
+      {
+        "id": "heading-7",
+        "text": "2.6. 네이밍 규칙",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1534
+      },
+      {
+        "id": "heading-8",
+        "text": "2.7. 코드 포맷팅",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1818
+      },
+      {
+        "id": "heading-9",
+        "text": "2.8. 에러 처리",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2054
+      },
+      {
+        "id": "heading-10",
+        "text": "3. 프로젝트 구조",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 2377
+      },
+      {
+        "id": "heading-11",
+        "text": "3.1. 파일 및 폴더 구조",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2437
+      },
+      {
+        "id": "heading-12",
+        "text": "3.2. 모듈화와 컴포넌트 구성",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2553
+      },
+      {
+        "id": "heading-13",
+        "text": "3.3. 상태 관리",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2789
+      },
+      {
+        "id": "heading-14",
+        "text": "3.4. 라우팅",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 3017
+      },
+      {
+        "id": "heading-15",
+        "text": "4. 리소스 관리",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 3316
+      },
+      {
+        "id": "heading-16",
+        "text": "4.1. 이미지 및 아이콘",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 3376
+      },
+      {
+        "id": "heading-17",
+        "text": "4.2. 스타일시트.",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 3580
+      },
+      {
+        "id": "heading-18",
+        "text": "4.3. 외부 라이브러리와 의존성 관리",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 3864
+      }
+    ],
+    "totalHeight": 4536
+  },
+  {
+    "id": "cursor_ai",
+    "title": "Cursor AI",
+    "content": "<hr>\n<p>이번에 작성한 글은 Cursor를 빨리 익히기 위해 정보들을 모아봤습니다.</p>\n<p>알아두면 진짜 좋은 기능들도 있으니 한번 공부해보시는걸 추천합니다.</p>\n<hr>\n<h2 id=\"heading-0\"><strong>#1 VSCode 연동</strong></h2>\n<p>Cursor는 VSCode를 포크 떠서 만든 IDE기 떄문에 기존에 VSCode에서 사용하던 확장들을 가져올 수 있습니다.</p>\n<p>Cursor Settings&nbsp;&gt;&nbsp;General&nbsp;&gt;&nbsp;Account</p>\n<p>로 가셔서 설정할 수 있습니다.</p>\n<p><strong>Cursor Settings를 못찾겠다면 Ctrl + Shift + J를 누르셔서 여시면 됩니다.</strong></p>\n<h2 id=\"heading-1\"><strong>#2 주요 커맨드 ( 단축키 )</strong></h2>\n<p>Cursor에서는 아래 3가지 기능을 단축키로 외워두시면 80퍼센트 알게된거라 보시면 됩니다.</p>\n<p><strong>1. Tab</strong></p>\n<p>에디터에서 약 1초간 가만히 있으면 Cursor Copilot++이 AI로&nbsp;<strong>코드를 자동완성</strong>&nbsp;해줍니다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/cdDb18/btsJ4eATVwU/hvckbgbLoex5JEeOo5UKG0/img.png\" alt=\"1\"></p>\n<p>코드 자동 예측해서 완성</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/cRoxgk/btsJ5fTbJeO/s6G0KkwOoU6ZsaJCzPkkn0/img.png\" alt=\"2\"></p>\n<p>다른 줄의 패턴에 따라 자동 완성\n다른 줄의 패턴에 따라 자동 완성</p>\n<p><strong>2. Ctrl + K</strong></p>\n<p>Ctrl + K를 사용하면 AI로&nbsp;<strong>바로바로 코드를 편집</strong>하고 작성할 수 있습니다.</p>\n<p>이걸 쓰는 이유는 특정 범위 또는 줄만 바로 프롬포트로 수정하거나 질문 가능하기때문입니다.</p>\n<p>완전히 새로운 코드를 생성하려면 아무 것도 선택하지 않고 Ctrl K만 입력하면 됩니다.</p>\n<p>@Codebase, @Docs, @Web 등 여러 가지 심볼 설정을 똑같이 사용가능합니다.</p>\n<p>심볼에 관해선 아래 #3 에 설명</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/GTFbL/btsJ3XMKOBh/ZJRPnbzrqi0EbExZGmQjgK/img.png\" alt=\"3\"></p>\n<p>코드에 Ctrl + K를 사용하면 미니 팝업이 뜹니다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/cEzQo2/btsJ6cOZUZc/ORWKTYcniTMSg7xunqKN01/img.png\" alt=\"4\"></p>\n<p>코드를 생성하거나 수정요청할 수 있으며 바뀌는걸 Ctrl + shift + Y로 수락, Ctrl + N로 거부</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/bH7nMH/btsJ6fZfVhl/auMcvlKPV3Zbu0sKPHHk71/img.png\" alt=\"5\"></p>\n<p>미니팝업에 질문을 쓰고 Alt + Enter를 입력하면 바로 해당 코드에 질문 가능합니다</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/HHXcp/btsJ303JNcn/GPk9Jue2AqkAOMbjiUq04k/img.png\" alt=\"6\"></p>\n<p>또한 VSCode 내부 CMD 커맨드 터미널에도 사용 가능합니다</p>\n<p><strong>3. Ctrl + L</strong></p>\n<p>Ctrl + L를 사용하면 에디터 화면 오른쪽에 LLM과&nbsp;<strong>Chat을 할 수 있는 탭</strong>이 열립니다.</p>\n<p>Chat을 통해 현재 열린 코드 파일을 보는 AI와 대화할 수 있습니다.</p>\n<p>채팅에서는 항상 현재 파일과 커서를 볼 수 있으므로 \"지금 코드에 버그가 있나요?\"와 같은 질문을 할 수 있습니다.</p>\n<p>@Codebase, @Docs, @Web 등 여러 가지 심볼 설정을 똑같이 사용가능합니다.</p>\n<p>심볼에 관해선 아래 #3 에 설명</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/cWeTgN/btsJ6V61F8p/QHZY7X7fSTtvreM8Wfp2O0/img.png\" alt=\"7\"></p>\n<p>Ctrl+Shift+L&nbsp;또는&nbsp;\"@\"을&nbsp;사용하여&nbsp;특정&nbsp;코드&nbsp;블록을&nbsp;컨텍스트에&nbsp;추가할&nbsp;수&nbsp;있습니다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/Td96H/btsJ6pggIG3/QEJHTBjc8Vd5N97QhZqOdk/img.png\" alt=\"8\"></p>\n<p>Ctrl+Enter를 눌러 전체 코드베이스와 채팅할 수 있습니다. 스캔에 조금 시간 걸립니다.</p>\n<hr>\n<h2 id=\"heading-2\"><strong>#3 심볼 @</strong></h2>\n<p>Cursor에는 Chat이나 미니 프롬프트에 챗을 사용할 때 심볼로 검색 기능을 바꿀 수 있습니다.</p>\n<p>\"@\" 기호를 입력시 여러 검색 기능을 볼 수 있으며 원하는 검색 방식을 선택할 수 있습니다.</p>\n<p><strong>@Codebase</strong></p>\n<p><img src=\"https://blog.kakaocdn.net/dn/bkYI3Z/btsJ6H2hFeI/MPnqVe6Khe0JnrvTEYutTK/img.png\" alt=\"9\"></p>\n<p>@Codebase 를 입력시 전체 코드베이스를 스캔하여 답변을 합니다.</p>\n<p>프로젝트 전체적으로 훑어보고 싶으시거나 파일 전체를 대상으로 질문하고 싶을 때 사용을 추천합니다.</p>\n<p><strong>@Docs</strong></p>\n<p><img src=\"https://blog.kakaocdn.net/dn/cUcSsm/btsJ6jm0xDQ/GCIQq5JQGnSF3WkHaxCqc0/img.png\" alt=\"10\"></p>\n<p>@Docs 탭</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/sMKQt/btsJ3Y5YZT1/jCKqjgW61O1y5U2tqKDgoK/img.png\" alt=\"11\"></p>\n<p>Docs 탭을 선택 후 뜨는 입력창, 원하시는 문서 링크를 넣으시고 Confirm 눌러주세요</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/kCIHe/btsJ418wVBx/3Jgmyu3bIBLvgBMVZ8O9H1/img.png\" alt=\"12\"></p>\n<p>문서를 제대로 받아온 모습</p>\n<p>@Docs 를 입력시 인기 있는 라이브러리를 참조하거나 @Docs → Add new doc 를 사용하여</p>\n<p>원하시는 문서의 웹사이트 링크를 입력하여 참조가능합니다. 참조한 문서는 계속 사용 가능합니다.</p>\n<p>참조한 문서를 토대로 AI가 답변을 해줍니다.</p>\n<p><strong>@Web</strong></p>\n<p><img src=\"https://blog.kakaocdn.net/dn/FRGN9/btsJ5BIhtqh/2wFJe1MGlngfokGK8R0LA0/img.png\" alt=\"13\"></p>\n<p>@Web 를 입력시 AI가 인터넷에서 최신 정보를 검색하여 요약한 내용을 바탕으로 답변을 해줍니다.</p>\n<p>이렇게 심볼을 상황에 맞게 잘 선택하여 써주시면 됩니다.</p>\n<p>근데 @Web은 써보니까 그냥 제가 검색하는게 나을것 같은 성능이네요.</p>\n<hr>\n<h2 id=\"heading-3\"><strong>#4 AI 모델 추천, 어떤 모델을 써야할까?</strong></h2>\n<p><img src=\"https://blog.kakaocdn.net/dn/dHnTx9/btsJ5B9lOeZ/jWocrv6PoagJEpkKuqLOG1/img.png\" alt=\"14\"></p>\n<p>2024.10.15 날짜 기준으로 Hobby(기본) 요금제를 사용하고 있는 제 화면에는 이렇게 모델들이 있습니다.</p>\n<p>상황에 따라 다른 모델을 쓰는것을 추천합니다.</p>\n<p><strong>일반적인 상황</strong></p>\n<p><strong>claude-3.5-sonnet</strong>이 추론 능력이라던지 일반적인 상황에선 쓰기 가장 좋았습니다.</p>\n<p><strong>복잡한 코드나 에러 분석해야할 때</strong></p>\n<p><strong>o1-mini</strong>가 가장 전문적인 것 같아 쓰기 좋았습니다.</p>\n<p>참고 : 모델 교체할 때는 ctrl + / 키를 누르시면 단축키로 바로 모델 교체 가능합니다.</p>\n<p>모델 교체 메뉴를 바로 여는 단축키는 ctrl + alt + / 키입니다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/yFAmD/btsJ4da1zkb/4Klu0kxgIi5E6KhgyWKVk0/img.png\" alt=\"15\"></p>\n<p>이외에도 따로 쓰고 싶으신 모델은 Cursor Settings 설정에 가셔서 토글하실 수 있고 원하는 모델을 추가할 수 있습니다.</p>\n<hr>\n<h2 id=\"heading-4\"><strong>#5 AI 규칙 설정</strong></h2>\n<p><img src=\"https://blog.kakaocdn.net/dn/dBWkCU/btsJ4fNc1KA/Xm3nE1yAqFcrX09RiauX9k/img.png\" alt=\"16\"></p>\n<p>Cursor Settings -&gt; General -&gt; Rules for AI</p>\n<p>Cursor Settings(Ctrl + Shift + J)를 들어가보시면 AI 규칙을 설정할 수 있습니다.</p>\n<p>그냥 써도 기본으로 최대한 한국어로 답변하라는 규칙이 설정되어있을겁니다.</p>\n<p>이걸 조금 더 가공해서 더 퀄리티 높은 답변을 할 수 있도록하는 규칙을 공유해드리겠습니다.</p>\n<p><strong>닫기</strong></p>\n<p>you&nbsp;are&nbsp;an&nbsp;expert&nbsp;AI&nbsp;programming&nbsp;assistant&nbsp;in&nbsp;VSCode&nbsp;that&nbsp;primarily&nbsp;focuses&nbsp;on&nbsp;producing&nbsp;clear,&nbsp;readable&nbsp;code.</p>\n<p>You&nbsp;are&nbsp;thoughtful,&nbsp;give&nbsp;nuanced&nbsp;answers,&nbsp;and&nbsp;are&nbsp;brilliant&nbsp;at&nbsp;reasoning.</p>\n<p>You&nbsp;carefully&nbsp;provide&nbsp;accurate,&nbsp;factual,&nbsp;and&nbsp;thoughtful&nbsp;answers,&nbsp;and&nbsp;you&nbsp;are&nbsp;a&nbsp;genius&nbsp;at&nbsp;reasoning.</p>\n<p>1.&nbsp;Follow&nbsp;the&nbsp;user's&nbsp;requirements&nbsp;carefully&nbsp;and&nbsp;precisely.</p>\n<p>2.&nbsp;First,&nbsp;think&nbsp;step-by-step&nbsp;–&nbsp;describe&nbsp;your&nbsp;plan&nbsp;for&nbsp;what&nbsp;to&nbsp;build&nbsp;in&nbsp;pseudocode,&nbsp;written&nbsp;out&nbsp;in&nbsp;great&nbsp;detail.</p>\n<p>3.&nbsp;Confirm,&nbsp;then&nbsp;write&nbsp;the&nbsp;code!</p>\n<p>4.&nbsp;Always&nbsp;write&nbsp;correct,&nbsp;up-to-date,&nbsp;bug-free,&nbsp;fully&nbsp;functional&nbsp;and&nbsp;working,&nbsp;secure,&nbsp;performant,&nbsp;and&nbsp;efficient&nbsp;code.</p>\n<p>5.&nbsp;Focus&nbsp;on&nbsp;<strong>readability</strong>&nbsp;over&nbsp;performance.</p>\n<p>6.&nbsp;Fully&nbsp;implement&nbsp;all&nbsp;requested&nbsp;functionality.</p>\n<p>7.&nbsp;Leave&nbsp;<strong>NO</strong>&nbsp;to-dos,&nbsp;placeholders,&nbsp;or&nbsp;missing&nbsp;pieces.</p>\n<p>8.&nbsp;Ensure&nbsp;the&nbsp;code&nbsp;is&nbsp;complete!&nbsp;Thoroughly&nbsp;verify&nbsp;the&nbsp;final&nbsp;version.</p>\n<p>9.&nbsp;Include&nbsp;all&nbsp;required&nbsp;<strong>imports</strong>,&nbsp;and&nbsp;ensure&nbsp;proper&nbsp;naming&nbsp;of&nbsp;key&nbsp;components.</p>\n<p>10.&nbsp;Be&nbsp;concise.&nbsp;Minimize&nbsp;any&nbsp;unnecessary&nbsp;explanations.</p>\n<p>11.&nbsp;If&nbsp;you&nbsp;think&nbsp;there&nbsp;might&nbsp;not&nbsp;be&nbsp;a&nbsp;correct&nbsp;answer,&nbsp;say&nbsp;so.&nbsp;If&nbsp;you&nbsp;do&nbsp;not&nbsp;know&nbsp;the&nbsp;answer,&nbsp;admit&nbsp;it&nbsp;instead&nbsp;of&nbsp;guessing.</p>\n<p>12.&nbsp;Always&nbsp;provide&nbsp;concise&nbsp;answers.</p>\n<p>13.&nbsp;Please&nbsp;answer&nbsp;in&nbsp;Korean</p>\n<p>혹시나 현재 사용하고 계신 언어에 맞게 또는 원하는 플랫폼에 맞는 AI 답변을 원할 경우</p>\n<p>아래 링크에서 다른 규칙도 찾아보시는걸 추천 드립니다.</p>\n<p>https://cursor.directory/</p>\n<p><a href=\"https://cursor.directory/\"><strong>Cursor Directory</strong>\nFind the best cursor rules for your framework and language\ncursor.directory</a></p>\n<hr>\n<h2 id=\"heading-5\"><strong>#6 노트패드 기능 (베타)</strong></h2>\n<p>Cursor에서도 노트패드를 관리할 수 있습니다.</p>\n<p>Ctrl + i 키 또는 맥에선 Cmd + i 키를 누르셔서 Composer 탭을 열어주신 뒤(아마 작을겁니다)</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/bYjCvy/btsJ4KlQRZ4/SBt6wNNBs3KpFbiiO8okqk/img.png\" alt=\"17\"></p>\n<p>오른쪽 상단에 Open Control Panel 버튼을 눌러주시면 노트패드가 열립니다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/cHyWbo/btsJ5ovExHi/hQT95gHW0IwY0hLYH3HKM1/img.png\" alt=\"18\"></p>\n<p>노트패드창에서 왼쪽탭 상단에 더하기 버튼이 있을텐데 이 버튼을 눌러서 노트 하나 생성합시다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/QC5AR/btsJ3Z3P8F5/rTCtSsUwyDVa5aSqluyxsk/img.png\" alt=\"19\"></p>\n<p>노트 내용에 아무거나 쓰신 뒤 Ctrl + L 키를 눌러 프롬프트에 들고 갑시다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/bKlwOE/btsJ4YYtlhY/uHMukld8JLY9qIvuBqQlKK/img.png\" alt=\"20\"></p>\n<p>이런식으로 방금 만든 노트패드가 @로 추적이 가능합니다.</p>\n<p><img src=\"https://blog.kakaocdn.net/dn/c6cglp/btsJ5CNZZlJ/8k4TMMZSMR25xODbkCT1K0/img.png\" alt=\"21\"></p>\n<p>노트패드를 프롬프트에 포함시켜 이런식으로 결과물을 받아올 수도 있긴하지만</p>\n<p>노트패드 작성시에 AI 기능이 있었다면 더 좋지 않을까 싶네요 아직 베타니까 기다려봅시다.</p>\n<hr>\n<h2 id=\"heading-6\"><strong>#7 프로젝트 5분만에 분석하는 법</strong></h2>\n<p>Cursor를 이용해 5분 만에 프로젝트 구조를 파악하는 방법을 알려드리겠습니다.</p>\n<blockquote>\n<ol>\n<li>Ctrl + L 을 눌러 Cursor 채팅 패널을 엽니다.</li>\n</ol>\n<p><a href=\"http://www.mermaidchart.com/\">http://www.mermaidchart.com</a></p>\n</blockquote>\n<p>https://kimyir.tistory.com/97</p>\n<p><a href=\"https://kimyir.tistory.com/97\"><strong>Cursor로 5분만에 프로젝트 분석하기</strong>\n프로젝트 5분만에 분석하는 법&nbsp;Cursor를&nbsp;이용해&nbsp;5분&nbsp;만에&nbsp;프로젝트&nbsp;구조를&nbsp;파악하는&nbsp;방법을&nbsp;알려드리겠습니다. 1.&nbsp;Ctrl&nbsp;+&nbsp;L&nbsp;을&nbsp;눌러&nbsp;Cursor&nbsp;채팅&nbsp;패널을&nbsp;엽니다. 2.&nbsp;\"Normal&nbsp;chat\"에서&nbsp;\"Long&nbsp;Co\nkimyir.tistory.com</a></p>\n<hr>\n<p>이상 Cursor의 기본 사용 방법과 꿀팁을 정리해보았습니다.</p>\n<p>VSCode를 바탕으로 만들어서 그런지 접근하기 쉬웠고 쓰기도 편한 것 같습니다.</p>\n<p>물론 기능이 많은 만큼 IDE 속도가 느려진 것 같지만 능률을 위해서라면 그래도 쓸 것 같네요.</p>\n<p>내 코드가 혹시나 AI가 학습하지 않을까 걱정되신다면</p>\n<p>Cursor Settings -&gt; General -&gt; Privacy mode 탭에 가셔서 enabled로 설정해주시면 됩니다.</p>\n<p>코드가 외부에 유출안되지만 AI 답변 품질이 떨어질 순 있습니다.</p>\n<p><strong>번외) 다른 유용한 AI 추천</strong></p>\n<p>터미널 AI 도우미</p>\n<p>https://github.com/Aider-AI/aider</p>\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "Cursor",
+      "AI",
+      "VSCode"
+    ],
+    "description": "Cursor AI 사용법",
+    "thumbnail": "/images/cursor.png",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "#1 VSCode 연동",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "#2 주요 커맨드 ( 단축키 )",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 374
+      },
+      {
+        "id": "heading-2",
+        "text": "#3 심볼 @",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 2185
+      },
+      {
+        "id": "heading-3",
+        "text": "#4 AI 모델 추천, 어떤 모델을 써야할까?",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 3436
+      },
+      {
+        "id": "heading-4",
+        "text": "#5 AI 규칙 설정",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 4127
+      },
+      {
+        "id": "heading-5",
+        "text": "#6 노트패드 기능 (베타)",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 5658
+      },
+      {
+        "id": "heading-6",
+        "text": "#7 프로젝트 5분만에 분석하는 법",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 6461
+      }
+    ],
+    "totalHeight": 7133
+  },
+  {
+    "id": "entasis",
+    "title": "Entasis",
+    "content": "<h2 id=\"heading-0\">1.소개</h2>\n<ul>\n<li>프로젝트 명 : ENTASIS]</li>\n<li>Github 링크 : <a href=\"https://github.com/codestates-beb/BEB-07-final-entasis\">GitHub - codestates-beb/BEB-07-final-entasis</a></li>\n<li>블록체인 네트워크 주소 : <a href=\"http://18.183.252.200:8545/\">http://18.183.252.200:8545</a> 체인ID : 1337</li>\n</ul>\n<h3 id=\"heading-1\">윤수빈</h3>\n<ul>\n<li>포지션 : PM / Full Stack / Design</li>\n<li>개인 깃허브 : https://github.com/Russ481-k</li>\n<li>활용 스택 : Figma / Javascript / React/ HTML / CSS / MySQL / Sequelize / Node.js / Scale-Liner / Axios</li>\n<li>구현 기능 :\n<ul>\n<li>프로젝트 기획&amp;관리</li>\n<li>디자인 구상 및 구현</li>\n<li>프론트엔드 UI, UX 구현</li>\n<li>차트 구현</li>\n<li>서버 제공 API를 통한 데이터 요청</li>\n<li>서버 실시간 데이터 생성 기능 구현</li>\n</ul>\n</li>\n</ul>\n<h2 id=\"heading-2\">2. 프로젝트 소개</h2>\n<p>[ STO 거래소 “ENTASIS” ]\n<img src=\"/images/entasis/entasis_trade.gif\" alt=\"거래\"></p>\n<p>투자자의 입장에서 STO가 무엇이고, 어떤 기능이 있으며, 어떻게 투자할 수 있는지를\n이 프로젝트를 통해 이해하도록 도움으로써 증권형 토큰에 대한 투자를 확대시키는 것이\n이 프로젝트의 목표다.</p>\n<p><a href=\"https://www.youtube.com/watch?v=0fmODCTVs0g\">래리핑크 인터뷰</a></p>\n<p>글로벌 자산운용사 블랙록의 대표 래리핑크는 2022. 12. 1. 인터뷰에서\nSTO를 통해 현재 증권 거래 비용에 포함된 브로커들의 수수료를 매매 당사자들에게 나누어주며\n수수료가 낮아질 것이고 투표 또한 ST 소유자들이 할 수 있게 될 것이라고 말했다.</p>\n<p>래리핑크의 STO에 대한 인식은 프로젝트 주제 선정에 결정에 도움을 주었다.</p>\n<p><a href=\"https://www.youtube.com/watch?v=PSVpth7uqb4&amp;t=650s\">STO 설명 영상</a></p>\n<p>우리가 흔히 알고 있는 토큰은 ICO를 기반한 '유틸리티 토큰' 이다.</p>\n<p>그렇다면 STO란 무엇일까?</p>\n<p><img src=\"/images/entasis/entasis_sto.png\" alt=\"STO 설명\"></p>\n<p>우선 STO의 기반이 되는 “증권형 토큰(Secturity Token)”이 무엇인지에 대해 이해할 필요가 있다.</p>\n<p>증권형 토큰(일명 ST)은 기업이 주식, 채권 대신 암호화폐 형태로 발행하는 유가 증권이다.\n이 증권형 토큰은 블록체인 플랫폼이 제공하는 서비스를 활용할 권리 대신 주식과 마찬가지로\n기업의 법적 소유권을 가졌음을 의미한다.</p>\n<p>때문에 증권형 토큰을 보유하고 있으면 기업 또는 기업의 블록체인 플랫폼이 낸 수익이나\n자산의 일부를 배당받을 수 있다.</p>\n<p>증권형 토큰은 그 용도가 주식, 채권 등 유가증권과 동일하기 때문에 법과 정책의 개입과 규제를 받아야만 한다.\n상법에 정해진 절차에 따라 주식을 발행하듯 관련 법에 따라 증권형 토큰을 발행해야 한다는 것이다.</p>\n<p>이 증권형 토큰을 IPO와 같이 상장하여 거래가 이루어지도록 하는 것이 STO 라고 할 수 있다.</p>\n<p><img src=\"/images/entasis/entasis_sto2.png\" alt=\"STO 설명 2\"></p>\n<p>[ About Service ]\nEntasis는 실제 STO 거래소의 기능을 일부 축소하여 상대적으로 기업보다 STO에 대해 접근을 어려워 할 개인 투자자들에게 실제 ST에 투자를 해봄으로써 증권형 토큰에 대해서 더 쉽게 이해하고 접근할 수 있도록 도와주는 “STO 거래소 튜토리얼” 이다.</p>\n<h2 id=\"heading-3\">3.기본 환경 조성</h2>\n<h3 id=\"heading-4\">토큰 가격 형성 및 변동성</h3>\n<p>실제 거래소에서 Market Maker &amp; Market Taker 와 토큰 매매를 통해 가격이 형성이 되지만,\n이 프로젝트를 진행하는데 있어서 튜토리얼이라는 점과 대규모의 트래픽이 기대되지 않는다는 점으로 인해\n실제 거래소에서 가격 형성이 되는 방식으로 구현하는 것은 제한된다고 판단하였다.</p>\n<p>그에 따라 난수를 통해 가격을 형성하고 주기적으로 가격이 변동할 수 있도록 구현하였다.\n단기 변동성과 중장기 변동성, 기업의 당기순이익 발표의 값이 난수로 설정되어 각각 3 개의 ST시장을 형성했다.\n또한 당기순이익에 배당률을 적용하여 기업의 이익을 지분에 따라 배당한다.\n토큰 소유자는 지분율에 따라 투표를 할 수 있다.</p>\n<h3 id=\"heading-5\">블록체인</h3>\n<p>이더리움 : EC2 인스턴스에서 백그라운드로 가나슈 네트워크를 실행시켰으며, 트러플을 이용하여 컨트랙트를 배포하였다.\n근본적으로 토큰 거래 기능을 위해 ERC20을 사용하였으며, 증권형 토큰의 기능 일부를 추가하기 위해 ERC1400의 운영자 및 제어자 변수와 거래제한 함수를 발췌하였다.\n투자자 입장에서 다양한 토큰에 대해서 분석하고 거래를 할 필요가 있다고 판단하여 3개의 기업으로 다양화하여 3개의 컨트랙트를 배포하였으며, 토큰 거래가 이루어질 때마다 해당 토큰 보유자 배열에 저장하여 배당금을 분배할 때 토큰 보유 여부를 확인할 수 있도록 하였다.\n스테이킹시 토큰 매매 제한을 강제하기 위해서 스테이킹의 모든 기능은 컨트랙트 내에서 구현하였으며, 만료일을 계산하는 데에는 block.timestamp 를 이용하여 만료 여부를 확인할 수 있도록 하였다.</p>\n<h2 id=\"heading-6\">4.프로젝트 기록</h2>\n<p>Project Entasis를 4F 방식으로 기록하고자 한다.</p>\n<ul>\n<li>사실(Fact) : 프로젝트를 통해 어떤 내용을 고민했고 어떤 방법으로 개념을 이해하고 문제를 해결했는지 작성</li>\n<li>감정(Feeling) : 프로젝트를 진행하면서 느꼈던 감정을 솔직하게 기록발견</li>\n<li>(Finding) : 문제를 해결하면서 무엇을 깨달았고, 시도해본 해결 방법에 대해서 개선이 필요한 부분을 발견했다면 발견 항목에 기록다음주를 위한 행동</li>\n<li>(Future Action) : 위의 회고를 통해서 당장 다음 프로젝트에 적용해 볼 학습 방법이나 조금 더 고민이 필요한 내용, 커뮤니케이션 방식 등을 기록</li>\n</ul>\n<h3 id=\"heading-7\">Fact</h3>\n<p>주요 기능</p>\n<ul>\n<li><strong>1초마다 실시간으로 가격 변동이 일어나는 차트 중심의 한 메인 페이지</strong>\n<ul>\n<li>차트는 1분 15분 1시간 4시간 1일 1주 단위로 캔들 단위를 조정하여 볼 수 있도록 한다.</li>\n<li>차트에 포커스 된 경우, 스크롤 값은 캔들의 넓이에 값을 주어 페이지 높이가 아닌 차트 범위를 조정할 수 있도록 한다.</li>\n<li>차트에 포커스 된 경우, 십자 좌표를 표시하며, 시세와 거래량 각각의 영역에 포인트 값에 따라 우측에 해당 높이에 대한 값을 출력한다.</li>\n<li></li>\n</ul>\n</li>\n<li><strong>메타 마스크를 통한 지갑 등록</strong></li>\n</ul>\n<p><img src=\"/images/entasis/entasis_metamask.png\" alt=\"메타마스크 연동\"></p>\n<ul>\n<li>\n<p>WEB3.0을 지향하여 지갑을 위주로 유저의 상태를 관리한다.</p>\n</li>\n<li>\n<p>회원가입을 따로 진행할 필요가 없으며, 메타마스크로 지갑등록을 하면 자동으로 로그인한다.</p>\n</li>\n<li>\n<p>메타마스크가 설치되어있지 않은 경우 메타마스크 설치 링크로 유도한다.</p>\n</li>\n<li>\n<p>처음 로그인을 하는 메타마스크 지갑인 경우 DB에 등록한다.</p>\n</li>\n<li>\n<p><strong>튜토리얼 및 이용법 설명</strong>\n<img src=\"/images/entasis/entasis_tutorial.gif\" alt=\"튜토리얼\"></p>\n<ul>\n<li>CSS의 transition을 활용하여 모달을 이동하며 서비스의 전체적인 이용방법을 사용자에게 전달한다.</li>\n<li>실제 매매를 일으키며 유저에게 거래 경험을 제공하려 하였으나 손익에 대한 경험을 강제적으로 실행하는 것이 바람직하지 않다고 여겨 모달 프로세스 형태로 튜토리얼을 구현한다.</li>\n</ul>\n</li>\n<li>\n<p><strong>FAUCET : 초기 자본금 50ETH 부여</strong></p>\n</li>\n</ul>\n<p><img src=\"/images/entasis/entasis_tutorial.gif\" alt=\"튜토리얼 과정\"></p>\n<p><img src=\"/images/entasis/entasis_faucet.png\" alt=\"파우셋\"></p>\n<ul>\n<li>\n<p>튜토리얼을 완료하면 자동으로 faucet 기능을 통해 50ETH가 부여한다.</p>\n</li>\n<li>\n<p>faucet은 1회로 제한한다.</p>\n</li>\n<li>\n<p><strong>ETH를 통한 증권형 토큰 구매 및 판매</strong></p>\n</li>\n</ul>\n<p><img src=\"/images/entasis/entasis_sign.png\" alt=\"거래 수수료\"></p>\n<ul>\n<li>실시간으로 변하는 가격을 보고 토큰을 구매 및 판매할 수 있다.</li>\n<li>투자자가 토큰 거래를 할 경우 메타마스크를 통해 서명한다.</li>\n</ul>\n<p><img src=\"/images/entasis/entasis_fee.png\" alt=\"거래 수수료\"></p>\n<ul>\n<li>\n<p>거래 수수료는 거래대금의 0.04%로 자동으로 계산한다.</p>\n</li>\n<li>\n<p><strong>배당금 투표</strong></p>\n</li>\n</ul>\n<p><img src=\"/images/entasis/entasis_vote.gif\" alt=\"투표\"></p>\n<ul>\n<li>\n<p>10분에 한 번씩 지급되는 배당금에 대한 배당률을 결정하기 위해 배당률 투표를 진행한다.</p>\n</li>\n<li>\n<p>투표를 하지 않더라도 배당금을 지급 받는다.</p>\n</li>\n<li>\n<p><strong>배당금 지급</strong>\n<img src=\"/images/entasis/entasis_dividend.gif\" alt=\"배당금\"></p>\n<ul>\n<li>토큰 별로 totalSupply 대비 투자자가 보유하고 있는 토큰양에 따라 배당금이 지불한다.</li>\n</ul>\n</li>\n</ul>\n<p>[배당금 지급 전 거래내역]\n<img src=\"/images/entasis/entasis_trade.gif\" alt=\"거래 내역\"></p>\n<p>[배당금 지급 후 거래내역]\n<img src=\"/images/entasis/entasis_after_trade.png\" alt=\"거래 후 내역\"></p>\n<p>웹사이트 상단 로고 아래에 있는 배당금 지급 시간이 모두 지나면 자동으로 배당금이 지급되며, 그 내역이 History에 표시된다.</p>\n<ul>\n<li><strong>거래제한(Circuit Breaker)</strong></li>\n</ul>\n<p><img src=\"/images/entasis/entasis_circuit_breaker.png\" alt=\"서킷 브레이커\"></p>\n<ul>\n<li>\n<p>극단적인 가격 변동률이 발생할 경우 모든 토큰에 거래를 제한한다.</p>\n</li>\n<li>\n<p>1분간 거래가 불가능해지며 이에 따라 토큰 가격도 1분간 정지된다.</p>\n</li>\n<li>\n<p>본 프로젝트에서는 극단적인 가격 변동이 일어날 일이 없는 점으로 인해\n거래 제한 기능을 보여주기 위하여 Circuit Breaker 버튼을 누를 경우 거래 제한이 발동하도록 구현한다.\n[거래 제한 발동]\n<img src=\"/images/entasis/entasis_circuit.gif\" alt=\"서킷 브레이커 발동\"></p>\n<p>[거래 제한 해제]\n<img src=\"/images/entasis/entasis_circuit_end.gif\" alt=\"서킷 브레이커 해제\"></p>\n</li>\n<li>\n<p><strong>스테이킹 기능(Staking)</strong>\n<img src=\"/images/entasis/entasis_staking.png\" alt=\"스테이킹\"></p>\n<ul>\n<li>스테이킹은 본인이 보유하고 있는 디지털자산을 블록체인 네트워크에 맡기는 방식으로 현금을 은행에 맡기는 예금과 구조가 유사하다.</li>\n<li>보유한 디지털 자산을 블록체인 검증에 활용하도록 맡기는 것을 뜻한다.</li>\n<li>스테이킹을 할 경우 일정기간동안 토큰을 거래소에 맡기고 기간이 만료되면 상대적으로 높은 이율에 따른 보상과 함께 토큰을 돌려받게 된다.</li>\n<li>단, 스테이킹 기간동안에는 해당 토큰을 사용할 수 없기 때문에, 토큰 가격이 변동으로 인해 토큰을 돌려 받고 싶어도 해당 기간동안에는 돌려 받을 수 없다.\n[스테이킹 요청시]\n<img src=\"/images/entasis/entasis_staking_1.png\" alt=\"스테이킹 화면 1\"></li>\n<li>사용자는 Staking 버튼을 눌러 메타마스크를 통해 서명한 데이터를 원하는 ST 컨트랙트에 보내 스테이킹을 진행한다.</li>\n<li>이 때, 이미 스테이킹이 되어있거나 기입한 Amount(수량)보다 토큰 보유량이 적을 시 에러를 반환한다.</li>\n<li>토큰이 문제없이 스테이킹이 된다면 우측 Amount List와 Reward List가 갱신되고 하단 Reward Time에 보상 인출까지 남은 기간이 표시한다.\n[보상 인출시]\n<img src=\"/images/entasis/entasis_staking_2.png\" alt=\"스테이킹 화면 2\"></li>\n<li>Reward Time이 Able로 변경되어 보상 인출이 가능해지면, 사용자는 Reward 버튼을 눌러 보상 인출 함수를 실행하는 데이터를 메타마스크로 서명해 컨트랙트에 보낸다.</li>\n<li>컨트랙트에서 만료일을 확인한 후, 문제가 없다면 사용자에게 스테이킹한 Amount에 Reward를 합한 토큰을 사용자에게 전송한다.\n<ul>\n<li>만료일이 지나지 않았을 경우 Reward 버튼이 비활성화</li>\n</ul>\n</li>\n<li>토큰과 보상이 사용자에게 전송되면 다시 Amount List와 Reward List가 0으로 초기화한다.</li>\n</ul>\n</li>\n</ul>\n<h1 id=\"heading-8\">[ A**bout Dev ]**</h1>\n<h2 id=\"heading-9\"><strong>기술 스택</strong></h2>\n<p><img src=\"/images/entasis/entasis_tech_stack.png\" alt=\"기술 스택\"></p>\n<h2 id=\"heading-10\">와이어프레임</h2>\n<p>https://www.figma.com/embed?embed_host=notion&amp;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHP5FZix2FedecrcLWhUsb7%2FProject_Entasis%3Fnode-id%3D0%253A1%26t%3DL4XWojmyo6BCQvJK-1</p>\n<h2 id=\"heading-11\">플로우 차트</h2>\n<ul>\n<li><strong>Chart Data Flow</strong></li>\n</ul>\n<p>https://www.figma.com/embed?embed_host=notion&amp;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FjC6wwRAyBiQJ8Y0nB6iyiH%2FUntitled%3Fnode-id%3D0%253A1%26t%3DrlPZeEHfPYzyxIO4-1</p>\n<h2 id=\"heading-12\">아키텍처</h2>\n<p><img src=\"/images/entasis/entasis_arch.png\" alt=\"아키텍처\"></p>\n<p>아키텍처의 경우 S3를 이용한 정적 호스트 페이지와 EC2를 이용한 서비스 서버, Database 클라우드 서버, 그리고 블록체인 네트워크 서버로 구성되어 있다.</p>\n<ul>\n<li>먼저 배포과정에서는 Github Actions 를 활용하여 CI/CD 파이프라인을 구성하여 Github에서 push가 발생할 때마다 배포중인 서비스에 반영되어 자동 배포가 실행된다.</li>\n<li>클라이언트는 AWS IAM를 통해 S3에 접근하여 배포하였으며, 블록체인 네트워크의 경우 AWS EC2의 인스턴스 내에서 가나슈 네트워크를 백그라운드로 실행하여 네트워크가 지속 가능하도록 설정하였다.</li>\n<li>서버 부분은 EC2를 이용하여 Docker와 Github Container Registry를 사용하여 EC2내에서 백그라운드로 자동서비스를 실행할 수 있도록 설계하였다.</li>\n</ul>\n<h2 id=\"heading-13\"><strong>데이터베이스 스키마 다이어그램</strong></h2>\n<p><img src=\"https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7a81b8d5-5578-4f17-9037-10eedb81a23a/Untitled.png\" alt=\"Untitled\"></p>\n<h2 id=\"heading-14\">API 문서</h2>\n<p><a href=\"https://www.notion.so/API-feb98146eeb4481193df2505f966b9c6?pvs=21\">API 문서</a></p>\n<h2 id=\"heading-15\">스마트 컨트랙트 및 토큰 이코노미 설계</h2>\n<p><a href=\"https://www.notion.so/ebe74ce3e9af4b7db5edf7ae39c7728e?pvs=21\">스마트 컨트랙트 설계</a></p>\n<h2 id=\"heading-16\">Feeling</h2>\n<p>4주간의 시간동안 변동성과 시장의 형태를 구현할 수 있어서 의미있는 시간이었다. 시장의 형태를 구현하여 팀원들이 각자 수익률을 공유하며 자산을 늘려가는 즐거움을 공유했던 것이 가장 기억에 남는다.</p>\n<p>NFT와 선물 옵션 등 파생상품 시장 또한 다루어 보고 싶었지만, 시간이 넉넉하지 않았던 것에 아쉬움이 남았다</p>\n<p>스스로 서비스를 구현할수 있다는 것을 알게 되었고. 그것을 위해 내게 필요한 기술이 무엇인지 또한 알 수 있었던 소중한 시간이었다.</p>\n<h2 id=\"heading-17\">Finding</h2>\n<ol>\n<li>최소 단위기간에 1인이 감당할 수 있는 작업량에 대해 명확한 기준이 없이 무리하게 기능을 추가하여 4주라는 시간 대비 과한 범위를 적용하였고 그 범위를 재설정하는 것에 적지 않은 시간이 소요되었다.</li>\n<li>차트 이외에 트렌젝션 데이터와 유저 수익률 및 트랜잭션 데이터를 검색엔진에 노출되기 어려운 CSR형태로 구현하였다.</li>\n<li>상태관리 라이브러리를 활용하지 못하여 실시간 가격(currentPrice)이 자식 컴포넌트로 깊게 내려가는 props drilling 현상이 발생했다.</li>\n<li>잘못된 접근을 알리는 404페이지를 구현하였으나, 지갑이 등록 되었을 경우에만 접근할 수 있는 페이지로 구분하지 못했다.</li>\n<li>서버와의 통신을 HTTP요청을 통해 구현하여 대규모 트래픽에 대비하지 못했다.</li>\n</ol>\n<h2 id=\"heading-18\">Future Action</h2>\n<ol>\n<li>프로젝트를 진행함에 따라 그 기간을 어떻게 설정해야 적절한지 알 수 있었고 그것을 측정하는 것 또한 프로젝트의 중요한 부분이라는 점을 알 수 있었다. 프로젝트 초기부터 CPM을 설정하여 진행상황 평가를 공유하며 작업 진도에 대한 합의를 하는 것이 필요하다는 것을 알 수 있었다.</li>\n<li>NEXTJS를 통해 SSR을 구현, SEO를 실현할 수 있는, 사용자들에게 노출될 수 있는 웹 서비스로 구현해야겠다.</li>\n<li>효율적인 컴포넌트 구조를 찾기 위해 Redux, Mobx, Recoil 등의 상태관리 라이브러리와 리액트의 컴포지션, 컨택스트, 포탈을 사용을 고려하여 데이터 흐름 최적화에 대한 고민을 해야겠다.</li>\n<li>지갑의 등록되었을 경우에만 볼 수 있는 버튼을 구현함으로 유저데이터를 안전하게 관리하는 접근 영역이 명료한 웹 서비스로 리팩토링해야겠다.</li>\n<li>데이터 처리에 대한 피드백 받은 내용을 토대로 실시간 데이터 연동 웹소켓을 적용해야겠다.</li>\n</ol>\n<h2 id=\"heading-19\"><strong>기술적 문제 해결</strong></h2>\n<ul>\n<li><strong>랜더링 최적화</strong>에 문제가 있었다. <strong>프로젝트 종료 3일 전</strong>에 거래 토큰 다양화 과정에서 실시간 차트 <strong>데이터 요청이 기하급수로 늘어나는 것</strong>을 보았다. <strong>웹은 시간이 갈수록 무거워졌고 DB의 용량이 무한히 커졌으며 체인 네트워크는 수 시간 만에 8G의 용량을 소진해 버렸다.</strong> 같은 내용을 랜더링 하지 않는 <strong>useMemo</strong>나 랜더링을 최소화하기 위해 상태를 전역으로 관리하는 <strong>Redux</strong> 사용을 고려 하였으나, 우선 기존의 작성되었던 모든 <strong>useEffect의 디펜던시</strong>를 확인 해 보았다. 차트 데이터, 실시간 데이터, 실시간 데이터들의 일정시간 경과 후 차트 배열에 축적 시키는 과정에서 useEffect의 디펜던시에 해당 <strong>요소 값</strong>이 전부 들어가 있었다. 즉 <strong>차트에 포함되는 함수와 배열이 변경될 때 마다 관련된 모든 컴포넌트에서 리랜더링이 일어났던 것</strong>이다. 해당 디펜던시에 난수 적용 <strong>단위 기간과 같은 간격으로 비동기 처리</strong>를 할 수 있도록 했더니 기하급수 리랜더링 문제는 해결되었다.</li>\n<li><strong>캔들 차트</strong>에서 <strong>스크롤 이벤트</strong>에 대한 이해 없이 작업을 진행하다 보니, 차트를 제외한 페이지와의 <strong>스크롤 값 충돌</strong> 문제와 <strong>마우스 포인터의 값</strong>을 구하는 작업에 어려움을 느꼈다. 입력되는 스크롤 값에 대해 차트 컴포넌트와 메인페이지와의 입력 값의 구분이 필요했고 <strong>스크롤을 제한하고 제한을 푸는 작업</strong>이 필요하다 생각했다. 해당 키워드로 검색해보니, <strong>document.body.style.overflow의 값을 unset과 hidden으로 독립</strong>시킬 수 있다는 것을 알게 되었고, 메인페이지에서 스크롤을 할 때마다 차트에 영향을 주는 문제를 해결했다.</li>\n<li><strong>SVG</strong>를 통해 차트의 가격 높이 값과 거래량 높이 값을 설정해 준 후 <strong>마우스 포인터의 위치에 비례한 값</strong>을 보여주는 것에서 어려움이 있었다. 분명 해당 가격의 소수점 둘째 자리까지 <strong>정확히</strong> 맞아 떨어지는 것을 확인했는데, 며칠 뒤에 그 값이 <strong>음수</strong>로 바뀌어 있었다. 당혹스러웠지만 다시 살펴 보았다. 차트의 위치 값은 위로 <strong>올라갈수록</strong> 커지지만 마우스의 위치 값은 <strong>아래로 내려올수록</strong> 커진다는 것에서 값이 반전되거나 음수를 출력하는 문제가 발생한 것이었다. <strong>방정식</strong>으로 정확한 값을 구할 수 있었으나 잘못된 식을 대입했었고 <strong>차트와 거래량 간의 값 차이</strong>를 생각하지 않고 동일한 요소 값을 설정 했던 것에서 문제가 발생했음을 깨닫고 <strong>캔들은 최댓값과 최솟값</strong>이 달라질 수 있지만 <strong>거래량은 최솟값이 0으로 고정</strong>인 것을 이해하여 오류를 해결했다.</li>\n</ul>\n<h3 id=\"heading-20\">프로젝트를 마치며</h3>\n<p>NEXTjs를 통해 SSR을 구현하여 SEO를 구현하기를 바란다.</p>\n<p>서버의 차트데이터 로직 구현 외 백엔드와 컨트랙트 부분에 역할을 맡지 못한 점 또한 추후 솔로 프로젝트로 구현해야겠다.</p>\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      "Express",
+      "MySQL",
+      "Web3.js",
+      "AWS",
+      "Ganache",
+      "Truffle",
+      "ERC20",
+      "MetaMask",
+      "Figma"
+    ],
+    "description": "가상자산 거래소 개발",
+    "thumbnail": "/images/entasis/entasis_circuit.gif",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "1.소개",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "윤수빈",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 223
+      },
+      {
+        "id": "heading-2",
+        "text": "2. 프로젝트 소개",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 410
+      },
+      {
+        "id": "heading-3",
+        "text": "3.기본 환경 조성",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 1381
+      },
+      {
+        "id": "heading-4",
+        "text": "토큰 가격 형성 및 변동성",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1441
+      },
+      {
+        "id": "heading-5",
+        "text": "블록체인",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1613
+      },
+      {
+        "id": "heading-6",
+        "text": "4.프로젝트 기록",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 1744
+      },
+      {
+        "id": "heading-7",
+        "text": "Fact",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1972
+      },
+      {
+        "id": "heading-8",
+        "text": "[ A**bout Dev ]**",
+        "level": 1,
+        "isMainTopic": true,
+        "position": 3361
+      },
+      {
+        "id": "heading-9",
+        "text": "기술 스택",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 3436
+      },
+      {
+        "id": "heading-10",
+        "text": "와이어프레임",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 3567
+      },
+      {
+        "id": "heading-11",
+        "text": "플로우 차트",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 3698
+      },
+      {
+        "id": "heading-12",
+        "text": "아키텍처",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 3869
+      },
+      {
+        "id": "heading-13",
+        "text": "데이터베이스 스키마 다이어그램",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 4144
+      },
+      {
+        "id": "heading-14",
+        "text": "API 문서",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 4275
+      },
+      {
+        "id": "heading-15",
+        "text": "스마트 컨트랙트 및 토큰 이코노미 설계",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 4406
+      },
+      {
+        "id": "heading-16",
+        "text": "Feeling",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 4537
+      },
+      {
+        "id": "heading-17",
+        "text": "Finding",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 4780
+      },
+      {
+        "id": "heading-18",
+        "text": "Future Action",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 4991
+      },
+      {
+        "id": "heading-19",
+        "text": "기술적 문제 해결",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 5202
+      },
+      {
+        "id": "heading-20",
+        "text": "프로젝트를 마치며",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 5350
+      }
+    ],
+    "totalHeight": 5462
+  },
+  {
+    "id": "entasys",
+    "title": "Entasis",
+    "content": "<h2 id=\"heading-0\">1. 프로젝트 개요</h2>\n<h3 id=\"heading-1\">프로젝트 명</h3>\n<ul>\n<li>ENTASYS (엔타시스) SIEM 솔루션</li>\n</ul>\n<h3 id=\"heading-2\">프로젝트 목적</h3>\n<ul>\n<li>기업의 보안 위협을 실시간으로 탐지하고 대응하는 통합 보안 관제 시스템 구축</li>\n<li>다양한 보안 장비와 시스템의 로그를 수집/분석하여 보안 위협 조기 발견</li>\n<li>AI/ML 기반의 지능형 위협 탐지 및 대응 체계 구현</li>\n</ul>\n<h3 id=\"heading-3\">핵심 기능</h3>\n<ol>\n<li>\n<p>통합 로그 수집 및 관리</p>\n<ul>\n<li>방화벽, IPS, WAF 등 보안장비 로그 수집</li>\n<li>서버, 네트워크 장비, 애플리케이션 로그 통합</li>\n<li>실시간 로그 정규화 및 상관분석</li>\n<li>로그 원본 보관 및 위/변조 방지</li>\n</ul>\n</li>\n<li>\n<p>실시간 위협 탐지</p>\n<ul>\n<li>AI 기반 이상행위 탐지(User/Entity Behavior Analytics)</li>\n<li>알려진/알려지지 않은 위협 탐지</li>\n<li>취약점 스캐닝 및 모니터링</li>\n<li>실시간 위협 인텔리전스 연동</li>\n</ul>\n</li>\n<li>\n<p>보안 대시보드 및 분석</p>\n<ul>\n<li>직관적인 통합 보안 대시보드</li>\n<li>실시간 보안 이벤트 모니터링</li>\n<li>드릴다운 분석 및 포렌식 기능</li>\n<li>맞춤형 보고서 자동 생성</li>\n</ul>\n</li>\n<li>\n<p>자동화된 대응체계</p>\n<ul>\n<li>위협 탐지시 자동 차단/격리</li>\n<li>담당자 알림 및 티켓팅 연동</li>\n<li>플레이북 기반 대응 자동화</li>\n<li>보안장비 연동 및 제어</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-4\">시스템 아키텍처</h2>\n<h3 id=\"heading-5\">수집 계층</h3>\n<ul>\n<li>분산 로그 수집기(Collector) 구조</li>\n<li>초당 50,000 EPS 처리 성능</li>\n<li>로그 필터링 및 정규화</li>\n<li>데이터 압축 및 암호화 전송</li>\n</ul>\n<h3 id=\"heading-6\">저장 계층</h3>\n<ul>\n<li>분산 스토리지(Elasticsearch) 기반</li>\n<li>실시간/장기 보관 이원화</li>\n<li>데이터 암호화 저장</li>\n<li>자동 백업 및 복구</li>\n</ul>\n<h3 id=\"heading-7\">분석 계층</h3>\n<ul>\n<li>실시간 상관분석 엔진</li>\n<li>ML 기반 이상행위 탐지</li>\n<li>위협 인텔리전스 연동</li>\n<li>규칙 기반 탐지</li>\n</ul>\n<h3 id=\"heading-8\">표현 계층</h3>\n<ul>\n<li>HTML5 기반 웹 콘솔</li>\n<li>반응형 대시보드</li>\n<li>드릴다운 분석 도구</li>\n<li>맞춤형 보고서</li>\n</ul>\n<h2 id=\"heading-9\">구축 요구사항</h2>\n<h3 id=\"heading-10\">하드웨어</h3>\n<ul>\n<li>수집서버: 최소 8코어/32GB RAM</li>\n<li>분석서버: 최소 16코어/64GB RAM</li>\n<li>저장장치: 최소 10TB SSD</li>\n</ul>\n<h3 id=\"heading-11\">소프트웨어</h3>\n<ul>\n<li>OS: RHEL/CentOS 7 이상</li>\n<li>Docker/Kubernetes</li>\n<li>Elasticsearch 7.x</li>\n<li>Node.js 16.x</li>\n</ul>\n<h2 id=\"heading-12\">향후 로드맵</h2>\n<h3 id=\"heading-13\">2024년 하반기</h3>\n<ul>\n<li>AI 엔진 고도화</li>\n<li>클라우드 네이티브 아키텍처 전환</li>\n<li>글로벌 위협 인텔리전스 연동 확대</li>\n</ul>\n<h3 id=\"heading-14\">2025년</h3>\n<ul>\n<li>제로트러스트 보안 프레임워크 적용</li>\n<li>블록체인 기반 로그 무결성 검증</li>\n<li>멀티클라우드 통합 모니터링</li>\n</ul>\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      "Express",
+      "MySQL",
+      "Web3.js",
+      "AWS",
+      "Ganache",
+      "Truffle",
+      "ERC20",
+      "MetaMask",
+      "Figma"
+    ],
+    "description": "가상자산 거래소 개발",
+    "thumbnail": "/images/entasis/entasis_circuit.gif",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "1. 프로젝트 개요",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "프로젝트 명",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 135
+      },
+      {
+        "id": "heading-2",
+        "text": "프로젝트 목적",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 235
+      },
+      {
+        "id": "heading-3",
+        "text": "핵심 기능",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 383
+      },
+      {
+        "id": "heading-4",
+        "text": "시스템 아키텍처",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 570
+      },
+      {
+        "id": "heading-5",
+        "text": "수집 계층",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 630
+      },
+      {
+        "id": "heading-6",
+        "text": "저장 계층",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 802
+      },
+      {
+        "id": "heading-7",
+        "text": "분석 계층",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 974
+      },
+      {
+        "id": "heading-8",
+        "text": "표현 계층",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1146
+      },
+      {
+        "id": "heading-9",
+        "text": "구축 요구사항",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 1333
+      },
+      {
+        "id": "heading-10",
+        "text": "하드웨어",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1393
+      },
+      {
+        "id": "heading-11",
+        "text": "소프트웨어",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1541
+      },
+      {
+        "id": "heading-12",
+        "text": "향후 로드맵",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 1728
+      },
+      {
+        "id": "heading-13",
+        "text": "2024년 하반기",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1788
+      },
+      {
+        "id": "heading-14",
+        "text": "2025년",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1936
+      }
+    ],
+    "totalHeight": 2024
+  },
+  {
+    "id": "fds",
+    "title": "FDS 기획",
+    "content": "<h2 id=\"heading-0\">시스템 개요</h2>\n<p>가상자산 이상 거래 탐지 시스템(Virtual Asset FDS, VA-FDS)은 블록체인 네트워크에서 발생하는 비정상적인 거래 패턴을 실시간으로 감지하고 대응하는 시스템입니다.</p>\n<h3 id=\"heading-1\">주요 특징</h3>\n<ol>\n<li>\n<p><strong>블록체인 특화 데이터 수집</strong></p>\n<ul>\n<li>온체인 트랜잭션 데이터</li>\n<li>지갑 주소 행위 패턴</li>\n<li>스마트 컨트랙트 인터랙션</li>\n<li>DEX/CEX 거래 데이터</li>\n</ul>\n</li>\n<li>\n<p><strong>하이브리드 분석 방식</strong></p>\n<ul>\n<li>룰 기반 탐지 (Rule-based Detection)</li>\n<li>머신러닝 기반 이상 탐지</li>\n<li>온체인 데이터 분석</li>\n<li>크로스체인 추적</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-2\">핵심 기능</h2>\n<p><img src=\"/images/fds.jpeg\" alt=\"Profile Image 1\"></p>\n<h3 id=\"heading-3\">1. 실시간 트랜잭션 모니터링</h3>\n<ul>\n<li>대량 송금 패턴 감지</li>\n<li>이상 거래 금액 탐지</li>\n<li>의심스러운 지갑 주소 추적</li>\n<li>스마트 컨트랙트 취약점 분석</li>\n</ul>\n<h3 id=\"heading-4\">2. 크로스체인 추적 시스템</h3>\n<ul>\n<li>브리지 트랜잭션 모니터링</li>\n<li>체인 간 자금 흐름 추적</li>\n<li>크로스체인 세탁 패턴 감지</li>\n<li>브리지 해킹 위험 감지</li>\n</ul>\n<h3 id=\"heading-5\">3. AI 기반 패턴 분석</h3>\n<ul>\n<li>지도학습: RandomForest, XGBoost</li>\n<li>비지도학습: Isolation Forest</li>\n<li>딥러닝: LSTM, GNN</li>\n<li>앙상블 기법 적용</li>\n</ul>\n<h2 id=\"heading-6\">기술 스택</h2>\n<h3 id=\"heading-7\">Backend</h3>\n<ul>\n<li>Node.js/Python</li>\n<li>PostgreSQL (트랜잭션 데이터)</li>\n<li>Redis (실시간 캐싱)</li>\n<li>Kafka (스트림 처리)</li>\n</ul>\n<h3 id=\"heading-8\">Blockchain</h3>\n<ul>\n<li>Web3.js/Ethers.js</li>\n<li>The Graph (데이터 인덱싱)</li>\n<li>Chainlink (오라클)</li>\n</ul>\n<h3 id=\"heading-9\">AI/ML</h3>\n<ul>\n<li>TensorFlow/PyTorch</li>\n<li>scikit-learn</li>\n<li>NetworkX (그래프 분석)</li>\n</ul>\n<h2 id=\"heading-10\">시스템 아키텍처</h2>\n<pre><code class=\"language-plaintext\">[블록체인 네트워크]\n    │\n    ├─ [이더리움 노드] ─── [The Graph 인덱서]\n    ├─ [바이낸스 노드] ─── [체인 브릿지 모니터]\n    └─ [기타 체인 노드] ── [크로스체인 트래커]\n              │\n              ▼\n[데이터 수집 레이어]\n    │\n    ├─ [트랜잭션 콜렉터] ── (실시간 거래 데이터)\n    ├─ [컨트랙트 스캐너] ── (스마트 컨트랙트 호출)\n    └─ [이벤트 리스너] ──── (체인 이벤트 로그)\n              │\n              ▼\n[스트림 프로세싱]\n    │\n    ├─ [Kafka 프로듀서] ─── (실시간 데이터 스트림)\n    ├─ [Redis 캐시] ─────── (고속 데이터 처리)\n    └─ [데이터 파서] ────── (정형/비정형 데이터 변환)\n              │\n              ▼\n[분석 엔진]\n    │\n    ├─ [룰 기반 엔진] ────── (정적 규칙 검사)\n    │      └─ [임계값 체크] ─ (거래량/금액 분석)\n    │\n    ├─ [ML 엔진]\n    │      ├─ [지도학습 모델] ── (이상 패턴 분류)\n    │      ├─ [비지도학습 모델] ─ (이상치 탐지)\n    │      └─ [앙상블 모델] ──── (통합 예측)\n    │\n    └─ [그래프 분석기]\n           ├─ [주소 클러스터링] ── (연관 지갑 그룹화)\n           └─ [자금 흐름 추적] ─── (거래 경로 분석)\n              │\n              ▼\n[실시간 모니터링]\n    │\n    ├─ [알림 시스템]\n    │      ├─ [우선순위 분류기] ── (위험도 평가)\n    │      └─ [알림 디스패처] ─── (채널별 알림 발송)\n    │\n    └─ [대응 시스템]\n           ├─ [자동화 대응] ────── (거래 차단/제한)\n           ├─ [수동 검토] ─────── (분석가 확인)\n           └─ [보고서 생성] ───── (감사 추적)\n</code></pre>\n<h3 id=\"heading-11\">주요 컴포넌트 설명</h3>\n<ol>\n<li>\n<p><strong>블록체인 네트워크 레이어</strong></p>\n<ul>\n<li>다중 체인 노드 운영</li>\n<li>실시간 블록 데이터 수집</li>\n<li>크로스체인 브릿지 모니터링</li>\n</ul>\n</li>\n<li>\n<p><strong>데이터 수집 레이어</strong></p>\n<ul>\n<li>트랜잭션 데이터 실시간 수집</li>\n<li>스마트 컨트랙트 인터랙션 분석</li>\n<li>체인 이벤트 로그 추적</li>\n</ul>\n</li>\n<li>\n<p><strong>스트림 프로세싱 레이어</strong></p>\n<ul>\n<li>대용량 실시간 데이터 처리</li>\n<li>인메모리 캐싱</li>\n<li>데이터 정규화 및 변환</li>\n</ul>\n</li>\n<li>\n<p><strong>분석 엔진 레이어</strong></p>\n<ul>\n<li>다중 분석 모델 운영</li>\n<li>실시간 패턴 매칭</li>\n<li>머신러닝 기반 예측</li>\n</ul>\n</li>\n<li>\n<p><strong>모니터링 및 대응 레이어</strong></p>\n<ul>\n<li>실시간 위험 평가</li>\n<li>자동화된 대응 체계</li>\n<li>감사 추적 시스템</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-12\">구현 계획</h2>\n<h3 id=\"heading-13\">Phase 1: 기본 인프라 구축</h3>\n<ul>\n<li>데이터 수집 파이프라인 구축</li>\n<li>기본 룰 기반 탐지 시스템 구현</li>\n<li>실시간 모니터링 대시보드 개발</li>\n</ul>\n<h3 id=\"heading-14\">Phase 2: AI 모델 개발</h3>\n<ul>\n<li>지도학습 모델 훈련</li>\n<li>비지도학습 모델 구현</li>\n<li>앙상블 시스템 구축</li>\n</ul>\n<h3 id=\"heading-15\">Phase 3: 크로스체인 확장</h3>\n<ul>\n<li>멀티체인 데이터 수집</li>\n<li>크로스체인 추적 시스템</li>\n<li>통합 대시보드 개발</li>\n</ul>\n<h2 id=\"heading-16\">기대 효과</h2>\n<ol>\n<li>\n<p><strong>보안성 강화</strong></p>\n<ul>\n<li>해킹 시도 조기 감지</li>\n<li>자금 세탁 방지</li>\n<li>사기 거래 예방</li>\n</ul>\n</li>\n<li>\n<p><strong>운영 효율성</strong></p>\n<ul>\n<li>자동화된 모니터링</li>\n<li>실시간 대응 체계</li>\n<li>리스크 관리 강화</li>\n</ul>\n</li>\n<li>\n<p><strong>사용자 신뢰도</strong></p>\n<ul>\n<li>안전한 거래 환경</li>\n<li>투명한 모니터링</li>\n<li>신속한 이상 거래 대응</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-17\">향후 발전 방향</h2>\n<ol>\n<li>\n<p><strong>탈중앙화 FDS</strong></p>\n<ul>\n<li>DAO 기반 거버넌스</li>\n<li>탈중앙화 신고 시스템</li>\n<li>커뮤니티 기반 검증</li>\n</ul>\n</li>\n<li>\n<p><strong>AI 고도화</strong></p>\n<ul>\n<li>제로샷 러닝 도입</li>\n<li>강화학습 모델 적용</li>\n<li>연합학습 시스템</li>\n</ul>\n</li>\n<li>\n<p><strong>생태계 확장</strong></p>\n<ul>\n<li>DeFi 프로토콜 연동</li>\n<li>CEX 협력 체계</li>\n<li>규제기관 협력</li>\n</ul>\n</li>\n</ol>\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "Blockchain",
+      "FDS",
+      "Security",
+      "AI"
+    ],
+    "description": "블록체인 기반 가상자산 거래의 이상 탐지 시스템 설계",
+    "thumbnail": "/images/solidity.webp",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "시스템 개요",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "주요 특징",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 191
+      },
+      {
+        "id": "heading-2",
+        "text": "핵심 기능",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 330
+      },
+      {
+        "id": "heading-3",
+        "text": "1. 실시간 트랜잭션 모니터링",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 446
+      },
+      {
+        "id": "heading-4",
+        "text": "2. 크로스체인 추적 시스템",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 618
+      },
+      {
+        "id": "heading-5",
+        "text": "3. AI 기반 패턴 분석",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 790
+      },
+      {
+        "id": "heading-6",
+        "text": "기술 스택",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 977
+      },
+      {
+        "id": "heading-7",
+        "text": "Backend",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1037
+      },
+      {
+        "id": "heading-8",
+        "text": "Blockchain",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1209
+      },
+      {
+        "id": "heading-9",
+        "text": "AI/ML",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1357
+      },
+      {
+        "id": "heading-10",
+        "text": "시스템 아키텍처",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 1520
+      },
+      {
+        "id": "heading-11",
+        "text": "주요 컴포넌트 설명",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1636
+      },
+      {
+        "id": "heading-12",
+        "text": "구현 계획",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 1847
+      },
+      {
+        "id": "heading-13",
+        "text": "Phase 1: 기본 인프라 구축",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 1907
+      },
+      {
+        "id": "heading-14",
+        "text": "Phase 2: AI 모델 개발",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2055
+      },
+      {
+        "id": "heading-15",
+        "text": "Phase 3: 크로스체인 확장",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 2203
+      },
+      {
+        "id": "heading-16",
+        "text": "기대 효과",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 2366
+      },
+      {
+        "id": "heading-17",
+        "text": "향후 발전 방향",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 2529
+      }
+    ],
+    "totalHeight": 2617
+  },
+  {
+    "id": "manbok",
+    "title": "공인중개 웹사이트",
+    "content": "<p><img src=\"/images/manbok/manbok.png\" alt=\"2\"></p>\n<h2 id=\"heading-0\">프로젝트 개요</h2>\n<p>토지, 공장, 창고의 매매/임대를 전문으로 하는 공인중개사무소와 원룸, 상가의 매매/임대를 전문으로 하는 공인중개사무소의 통합 웹 플랫폼을 구축합니다. 빅데이터 기반의 부동산 입지 분석과 AI 기반 매물 추천 시스템을 통해 매수인, 매도인, 임대인, 임차인에게 최적화된 부동산 솔루션을 제공하는 것이 목표입니다.</p>\n<h3 id=\"heading-1\">주요 기능</h3>\n<ol>\n<li>\n<p><strong>스마트 매물 관리 시스템</strong></p>\n<ul>\n<li>실시간 매물 등록/수정/삭제</li>\n<li>AI 기반 매물 가격 산정</li>\n<li>매물 상태 자동 업데이트</li>\n<li>고도화된 검색 및 필터링</li>\n<li>VR/AR 매물 투어</li>\n<li>실시간 시세 정보 연동</li>\n</ul>\n</li>\n<li>\n<p><strong>빅데이터 기반 입지 분석 시스템</strong></p>\n<ul>\n<li>GIS 기반 위치 분석</li>\n<li>교통/물류 접근성 분석</li>\n<li>용도지역/구역 법률 검토</li>\n<li>실시간 경제 지표 연동</li>\n<li>환경영향 평가</li>\n<li>주변 인프라 현황 분석</li>\n<li>수요/공급 예측 모델링</li>\n</ul>\n</li>\n<li>\n<p><strong>통합 고객 관리 시스템 (CRM)</strong></p>\n<ul>\n<li>고객 데이터 통합 관리</li>\n<li>AI 기반 고객 매칭</li>\n<li>상담 이력 자동 기록</li>\n<li>관심 매물 패턴 분석</li>\n<li>계약 진행 자동화</li>\n<li>고객 피드백 관리</li>\n</ul>\n</li>\n<li>\n<p><strong>지능형 컨텐츠 관리 시스템</strong></p>\n<ul>\n<li>AI 기반 컨텐츠 생성</li>\n<li>자동 SEO 최적화</li>\n<li>소셜 미디어 연동</li>\n<li>실시간 부동산 뉴스 피드</li>\n<li>맞춤형 뉴스레터 발송</li>\n<li>컨텐츠 성과 분석</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/manbok/manbok.gif\" alt=\"3\"></p>\n<h3 id=\"heading-2\">기술 스택</h3>\n<ul>\n<li>Frontend: Next.js 14, TypeScript, React Query, Recoil</li>\n<li>Backend: NestJS, GraphQL, TypeORM</li>\n<li>Database: PostgreSQL, Redis, Elasticsearch</li>\n<li>AI/ML: TensorFlow, scikit-learn</li>\n<li>Infrastructure: AWS (ECS, RDS, S3, CloudFront)</li>\n<li>DevOps: Docker, Kubernetes, Jenkins, Prometheus</li>\n<li>Analytics: Google Analytics 4, Amplitude</li>\n</ul>\n<h3 id=\"heading-3\">개발 로드맵</h3>\n<ol>\n<li>\n<p>기획 및 설계 (3주)</p>\n<ul>\n<li>요구사항 상세 분석</li>\n<li>UI/UX 프로토타이핑</li>\n<li>데이터 모델링</li>\n<li>시스템 아키텍처 설계</li>\n<li>API 설계 및 문서화</li>\n</ul>\n</li>\n<li>\n<p>프론트엔드 개발 (6주)</p>\n<ul>\n<li>반응형 메인 페이지 구현</li>\n<li>실시간 매물 관리 시스템</li>\n<li>대시보드 및 분석 도구</li>\n<li>VR/AR 매물 뷰어</li>\n<li>성능 최적화</li>\n</ul>\n</li>\n<li>\n<p>백엔드 개발 (6주)</p>\n<ul>\n<li>MSA 기반 API 서버</li>\n<li>실시간 데이터 동기화</li>\n<li>AI 모델 통합</li>\n<li>보안 시스템 구축</li>\n<li>결제 시스템 연동</li>\n</ul>\n</li>\n<li>\n<p>품질 관리 및 배포 (3주)</p>\n<ul>\n<li>자동화된 테스트 구축</li>\n<li>성능 모니터링 시스템</li>\n<li>CI/CD 파이프라인 구축</li>\n<li>무중단 배포 시스템</li>\n<li>장애 대응 체계 수립</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-4\">기대 효과</h3>\n<ol>\n<li>데이터 기반 의사결정 지원</li>\n<li>업무 효율성 300% 향상</li>\n<li>고객 만족도 증대</li>\n<li>매출 증대 효과</li>\n<li>시장 경쟁력 강화</li>\n<li>디지털 전환 가속화</li>\n</ol>\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      " JavaScript"
+    ],
+    "description": "공인중개 웹사이트 개발",
+    "thumbnail": "/images/manbok/manbok.gif",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "프로젝트 개요",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "주요 기능",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 191
+      },
+      {
+        "id": "heading-2",
+        "text": "기술 스택",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 419
+      },
+      {
+        "id": "heading-3",
+        "text": "개발 로드맵",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 663
+      },
+      {
+        "id": "heading-4",
+        "text": "기대 효과",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 835
+      }
+    ],
+    "totalHeight": 995
+  },
+  {
+    "id": "mobyn",
+    "title": "전자고지 시스템 개발",
+    "content": "<h2 id=\"heading-0\">시스템 개요</h2>\n<p>전자고지 시스템은 기업이나 기관에서 발행하는 각종 고지서를 카카오, 네이버, KT 등의 플랫폼을 통해 전자문서로 발송하고 관리하는 통합 솔루션입니다.</p>\n<h3 id=\"heading-1\">주요 기능</h3>\n<ol>\n<li><strong>전자고지서 발송 관리</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_document_payment.gif\" alt=\"3\">\n(결제 정보 관리 및 처리)</p>\n<ol start=\"2\">\n<li><strong>결제 시스템 연동</strong>\n<ul>\n<li>NICEpay 결제 모듈 통합</li>\n<li>실시간 결제 상태 확인</li>\n<li>결제 이력 관리</li>\n<li>환불 프로세스 지원</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_stats_1.gif\" alt=\"5\">\n(일별/월별 발송량 통계 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_2.gif\" alt=\"6\">\n(플랫폼별 발송 성공률 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_3.gif\" alt=\"7\">\n(결제 전환율 및 매출 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_4.gif\" alt=\"8\">\n(기간별 상세 통계 리포트)</p>\n<ol start=\"3\">\n<li><strong>통계 대시보드</strong></li>\n</ol>\n<ul>\n<li>발송 현황 분석</li>\n<li>플랫폼별 성공률 추적</li>\n<li>결제 전환율 모니터링</li>\n<li>기간별 통계 리포트</li>\n</ul>\n<p><img src=\"/images/mobyn/mobyn_document_management.gif\" alt=\"2\">\n(문서 템플릿 관리 및 편집)</p>\n<ol start=\"4\">\n<li><strong>발송 관리 시스템</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_status.gif\" alt=\"9\">\n(실시간 발송 상태 모니터링)</p>\n<ol start=\"5\">\n<li><strong>발송 제목 및 내용 관리</strong>\n<ul>\n<li>발송 제목 및 내용 관리</li>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_subject.gif\" alt=\"10\">\n(발송 제목 및 내용 관리)</p>\n<ol start=\"6\">\n<li><strong>발송 대상자 관리</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_send.gif\" alt=\"4\">\n(대량 발송 프로세스 실행)</p>\n<ol start=\"7\">\n<li><strong>발송 예약 관리</strong>\n<ul>\n<li>발송 예약 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      "NicePay",
+      "TypeScript",
+      "React Hook Form"
+    ],
+    "description": "카카오/네이버/KT 전자문서 발송 및 통계 시스템",
+    "thumbnail": "/images/mobyn/mobyn_dashboard.gif",
+    "tocItems": [
+      {
+        "id": "heading-0",
+        "text": "시스템 개요",
+        "level": 2,
+        "isMainTopic": true,
+        "position": 75
+      },
+      {
+        "id": "heading-1",
+        "text": "주요 기능",
+        "level": 3,
+        "isMainTopic": false,
+        "position": 191
+      }
+    ],
+    "totalHeight": 1087
+  }
+]

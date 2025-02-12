@@ -1,0 +1,149 @@
+{
+  "id": "convention_document",
+  "title": "Convention Document",
+  "content": "<h2 id=\"heading-0\">1. 목적</h2>\n<ol>\n<li>개발 표준화: 프론트엔드 개발에 일관성을 부여하여 코드의 가독성과 유지보수성을 높입니다.</li>\n<li>팀 협업 강화: 개발자들 간의 협업을 원활하게 하고 의사소통을 개선합니다.</li>\n<li>새로운 개발자 온보딩: 새로 합류한 개발자가 프로젝트에 빠르게 적응하고 효율적으로 개발할 수 있도록 돕습니다.</li>\n<li>코드 품질 향상: 일관된 코딩 스타일과 최적화 기법을 적용하여 코드의 품질을 향상시킵니다.</li>\n<li>유지보수성 강화: 일관된 구조와 명명 규칙을 통해 코드의 가독성을 높이고 유지보수를 용이하게 합니다.</li>\n</ol>\n<h2 id=\"heading-1\">2. 코딩 스타일 가이드</h2>\n<h3 id=\"heading-2\">2.1. 들여쓰기</h3>\n<ol>\n<li>Prettier의 기본설정으로 들여쓰기 합니다.</li>\n</ol>\n<h3 id=\"heading-3\">2.2. 변수와 상수</h3>\n<p>변수와 상수는 프론트엔드 개발에서 중요한 개념입니다. 이 섹션에서는 변수와 상수의 사용에 대한 가이드라인을 설명합니다.</p>\n<ol>\n<li>변수명과 상수명\n<ul>\n<li>변수명과 상수명은 의미를 명확하게 전달할 수 있도록 짓는 것이 좋습니다.</li>\n<li>변수명과 상수명은 영문을 사용하여 작성합니다.</li>\n<li>여러 단어로 이루어진 경우에는 단어 사이를 카멜케이스로 구분합니다. 예: myVariable, userName</li>\n</ul>\n</li>\n<li>변수의 선언과 할당\n<ul>\n<li>변수를 선언할 때에는 let 키워드를 사용합니다. 예: let count = 0;</li>\n<li>변수의 값은 필요에 따라 언제든지 변경할 수 있습니다.</li>\n</ul>\n</li>\n<li>상수의 선언과 할당\n<ul>\n<li>상수를 선언할 때에는 const 키워드를 사용합니다. 예: const PI = 3.14;</li>\n<li>상수는 한 번 할당된 값은 변경할 수 없습니다.</li>\n</ul>\n</li>\n<li>변수와 상수의 초기화\n<ul>\n<li>변수와 상수는 선언과 동시에 초기값을 할당하는 것이 좋습니다.</li>\n<li>초기화되지 않은 변수나 상수는 의도치 않은 동작을 야기할 수 있으므로 주의해야 합니다.</li>\n</ul>\n</li>\n</ol>\n<p>변수와 상수는 프로그램의 데이터를 저장하고 조작하는 데에 필수적인 요소입니다. 적절하게 변수와 상수를 활용하여 가독성 높은 코드를 작성하고, 필요에 따라 값의 변경 여부를 고려하여 변수와 상수를 선택하시기 바랍니다.</p>\n<h3 id=\"heading-4\">2.3. 함수와 메서드</h3>\n<p>함수와 메서드는 프론트엔드 개발에서 코드의 재사용성과 모듈화를 위해 중요한 요소입니다. 이 섹션에서는 함수와 메서드의 사용에 대한 가이드라인을 제시합니다.</p>\n<ol>\n<li>함수와 메서드의 정의\n<ul>\n<li>함수는 독립적으로 동작하는 코드 블록입니다. 주어진 입력을 받아서 처리하고, 결과를 반환할 수 있습니다.</li>\n<li>메서드는 객체에 속해 있는 함수로, 객체의 상태를 조작하거나 객체의 동작을 수행합니다.</li>\n</ul>\n</li>\n<li>함수와 메서드의 명명 규칙\n<ul>\n<li>함수와 메서드의 이름은 동사 형태로 짓는 것이 일반적입니다. 예: calculateTotal, loginUser</li>\n<li>함수와 메서드의 이름은 의미를 명확하게 전달할 수 있도록 작성해야 합니다.</li>\n<li>여러 단어로 이루어진 경우에는 카멜 케이스(camelCase)를 사용하여 작성합니다. 예: calculateTaxAmount, loginUserWithCredentials</li>\n</ul>\n</li>\n<li>함수와 메서드의 매개변수\n<ul>\n<li>함수와 메서드는 필요한 입력값을 매개변수(parameter)로 받을 수 있습니다.</li>\n<li>매개변수의 이름은 변수와 동일한 명명 규칙을 따르며, 입력값의 의미를 잘 표현할 수 있도록 작성해야 합니다.</li>\n</ul>\n</li>\n<li>함수와 메서드의 반환값\n<ul>\n<li>함수와 메서드는 필요에 따라 결과값을 반환할 수 있습니다.</li>\n<li>반환값의 타입은 명확하게 정의하고, 함수 또는 메서드의 목적과 일치하는 데이터를 반환해야 합니다.</li>\n</ul>\n</li>\n<li>함수와 메서드의 범위\n<ul>\n<li>함수와 메서드는 선언된 블록(scope) 내에서 유효합니다. 함수 내부에서 선언된 변수는 함수 내에서만 사용할 수 있으며, 함수 외부에서는 접근할 수 없습니다.</li>\n</ul>\n</li>\n</ol>\n<p>함수와 메서드는 코드의 재사용성과 유지보수성을 높여주는 도구입니다. 적절하게 함수와 메서드를 활용하여 코드를 구성하고, 가독성과 유연성을 고려하여 함수와 메서드를 설계하시기 바랍니다.</p>\n<h3 id=\"heading-5\">2.4. 컴포넌트</h3>\n<p>클래스와 컴포넌트는 객체지향 프로그래밍과 리액트 프론트엔드 개발에서 중요한 개념입니다. 이 섹션에서는 클래스와 컴포넌트의 사용에 대한 가이드라인을 제시합니다.</p>\n<ol>\n<li>컴포넌트의 정의\n<ul>\n<li>컴포넌트는 UI의 독립적인 구성 요소입니다. 화면에 특정한 기능을 가진 모듈 형태로 나타낼 수 있습니다.</li>\n<li>리액트에서 컴포넌트는 클래스로 정의될 수도 있고, 함수로 정의될 수도 있습니다. 클래스 컴포넌트와 함수형 컴포넌트가 있습니다.</li>\n</ul>\n</li>\n<li>컴포넌트의 명명 규칙\n<ul>\n<li>컴포넌트의 이름은 대문자로 시작해야 합니다.</li>\n<li>컴포넌트의 이름은 명사나 명사구로 짓는 것이 일반적입니다. 예: User, LoginForm, Header</li>\n</ul>\n</li>\n<li>상속과 확장성\n<ul>\n<li>컴포넌트는 상속을 통해 기존의 컴포넌트를 확장할 수 있습니다. 이를 통해 코드의 재사용성과 확장성을 높일 수 있습니다.</li>\n<li>상속을 사용할 때는 상속받은 컴포넌트의 기능을 잘 이해하고, 필요한 부분을 재정의하여 사용해야 합니다.</li>\n</ul>\n</li>\n</ol>\n<p>컴포넌트는 객체지향 개념과 리액트 개발에서 핵심적인 역할을 수행합니다.컴포넌트를 잘 이해하고 적절하게 활용하여 유지보수 가능하고 확장성 있는 코드를 작성해야 합니다.</p>\n<h3 id=\"heading-6\">2.5. 주석</h3>\n<p>주석은 코드에 대한 설명이나 추가 정보를 제공하기 위해 사용됩니다. 올바른 주석 작성은 코드의 가독성과 유지보수성을 향상시키는 데 도움이 됩니다. 아래는 주석 작성에 대한 가이드라인입니다.</p>\n<ol>\n<li>주석의 목적\n<ul>\n<li>주석의 사용을 최대한 지양하며 필수적인 경우에만 사용합니다.</li>\n<li>중요한 사항이나 추후에 작업을 필요로하는 부분을 강조하는 주석을 작성합니다.</li>\n</ul>\n</li>\n<li>주석의 작성 규칙\n<ul>\n<li>주석은 명확하고 간결하게 작성되어야 합니다.</li>\n<li>주석은 코드에 비해 적절한 수로 작성되어야 합니다. 과도한 주석은 코드를 가독성이 떨어뜨릴 수 있습니다.</li>\n<li>주석은 필요한 부분에 작성되어야 하며, 필요 없는 주석은 삭제되어야 합니다.</li>\n<li>주석은 코드의 변경에 따라 업데이트되어야 합니다.</li>\n</ul>\n</li>\n</ol>\n<p>주석은 코드를 이해하고 유지보수하기 쉽게 만들어줍니다. 주석을 적절하게 작성하여 코드를 더욱 명확하고 의미 있는 형태로 유지해야 합니다.</p>\n<h3 id=\"heading-7\">2.6. 네이밍 규칙</h3>\n<p>일관된 네이밍 규칙은 코드의 가독성과 일관성을 유지하는 데 중요합니다. 아래는 네이밍 규칙에 대한 가이드라인입니다.</p>\n<ol>\n<li>변수와 상수 네이밍\n<ul>\n<li>의미 전달: 변수와 상수의 이름은 해당 값을 잘 설명해야 합니다. 다른 개발자들이 이름만으로 변수의 역할과 용도를 이해할 수 있어야 합니다.</li>\n<li>카멜 케이스: 변수와 상수의 이름은 카멜 케이스를 사용합니다. 첫 단어는 소문자로 시작하고, 이후 단어의 첫 글자는 대문자로 작성합니다. 예: firstName, userAge</li>\n<li>가독성: 변수의 길이는 적절하게 설정해야 합니다. 너무 짧으면 의미 전달이 어려우며, 너무 길면 가독성이 저하될 수 있습니다.</li>\n</ul>\n</li>\n<li>함수와 메서드 네이밍\n<ul>\n<li>동사 형태: 함수와 메서드의 이름은 동사로 시작해야 합니다. 동작하는 기능을 잘 설명하는 동사를 선택합니다. 예: getUserData, calculateTotal</li>\n<li>카멜 케이스: 함수와 메서드의 이름은 카멜 케이스를 사용합니다. 첫 단어는 소문자로 시작하고, 이후 단어의 첫 글자는 대문자로 작성합니다. 예: fetchData, updateProfile</li>\n</ul>\n</li>\n<li>컴포넌트 네이밍\n<ul>\n<li>파스칼 케이스: 컴포넌트의 이름은 파스칼 케이스를 사용합니다. 모든 단어의 첫 글자를 대문자로 작성하고, 단어 사이에는 공백이 없습니다. 예: UserService, HomePage</li>\n<li>명확한 역할: 클래스와 컴포넌트의 이름은 해당 역할을 명확하게 전달해야 합니다. 다른 개발자들이 이름만으로 해당 클래스나 컴포넌트의 역할을 이해할 수 있어야 합니다.</li>\n</ul>\n</li>\n<li>폴더 디렉토리 파일 네이밍: routes와 type폴더를 제외하고 src의 모든 폴더 내의 파일의 이름은 index로 통일합니다.\n<ul>\n<li>컴포넌트 폴더\n<ul>\n<li>대문자와 파스칼 케이스: 파일의 이름은 첫 글자를 대문자로 작성하고, 단어 사이에는 공백이 없습니다</li>\n</ul>\n</li>\n<li>이외의 폴더\n<ul>\n<li>소문자와 하이픈: 파일의 이름은 소문자로 작성하며, 여러 단어는 하이픈으로 구분합니다. 예: user-service.js, home-page.tsx</li>\n</ul>\n</li>\n<li>파일 확장자: 파일의 확장자는 해당 파일의 유형에 맞게 설정합니다. 예: .ts, .tsx</li>\n</ul>\n</li>\n</ol>\n<p>일관된 네이밍 규칙을 따르면 코드의 가독성이 향상되고 협업 시에도 일관성을 유지할 수 있습니다. 모든 개발자들이 네이밍 규칙을 공유하고 준수하도록 합니다.</p>\n<h3 id=\"heading-8\">2.7. 코드 포맷팅</h3>\n<p>일관된 코드 포맷팅은 가독성을 향상시키고 협업을 용이하게 만듭니다.</p>\n<p>아래는 코드 포맷팅에 대한 가이드라인이며 순서대로 구성됩니다.</p>\n<ul>\n<li>\n<p>대분류(1,2,3…)를 기준으로 한 줄 띄웁니다.</p>\n</li>\n<li>\n<p>소분류(a,b,c…)는 띄우지 않습니다.</p>\n<ol>\n<li>\n<p>import Module</p>\n<pre><code class=\"language-jsx\">import {\n  Box,\n  Flex,\n  FormControl,\n  FormLabel,\n  Input,\n} from \"@chakra-ui/react\";\nimport { useMemo } from \"react\";\nimport { useForm } from \"react-hook-form\";\n\n</code><p><code class=\"language-jsx\">import { CodeSelect } from \"@mobyen-frontend/common\";<br>import useUserRoles from \"features/user/hooks/useUserRoles\";<br></code></p></pre><p></p><ol>\n<li>외부 모듈: from 이후를 기준, 알파벳 순으로 정렬합니다.</li>\n<li>내부 모듈: from 이후를 기준, 알파벳 순으로 정렬합니다.</li>\n</ol>\n</li>\n<li>\n<p>interface: 스코프 내에 있는 내용을 알파벳 순서대로 정렬합니다.</p>\n<pre><code class=\"language-jsx\">interface SearchPanelProps {\n  isSearching: boolean;\n  onChange: (param: {\n    email: string | null,\n    ext: string | null,\n    mobile: string | null,\n    name: string | null,\n    tel: string | null,\n    userRole: string | null,\n    useYN: string | null,\n  }) =&gt; void;\n  onReset: () =&gt; void;\n}\n</code></pre>\n</li>\n<li>\n<p>defaultProps: 스코프 내에 있는 내용을 알파벳 순서대로 정렬합니다.</p>\n<pre><code class=\"language-jsx\">const defaultProps = {\n  isSearching: false,\n  onChange(_param: {\n    email: null,\n    ext: null,\n    mobile: null,\n    name: null,\n    tel: null,\n    userRole: null,\n    useYN: null,\n  }) {},\n  onReset() {},\n};\n</code></pre>\n</li>\n<li>\n<p>component</p>\n<pre><code class=\"language-jsx\">function SearchPanel({ isSearching, onChange, onReset }: SearchPanelProps) {\n  const { handleSubmit, register, reset, resetField } = useForm&lt;{\n    search: string;\n    searchType?: \"email\" | \"ext\" | \"mobile\" | \"name\" | \"tel\";\n    useYN: string;\n    userRole: string;\n  }&gt;();\n\n<p>  const { data: userRoles } = useUserRoles({ publicYN: \"Y\" });</p><p>  const handleFormSubmit = handleSubmit(<br>    ({ search, searchType, userRole, useYN }) =&gt; {<br>      let email = null;<br>      let ext = null;<br>      let mobile = null;<br>      let name = null;<br>      let tel = null;<br>      if (searchType) {<br>        email = searchType === \"email\" ? search : null;<br>        ext = searchType === \"ext\" ? search : null;<br>        mobile = searchType === \"mobile\" ? search : null;<br>        name = searchType === \"name\" ? search : null;<br>        tel = searchType === \"tel\" ? search : null;<br>      } else {<br>        resetField(\"search\");<br>      }<br>      onChange({<br>        email: email ?? null,<br>        ext: ext ?? null,<br>        mobile: mobile ?? null,<br>        name: name ?? null,<br>        tel: tel ?? null,<br>        userRole: userRole ? userRole : null,<br>        useYN: useYN ? useYN : null,<br>      });<br>    }<br>  );</p><p>  const handleResetButtonClick = () =&gt; {<br>    reset();<br>    onReset();<br>  };</p><p>  const userRoleOptions = useMemo(<br>    () =&gt;<br>      userRoles?.map((role) =&gt; ({<br>        code: String(role.id),<br>        name: role.name ?? \"\",<br>      })) ?? [],<br>    [userRoles]<br>  );<br>  const searchTypeOption = [<br>    {<br>      code: \"name\",<br>      name: \"이름\",<br>    },<br>    {<br>      code: \"email\",<br>      name: \"이메일\",<br>    },<br>    {<br>      code: \"tel\",<br>      name: \"전화번호\",<br>    },<br>    {<br>      code: \"ext\",<br>      name: \"내선번호\",<br>    },<br>    {<br>      code: \"mobile\",<br>      name: \"휴대폰번호\",<br>    },<br>  ];</p></code><p><code class=\"language-jsx\">  return (<br>    &lt;Flex<br>      as=\"form\"<br>      flexDirection=\"column\"<br>      gap={2}<br>      onSubmit={handleFormSubmit}<br>      width=\"100%\"<br>    &gt;<br>      &lt;Box<br>        borderBottomColor=\"black\"<br>        borderBottomWidth=\"1px\"<br>        borderTopColor=\"black\"<br>        borderTopWidth=\"1px\"<br>        p={3}<br>      &gt;<br>        &lt;FormControl&gt;<br>          &lt;FormLabel fontSize=\"xs\" fontWeight=\"bold\" htmlFor=\"userRole\"&gt;<br>            검색조건<br>          &lt;/FormLabel&gt;<br>          &lt;Flex flexWrap=\"wrap\" gap={2}&gt;<br>            &lt;CodeSelect<br>              codes={userRoleOptions}<br>              flex={{ md: 1 }}<br>              id=\"userRole\"<br>              minWidth={{ md: \"150px\" }}<br>              maxWidth={{ lg: \"200px\" }}<br>              placeholder=\"권한\"<br>              {...register(\"userRole\")}<br>            /&gt;<br>            &lt;CodeSelect<br>              codes={[<br>                { code: \"Y\", name: \"사용\" },<br>                { code: \"N\", name: \"미사용\" },<br>              ]}<br>              flex={{ sm: 1 }}<br>              id=\"useYN\"<br>              maxWidth={{ lg: \"200px\" }}<br>              minWidth={{ md: \"150px\" }}<br>              placeholder=\"사용여부\"<br>              {...register(\"useYN\")}<br>            /&gt;<br>            &lt;CodeSelect<br>              codes={searchTypeOption}<br>              flex={{ sm: 1 }}<br>              id=\"searchType\"<br>              maxWidth={{ lg: \"170px\" }}<br>              minWidth={{ md: \"130px\" }}<br>              placeholder=\"검색조건\"<br>              {...register(\"searchType\")}<br>            /&gt;<br>            &lt;Input<br>              flex={{ md: 2 }}<br>              id=\"search\"<br>              maxWidth={{ lg: \"300px\" }}<br>              minWidth={{ md: \"200px\" }}<br>              placeholder=\"검색어\"<br>              {...register(\"search\")}<br>            /&gt;<br>            &lt;Input<br>              disabled={isSearching}<br>              hidden<br>              id=\"searchButton\"<br>              type=\"submit\"<br>            /&gt;<br>            &lt;Input<br>              hidden<br>              id=\"resetButton\"<br>              type=\"button\"<br>              onClick={handleResetButtonClick}<br>            /&gt;<br>          &lt;/Flex&gt;<br>        &lt;/FormControl&gt;<br>      &lt;/Box&gt;<br>    &lt;/Flex&gt;<br>  );<br>}<br></code></p></pre><p></p><ol>\n<li>리액트 훅: 선언 명을 기준, 알파벳 순으로 정렬합니다.</li>\n<li>커스텀 훅: 선언 명을 기준, 알파벳 순으로 정렬합니다.</li>\n<li>useState: 첫 번째 상태변수를 기준, 알파벳 순으로 정렬합니다.</li>\n<li>function: 선언 명을 기준, 알파벳 순으로 정렬합니다.</li>\n<li>useEffect</li>\n<li>watch 함수</li>\n</ol>\n</li>\n<li>\n<p>defaultProps</p>\n<pre><code class=\"language-jsx\">SearchPanel.defaultProps = defaultProps;\n</code></pre>\n</li>\n<li>\n<p>export default</p>\n<pre><code class=\"language-jsx\">export default SearchPanel;\n</code></pre>\n</li>\n</ol>\n</li>\n</ul>\n<h3 id=\"heading-9\">2.8. 에러 처리</h3>\n<p>애플리케이션에서 발생하는 에러를 적절히 처리하는 것은 안정성과 예외 상황에 대한 대응력을 향상시킵니다. 아래는 에러 처리에 대한 가이드라인입니다.</p>\n<ol>\n<li>예외 처리: 예외 상황이 발생할 수 있는 코드 블록에는 적절한 예외 처리를 구현합니다. 이는 try-catch 문을 사용하여 예외를 캐치하고, 적절한 로그 메시지를 출력하거나 사용자에게 에러 메시지를 표시하는 등의 처리를 수행합니다.</li>\n<li>에러 핸들링: 애플리케이션의 최상위 수준에서 에러 핸들링을 구현합니다. 이는 예상치 못한 예외 상황이 발생했을 때 알림을 표시하고, 사용자에게 적절한 안내를 제공하는 등의 처리를 수행합니다.</li>\n<li>로깅: 에러 발생 시 로그를 기록하고 추적 가능한 정보를 포함시킵니다. 이는 디버깅과 문제 해결에 도움을 줄 수 있습니다.</li>\n<li>사용자 피드백: 에러 발생 시 사용자에게 적절한 피드백을 제공합니다. 이는 사용자가 문제 상황을 이해하고 대처할 수 있도록 도움을 줄 수 있습니다.</li>\n<li>예외 처리 모듈: 애플리케이션에서 공통적으로 발생하는 예외 상황에 대한 처리를 모듈화하여 재사용성을 높일 수 있습니다.</li>\n</ol>\n<p>애플리케이션에서 발생할 수 있는 예외 상황을 사전에 고려하고, 적절한 에러 처리를 구현하여 안정성과 사용자 경험을 개선하는 것이 좋습니다.</p>\n<h2 id=\"heading-10\">3. 프로젝트 구조</h2>\n<h3 id=\"heading-11\">3.1. 파일 및 폴더 구조</h3>\n<pre><code class=\"language-jsx\">- `package`: 프로젝트의 루트 디렉토리\n    - `app`: 애플리케이션의 소스 코드와 관련된 디렉토리\n        - `node_modules`: 프로젝트의 의존성 패키지들이 설치되는 디렉토리\n        - `public`: 정적 파일이 위치하는 디렉토리\n        - `src`: 소스 코드가 위치하는 디렉토리입니다.\n            - `api`: 서버 API와 통신하는 코드가 위치하는 디렉토리입니다.\n            - `assets`: 애플리케이션에서 사용되는 정적 리소스(이미지, 아이콘 등)가 위치\n            - `components`: 재사용 가능한 React 컴포넌트들이 위치하는 디렉토리\n            - `features`: 애플리케이션의 기능별로 구성된 모듈이 위치하는 디렉토리\n            - `libs`: 애플리케이션에서 사용되는 유틸리티 함수, 헬퍼 클래스 등이 위치\n            - `redux`: 리덕스의 리듀서, 액션, 미들웨어 등이 포함됩니다.\n            - `routes`: 라우팅과 관련된 코드가 위치하는 디렉토리입니다.\n            - `type`: 타입 정의 파일이 위치하는 디렉토리입니다.\n            - `App.css`: 애플리케이션 전체에 적용되는 CSS 스타일을 정의\n            - `App.test.tsx`: 애플리케이션의 테스트 코드가 위치하는 파일\n            - `index.css`: index.html 파일에서 사용되는 전역 CSS 스타일을 정의하는 파일\n            - `index.tsx`: React DOM 렌더링을 수행하는 코드가 이 파일에 포함됩니다.\n            - `react-app-env.d.ts`: Create React App에 의해 자동 생성되는 TypeScript 환경 설정 파일\n            - `reportWebVitals.ts`: 웹 애플리케이션의 성능 측정을 위한 코드가 위치하는 파일\n            - `setupProxy.js`: 개발 환경에서 프록시 설정을 위한 파일, 개발 서버와 API 서버 간의 통신을 프록시하는데 사용됩니다.\n            - `setupTest.ts`: 테스트 환경 설정을 위한 파일\n            - `theme.ts`: 애플리케이션의 테마 설정을 관리하는 파일\n    - `common`: 재사용되는 코드나 모듈들을 관리하는 디렉토리\n        - `dist`: 재사용되는 코드의 빌드 결과물이 위치하는 디렉토리\n        - `src`: 재사용되는 코드의 소스 파일들이 위치하는 디렉토리\n        - `package.json`: 재사용되는 코드의 의존성 패키지들을 관리하는 파일\n        - `tsconfig.json`: 재사용되는 코드의 TypeScript 환경 설정 파일\n</code></pre>\n<h3 id=\"heading-12\">3.2. 모듈화와 컴포넌트 구성</h3>\n<p>모듈화와 컴포넌트 구성은 코드의 재사용성과 유지보수성을 높이는 중요한 요소입니다. 아래는 모듈화와 컴포넌트 구성에 대한 가이드라인입니다.</p>\n<ol>\n<li>모듈화:\n<ul>\n<li>기능 단위로 모듈을 분리하여 개발합니다. 각 모듈은 특정 기능을 수행하도록 설계되며, 관련된 코드와 리소스를 포함해야 합니다.</li>\n<li>모듈 간의 의존성을 최소화하고, 각 모듈이 독립적으로 작동할 수 있도록 설계합니다. 이는 모듈 간의 결합도를 낮추고 유연성을 높일 수 있습니다.</li>\n<li>모듈의 인터페이스를 명확하게 정의하고, 다른 모듈에서 재사용할 수 있는 API를 제공합니다.</li>\n<li>모듈의 구현을 추상화하고, 내부 구현의 변경에 유연하게 대처할 수 있도록 설계합니다.</li>\n</ul>\n</li>\n<li>컴포넌트 구성:\n<ul>\n<li>컴포넌트는 UI 요소의 재사용 가능한 조합입니다. 비슷한 동작을 하는 UI 요소들을 하나의 컴포넌트로 추상화하고, 필요에 따라 다양한 속성을 통해 재사용할 수 있도록 설계합니다.</li>\n<li>컴포넌트는 단일 책임 원칙을 준수하고, 가능한 한 작고 재사용 가능한 형태로 구성합니다. 이는 컴포넌트의 이해와 유지보수를 용이하게 합니다.</li>\n<li>컴포넌트 간의 계층 구조를 구성하여, 복잡한 UI를 단순화하고 관리 가능한 단위로 분할합니다. 이는 코드의 가독성과 유지보수성을 향상시킵니다.</li>\n<li>컴포넌트의 인터페이스를 명확하게 정의하고, 다른 컴포넌트와의 상호작용을 규정합니다.</li>\n<li>컴포넌트 간의 상태 공유를 최소화하고, 필요한 데이터는 프로퍼티로 전달하여 컴포넌트 간의 독립성을 유지합니다.</li>\n</ul>\n</li>\n</ol>\n<p>모듈화와 컴포넌트 구성은 코드의 구조를 개선하고, 재사용 가능한 코드의 양을 늘리는데 중요한 역할을 합니다. 적절한 모듈화와 컴포넌트 구성을 통해 개발 생산성과 코드 품질을 향상시킬 수 있습니다.</p>\n<h3 id=\"heading-13\">3.3. 상태 관리</h3>\n<p>상태 관리는 애플리케이션에서 데이터의 상태를 효과적으로 관리하는 것을 의미합니다. 아래는 상태 관리에 대한 가이드라인입니다.</p>\n<ol>\n<li>단일 소스로 상태 관리하기:\n<ul>\n<li>애플리케이션의 모든 상태를 단일한 곳에서 관리하는 것이 중요합니다. 이를 통해 상태의 일관성을 유지하고, 데이터의 중복을 피할 수 있습니다.</li>\n<li>상태 관리 라이브러리인 Redux 사용하여 상태를 중앙 집중화합니다.</li>\n</ul>\n</li>\n<li>상태의 불변성 유지:\n<ul>\n<li>상태는 불변성을 유지해야 합니다. 이는 상태를 직접 수정하지 않고 새로운 상태를 생성하여 업데이트하는 방식으로 작업해야 함을 의미합니다.</li>\n</ul>\n</li>\n<li>컴포넌트와 상태의 연결:\n<ul>\n<li>상태 관리 라이브러리를 활용하면 컴포넌트와 상태를 쉽게 연결할 수 있습니다. 이를 통해 상태의 변경을 자동으로 감지하고 컴포넌트를 업데이트할 수 있습니다.</li>\n<li>React의 Context API, ReactQuery 등을 활용하여 컴포넌트와 상태를 연결하고 패칭합니다.</li>\n</ul>\n</li>\n<li>비동기 상태 관리:\n<ul>\n<li>비동기 작업과 관련된 상태를 효과적으로 관리해야 합니다. API 호출, 비동기 데이터 로딩 등의 작업을 처리하는데 있어서 상태 관리 라이브러리의 비동기 처리 기능을 활용할 수 있습니다.</li>\n<li>Redux-Thunk를 사용하여 비동기 작업을 처리합니다.</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-14\">3.4. 라우팅</h3>\n<p>라우팅은 사용자가 애플리케이션 내에서 다른 페이지 또는 뷰로 이동할 수 있는 기능을 제공하는 것입니다. 아래는 라우팅에 대한 가이드라인입니다.</p>\n<ol>\n<li>라우팅 라이브러리 선택:\n<ul>\n<li>React 애플리케이션에서 라우팅을 구현하기 위해 React Router 라우팅 라이브러리를 사용합니다.</li>\n</ul>\n</li>\n<li>라우팅 구성:\n<ul>\n<li>라우팅은 URL 경로와 해당 경로에 연결된 컴포넌트를 매핑하는 방식으로 구성됩니다.</li>\n<li>라우터 컴포넌트를 사용하여 URL 경로와 컴포넌트를 매핑하고, 필요에 따라 중첩된 라우트와 파라미터를 처리할 수 있습니다.</li>\n</ul>\n</li>\n<li>네비게이션:\n<ul>\n<li>사용자가 다른 페이지로 이동할 수 있도록 네비게이션 기능을 구현합니다.</li>\n<li>useNavigate와 react-router-dom의 Navigate를 사용하여 라우터를 조작하여 네비게이션을 처리합니다.</li>\n</ul>\n</li>\n<li>보안과 권한 관리:\n<ul>\n<li>라우팅 시 보안 및 권한 관리가 필요한 경우, 인증 여부를 확인하고 접근 권한을 제어합니다.\n<ul>\n<li>AppLayout: 토큰인증이 요구되는 접근 영역</li>\n<li>NonAuthenticationLayout: 비인증 상태 접근 영역</li>\n</ul>\n</li>\n<li>보호된 라우트, 권한 검사 및 리다이렉션과 같은 기능을 구현하여 보안과 권한 관리를 처리할 수 있습니다.</li>\n</ul>\n</li>\n</ol>\n<p>라우팅은 사용자 경험을 향상시키고, 애플리케이션 내의 다양한 기능과 페이지 간의 이동을 가능하게 합니다. 적절한 라우팅 구현은 사용자의 효율성과 편의성을 높이는 데 중요한 역할을 합니다.</p>\n<h2 id=\"heading-15\">4. 리소스 관리</h2>\n<h3 id=\"heading-16\">4.1. 이미지 및 아이콘</h3>\n<p>이미지 및 아이콘은 애플리케이션에서 시각적인 요소를 추가하고 사용자 경험을 향상시키는 데 중요한 역할을 합니다. 아래는 이미지 및 아이콘 사용에 대한 가이드라인입니다.</p>\n<ol>\n<li>이미지 사용:\n<ul>\n<li>애플리케이션에서 이미지를 사용하여 콘텐츠를 시각적으로 표현할 수 있습니다.</li>\n<li>이미지를 삽입할 때는 최적화된 이미지를 사용하여 로딩 속도를 개선하고, 반응형 디자인에 맞게 이미지 크기를 조정해야 합니다.</li>\n<li>이미지에 대체 텍스트를 제공하여 시각 장애인이나 이미지 로딩에 실패한 경우에도 콘텐츠를 이해할 수 있도록 해야 합니다.</li>\n</ul>\n</li>\n<li>아이콘 사용:\n<ul>\n<li>아이콘은 작고 간결한 그래픽 요소로서 애플리케이션에서 기능이나 상태를 시각적으로 나타내는 데 유용합니다.</li>\n<li>아이콘 라이브러리로 Font Awesome를 사용합니다.</li>\n<li>아이콘은 의미를 명확하게 전달해야 하므로, 사용 시 해당 아이콘의 의미와 사용 범위를 이해하고 적절하게 활용해야 합니다.</li>\n</ul>\n</li>\n<li>이미지 및 아이콘 관리:\n<ul>\n<li>이미지 및 아이콘은 프로젝트의 assets 디렉토리에서 관리됩니다.</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-17\">4.2. 스타일시트.</h3>\n<p>스타일시트는 애플리케이션의 외관과 레이아웃을 결정하는 중요한 요소입니다. Chakra UI와 같은 스타일시트 라이브러리를 사용하면 일관된 디자인 시스템을 구축하고 UI 개발을 효율적으로 진행할 수 있습니다. 아래는 Chakra UI를 사용한 스타일시트 작성에 대한 가이드라인입니다.</p>\n<ol>\n<li>Chakra UI:\n<ul>\n<li>프로젝트에 Chakra UI가 설치되어있습니다.</li>\n<li>ChakraProvider는 애플리케이션의 최상위에 Chakra UI가 적용되어 있습니다.</li>\n</ul>\n</li>\n<li>컴포넌트 스타일링:\n<ul>\n<li>Chakra UI는 다양한 사전 정의된 컴포넌트와 스타일 프로퍼티를 제공합니다. 이를 활용하여 컴포넌트를 스타일링할 수 있습니다.</li>\n<li>스타일 프로퍼티를 사용하여 컴포넌트의 스타일을 변경하거나 커스터마이징할 수 있습니다.</li>\n<li>Chakra UI의 ThemeProvider를 사용하여 테마 설정을 관리하고 커스텀 테마를 적용할 수 있습니다.</li>\n</ul>\n</li>\n<li>반응형 디자인:\n<ul>\n<li>Chakra UI는 반응형 디자인을 지원하여 다양한 장치와 화면 크기에 대응할 수 있습니다.</li>\n<li>\"@chakra-ui/media-query\" 모듈을 사용하여 미디어 쿼리를 활용할 수 있습니다. 이를 활용하여 특정 화면 크기에 대한 스타일 조정합니다.</li>\n</ul>\n</li>\n<li>커스텀 컴포넌트:\n<ul>\n<li>필요에 따라 Chakra UI의 컴포넌트를 확장하여 커스텀 컴포넌트를 생성합니다.</li>\n<li>커스텀 컴포넌트를 생성하여 재사용성과 코드 유지 보수성을 향상킵니다.</li>\n</ul>\n</li>\n</ol>\n<p>Chakra UI를 사용하여 스타일시트를 작성하면 일관된 디자인 시스템을 구축하고 개발 생산성을 높일 수 있습니다. 적절하게 활용하여 사용자 인터페이스를 구성하고 디자인 요소를 일관되게 관리해야 합니다.</p>\n<h3 id=\"heading-18\">4.3. 외부 라이브러리와 의존성 관리</h3>\n<p>모던한 프론트엔드 애플리케이션 개발에는 종종 외부 라이브러리와 의존성이 필요합니다. 이러한 라이브러리와 의존성을 효율적으로 관리하고 활용하는 것이 중요합니다. 아래는 몇 가지 널리 사용되는 라이브러리와 의존성에 대한 간단한 소개입니다:</p>\n<ol>\n<li>emotion:\n<ul>\n<li>emotion은 CSS-in-JS 라이브러리로, JavaScript 코드 내에서 CSS 스타일을 작성할 수 있습니다. 컴포넌트 단위로 스타일을 캡슐화하여 유지보수 및 재사용성을 높일 수 있습니다.</li>\n</ul>\n</li>\n<li>reduxjs:\n<ul>\n<li>reduxjs는 상태 관리 라이브러리로, 애플리케이션의 상태를 중앙에서 관리하고 예측 가능한 상태 변화를 제공합니다. redux를 사용하여 복잡한 애플리케이션 상태를 효과적으로 관리할 수 있습니다.</li>\n</ul>\n</li>\n<li>ag-grid-react:\n<ul>\n<li>ag-grid-react는 강력한 그리드 컴포넌트 라이브러리로, 테이블 형태의 데이터를 표시하고 조작할 수 있습니다. 유연한 기능과 다양한 커스터마이징 옵션을 제공하여 데이터 그리드를 구축할 수 있습니다.</li>\n</ul>\n</li>\n<li>axios:\n<ul>\n<li>axios는 HTTP 클라이언트 라이브러리로, 비동기적으로 서버와 데이터 통신을 할 수 있습니다. REST API와의 상호작용이나 데이터 요청 처리에 유용합니다.</li>\n</ul>\n</li>\n<li>date-fns:\n<ul>\n<li>date-fns는 JavaScript 날짜 유틸리티 라이브러리로, 날짜와 시간 관련 작업을 쉽게 처리할 수 있습니다. 날짜 형식 변환, 날짜 계산, 로컬라이징 등 다양한 기능을 제공합니다.</li>\n</ul>\n</li>\n<li>framer-motion:\n<ul>\n<li>framer-motion은 React용 모션 및 애니메이션 라이브러리로, 화면 전환 및 요소 애니메이션을 부드럽게 구현할 수 있습니다. 유연한 애니메이션 효과와 상호작용을 제공합니다.</li>\n</ul>\n</li>\n<li>lodash:\n<ul>\n<li>lodash는 JavaScript 유틸리티 라이브러리로, 다양한 유용한 함수들을 제공합니다. 배열, 객체, 함수 등을 다루는 다양한 작업에 활용할 수 있습니다.</li>\n</ul>\n</li>\n<li>quill:\n<ul>\n<li>quill은 리치 텍스트 에디터 라이브러리로, 사용자가 서식 있는 텍스트를 작성하고 편집할 수 있는 기능을 제공합니다. 이미지, 표, 링크 등을 삽입할 수 있는 다양한 기능을 제공합니다.</li>\n</ul>\n</li>\n<li>react-datepicker:\n<ul>\n<li>react-datepicker는 React용 날짜 선택 컴포넌트 라이브러리로, 사용자가 날짜를 선택하고 입력할 수 있는 기능을 제공합니다. 다양한 날짜 형식과 옵션을 설정할 수 있습니다.</li>\n</ul>\n</li>\n<li>web-vitals:\n<ul>\n<li>web-vitals는 웹 애플리케이션의 성능 지표를 측정하는 라이브러리로, 사용자 경험을 평가하고 개선하는 데 도움을 줍니다. 측정된 지표를 통해 성능 최적화에 대한 통찰력을 얻을 수 있습니다.</li>\n</ul>\n</li>\n<li>xlsx:\n<ul>\n<li>xlsx는 Excel 파일을 다루는 라이브러리로, 데이터를 읽고 쓰는 기능을 제공합니다. Excel 파일 형식을 다루는 다양한 작업을 수행할 수 있습니다.</li>\n</ul>\n</li>\n<li>monaco-editor:\n<ul>\n<li>monaco-editor는 웹 기반의 텍스트 편집기 라이브러리로, 문법 강조, 자동 완성, 신택스 검증 등 다양한 기능을 제공합니다. 개발자용 IDE나 코드 에디터에 적용할 수 있습니다.</li>\n</ul>\n</li>\n</ol>\n<p>이러한 외부 라이브러리와 의존성을 적절하게 활용하여 개발 생산성을 향상시키고 애플리케이션에 필요한 기능을 구현할 수 있습니다. 의존성 관리와 버전 업데이트에 주의하여 안정성과 호환성을 유지하는 것이 중요합니다. 6. framer-motion:</p>\n<ul>\n<li>framer-motion은 React용 모션 및 애니메이션 라이브러리로, 화면 전환 및 요소 애니메이션을 부드럽게 구현할 수 있습니다. 유연한 애니메이션 효과와 상호작용을 제공합니다.</li>\n</ul>\n<ol start=\"7\">\n<li>lodash:\n<ul>\n<li>lodash는 JavaScript 유틸리티 라이브러리로, 다양한 유용한 함수들을 제공합니다. 배열, 객체, 함수 등을 다루는 다양한 작업에 활용할 수 있습니다.</li>\n</ul>\n</li>\n<li>quill:\n<ul>\n<li>quill은 리치 텍스트 에디터 라이브러리로, 사용자가 서식 있는 텍스트를 작성하고 편집할 수 있는 기능을 제공합니다. 이미지, 표, 링크 등을 삽입할 수 있는 다양한 기능을 제공합니다.</li>\n</ul>\n</li>\n<li>react-datepicker:\n<ul>\n<li>react-datepicker는 React용 날짜 선택 컴포넌트 라이브러리로, 사용자가 날짜를 선택하고 입력할 수 있는 기능을 제공합니다. 다양한 날짜 형식과 옵션을 설정할 수 있습니다.</li>\n</ul>\n</li>\n<li>web-vitals:\n<ul>\n<li>web-vitals는 웹 애플리케이션의 성능 지표를 측정하는 라이브러리로, 사용자 경험을 평가하고 개선하는 데 도움을 줍니다. 측정된 지표를 통해 성능 최적화에 대한 통찰력을 얻을 수 있습니다.</li>\n</ul>\n</li>\n<li>xlsx:\n<ul>\n<li>xlsx는 Excel 파일을 다루는 라이브러리로, 데이터를 읽고 쓰는 기능을 제공합니다. Excel 파일 형식을 다루는 다양한 작업을 수행할 수 있습니다.</li>\n</ul>\n</li>\n<li>monaco-editor:\n<ul>\n<li>monaco-editor는 웹 기반의 텍스트 편집기 라이브러리로, 문법 강조, 자동 완성, 신택스 검증 등 다양한 기능을 제공합니다. 개발자용 IDE나 코드 에디터에 적용할 수 있습니다.</li>\n</ul>\n</li>\n</ol>\n<p>이러한 외부 라이브러리와 의존성을 적절하게 활용하여 개발 생산성을 향상시키고 애플리케이션에 필요한 기능을 구현할 수 있습니다. 의존성 관리와 버전 업데이트에 주의하여 안정성과 호환성을 유지하는 것이 중요합니다.</p>\n",
+  "date": "2024-03-20",
+  "category": "frontend",
+  "tags": [
+    "Convention",
+    "Document"
+  ],
+  "description": "개발 규칙",
+  "thumbnail": "/images/convention.png",
+  "tocItems": [
+    {
+      "id": "heading-0",
+      "text": "1. 목적",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 75
+    },
+    {
+      "id": "heading-1",
+      "text": "2. 코딩 스타일 가이드",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 286
+    },
+    {
+      "id": "heading-2",
+      "text": "2.1. 들여쓰기",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 346
+    },
+    {
+      "id": "heading-3",
+      "text": "2.2. 변수와 상수",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 446
+    },
+    {
+      "id": "heading-4",
+      "text": "2.3. 함수와 메서드",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 730
+    },
+    {
+      "id": "heading-5",
+      "text": "2.4. 컴포넌트",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1038
+    },
+    {
+      "id": "heading-6",
+      "text": "2.5. 주석",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1298
+    },
+    {
+      "id": "heading-7",
+      "text": "2.6. 네이밍 규칙",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1534
+    },
+    {
+      "id": "heading-8",
+      "text": "2.7. 코드 포맷팅",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1818
+    },
+    {
+      "id": "heading-9",
+      "text": "2.8. 에러 처리",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2054
+    },
+    {
+      "id": "heading-10",
+      "text": "3. 프로젝트 구조",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 2377
+    },
+    {
+      "id": "heading-11",
+      "text": "3.1. 파일 및 폴더 구조",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2437
+    },
+    {
+      "id": "heading-12",
+      "text": "3.2. 모듈화와 컴포넌트 구성",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2553
+    },
+    {
+      "id": "heading-13",
+      "text": "3.3. 상태 관리",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2789
+    },
+    {
+      "id": "heading-14",
+      "text": "3.4. 라우팅",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3017
+    },
+    {
+      "id": "heading-15",
+      "text": "4. 리소스 관리",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 3316
+    },
+    {
+      "id": "heading-16",
+      "text": "4.1. 이미지 및 아이콘",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3376
+    },
+    {
+      "id": "heading-17",
+      "text": "4.2. 스타일시트.",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3580
+    },
+    {
+      "id": "heading-18",
+      "text": "4.3. 외부 라이브러리와 의존성 관리",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3864
+    }
+  ],
+  "totalHeight": 4536
+}
