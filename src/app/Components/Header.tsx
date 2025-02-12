@@ -23,7 +23,7 @@ export const Header = () => {
   const [isExperienceOpen, setIsExperienceOpen] = useState(false);
   const [introPost, setIntroPost] = useState<Post | null>(null);
 
-  const experiencePost = {
+  const experiencePost: Post = {
     id: "experience",
     title: "Experience",
     content: `<h2>경력 사항</h2>
@@ -38,12 +38,12 @@ export const Header = () => {
                 <li>개인 블로그 개발</li>
                 <li>포트폴리오 웹사이트 제작</li>
               </ul>`,
-    plainContent: "",
     date: new Date().toISOString(),
     description: "경력 사항",
-    category: "career",
-    tags: ["Career", "Project"],
-    searchTerm: "",
+    category: "about",
+    tags: [],
+    tocItems: [],
+    imageHeights: {},
     thumbnail: "/images/experience.jpg",
   };
 

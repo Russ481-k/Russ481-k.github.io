@@ -1,13 +1,22 @@
+export interface TocItem {
+  id: string;
+  text: string;
+  level: number;
+  isMainTopic: boolean;
+  position: number;
+}
+
 export interface Post {
   id: string;
   title: string;
   content: string;
-  plainContent: string;
   date: string;
-  description: string;
   category: string;
   tags: string[];
+  description?: string;
   thumbnail?: string;
+  tocItems: TocItem[];
+  imageHeights: Record<string, number>;
 }
 
 export interface Category {

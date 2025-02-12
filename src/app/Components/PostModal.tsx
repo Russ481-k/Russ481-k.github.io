@@ -1,12 +1,13 @@
 "use client";
 import { Post } from "@/types/post";
 import { Tag } from "./Tag";
-import { useEffect } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useRef, useState, useCallback } from "react";
 import "../Styles/post_modal.scss";
 import Image from "next/image";
 import { getPostImage } from "@/utils/getPostImage";
 import { ModalPortal } from "./ModalPortal";
+import React from "react";
+import { getClientPost } from "@/utils/clientPosts";
 
 interface PostModalProps {
   post: Post;
@@ -25,28 +26,78 @@ export const PostModal = ({
   nextPost,
   onPostChange,
 }: PostModalProps) => {
-  useEffect(() => {
-    if (isOpen) {
-      // 현재 스크롤 위치 저장
-      const scrollY = window.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.top = `-${scrollY}px`;
-    } else {
-      // 스크롤 위치 복원
-      const scrollY = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.top = "";
-      window.scrollTo(0, parseInt(scrollY || "0") * -1);
+  const [activeId, setActiveId] = useState<string>("");
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const scrollToHeading = useCallback(
+    (id: string) => {
+      const heading = post.tocItems?.find((h) => h.id === id);
+      if (!heading || !contentRef.current) return;
+
+      const headingElement = contentRef.current.querySelector(`#${id}`);
+      if (!headingElement) return;
+
+      const containerRect = contentRef.current.getBoundingClientRect();
+      const headingRect = headingElement.getBoundingClientRect();
+      const relativeTop =
+        headingRect.top - containerRect.top + contentRef.current.scrollTop;
+      const containerPadding = 32;
+
+      contentRef.current.scrollTo({
+        top: relativeTop - containerPadding,
+        behavior: "smooth",
+      });
+    },
+    [post.tocItems]
+  );
+
+  const handleScroll = useCallback(() => {
+    if (!contentRef.current || !post.tocItems?.length) return;
+
+    const containerRect = contentRef.current.getBoundingClientRect();
+    const scrollTop = contentRef.current.scrollTop;
+    const containerPadding = 32;
+
+    // 현재 화면에 보이는 헤딩 찾기
+    let currentHeading = post.tocItems[0];
+
+    for (const heading of post.tocItems) {
+      const headingElement = contentRef.current.querySelector(`#${heading.id}`);
+      if (!headingElement) continue;
+
+      const headingRect = headingElement.getBoundingClientRect();
+      const relativeTop = headingRect.top - containerRect.top;
+
+      // 헤딩이 컨테이너 상단 패딩 위치에 가까워지면 현재 헤딩으로 설정
+      if (relativeTop <= containerPadding + 10) {
+        // 10px의 여유 추가
+        currentHeading = heading;
+      } else {
+        break;
+      }
     }
 
-    return () => {
-      document.body.style.position = "";
-      document.body.style.width = "";
-      document.body.style.top = "";
-    };
-  }, [isOpen]);
+    setActiveId(currentHeading.id);
+  }, [post.tocItems]);
+
+  useEffect(() => {
+    const contentElement = contentRef.current;
+    if (!contentElement) return;
+
+    contentElement.addEventListener("scroll", handleScroll);
+    handleScroll(); // 초기 활성 헤딩 설정
+
+    return () => contentElement.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  const handlePostChange = async (newPost: Post) => {
+    try {
+      const fullPost = await getClientPost(newPost.id);
+      onPostChange(fullPost);
+    } catch (error) {
+      console.error("Error fetching post:", error);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -58,6 +109,9 @@ export const PostModal = ({
 
   const imageUrl = getPostImage(post.thumbnail);
 
+  console.log("Post headings:", post.tocItems); // 목차 데이터 확인
+  console.log("Current post:", post); // 전체 post 객체 확인
+
   const modalContent = (
     <div className="modal_overlay" onClick={onClose}>
       <div className="modal_content" onClick={(e) => e.stopPropagation()}>
@@ -65,7 +119,7 @@ export const PostModal = ({
           {prevPost && (
             <button
               className="nav_button prev"
-              onClick={() => onPostChange(prevPost)}
+              onClick={() => handlePostChange(prevPost)}
             >
               <div className="nav_info">
                 <div className="nav_info_left">
@@ -80,7 +134,7 @@ export const PostModal = ({
           {nextPost && (
             <button
               className="nav_button next"
-              onClick={() => onPostChange(nextPost)}
+              onClick={() => handlePostChange(nextPost)}
             >
               <div className="nav_info">
                 <div className="nav_info_right">
@@ -100,7 +154,7 @@ export const PostModal = ({
           </div>
           <span className="date">{formattedDate}</span>
         </div>
-        <div className="modal_body">
+        <div className="modal_body" ref={contentRef}>
           {post.thumbnail && (
             <div className="modal_thumbnail">
               <Image
@@ -112,10 +166,30 @@ export const PostModal = ({
               />
             </div>
           )}
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div className="content_wrapper">
+            <article
+              className="content"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+            {post.tocItems?.length > 0 && (
+              <nav className="table_of_contents">
+                <h3>Index</h3>
+                <ul>
+                  {post.tocItems.map((item) => (
+                    <li
+                      key={item.id}
+                      className={`toc_item ${
+                        item.isMainTopic ? "main_topic" : "sub_topic"
+                      } ${activeId === item.id ? "active" : ""}`}
+                      onClick={() => scrollToHeading(item.id)}
+                    >
+                      {item.text}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )}
+          </div>
         </div>
         <div className="modal_footer">
           <button className="close_button" onClick={onClose}>

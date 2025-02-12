@@ -8,18 +8,9 @@ import { getPostImage } from "@/utils/getPostImage";
 import { PostModal } from "../Components/PostModal";
 import type { Post } from "@/types/post";
 
-interface PostProps {
-  id: string;
-  title: string;
-  content: string;
-  plainContent: string;
-  date: string;
-  description: string;
-  category: string;
-  tags: string[];
-  searchTerm: string;
-  thumbnail?: string;
-  posts: Post[];
+interface PostProps extends Post {
+  searchTerm?: string;
+  posts?: Post[];
 }
 
 const Post = (props: PostProps) => {
@@ -45,20 +36,23 @@ const Post = (props: PostProps) => {
   const remainingTags = tags?.length > 3 ? tags.length - 3 : 0;
 
   const getAdjacentPosts = (currentPost: PostProps) => {
-    const sortedPosts = props.posts.sort(
+    const sortedPosts = props.posts?.sort(
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
 
-    const currentIndex = sortedPosts.findIndex(
+    const currentIndex = sortedPosts?.findIndex(
       (post) => post.id === currentPost.id
     );
 
     return {
       prevPost:
-        currentIndex < sortedPosts.length - 1
-          ? sortedPosts[currentIndex + 1]
+        currentIndex && currentIndex < (sortedPosts?.length ?? 0) - 1
+          ? sortedPosts?.[currentIndex + 1]
           : null,
-      nextPost: currentIndex > 0 ? sortedPosts[currentIndex - 1] : null,
+      nextPost:
+        currentIndex && currentIndex > 0
+          ? sortedPosts?.[currentIndex - 1]
+          : null,
     };
   };
 
@@ -89,7 +83,7 @@ const Post = (props: PostProps) => {
         <div className="post_content">
           <div className="post_header">
             <div className="title_section">
-              <h1>{highlightText(title, searchTerm)}</h1>
+              <h1>{highlightText(title || "", searchTerm || "")}</h1>
               <div className="tags">
                 {visibleTags.map((tag, index) => (
                   <span key={index} className="tag">

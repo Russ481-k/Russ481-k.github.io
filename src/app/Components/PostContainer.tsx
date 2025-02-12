@@ -49,13 +49,11 @@ export const PostContainer = ({
     // 그 다음 검색어로 필터링
     const searchFiltered = categoryFiltered.filter(
       (post) =>
-        post.plainContent
-          ?.toLowerCase()
+        post.content
+          .replace(/<[^>]*>/g, "") // HTML 태그 제거
+          .toLowerCase()
           .includes(debouncedSearchTerm.toLowerCase()) ||
-        post.title?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
-        post.description
-          ?.toLowerCase()
-          .includes(debouncedSearchTerm.toLowerCase())
+        post.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
     );
 
     // 전체보기일 때만 카테고리 순서대로 정렬
@@ -84,7 +82,7 @@ export const PostContainer = ({
       filteredPosts.length === 0 ? externalPosts : filteredPosts;
 
     const texts = postsToUse.map(
-      (post) => `${post.title} ${post.plainContent} ${post.description}`
+      (post) => `${post.title} ${post.content} ${post.description}`
     );
     setSearchResults(texts);
     onSearchResults(texts);
