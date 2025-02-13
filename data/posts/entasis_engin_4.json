@@ -1,0 +1,230 @@
+{
+  "id": "entasis_engin_4",
+  "title": "금융 데이터 분석 및 AI 연동 솔루션 - 세부 기능 정의",
+  "content": "<h1 id=\"heading-0\">금융 데이터 분석 시스템 세부 기능 정의</h1>\n<h2 id=\"heading-1\">📊 핵심 기능 상세</h2>\n<h3 id=\"heading-2\">1. 데이터 수집 시스템</h3>\n<h4 id=\"heading-3\">1.1 거래소 연동</h4>\n<ul>\n<li>[ ] Binance API 연동 구현\n<ul>\n<li>WebSocket 실시간 데이터 수신</li>\n<li>REST API 히스토리 데이터 수집</li>\n</ul>\n</li>\n<li>[ ] Bybit API 연동 구현\n<ul>\n<li>선물 거래 데이터 수집</li>\n<li>레버리지 정보 수집</li>\n</ul>\n</li>\n<li>[ ] Deribit API 연동 구현\n<ul>\n<li>옵션 데이터 수집</li>\n<li>그리스 지표 계산</li>\n</ul>\n</li>\n</ul>\n<h4 id=\"heading-4\">1.2 데이터 정제</h4>\n<ul>\n<li>[ ] 실시간 데이터 정규화</li>\n<li>[ ] 이상치 탐지 및 제거</li>\n<li>[ ] 누락 데이터 처리</li>\n</ul>\n<h3 id=\"heading-5\">2. AI 분석 엔진</h3>\n<h4 id=\"heading-6\">2.1 시계열 예측</h4>\n<ul>\n<li>[ ] LSTM 모델 구현\n<ul>\n<li>가격 예측 모델</li>\n<li>변동성 예측 모델</li>\n</ul>\n</li>\n<li>[ ] 앙상블 모델 구현\n<ul>\n<li>Random Forest</li>\n<li>XGBoost</li>\n<li>LightGBM</li>\n</ul>\n</li>\n</ul>\n<h4 id=\"heading-7\">2.2 포트폴리오 최적화</h4>\n<ul>\n<li>[ ] Modern Portfolio Theory 구현</li>\n<li>[ ] Risk Parity 전략 구현</li>\n<li>[ ] 동적 자산 배분 알고리즘</li>\n</ul>\n<h3 id=\"heading-8\">3. 리스크 관리 시스템</h3>\n<h4 id=\"heading-9\">3.1 리스크 지표 계산</h4>\n<ul>\n<li>[ ] Value at Risk (VaR) 계산</li>\n<li>[ ] Expected Shortfall 계산</li>\n<li>[ ] 변동성 지표 모니터링</li>\n</ul>\n<h4 id=\"heading-10\">3.2 포지션 관리</h4>\n<ul>\n<li>[ ] 레버리지 최적화</li>\n<li>[ ] 스탑로스 자동화</li>\n<li>[ ] 마진 콜 알림</li>\n</ul>\n<h3 id=\"heading-11\">4. 대시보드 UI</h3>\n<h4 id=\"heading-12\">4.1 차트 시스템</h4>\n<ul>\n<li>[ ] 캔들스틱 차트 구현</li>\n<li>[ ] 기술적 지표 표시</li>\n<li>[ ] 실시간 업데이트</li>\n</ul>\n<h4 id=\"heading-13\">4.2 포트폴리오 뷰</h4>\n<ul>\n<li>[ ] 자산 배분 현황</li>\n<li>[ ] 수익률 트래킹</li>\n<li>[ ] 리스크 지표 시각화</li>\n</ul>\n<hr>\n<h2 id=\"heading-14\">📋 칸반보드 구성</h2>\n<h3 id=\"heading-15\">🎯 백로그 (Backlog)</h3>\n<h4 id=\"heading-16\">우선순위: 높음</h4>\n<ul>\n<li>[ ] 데이터베이스 스키마 설계</li>\n<li>[ ] API 서버 기본 구조 구축</li>\n<li>[ ] 사용자 인증 시스템 구현</li>\n<li>[ ] 기본 대시보드 레이아웃</li>\n</ul>\n<h4 id=\"heading-17\">우선순위: 중간</h4>\n<ul>\n<li>[ ] 백테스팅 엔진 구현</li>\n<li>[ ] 알림 시스템 구축</li>\n<li>[ ] 포트폴리오 분석 도구</li>\n<li>[ ] 리포트 생성 시스템</li>\n</ul>\n<h4 id=\"heading-18\">우선순위: 낮음</h4>\n<ul>\n<li>[ ] 소셜 트레이딩 기능</li>\n<li>[ ] 모바일 앱 개발</li>\n<li>[ ] API 문서화</li>\n<li>[ ] 튜토리얼 시스템</li>\n</ul>\n<h3 id=\"heading-19\">🏃 진행 중 (In Progress)</h3>\n<h4 id=\"heading-20\">Sprint 1: 기반 시스템</h4>\n<ul>\n<li>[ ] PostgreSQL 데이터베이스 설정</li>\n<li>[ ] Spring Boot 프로젝트 셋업</li>\n<li>[ ] Next.js 프로젝트 초기화</li>\n</ul>\n<h4 id=\"heading-21\">Sprint 2: 데이터 파이프라인</h4>\n<ul>\n<li>[ ] CCXT 라이브러리 연동</li>\n<li>[ ] 실시간 데이터 수집 구현</li>\n<li>[ ] 데이터 정제 파이프라인</li>\n</ul>\n<h3 id=\"heading-22\">✅ 완료 (Done)</h3>\n<h4 id=\"heading-23\">초기 설정</h4>\n<ul>\n<li>[x] 프로젝트 요구사항 정의</li>\n<li>[x] 기술 스택 선정</li>\n<li>[x] 개발 환경 구성</li>\n</ul>\n<hr>\n<h2 id=\"heading-24\">📅 스프린트별 작업 항목</h2>\n<h3 id=\"heading-25\">Sprint 1 (1-2주차)</h3>\n<pre><code class=\"language-plaintext\">+------------------+     +------------------+     +------------------+\n|      To Do       |     |   In Progress    |     |      Done        |\n+------------------+     +------------------+     +------------------+\n| - DB 스키마 설계    |     | - 개발환경 설정     |     | - 요구사항 정의      |\n| - API 구조 설계     |     | - Git 저장소      |     | - 팀 구성          |\n+------------------+     +------------------+     +------------------+\n</code></pre>\n<h3 id=\"heading-26\">Sprint 2 (3-4주차)</h3>\n<pre><code class=\"language-plaintext\">+------------------+     +------------------+     +------------------+\n|      To Do       |     |   In Progress    |     |      Done        |\n+------------------+     +------------------+     +------------------+\n| - 데이터 정제       |     | - DB 구축         |     | - 스키마 설계       |\n| - API 구현        |     | - 기본 API 개발    |     | - 환경 설정         |\n+------------------+     +------------------+     +------------------+\n</code></pre>\n<hr>\n<h2 id=\"heading-27\">🔄 작업 추적</h2>\n<h3 id=\"heading-28\">현재 진행상황</h3>\n<ul>\n<li>전체 진행률: 15%</li>\n<li>주요 마일스톤: MVP 개발 단계</li>\n<li>예상 완료일: 2024년 9월</li>\n</ul>\n<h3 id=\"heading-29\">다음 단계 준비사항</h3>\n<ol>\n<li>스프린트 1 회고</li>\n<li>스프린트 2 계획 수립</li>\n<li>리스크 요소 점검</li>\n</ol>\n<p>이 문서는 프로젝트의 진행 상황을 추적하고 관리하기 위한 기준으로 사용됩니다. 각 기능과 작업은 우선순위와 의존성을 고려하여 순차적으로 구현될 예정입니다. 🚀</p>\n",
+  "date": "2025-02-12",
+  "category": "projects",
+  "tags": [
+    "definition",
+    "kanban",
+    "task",
+    "backlog",
+    "sprint",
+    "tracking"
+  ],
+  "description": "금융 데이터 분석 시스템의 세부 기능 정의 및 칸반보드",
+  "thumbnail": "/images/cryptocurrency.jpg",
+  "tocItems": [
+    {
+      "id": "heading-0",
+      "text": "금융 데이터 분석 시스템 세부 기능 정의",
+      "level": 1,
+      "isMainTopic": true,
+      "position": 19.9140625
+    },
+    {
+      "id": "heading-1",
+      "text": "📊 핵심 기능 상세",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 68.828125
+    },
+    {
+      "id": "heading-2",
+      "text": "1. 데이터 수집 시스템",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 120.2421875
+    },
+    {
+      "id": "heading-3",
+      "text": "1.1 거래소 연동",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 164.515625
+    },
+    {
+      "id": "heading-4",
+      "text": "1.2 데이터 정제",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 402.0625
+    },
+    {
+      "id": "heading-5",
+      "text": "2. AI 분석 엔진",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 520.0546875
+    },
+    {
+      "id": "heading-6",
+      "text": "2.1 시계열 예측",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 564.328125
+    },
+    {
+      "id": "heading-7",
+      "text": "2.2 포트폴리오 최적화",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 759.875
+    },
+    {
+      "id": "heading-8",
+      "text": "3. 리스크 관리 시스템",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 877.8671875
+    },
+    {
+      "id": "heading-9",
+      "text": "3.1 리스크 지표 계산",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 922.140625
+    },
+    {
+      "id": "heading-10",
+      "text": "3.2 포지션 관리",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 1042.6875
+    },
+    {
+      "id": "heading-11",
+      "text": "4. 대시보드 UI",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1160.6796875
+    },
+    {
+      "id": "heading-12",
+      "text": "4.1 차트 시스템",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 1204.953125
+    },
+    {
+      "id": "heading-13",
+      "text": "4.2 포트폴리오 뷰",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 1325.5
+    },
+    {
+      "id": "heading-14",
+      "text": "📋 칸반보드 구성",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 1462.6875
+    },
+    {
+      "id": "heading-15",
+      "text": "🎯 백로그 (Backlog)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1514.1015625
+    },
+    {
+      "id": "heading-16",
+      "text": "우선순위: 높음",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 1559.875
+    },
+    {
+      "id": "heading-17",
+      "text": "우선순위: 중간",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 1699.921875
+    },
+    {
+      "id": "heading-18",
+      "text": "우선순위: 낮음",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 1839.96875
+    },
+    {
+      "id": "heading-19",
+      "text": "🏃 진행 중 (In Progress)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1977.4609375
+    },
+    {
+      "id": "heading-20",
+      "text": "Sprint 1: 기반 시스템",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 2023.234375
+    },
+    {
+      "id": "heading-21",
+      "text": "Sprint 2: 데이터 파이프라인",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 2143.78125
+    },
+    {
+      "id": "heading-22",
+      "text": "✅ 완료 (Done)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2261.7734375
+    },
+    {
+      "id": "heading-23",
+      "text": "초기 설정",
+      "level": 4,
+      "isMainTopic": false,
+      "position": 2307.546875
+    },
+    {
+      "id": "heading-24",
+      "text": "📅 스프린트별 작업 항목",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 2444.734375
+    },
+    {
+      "id": "heading-25",
+      "text": "Sprint 1 (1-2주차)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2496.1484375
+    },
+    {
+      "id": "heading-26",
+      "text": "Sprint 2 (3-4주차)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2648.5859375
+    },
+    {
+      "id": "heading-27",
+      "text": "🔄 작업 추적",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 2817.21875
+    },
+    {
+      "id": "heading-28",
+      "text": "현재 진행상황",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2868.6328125
+    },
+    {
+      "id": "heading-29",
+      "text": "다음 단계 준비사항",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2987.5703125
+    }
+  ],
+  "imageHeights": {}
+}
