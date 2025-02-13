@@ -16,133 +16,134 @@
       "text": "1. 목적",
       "level": 2,
       "isMainTopic": true,
-      "position": 73.6
+      "position": 19.9140625
     },
     {
       "id": "heading-1",
       "text": "2. 코딩 스타일 가이드",
       "level": 2,
       "isMainTopic": true,
-      "position": 332.79999999999995
+      "position": 205.7421875
     },
     {
       "id": "heading-2",
       "text": "2.1. 들여쓰기",
       "level": 3,
       "isMainTopic": false,
-      "position": 650.88
+      "position": 254.65625
     },
     {
       "id": "heading-3",
       "text": "2.2. 변수와 상수",
       "level": 3,
       "isMainTopic": false,
-      "position": 1075.8400000000001
+      "position": 334.59375
     },
     {
       "id": "heading-4",
       "text": "2.3. 함수와 메서드",
       "level": 3,
       "isMainTopic": false,
-      "position": 1863.0400000000004
+      "position": 778.03125
     },
     {
       "id": "heading-5",
       "text": "2.4. 컴포넌트",
       "level": 3,
       "isMainTopic": false,
-      "position": 3044.48
+      "position": 1337.46875
     },
     {
       "id": "heading-6",
       "text": "2.5. 주석",
       "level": 3,
       "isMainTopic": false,
-      "position": 4524.16
+      "position": 1761.40625
     },
     {
       "id": "heading-7",
       "text": "2.6. 네이밍 규칙",
       "level": 3,
       "isMainTopic": false,
-      "position": 6286.080000000004
+      "position": 2107.34375
     },
     {
       "id": "heading-8",
       "text": "2.7. 코드 포맷팅",
       "level": 3,
       "isMainTopic": false,
-      "position": 8458.240000000007
+      "position": 2783.78125
     },
     {
       "id": "heading-9",
       "text": "2.8. 에러 처리",
       "level": 3,
       "isMainTopic": false,
-      "position": 11040.640000000005
+      "position": 6342.21875
     },
     {
       "id": "heading-10",
       "text": "3. 프로젝트 구조",
       "level": 2,
       "isMainTopic": true,
-      "position": 13872.000000000004
+      "position": 6728.3515625
     },
     {
       "id": "heading-11",
       "text": "3.1. 파일 및 폴더 구조",
       "level": 3,
       "isMainTopic": false,
-      "position": 16762.24
+      "position": 6777.265625
     },
     {
       "id": "heading-12",
       "text": "3.2. 모듈화와 컴포넌트 구성",
       "level": 3,
       "isMainTopic": false,
-      "position": 19775.36000000001
+      "position": 7269.703125
     },
     {
       "id": "heading-13",
       "text": "3.3. 상태 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 23118.720000000023
+      "position": 7771.640625
     },
     {
       "id": "heading-14",
       "text": "3.4. 라우팅",
       "level": 3,
       "isMainTopic": false,
-      "position": 26760.640000000036
+      "position": 8179.578125
     },
     {
       "id": "heading-15",
       "text": "4. 리소스 관리",
       "level": 2,
       "isMainTopic": true,
-      "position": 30779.520000000048
+      "position": 8643.7109375
     },
     {
       "id": "heading-16",
       "text": "4.1. 이미지 및 아이콘",
       "level": 3,
       "isMainTopic": false,
-      "position": 34857.280000000035
+      "position": 8692.625
     },
     {
       "id": "heading-17",
       "text": "4.2. 스타일시트.",
       "level": 3,
       "isMainTopic": false,
-      "position": 39217.6
+      "position": 9081.0625
     },
     {
       "id": "heading-18",
       "text": "4.3. 외부 라이브러리와 의존성 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 43940.15999999996
+      "position": 9562.5
     }
-  ]
+  ],
+  "imageHeights": {}
 }

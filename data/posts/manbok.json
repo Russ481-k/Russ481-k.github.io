@@ -16,35 +16,39 @@
       "text": "프로젝트 개요",
       "level": 2,
       "isMainTopic": true,
-      "position": 105.28
+      "position": 0
     },
     {
       "id": "heading-1",
       "text": "주요 기능",
       "level": 3,
       "isMainTopic": false,
-      "position": 301.12
+      "position": 54.4140625
     },
     {
       "id": "heading-2",
       "text": "기술 스택",
       "level": 3,
       "isMainTopic": false,
-      "position": 1083.52
+      "position": 180.546875
     },
     {
       "id": "heading-3",
       "text": "개발 로드맵",
       "level": 3,
       "isMainTopic": false,
-      "position": 2068.8
+      "position": 0
     },
     {
       "id": "heading-4",
       "text": "기대 효과",
       "level": 3,
       "isMainTopic": false,
-      "position": 3528.96
+      "position": 952.984375
     }
-  ]
+  ],
+  "imageHeights": {
+    "img-0": 18.5,
+    "img-3": 18.5
+  }
 }

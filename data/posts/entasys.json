@@ -24,105 +24,106 @@
       "text": "1. 프로젝트 개요",
       "level": 2,
       "isMainTopic": true,
-      "position": 73.6
+      "position": 19.9140625
     },
     {
       "id": "heading-1",
       "text": "프로젝트 명",
       "level": 3,
       "isMainTopic": false,
-      "position": 206.07999999999998
+      "position": 68.828125
     },
     {
       "id": "heading-2",
       "text": "프로젝트 목적",
       "level": 3,
       "isMainTopic": false,
-      "position": 445.43999999999994
+      "position": 148.765625
     },
     {
       "id": "heading-3",
       "text": "핵심 기능",
       "level": 3,
       "isMainTopic": false,
-      "position": 823.68
+      "position": 267.703125
     },
     {
       "id": "heading-4",
       "text": "시스템 아키텍처",
       "level": 2,
       "isMainTopic": true,
-      "position": 1627.52
+      "position": 831.3359375
     },
     {
       "id": "heading-5",
       "text": "수집 계층",
       "level": 3,
       "isMainTopic": false,
-      "position": 2490.2400000000002
+      "position": 880.25
     },
     {
       "id": "heading-6",
       "text": "저장 계층",
       "level": 3,
       "isMainTopic": false,
-      "position": 3507.8400000000006
+      "position": 1018.6875
     },
     {
       "id": "heading-7",
       "text": "분석 계층",
       "level": 3,
       "isMainTopic": false,
-      "position": 4680.3200000000015
+      "position": 1157.125
     },
     {
       "id": "heading-8",
       "text": "표현 계층",
       "level": 3,
       "isMainTopic": false,
-      "position": 6007.680000000003
+      "position": 1295.5625
     },
     {
       "id": "heading-9",
       "text": "구축 요구사항",
       "level": 2,
       "isMainTopic": true,
-      "position": 7504.640000000005
+      "position": 1435.1953125
     },
     {
       "id": "heading-10",
       "text": "하드웨어",
       "level": 3,
       "isMainTopic": false,
-      "position": 9060.480000000003
+      "position": 1484.109375
     },
     {
       "id": "heading-11",
       "text": "소프트웨어",
       "level": 3,
       "isMainTopic": false,
-      "position": 10755.199999999997
+      "position": 1603.046875
     },
     {
       "id": "heading-12",
       "text": "향후 로드맵",
       "level": 2,
       "isMainTopic": true,
-      "position": 12619.519999999991
+      "position": 1739.6796875
     },
     {
       "id": "heading-13",
       "text": "2024년 하반기",
       "level": 3,
       "isMainTopic": false,
-      "position": 14542.719999999985
+      "position": 1788.59375
     },
     {
       "id": "heading-14",
       "text": "2025년",
       "level": 3,
       "isMainTopic": false,
-      "position": 16604.79999999998
+      "position": 1907.53125
     }
-  ]
+  ],
+  "imageHeights": {}
 }
