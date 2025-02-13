@@ -2,10 +2,25 @@
 title: "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발"
 date: "2025-02-12"
 category: "backend"
-description: "FastAPI와 PostgreSQL을 사용하여 국내외 프리랜서 플랫폼의 프로젝트 정보를 수집하는 크롤러 시스템 구축 프로젝트"
-tags: ["FastAPI", "PostgreSQL", "Python", "Crawler"]
+description: "프리랜서 플랫폼의 프로젝트 정보를 실시간으로 수집하고 분석하는 크롤러를 만들어보았어요. FastAPI의 비동기 처리와 PostgreSQL의 강력한 기능을 활용해서 효율적인 시스템을 구축했답니다! 🚀"
+tags:
+  [
+    "FastAPI",
+    "PostgreSQL",
+    "Python",
+    "Crawler",
+    "asyncio",
+    "SQLAlchemy",
+    "비동기처리",
+    "데이터수집",
+    "실시간처리",
+  ]
 thumbnail: "/images/fastapi.png"
 ---
+
+# 프로젝트 시작하기: FastAPI와 PostgreSQL 환경 설정 🛠️
+
+안녕하세요! 오늘은 프리랜서 프로젝트 크롤러 개발을 시작하면서 FastAPI와 PostgreSQL 환경을 어떻게 설정했는지 공유해볼게요.
 
 ### **FastAPI와 PostgreSQL을 연동하는 가장 쉬운 방법! 🚀**
 
