@@ -1,8 +1,8 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - 운영 매뉴얼"
+title: "Entasis Engine - 운영 매뉴얼"
 date: "2025-02-13"
 category: "projects"
-description: "금융 데이터 분석 시스템의 운영 및 유지보수 가이드"
+description: "가상자산 데이터 분석 시스템의 운영 및 유지보수 가이드"
 tags:
   [
     "operation",

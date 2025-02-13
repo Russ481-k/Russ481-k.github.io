@@ -1,8 +1,8 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - 데이터베이스 설계"
+title: "Entasis Engine - 데이터베이스 설계"
 date: "2025-02-12"
 category: "projects"
-description: "금융 데이터 분석 시스템의 데이터베이스 스키마 및 설계 문서"
+description: "가상자산 데이터 분석 시스템의 데이터베이스 스키마 및 설계 문서"
 tags:
   [
     "database",

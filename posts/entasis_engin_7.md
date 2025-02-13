@@ -1,8 +1,8 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - AI 모델 설계"
+title: "Entasis Engine - AI 모델 설계"
 date: "2025-02-13"
 category: "projects"
-description: "금융 데이터 분석 시스템의 AI 모델 아키텍처 및 구현 상세"
+description: "가상자산 데이터 분석 시스템의 AI 모델 아키텍처 및 구현 상세"
 tags:
   [
     "ai",

@@ -1,8 +1,8 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - API 명세서"
+title: "Entasis Engine - API 명세서"
 date: "2025-02-12"
 category: "projects"
-description: "금융 데이터 분석 시스템의 RESTful API 및 WebSocket 명세"
+description: "가상자산 데이터 분석 시스템의 RESTful API 및 WebSocket 명세"
 tags:
   [
     "api",

@@ -1,8 +1,8 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - 인프라 구성도"
+title: "Entasis Engine - 인프라 구성도"
 date: "2025-02-13"
 category: "projects"
-description: "금융 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세"
+description: "가상자산 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세"
 tags:
   [
     "infrastructure",

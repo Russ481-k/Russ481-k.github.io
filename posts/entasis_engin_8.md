@@ -1,8 +1,8 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - UI/UX 디자인 가이드"
+title: "Entasis Engine - UI/UX 디자인 가이드"
 date: "2025-02-13"
 category: "projects"
-description: "금융 데이터 분석 시스템의 사용자 인터페이스 및 경험 디자인 가이드"
+description: "가상자산 데이터 분석 시스템의 사용자 인터페이스 및 경험 디자인 가이드"
 tags:
   [
     "ui",

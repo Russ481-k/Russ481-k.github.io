@@ -1,5 +1,5 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션"
+title: "Entasis Engine - 가상자산 데이터 분석 및 AI 연동 솔루션"
 date: "2025-02-10"
 category: "projects"
 description: "현물/선물/옵션 데이터 통합 분석 및 AI 기반 투자 전략 제공 시스템"

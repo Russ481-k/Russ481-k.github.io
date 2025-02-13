@@ -1,8 +1,8 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - 테스트 계획서"
+title: "Entasis Engine - 테스트 계획서"
 date: "2025-02-13"
 category: "projects"
-description: "금융 데이터 분석 시스템의 테스트 전략 및 품질 보증 계획"
+description: "가상자산 데이터 분석 시스템의 테스트 전략 및 품질 보증 계획"
 tags:
   [
     "testing",

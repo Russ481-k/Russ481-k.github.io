@@ -1,5 +1,5 @@
 ---
-title: "금융 데이터 분석 및 AI 연동 솔루션 - 개발 계획서"
+title: "Entasis Engine - 개발 계획서"
 date: "2025-02-11"
 category: "projects"
 description: "현물/선물/옵션 데이터 통합 분석 시스템 개발 로드맵"
