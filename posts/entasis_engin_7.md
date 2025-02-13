@@ -13,7 +13,7 @@ tags:
     "prediction",
     "risk-analysis",
   ]
-thumbnail: "/images/entasis/ai_model.png"
+thumbnail: "/images/cryptocurrency.jpg"
 ---
 
 # 금융 데이터 분석 시스템 AI 모델 설계

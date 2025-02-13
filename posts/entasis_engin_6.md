@@ -13,7 +13,7 @@ tags:
     "authentication",
     "documentation",
   ]
-thumbnail: "/images/entasis/api.png"
+thumbnail: "/images/cryptocurrency.jpg"
 ---
 
 # 금융 데이터 분석 시스템 API 명세서

@@ -13,7 +13,7 @@ tags:
     "monitoring",
     "scaling",
   ]
-thumbnail: "/images/entasis/infrastructure.png"
+thumbnail: "/images/cryptocurrency.jpg"
 ---
 
 # 금융 데이터 분석 시스템 인프라 구성도
