@@ -36,22 +36,18 @@ const Post = (props: PostProps) => {
   const remainingTags = tags?.length > 3 ? tags.length - 3 : 0;
 
   const getAdjacentPosts = (currentPost: PostProps) => {
-    const sortedPosts = props.posts?.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-
-    const currentIndex = sortedPosts?.findIndex(
+    const currentIndex = props.posts?.findIndex(
       (post) => post.id === currentPost.id
     );
 
     return {
       prevPost:
-        currentIndex && currentIndex < (sortedPosts?.length ?? 0) - 1
-          ? sortedPosts?.[currentIndex + 1]
+        currentIndex && currentIndex < (props.posts?.length ?? 0) - 1
+          ? props.posts?.[currentIndex + 1]
           : null,
       nextPost:
         currentIndex && currentIndex > 0
-          ? sortedPosts?.[currentIndex - 1]
+          ? props.posts?.[currentIndex - 1]
           : null,
     };
   };

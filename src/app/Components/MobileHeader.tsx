@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import "../Styles/mobile_header.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { FaChevronDown, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiNotion } from "react-icons/si";
 import { categories } from "@/data/categories";
 

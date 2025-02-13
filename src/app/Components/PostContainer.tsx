@@ -58,11 +58,13 @@ export const PostContainer = ({
 
     // 전체보기일 때만 카테고리 순서대로 정렬
     if (selectedCategory === "all") {
-      return searchFiltered.sort((a, b) => {
-        const aIndex = categoryOrder.indexOf(a.category);
-        const bIndex = categoryOrder.indexOf(b.category);
-        return aIndex - bIndex;
-      });
+      return searchFiltered
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .sort((a, b) => {
+          const aIndex = categoryOrder.indexOf(a.category);
+          const bIndex = categoryOrder.indexOf(b.category);
+          return aIndex - bIndex;
+        });
     }
 
     return searchFiltered;
