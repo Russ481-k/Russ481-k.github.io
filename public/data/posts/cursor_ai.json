@@ -17,49 +17,72 @@
       "text": "#1 VSCode 연동",
       "level": 2,
       "isMainTopic": true,
-      "position": 136.96
+      "position": 118.9140625
     },
     {
       "id": "heading-1",
       "text": "#2 주요 커맨드 ( 단축키 )",
       "level": 2,
       "isMainTopic": true,
-      "position": 474.24
+      "position": 312.7421875
     },
     {
       "id": "heading-2",
       "text": "#3 심볼 @",
       "level": 2,
       "isMainTopic": true,
-      "position": 1867.2000000000003
+      "position": 0
     },
     {
       "id": "heading-3",
       "text": "#4 AI 모델 추천, 어떤 모델을 써야할까?",
       "level": 2,
       "isMainTopic": true,
-      "position": 3999.039999999992
+      "position": 0
     },
     {
       "id": "heading-4",
       "text": "#5 AI 규칙 설정",
       "level": 2,
       "isMainTopic": true,
-      "position": 6552.960000000012
+      "position": 0
     },
     {
       "id": "heading-5",
       "text": "#6 노트패드 기능 (베타)",
       "level": 2,
       "isMainTopic": true,
-      "position": 10004.160000000042
+      "position": 0
     },
     {
       "id": "heading-6",
       "text": "#7 프로젝트 5분만에 분석하는 법",
       "level": 2,
       "isMainTopic": true,
-      "position": 13940.800000000076
+      "position": 0
     }
-  ]
+  ],
+  "imageHeights": {
+    "img-2": 650,
+    "img-3": 526,
+    "img-4": 122,
+    "img-5": 141,
+    "img-6": 394,
+    "img-7": 150,
+    "img-8": 325,
+    "img-9": 369,
+    "img-11": 310,
+    "img-12": 188,
+    "img-13": 231,
+    "img-14": 505,
+    "img-15": 178,
+    "img-17": 540,
+    "img-18": 554,
+    "img-20": 744,
+    "img-22": 633,
+    "img-23": 942,
+    "img-24": 941,
+    "img-25": 298,
+    "img-26": 801
+  }
 }

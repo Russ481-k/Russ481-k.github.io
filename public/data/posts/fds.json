@@ -18,126 +18,129 @@
       "text": "시스템 개요",
       "level": 2,
       "isMainTopic": true,
-      "position": 73.6
+      "position": 19.9140625
     },
     {
       "id": "heading-1",
       "text": "주요 특징",
       "level": 3,
       "isMainTopic": false,
-      "position": 237.76
+      "position": 126.546875
     },
     {
       "id": "heading-2",
       "text": "핵심 기능",
       "level": 2,
       "isMainTopic": true,
-      "position": 667.52
+      "position": 431.1796875
     },
     {
       "id": "heading-3",
       "text": "1. 실시간 트랜잭션 모니터링",
       "level": 3,
       "isMainTopic": false,
-      "position": 1187.8399999999997
+      "position": 0
     },
     {
       "id": "heading-4",
       "text": "2. 크로스체인 추적 시스템",
       "level": 3,
       "isMainTopic": false,
-      "position": 1863.0399999999995
+      "position": 517.3125
     },
     {
       "id": "heading-5",
       "text": "3. AI 기반 패턴 분석",
       "level": 3,
       "isMainTopic": false,
-      "position": 2693.1199999999994
+      "position": 655.75
     },
     {
       "id": "heading-6",
       "text": "기술 스택",
       "level": 2,
       "isMainTopic": true,
-      "position": 3692.7999999999993
+      "position": 794.1875
     },
     {
       "id": "heading-7",
       "text": "Backend",
       "level": 3,
       "isMainTopic": false,
-      "position": 4751.3600000000015
+      "position": 933.8203125
     },
     {
       "id": "heading-8",
       "text": "Blockchain",
       "level": 3,
       "isMainTopic": false,
-      "position": 5964.800000000004
+      "position": 982.734375
     },
     {
       "id": "heading-9",
       "text": "AI/ML",
       "level": 3,
       "isMainTopic": false,
-      "position": 7317.120000000006
+      "position": 1118.671875
     },
     {
       "id": "heading-10",
       "text": "시스템 아키텍처",
       "level": 2,
       "isMainTopic": true,
-      "position": 8823.040000000006
+      "position": 1235.109375
     },
     {
       "id": "heading-11",
       "text": "주요 컴포넌트 설명",
       "level": 3,
       "isMainTopic": false,
-      "position": 10451.840000000002
+      "position": 1351.7421875
     },
     {
       "id": "heading-12",
       "text": "구현 계획",
       "level": 2,
       "isMainTopic": true,
-      "position": 12506.239999999998
+      "position": 2139.375
     },
     {
       "id": "heading-13",
       "text": "Phase 1: 기본 인프라 구축",
       "level": 3,
       "isMainTopic": false,
-      "position": 14619.519999999993
+      "position": 2735.0078125
     },
     {
       "id": "heading-14",
       "text": "Phase 2: AI 모델 개발",
       "level": 3,
       "isMainTopic": false,
-      "position": 16871.67999999999
+      "position": 2783.921875
     },
     {
       "id": "heading-15",
       "text": "Phase 3: 크로스체인 확장",
       "level": 3,
       "isMainTopic": false,
-      "position": 19262.719999999994
+      "position": 2902.859375
     },
     {
       "id": "heading-16",
       "text": "기대 효과",
       "level": 2,
       "isMainTopic": true,
-      "position": 21807.359999999997
+      "position": 3021.796875
     },
     {
       "id": "heading-17",
       "text": "향후 발전 방향",
       "level": 2,
       "isMainTopic": true,
-      "position": 24649.6
+      "position": 3141.9296875
     }
-  ]
+  ],
+  "imageHeights": {
+    "img-3": 18.5
+  }
 }

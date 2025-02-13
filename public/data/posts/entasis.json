@@ -24,147 +24,171 @@
       "text": "1.소개",
       "level": 2,
       "isMainTopic": true,
-      "position": 73.6
+      "position": 19.9140625
     },
     {
       "id": "heading-1",
       "text": "윤수빈",
       "level": 3,
       "isMainTopic": false,
-      "position": 286.08
+      "position": 146.046875
     },
     {
       "id": "heading-2",
       "text": "2. 프로젝트 소개",
       "level": 2,
       "isMainTopic": true,
-      "position": 764.1600000000001
+      "position": 402.6796875
     },
     {
       "id": "heading-3",
       "text": "3.기본 환경 조성",
       "level": 2,
       "isMainTopic": true,
-      "position": 1822.7199999999998
+      "position": 0
     },
     {
       "id": "heading-4",
       "text": "토큰 가격 형성 및 변동성",
       "level": 3,
       "isMainTopic": false,
-      "position": 2940.159999999998
+      "position": 0
     },
     {
       "id": "heading-5",
       "text": "블록체인",
       "level": 3,
       "isMainTopic": false,
-      "position": 4179.839999999996
+      "position": 0
     },
     {
       "id": "heading-6",
       "text": "4.프로젝트 기록",
       "level": 2,
       "isMainTopic": true,
-      "position": 5524.800000000003
+      "position": 1199.0078125
     },
     {
       "id": "heading-7",
       "text": "Fact",
       "level": 3,
       "isMainTopic": false,
-      "position": 7056.320000000011
+      "position": 1247.921875
     },
     {
       "id": "heading-8",
       "text": "[ A**bout Dev ]**",
       "level": 1,
       "isMainTopic": true,
-      "position": 9941.120000000017
+      "position": 1441.359375
     },
     {
       "id": "heading-9",
       "text": "기술 스택",
       "level": 2,
       "isMainTopic": true,
-      "position": 12899.520000000024
+      "position": 1639.4921875
     },
     {
       "id": "heading-10",
       "text": "와이어프레임",
       "level": 2,
       "isMainTopic": true,
-      "position": 15963.200000000032
+      "position": 1879.125
     },
     {
       "id": "heading-11",
       "text": "플로우 차트",
       "level": 2,
       "isMainTopic": true,
-      "position": 19132.16000000004
+      "position": 0
     },
     {
       "id": "heading-12",
       "text": "아키텍처",
       "level": 2,
       "isMainTopic": true,
-      "position": 22454.40000000004
+      "position": 0
     },
     {
       "id": "heading-13",
       "text": "데이터베이스 스키마 다이어그램",
       "level": 2,
       "isMainTopic": true,
-      "position": 25993.600000000042
+      "position": 0
     },
     {
       "id": "heading-14",
       "text": "API 문서",
       "level": 2,
       "isMainTopic": true,
-      "position": 29638.08000000004
+      "position": 0
     },
     {
       "id": "heading-15",
       "text": "스마트 컨트랙트 및 토큰 이코노미 설계",
       "level": 2,
       "isMainTopic": true,
-      "position": 33387.84000000003
+      "position": 0
     },
     {
       "id": "heading-16",
       "text": "Feeling",
       "level": 2,
       "isMainTopic": true,
-      "position": 37242.88000000002
+      "position": 0
     },
     {
       "id": "heading-17",
       "text": "Finding",
       "level": 2,
       "isMainTopic": true,
-      "position": 41266.560000000005
+      "position": 0
     },
     {
       "id": "heading-18",
       "text": "Future Action",
       "level": 2,
       "isMainTopic": true,
-      "position": 45475.83999999999
+      "position": 0
     },
     {
       "id": "heading-19",
       "text": "기술적 문제 해결",
       "level": 2,
       "isMainTopic": true,
-      "position": 49870.71999999997
+      "position": 0
     },
     {
       "id": "heading-20",
       "text": "프로젝트를 마치며",
       "level": 3,
       "isMainTopic": false,
-      "position": 54404.47999999995
+      "position": 0
     }
-  ]
+  ],
+  "imageHeights": {
+    "img-3": 19.5,
+    "img-4": 19.5,
+    "img-5": 19.5,
+    "img-11": 19.5,
+    "img-12": 19.5,
+    "img-13": 19.5,
+    "img-14": 19.5,
+    "img-15": 19.5,
+    "img-16": 19.5,
+    "img-17": 19.5,
+    "img-18": 19.5,
+    "img-19": 19.5,
+    "img-20": 19.5,
+    "img-21": 19.5,
+    "img-22": 19.5,
+    "img-23": 19.5,
+    "img-24": 19.5,
+    "img-25": 19.5,
+    "img-26": 19.5,
+    "img-29": 19.5,
+    "img-33": 19.5,
+    "img-35": 18.5
+  }
 }

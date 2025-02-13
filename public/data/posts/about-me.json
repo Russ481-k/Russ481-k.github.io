@@ -18,98 +18,101 @@
       "text": "About Me",
       "level": 2,
       "isMainTopic": true,
-      "position": 73.6
+      "position": 19.9140625
     },
     {
       "id": "heading-1",
       "text": "Contact",
       "level": 2,
       "isMainTopic": true,
-      "position": 284.15999999999997
+      "position": 200.7421875
     },
     {
       "id": "heading-2",
       "text": "Research & Studies",
       "level": 2,
       "isMainTopic": true,
-      "position": 648.32
+      "position": 323.5703125
     },
     {
       "id": "heading-3",
       "text": "Education",
       "level": 2,
       "isMainTopic": true,
-      "position": 1166.08
+      "position": 449.3984375
     },
     {
       "id": "heading-4",
       "text": "Experience",
       "level": 2,
       "isMainTopic": true,
-      "position": 1885.4399999999996
+      "position": 632.7265625
     },
     {
       "id": "heading-5",
       "text": "VISIONTEC (FullStack Developer)",
       "level": 3,
       "isMainTopic": false,
-      "position": 2663.679999999999
+      "position": 680.140625
     },
     {
       "id": "heading-6",
       "text": "IDINO (FullStack Developer)",
       "level": 3,
       "isMainTopic": false,
-      "position": 3788.159999999998
+      "position": 1017.078125
     },
     {
       "id": "heading-7",
       "text": "KT, NAVER, KAKAO 연동 (Frontend Developer)",
       "level": 3,
       "isMainTopic": false,
-      "position": 5131.200000000001
+      "position": 1227.515625
     },
     {
       "id": "heading-8",
       "text": "NICEpay, 반응형 웹 (Frontend Developer)",
       "level": 3,
       "isMainTopic": false,
-      "position": 6692.800000000005
+      "position": 1439.453125
     },
     {
       "id": "heading-9",
       "text": "Core Competencies",
       "level": 2,
       "isMainTopic": true,
-      "position": 8471.36000000001
+      "position": 0
     },
     {
       "id": "heading-10",
       "text": "금융 시스템 개발 전문성",
       "level": 3,
       "isMainTopic": false,
-      "position": 10308.80000000001
+      "position": 1628.5859375
     },
     {
       "id": "heading-11",
       "text": "지속적인 학습과 혁신",
       "level": 3,
       "isMainTopic": false,
-      "position": 12236.80000000001
+      "position": 1676
     },
     {
       "id": "heading-12",
       "text": "문제 해결 능력",
       "level": 3,
       "isMainTopic": false,
-      "position": 14255.36000000001
+      "position": 1775.4375
     },
     {
       "id": "heading-13",
       "text": "건강한 신체 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 16364.480000000009
+      "position": 1874.875
     }
-  ]
+  ],
+  "imageHeights": {
+    "img-9": 18.5
+  }
 }

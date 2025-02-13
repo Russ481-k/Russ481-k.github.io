@@ -18,14 +18,25 @@
       "text": "시스템 개요",
       "level": 2,
       "isMainTopic": true,
-      "position": 73.6
+      "position": 19.9140625
     },
     {
       "id": "heading-1",
       "text": "주요 기능",
       "level": 3,
       "isMainTopic": false,
-      "position": 237.76
+      "position": 126.546875
     }
-  ]
+  ],
+  "imageHeights": {
+    "img-2": 18.5,
+    "img-3": 18.5,
+    "img-4": 18.5,
+    "img-5": 18.5,
+    "img-6": 18.5,
+    "img-7": 18.5,
+    "img-8": 18.5,
+    "img-9": 18.5,
+    "img-10": 18.5
+  }
 }
