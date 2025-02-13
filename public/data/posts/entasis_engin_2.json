@@ -1,0 +1,231 @@
+{
+  "id": "entasis_engin_2",
+  "title": "금융 데이터 분석 및 AI 연동 솔루션 - 개발 계획서",
+  "content": "<h1 id=\"heading-0\">금융 데이터 분석 및 AI 연동 솔루션 개발 계획서</h1>\n<h2 id=\"heading-1\">📋 개발 단계 개요</h2>\n<h3 id=\"heading-2\">Phase 1: 기반 시스템 구축 (1-2개월)</h3>\n<ol>\n<li>\n<p><strong>데이터 파이프라인 구축</strong></p>\n<ul>\n<li>PostgreSQL + TimescaleDB 설정</li>\n<li>기본 데이터 스키마 설계</li>\n<li>CCXT 연동 및 데이터 수집 구현</li>\n</ul>\n</li>\n<li>\n<p><strong>백엔드 기초 시스템</strong></p>\n<ul>\n<li>Java + Spring Boot 기반 서버 구축</li>\n<li>RESTful API 설계</li>\n<li>기본 인증/인가 시스템 구현</li>\n</ul>\n</li>\n<li>\n<p><strong>프론트엔드 기초 작업</strong></p>\n<ul>\n<li>Next.js 프로젝트 설정</li>\n<li>기본 UI/UX 디자인</li>\n<li>컴포넌트 구조 설계</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-3\">Phase 2: 핵심 기능 개발 (2-3개월)</h3>\n<ol>\n<li>\n<p><strong>데이터 처리 시스템</strong></p>\n<ul>\n<li>Apache Spark 기반 데이터 처리</li>\n<li>실시간 데이터 스트리밍</li>\n<li>데이터 정제 및 가공</li>\n</ul>\n</li>\n<li>\n<p><strong>AI 모델 개발</strong></p>\n<ul>\n<li>기본 예측 모델 구현</li>\n<li>백테스팅 시스템 구축</li>\n<li>모델 평가 및 최적화</li>\n</ul>\n</li>\n<li>\n<p><strong>시각화 구현</strong></p>\n<ul>\n<li>D3.js 차트 구현</li>\n<li>실시간 데이터 업데이트</li>\n<li>대시보드 레이아웃 구성</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-4\">Phase 3: 고도화 및 최적화 (2-3개월)</h3>\n<ol>\n<li>\n<p><strong>AI 모델 고도화</strong></p>\n<ul>\n<li>고급 예측 모델 추가</li>\n<li>앙상블 모델 구현</li>\n<li>실시간 학습 시스템</li>\n</ul>\n</li>\n<li>\n<p><strong>성능 최적화</strong></p>\n<ul>\n<li>데이터베이스 쿼리 최적화</li>\n<li>캐싱 시스템 구현</li>\n<li>분산 처리 시스템 보완</li>\n</ul>\n</li>\n<li>\n<p><strong>사용자 경험 개선</strong></p>\n<ul>\n<li>반응형 UI 개선</li>\n<li>성능 모니터링 추가</li>\n<li>에러 처리 강화</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-5\">🎯 스프린트 계획</h2>\n<h3 id=\"heading-6\">Sprint 1-2: 기반 시스템 (4주)</h3>\n<ul>\n<li>데이터베이스 설계 및 구축</li>\n<li>기본 API 서버 구현</li>\n<li>프론트엔드 프로젝트 셋업</li>\n</ul>\n<h3 id=\"heading-7\">Sprint 3-4: 데이터 파이프라인 (4주)</h3>\n<ul>\n<li>CCXT 연동 구현</li>\n<li>실시간 데이터 수집</li>\n<li>기본 데이터 처리 로직</li>\n</ul>\n<h3 id=\"heading-8\">Sprint 5-6: AI 모델 기초 (4주)</h3>\n<ul>\n<li>기본 예측 모델 개발</li>\n<li>백테스팅 시스템</li>\n<li>모델 평가 지표</li>\n</ul>\n<h3 id=\"heading-9\">Sprint 7-8: 시각화 (4주)</h3>\n<ul>\n<li>차트 컴포넌트 개발</li>\n<li>대시보드 구현</li>\n<li>실시간 업데이트</li>\n</ul>\n<h3 id=\"heading-10\">Sprint 9-10: 고도화 (4주)</h3>\n<ul>\n<li>AI 모델 개선</li>\n<li>성능 최적화</li>\n<li>UI/UX 개선</li>\n</ul>\n<h2 id=\"heading-11\">📊 마일스톤</h2>\n<h3 id=\"heading-12\">Milestone 1: MVP 출시 (2개월)</h3>\n<ul>\n<li>[x] 기본 데이터 수집</li>\n<li>[x] 단순 예측 모델</li>\n<li>[x] 기본 대시보드</li>\n</ul>\n<h3 id=\"heading-13\">Milestone 2: 베타 버전 (4개월)</h3>\n<ul>\n<li>[ ] 실시간 데이터 처리</li>\n<li>[ ] 고급 AI 모델</li>\n<li>[ ] 완성된 대시보드</li>\n</ul>\n<h3 id=\"heading-14\">Milestone 3: 정식 버전 (6개월)</h3>\n<ul>\n<li>[ ] 전체 기능 구현</li>\n<li>[ ] 성능 최적화</li>\n<li>[ ] 안정성 확보</li>\n</ul>\n<h2 id=\"heading-15\">🛠 개발 환경 및 도구</h2>\n<h3 id=\"heading-16\">개발 환경</h3>\n<ul>\n<li>IDE: IntelliJ IDEA, VSCode</li>\n<li>버전 관리: Git, GitHub</li>\n<li>CI/CD: Jenkins, GitHub Actions</li>\n</ul>\n<h3 id=\"heading-17\">모니터링 도구</h3>\n<ul>\n<li>서버 모니터링: Prometheus, Grafana</li>\n<li>로그 관리: ELK Stack</li>\n<li>성능 분석: JProfiler</li>\n</ul>\n<h2 id=\"heading-18\">📈 품질 관리</h2>\n<h3 id=\"heading-19\">테스트 전략</h3>\n<ol>\n<li>\n<p>단위 테스트</p>\n<ul>\n<li>JUnit, Jest</li>\n<li>코드 커버리지 80% 이상</li>\n</ul>\n</li>\n<li>\n<p>통합 테스트</p>\n<ul>\n<li>API 테스트</li>\n<li>E2E 테스트</li>\n</ul>\n</li>\n<li>\n<p>성능 테스트</p>\n<ul>\n<li>부하 테스트</li>\n<li>스트레스 테스트</li>\n</ul>\n</li>\n</ol>\n<h3 id=\"heading-20\">코드 품질</h3>\n<ul>\n<li>ESLint, Prettier</li>\n<li>SonarQube</li>\n<li>코드 리뷰 프로세스</li>\n</ul>\n<h2 id=\"heading-21\">🔄 배포 전략</h2>\n<h3 id=\"heading-22\">개발 환경</h3>\n<ul>\n<li>로컬 개발 환경</li>\n<li>개발 서버</li>\n<li>스테이징 서버</li>\n<li>프로덕션 서버</li>\n</ul>\n<h3 id=\"heading-23\">배포 프로세스</h3>\n<ol>\n<li>개발 환경 테스트</li>\n<li>스테이징 환경 검증</li>\n<li>프로덕션 배포</li>\n<li>모니터링 및 롤백 계획</li>\n</ol>\n<h2 id=\"heading-24\">⚠️ 리스크 관리</h2>\n<h3 id=\"heading-25\">예상 리스크</h3>\n<ol>\n<li>데이터 처리 지연</li>\n<li>AI 모델 정확도</li>\n<li>시스템 확장성</li>\n</ol>\n<h3 id=\"heading-26\">대응 전략</h3>\n<ol>\n<li>캐싱 및 최적화</li>\n<li>모델 평가 및 개선</li>\n<li>확장 가능한 아키텍처</li>\n</ol>\n<h2 id=\"heading-27\">📝 문서화</h2>\n<h3 id=\"heading-28\">개발 문서</h3>\n<ul>\n<li>API 문서 (Swagger)</li>\n<li>시스템 아키텍처 문서</li>\n<li>데이터베이스 스키마</li>\n</ul>\n<h3 id=\"heading-29\">사용자 문서</h3>\n<ul>\n<li>사용자 가이드</li>\n<li>API 사용 설명서</li>\n<li>트러블슈팅 가이드</li>\n</ul>\n<p>이 프로젝트는 6개월간의 개발 기간을 통해 완성도 높은 금융 데이터 분석 시스템을 구축하는 것을 목표로 합니다. 각 단계별 세부 계획을 통해 체계적인 개발을 진행하겠습니다. 🚀</p>\n",
+  "date": "2025-02-11",
+  "category": "projects",
+  "tags": [
+    "Project Management",
+    "Development Planning",
+    "System Design",
+    "Roadmap",
+    "Agile",
+    "Sprint",
+    "Milestone"
+  ],
+  "description": "현물/선물/옵션 데이터 통합 분석 시스템 개발 로드맵",
+  "thumbnail": "/images/cryptocurrency.jpg",
+  "tocItems": [
+    {
+      "id": "heading-0",
+      "text": "금융 데이터 분석 및 AI 연동 솔루션 개발 계획서",
+      "level": 1,
+      "isMainTopic": true,
+      "position": 19.9140625
+    },
+    {
+      "id": "heading-1",
+      "text": "📋 개발 단계 개요",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 68.828125
+    },
+    {
+      "id": "heading-2",
+      "text": "Phase 1: 기반 시스템 구축 (1-2개월)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 120.2421875
+    },
+    {
+      "id": "heading-3",
+      "text": "Phase 2: 핵심 기능 개발 (2-3개월)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 494.6796875
+    },
+    {
+      "id": "heading-4",
+      "text": "Phase 3: 고도화 및 최적화 (2-3개월)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 869.1171875
+    },
+    {
+      "id": "heading-5",
+      "text": "🎯 스프린트 계획",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 1244.75
+    },
+    {
+      "id": "heading-6",
+      "text": "Sprint 1-2: 기반 시스템 (4주)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1296.1640625
+    },
+    {
+      "id": "heading-7",
+      "text": "Sprint 3-4: 데이터 파이프라인 (4주)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1415.1015625
+    },
+    {
+      "id": "heading-8",
+      "text": "Sprint 5-6: AI 모델 기초 (4주)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1534.0390625
+    },
+    {
+      "id": "heading-9",
+      "text": "Sprint 7-8: 시각화 (4주)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1652.9765625
+    },
+    {
+      "id": "heading-10",
+      "text": "Sprint 9-10: 고도화 (4주)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1771.9140625
+    },
+    {
+      "id": "heading-11",
+      "text": "📊 마일스톤",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 1892.046875
+    },
+    {
+      "id": "heading-12",
+      "text": "Milestone 1: MVP 출시 (2개월)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 1943.4609375
+    },
+    {
+      "id": "heading-13",
+      "text": "Milestone 2: 베타 버전 (4개월)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2062.3984375
+    },
+    {
+      "id": "heading-14",
+      "text": "Milestone 3: 정식 버전 (6개월)",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2181.3359375
+    },
+    {
+      "id": "heading-15",
+      "text": "🛠 개발 환경 및 도구",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 2301.46875
+    },
+    {
+      "id": "heading-16",
+      "text": "개발 환경",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2352.8828125
+    },
+    {
+      "id": "heading-17",
+      "text": "모니터링 도구",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2469.8203125
+    },
+    {
+      "id": "heading-18",
+      "text": "📈 품질 관리",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 2589.953125
+    },
+    {
+      "id": "heading-19",
+      "text": "테스트 전략",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2641.3671875
+    },
+    {
+      "id": "heading-20",
+      "text": "코드 품질",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 2956.3046875
+    },
+    {
+      "id": "heading-21",
+      "text": "🔄 배포 전략",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 3074.4375
+    },
+    {
+      "id": "heading-22",
+      "text": "개발 환경",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3125.8515625
+    },
+    {
+      "id": "heading-23",
+      "text": "배포 프로세스",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3264.2890625
+    },
+    {
+      "id": "heading-24",
+      "text": "⚠️ 리스크 관리",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 3403.921875
+    },
+    {
+      "id": "heading-25",
+      "text": "예상 리스크",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3455.3359375
+    },
+    {
+      "id": "heading-26",
+      "text": "대응 전략",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3574.2734375
+    },
+    {
+      "id": "heading-27",
+      "text": "📝 문서화",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 3694.40625
+    },
+    {
+      "id": "heading-28",
+      "text": "개발 문서",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3745.8203125
+    },
+    {
+      "id": "heading-29",
+      "text": "사용자 문서",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 3864.7578125
+    }
+  ],
+  "imageHeights": {}
+}
