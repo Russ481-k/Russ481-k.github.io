@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import { LanguageSelector } from "./LanguageSelector";
 
 import "../Styles/header.scss";
 import type { Post } from "@/types/post";
@@ -91,9 +92,12 @@ export const Header = () => {
   return (
     <header className={`header ${isExpanded ? "expanded" : ""}`}>
       <div className="header_content">
-        <h1 className="title">
-          <Link href="/">Bin&apos;s Space</Link>
-        </h1>
+        <div className="title_area">
+          <h1 className="title">
+            <Link href="/">Bin&apos;s Space</Link>
+          </h1>
+          {!isExpanded && <LanguageSelector />}
+        </div>
         {!isExpanded && (
           <nav className="nav">
             <Link href="#" onClick={() => setIsIntroOpen(true)}>

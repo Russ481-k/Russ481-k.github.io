@@ -1,6 +1,7 @@
 import "./Styles/globals.scss";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import "./i18n";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={inter.className}>
         {children}
         <div id="modal-root" />

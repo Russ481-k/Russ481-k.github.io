@@ -142,8 +142,8 @@
     .logo {
       font-size: 1.1rem;
       font-weight: bold;
-      color: #b7edf6;
       flex: 0 0 auto;
+      color: white;
     }
 
     .nav {
@@ -158,6 +158,13 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        .left_section {
+          display: flex;
+          align-items: center;
+          .lang_btn {
+            color: #b7edf6;
+          }
+        }
       }
       .category_dropdown {
         position: relative;

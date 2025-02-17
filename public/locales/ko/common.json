@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "홈",
+    "about": "소개",
+    "projects": "프로젝트",
+    "blog": "블로그"
+  },
+  "post": {
+    "close": "닫기",
+    "index": "목차",
+    "copy": "복사",
+    "copied": "복사됨",
+    "prev": "이전 글",
+    "next": "다음 글"
+  },
+  "category": {
+    "all": "전체",
+    "frontend": "프론트엔드",
+    "backend": "백엔드",
+    "projects": "프로젝트",
+    "about": "소개"
+  }
+}

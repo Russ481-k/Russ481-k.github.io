@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+  "post": {
+    "close": "Close",
+    "index": "Index",
+    "copy": "Copy",
+    "copied": "Copied",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "category": {
+    "all": "All",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "projects": "Projects",
+    "about": "About"
+  }
+}

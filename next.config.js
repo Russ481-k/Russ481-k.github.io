@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: "export",
   images: {
     unoptimized: true,
     domains: ["russ-sbyoon.vercel.app"],
@@ -23,8 +22,11 @@ if (isGithubActions) {
   basePath = `/${repository}`;
 }
 
+const i18n = require("./i18n.config.js");
+
 module.exports = {
   ...nextConfig,
   assetPrefix,
   basePath,
+  i18n,
 };

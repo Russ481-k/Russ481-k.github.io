@@ -55,15 +55,21 @@
       padding: 0 12px;
     }
 
+    .title_area {
+      display: flex;
+      align-items: end;
+    }
+
     .title {
-      min-width: 240px;
+      min-width: 180px;
       font-size: 1.5rem;
       color: white;
       margin: 0;
-      text-align: center;
+      margin-right: 0;
+      text-align: right;
 
       @media screen and (max-width: 1280px) {
-        min-width: 220px;
+        min-width: 180px;
       }
 
       a {
@@ -73,6 +79,14 @@
         &:hover {
           color: #b7edf6;
         }
+      }
+    }
+
+    .language_selector {
+      margin-left: auto;
+      width: 40px;
+      .lang_btn {
+        color: #b7edf6;
       }
     }
 

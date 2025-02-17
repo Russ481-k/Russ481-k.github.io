@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiNotion } from "react-icons/si";
 import { categories } from "@/data/categories";
+import { LanguageSelector } from "./LanguageSelector";
 
 interface MobileHeaderProps {
   selectedCategory: string;
@@ -61,9 +62,12 @@ export const MobileHeader = ({
     <div className={`mobile_header ${isOpen ? "expanded" : ""}`}>
       <div className="nav">
         <div className="mobile_header_container">
-          <Link href="/" className="logo">
-            Bin&apos;s Space
-          </Link>
+          <div className="left_section">
+            <Link href="/" className="logo">
+              Bin&apos;s Space
+            </Link>
+            <LanguageSelector />
+          </div>
           <div className="category_dropdown" ref={categoryDropdownRef}>
             <button
               className="category_button"
