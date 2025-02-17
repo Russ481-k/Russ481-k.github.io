@@ -8,6 +8,7 @@ import { getPostImage } from "@/utils/getPostImage";
 import { ModalPortal } from "./ModalPortal";
 import React from "react";
 import { getClientPost } from "@/utils/clientPosts";
+import { FiCopy } from "react-icons/fi";
 
 interface PostModalProps {
   post: Post;
@@ -28,6 +29,9 @@ export const PostModal = ({
 }: PostModalProps) => {
   const [activeId, setActiveId] = useState<string>("");
   const contentRef = useRef<HTMLDivElement>(null);
+  const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
   const scrollToHeading = useCallback(
     (id: string) => {
@@ -120,6 +124,34 @@ export const PostModal = ({
       document.body.style.touchAction = "";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    // 마크다운 내의 코드 블록에 언어 표시와 복사 버튼 추가
+    const codeBlocks = document.querySelectorAll(".content pre");
+    codeBlocks.forEach((block, index) => {
+      const language = block.className.match(/language-(\w+)/)?.[1] || "text";
+      block.setAttribute("data-language", language);
+
+      // 복사 버튼 추가
+      const copyButton = document.createElement("button");
+      copyButton.className = "copy-button";
+      copyButton.innerHTML = `<span class="icon"><FiCopy /></span><span>Copy</span>`;
+      copyButton.onclick = () => handleCopy(index, block.textContent || "");
+      block.appendChild(copyButton);
+    });
+  }, [post.content]);
+
+  const handleCopy = async (index: number, text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedStates((prev) => ({ ...prev, [index]: true }));
+      setTimeout(() => {
+        setCopiedStates((prev) => ({ ...prev, [index]: false }));
+      }, 2000);
+    } catch (err) {
+      console.error("Failed to copy text:", err);
+    }
+  };
 
   if (!isOpen) return null;
 
