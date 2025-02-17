@@ -49,168 +49,168 @@
       "text": "1.2 API Key 인증",
       "level": 4,
       "isMainTopic": false,
-      "position": 271.5625
+      "position": 310.6640625
     },
     {
       "id": "heading-5",
       "text": "2. 보안 정책",
       "level": 3,
       "isMainTopic": false,
-      "position": 376.0546875
+      "position": 456.8125
     },
     {
       "id": "heading-6",
       "text": "📡 RESTful API 엔드포인트",
       "level": 2,
       "isMainTopic": true,
-      "position": 495.1875
+      "position": 575.9453125
     },
     {
       "id": "heading-7",
       "text": "1. 시장 데이터 API",
       "level": 3,
       "isMainTopic": false,
-      "position": 546.6015625
+      "position": 627.359375
     },
     {
       "id": "heading-8",
       "text": "1.1 실시간 시세 조회",
       "level": 4,
       "isMainTopic": false,
-      "position": 590.875
+      "position": 671.6328125
     },
     {
       "id": "heading-9",
       "text": "1.2 과거 데이터 조회",
       "level": 4,
       "isMainTopic": false,
-      "position": 815.921875
+      "position": 980.7890625
     },
     {
       "id": "heading-10",
       "text": "2. 포트폴리오 API",
       "level": 3,
       "isMainTopic": false,
-      "position": 1188.4140625
+      "position": 1470.3203125
     },
     {
       "id": "heading-11",
       "text": "2.1 포지션 조회",
       "level": 4,
       "isMainTopic": false,
-      "position": 1232.6875
+      "position": 1514.59375
     },
     {
       "id": "heading-12",
       "text": "2.2 포지션 생성",
       "level": 4,
       "isMainTopic": false,
-      "position": 1532.734375
+      "position": 1915.546875
     },
     {
       "id": "heading-13",
       "text": "3. AI 분석 API",
       "level": 3,
       "isMainTopic": false,
-      "position": 1830.2265625
+      "position": 2310.8671875
     },
     {
       "id": "heading-14",
       "text": "3.1 가격 예측",
       "level": 4,
       "isMainTopic": false,
-      "position": 1874.5
+      "position": 2355.140625
     },
     {
       "id": "heading-15",
       "text": "3.2 리스크 분석",
       "level": 4,
       "isMainTopic": false,
-      "position": 2159.546875
+      "position": 2735.3203125
     },
     {
       "id": "heading-16",
       "text": "🔄 WebSocket API",
       "level": 2,
       "isMainTopic": true,
-      "position": 2383.234375
+      "position": 3044.4765625
     },
     {
       "id": "heading-17",
       "text": "1. 시장 데이터 스트림",
       "level": 3,
       "isMainTopic": false,
-      "position": 2434.6484375
+      "position": 3095.890625
     },
     {
       "id": "heading-18",
       "text": "1.1 실시간 시세 구독",
       "level": 4,
       "isMainTopic": false,
-      "position": 2478.921875
+      "position": 3140.1640625
     },
     {
       "id": "heading-19",
       "text": "1.2 주문북 구독",
       "level": 4,
       "isMainTopic": false,
-      "position": 2809.96875
+      "position": 3565.5390625
     },
     {
       "id": "heading-20",
       "text": "📊 에러 코드",
       "level": 2,
       "isMainTopic": true,
-      "position": 3200.65625
+      "position": 4071.8203125
     },
     {
       "id": "heading-21",
       "text": "1. HTTP 상태 코드",
       "level": 3,
       "isMainTopic": false,
-      "position": 3252.0703125
+      "position": 4123.234375
     },
     {
       "id": "heading-22",
       "text": "2. 비즈니스 에러 코드",
       "level": 3,
       "isMainTopic": false,
-      "position": 3438.5078125
+      "position": 4360.65625
     },
     {
       "id": "heading-23",
       "text": "📝 API 사용 예시",
       "level": 2,
       "isMainTopic": true,
-      "position": 3626.140625
+      "position": 4598.078125
     },
     {
       "id": "heading-24",
       "text": "1. REST API 호출",
       "level": 3,
       "isMainTopic": false,
-      "position": 3677.5546875
+      "position": 4649.4921875
     },
     {
       "id": "heading-25",
       "text": "시장 데이터 조회",
       "level": 1,
       "isMainTopic": true,
-      "position": 3765.453125
+      "position": 4759.15625
     },
     {
       "id": "heading-26",
       "text": "포지션 생성",
       "level": 1,
       "isMainTopic": true,
-      "position": 3969.8125
+      "position": 4984.2890625
     },
     {
       "id": "heading-27",
       "text": "2. WebSocket 연결",
       "level": 3,
       "isMainTopic": false,
-      "position": 4191.7109375
+      "position": 5278.640625
     }
   ],
   "imageHeights": {}

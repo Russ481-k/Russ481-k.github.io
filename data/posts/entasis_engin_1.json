@@ -82,77 +82,77 @@
       "text": "💡 주요 기능 및 구현",
       "level": 2,
       "isMainTopic": true,
-      "position": 1367.109375
+      "position": 1427.1328125
     },
     {
       "id": "heading-9",
       "text": "1. 데이터 통합 시스템",
       "level": 3,
       "isMainTopic": false,
-      "position": 1438.9921875
+      "position": 1499.2578125
     },
     {
       "id": "heading-10",
       "text": "2. AI 기반 분석 엔진",
       "level": 3,
       "isMainTopic": false,
-      "position": 1651.8984375
+      "position": 1728.546875
     },
     {
       "id": "heading-11",
       "text": "3. 투자 전략 시스템",
       "level": 3,
       "isMainTopic": false,
-      "position": 1864.8046875
+      "position": 1957.8359375
     },
     {
       "id": "heading-12",
       "text": "4. 실시간 모니터링",
       "level": 3,
       "isMainTopic": false,
-      "position": 2077.7109375
+      "position": 2187.125
     },
     {
       "id": "heading-13",
       "text": "🔄 워크플로우 상세",
       "level": 2,
       "isMainTopic": true,
-      "position": 2321.59375
+      "position": 2448.53125
     },
     {
       "id": "heading-14",
       "text": "🎁 기대 효과",
       "level": 2,
       "isMainTopic": true,
-      "position": 3320.453125
+      "position": 3547.4609375
     },
     {
       "id": "heading-15",
       "text": "1. 운영 효율성",
       "level": 3,
       "isMainTopic": false,
-      "position": 3392.3359375
+      "position": 3619.5859375
     },
     {
       "id": "heading-16",
       "text": "2. 리스크 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 3605.2421875
+      "position": 3848.875
     },
     {
       "id": "heading-17",
       "text": "3. 투자 성과",
       "level": 3,
       "isMainTopic": false,
-      "position": 3818.1484375
+      "position": 4078.1640625
     },
     {
       "id": "heading-18",
       "text": "🚀 향후 발전 방향",
       "level": 2,
       "isMainTopic": true,
-      "position": 4062.03125
+      "position": 4339.5703125
     }
   ],
   "imageHeights": {}

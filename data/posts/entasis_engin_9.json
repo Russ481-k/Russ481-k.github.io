@@ -42,126 +42,126 @@
       "text": "🌐 네트워크 구성",
       "level": 2,
       "isMainTopic": true,
-      "position": 984.875
+      "position": 1135.640625
     },
     {
       "id": "heading-4",
       "text": "1. 네트워크 세그먼트",
       "level": 3,
       "isMainTopic": false,
-      "position": 1036.2890625
+      "position": 1187.0546875
     },
     {
       "id": "heading-5",
       "text": "2. 보안 그룹 설정",
       "level": 3,
       "isMainTopic": false,
-      "position": 1246.7265625
+      "position": 1459.5859375
     },
     {
       "id": "heading-6",
       "text": "🚀 쿠버네티스 클러스터",
       "level": 2,
       "isMainTopic": true,
-      "position": 1634.359375
+      "position": 1957.875
     },
     {
       "id": "heading-7",
       "text": "1. 노드 구성",
       "level": 3,
       "isMainTopic": false,
-      "position": 1685.7734375
+      "position": 2009.2890625
     },
     {
       "id": "heading-8",
       "text": "2. 서비스 배포",
       "level": 3,
       "isMainTopic": false,
-      "position": 2128.2109375
+      "position": 2586.1328125
     },
     {
       "id": "heading-9",
       "text": "📊 모니터링 시스템",
       "level": 2,
       "isMainTopic": true,
-      "position": 2564.84375
+      "position": 3155.671875
     },
     {
       "id": "heading-10",
       "text": "1. 메트릭 수집",
       "level": 3,
       "isMainTopic": false,
-      "position": 2616.2578125
+      "position": 3207.0859375
     },
     {
       "id": "heading-11",
       "text": "2. 알림 설정",
       "level": 3,
       "isMainTopic": false,
-      "position": 2912.6953125
+      "position": 3645.03125
     },
     {
       "id": "heading-12",
       "text": "🔒 보안 설정",
       "level": 2,
       "isMainTopic": true,
-      "position": 3210.328125
+      "position": 4079.4609375
     },
     {
       "id": "heading-13",
       "text": "1. 네트워크 정책",
       "level": 3,
       "isMainTopic": false,
-      "position": 3261.7421875
+      "position": 4130.875
     },
     {
       "id": "heading-14",
       "text": "2. 암호화 설정",
       "level": 3,
       "isMainTopic": false,
-      "position": 3607.1796875
+      "position": 4561.3984375
     },
     {
       "id": "heading-15",
       "text": "🔄 스케일링 전략",
       "level": 2,
       "isMainTopic": true,
-      "position": 3803.8125
+      "position": 4816.375
     },
     {
       "id": "heading-16",
       "text": "1. 수평적 확장",
       "level": 3,
       "isMainTopic": false,
-      "position": 3855.2265625
+      "position": 4867.7890625
     },
     {
       "id": "heading-17",
       "text": "2. 수직적 확장",
       "level": 3,
       "isMainTopic": false,
-      "position": 4185.6640625
+      "position": 5280.7578125
     },
     {
       "id": "heading-18",
       "text": "🔧 운영 관리",
       "level": 2,
       "isMainTopic": true,
-      "position": 4412.296875
+      "position": 5570.84375
     },
     {
       "id": "heading-19",
       "text": "1. 로깅 설정",
       "level": 3,
       "isMainTopic": false,
-      "position": 4463.7109375
+      "position": 5622.2578125
     },
     {
       "id": "heading-20",
       "text": "2. 백업 정책",
       "level": 3,
       "isMainTopic": false,
-      "position": 4689.1484375
+      "position": 5912.34375
     }
   ],
   "imageHeights": {}

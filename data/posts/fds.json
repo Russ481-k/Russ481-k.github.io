@@ -102,42 +102,42 @@
       "text": "구현 계획",
       "level": 2,
       "isMainTopic": true,
-      "position": 2139.375
+      "position": 2262.2421875
     },
     {
       "id": "heading-13",
       "text": "Phase 1: 기본 인프라 구축",
       "level": 3,
       "isMainTopic": false,
-      "position": 2735.0078125
+      "position": 2857.875
     },
     {
       "id": "heading-14",
       "text": "Phase 2: AI 모델 개발",
       "level": 3,
       "isMainTopic": false,
-      "position": 2783.921875
+      "position": 2906.7890625
     },
     {
       "id": "heading-15",
       "text": "Phase 3: 크로스체인 확장",
       "level": 3,
       "isMainTopic": false,
-      "position": 2902.859375
+      "position": 3025.7265625
     },
     {
       "id": "heading-16",
       "text": "기대 효과",
       "level": 2,
       "isMainTopic": true,
-      "position": 3021.796875
+      "position": 3144.6640625
     },
     {
       "id": "heading-17",
       "text": "향후 발전 방향",
       "level": 2,
       "isMainTopic": true,
-      "position": 3141.9296875
+      "position": 3264.796875
     }
   ],
   "imageHeights": {

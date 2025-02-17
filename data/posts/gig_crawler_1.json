@@ -44,77 +44,77 @@
       "text": "2. 필요한 패키지 설치하기",
       "level": 2,
       "isMainTopic": true,
-      "position": 568.0078125
+      "position": 627.5390625
     },
     {
       "id": "heading-4",
       "text": "3. 환경 변수 설정 (.env 파일 만들기)",
       "level": 2,
       "isMainTopic": true,
-      "position": 879.8359375
+      "position": 1046.7734375
     },
     {
       "id": "heading-5",
       "text": "4. 설정 관리 (config.py 만들기)",
       "level": 2,
       "isMainTopic": true,
-      "position": 1154.6640625
+      "position": 1376.359375
     },
     {
       "id": "heading-6",
       "text": "5. 데이터베이스 연결 설정 (database.py 만들기)",
       "level": 2,
       "isMainTopic": true,
-      "position": 1545.9921875
+      "position": 1897.78125
     },
     {
       "id": "heading-7",
       "text": "URL 인코딩을 사용한 DB 연결 문자열 만들기",
       "level": 1,
       "isMainTopic": true,
-      "position": 1736.5859375
+      "position": 2123.078125
     },
     {
       "id": "heading-8",
       "text": "SQLAlchemy 엔진 생성",
       "level": 1,
       "isMainTopic": true,
-      "position": 1850.9453125
+      "position": 2260.4375
     },
     {
       "id": "heading-9",
       "text": "6. FastAPI 앱 설정 (main.py 만들기)",
       "level": 2,
       "isMainTopic": true,
-      "position": 2091.0390625
+      "position": 2565.2109375
     },
     {
       "id": "heading-10",
       "text": "CORS 설정",
       "level": 1,
       "isMainTopic": true,
-      "position": 2264.6328125
+      "position": 2767.09375
     },
     {
       "id": "heading-11",
       "text": "7. PostgreSQL 데이터베이스 생성하기",
       "level": 2,
       "isMainTopic": true,
-      "position": 2570.2265625
+      "position": 3143.28125
     },
     {
       "id": "heading-12",
       "text": "8. 서버 실행하기! 🚀",
       "level": 2,
       "isMainTopic": true,
-      "position": 2764.0546875
+      "position": 3399.203125
     },
     {
       "id": "heading-13",
       "text": "마무리 🎯",
       "level": 2,
       "isMainTopic": true,
-      "position": 2978.3828125
+      "position": 3677.5703125
     }
   ],
   "imageHeights": {}

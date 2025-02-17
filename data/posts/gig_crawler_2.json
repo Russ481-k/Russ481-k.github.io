@@ -72,28 +72,28 @@
       "text": "2) 비동기 세션 생성 (async_session)",
       "level": 4,
       "isMainTopic": false,
-      "position": 915.0703125
+      "position": 979.0234375
     },
     {
       "id": "heading-8",
       "text": "3) 데이터베이스 작업 예제 (비동기 방식)",
       "level": 4,
       "isMainTopic": false,
-      "position": 1110.1171875
+      "position": 1250.65625
     },
     {
       "id": "heading-9",
       "text": "4. 기존 동기 방식과 비교",
       "level": 2,
       "isMainTopic": true,
-      "position": 1328.3046875
+      "position": 1543.7890625
     },
     {
       "id": "heading-10",
       "text": "5. 마치며",
       "level": 2,
       "isMainTopic": true,
-      "position": 1509.1328125
+      "position": 1724.6171875
     }
   ],
   "imageHeights": {}

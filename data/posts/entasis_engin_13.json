@@ -42,28 +42,28 @@
       "text": "2. 서비스 레이어 구현",
       "level": 3,
       "isMainTopic": false,
-      "position": 1030.59375
+      "position": 1157.78125
     },
     {
       "id": "heading-4",
       "text": "3. 스케줄러를 통한 주기적 데이터 수집",
       "level": 3,
       "isMainTopic": false,
-      "position": 1787.03125
+      "position": 2051.15625
     },
     {
       "id": "heading-5",
       "text": "에러 처리 및 로깅",
       "level": 2,
       "isMainTopic": true,
-      "position": 2282.6640625
+      "position": 2674.9765625
     },
     {
       "id": "heading-6",
       "text": "마치며",
       "level": 2,
       "isMainTopic": true,
-      "position": 2447.4921875
+      "position": 2839.8046875
     }
   ],
   "imageHeights": {}

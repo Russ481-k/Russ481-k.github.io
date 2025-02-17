@@ -42,147 +42,147 @@
       "text": "2. 알림 설정",
       "level": 3,
       "isMainTopic": false,
-      "position": 508.6796875
+      "position": 626.8046875
     },
     {
       "id": "heading-4",
       "text": "🔄 일상 운영 작업",
       "level": 2,
       "isMainTopic": true,
-      "position": 866.3125
+      "position": 1089.1796875
     },
     {
       "id": "heading-5",
       "text": "1. 데이터베이스 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 917.7265625
+      "position": 1140.59375
     },
     {
       "id": "heading-6",
       "text": "2. 로그 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 1201.1640625
+      "position": 1506.921875
     },
     {
       "id": "heading-7",
       "text": "🚨 장애 대응",
       "level": 2,
       "isMainTopic": true,
-      "position": 1513.796875
+      "position": 1916.6328125
     },
     {
       "id": "heading-8",
       "text": "1. 장애 레벨 정의",
       "level": 3,
       "isMainTopic": false,
-      "position": 1565.2109375
+      "position": 1968.046875
     },
     {
       "id": "heading-9",
       "text": "2. 장애 대응 절차",
       "level": 3,
       "isMainTopic": false,
-      "position": 2005.6484375
+      "position": 2519
     },
     {
       "id": "heading-10",
       "text": "💾 백업 및 복구",
       "level": 2,
       "isMainTopic": true,
-      "position": 2256.28125
+      "position": 2826.640625
     },
     {
       "id": "heading-11",
       "text": "1. 백업 정책",
       "level": 3,
       "isMainTopic": false,
-      "position": 2307.6953125
+      "position": 2878.0546875
     },
     {
       "id": "heading-12",
       "text": "2. 복구 절차",
       "level": 3,
       "isMainTopic": false,
-      "position": 2595.1328125
+      "position": 3251.046875
     },
     {
       "id": "heading-13",
       "text": "1. 서비스 중지",
       "level": 1,
       "isMainTopic": true,
-      "position": 2683.03125
+      "position": 3360.7109375
     },
     {
       "id": "heading-14",
       "text": "2. 데이터베이스 복구",
       "level": 1,
       "isMainTopic": true,
-      "position": 2782.390625
+      "position": 3462.9609375
     },
     {
       "id": "heading-15",
       "text": "3. 데이터 정합성 검증",
       "level": 1,
       "isMainTopic": true,
-      "position": 2881.75
+      "position": 3565.2109375
     },
     {
       "id": "heading-16",
       "text": "4. 서비스 재시작",
       "level": 1,
       "isMainTopic": true,
-      "position": 2981.109375
+      "position": 3667.4609375
     },
     {
       "id": "heading-17",
       "text": "5. 상태 확인",
       "level": 1,
       "isMainTopic": true,
-      "position": 3080.46875
+      "position": 3769.7109375
     },
     {
       "id": "heading-18",
       "text": "🔒 보안 관리",
       "level": 2,
       "isMainTopic": true,
-      "position": 3183.5625
+      "position": 3917.1875
     },
     {
       "id": "heading-19",
       "text": "1. 접근 제어",
       "level": 3,
       "isMainTopic": false,
-      "position": 3234.9765625
+      "position": 3968.6015625
     },
     {
       "id": "heading-20",
       "text": "2. 보안 점검",
       "level": 3,
       "isMainTopic": false,
-      "position": 3591.4140625
+      "position": 4471.4921875
     },
     {
       "id": "heading-21",
       "text": "📈 성능 최적화",
       "level": 2,
       "isMainTopic": true,
-      "position": 3889.046875
+      "position": 4862.84375
     },
     {
       "id": "heading-22",
       "text": "1. 캐시 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 3940.4609375
+      "position": 4914.2578125
     },
     {
       "id": "heading-23",
       "text": "2. 리소스 최적화",
       "level": 3,
       "isMainTopic": false,
-      "position": 4236.8984375
+      "position": 5305.609375
     }
   ],
   "imageHeights": {}

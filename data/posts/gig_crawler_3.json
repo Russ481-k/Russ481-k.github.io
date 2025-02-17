@@ -44,42 +44,42 @@
       "text": "3. 비동기 방식으로 변경하기",
       "level": 2,
       "isMainTopic": true,
-      "position": 926.8984375
+      "position": 1024
     },
     {
       "id": "heading-4",
       "text": "3.1. 비동기 엔진 생성하기",
       "level": 3,
       "isMainTopic": false,
-      "position": 1014.03125
+      "position": 1111.1328125
     },
     {
       "id": "heading-5",
       "text": "3.2. 비동기 세션 생성 및 통합",
       "level": 3,
       "isMainTopic": false,
-      "position": 1257.46875
+      "position": 1429.0703125
     },
     {
       "id": "heading-6",
       "text": "3.3. 비동기 세션 관리 함수 구현하기",
       "level": 3,
       "isMainTopic": false,
-      "position": 1560.90625
+      "position": 1819.640625
     },
     {
       "id": "heading-7",
       "text": "4. 통합 세션 관리의 장점",
       "level": 2,
       "isMainTopic": true,
-      "position": 1815.0390625
+      "position": 2123.421875
     },
     {
       "id": "heading-8",
       "text": "5. 마치며",
       "level": 2,
       "isMainTopic": true,
-      "position": 2054.3671875
+      "position": 2362.75
     }
   ],
   "imageHeights": {}

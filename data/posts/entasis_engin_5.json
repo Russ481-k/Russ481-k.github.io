@@ -56,140 +56,140 @@
       "text": "2.2 분석 데이터 테이블",
       "level": 4,
       "isMainTopic": false,
-      "position": 734.5
+      "position": 859.7578125
     },
     {
       "id": "heading-6",
       "text": "3. 인덱싱 전략",
       "level": 3,
       "isMainTopic": false,
-      "position": 1138.9921875
+      "position": 1381.984375
     },
     {
       "id": "heading-7",
       "text": "3.1 시장 데이터 인덱스",
       "level": 4,
       "isMainTopic": false,
-      "position": 1183.265625
+      "position": 1426.2578125
     },
     {
       "id": "heading-8",
       "text": "3.2 분석 데이터 인덱스",
       "level": 4,
       "isMainTopic": false,
-      "position": 1365.3125
+      "position": 1678.7265625
     },
     {
       "id": "heading-9",
       "text": "4. 파티셔닝 전략",
       "level": 3,
       "isMainTopic": false,
-      "position": 1529.8046875
+      "position": 1912.8359375
     },
     {
       "id": "heading-10",
       "text": "4.1 시계열 데이터 파티셔닝",
       "level": 4,
       "isMainTopic": false,
-      "position": 1574.078125
+      "position": 1957.109375
     },
     {
       "id": "heading-11",
       "text": "4.2 보관 정책",
       "level": 4,
       "isMainTopic": false,
-      "position": 1712.125
+      "position": 2138.3671875
     },
     {
       "id": "heading-12",
       "text": "📈 성능 최적화",
       "level": 2,
       "isMainTopic": true,
-      "position": 1831.3125
+      "position": 2257.5546875
     },
     {
       "id": "heading-13",
       "text": "1. 쿼리 최적화",
       "level": 3,
       "isMainTopic": false,
-      "position": 1882.7265625
+      "position": 2308.96875
     },
     {
       "id": "heading-14",
       "text": "1.1 자주 사용되는 쿼리",
       "level": 4,
       "isMainTopic": false,
-      "position": 1927
+      "position": 2353.2421875
     },
     {
       "id": "heading-15",
       "text": "1.2 캐싱 전략",
       "level": 4,
       "isMainTopic": false,
-      "position": 2170.046875
+      "position": 2657.3828125
     },
     {
       "id": "heading-16",
       "text": "2. 백업 전략",
       "level": 3,
       "isMainTopic": false,
-      "position": 2288.0390625
+      "position": 2775.375
     },
     {
       "id": "heading-17",
       "text": "2.1 정기 백업",
       "level": 4,
       "isMainTopic": false,
-      "position": 2332.3125
+      "position": 2819.6484375
     },
     {
       "id": "heading-18",
       "text": "2.2 복구 계획",
       "level": 4,
       "isMainTopic": false,
-      "position": 2452.859375
+      "position": 2940.1953125
     },
     {
       "id": "heading-19",
       "text": "🔄 데이터 흐름",
       "level": 2,
       "isMainTopic": true,
-      "position": 2572.046875
+      "position": 3059.3828125
     },
     {
       "id": "heading-20",
       "text": "1. 데이터 수집",
       "level": 3,
       "isMainTopic": false,
-      "position": 2623.4609375
+      "position": 3110.796875
     },
     {
       "id": "heading-21",
       "text": "2. 데이터 처리",
       "level": 3,
       "isMainTopic": false,
-      "position": 2761.8984375
+      "position": 3295.5546875
     },
     {
       "id": "heading-22",
       "text": "⚡ 확장성 고려사항",
       "level": 2,
       "isMainTopic": true,
-      "position": 2882.03125
+      "position": 3415.6875
     },
     {
       "id": "heading-23",
       "text": "1. 수평적 확장",
       "level": 3,
       "isMainTopic": false,
-      "position": 2933.4453125
+      "position": 3467.1015625
     },
     {
       "id": "heading-24",
       "text": "2. 수직적 확장",
       "level": 3,
       "isMainTopic": false,
-      "position": 3052.3828125
+      "position": 3586.0390625
     }
   ],
   "imageHeights": {}
