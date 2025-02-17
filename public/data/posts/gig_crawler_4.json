@@ -41,42 +41,42 @@
       "text": "2. 구체적인 개선 내용",
       "level": 2,
       "isMainTopic": true,
-      "position": 491.5703125
+      "position": 511.0703125
     },
     {
       "id": "heading-3",
       "text": "2.1 예산 필드 분리: budget_min & budget_max",
       "level": 3,
       "isMainTopic": false,
-      "position": 540.484375
+      "position": 559.984375
     },
     {
       "id": "heading-4",
       "text": "2.2 예약어 충돌 해결: metadata → project_metadata",
       "level": 3,
       "isMainTopic": false,
-      "position": 850.421875
+      "position": 997.3125
     },
     {
       "id": "heading-5",
       "text": "2.3 새로운 필드 추가",
       "level": 3,
       "isMainTopic": false,
-      "position": 1106.359375
+      "position": 1379.84375
     },
     {
       "id": "heading-6",
       "text": "3. 개선된 모델의 장점",
       "level": 2,
       "isMainTopic": true,
-      "position": 1651.4921875
+      "position": 2061.421875
     },
     {
       "id": "heading-7",
       "text": "4. 마치며",
       "level": 2,
       "isMainTopic": true,
-      "position": 1874.8203125
+      "position": 2284.75
     }
   ],
   "imageHeights": {}

@@ -42,133 +42,133 @@
       "text": "2. 타이포그래피",
       "level": 3,
       "isMainTopic": false,
-      "position": 553.6796875
+      "position": 666.140625
     },
     {
       "id": "heading-4",
       "text": "3. 그리드 시스템",
       "level": 3,
       "isMainTopic": false,
-      "position": 913.1171875
+      "position": 1129.3203125
     },
     {
       "id": "heading-5",
       "text": "📱 컴포넌트 라이브러리",
       "level": 2,
       "isMainTopic": true,
-      "position": 1122.75
+      "position": 1421.203125
     },
     {
       "id": "heading-6",
       "text": "1. 차트 컴포넌트",
       "level": 3,
       "isMainTopic": false,
-      "position": 1174.1640625
+      "position": 1472.6171875
     },
     {
       "id": "heading-7",
       "text": "1.1 캔들스틱 차트",
       "level": 4,
       "isMainTopic": false,
-      "position": 1218.4375
+      "position": 1516.890625
     },
     {
       "id": "heading-8",
       "text": "1.2 기술적 지표",
       "level": 4,
       "isMainTopic": false,
-      "position": 1609.484375
+      "position": 2019.1484375
     },
     {
       "id": "heading-9",
       "text": "2. 대시보드 레이아웃",
       "level": 3,
       "isMainTopic": false,
-      "position": 1788.9765625
+      "position": 2253.0703125
     },
     {
       "id": "heading-10",
       "text": "🔄 사용자 플로우",
       "level": 2,
       "isMainTopic": true,
-      "position": 2193.609375
+      "position": 2782.015625
     },
     {
       "id": "heading-11",
       "text": "1. 트레이딩 플로우",
       "level": 3,
       "isMainTopic": false,
-      "position": 2245.0234375
+      "position": 2833.4296875
     },
     {
       "id": "heading-12",
       "text": "2. 포트폴리오 관리",
       "level": 3,
       "isMainTopic": false,
-      "position": 2463.4609375
+      "position": 3105.9609375
     },
     {
       "id": "heading-13",
       "text": "📐 반응형 디자인",
       "level": 2,
       "isMainTopic": true,
-      "position": 2651.09375
+      "position": 3343.3828125
     },
     {
       "id": "heading-14",
       "text": "1. 브레이크포인트",
       "level": 3,
       "isMainTopic": false,
-      "position": 2702.5078125
+      "position": 3394.796875
     },
     {
       "id": "heading-15",
       "text": "2. 레이아웃 조정",
       "level": 3,
       "isMainTopic": false,
-      "position": 2985.9453125
+      "position": 3776.8671875
     },
     {
       "id": "heading-16",
       "text": "♿ 접근성",
       "level": 2,
       "isMainTopic": true,
-      "position": 3296.578125
+      "position": 4179.9140625
     },
     {
       "id": "heading-17",
       "text": "1. ARIA 레이블",
       "level": 3,
       "isMainTopic": false,
-      "position": 3347.9921875
+      "position": 4231.328125
     },
     {
       "id": "heading-18",
       "text": "2. 키보드 네비게이션",
       "level": 3,
       "isMainTopic": false,
-      "position": 3483.4296875
+      "position": 4416.0859375
     },
     {
       "id": "heading-19",
       "text": "🎯 사용성 테스트",
       "level": 2,
       "isMainTopic": true,
-      "position": 3950.0625
+      "position": 5012.03125
     },
     {
       "id": "heading-20",
       "text": "1. 테스트 시나리오",
       "level": 3,
       "isMainTopic": false,
-      "position": 4001.4765625
+      "position": 5063.4453125
     },
     {
       "id": "heading-21",
       "text": "2. 피드백 수집",
       "level": 3,
       "isMainTopic": false,
-      "position": 4325.9140625
+      "position": 5458.859375
     }
   ],
   "imageHeights": {}

@@ -1,7 +1,7 @@
 ---
 title: "React Native Expo APK 빌드 삽질기"
 date: "2025-02-12"
-category: "mobile"
+category: "frontend"
 description: "React Native Expo로 APK 빌드 시 HTTP API 사용 문제와 해결 과정에 대한 상세한 가이드"
 tags: ["React Native", "Expo", "Android", "Mobile"]
 thumbnail: "/images/react-native.png"

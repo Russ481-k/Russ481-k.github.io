@@ -49,175 +49,175 @@
       "text": "1.2 앙상블 모델 구성",
       "level": 4,
       "isMainTopic": false,
-      "position": 507.5625
+      "position": 649.8671875
     },
     {
       "id": "heading-5",
       "text": "2. 특징 엔지니어링",
       "level": 3,
       "isMainTopic": false,
-      "position": 777.0546875
+      "position": 989.1171875
     },
     {
       "id": "heading-6",
       "text": "2.1 기술적 지표",
       "level": 4,
       "isMainTopic": false,
-      "position": 821.328125
+      "position": 1033.390625
     },
     {
       "id": "heading-7",
       "text": "2.2 시장 감성 분석",
       "level": 4,
       "isMainTopic": false,
-      "position": 1195.375
+      "position": 1538.03125
     },
     {
       "id": "heading-8",
       "text": "🔄 학습 파이프라인",
       "level": 2,
       "isMainTopic": true,
-      "position": 1361.0625
+      "position": 1754.3984375
     },
     {
       "id": "heading-9",
       "text": "1. 데이터 전처리",
       "level": 3,
       "isMainTopic": false,
-      "position": 1412.4765625
+      "position": 1805.8125
     },
     {
       "id": "heading-10",
       "text": "1.1 시계열 데이터 준비",
       "level": 4,
       "isMainTopic": false,
-      "position": 1456.75
+      "position": 1850.0859375
     },
     {
       "id": "heading-11",
       "text": "1.2 데이터 정규화",
       "level": 4,
       "isMainTopic": false,
-      "position": 1724.796875
+      "position": 2242.390625
     },
     {
       "id": "heading-12",
       "text": "2. 모델 학습",
       "level": 3,
       "isMainTopic": false,
-      "position": 1844.2890625
+      "position": 2406.09375
     },
     {
       "id": "heading-13",
       "text": "2.1 LSTM 학습 프로세스",
       "level": 4,
       "isMainTopic": false,
-      "position": 1888.5625
+      "position": 2450.3671875
     },
     {
       "id": "heading-14",
       "text": "2.2 앙상블 모델 통합",
       "level": 4,
       "isMainTopic": false,
-      "position": 2247.609375
+      "position": 2937.453125
     },
     {
       "id": "heading-15",
       "text": "📈 성능 평가",
       "level": 2,
       "isMainTopic": true,
-      "position": 2398.296875
+      "position": 3136.265625
     },
     {
       "id": "heading-16",
       "text": "1. 평가 메트릭",
       "level": 3,
       "isMainTopic": false,
-      "position": 2449.7109375
+      "position": 3187.6796875
     },
     {
       "id": "heading-17",
       "text": "1.1 예측 정확도 평가",
       "level": 4,
       "isMainTopic": false,
-      "position": 2493.984375
+      "position": 3231.953125
     },
     {
       "id": "heading-18",
       "text": "1.2 백테스팅",
       "level": 4,
       "isMainTopic": false,
-      "position": 2676.03125
+      "position": 3465.875
     },
     {
       "id": "heading-19",
       "text": "🔍 리스크 관리",
       "level": 2,
       "isMainTopic": true,
-      "position": 2942.71875
+      "position": 3858.1796875
     },
     {
       "id": "heading-20",
       "text": "1. 리스크 모니터링",
       "level": 3,
       "isMainTopic": false,
-      "position": 2994.1328125
+      "position": 3909.59375
     },
     {
       "id": "heading-21",
       "text": "1.1 Value at Risk (VaR) 계산",
       "level": 4,
       "isMainTopic": false,
-      "position": 3038.40625
+      "position": 3953.8671875
     },
     {
       "id": "heading-22",
       "text": "1.2 Expected Shortfall",
       "level": 4,
       "isMainTopic": false,
-      "position": 3130.453125
+      "position": 4082.4609375
     },
     {
       "id": "heading-23",
       "text": "2. 포지션 사이징",
       "level": 3,
       "isMainTopic": false,
-      "position": 3218.9453125
+      "position": 4210.0546875
     },
     {
       "id": "heading-24",
       "text": "🚀 배포 및 모니터링",
       "level": 2,
       "isMainTopic": true,
-      "position": 3342.578125
+      "position": 4377.2578125
     },
     {
       "id": "heading-25",
       "text": "1. 모델 서빙",
       "level": 3,
       "isMainTopic": false,
-      "position": 3393.9921875
+      "position": 4428.671875
     },
     {
       "id": "heading-26",
       "text": "1.1 모델 직렬화",
       "level": 4,
       "isMainTopic": false,
-      "position": 3438.265625
+      "position": 4472.9453125
     },
     {
       "id": "heading-27",
       "text": "1.2 실시간 추론",
       "level": 4,
       "isMainTopic": false,
-      "position": 3590.3125
+      "position": 4671.7578125
     },
     {
       "id": "heading-28",
       "text": "2. 성능 모니터링",
       "level": 3,
       "isMainTopic": false,
-      "position": 3784.8046875
+      "position": 4923.234375
     }
   ],
   "imageHeights": {}

@@ -202,28 +202,28 @@
       "text": "Sprint 2 (3-4주차)",
       "level": 3,
       "isMainTopic": false,
-      "position": 2648.5859375
+      "position": 2698.4609375
     },
     {
       "id": "heading-27",
       "text": "🔄 작업 추적",
       "level": 2,
       "isMainTopic": true,
-      "position": 2817.21875
+      "position": 2922.6875
     },
     {
       "id": "heading-28",
       "text": "현재 진행상황",
       "level": 3,
       "isMainTopic": false,
-      "position": 2868.6328125
+      "position": 2974.1015625
     },
     {
       "id": "heading-29",
       "text": "다음 단계 준비사항",
       "level": 3,
       "isMainTopic": false,
-      "position": 2987.5703125
+      "position": 3093.0390625
     }
   ],
   "imageHeights": {}

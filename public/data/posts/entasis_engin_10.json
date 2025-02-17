@@ -42,133 +42,133 @@
       "text": "2. 테스트 환경",
       "level": 3,
       "isMainTopic": false,
-      "position": 275.6796875
+      "position": 322.5546875
     },
     {
       "id": "heading-4",
       "text": "🧪 단위 테스트",
       "level": 2,
       "isMainTopic": true,
-      "position": 691.3125
+      "position": 849.2890625
     },
     {
       "id": "heading-5",
       "text": "1. 백엔드 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 742.7265625
+      "position": 900.703125
     },
     {
       "id": "heading-6",
       "text": "2. AI 모델 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 1127.1640625
+      "position": 1420.1953125
     },
     {
       "id": "heading-7",
       "text": "🔄 통합 테스트",
       "level": 2,
       "isMainTopic": true,
-      "position": 1410.796875
+      "position": 1833.5546875
     },
     {
       "id": "heading-8",
       "text": "1. API 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 1462.2109375
+      "position": 1884.96875
     },
     {
       "id": "heading-9",
       "text": "2. 데이터 파이프라인 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 1861.6484375
+      "position": 2422.8203125
     },
     {
       "id": "heading-10",
       "text": "📊 성능 테스트",
       "level": 2,
       "isMainTopic": true,
-      "position": 2129.28125
+      "position": 2818.625
     },
     {
       "id": "heading-11",
       "text": "1. 부하 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 2180.6953125
+      "position": 2870.0390625
     },
     {
       "id": "heading-12",
       "text": "2. 스트레스 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 2672.1328125
+      "position": 3492.015625
     },
     {
       "id": "heading-13",
       "text": "🔒 보안 테스트",
       "level": 2,
       "isMainTopic": true,
-      "position": 2869.765625
+      "position": 3746.9921875
     },
     {
       "id": "heading-14",
       "text": "1. 취약점 스캔",
       "level": 3,
       "isMainTopic": false,
-      "position": 2921.1796875
+      "position": 3798.40625
     },
     {
       "id": "heading-15",
       "text": "2. 침투 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 3232.6171875
+      "position": 4250.390625
     },
     {
       "id": "heading-16",
       "text": "📱 사용자 수용 테스트",
       "level": 2,
       "isMainTopic": true,
-      "position": 3517.25
+      "position": 4669.0234375
     },
     {
       "id": "heading-17",
       "text": "1. 시나리오 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 3568.6640625
+      "position": 4720.4375
     },
     {
       "id": "heading-18",
       "text": "2. 사용성 테스트",
       "level": 3,
       "isMainTopic": false,
-      "position": 3957.1015625
+      "position": 5233.703125
     },
     {
       "id": "heading-19",
       "text": "📈 품질 메트릭",
       "level": 2,
       "isMainTopic": true,
-      "position": 4308.734375
+      "position": 5703.1875
     },
     {
       "id": "heading-20",
       "text": "1. 코드 품질",
       "level": 3,
       "isMainTopic": false,
-      "position": 4360.1484375
+      "position": 5754.6015625
     },
     {
       "id": "heading-21",
       "text": "2. 성능 지표",
       "level": 3,
       "isMainTopic": false,
-      "position": 4626.5859375
+      "position": 6109.234375
     }
   ],
   "imageHeights": {}

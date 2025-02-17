@@ -178,7 +178,7 @@ export const PostModal = ({
               <div className="nav_info">
                 <div className="nav_info_left">
                   <span className="arrow">←</span>
-                  <span className="label">이전 포스트</span>
+                  <span className="label">이전</span>
                 </div>
                 <span className="title">{prevPost.title}</span>
               </div>
@@ -192,7 +192,7 @@ export const PostModal = ({
             >
               <div className="nav_info">
                 <div className="nav_info_right">
-                  <span className="label">다음 포스트</span>
+                  <span className="label">다음</span>
                   <span className="arrow">→</span>
                 </div>
                 <span className="title">{nextPost.title}</span>
