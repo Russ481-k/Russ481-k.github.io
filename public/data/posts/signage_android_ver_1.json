@@ -1,0 +1,67 @@
+{
+  "id": "signage_android_ver_1",
+  "title": "React Native Expo APK 빌드 삽질기",
+  "content": "<h3 id=\"heading-0\">React Native Expo로 APK 빌드하면서 삽질한 이야기</h3>\n<p>안녕하세요, 여러분! 오늘은 <strong>React Native Expo를 이용해서 APK 빌드를 진행하면서 겪었던 삽질기</strong>를 공유해보려고 합니다. 특히 <code>http://</code> API 사용 문제로 고생했던 경험이 있는데, 혹시 비슷한 문제를 겪고 있는 분이 있다면 참고가 되길 바랍니다. 😊</p>\n<hr>\n<h2 id=\"heading-1\">📦 첫 번째 빌드 – <code>development</code> 빌드</h2>\n<p>처음에는 Expo 공식 문서를 참고하면서 <code>eas build</code>를 진행했어요. <code>eas.json</code>을 아래처럼 설정하고 빌드 명령어를 실행했죠.</p>\n<pre><code class=\"language-json\">{\n  \"build\": {\n    \"development\": {\n      \"developmentClient\": true,\n      \"distribution\": \"internal\"\n    },\n    \"preview\": {\n      \"distribution\": \"internal\"\n    },\n    \"production\": {}\n  }\n}\n</code></pre>\n<pre><code class=\"language-bash\">eas build --profile development --platform android\n</code></pre>\n<p>빌드 완료 후 Expo.dev에서 APK를 다운로드하고 앱을 실행했더니...<br>\n🤦‍♂️ <strong>\"development build\"라서 Expo Go 환경에서만 실행 가능하네요.</strong><br>\n아, 이런... 이게 아니었죠.</p>\n<p>그래서 <code>development</code>를 빼고 다시 빌드했습니다.</p>\n<pre><code class=\"language-bash\">eas build --platform android\n</code></pre>\n<p>그러나 이번엔 <strong>AAB 파일이 생성</strong>되었습니다.<br>\nAAB는 구글 플레이 스토어에 배포할 때 쓰는 포맷이어서 <strong>로컬에서 APK 설치가 불가능</strong>합니다.<br>\n(저는 단순히 APK를 생성하고 싶었을 뿐인데...)</p>\n<hr>\n<h2 id=\"heading-2\">🛠 두 번째 빌드 – APK 만들기</h2>\n<p>APK를 생성하기 위해 아래와 같이 <code>eas.json</code>을 수정했습니다.</p>\n<pre><code class=\"language-json\">{\n  \"build\": {\n    \"preview\": {\n      \"android\": {\n        \"buildType\": \"apk\"\n      }\n    }\n  }\n}\n</code></pre>\n<p>그리고 다시 빌드!</p>\n<pre><code class=\"language-bash\">eas build -p android --profile preview\n</code></pre>\n<p>드디어 APK가 생성되었습니다! 🎉<br>\n그런데...<br>\n🤦‍♂️ <strong>API에서 데이터를 불러오지 않습니다.</strong><br>\n\"Network Error\"가 발생하면서 데이터가 표시되지 않았어요.</p>\n<hr>\n<h2 id=\"heading-3\">🤔 문제 분석 – <code>http://</code> API 차단?!</h2>\n<p>로그를 찍어보니 <code>AxiosError: Network Error</code>가 발생했더군요.<br>\n구글링과 ChatGPT 검색 결과, <strong>Android 9(Pie) 이상에서는 기본적으로 HTTP 트래픽이 차단</strong>된다는 사실을 알게 됐습니다.</p>\n<p>이를 해결하려면 <strong>AndroidManifest.xml에 <code>android:usesCleartextTraffic=\"true\"</code>를 추가해야 한다</strong>는군요.<br>\nExpo에서는 <code>app.json</code>을 수정해야 합니다.</p>\n<pre><code class=\"language-json\">{\n  \"expo\": {\n    \"android\": {\n      \"useCleartextTraffic\": true,\n      \"permissions\": [\"INTERNET\", \"ACCESS_NETWORK_STATE\"]\n    }\n  }\n}\n</code></pre>\n<p>수정 후 다시 빌드했지만...<br>\n<strong>또 실패</strong>. 😭<br>\n이번에는 <code>fetch</code>로 바꿔도 같은 <code>Network request failed</code> 에러가 발생했습니다.</p>\n<hr>\n<h2 id=\"heading-4\">🔍 최종 해결 – <code>expo-build-properties</code> 플러그인 설치</h2>\n<p>결국 Stack Overflow를 뒤지다 해결 방법을 찾았습니다.<br>\nExpo에서는 <strong><code>expo-build-properties</code> 플러그인을 설치하고, <code>useCleartextTraffic</code> 설정을 추가</strong>해야 한다는 것이었어요.</p>\n<pre><code class=\"language-bash\">npx expo install expo-build-properties\n</code></pre>\n<p>그리고 <code>app.json</code>에서 플러그인을 추가했습니다.</p>\n<pre><code class=\"language-json\">\"plugins\": [\n  [\n    \"expo-build-properties\",\n    {\n      \"android\": {\n        \"usesCleartextTraffic\": true\n      }\n    }\n  ]\n]\n</code></pre>\n<p>다시 빌드 후 APK를 디컴파일(<code>apktool</code> 사용)해서 확인해보니...<br>\n🤯 <strong><code>useCleartextTraffic</code>이 적용되지 않았습니다!!!</strong><br>\n이게 무슨 일이야...</p>\n<p>혹시 철자가 틀렸나 싶어서 다시 보니,<br>\n<code>useCleartextTraffic</code> → <strong><code>usesCleartextTraffic</code>(s 추가됨)</strong></p>\n<p>철자 수정 후 다시 빌드하니...<br>\n🎉 <strong>드디어 성공!!!</strong></p>\n<hr>\n<h2 id=\"heading-5\">🚨 추가 문제 – 에뮬레이터 연결 안됨?!</h2>\n<p>그런데 이걸 해결하고 보니 <strong>에뮬레이터에서 API 요청이 안 되는 문제가 발생</strong>했습니다.<br>\n해결 방법은 아직 찾고 있는 중인데, Expo의 네트워크 설정을 좀 더 살펴봐야 할 것 같습니다.</p>\n<hr>\n<h2 id=\"heading-6\">📌 결론 – 삽질하면서 배운 것</h2>\n<ol>\n<li><strong>APK 빌드는 <code>buildType: \"apk\"</code> 설정을 추가해야 함</strong></li>\n<li><strong>Android 9 이상에서 <code>http://</code> API를 사용하려면 <code>usesCleartextTraffic: true</code> 설정이 필요함</strong></li>\n<li><strong>Expo에서는 <code>expo-build-properties</code> 플러그인을 설치해야 함</strong></li>\n<li><strong>오타 조심... <code>useCleartextTraffic</code>이 아니라 <code>usesCleartextTraffic</code>(s 있음)</strong></li>\n</ol>\n<p>이제야 빌드 과정이 익숙해진 것 같네요.<br>\n혹시 비슷한 문제를 겪고 있다면 참고하셔서 빠르게 해결하길 바랍니다! 😆</p>\n",
+  "date": "2025-02-12",
+  "category": "mobile",
+  "tags": [
+    "React Native",
+    "Expo",
+    "Android",
+    "Mobile"
+  ],
+  "description": "React Native Expo로 APK 빌드 시 HTTP API 사용 문제와 해결 과정에 대한 상세한 가이드",
+  "thumbnail": "/images/react-native.png",
+  "tocItems": [
+    {
+      "id": "heading-0",
+      "text": "React Native Expo로 APK 빌드하면서 삽질한 이야기",
+      "level": 3,
+      "isMainTopic": false,
+      "position": 18.71875
+    },
+    {
+      "id": "heading-1",
+      "text": "📦 첫 번째 빌드 – development 빌드",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 158.3515625
+    },
+    {
+      "id": "heading-2",
+      "text": "🛠 두 번째 빌드 – APK 만들기",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 727.6796875
+    },
+    {
+      "id": "heading-3",
+      "text": "🤔 문제 분석 – http:// API 차단?!",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 1151.0078125
+    },
+    {
+      "id": "heading-4",
+      "text": "🔍 최종 해결 – expo-build-properties 플러그인 설치",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 1565.8359375
+    },
+    {
+      "id": "heading-5",
+      "text": "🚨 추가 문제 – 에뮬레이터 연결 안됨?!",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 2133.6640625
+    },
+    {
+      "id": "heading-6",
+      "text": "📌 결론 – 삽질하면서 배운 것",
+      "level": 2,
+      "isMainTopic": true,
+      "position": 2261.9921875
+    }
+  ],
+  "imageHeights": {}
+}
