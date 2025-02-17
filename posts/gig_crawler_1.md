@@ -2,7 +2,7 @@
 title: "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발"
 date: "2025-02-12"
 category: "backend"
-description: "프리랜서 플랫폼의 프로젝트 정보를 실시간으로 수집하고 분석하는 크롤러를 만들어보았어요. FastAPI의 비동기 처리와 PostgreSQL의 강력한 기능을 활용해서 효율적인 시스템을 구축했답니다! 🚀"
+description: "FastAPI와 PostgreSQL을 사용하여 국내외 프리랜서 플랫폼의 프로젝트 정보를 수집하는 크롤러 시스템 구축 프로젝트"
 tags:
   [
     "FastAPI",
