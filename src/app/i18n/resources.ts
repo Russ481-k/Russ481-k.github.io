@@ -41,8 +41,8 @@ export const resources = {
         loading: "Loading...",
         close: "Close",
         toc: "Table of Contents",
-        prev: "Previous Post",
-        next: "Next Post",
+        prev: "Prev",
+        next: "Next",
         share: {
           title: "Share",
           copy: "Copy Link",

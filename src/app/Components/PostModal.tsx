@@ -261,18 +261,6 @@ const PostModal = ({
           </div>
         </div>
         <div className="modal_footer">
-          <div className="navigation_buttons">
-            {prevPost && (
-              <button onClick={() => handlePostChange(prevPost)}>
-                {t("modal.prev")}
-              </button>
-            )}
-            {nextPost && (
-              <button onClick={() => handlePostChange(nextPost)}>
-                {t("modal.next")}
-              </button>
-            )}
-          </div>
           <button className="close_button" onClick={onClose}>
             {t("modal.close")}
           </button>
