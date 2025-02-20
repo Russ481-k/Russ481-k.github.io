@@ -11,14 +11,10 @@
             "id": "51b93a9526ac471e",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "entasis_engin_5.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "entasis_engin_5"
+              "title": "New tab"
             }
           }
         ]
@@ -94,7 +90,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "entasis_engin_5.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +99,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for entasis_engin_5"
+              "title": "Backlinks"
             }
           },
           {
@@ -113,12 +108,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "entasis_engin_5.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from entasis_engin_5"
+              "title": "Outgoing links"
             }
           },
           {
@@ -142,13 +136,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "entasis_engin_5.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of entasis_engin_5"
+              "title": "Outline"
             }
           }
         ]
@@ -170,6 +163,33 @@
   },
   "active": "51b93a9526ac471e",
   "lastOpenFiles": [
-    "signage_android_ver_1.md"
+    "en/signage_android_ver_1.md",
+    "en/mobyn.md",
+    "en/manbok.md",
+    "en/gig_crawler_5.md",
+    "en/gig_crawler_4.md",
+    "en/gig_crawler_3.md",
+    "en/gig_crawler_2.md",
+    "en/gig_crawler_1.md",
+    "en/fds.md",
+    "en/entasys.md",
+    "en/entasis.md",
+    "en/entasis_engin_13.md",
+    "en/entasis_engin_12.md",
+    "en/entasis_engin_11.md",
+    "en/entasis_engin_10.md",
+    "en/entasis_engin_9.md",
+    "en/entasis_engin_8.md",
+    "en/entasis_engin_7.md",
+    "en/entasis_engin_6.md",
+    "en/entasis_engin_5.md",
+    "en/entasis_engin_4.md",
+    "en/entasis_engin_3.md",
+    "en/entasis_engin_2.md",
+    "en/entasis_engin_1.md",
+    "en/cursor_ai.md",
+    "en/convention_document.md",
+    "en",
+    "ko"
   ]
 }

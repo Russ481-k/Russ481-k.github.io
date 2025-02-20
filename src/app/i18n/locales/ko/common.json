@@ -1,0 +1,10 @@
+{
+  "header": {
+    "title": "Bin's Space",
+    "nav": {
+      "about": "소개",
+      "projects": "프로젝트",
+      "blog": "블로그"
+    }
+  }
+}

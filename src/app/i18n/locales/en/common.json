@@ -1,0 +1,10 @@
+{
+  "header": {
+    "title": "Bin's Space",
+    "nav": {
+      "about": "About",
+      "projects": "Projects",
+      "blog": "Blog"
+    }
+  }
+}

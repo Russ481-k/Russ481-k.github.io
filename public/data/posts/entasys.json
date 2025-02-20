@@ -1,7 +1,5 @@
 {
   "id": "entasys",
-  "title": "Entasis",
-  "content": "<h2 id=\"heading-0\">1. 프로젝트 개요</h2>\n<h3 id=\"heading-1\">프로젝트 명</h3>\n<ul>\n<li>ENTASYS (엔타시스) SIEM 솔루션</li>\n</ul>\n<h3 id=\"heading-2\">프로젝트 목적</h3>\n<ul>\n<li>기업의 보안 위협을 실시간으로 탐지하고 대응하는 통합 보안 관제 시스템 구축</li>\n<li>다양한 보안 장비와 시스템의 로그를 수집/분석하여 보안 위협 조기 발견</li>\n<li>AI/ML 기반의 지능형 위협 탐지 및 대응 체계 구현</li>\n</ul>\n<h3 id=\"heading-3\">핵심 기능</h3>\n<ol>\n<li>\n<p>통합 로그 수집 및 관리</p>\n<ul>\n<li>방화벽, IPS, WAF 등 보안장비 로그 수집</li>\n<li>서버, 네트워크 장비, 애플리케이션 로그 통합</li>\n<li>실시간 로그 정규화 및 상관분석</li>\n<li>로그 원본 보관 및 위/변조 방지</li>\n</ul>\n</li>\n<li>\n<p>실시간 위협 탐지</p>\n<ul>\n<li>AI 기반 이상행위 탐지(User/Entity Behavior Analytics)</li>\n<li>알려진/알려지지 않은 위협 탐지</li>\n<li>취약점 스캐닝 및 모니터링</li>\n<li>실시간 위협 인텔리전스 연동</li>\n</ul>\n</li>\n<li>\n<p>보안 대시보드 및 분석</p>\n<ul>\n<li>직관적인 통합 보안 대시보드</li>\n<li>실시간 보안 이벤트 모니터링</li>\n<li>드릴다운 분석 및 포렌식 기능</li>\n<li>맞춤형 보고서 자동 생성</li>\n</ul>\n</li>\n<li>\n<p>자동화된 대응체계</p>\n<ul>\n<li>위협 탐지시 자동 차단/격리</li>\n<li>담당자 알림 및 티켓팅 연동</li>\n<li>플레이북 기반 대응 자동화</li>\n<li>보안장비 연동 및 제어</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-4\">시스템 아키텍처</h2>\n<h3 id=\"heading-5\">수집 계층</h3>\n<ul>\n<li>분산 로그 수집기(Collector) 구조</li>\n<li>초당 50,000 EPS 처리 성능</li>\n<li>로그 필터링 및 정규화</li>\n<li>데이터 압축 및 암호화 전송</li>\n</ul>\n<h3 id=\"heading-6\">저장 계층</h3>\n<ul>\n<li>분산 스토리지(Elasticsearch) 기반</li>\n<li>실시간/장기 보관 이원화</li>\n<li>데이터 암호화 저장</li>\n<li>자동 백업 및 복구</li>\n</ul>\n<h3 id=\"heading-7\">분석 계층</h3>\n<ul>\n<li>실시간 상관분석 엔진</li>\n<li>ML 기반 이상행위 탐지</li>\n<li>위협 인텔리전스 연동</li>\n<li>규칙 기반 탐지</li>\n</ul>\n<h3 id=\"heading-8\">표현 계층</h3>\n<ul>\n<li>HTML5 기반 웹 콘솔</li>\n<li>반응형 대시보드</li>\n<li>드릴다운 분석 도구</li>\n<li>맞춤형 보고서</li>\n</ul>\n<h2 id=\"heading-9\">구축 요구사항</h2>\n<h3 id=\"heading-10\">하드웨어</h3>\n<ul>\n<li>수집서버: 최소 8코어/32GB RAM</li>\n<li>분석서버: 최소 16코어/64GB RAM</li>\n<li>저장장치: 최소 10TB SSD</li>\n</ul>\n<h3 id=\"heading-11\">소프트웨어</h3>\n<ul>\n<li>OS: RHEL/CentOS 7 이상</li>\n<li>Docker/Kubernetes</li>\n<li>Elasticsearch 7.x</li>\n<li>Node.js 16.x</li>\n</ul>\n<h2 id=\"heading-12\">향후 로드맵</h2>\n<h3 id=\"heading-13\">2024년 하반기</h3>\n<ul>\n<li>AI 엔진 고도화</li>\n<li>클라우드 네이티브 아키텍처 전환</li>\n<li>글로벌 위협 인텔리전스 연동 확대</li>\n</ul>\n<h3 id=\"heading-14\">2025년</h3>\n<ul>\n<li>제로트러스트 보안 프레임워크 적용</li>\n<li>블록체인 기반 로그 무결성 검증</li>\n<li>멀티클라우드 통합 모니터링</li>\n</ul>\n",
   "date": "2024-03-20",
   "category": "projects",
   "tags": [
@@ -16,114 +14,246 @@
     "MetaMask",
     "Figma"
   ],
-  "description": "가상자산 거래소 개발",
   "thumbnail": "/images/entasis/entasis_circuit.gif",
-  "tocItems": [
-    {
-      "id": "heading-0",
-      "text": "1. 프로젝트 개요",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 19.9140625
+  "translations": {
+    "ko": {
+      "title": "Entasis",
+      "description": "가상자산 거래소 개발",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"가상자산 거래소 개발\"\ntags:\n[\n\"React\",\n\"Express\",\n\"MySQL\",\n\"Web3.js\",\n\"AWS\",\n\"Ganache\",\n\"Truffle\",\n\"ERC20\",\n\"MetaMask\",\n\"Figma\",\n]\nthumbnail: \"/images/entasis/entasis_circuit.gif\"</h2>\n<h2 id=\"heading-1\">1. 프로젝트 개요</h2>\n<h3 id=\"heading-2\">프로젝트 명</h3>\n<ul>\n<li>ENTASYS (엔타시스) SIEM 솔루션</li>\n</ul>\n<h3 id=\"heading-3\">프로젝트 목적</h3>\n<ul>\n<li>기업의 보안 위협을 실시간으로 탐지하고 대응하는 통합 보안 관제 시스템 구축</li>\n<li>다양한 보안 장비와 시스템의 로그를 수집/분석하여 보안 위협 조기 발견</li>\n<li>AI/ML 기반의 지능형 위협 탐지 및 대응 체계 구현</li>\n</ul>\n<h3 id=\"heading-4\">핵심 기능</h3>\n<ol>\n<li>\n<p>통합 로그 수집 및 관리</p>\n<ul>\n<li>방화벽, IPS, WAF 등 보안장비 로그 수집</li>\n<li>서버, 네트워크 장비, 애플리케이션 로그 통합</li>\n<li>실시간 로그 정규화 및 상관분석</li>\n<li>로그 원본 보관 및 위/변조 방지</li>\n</ul>\n</li>\n<li>\n<p>실시간 위협 탐지</p>\n<ul>\n<li>AI 기반 이상행위 탐지(User/Entity Behavior Analytics)</li>\n<li>알려진/알려지지 않은 위협 탐지</li>\n<li>취약점 스캐닝 및 모니터링</li>\n<li>실시간 위협 인텔리전스 연동</li>\n</ul>\n</li>\n<li>\n<p>보안 대시보드 및 분석</p>\n<ul>\n<li>직관적인 통합 보안 대시보드</li>\n<li>실시간 보안 이벤트 모니터링</li>\n<li>드릴다운 분석 및 포렌식 기능</li>\n<li>맞춤형 보고서 자동 생성</li>\n</ul>\n</li>\n<li>\n<p>자동화된 대응체계</p>\n<ul>\n<li>위협 탐지시 자동 차단/격리</li>\n<li>담당자 알림 및 티켓팅 연동</li>\n<li>플레이북 기반 대응 자동화</li>\n<li>보안장비 연동 및 제어</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-5\">시스템 아키텍처</h2>\n<h3 id=\"heading-6\">수집 계층</h3>\n<ul>\n<li>분산 로그 수집기(Collector) 구조</li>\n<li>초당 50,000 EPS 처리 성능</li>\n<li>로그 필터링 및 정규화</li>\n<li>데이터 압축 및 암호화 전송</li>\n</ul>\n<h3 id=\"heading-7\">저장 계층</h3>\n<ul>\n<li>분산 스토리지(Elasticsearch) 기반</li>\n<li>실시간/장기 보관 이원화</li>\n<li>데이터 암호화 저장</li>\n<li>자동 백업 및 복구</li>\n</ul>\n<h3 id=\"heading-8\">분석 계층</h3>\n<ul>\n<li>실시간 상관분석 엔진</li>\n<li>ML 기반 이상행위 탐지</li>\n<li>위협 인텔리전스 연동</li>\n<li>규칙 기반 탐지</li>\n</ul>\n<h3 id=\"heading-9\">표현 계층</h3>\n<ul>\n<li>HTML5 기반 웹 콘솔</li>\n<li>반응형 대시보드</li>\n<li>드릴다운 분석 도구</li>\n<li>맞춤형 보고서</li>\n</ul>\n<h2 id=\"heading-10\">구축 요구사항</h2>\n<h3 id=\"heading-11\">하드웨어</h3>\n<ul>\n<li>수집서버: 최소 8코어/32GB RAM</li>\n<li>분석서버: 최소 16코어/64GB RAM</li>\n<li>저장장치: 최소 10TB SSD</li>\n</ul>\n<h3 id=\"heading-12\">소프트웨어</h3>\n<ul>\n<li>OS: RHEL/CentOS 7 이상</li>\n<li>Docker/Kubernetes</li>\n<li>Elasticsearch 7.x</li>\n<li>Node.js 16.x</li>\n</ul>\n<h2 id=\"heading-13\">향후 로드맵</h2>\n<h3 id=\"heading-14\">2024년 하반기</h3>\n<ul>\n<li>AI 엔진 고도화</li>\n<li>클라우드 네이티브 아키텍처 전환</li>\n<li>글로벌 위협 인텔리전스 연동 확대</li>\n</ul>\n<h3 id=\"heading-15\">2025년</h3>\n<ul>\n<li>제로트러스트 보안 프레임워크 적용</li>\n<li>블록체인 기반 로그 무결성 검증</li>\n<li>멀티클라우드 통합 모니터링</li>\n</ul>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Entasis\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"가상자산 거래소 개발\"\ntags:\n[\n\"React\",\n\"Express\",\n\"MySQL\",\n\"Web3.js\",\n\"AWS\",\n\"Ganache\",\n\"Truffle\",\n\"ERC20\",\n\"MetaMask\",\n\"Figma\",\n]\nthumbnail: \"/images/entasis/entasis_circuit.gif\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 29.9140625
+        },
+        {
+          "id": "heading-1",
+          "text": "1. 프로젝트 개요",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 162.828125
+        },
+        {
+          "id": "heading-2",
+          "text": "프로젝트 명",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 211.7421875
+        },
+        {
+          "id": "heading-3",
+          "text": "프로젝트 목적",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 291.6796875
+        },
+        {
+          "id": "heading-4",
+          "text": "핵심 기능",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 410.6171875
+        },
+        {
+          "id": "heading-5",
+          "text": "시스템 아키텍처",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 974.25
+        },
+        {
+          "id": "heading-6",
+          "text": "수집 계층",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1023.1640625
+        },
+        {
+          "id": "heading-7",
+          "text": "저장 계층",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1161.6015625
+        },
+        {
+          "id": "heading-8",
+          "text": "분석 계층",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1300.0390625
+        },
+        {
+          "id": "heading-9",
+          "text": "표현 계층",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1438.4765625
+        },
+        {
+          "id": "heading-10",
+          "text": "구축 요구사항",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1578.109375
+        },
+        {
+          "id": "heading-11",
+          "text": "하드웨어",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1627.0234375
+        },
+        {
+          "id": "heading-12",
+          "text": "소프트웨어",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1745.9609375
+        },
+        {
+          "id": "heading-13",
+          "text": "향후 로드맵",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1882.59375
+        },
+        {
+          "id": "heading-14",
+          "text": "2024년 하반기",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1931.5078125
+        },
+        {
+          "id": "heading-15",
+          "text": "2025년",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 2050.4453125
+        }
+      ]
     },
-    {
-      "id": "heading-1",
-      "text": "프로젝트 명",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 68.828125
-    },
-    {
-      "id": "heading-2",
-      "text": "프로젝트 목적",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 148.765625
-    },
-    {
-      "id": "heading-3",
-      "text": "핵심 기능",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 267.703125
-    },
-    {
-      "id": "heading-4",
-      "text": "시스템 아키텍처",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 831.3359375
-    },
-    {
-      "id": "heading-5",
-      "text": "수집 계층",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 880.25
-    },
-    {
-      "id": "heading-6",
-      "text": "저장 계층",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1018.6875
-    },
-    {
-      "id": "heading-7",
-      "text": "분석 계층",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1157.125
-    },
-    {
-      "id": "heading-8",
-      "text": "표현 계층",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1295.5625
-    },
-    {
-      "id": "heading-9",
-      "text": "구축 요구사항",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 1435.1953125
-    },
-    {
-      "id": "heading-10",
-      "text": "하드웨어",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1484.109375
-    },
-    {
-      "id": "heading-11",
-      "text": "소프트웨어",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1603.046875
-    },
-    {
-      "id": "heading-12",
-      "text": "향후 로드맵",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 1739.6796875
-    },
-    {
-      "id": "heading-13",
-      "text": "2024년 하반기",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1788.59375
-    },
-    {
-      "id": "heading-14",
-      "text": "2025년",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1907.53125
+    "en": {
+      "title": "Entasis",
+      "description": "Development of Virtual Asset Exchange",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"Development of Virtual Asset Exchange\"\ntags:\n[\n\"React\",\n\"Express\",\n\"MySQL\",\n\"Web3.js\",\n\"AWS\",\n\"Ganache\",\n\"Truffle\",\n\"ERC20\",\n\"MetaMask\",\n\"Figma\",\n]\nthumbnail: \"/images/entasis/entasis_circuit.gif\"</h2>\n<h2 id=\"heading-1\">1. Project Overview</h2>\n<h3 id=\"heading-2\">Project Name</h3>\n<ul>\n<li>ENTASYS SIEM Solution</li>\n</ul>\n<h3 id=\"heading-3\">Project Purpose</h3>\n<ul>\n<li>Build an integrated security monitoring system that detects and responds to enterprise security threats in real-time</li>\n<li>Early detection of security threats by collecting and analyzing logs from various security equipment and systems</li>\n<li>Implementation of AI/ML-based intelligent threat detection and response system</li>\n</ul>\n<h3 id=\"heading-4\">Core Features</h3>\n<ol>\n<li>\n<p>Integrated Log Collection and Management</p>\n<ul>\n<li>Collect logs from security devices like firewalls, IPS, WAF</li>\n<li>Integration of server, network equipment, and application logs</li>\n<li>Real-time log normalization and correlation analysis</li>\n<li>Log original storage and tampering prevention</li>\n</ul>\n</li>\n<li>\n<p>Real-time Threat Detection</p>\n<ul>\n<li>AI-based User/Entity Behavior Analytics</li>\n<li>Detection of known and unknown threats</li>\n<li>Vulnerability scanning and monitoring</li>\n<li>Real-time threat intelligence integration</li>\n</ul>\n</li>\n<li>\n<p>Security Dashboard and Analysis</p>\n<ul>\n<li>Intuitive integrated security dashboard</li>\n<li>Real-time security event monitoring</li>\n<li>Drill-down analysis and forensic capabilities</li>\n<li>Automated custom report generation</li>\n</ul>\n</li>\n<li>\n<p>Automated Response System</p>\n<ul>\n<li>Automatic blocking/isolation upon threat detection</li>\n<li>Staff notification and ticketing integration</li>\n<li>Playbook-based response automation</li>\n<li>Security device integration and control</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-5\">System Architecture</h2>\n<h3 id=\"heading-6\">Collection Layer</h3>\n<ul>\n<li>Distributed log collector structure</li>\n<li>50,000 EPS processing performance per second</li>\n<li>Log filtering and normalization</li>\n<li>Data compression and encrypted transmission</li>\n</ul>\n<h3 id=\"heading-7\">Storage Layer</h3>\n<ul>\n<li>Based on distributed storage (Elasticsearch)</li>\n<li>Dual storage for real-time/long-term retention</li>\n<li>Encrypted data storage</li>\n<li>Automatic backup and recovery</li>\n</ul>\n<h3 id=\"heading-8\">Analysis Layer</h3>\n<ul>\n<li>Real-time correlation analysis engine</li>\n<li>ML-based anomaly detection</li>\n<li>Threat intelligence integration</li>\n<li>Rule-based detection</li>\n</ul>\n<h3 id=\"heading-9\">Presentation Layer</h3>\n<ul>\n<li>HTML5-based web console</li>\n<li>Responsive dashboard</li>\n<li>Drill-down analysis tools</li>\n<li>Customized reporting</li>\n</ul>\n<h2 id=\"heading-10\">Implementation Requirements</h2>\n<h3 id=\"heading-11\">Hardware</h3>\n<ul>\n<li>Collection Server: Minimum 8 cores/32GB RAM</li>\n<li>Analysis Server: Minimum 16 cores/64GB RAM</li>\n<li>Storage: Minimum 10TB SSD</li>\n</ul>\n<h3 id=\"heading-12\">Software</h3>\n<ul>\n<li>OS: RHEL/CentOS 7 or higher</li>\n<li>Docker/Kubernetes</li>\n<li>Elasticsearch 7.x</li>\n<li>Node.js 16.x</li>\n</ul>\n<h2 id=\"heading-13\">Future Roadmap</h2>\n<h3 id=\"heading-14\">2024 Second Half</h3>\n<ul>\n<li>AI engine advancement</li>\n<li>Transition to cloud-native architecture</li>\n<li>Expansion of global threat intelligence integration</li>\n</ul>\n<h3 id=\"heading-15\">2025</h3>\n<ul>\n<li>Application of Zero Trust security framework</li>\n<li>Blockchain-based log integrity verification</li>\n<li>Multi-cloud integrated monitoring</li>\n</ul>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Entasis\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"Development of Virtual Asset Exchange\"\ntags:\n[\n\"React\",\n\"Express\",\n\"MySQL\",\n\"Web3.js\",\n\"AWS\",\n\"Ganache\",\n\"Truffle\",\n\"ERC20\",\n\"MetaMask\",\n\"Figma\",\n]\nthumbnail: \"/images/entasis/entasis_circuit.gif\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 29.9140625
+        },
+        {
+          "id": "heading-1",
+          "text": "1. Project Overview",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 159.828125
+        },
+        {
+          "id": "heading-2",
+          "text": "Project Name",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 207.2421875
+        },
+        {
+          "id": "heading-3",
+          "text": "Project Purpose",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 284.6796875
+        },
+        {
+          "id": "heading-4",
+          "text": "Core Features",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 399.1171875
+        },
+        {
+          "id": "heading-5",
+          "text": "System Architecture",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 941.25
+        },
+        {
+          "id": "heading-6",
+          "text": "Collection Layer",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 988.6640625
+        },
+        {
+          "id": "heading-7",
+          "text": "Storage Layer",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1121.6015625
+        },
+        {
+          "id": "heading-8",
+          "text": "Analysis Layer",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1254.5390625
+        },
+        {
+          "id": "heading-9",
+          "text": "Presentation Layer",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1387.4765625
+        },
+        {
+          "id": "heading-10",
+          "text": "Implementation Requirements",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1521.609375
+        },
+        {
+          "id": "heading-11",
+          "text": "Hardware",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1569.0234375
+        },
+        {
+          "id": "heading-12",
+          "text": "Software",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1683.4609375
+        },
+        {
+          "id": "heading-13",
+          "text": "Future Roadmap",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1817.59375
+        },
+        {
+          "id": "heading-14",
+          "text": "2024 Second Half",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1865.0078125
+        },
+        {
+          "id": "heading-15",
+          "text": "2025",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1979.4453125
+        }
+      ]
     }
-  ],
+  },
   "imageHeights": {}
 }

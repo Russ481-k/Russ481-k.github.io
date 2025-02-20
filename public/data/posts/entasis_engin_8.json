@@ -1,7 +1,5 @@
 {
   "id": "entasis_engin_8",
-  "title": "Entasis Engine - UI/UX 디자인 가이드",
-  "content": "<h1 id=\"heading-0\">금융 데이터 분석 시스템 UI/UX 디자인 가이드</h1>\n<h2 id=\"heading-1\">🎨 디자인 시스템</h2>\n<h3 id=\"heading-2\">1. 색상 팔레트</h3>\n<pre><code class=\"language-css\">:root {\n  /* 주요 색상 */\n  --primary-100: #e3f2fd;\n  --primary-500: #2196f3;\n  --primary-900: #0d47a1;\n\n<p>  /* 보조 색상 */<br>  --secondary-100: #f3e5f5;<br>  --secondary-500: #9c27b0;<br>  --secondary-900: #4a148c;</p><p>  /* 상태 색상 */<br>  --success: #4caf50;<br>  --warning: #ffc107;<br>  --error: #f44336;<br>  --info: #2196f3;</p></code><p><code class=\"language-css\">  /* 중립 색상 */<br>  --neutral-100: #f5f5f5;<br>  --neutral-300: #e0e0e0;<br>  --neutral-500: #9e9e9e;<br>  --neutral-700: #616161;<br>  --neutral-900: #212121;<br>}<br></code></p></pre><p></p><h3 id=\"heading-3\">2. 타이포그래피</h3>\n<pre><code class=\"language-css\">:root {\n  /* 폰트 패밀리 */\n  --font-primary: \"Inter\", sans-serif;\n  --font-secondary: \"Roboto Mono\", monospace;\n\n<p>  /* 폰트 크기 <em>/<br>  --text-xs: 0.75rem; /</em> 12px <em>/<br>  --text-sm: 0.875rem; /</em> 14px <em>/<br>  --text-base: 1rem; /</em> 16px <em>/<br>  --text-lg: 1.125rem; /</em> 18px <em>/<br>  --text-xl: 1.25rem; /</em> 20px <em>/<br>  --text-2xl: 1.5rem; /</em> 24px */</p></code><p><code class=\"language-css\">  /* 폰트 두께 */<br>  --font-light: 300;<br>  --font-regular: 400;<br>  --font-medium: 500;<br>  --font-bold: 700;<br>}<br></code></p></pre><p></p><h3 id=\"heading-4\">3. 그리드 시스템</h3>\n<pre><code class=\"language-css\">.container {\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  gap: var(--spacing-4);\n\n</code><p><code class=\"language-css\">  @media (max-width: 768px) {<br>    grid-template-columns: repeat(4, 1fr);<br>  }<br>}<br></code></p></pre><p></p><h2 id=\"heading-5\">📱 컴포넌트 라이브러리</h2>\n<h3 id=\"heading-6\">1. 차트 컴포넌트</h3>\n<h4 id=\"heading-7\">1.1 캔들스틱 차트</h4>\n<pre><code class=\"language-typescript\">interface CandlestickProps {\n  data: {\n    timestamp: string;\n    open: number;\n    high: number;\n    low: number;\n    close: number;\n  }[];\n  width?: number;\n  height?: number;\n  theme?: \"light\" | \"dark\";\n}\n\n</code><p><code class=\"language-typescript\">const Candlestick: React.FC&lt;CandlestickProps&gt; = ({<br>  data,<br>  width = 800,<br>  height = 400,<br>  theme = \"light\",<br>}) =&gt; {<br>  // 차트 구현<br>};<br></code></p></pre><p></p><h4 id=\"heading-8\">1.2 기술적 지표</h4>\n<pre><code class=\"language-typescript\">interface TechnicalIndicatorProps {\n  type: \"MA\" | \"RSI\" | \"MACD\";\n  data: number[];\n  parameters: {\n    period?: number;\n    signal?: number;\n  };\n}\n</code></pre>\n<h3 id=\"heading-9\">2. 대시보드 레이아웃</h3>\n<pre><code class=\"language-typescript\">interface DashboardLayoutProps {\n  sidebar?: React.ReactNode;\n  header?: React.ReactNode;\n  main: React.ReactNode;\n  footer?: React.ReactNode;\n}\n\n</code><p><code class=\"language-typescript\">const DashboardLayout: React.FC&lt;DashboardLayoutProps&gt; = ({<br>  sidebar,<br>  header,<br>  main,<br>  footer,<br>}) =&gt; (<br>  &lt;div className=\"dashboard-layout\"&gt;<br>    {sidebar &amp;&amp; &lt;aside className=\"sidebar\"&gt;{sidebar}&lt;/aside&gt;}<br>    &lt;div className=\"main-content\"&gt;<br>      {header &amp;&amp; &lt;header className=\"header\"&gt;{header}&lt;/header&gt;}<br>      &lt;main className=\"main\"&gt;{main}&lt;/main&gt;<br>      {footer &amp;&amp; &lt;footer className=\"footer\"&gt;{footer}&lt;/footer&gt;}<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>);<br></code></p></pre><p></p><h2 id=\"heading-10\">🔄 사용자 플로우</h2>\n<h3 id=\"heading-11\">1. 트레이딩 플로우</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[대시보드 진입] --&gt; B[시장 데이터 확인]\n    B --&gt; C{분석 도구 선택}\n    C --&gt;|기술적 분석| D[지표 설정]\n    C --&gt;|AI 예측| E[모델 선택]\n    D --&gt; F[매매 신호 확인]\n    E --&gt; F\n    F --&gt; G[포지션 설정]\n    G --&gt; H[주문 실행]\n    H --&gt; I[모니터링]\n</code></pre>\n<h3 id=\"heading-12\">2. 포트폴리오 관리</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[포트폴리오 뷰] --&gt; B[자산 배분 확인]\n    B --&gt; C[리스크 분석]\n    C --&gt; D{조정 필요?}\n    D --&gt;|Yes| E[리밸런싱]\n    D --&gt;|No| F[모니터링 유지]\n    E --&gt; G[주문 실행]\n    G --&gt; F\n</code></pre>\n<h2 id=\"heading-13\">📐 반응형 디자인</h2>\n<h3 id=\"heading-14\">1. 브레이크포인트</h3>\n<pre><code class=\"language-scss\">$breakpoints: (\n  \"mobile\": 320px,\n  \"tablet\": 768px,\n  \"desktop\": 1024px,\n  \"wide\": 1440px,\n);\n\n</code><p><code class=\"language-scss\">@mixin respond-to($breakpoint) {<br>  @if map-has-key($breakpoints, $breakpoint) {<br>    @media (min-width: map-get($breakpoints, $breakpoint)) {<br>      @content;<br>    }<br>  }<br>}<br></code></p></pre><p></p><h3 id=\"heading-15\">2. 레이아웃 조정</h3>\n<pre><code class=\"language-scss\">.trading-view {\n  display: grid;\n  gap: 1rem;\n\n<p>  @include respond-to(\"mobile\") {<br>    grid-template-columns: 1fr;<br>  }</p><p>  @include respond-to(\"tablet\") {<br>    grid-template-columns: repeat(2, 1fr);<br>  }</p></code><p><code class=\"language-scss\">  @include respond-to(\"desktop\") {<br>    grid-template-columns: repeat(3, 1fr);<br>  }<br>}<br></code></p></pre><p></p><h2 id=\"heading-16\">♿ 접근성</h2>\n<h3 id=\"heading-17\">1. ARIA 레이블</h3>\n<pre><code class=\"language-typescript\">const PriceAlert: React.FC = () =&gt; (\n  &lt;div role=\"alert\" aria-live=\"polite\" aria-atomic=\"true\"&gt;\n    &lt;span className=\"price-change\"&gt;+5.23%&lt;/span&gt;\n  &lt;/div&gt;\n);\n</code></pre>\n<h3 id=\"heading-18\">2. 키보드 네비게이션</h3>\n<pre><code class=\"language-typescript\">const TradingPanel: React.FC = () =&gt; {\n  const handleKeyPress = (e: KeyboardEvent) =&gt; {\n    switch (e.key) {\n      case \"ArrowUp\":\n        incrementPrice();\n        break;\n      case \"ArrowDown\":\n        decrementPrice();\n        break;\n      case \"Enter\":\n        submitOrder();\n        break;\n    }\n  };\n\n</code><p><code class=\"language-typescript\">  return (<br>    &lt;div<br>      tabIndex={0}<br>      onKeyDown={handleKeyPress}<br>      role=\"region\"<br>      aria-label=\"거래 패널\"<br>    &gt;<br>      {/* 거래 패널 내용 */}<br>    &lt;/div&gt;<br>  );<br>};<br></code></p></pre><p></p><h2 id=\"heading-19\">🎯 사용성 테스트</h2>\n<h3 id=\"heading-20\">1. 테스트 시나리오</h3>\n<pre><code class=\"language-typescript\">const usabilityTests = [\n  {\n    name: \"기본 거래 플로우\",\n    steps: [\n      \"대시보드 접속\",\n      \"차트 분석\",\n      \"주문 설정\",\n      \"주문 실행\",\n      \"결과 확인\",\n    ],\n    success_criteria: [\n      \"3분 이내 완료\",\n      \"오류 없는 실행\",\n      \"사용자 만족도 4/5 이상\",\n    ],\n  },\n];\n</code></pre>\n<h3 id=\"heading-21\">2. 피드백 수집</h3>\n<pre><code class=\"language-typescript\">interface UserFeedback {\n  task: string;\n  completion_time: number;\n  error_count: number;\n  satisfaction: number;\n  comments: string;\n}\n</code></pre>\n<p>이 문서는 금융 데이터 분석 시스템의 UI/UX 디자인 가이드를 제공합니다. 사용자 경험을 최적화하기 위해 지속적으로 업데이트되며, 피드백을 반영하여 개선됩니다. 🚀</p>\n",
   "date": "2025-02-13",
   "category": "projects",
   "tags": [
@@ -13,163 +11,211 @@
     "responsive",
     "accessibility"
   ],
-  "description": "가상자산 데이터 분석 시스템의 사용자 인터페이스 및 경험 디자인 가이드",
   "thumbnail": "/images/cryptocurrency.jpg",
-  "tocItems": [
-    {
-      "id": "heading-0",
-      "text": "금융 데이터 분석 시스템 UI/UX 디자인 가이드",
-      "level": 1,
-      "isMainTopic": true,
-      "position": 19.9140625
+  "translations": {
+    "ko": {
+      "title": "Entasis Engine - UI/UX 디자인 가이드",
+      "description": "가상자산 데이터 분석 시스템의 사용자 인터페이스 및 경험 디자인 가이드",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - UI/UX 디자인 가이드\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 사용자 인터페이스 및 경험 디자인 가이드\"\ntags:\n[\n\"ui\",\n\"ux\",\n\"design\",\n\"wireframe\",\n\"component\",\n\"responsive\",\n\"accessibility\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">금융 데이터 분석 시스템 UI/UX 디자인 가이드</h1>\n<h2 id=\"heading-2\">🎨 디자인 시스템</h2>\n<h3 id=\"heading-3\">1. 색상 팔레트</h3>\n<pre><code class=\"language-css\">:root {\n  /* 주요 색상 */\n  --primary-100: #e3f2fd;\n  --primary-500: #2196f3;\n  --primary-900: #0d47a1;\n\n<p>  /* 보조 색상 */<br>  --secondary-100: #f3e5f5;<br>  --secondary-500: #9c27b0;<br>  --secondary-900: #4a148c;</p><p>  /* 상태 색상 */<br>  --success: #4caf50;<br>  --warning: #ffc107;<br>  --error: #f44336;<br>  --info: #2196f3;</p></code><p><code class=\"language-css\">  /* 중립 색상 */<br>  --neutral-100: #f5f5f5;<br>  --neutral-300: #e0e0e0;<br>  --neutral-500: #9e9e9e;<br>  --neutral-700: #616161;<br>  --neutral-900: #212121;<br>}<br></code></p></pre><p></p><h3 id=\"heading-4\">2. 타이포그래피</h3>\n<pre><code class=\"language-css\">:root {\n  /* 폰트 패밀리 */\n  --font-primary: \"Inter\", sans-serif;\n  --font-secondary: \"Roboto Mono\", monospace;\n\n<p>  /* 폰트 크기 <em>/<br>  --text-xs: 0.75rem; /</em> 12px <em>/<br>  --text-sm: 0.875rem; /</em> 14px <em>/<br>  --text-base: 1rem; /</em> 16px <em>/<br>  --text-lg: 1.125rem; /</em> 18px <em>/<br>  --text-xl: 1.25rem; /</em> 20px <em>/<br>  --text-2xl: 1.5rem; /</em> 24px */</p></code><p><code class=\"language-css\">  /* 폰트 두께 */<br>  --font-light: 300;<br>  --font-regular: 400;<br>  --font-medium: 500;<br>  --font-bold: 700;<br>}<br></code></p></pre><p></p><h3 id=\"heading-5\">3. 그리드 시스템</h3>\n<pre><code class=\"language-css\">.container {\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  gap: var(--spacing-4);\n\n</code><p><code class=\"language-css\">  @media (max-width: 768px) {<br>    grid-template-columns: repeat(4, 1fr);<br>  }<br>}<br></code></p></pre><p></p><h2 id=\"heading-6\">📱 컴포넌트 라이브러리</h2>\n<h3 id=\"heading-7\">1. 차트 컴포넌트</h3>\n<h4 id=\"heading-8\">1.1 캔들스틱 차트</h4>\n<pre><code class=\"language-typescript\">interface CandlestickProps {\n  data: {\n    timestamp: string;\n    open: number;\n    high: number;\n    low: number;\n    close: number;\n  }[];\n  width?: number;\n  height?: number;\n  theme?: \"light\" | \"dark\";\n}\n\n</code><p><code class=\"language-typescript\">const Candlestick: React.FC&lt;CandlestickProps&gt; = ({<br>  data,<br>  width = 800,<br>  height = 400,<br>  theme = \"light\",<br>}) =&gt; {<br>  // 차트 구현<br>};<br></code></p></pre><p></p><h4 id=\"heading-9\">1.2 기술적 지표</h4>\n<pre><code class=\"language-typescript\">interface TechnicalIndicatorProps {\n  type: \"MA\" | \"RSI\" | \"MACD\";\n  data: number[];\n  parameters: {\n    period?: number;\n    signal?: number;\n  };\n}\n</code></pre>\n<h3 id=\"heading-10\">2. 대시보드 레이아웃</h3>\n<pre><code class=\"language-typescript\">interface DashboardLayoutProps {\n  sidebar?: React.ReactNode;\n  header?: React.ReactNode;\n  main: React.ReactNode;\n  footer?: React.ReactNode;\n}\n\n</code><p><code class=\"language-typescript\">const DashboardLayout: React.FC&lt;DashboardLayoutProps&gt; = ({<br>  sidebar,<br>  header,<br>  main,<br>  footer,<br>}) =&gt; (<br>  &lt;div className=\"dashboard-layout\"&gt;<br>    {sidebar &amp;&amp; &lt;aside className=\"sidebar\"&gt;{sidebar}&lt;/aside&gt;}<br>    &lt;div className=\"main-content\"&gt;<br>      {header &amp;&amp; &lt;header className=\"header\"&gt;{header}&lt;/header&gt;}<br>      &lt;main className=\"main\"&gt;{main}&lt;/main&gt;<br>      {footer &amp;&amp; &lt;footer className=\"footer\"&gt;{footer}&lt;/footer&gt;}<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>);<br></code></p></pre><p></p><h2 id=\"heading-11\">🔄 사용자 플로우</h2>\n<h3 id=\"heading-12\">1. 트레이딩 플로우</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[대시보드 진입] --&gt; B[시장 데이터 확인]\n    B --&gt; C{분석 도구 선택}\n    C --&gt;|기술적 분석| D[지표 설정]\n    C --&gt;|AI 예측| E[모델 선택]\n    D --&gt; F[매매 신호 확인]\n    E --&gt; F\n    F --&gt; G[포지션 설정]\n    G --&gt; H[주문 실행]\n    H --&gt; I[모니터링]\n</code></pre>\n<h3 id=\"heading-13\">2. 포트폴리오 관리</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[포트폴리오 뷰] --&gt; B[자산 배분 확인]\n    B --&gt; C[리스크 분석]\n    C --&gt; D{조정 필요?}\n    D --&gt;|Yes| E[리밸런싱]\n    D --&gt;|No| F[모니터링 유지]\n    E --&gt; G[주문 실행]\n    G --&gt; F\n</code></pre>\n<h2 id=\"heading-14\">📐 반응형 디자인</h2>\n<h3 id=\"heading-15\">1. 브레이크포인트</h3>\n<pre><code class=\"language-scss\">$breakpoints: (\n  \"mobile\": 320px,\n  \"tablet\": 768px,\n  \"desktop\": 1024px,\n  \"wide\": 1440px,\n);\n\n</code><p><code class=\"language-scss\">@mixin respond-to($breakpoint) {<br>  @if map-has-key($breakpoints, $breakpoint) {<br>    @media (min-width: map-get($breakpoints, $breakpoint)) {<br>      @content;<br>    }<br>  }<br>}<br></code></p></pre><p></p><h3 id=\"heading-16\">2. 레이아웃 조정</h3>\n<pre><code class=\"language-scss\">.trading-view {\n  display: grid;\n  gap: 1rem;\n\n<p>  @include respond-to(\"mobile\") {<br>    grid-template-columns: 1fr;<br>  }</p><p>  @include respond-to(\"tablet\") {<br>    grid-template-columns: repeat(2, 1fr);<br>  }</p></code><p><code class=\"language-scss\">  @include respond-to(\"desktop\") {<br>    grid-template-columns: repeat(3, 1fr);<br>  }<br>}<br></code></p></pre><p></p><h2 id=\"heading-17\">♿ 접근성</h2>\n<h3 id=\"heading-18\">1. ARIA 레이블</h3>\n<pre><code class=\"language-typescript\">const PriceAlert: React.FC = () =&gt; (\n  &lt;div role=\"alert\" aria-live=\"polite\" aria-atomic=\"true\"&gt;\n    &lt;span className=\"price-change\"&gt;+5.23%&lt;/span&gt;\n  &lt;/div&gt;\n);\n</code></pre>\n<h3 id=\"heading-19\">2. 키보드 네비게이션</h3>\n<pre><code class=\"language-typescript\">const TradingPanel: React.FC = () =&gt; {\n  const handleKeyPress = (e: KeyboardEvent) =&gt; {\n    switch (e.key) {\n      case \"ArrowUp\":\n        incrementPrice();\n        break;\n      case \"ArrowDown\":\n        decrementPrice();\n        break;\n      case \"Enter\":\n        submitOrder();\n        break;\n    }\n  };\n\n</code><p><code class=\"language-typescript\">  return (<br>    &lt;div<br>      tabIndex={0}<br>      onKeyDown={handleKeyPress}<br>      role=\"region\"<br>      aria-label=\"거래 패널\"<br>    &gt;<br>      {/* 거래 패널 내용 */}<br>    &lt;/div&gt;<br>  );<br>};<br></code></p></pre><p></p><h2 id=\"heading-20\">🎯 사용성 테스트</h2>\n<h3 id=\"heading-21\">1. 테스트 시나리오</h3>\n<pre><code class=\"language-typescript\">const usabilityTests = [\n  {\n    name: \"기본 거래 플로우\",\n    steps: [\n      \"대시보드 접속\",\n      \"차트 분석\",\n      \"주문 설정\",\n      \"주문 실행\",\n      \"결과 확인\",\n    ],\n    success_criteria: [\n      \"3분 이내 완료\",\n      \"오류 없는 실행\",\n      \"사용자 만족도 4/5 이상\",\n    ],\n  },\n];\n</code></pre>\n<h3 id=\"heading-22\">2. 피드백 수집</h3>\n<pre><code class=\"language-typescript\">interface UserFeedback {\n  task: string;\n  completion_time: number;\n  error_count: number;\n  satisfaction: number;\n  comments: string;\n}\n</code></pre>\n<p>이 문서는 금융 데이터 분석 시스템의 UI/UX 디자인 가이드를 제공합니다. 사용자 경험을 최적화하기 위해 지속적으로 업데이트되며, 피드백을 반영하여 개선됩니다. 🚀</p>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Entasis Engine - UI/UX 디자인 가이드\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 사용자 인터페이스 및 경험 디자인 가이드\"\ntags:\n[\n\"ui\",\n\"ux\",\n\"design\",\n\"wireframe\",\n\"component\",\n\"responsive\",\n\"accessibility\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 29.9140625
+        },
+        {
+          "id": "heading-1",
+          "text": "금융 데이터 분석 시스템 UI/UX 디자인 가이드",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 191.828125
+        },
+        {
+          "id": "heading-2",
+          "text": "🎨 디자인 시스템",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 240.7421875
+        },
+        {
+          "id": "heading-3",
+          "text": "1. 색상 팔레트",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 292.15625
+        },
+        {
+          "id": "heading-4",
+          "text": "2. 타이포그래피",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 838.0546875
+        },
+        {
+          "id": "heading-5",
+          "text": "3. 그리드 시스템",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1301.234375
+        },
+        {
+          "id": "heading-6",
+          "text": "📱 컴포넌트 라이브러리",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1593.1171875
+        },
+        {
+          "id": "heading-7",
+          "text": "1. 차트 컴포넌트",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1644.53125
+        },
+        {
+          "id": "heading-8",
+          "text": "1.1 캔들스틱 차트",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 1688.8046875
+        },
+        {
+          "id": "heading-9",
+          "text": "1.2 기술적 지표",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 2191.0625
+        },
+        {
+          "id": "heading-10",
+          "text": "2. 대시보드 레이아웃",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 2424.984375
+        },
+        {
+          "id": "heading-11",
+          "text": "🔄 사용자 플로우",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 2953.9296875
+        },
+        {
+          "id": "heading-12",
+          "text": "1. 트레이딩 플로우",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 3005.34375
+        },
+        {
+          "id": "heading-13",
+          "text": "2. 포트폴리오 관리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 3277.875
+        },
+        {
+          "id": "heading-14",
+          "text": "📐 반응형 디자인",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 3515.296875
+        },
+        {
+          "id": "heading-15",
+          "text": "1. 브레이크포인트",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 3566.7109375
+        },
+        {
+          "id": "heading-16",
+          "text": "2. 레이아웃 조정",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 3948.78125
+        },
+        {
+          "id": "heading-17",
+          "text": "♿ 접근성",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 4351.828125
+        },
+        {
+          "id": "heading-18",
+          "text": "1. ARIA 레이블",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 4403.2421875
+        },
+        {
+          "id": "heading-19",
+          "text": "2. 키보드 네비게이션",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 4588
+        },
+        {
+          "id": "heading-20",
+          "text": "🎯 사용성 테스트",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 5183.9453125
+        },
+        {
+          "id": "heading-21",
+          "text": "1. 테스트 시나리오",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 5235.359375
+        },
+        {
+          "id": "heading-22",
+          "text": "2. 피드백 수집",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 5630.7734375
+        }
+      ]
     },
-    {
-      "id": "heading-1",
-      "text": "🎨 디자인 시스템",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 68.828125
-    },
-    {
-      "id": "heading-2",
-      "text": "1. 색상 팔레트",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 120.2421875
-    },
-    {
-      "id": "heading-3",
-      "text": "2. 타이포그래피",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 666.140625
-    },
-    {
-      "id": "heading-4",
-      "text": "3. 그리드 시스템",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1129.3203125
-    },
-    {
-      "id": "heading-5",
-      "text": "📱 컴포넌트 라이브러리",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 1421.203125
-    },
-    {
-      "id": "heading-6",
-      "text": "1. 차트 컴포넌트",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1472.6171875
-    },
-    {
-      "id": "heading-7",
-      "text": "1.1 캔들스틱 차트",
-      "level": 4,
-      "isMainTopic": false,
-      "position": 1516.890625
-    },
-    {
-      "id": "heading-8",
-      "text": "1.2 기술적 지표",
-      "level": 4,
-      "isMainTopic": false,
-      "position": 2019.1484375
-    },
-    {
-      "id": "heading-9",
-      "text": "2. 대시보드 레이아웃",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 2253.0703125
-    },
-    {
-      "id": "heading-10",
-      "text": "🔄 사용자 플로우",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 2782.015625
-    },
-    {
-      "id": "heading-11",
-      "text": "1. 트레이딩 플로우",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 2833.4296875
-    },
-    {
-      "id": "heading-12",
-      "text": "2. 포트폴리오 관리",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 3105.9609375
-    },
-    {
-      "id": "heading-13",
-      "text": "📐 반응형 디자인",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 3343.3828125
-    },
-    {
-      "id": "heading-14",
-      "text": "1. 브레이크포인트",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 3394.796875
-    },
-    {
-      "id": "heading-15",
-      "text": "2. 레이아웃 조정",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 3776.8671875
-    },
-    {
-      "id": "heading-16",
-      "text": "♿ 접근성",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 4179.9140625
-    },
-    {
-      "id": "heading-17",
-      "text": "1. ARIA 레이블",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 4231.328125
-    },
-    {
-      "id": "heading-18",
-      "text": "2. 키보드 네비게이션",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 4416.0859375
-    },
-    {
-      "id": "heading-19",
-      "text": "🎯 사용성 테스트",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 5012.03125
-    },
-    {
-      "id": "heading-20",
-      "text": "1. 테스트 시나리오",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 5063.4453125
-    },
-    {
-      "id": "heading-21",
-      "text": "2. 피드백 수집",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 5458.859375
+    "en": {
+      "title": "Entasis Engine - UI/UX Design Guide",
+      "description": "User interface and experience design guide for digital asset data analysis system",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - UI/UX Design Guide\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"User interface and experience design guide for digital asset data analysis system\"\ntags:\n[\n\"ui\",\n\"ux\",\n\"design\",\n\"wireframe\",\n\"component\",\n\"responsive\",\n\"accessibility\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">Financial Data Analysis System UI/UX Design Guide</h1>\n<h2 id=\"heading-2\">🎨 Design System</h2>\n<h3 id=\"heading-3\">1. Color Palette</h3>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Entasis Engine - UI/UX Design Guide\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"User interface and experience design guide for digital asset data analysis system\"\ntags:\n[\n\"ui\",\n\"ux\",\n\"design\",\n\"wireframe\",\n\"component\",\n\"responsive\",\n\"accessibility\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 29.9140625
+        },
+        {
+          "id": "heading-1",
+          "text": "Financial Data Analysis System UI/UX Design Guide",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 187.328125
+        },
+        {
+          "id": "heading-2",
+          "text": "🎨 Design System",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 234.7421875
+        },
+        {
+          "id": "heading-3",
+          "text": "1. Color Palette",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 286.15625
+        }
+      ]
     }
-  ],
+  },
   "imageHeights": {}
 }

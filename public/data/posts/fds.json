@@ -1,7 +1,5 @@
 {
   "id": "fds",
-  "title": "FDS 기획",
-  "content": "<h2 id=\"heading-0\">시스템 개요</h2>\n<p>가상자산 이상 거래 탐지 시스템(Virtual Asset FDS, VA-FDS)은 블록체인 네트워크에서 발생하는 비정상적인 거래 패턴을 실시간으로 감지하고 대응하는 시스템입니다.</p>\n<h3 id=\"heading-1\">주요 특징</h3>\n<ol>\n<li>\n<p><strong>블록체인 특화 데이터 수집</strong></p>\n<ul>\n<li>온체인 트랜잭션 데이터</li>\n<li>지갑 주소 행위 패턴</li>\n<li>스마트 컨트랙트 인터랙션</li>\n<li>DEX/CEX 거래 데이터</li>\n</ul>\n</li>\n<li>\n<p><strong>하이브리드 분석 방식</strong></p>\n<ul>\n<li>룰 기반 탐지 (Rule-based Detection)</li>\n<li>머신러닝 기반 이상 탐지</li>\n<li>온체인 데이터 분석</li>\n<li>크로스체인 추적</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-2\">핵심 기능</h2>\n<p><img src=\"/images/fds.jpeg\" alt=\"Profile Image 1\"></p>\n<h3 id=\"heading-3\">1. 실시간 트랜잭션 모니터링</h3>\n<ul>\n<li>대량 송금 패턴 감지</li>\n<li>이상 거래 금액 탐지</li>\n<li>의심스러운 지갑 주소 추적</li>\n<li>스마트 컨트랙트 취약점 분석</li>\n</ul>\n<h3 id=\"heading-4\">2. 크로스체인 추적 시스템</h3>\n<ul>\n<li>브리지 트랜잭션 모니터링</li>\n<li>체인 간 자금 흐름 추적</li>\n<li>크로스체인 세탁 패턴 감지</li>\n<li>브리지 해킹 위험 감지</li>\n</ul>\n<h3 id=\"heading-5\">3. AI 기반 패턴 분석</h3>\n<ul>\n<li>지도학습: RandomForest, XGBoost</li>\n<li>비지도학습: Isolation Forest</li>\n<li>딥러닝: LSTM, GNN</li>\n<li>앙상블 기법 적용</li>\n</ul>\n<h2 id=\"heading-6\">기술 스택</h2>\n<h3 id=\"heading-7\">Backend</h3>\n<ul>\n<li>Node.js/Python</li>\n<li>PostgreSQL (트랜잭션 데이터)</li>\n<li>Redis (실시간 캐싱)</li>\n<li>Kafka (스트림 처리)</li>\n</ul>\n<h3 id=\"heading-8\">Blockchain</h3>\n<ul>\n<li>Web3.js/Ethers.js</li>\n<li>The Graph (데이터 인덱싱)</li>\n<li>Chainlink (오라클)</li>\n</ul>\n<h3 id=\"heading-9\">AI/ML</h3>\n<ul>\n<li>TensorFlow/PyTorch</li>\n<li>scikit-learn</li>\n<li>NetworkX (그래프 분석)</li>\n</ul>\n<h2 id=\"heading-10\">시스템 아키텍처</h2>\n<pre><code class=\"language-plaintext\">[블록체인 네트워크]\n    │\n    ├─ [이더리움 노드] ─── [The Graph 인덱서]\n    ├─ [바이낸스 노드] ─── [체인 브릿지 모니터]\n    └─ [기타 체인 노드] ── [크로스체인 트래커]\n              │\n              ▼\n[데이터 수집 레이어]\n    │\n    ├─ [트랜잭션 콜렉터] ── (실시간 거래 데이터)\n    ├─ [컨트랙트 스캐너] ── (스마트 컨트랙트 호출)\n    └─ [이벤트 리스너] ──── (체인 이벤트 로그)\n              │\n              ▼\n[스트림 프로세싱]\n    │\n    ├─ [Kafka 프로듀서] ─── (실시간 데이터 스트림)\n    ├─ [Redis 캐시] ─────── (고속 데이터 처리)\n    └─ [데이터 파서] ────── (정형/비정형 데이터 변환)\n              │\n              ▼\n[분석 엔진]\n    │\n    ├─ [룰 기반 엔진] ────── (정적 규칙 검사)\n    │      └─ [임계값 체크] ─ (거래량/금액 분석)\n    │\n    ├─ [ML 엔진]\n    │      ├─ [지도학습 모델] ── (이상 패턴 분류)\n    │      ├─ [비지도학습 모델] ─ (이상치 탐지)\n    │      └─ [앙상블 모델] ──── (통합 예측)\n    │\n    └─ [그래프 분석기]\n           ├─ [주소 클러스터링] ── (연관 지갑 그룹화)\n           └─ [자금 흐름 추적] ─── (거래 경로 분석)\n              │\n              ▼\n[실시간 모니터링]\n    │\n    ├─ [알림 시스템]\n    │      ├─ [우선순위 분류기] ── (위험도 평가)\n    │      └─ [알림 디스패처] ─── (채널별 알림 발송)\n    │\n    └─ [대응 시스템]\n           ├─ [자동화 대응] ────── (거래 차단/제한)\n           ├─ [수동 검토] ─────── (분석가 확인)\n           └─ [보고서 생성] ───── (감사 추적)\n</code></pre>\n<h3 id=\"heading-11\">주요 컴포넌트 설명</h3>\n<ol>\n<li>\n<p><strong>블록체인 네트워크 레이어</strong></p>\n<ul>\n<li>다중 체인 노드 운영</li>\n<li>실시간 블록 데이터 수집</li>\n<li>크로스체인 브릿지 모니터링</li>\n</ul>\n</li>\n<li>\n<p><strong>데이터 수집 레이어</strong></p>\n<ul>\n<li>트랜잭션 데이터 실시간 수집</li>\n<li>스마트 컨트랙트 인터랙션 분석</li>\n<li>체인 이벤트 로그 추적</li>\n</ul>\n</li>\n<li>\n<p><strong>스트림 프로세싱 레이어</strong></p>\n<ul>\n<li>대용량 실시간 데이터 처리</li>\n<li>인메모리 캐싱</li>\n<li>데이터 정규화 및 변환</li>\n</ul>\n</li>\n<li>\n<p><strong>분석 엔진 레이어</strong></p>\n<ul>\n<li>다중 분석 모델 운영</li>\n<li>실시간 패턴 매칭</li>\n<li>머신러닝 기반 예측</li>\n</ul>\n</li>\n<li>\n<p><strong>모니터링 및 대응 레이어</strong></p>\n<ul>\n<li>실시간 위험 평가</li>\n<li>자동화된 대응 체계</li>\n<li>감사 추적 시스템</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-12\">구현 계획</h2>\n<h3 id=\"heading-13\">Phase 1: 기본 인프라 구축</h3>\n<ul>\n<li>데이터 수집 파이프라인 구축</li>\n<li>기본 룰 기반 탐지 시스템 구현</li>\n<li>실시간 모니터링 대시보드 개발</li>\n</ul>\n<h3 id=\"heading-14\">Phase 2: AI 모델 개발</h3>\n<ul>\n<li>지도학습 모델 훈련</li>\n<li>비지도학습 모델 구현</li>\n<li>앙상블 시스템 구축</li>\n</ul>\n<h3 id=\"heading-15\">Phase 3: 크로스체인 확장</h3>\n<ul>\n<li>멀티체인 데이터 수집</li>\n<li>크로스체인 추적 시스템</li>\n<li>통합 대시보드 개발</li>\n</ul>\n<h2 id=\"heading-16\">기대 효과</h2>\n<ol>\n<li>\n<p><strong>보안성 강화</strong></p>\n<ul>\n<li>해킹 시도 조기 감지</li>\n<li>자금 세탁 방지</li>\n<li>사기 거래 예방</li>\n</ul>\n</li>\n<li>\n<p><strong>운영 효율성</strong></p>\n<ul>\n<li>자동화된 모니터링</li>\n<li>실시간 대응 체계</li>\n<li>리스크 관리 강화</li>\n</ul>\n</li>\n<li>\n<p><strong>사용자 신뢰도</strong></p>\n<ul>\n<li>안전한 거래 환경</li>\n<li>투명한 모니터링</li>\n<li>신속한 이상 거래 대응</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-17\">향후 발전 방향</h2>\n<ol>\n<li>\n<p><strong>탈중앙화 FDS</strong></p>\n<ul>\n<li>DAO 기반 거버넌스</li>\n<li>탈중앙화 신고 시스템</li>\n<li>커뮤니티 기반 검증</li>\n</ul>\n</li>\n<li>\n<p><strong>AI 고도화</strong></p>\n<ul>\n<li>제로샷 러닝 도입</li>\n<li>강화학습 모델 적용</li>\n<li>연합학습 시스템</li>\n</ul>\n</li>\n<li>\n<p><strong>생태계 확장</strong></p>\n<ul>\n<li>DeFi 프로토콜 연동</li>\n<li>CEX 협력 체계</li>\n<li>규제기관 협력</li>\n</ul>\n</li>\n</ol>\n",
   "date": "2024-03-20",
   "category": "projects",
   "tags": [
@@ -10,137 +8,241 @@
     "Security",
     "AI"
   ],
-  "description": "블록체인 기반 가상자산 거래의 이상 탐지 시스템 설계",
   "thumbnail": "/images/solidity.webp",
-  "tocItems": [
-    {
-      "id": "heading-0",
-      "text": "시스템 개요",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 19.9140625
+  "translations": {
+    "ko": {
+      "title": "FDS 기획",
+      "description": "블록체인 기반 가상자산 거래의 이상 탐지 시스템 설계",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"FDS 기획\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"블록체인 기반 가상자산 거래의 이상 탐지 시스템 설계\"\ntags: [\"Blockchain\", \"FDS\", \"Security\", \"AI\"]\nthumbnail: \"/images/solidity.webp\"</h2>\n<h2 id=\"heading-1\">시스템 개요</h2>\n<p>가상자산 이상 거래 탐지 시스템(Virtual Asset FDS, VA-FDS)은 블록체인 네트워크에서 발생하는 비정상적인 거래 패턴을 실시간으로 감지하고 대응하는 시스템입니다.</p>\n<h3 id=\"heading-2\">주요 특징</h3>\n<ol>\n<li>\n<p><strong>블록체인 특화 데이터 수집</strong></p>\n<ul>\n<li>온체인 트랜잭션 데이터</li>\n<li>지갑 주소 행위 패턴</li>\n<li>스마트 컨트랙트 인터랙션</li>\n<li>DEX/CEX 거래 데이터</li>\n</ul>\n</li>\n<li>\n<p><strong>하이브리드 분석 방식</strong></p>\n<ul>\n<li>룰 기반 탐지 (Rule-based Detection)</li>\n<li>머신러닝 기반 이상 탐지</li>\n<li>온체인 데이터 분석</li>\n<li>크로스체인 추적</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-3\">핵심 기능</h2>\n<p><img src=\"/images/fds.jpeg\" alt=\"Profile Image 1\"></p>\n<h3 id=\"heading-4\">1. 실시간 트랜잭션 모니터링</h3>\n<ul>\n<li>대량 송금 패턴 감지</li>\n<li>이상 거래 금액 탐지</li>\n<li>의심스러운 지갑 주소 추적</li>\n<li>스마트 컨트랙트 취약점 분석</li>\n</ul>\n<h3 id=\"heading-5\">2. 크로스체인 추적 시스템</h3>\n<ul>\n<li>브리지 트랜잭션 모니터링</li>\n<li>체인 간 자금 흐름 추적</li>\n<li>크로스체인 세탁 패턴 감지</li>\n<li>브리지 해킹 위험 감지</li>\n</ul>\n<h3 id=\"heading-6\">3. AI 기반 패턴 분석</h3>\n<ul>\n<li>지도학습: RandomForest, XGBoost</li>\n<li>비지도학습: Isolation Forest</li>\n<li>딥러닝: LSTM, GNN</li>\n<li>앙상블 기법 적용</li>\n</ul>\n<h2 id=\"heading-7\">기술 스택</h2>\n<h3 id=\"heading-8\">Backend</h3>\n<ul>\n<li>Node.js/Python</li>\n<li>PostgreSQL (트랜잭션 데이터)</li>\n<li>Redis (실시간 캐싱)</li>\n<li>Kafka (스트림 처리)</li>\n</ul>\n<h3 id=\"heading-9\">Blockchain</h3>\n<ul>\n<li>Web3.js/Ethers.js</li>\n<li>The Graph (데이터 인덱싱)</li>\n<li>Chainlink (오라클)</li>\n</ul>\n<h3 id=\"heading-10\">AI/ML</h3>\n<ul>\n<li>TensorFlow/PyTorch</li>\n<li>scikit-learn</li>\n<li>NetworkX (그래프 분석)</li>\n</ul>\n<h2 id=\"heading-11\">시스템 아키텍처</h2>\n<pre><code class=\"language-plaintext\">[블록체인 네트워크]\n    │\n    ├─ [이더리움 노드] ─── [The Graph 인덱서]\n    ├─ [바이낸스 노드] ─── [체인 브릿지 모니터]\n    └─ [기타 체인 노드] ── [크로스체인 트래커]\n              │\n              ▼\n[데이터 수집 레이어]\n    │\n    ├─ [트랜잭션 콜렉터] ── (실시간 거래 데이터)\n    ├─ [컨트랙트 스캐너] ── (스마트 컨트랙트 호출)\n    └─ [이벤트 리스너] ──── (체인 이벤트 로그)\n              │\n              ▼\n[스트림 프로세싱]\n    │\n    ├─ [Kafka 프로듀서] ─── (실시간 데이터 스트림)\n    ├─ [Redis 캐시] ─────── (고속 데이터 처리)\n    └─ [데이터 파서] ────── (정형/비정형 데이터 변환)\n              │\n              ▼\n[분석 엔진]\n    │\n    ├─ [룰 기반 엔진] ────── (정적 규칙 검사)\n    │      └─ [임계값 체크] ─ (거래량/금액 분석)\n    │\n    ├─ [ML 엔진]\n    │      ├─ [지도학습 모델] ── (이상 패턴 분류)\n    │      ├─ [비지도학습 모델] ─ (이상치 탐지)\n    │      └─ [앙상블 모델] ──── (통합 예측)\n    │\n    └─ [그래프 분석기]\n           ├─ [주소 클러스터링] ── (연관 지갑 그룹화)\n           └─ [자금 흐름 추적] ─── (거래 경로 분석)\n              │\n              ▼\n[실시간 모니터링]\n    │\n    ├─ [알림 시스템]\n    │      ├─ [우선순위 분류기] ── (위험도 평가)\n    │      └─ [알림 디스패처] ─── (채널별 알림 발송)\n    │\n    └─ [대응 시스템]\n           ├─ [자동화 대응] ────── (거래 차단/제한)\n           ├─ [수동 검토] ─────── (분석가 확인)\n           └─ [보고서 생성] ───── (감사 추적)\n</code></pre>\n<h3 id=\"heading-12\">주요 컴포넌트 설명</h3>\n<ol>\n<li>\n<p><strong>블록체인 네트워크 레이어</strong></p>\n<ul>\n<li>다중 체인 노드 운영</li>\n<li>실시간 블록 데이터 수집</li>\n<li>크로스체인 브릿지 모니터링</li>\n</ul>\n</li>\n<li>\n<p><strong>데이터 수집 레이어</strong></p>\n<ul>\n<li>트랜잭션 데이터 실시간 수집</li>\n<li>스마트 컨트랙트 인터랙션 분석</li>\n<li>체인 이벤트 로그 추적</li>\n</ul>\n</li>\n<li>\n<p><strong>스트림 프로세싱 레이어</strong></p>\n<ul>\n<li>대용량 실시간 데이터 처리</li>\n<li>인메모리 캐싱</li>\n<li>데이터 정규화 및 변환</li>\n</ul>\n</li>\n<li>\n<p><strong>분석 엔진 레이어</strong></p>\n<ul>\n<li>다중 분석 모델 운영</li>\n<li>실시간 패턴 매칭</li>\n<li>머신러닝 기반 예측</li>\n</ul>\n</li>\n<li>\n<p><strong>모니터링 및 대응 레이어</strong></p>\n<ul>\n<li>실시간 위험 평가</li>\n<li>자동화된 대응 체계</li>\n<li>감사 추적 시스템</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-13\">구현 계획</h2>\n<h3 id=\"heading-14\">Phase 1: 기본 인프라 구축</h3>\n<ul>\n<li>데이터 수집 파이프라인 구축</li>\n<li>기본 룰 기반 탐지 시스템 구현</li>\n<li>실시간 모니터링 대시보드 개발</li>\n</ul>\n<h3 id=\"heading-15\">Phase 2: AI 모델 개발</h3>\n<ul>\n<li>지도학습 모델 훈련</li>\n<li>비지도학습 모델 구현</li>\n<li>앙상블 시스템 구축</li>\n</ul>\n<h3 id=\"heading-16\">Phase 3: 크로스체인 확장</h3>\n<ul>\n<li>멀티체인 데이터 수집</li>\n<li>크로스체인 추적 시스템</li>\n<li>통합 대시보드 개발</li>\n</ul>\n<h2 id=\"heading-17\">기대 효과</h2>\n<ol>\n<li>\n<p><strong>보안성 강화</strong></p>\n<ul>\n<li>해킹 시도 조기 감지</li>\n<li>자금 세탁 방지</li>\n<li>사기 거래 예방</li>\n</ul>\n</li>\n<li>\n<p><strong>운영 효율성</strong></p>\n<ul>\n<li>자동화된 모니터링</li>\n<li>실시간 대응 체계</li>\n<li>리스크 관리 강화</li>\n</ul>\n</li>\n<li>\n<p><strong>사용자 신뢰도</strong></p>\n<ul>\n<li>안전한 거래 환경</li>\n<li>투명한 모니터링</li>\n<li>신속한 이상 거래 대응</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-18\">향후 발전 방향</h2>\n<ol>\n<li>\n<p><strong>탈중앙화 FDS</strong></p>\n<ul>\n<li>DAO 기반 거버넌스</li>\n<li>탈중앙화 신고 시스템</li>\n<li>커뮤니티 기반 검증</li>\n</ul>\n</li>\n<li>\n<p><strong>AI 고도화</strong></p>\n<ul>\n<li>제로샷 러닝 도입</li>\n<li>강화학습 모델 적용</li>\n<li>연합학습 시스템</li>\n</ul>\n</li>\n<li>\n<p><strong>생태계 확장</strong></p>\n<ul>\n<li>DeFi 프로토콜 연동</li>\n<li>CEX 협력 체계</li>\n<li>규제기관 협력</li>\n</ul>\n</li>\n</ol>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"FDS 기획\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"블록체인 기반 가상자산 거래의 이상 탐지 시스템 설계\"\ntags: [\"Blockchain\", \"FDS\", \"Security\", \"AI\"]\nthumbnail: \"/images/solidity.webp\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 29.9140625
+        },
+        {
+          "id": "heading-1",
+          "text": "시스템 개요",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 135.328125
+        },
+        {
+          "id": "heading-2",
+          "text": "주요 특징",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 241.9609375
+        },
+        {
+          "id": "heading-3",
+          "text": "핵심 기능",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 546.59375
+        },
+        {
+          "id": "heading-4",
+          "text": "1. 실시간 트랜잭션 모니터링",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-5",
+          "text": "2. 크로스체인 추적 시스템",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 632.7265625
+        },
+        {
+          "id": "heading-6",
+          "text": "3. AI 기반 패턴 분석",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 771.1640625
+        },
+        {
+          "id": "heading-7",
+          "text": "기술 스택",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 909.6015625
+        },
+        {
+          "id": "heading-8",
+          "text": "Backend",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1049.234375
+        },
+        {
+          "id": "heading-9",
+          "text": "Blockchain",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1098.1484375
+        },
+        {
+          "id": "heading-10",
+          "text": "AI/ML",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1234.0859375
+        },
+        {
+          "id": "heading-11",
+          "text": "시스템 아키텍처",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1350.5234375
+        },
+        {
+          "id": "heading-12",
+          "text": "주요 컴포넌트 설명",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1467.15625
+        },
+        {
+          "id": "heading-13",
+          "text": "구현 계획",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 2377.65625
+        },
+        {
+          "id": "heading-14",
+          "text": "Phase 1: 기본 인프라 구축",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 2973.2890625
+        },
+        {
+          "id": "heading-15",
+          "text": "Phase 2: AI 모델 개발",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 3022.203125
+        },
+        {
+          "id": "heading-16",
+          "text": "Phase 3: 크로스체인 확장",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 3141.140625
+        },
+        {
+          "id": "heading-17",
+          "text": "기대 효과",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 3260.078125
+        },
+        {
+          "id": "heading-18",
+          "text": "향후 발전 방향",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 3380.2109375
+        }
+      ]
     },
-    {
-      "id": "heading-1",
-      "text": "주요 특징",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 126.546875
-    },
-    {
-      "id": "heading-2",
-      "text": "핵심 기능",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 431.1796875
-    },
-    {
-      "id": "heading-3",
-      "text": "1. 실시간 트랜잭션 모니터링",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 0
-    },
-    {
-      "id": "heading-4",
-      "text": "2. 크로스체인 추적 시스템",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 517.3125
-    },
-    {
-      "id": "heading-5",
-      "text": "3. AI 기반 패턴 분석",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 655.75
-    },
-    {
-      "id": "heading-6",
-      "text": "기술 스택",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 794.1875
-    },
-    {
-      "id": "heading-7",
-      "text": "Backend",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 933.8203125
-    },
-    {
-      "id": "heading-8",
-      "text": "Blockchain",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 982.734375
-    },
-    {
-      "id": "heading-9",
-      "text": "AI/ML",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1118.671875
-    },
-    {
-      "id": "heading-10",
-      "text": "시스템 아키텍처",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 1235.109375
-    },
-    {
-      "id": "heading-11",
-      "text": "주요 컴포넌트 설명",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1351.7421875
-    },
-    {
-      "id": "heading-12",
-      "text": "구현 계획",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 2262.2421875
-    },
-    {
-      "id": "heading-13",
-      "text": "Phase 1: 기본 인프라 구축",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 2857.875
-    },
-    {
-      "id": "heading-14",
-      "text": "Phase 2: AI 모델 개발",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 2906.7890625
-    },
-    {
-      "id": "heading-15",
-      "text": "Phase 3: 크로스체인 확장",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 3025.7265625
-    },
-    {
-      "id": "heading-16",
-      "text": "기대 효과",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 3144.6640625
-    },
-    {
-      "id": "heading-17",
-      "text": "향후 발전 방향",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 3264.796875
+    "en": {
+      "title": "FDS Planning",
+      "description": "Design of Anomaly Detection System for Blockchain-based Digital Asset Trading",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"FDS Planning\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"Design of Anomaly Detection System for Blockchain-based Digital Asset Trading\"\ntags: [\"Blockchain\", \"FDS\", \"Security\", \"AI\"]\nthumbnail: \"/images/solidity.webp\"</h2>\n<h2 id=\"heading-1\">System Overview</h2>\n<p>Virtual Asset FDS (VA-FDS) is a system that detects and responds to abnormal transaction patterns in blockchain networks in real-time.</p>\n<h3 id=\"heading-2\">Key Features</h3>\n<ol>\n<li>\n<p><strong>Blockchain-Specific Data Collection</strong></p>\n<ul>\n<li>On-chain transaction data</li>\n<li>Wallet address behavior patterns</li>\n<li>Smart contract interactions</li>\n<li>DEX/CEX trading data</li>\n</ul>\n</li>\n<li>\n<p><strong>Hybrid Analysis Approach</strong></p>\n<ul>\n<li>Rule-based Detection</li>\n<li>Machine Learning-based Anomaly Detection</li>\n<li>On-chain Data Analysis</li>\n<li>Cross-chain Tracking</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-3\">Core Functions</h2>\n<p><img src=\"/images/fds.jpeg\" alt=\"Profile Image 1\"></p>\n<h3 id=\"heading-4\">1. Real-time Transaction Monitoring</h3>\n<ul>\n<li>Bulk transfer pattern detection</li>\n<li>Abnormal transaction amount detection</li>\n<li>Suspicious wallet address tracking</li>\n<li>Smart contract vulnerability analysis</li>\n</ul>\n<h3 id=\"heading-5\">2. Cross-chain Tracking System</h3>\n<ul>\n<li>Bridge transaction monitoring</li>\n<li>Cross-chain fund flow tracking</li>\n<li>Cross-chain laundering pattern detection</li>\n<li>Bridge hacking risk detection</li>\n</ul>\n<h3 id=\"heading-6\">3. AI-based Pattern Analysis</h3>\n<ul>\n<li>Supervised Learning: RandomForest, XGBoost</li>\n<li>Unsupervised Learning: Isolation Forest</li>\n<li>Deep Learning: LSTM, GNN</li>\n<li>Ensemble techniques application</li>\n</ul>\n<h2 id=\"heading-7\">Tech Stack</h2>\n<h3 id=\"heading-8\">Backend</h3>\n<ul>\n<li>Node.js/Python</li>\n<li>PostgreSQL (transaction data)</li>\n<li>Redis (real-time caching)</li>\n<li>Kafka (stream processing)</li>\n</ul>\n<h3 id=\"heading-9\">Blockchain</h3>\n<ul>\n<li>Web3.js/Ethers.js</li>\n<li>The Graph (data indexing)</li>\n<li>Chainlink (oracle)</li>\n</ul>\n<h3 id=\"heading-10\">AI/ML</h3>\n<ul>\n<li>TensorFlow/PyTorch</li>\n<li>scikit-learn</li>\n<li>NetworkX (graph analysis)</li>\n</ul>\n<h2 id=\"heading-11\">System Architecture</h2>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"FDS Planning\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"Design of Anomaly Detection System for Blockchain-based Digital Asset Trading\"\ntags: [\"Blockchain\", \"FDS\", \"Security\", \"AI\"]\nthumbnail: \"/images/solidity.webp\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 29.9140625
+        },
+        {
+          "id": "heading-1",
+          "text": "System Overview",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 159.828125
+        },
+        {
+          "id": "heading-2",
+          "text": "Key Features",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 262.9609375
+        },
+        {
+          "id": "heading-3",
+          "text": "Core Functions",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 556.09375
+        },
+        {
+          "id": "heading-4",
+          "text": "1. Real-time Transaction Monitoring",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-5",
+          "text": "2. Cross-chain Tracking System",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 640.7265625
+        },
+        {
+          "id": "heading-6",
+          "text": "3. AI-based Pattern Analysis",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 773.6640625
+        },
+        {
+          "id": "heading-7",
+          "text": "Tech Stack",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 906.6015625
+        },
+        {
+          "id": "heading-8",
+          "text": "Backend",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1040.734375
+        },
+        {
+          "id": "heading-9",
+          "text": "Blockchain",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1088.1484375
+        },
+        {
+          "id": "heading-10",
+          "text": "AI/ML",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1221.0859375
+        },
+        {
+          "id": "heading-11",
+          "text": "System Architecture",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1335.5234375
+        }
+      ]
     }
-  ],
+  },
   "imageHeights": {
-    "img-3": 18.5
+    "img-4": 18.5
   }
 }
