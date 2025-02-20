@@ -8,6 +8,7 @@ import "../Styles/post_container.scss";
 import { useCategories } from "@/data/categories";
 import { useTranslation } from "react-i18next";
 import { CATEGORY_ORDER } from "@/constants/categoryOrder";
+import { I18NProvider } from "next/dist/server/future/helpers/i18n-provider";
 
 interface PostContainerProps {
   selectedCategory: string;
@@ -24,6 +25,7 @@ export const PostContainer = ({
   onSearchResults,
   posts: externalPosts, // 외부에서 받은 posts 사용
 }: PostContainerProps) => {
+  const { t, i18n } = useTranslation();
   const categories = useCategories();
   const currentCategory = categories?.find(
     (cat: Category) => cat.id === selectedCategory
@@ -41,14 +43,21 @@ export const PostContainer = ({
         : externalPosts.filter((post) => post.category === selectedCategory);
 
     // 그 다음 검색어로 필터링
-    const searchFiltered = categoryFiltered.filter(
-      (post) =>
-        post.content
-          .replace(/<[^>]*>/g, "") // HTML 태그 제거
+    const searchFiltered = categoryFiltered.filter((post) => {
+      const currentLang = i18n.language as "ko" | "en";
+      const translation =
+        post.translations?.[currentLang] || post.translations?.["en"];
+
+      return (
+        translation?.content
+          .replace(/<[^>]*>/g, "")
           .toLowerCase()
           .includes(debouncedSearchTerm.toLowerCase()) ||
-        post.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-    );
+        translation?.title
+          .toLowerCase()
+          .includes(debouncedSearchTerm.toLowerCase())
+      );
+    });
 
     // 전체보기일 때만 카테고리 순서대로 정렬
     if (selectedCategory === "all") {
@@ -77,13 +86,14 @@ export const PostContainer = ({
     const postsToUse =
       filteredPosts.length === 0 ? externalPosts : filteredPosts;
 
-    const texts = postsToUse.map(
-      (post) => `${post.title} ${post.content} ${post.description}`
-    );
+    const currentLang = i18n.language as "ko" | "en";
+    const texts = postsToUse.map((post) => {
+      const translation =
+        post.translations?.[currentLang] || post.translations?.["en"];
+      return `${translation?.title} ${translation?.content} ${translation?.description}`;
+    });
     onSearchResults(texts);
   }, [filteredPosts, externalPosts, onSearchResults]);
-
-  const { t } = useTranslation();
 
   return (
     <div className="post_container">

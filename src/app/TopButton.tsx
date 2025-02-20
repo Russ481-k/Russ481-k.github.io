@@ -9,7 +9,7 @@ export function TopButton() {
 
   const handleFollow = () => {
     setScrollY(window.scrollY);
-    if (ScrollY > 100) {
+    if (ScrollY > 300) {
       setBtnStatus(true);
     } else {
       setBtnStatus(false);

@@ -1,39 +1,31 @@
 "use client";
 
-import i18n from "i18next";
+import { createInstance } from "i18next";
 import { initReactI18next } from "react-i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
+import { getOptions } from "./settings";
 import { resources } from "./resources";
 
-const initI18next = async () => {
-  await i18n
-    .use(initReactI18next)
-    .use(LanguageDetector)
-    .init({
-      resources,
-      lng: "en",
-      fallbackLng: "en",
-      defaultNS: "common",
-      ns: ["common"],
-      react: {
-        useSuspense: false,
-      },
-      interpolation: {
-        escapeValue: false,
-      },
-    });
+const initI18next = async (lng: string, ns: string) => {
+  const i18nInstance = createInstance();
+  await i18nInstance.use(initReactI18next).init({
+    resources,
+    ...getOptions(lng, ns),
+  });
+  return i18nInstance;
 };
 
-// i18n 초기화가 이미 되어있지 않은 경우에만 초기화
-if (!i18n.isInitialized) {
-  initI18next().catch((error) => {
-    console.error("i18n initialization error:", error);
-  });
+export async function useTranslation(
+  lng: string,
+  ns: string,
+  options: any = {}
+) {
+  const i18nextInstance = await initI18next(lng, ns);
+  return {
+    t: i18nextInstance.getFixedT(
+      lng,
+      Array.isArray(ns) ? ns[0] : ns,
+      options.keyPrefix
+    ),
+    i18n: i18nextInstance,
+  };
 }
-
-// 디버깅을 위한 리소스 확인
-console.log("i18n resources:", resources);
-console.log("current language:", i18n.language);
-console.log("resolved language:", i18n.resolvedLanguage);
-
-export default i18n;

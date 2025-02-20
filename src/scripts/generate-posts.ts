@@ -13,7 +13,7 @@ import puppeteer from "puppeteer";
 async function getAllPosts(): Promise<
   Omit<Post, "tocItems" | "imageHeights">[]
 > {
-  const postsDirectory = path.join(process.cwd(), "posts");
+  const postsDirectory = path.join(process.cwd(), "posts/ko"); // ko 디렉토리 사용
   const fileNames = await fs.readdir(postsDirectory);
 
   return Promise.all(
@@ -21,20 +21,35 @@ async function getAllPosts(): Promise<
       .filter((fileName) => fileName.endsWith(".md"))
       .map(async (fileName) => {
         const id = fileName.replace(/\.md$/, "");
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = await fs.readFile(fullPath, "utf8");
-        const matterResult = matter(fileContents);
+        const koPath = path.join(process.cwd(), "posts/ko", fileName);
+        const enPath = path.join(process.cwd(), "posts/en", fileName);
+
+        const koContent = await fs.readFile(koPath, "utf8");
+        const enContent = await fs.readFile(enPath, "utf8");
+
+        const koMatter = matter(koContent);
+        const enMatter = matter(enContent);
 
         return {
           id,
-          title: matterResult.data.title,
-          content: matterResult.content,
-          date: matterResult.data.date,
-          category:
-            matterResult.data.category?.toLowerCase() || "uncategorized",
-          tags: matterResult.data.tags || [],
-          description: matterResult.data.description,
-          thumbnail: matterResult.data.thumbnail,
+          date: koMatter.data.date,
+          category: koMatter.data.category?.toLowerCase() || "uncategorized",
+          tags: koMatter.data.tags || [],
+          thumbnail: koMatter.data.thumbnail,
+          translations: {
+            ko: {
+              title: koMatter.data.title,
+              description: koMatter.data.description,
+              content: koContent,
+              tocItems: [],
+            },
+            en: {
+              title: enMatter.data.title,
+              description: enMatter.data.description,
+              content: enContent,
+              tocItems: [],
+            },
+          },
         };
       })
   );
@@ -197,14 +212,25 @@ async function generatePostsJson() {
   // 각 포스트 처리
   const processedPosts = await Promise.all(
     posts.map(async (post) => {
-      const { content, tocItems, imageHeights } = await processMarkdown(
-        post.content
-      );
+      // ko와 en 각각의 content에 대해 processMarkdown 실행
+      const koProcessed = await processMarkdown(post.translations.ko.content);
+      const enProcessed = await processMarkdown(post.translations.en.content);
+
       return {
         ...post,
-        content,
-        tocItems,
-        imageHeights,
+        translations: {
+          ko: {
+            ...post.translations.ko,
+            content: koProcessed.content,
+            tocItems: koProcessed.tocItems,
+          },
+          en: {
+            ...post.translations.en,
+            content: enProcessed.content,
+            tocItems: enProcessed.tocItems,
+          },
+        },
+        imageHeights: koProcessed.imageHeights, // 한글 버전의 이미지 높이 사용
       };
     })
   );

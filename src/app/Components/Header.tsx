@@ -5,6 +5,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { useParams } from "next/navigation";
 
 import "../Styles/header.scss";
 import type { Post } from "@/types/post";
@@ -25,7 +26,10 @@ const PostModal = dynamic(
 );
 
 export const Header = () => {
+  const params = useParams();
+  const lng = params.lng as string;
   const { t } = useTranslation();
+  const currentLang = lng as "ko" | "en";
   const [isExpanded, setIsExpanded] = useState(true);
   const [isInitial, setIsInitial] = useState(true);
   const [isIntroOpen, setIsIntroOpen] = useState(false);
@@ -34,28 +38,51 @@ export const Header = () => {
 
   const experiencePost: Post = {
     id: "experience",
-    title: t("header.nav.work"),
-    content: `<h2>${t("experience.title")}</h2>
-              <h3>${t("experience.company")} (2022 - ${t(
-      "common.experience.current"
-    )})</h3>
-              <p>${t("profile.position")}</p>
-              <ul>
-                <li>${t("experience.skills.nextjs")}</li>
-                <li>${t("experience.skills.optimization")}</li>
-              </ul>
-              <h3>${t("experience.projectSection.title")}</h3>
-              <ul>
-                <li>${t("experience.projectSection.blog")}</li>
-                <li>${t("experience.projectSection.portfolio")}</li>
-              </ul>`,
     date: new Date().toISOString(),
-    description: t("header.nav.work"),
     category: "about",
     tags: [],
-    tocItems: [],
-    imageHeights: {},
     thumbnail: "/images/experience.jpg",
+    translations: {
+      ko: {
+        title: t("header.nav.work"),
+        description: t("header.nav.work"),
+        content: `<h2>${t("experience.title")}</h2>
+                  <h3>${t("experience.company")} (2022 - ${t(
+          "common.experience.current"
+        )})</h3>
+                  <p>${t("profile.position")}</p>
+                  <ul>
+                    <li>${t("experience.skills.nextjs")}</li>
+                    <li>${t("experience.skills.optimization")}</li>
+                  </ul>
+                  <h3>${t("experience.projectSection.title")}</h3>
+                  <ul>
+                    <li>${t("experience.projectSection.blog")}</li>
+                    <li>${t("experience.projectSection.portfolio")}</li>
+                  </ul>`,
+        tocItems: [],
+      },
+      en: {
+        title: "Work Experience",
+        description: "Work Experience",
+        content: `<h2>Experience</h2>
+                  <h3>${t("experience.company")} (2022 - ${t(
+          "common.experience.current"
+        )})</h3>
+                  <p>${t("profile.position")}</p>
+                  <ul>
+                    <li>${t("experience.skills.nextjs")}</li>
+                    <li>${t("experience.skills.optimization")}</li>
+                  </ul>
+                  <h3>${t("experience.projectSection.title")}</h3>
+                  <ul>
+                    <li>${t("experience.projectSection.blog")}</li>
+                    <li>${t("experience.projectSection.portfolio")}</li>
+                  </ul>`,
+        tocItems: [],
+      },
+    },
+    imageHeights: {},
   };
 
   useEffect(() => {
@@ -99,32 +126,61 @@ export const Header = () => {
     };
   }, [isInitial]);
 
+  // 헤더 메뉴 아이템 정의
+  const menuItems = [
+    {
+      key: "intro",
+      label: t("header.nav.intro"),
+      onClick: () => setIsIntroOpen(true),
+    },
+    {
+      key: "work",
+      label: t("header.nav.work"),
+      onClick: () => setIsExperienceOpen(true),
+    },
+    {
+      key: "notion",
+      label: t("header.nav.notion"),
+      href: CONTACT.NOTION_URL,
+      external: true,
+    },
+  ];
+
   return (
     <header className={`header ${isExpanded ? "expanded" : ""}`}>
       <div className="header_content">
         <div className="title_area">
           <h1 className="title">
-            <Link href="/">{t("header.title")}</Link>
+            <Link href={`/${lng}`}>{t("header.title")}</Link>
           </h1>
           {!isExpanded && <LanguageSelector />}
         </div>
         {!isExpanded && (
           <nav className="nav">
-            <Link href="#" onClick={() => setIsIntroOpen(true)}>
-              {t("header.nav.intro")}
-            </Link>
-            <Link href="#" onClick={() => setIsExperienceOpen(true)}>
-              {t("header.nav.work")}
-            </Link>
-            <Link
-              href={CONTACT.NOTION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="icon_link"
-              aria-label="Notion Page"
-            >
-              {t("header.nav.notion")}
-            </Link>
+            {menuItems.map((item) =>
+              item.external ? (
+                <Link
+                  key={item.key}
+                  href={item.href!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="icon_link"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <Link
+                  key={item.key}
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    item.onClick?.();
+                  }}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
         )}
       </div>

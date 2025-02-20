@@ -1,5 +1,5 @@
 "use client";
-import { Post } from "@/types/post";
+import { Post, TocItem } from "@/types/post";
 import { Tag } from "./Tag";
 import { useEffect, useRef, useState, useCallback } from "react";
 import "../Styles/post_modal.scss";
@@ -29,7 +29,13 @@ const PostModal = ({
   nextPost,
   onPostChange,
 }: PostModalProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language as "ko" | "en";
+
+  const translation =
+    post.translations?.[currentLang] || post.translations?.["en"];
+  const { title, content, tocItems } = translation;
+
   const [activeId, setActiveId] = useState<string>("");
   const contentRef = useRef<HTMLDivElement>(null);
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
@@ -38,7 +44,7 @@ const PostModal = ({
 
   const scrollToHeading = useCallback(
     (id: string) => {
-      const heading = post.tocItems?.find((h) => h.id === id);
+      const heading = tocItems?.find((h: TocItem) => h.id === id);
       if (!heading || !contentRef.current) return;
 
       const headingElement = contentRef.current.querySelector(`#${id}`);
@@ -55,20 +61,20 @@ const PostModal = ({
         behavior: "smooth",
       });
     },
-    [post.tocItems]
+    [tocItems]
   );
 
   const handleScroll = useCallback(() => {
-    if (!contentRef.current || !post.tocItems?.length) return;
+    if (!contentRef.current || !tocItems?.length) return;
 
     const containerRect = contentRef.current.getBoundingClientRect();
     const scrollTop = contentRef.current.scrollTop;
     const containerPadding = 32;
 
     // 현재 화면에 보이는 헤딩 찾기
-    let currentHeading = post.tocItems[0];
+    let currentHeading = tocItems[0];
 
-    for (const heading of post.tocItems) {
+    for (const heading of tocItems) {
       const headingElement = contentRef.current.querySelector(`#${heading.id}`);
       if (!headingElement) continue;
 
@@ -85,7 +91,7 @@ const PostModal = ({
     }
 
     setActiveId(currentHeading.id);
-  }, [post.tocItems]);
+  }, [tocItems]);
 
   useEffect(() => {
     const contentElement = contentRef.current;
@@ -142,7 +148,7 @@ const PostModal = ({
       copyButton.onclick = () => handleCopy(index, block.textContent || "");
       block.appendChild(copyButton);
     });
-  }, [post.content]);
+  }, [content]);
 
   const handleCopy = async (index: number, text: string) => {
     try {
@@ -166,7 +172,7 @@ const PostModal = ({
 
   const imageUrl = getPostImage(post.thumbnail);
 
-  console.log("Post headings:", post.tocItems); // 목차 데이터 확인
+  console.log("Post headings:", tocItems); // 목차 데이터 확인
   console.log("Current post:", post); // 전체 post 객체 확인
 
   const modalContent = (
@@ -183,11 +189,14 @@ const PostModal = ({
                   <span className="arrow">←</span>
                   <span className="label">{t("modal.prev")}</span>
                 </div>
-                <span className="title">{prevPost.title}</span>
+                <span className="title">
+                  {prevPost.translations[currentLang]?.title ||
+                    prevPost.translations.en.title}
+                </span>
               </div>
             </button>
           )}
-          <h2>{post.title}</h2>
+          <h2>{title}</h2>
           {nextPost && (
             <button
               className="nav_button next"
@@ -198,7 +207,10 @@ const PostModal = ({
                   <span className="label">{t("modal.next")}</span>
                   <span className="arrow">→</span>
                 </div>
-                <span className="title">{nextPost.title}</span>
+                <span className="title">
+                  {nextPost.translations[currentLang]?.title ||
+                    nextPost.translations.en.title}
+                </span>
               </div>
             </button>
           )}
@@ -216,7 +228,7 @@ const PostModal = ({
             <div className="modal_thumbnail">
               <Image
                 src={imageUrl}
-                alt={post.title}
+                alt={title}
                 width={800}
                 height={600}
                 priority
@@ -226,13 +238,13 @@ const PostModal = ({
           <div className="content_wrapper">
             <article
               className="content"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: content }}
             />
-            {post.tocItems?.length > 0 && (
+            {tocItems?.length > 0 && (
               <nav className="table_of_contents">
                 <h3>{t("modal.toc")}</h3>
                 <ul>
-                  {post.tocItems.map((item) => (
+                  {tocItems.map((item: TocItem) => (
                     <li
                       key={item.id}
                       className={`toc_item ${

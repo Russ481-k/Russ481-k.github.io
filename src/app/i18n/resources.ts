@@ -5,6 +5,9 @@ export const resources = {
       header: {
         title: "Bin's Space",
         nav: {
+          about: "About",
+          projects: "Projects",
+          blog: "Blog",
           intro: "Intro",
           work: "Work",
           notion: "Notion",
@@ -12,7 +15,7 @@ export const resources = {
       },
       profile: {
         position: "Full Stack Developer",
-        name: "Russ",
+        name: "Subin Yun",
         image: "Profile Image",
         blog: "BLOG",
         emailLabel: "EMAIL",
@@ -75,6 +78,9 @@ export const resources = {
       header: {
         title: "Bin's Space",
         nav: {
+          about: "소개",
+          projects: "프로젝트",
+          blog: "블로그",
           intro: "소개",
           work: "경력",
           notion: "노션",
@@ -82,12 +88,12 @@ export const resources = {
       },
       profile: {
         position: "풀스택 개발자",
-        name: "러스",
+        name: "Russ",
         image: "프로필 이미지",
         blog: "블로그",
         emailLabel: "이메일",
-        positionLabel: "직책",
-        copied: "복사됨!",
+        positionLabel: "직무",
+        copied: "copied!",
         social: {
           github: "깃허브",
           notion: "노션",

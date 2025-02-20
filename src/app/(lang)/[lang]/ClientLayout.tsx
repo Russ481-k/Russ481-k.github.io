@@ -1,38 +1,31 @@
 "use client";
 
-import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import i18n from "../../i18n";
+import { useEffect, useState } from "react";
+import { useTranslation } from "@/app/i18n";
+import { Header } from "@/app/Components/Header";
 
 export default function ClientLayout({
   children,
-  lang,
+  params: { lang },
 }: {
   children: React.ReactNode;
-  lang: string;
+  params: { lang: string };
 }) {
-  const { t } = useTranslation("common");
+  const [initialized, setInitialized] = useState(false);
 
-  // 디버깅을 위한 번역 테스트
   useEffect(() => {
-    console.log("Translation test:", {
-      title: t("title"),
-      headerTitle: t("header.title"),
+    useTranslation(lang, "common").then(({ i18n }) => {
+      i18n.changeLanguage(lang);
+      setInitialized(true);
     });
-  }, [t]);
-
-  useEffect(() => {
-    const changeLanguage = async () => {
-      try {
-        if (i18n.resolvedLanguage !== lang) {
-          await i18n.changeLanguage(lang);
-        }
-      } catch (error) {
-        console.error("Language change error:", error);
-      }
-    };
-    changeLanguage();
   }, [lang]);
 
-  return <>{children}</>;
+  if (!initialized) return null;
+
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }

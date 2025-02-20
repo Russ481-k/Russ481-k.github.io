@@ -1,5 +1,12 @@
 import { CATEGORY_ORDER } from "@/constants/categoryOrder";
 
+export interface Translation {
+  title: string;
+  description: string;
+  content: string;
+  tocItems: TocItem[];
+}
+
 export interface TocItem {
   id: string;
   text: string;
@@ -10,15 +17,17 @@ export interface TocItem {
 
 export interface Post {
   id: string;
-  title: string;
-  content: string;
   date: string;
-  description: string;
   category: (typeof CATEGORY_ORDER)[number];
   tags: string[];
-  tocItems: TocItem[];
-  imageHeights: Record<string, number>;
-  thumbnail?: string;
+  thumbnail: string;
+  translations: {
+    ko: Translation;
+    en: Translation;
+  };
+  imageHeights: {
+    [key: string]: number;
+  };
 }
 
 export interface Category {

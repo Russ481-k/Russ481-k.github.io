@@ -7,6 +7,7 @@ import { highlightText } from "@/utils/highlightText";
 import { getPostImage } from "@/utils/getPostImage";
 import type { Post } from "@/types/post";
 import PostModal from "./PostModal";
+import { useTranslation } from "react-i18next";
 
 interface PostProps extends Post {
   searchTerm?: string;
@@ -14,10 +15,17 @@ interface PostProps extends Post {
 }
 
 const Post = (props: PostProps) => {
-  const { title, searchTerm, tags, date, thumbnail } = props;
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language as "ko" | "en";
+
+  // 현재 언어에 맞는 번역 데이터 선택
+  const translation =
+    props.translations[currentLang] || props.translations["en"];
+  const { title, description, content, tocItems } = translation;
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const imageUrl = getPostImage(thumbnail);
-  const formattedDate = new Date(date).toLocaleDateString("ko-KR", {
+  const imageUrl = getPostImage(props.thumbnail);
+  const formattedDate = new Date(props.date).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -32,8 +40,8 @@ const Post = (props: PostProps) => {
     setIsModalOpen(true);
   };
 
-  const visibleTags = tags?.slice(0, 3) || [];
-  const remainingTags = tags?.length > 3 ? tags.length - 3 : 0;
+  const visibleTags = props.tags?.slice(0, 3) || [];
+  const remainingTags = props.tags?.length > 3 ? props.tags.length - 3 : 0;
 
   const getAdjacentPosts = (currentPost: PostProps) => {
     const currentIndex = props.posts?.findIndex(
@@ -79,7 +87,7 @@ const Post = (props: PostProps) => {
         <div className="post_content">
           <div className="post_header">
             <div className="title_section">
-              <h1>{highlightText(title || "", searchTerm || "")}</h1>
+              <h1>{highlightText(title || "", props.searchTerm || "")}</h1>
               <div className="tags">
                 {visibleTags.map((tag, index) => (
                   <span key={index} className="tag">
@@ -96,9 +104,9 @@ const Post = (props: PostProps) => {
           <div
             className="markdown-content"
             dangerouslySetInnerHTML={{
-              __html: searchTerm
-                ? highlightText(props.content, searchTerm)
-                : props.content,
+              __html: props.searchTerm
+                ? highlightText(content, props.searchTerm)
+                : content,
             }}
           />
         </div>

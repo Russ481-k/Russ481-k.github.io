@@ -2,7 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 
-export const LanguageSelector = () => {
+export const LanguageSelectorButton = () => {
   const { t, i18n } = useTranslation("common");
 
   const toggleLanguage = async () => {
@@ -16,7 +16,7 @@ export const LanguageSelector = () => {
 
   return (
     <div className="language_selector">
-      <button className="lang_btn" onClick={toggleLanguage}>
+      <button className="language_selector_button" onClick={toggleLanguage}>
         {i18n.resolvedLanguage === "en" ? "eng" : "kor"}
       </button>
     </div>

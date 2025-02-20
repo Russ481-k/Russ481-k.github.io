@@ -2,6 +2,10 @@ import "../../Styles/globals.scss";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import ClientLayout from "./ClientLayout";
+import { languages } from "@/app/i18n/settings";
+import { Footer } from "@/app/Components/Footer";
+import { LanguageSelectorButton } from "@/app/Components/LanguageSelectorButton";
+import { TopButton } from "@/app/TopButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +15,8 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ lang: "en" }, { lang: "ko" }];
+  return languages.map((lng) => ({ lang: lng }));
 }
-
-// 유효한 언어 목록
-const validLanguages = ["en", "ko"];
 
 export default function Layout({
   children,
@@ -24,15 +25,19 @@ export default function Layout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  // 유효하지 않은 언어인 경우 404
-  if (!validLanguages.includes(lang)) {
+  if (!languages.includes(lang)) {
     return null;
   }
 
   return (
     <html lang={lang}>
       <body className={inter.className}>
-        <ClientLayout lang={lang}>{children}</ClientLayout>
+        <ClientLayout params={{ lang }}>
+          {children}
+          <TopButton />
+          <LanguageSelectorButton />
+          <Footer />
+        </ClientLayout>
         <div id="modal-root" />
       </body>
     </html>
