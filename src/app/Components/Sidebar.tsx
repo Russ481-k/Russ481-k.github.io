@@ -4,6 +4,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "../Styles/sidebar.scss";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
+import { CONTACT } from "@/constants/contact";
 
 interface SidebarProps {
   categories: {
@@ -26,6 +28,7 @@ export const Sidebar = ({
   categoryCounts,
 }: SidebarProps) => {
   const [showCopyTooltip, setShowCopyTooltip] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     AOS.init();
@@ -44,7 +47,7 @@ export const Sidebar = ({
 
   const handleEmailClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigator.clipboard.writeText("yunsubin481@gmail.com");
+    navigator.clipboard.writeText(CONTACT.EMAIL);
     setShowCopyTooltip(true);
     setTimeout(() => setShowCopyTooltip(false), 2000);
   };
@@ -58,36 +61,34 @@ export const Sidebar = ({
             src="/images/profile2.jpg"
             width={200}
             height={200}
-            alt="profile"
+            alt={t("profile.image")}
             priority
           />
         </div>
         <div className="profile_text">
-          <h1 className="profile_name">Russ</h1>
+          <h1 className="profile_name">{t("profile.name")}</h1>
           <h5 className="profile_info">
-            <span>BLOG : </span>
-            <a
-              className="info_link"
-              href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab"
-              target="_blank"
-            >
+            <span>{t("profile.blog")} : </span>
+            <a className="info_link" href={CONTACT.NOTION_URL} target="_blank">
               Notion
             </a>
           </h5>
           <h5 className="profile_info">
-            <span>EMAIL : </span>
+            <span>{t("profile.emailLabel")} : </span>
             <a className="info_link" href="#" onClick={handleEmailClick}>
-              yunsubin481@gmail.com
-              {showCopyTooltip && <span className="copy_tooltip">Copied!</span>}
+              {CONTACT.EMAIL}
+              {showCopyTooltip && (
+                <span className="copy_tooltip">{t("profile.copied")}</span>
+              )}
             </a>
           </h5>
-          <h5 className="profile_info">POSITION : Full Stack</h5>
-          {/*TODO:
-           */}
+          <h5 className="profile_info">
+            {t("profile.positionLabel")} : {t("profile.position")}
+          </h5>
         </div>
 
         <div className="profile_categories">
-          <h3>CATEGORY</h3>
+          <h3>{t("sidebar.category")}</h3>
           {categories?.map((category) => (
             <div
               key={category.id}

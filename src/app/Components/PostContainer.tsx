@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useState, useMemo, useCallback } from "react";
-import { Post as PostType } from "@/types/post";
+import { useEffect, useMemo, useCallback } from "react";
+import { Category, Post as PostType } from "@/types/post";
 import Post from "@/app/Components/Post";
 import { useDebounce } from "@/hooks/useDebounce";
 import "../Styles/post_container.scss";
-import { categories } from "@/data/categories";
+import { useCategories } from "@/data/categories";
+import { useTranslation } from "react-i18next";
+import { CATEGORY_ORDER } from "@/constants/categoryOrder";
 
 interface PostContainerProps {
   selectedCategory: string;
@@ -15,16 +17,6 @@ interface PostContainerProps {
   posts: PostType[]; // 또는 더 구체적인 타입 (예: Post[])
 }
 
-const categoryOrder = [
-  "about",
-  "career",
-  "projects",
-  "architecture",
-  "database",
-  "backend",
-  "frontend",
-];
-
 export const PostContainer = ({
   selectedCategory,
   searchTerm: externalSearchTerm,
@@ -32,8 +24,10 @@ export const PostContainer = ({
   onSearchResults,
   posts: externalPosts, // 외부에서 받은 posts 사용
 }: PostContainerProps) => {
-  const [searchResults, setSearchResults] = useState<string[]>([]);
-  const currentCategory = categories.find((cat) => cat.id === selectedCategory);
+  const categories = useCategories();
+  const currentCategory = categories?.find(
+    (cat: Category) => cat.id === selectedCategory
+  );
 
   // searchTerm state를 제거하고 props로 받은 값 사용
   const debouncedSearchTerm = useDebounce(externalSearchTerm, 300);
@@ -61,8 +55,8 @@ export const PostContainer = ({
       return searchFiltered
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .sort((a, b) => {
-          const aIndex = categoryOrder.indexOf(a.category);
-          const bIndex = categoryOrder.indexOf(b.category);
+          const aIndex = CATEGORY_ORDER.indexOf(a.category);
+          const bIndex = CATEGORY_ORDER.indexOf(b.category);
           return aIndex - bIndex;
         });
     }
@@ -86,27 +80,30 @@ export const PostContainer = ({
     const texts = postsToUse.map(
       (post) => `${post.title} ${post.content} ${post.description}`
     );
-    setSearchResults(texts);
     onSearchResults(texts);
   }, [filteredPosts, externalPosts, onSearchResults]);
+
+  const { t } = useTranslation();
 
   return (
     <div className="post_container">
       <div className="category_header">
         <div className="category_info">
-          <h2>{currentCategory?.name || "전체 글"}</h2>
+          <h2>{currentCategory?.name || t("categories.all")}</h2>
           <p>{currentCategory?.description}</p>
         </div>
         <div className="search_container">
           <input
             type="text"
-            placeholder="Search"
+            placeholder={t("search.placeholder")}
             value={externalSearchTerm}
             onChange={handleSearchChange}
             className="search_input"
           />
         </div>
-        <div className="post_count">총 {filteredPosts.length}개의 글</div>
+        <div className="post_count">
+          {t("search.totalPosts", { count: filteredPosts.length })}
+        </div>
       </div>
       {filteredPosts.map((post: PostType) => (
         <Post

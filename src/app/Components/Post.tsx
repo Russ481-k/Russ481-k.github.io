@@ -5,8 +5,8 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import { highlightText } from "@/utils/highlightText";
 import { getPostImage } from "@/utils/getPostImage";
-import { PostModal } from "../Components/PostModal";
 import type { Post } from "@/types/post";
+import PostModal from "./PostModal";
 
 interface PostProps extends Post {
   searchTerm?: string;
@@ -109,7 +109,7 @@ const Post = (props: PostProps) => {
         onClose={() => setIsModalOpen(false)}
         prevPost={prevPost}
         nextPost={nextPost}
-        onPostChange={(newPost) => {
+        onPostChange={(newPost: Post) => {
           setCurrentPost({
             ...newPost,
             searchTerm: props.searchTerm,

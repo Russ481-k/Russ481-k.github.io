@@ -9,6 +9,8 @@ import { ModalPortal } from "./ModalPortal";
 import React from "react";
 import { getClientPost } from "@/utils/clientPosts";
 import { FiCopy } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
+import dynamic from "next/dynamic";
 
 interface PostModalProps {
   post: Post;
@@ -19,7 +21,7 @@ interface PostModalProps {
   onPostChange: (post: Post) => void; // 포스트 변경 핸들러
 }
 
-export const PostModal = ({
+const PostModal = ({
   post,
   isOpen,
   onClose,
@@ -27,6 +29,7 @@ export const PostModal = ({
   nextPost,
   onPostChange,
 }: PostModalProps) => {
+  const { t } = useTranslation();
   const [activeId, setActiveId] = useState<string>("");
   const contentRef = useRef<HTMLDivElement>(null);
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
@@ -178,7 +181,7 @@ export const PostModal = ({
               <div className="nav_info">
                 <div className="nav_info_left">
                   <span className="arrow">←</span>
-                  <span className="label">이전</span>
+                  <span className="label">{t("modal.prev")}</span>
                 </div>
                 <span className="title">{prevPost.title}</span>
               </div>
@@ -192,7 +195,7 @@ export const PostModal = ({
             >
               <div className="nav_info">
                 <div className="nav_info_right">
-                  <span className="label">다음</span>
+                  <span className="label">{t("modal.next")}</span>
                   <span className="arrow">→</span>
                 </div>
                 <span className="title">{nextPost.title}</span>
@@ -227,7 +230,7 @@ export const PostModal = ({
             />
             {post.tocItems?.length > 0 && (
               <nav className="table_of_contents">
-                <h3>Index</h3>
+                <h3>{t("modal.toc")}</h3>
                 <ul>
                   {post.tocItems.map((item) => (
                     <li
@@ -246,8 +249,20 @@ export const PostModal = ({
           </div>
         </div>
         <div className="modal_footer">
+          <div className="navigation_buttons">
+            {prevPost && (
+              <button onClick={() => handlePostChange(prevPost)}>
+                {t("modal.prev")}
+              </button>
+            )}
+            {nextPost && (
+              <button onClick={() => handlePostChange(nextPost)}>
+                {t("modal.next")}
+              </button>
+            )}
+          </div>
           <button className="close_button" onClick={onClose}>
-            닫기
+            {t("modal.close")}
           </button>
         </div>
       </div>

@@ -6,11 +6,12 @@ import { SideIndex } from "./SideIndex";
 import "../Styles/body.scss";
 import { Post } from "@/types/post";
 import { MobileHeader } from "./MobileHeader";
-import { categories } from "@/data/categories";
+import { useCategories } from "@/data/categories";
 import { getClientPosts } from "@/utils/clientPosts";
 
 export const Body = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const categories = useCategories();
   const [categoryCounts, setCategoryCounts] = useState<Record<string, number>>(
     {}
   );

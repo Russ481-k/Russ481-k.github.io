@@ -5,8 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiNotion } from "react-icons/si";
-import { categories } from "@/data/categories";
+import { useCategories } from "@/data/categories";
 import { LanguageSelector } from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 interface MobileHeaderProps {
   selectedCategory: string;
@@ -23,6 +24,8 @@ export const MobileHeader = ({
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const categoryDropdownRef = useRef<HTMLDivElement>(null);
   const profileDropdownRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+  const categories = useCategories();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,7 +67,7 @@ export const MobileHeader = ({
         <div className="mobile_header_container">
           <div className="left_section">
             <Link href="/" className="logo">
-              Bin&apos;s Space
+              {t("header.title")}
             </Link>
             <LanguageSelector />
           </div>
@@ -78,7 +81,7 @@ export const MobileHeader = ({
               }}
             >
               <span>
-                {currentCategory?.name || "전체 글"}
+                {currentCategory?.name || t("categories.all")}
                 <span className="count">
                   ({categoryCounts[selectedCategory] || 0})
                 </span>
@@ -135,23 +138,28 @@ export const MobileHeader = ({
                     className="large_profile_image"
                   />
                   <h3>Bin</h3>
-                  <p className="position">Full Stack Developer</p>
+                  <p className="position">{t("profile.position")}</p>
                   <div className="social_links">
                     <a
                       href="https://github.com/Russ481-k"
                       target="_blank"
                       rel="noopener noreferrer"
+                      title={t("profile.social.github")}
                     >
                       <FaGithub />
                     </a>
                     <a
-                      href="https://www.notion.so/binllionaire/Bin-s-Space-4d02e7c3c1d3476e935bf54a1757cf09"
+                      href="https://binsspace.notion.site/..."
                       target="_blank"
                       rel="noopener noreferrer"
+                      title={t("profile.social.notion")}
                     >
                       <SiNotion />
                     </a>
-                    <a href="mailto:yunsubin481@gmail.com">
+                    <a
+                      href="mailto:yunsubin481@gmail.com"
+                      title={t("profile.social.email")}
+                    >
                       <FaEnvelope />
                     </a>
                   </div>

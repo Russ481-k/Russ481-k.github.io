@@ -4,20 +4,28 @@ import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { LanguageSelector } from "./LanguageSelector";
+import { useTranslation } from "react-i18next";
 
 import "../Styles/header.scss";
 import type { Post } from "@/types/post";
+import { CONTACT } from "@/constants/contact";
+
+const LoadingComponent = () => {
+  const { t } = useTranslation();
+  return <div>{t("modal.loading")}</div>;
+};
 
 // 모달 컴포넌트를 동적으로 import
 const PostModal = dynamic(
   () => import("./PostModal").then((mod) => mod.default),
   {
-    loading: () => <div>Loading...</div>,
+    loading: LoadingComponent,
     ssr: false,
   }
 );
 
 export const Header = () => {
+  const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(true);
   const [isInitial, setIsInitial] = useState(true);
   const [isIntroOpen, setIsIntroOpen] = useState(false);
@@ -26,21 +34,23 @@ export const Header = () => {
 
   const experiencePost: Post = {
     id: "experience",
-    title: "Experience",
-    content: `<h2>경력 사항</h2>
-              <h3>회사명 (2022 - 현재)</h3>
-              <p>프론트엔드 개발자</p>
+    title: t("header.nav.work"),
+    content: `<h2>${t("experience.title")}</h2>
+              <h3>${t("experience.company")} (2022 - ${t(
+      "common.experience.current"
+    )})</h3>
+              <p>${t("profile.position")}</p>
               <ul>
-                <li>Next.js를 사용한 웹 애플리케이션 개발</li>
-                <li>성능 최적화 및 사용자 경험 개선</li>
+                <li>${t("experience.skills.nextjs")}</li>
+                <li>${t("experience.skills.optimization")}</li>
               </ul>
-              <h3>프로젝트</h3>
+              <h3>${t("experience.projectSection.title")}</h3>
               <ul>
-                <li>개인 블로그 개발</li>
-                <li>포트폴리오 웹사이트 제작</li>
+                <li>${t("experience.projectSection.blog")}</li>
+                <li>${t("experience.projectSection.portfolio")}</li>
               </ul>`,
     date: new Date().toISOString(),
-    description: "경력 사항",
+    description: t("header.nav.work"),
     category: "about",
     tags: [],
     tocItems: [],
@@ -94,32 +104,32 @@ export const Header = () => {
       <div className="header_content">
         <div className="title_area">
           <h1 className="title">
-            <Link href="/">Bin&apos;s Space</Link>
+            <Link href="/">{t("header.title")}</Link>
           </h1>
           {!isExpanded && <LanguageSelector />}
         </div>
         {!isExpanded && (
           <nav className="nav">
             <Link href="#" onClick={() => setIsIntroOpen(true)}>
-              Intro
+              {t("header.nav.intro")}
             </Link>
             <Link href="#" onClick={() => setIsExperienceOpen(true)}>
-              Work
+              {t("header.nav.work")}
             </Link>
             <Link
-              href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab"
+              href={CONTACT.NOTION_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="icon_link"
               aria-label="Notion Page"
             >
-              Notion
+              {t("header.nav.notion")}
             </Link>
           </nav>
         )}
       </div>
       {introPost && isIntroOpen && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>{t("modal.loading")}</div>}>
           <PostModal
             post={introPost}
             isOpen={isIntroOpen}
@@ -131,7 +141,7 @@ export const Header = () => {
         </Suspense>
       )}
       {isExperienceOpen && (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>{t("modal.loading")}</div>}>
           <PostModal
             post={experiencePost}
             isOpen={isExperienceOpen}
