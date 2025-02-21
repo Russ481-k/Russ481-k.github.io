@@ -18,203 +18,189 @@
     "ko": {
       "title": "Entasis Engine - 테스트 계획서",
       "description": "가상자산 데이터 분석 시스템의 테스트 전략 및 품질 보증 계획",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - 테스트 계획서\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 테스트 전략 및 품질 보증 계획\"\ntags:\n[\n\"testing\",\n\"qa\",\n\"unit-test\",\n\"integration-test\",\n\"performance-test\",\n\"security-test\",\n\"automation\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">금융 데이터 분석 시스템 테스트 계획서</h1>\n<h2 id=\"heading-2\">🎯 테스트 전략 개요</h2>\n<h3 id=\"heading-3\">1. 테스트 범위</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[단위 테스트] --&gt; B[통합 테스트]\n    B --&gt; C[시스템 테스트]\n    C --&gt; D[성능 테스트]\n    D --&gt; E[보안 테스트]\n    E --&gt; F[사용자 수용 테스트]\n</code></pre>\n<h3 id=\"heading-4\">2. 테스트 환경</h3>\n<pre><code class=\"language-yaml\">environments:\n  development:\n    type: local\n    database: h2\n    cache: local-redis\n\n<p>  testing:<br>    type: kubernetes<br>    namespace: test<br>    database: test-timescaledb<br>    cache: test-redis</p><p>  staging:<br>    type: kubernetes<br>    namespace: staging<br>    database: staging-timescaledb<br>    cache: staging-redis</p></code><p><code class=\"language-yaml\">  production:<br>    type: kubernetes<br>    namespace: production<br>    database: prod-timescaledb<br>    cache: prod-redis<br></code></p></pre><p></p><h2 id=\"heading-5\">🧪 단위 테스트</h2>\n<h3 id=\"heading-6\">1. 백엔드 테스트</h3>\n<pre><code class=\"language-java\">@Test\npublic void testMarketDataProcessing() {\n    // Given\n    MarketData data = new MarketData(\n        \"BTC-USDT\",\n        new BigDecimal(\"50000.00\"),\n        new BigDecimal(\"100.0\"),\n        LocalDateTime.now()\n    );\n\n<pre><code>// When\nProcessedData result = marketDataService.process(data);\n\n// Then\nassertNotNull(result);\nassertEquals(data.getSymbol(), result.getSymbol());\nassertTrue(result.isValid());\n</code></pre>\n</code><p><code class=\"language-java\">}<br></code></p></pre><p></p><h3 id=\"heading-7\">2. AI 모델 테스트</h3>\n<pre><code class=\"language-python\">def test_price_prediction():\n    # Given\n    model = PricePredictionModel()\n    test_data = load_test_data()\n\n<pre><code># When\npredictions = model.predict(test_data)\n\n# Then\nassert predictions.shape == (len(test_data), 1)\nassert np.all(predictions &gt; 0)  # 가격은 항상 양수\nassert calculate_mape(test_data.y, predictions) &amp;#x3C; 0.1  # MAPE &amp;#x3C; 10%\n</code></pre>\n</code><p><code class=\"language-python\"></code></p></pre><p></p><h2 id=\"heading-8\">🔄 통합 테스트</h2>\n<h3 id=\"heading-9\">1. API 테스트</h3>\n<pre><code class=\"language-typescript\">describe(\"Trading API Integration Tests\", () =&gt; {\n  it(\"should place market order successfully\", async () =&gt; {\n    // Given\n    const order = {\n      symbol: \"BTC-USDT\",\n      type: \"MARKET\",\n      side: \"BUY\",\n      quantity: \"0.1\",\n    };\n\n<pre><code>// When\nconst response = await api.post(\"/v1/orders\", order);\n\n// Then\nexpect(response.status).toBe(201);\nexpect(response.data.orderId).toBeDefined();\nexpect(response.data.status).toBe(\"FILLED\");\n</code></pre>\n</code><p><code class=\"language-typescript\">  });<br>});<br></code></p></pre><p></p><h3 id=\"heading-10\">2. 데이터 파이프라인 테스트</h3>\n<pre><code class=\"language-python\">def test_data_pipeline_integration():\n    # Given\n    test_data = generate_test_market_data()\n\n<pre><code># When\npipeline.process(test_data)\n\n# Then\nprocessed_data = db.query_latest_data()\nassert_data_integrity(test_data, processed_data)\nassert_processing_latency() &amp;#x3C; timedelta(milliseconds=100)\n</code></pre>\n</code><p><code class=\"language-python\"></code></p></pre><p></p><h2 id=\"heading-11\">📊 성능 테스트</h2>\n<h3 id=\"heading-12\">1. 부하 테스트</h3>\n<pre><code class=\"language-javascript\">import { check } from \"k6\";\nimport http from \"k6/http\";\n\n<p>export const options = {<br>  scenarios: {<br>    market_data: {<br>      executor: \"ramping-vus\",<br>      startVUs: 0,<br>      stages: [<br>        { duration: \"2m\", target: 100 },<br>        { duration: \"5m\", target: 100 },<br>        { duration: \"2m\", target: 0 },<br>      ],<br>      gracefulRampDown: \"30s\",<br>    },<br>  },<br>  thresholds: {<br>    http_req_duration: [\"p(95)&lt;500\"],<br>  },<br>};</p></code><p><code class=\"language-javascript\">export default function () {<br>  const response = http.get(\"<a href=\"http://api.example.com/v1/market/price/BTC-USDT\">http://api.example.com/v1/market/price/BTC-USDT</a>\");<br>  check(response, {<br>    \"is status 200\": (r) =&gt; r.status === 200,<br>    \"response time &lt; 500ms\": (r) =&gt; r.timings.duration &lt; 500,<br>  });<br>}<br></code></p></pre><p></p><h3 id=\"heading-13\">2. 스트레스 테스트</h3>\n<pre><code class=\"language-yaml\">stress_test_scenarios:\n  - name: \"급격한 시장 변동 시뮬레이션\"\n    duration: \"30m\"\n    data_rate: \"10000 events/second\"\n    expectations:\n      - max_latency: 100ms\n      - error_rate: &lt; 0.1%\n      - cpu_usage: &lt; 80%\n      - memory_usage: &lt; 85%\n</code></pre>\n<h2 id=\"heading-14\">🔒 보안 테스트</h2>\n<h3 id=\"heading-15\">1. 취약점 스캔</h3>\n<pre><code class=\"language-yaml\">security_scan:\n  tools:\n    - name: \"OWASP ZAP\"\n      target: \"https://api.example.com\"\n      rules:\n        - sql-injection\n        - xss\n        - csrf\n\n<pre><code>- name: \"SonarQube\"\n  target: \"source-code\"\n  quality_gates:\n    security_rating: A\n    security_review_rating: A\n</code></pre>\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h3 id=\"heading-16\">2. 침투 테스트</h3>\n<pre><code class=\"language-yaml\">penetration_test:\n  scenarios:\n    - name: \"인증 우회 시도\"\n      steps:\n        - jwt_token_manipulation\n        - session_hijacking\n        - brute_force_attack\n\n<pre><code>- name: \"권한 상승 시도\"\n  steps:\n    - role_manipulation\n    - horizontal_privilege_escalation\n</code></pre>\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h2 id=\"heading-17\">📱 사용자 수용 테스트</h2>\n<h3 id=\"heading-18\">1. 시나리오 테스트</h3>\n<pre><code class=\"language-typescript\">describe(\"Trading Workflow\", () =&gt; {\n  it(\"should complete basic trading cycle\", async () =&gt; {\n    // 1. 로그인\n    await user.login();\n\n<pre><code>// 2. 시장 데이터 확인\nconst marketData = await dashboard.getMarketData();\nexpect(marketData).toBeValid();\n\n// 3. 매매 신호 확인\nconst signal = await analysis.getTradingSignal();\nexpect(signal.confidence).toBeGreaterThan(0.7);\n\n// 4. 주문 실행\nconst order = await trading.placeOrder(signal);\nexpect(order.status).toBe(\"SUCCESS\");\n</code></pre>\n</code><p><code class=\"language-typescript\">  });<br>});<br></code></p></pre><p></p><h3 id=\"heading-19\">2. 사용성 테스트</h3>\n<pre><code class=\"language-yaml\">usability_test_cases:\n  - scenario: \"첫 거래 실행\"\n    user_group: \"초보 트레이더\"\n    success_criteria:\n      - max_time: 5분\n      - max_clicks: 7\n      - error_rate: 0%\n\n</code><ul><code class=\"language-yaml\">\n</code><li><code class=\"language-yaml\">scenario: \"포트폴리오 분석\"<br>user_group: \"전문 트레이더\"<br>success_criteria:</code><ul><code class=\"language-yaml\">\n<li>data_accuracy: 100%</li>\n<li>refresh_rate: &lt; 1초</li>\n</code><li><code class=\"language-yaml\">analysis_depth: 모든 지표 포함<br></code></li></ul></li></ul></pre><h2 id=\"heading-20\">📈 품질 메트릭</h2>\n<h3 id=\"heading-21\">1. 코드 품질</h3>\n<pre><code class=\"language-yaml\">quality_metrics:\n  code_coverage:\nunit_tests: &gt; 80%\nintegration_tests: &gt; 70%\n\n\n\n<p>  complexity:<br>    cyclomatic: &lt; 15<br>    cognitive: &lt; 10</p></code><p><code class=\"language-yaml\">  duplication:<br>    threshold: &lt; 5%<br></code></p></pre><p></p><h3 id=\"heading-22\">2. 성능 지표</h3>\n<pre><code class=\"language-yaml\">performance_metrics:\n  api_response_time:\n    p95: &lt; 500ms\n    p99: &lt; 1000ms\n\n<p>  data_processing:<br>    latency: &lt; 100ms<br>    throughput: &gt; 5000 events/second</p></code><p><code class=\"language-yaml\">  model_inference:<br>    latency: &lt; 200ms<br>    accuracy: &gt; 85%<br></code></p></pre><p></p><p>이 문서는 금융 데이터 분석 시스템의 테스트 전략과 품질 보증 계획을 제공합니다. 시스템의 안정성과 신뢰성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀</p>\n",
+      "content": "<h1 id=\"heading-0\">금융 데이터 분석 시스템 테스트 계획서</h1>\n<h2 id=\"heading-1\">🎯 테스트 전략 개요</h2>\n<h3 id=\"heading-2\">1. 테스트 범위</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[단위 테스트] --&gt; B[통합 테스트]\n    B --&gt; C[시스템 테스트]\n    C --&gt; D[성능 테스트]\n    D --&gt; E[보안 테스트]\n    E --&gt; F[사용자 수용 테스트]\n</code></pre>\n<h3 id=\"heading-3\">2. 테스트 환경</h3>\n<pre><code class=\"language-yaml\">environments:\n  development:\n    type: local\n    database: h2\n    cache: local-redis\n\n  testing:\n    type: kubernetes\n    namespace: test\n    database: test-timescaledb\n    cache: test-redis\n\n  staging:\n    type: kubernetes\n    namespace: staging\n    database: staging-timescaledb\n    cache: staging-redis\n\n  production:\n    type: kubernetes\n    namespace: production\n    database: prod-timescaledb\n    cache: prod-redis\n</code></pre>\n<h2 id=\"heading-4\">🧪 단위 테스트</h2>\n<h3 id=\"heading-5\">1. 백엔드 테스트</h3>\n<pre><code class=\"language-java\">@Test\npublic void testMarketDataProcessing() {\n    // Given\n    MarketData data = new MarketData(\n        \"BTC-USDT\",\n        new BigDecimal(\"50000.00\"),\n        new BigDecimal(\"100.0\"),\n        LocalDateTime.now()\n    );\n\n    // When\n    ProcessedData result = marketDataService.process(data);\n\n    // Then\n    assertNotNull(result);\n    assertEquals(data.getSymbol(), result.getSymbol());\n    assertTrue(result.isValid());\n}\n</code></pre>\n<h3 id=\"heading-6\">2. AI 모델 테스트</h3>\n<pre><code class=\"language-python\">def test_price_prediction():\n    # Given\n    model = PricePredictionModel()\n    test_data = load_test_data()\n\n    # When\n    predictions = model.predict(test_data)\n\n    # Then\n    assert predictions.shape == (len(test_data), 1)\n    assert np.all(predictions &gt; 0)  # 가격은 항상 양수\n    assert calculate_mape(test_data.y, predictions) &lt; 0.1  # MAPE &lt; 10%\n</code></pre>\n<h2 id=\"heading-7\">🔄 통합 테스트</h2>\n<h3 id=\"heading-8\">1. API 테스트</h3>\n<pre><code class=\"language-typescript\">describe(\"Trading API Integration Tests\", () =&gt; {\n  it(\"should place market order successfully\", async () =&gt; {\n    // Given\n    const order = {\n      symbol: \"BTC-USDT\",\n      type: \"MARKET\",\n      side: \"BUY\",\n      quantity: \"0.1\",\n    };\n\n    // When\n    const response = await api.post(\"/v1/orders\", order);\n\n    // Then\n    expect(response.status).toBe(201);\n    expect(response.data.orderId).toBeDefined();\n    expect(response.data.status).toBe(\"FILLED\");\n  });\n});\n</code></pre>\n<h3 id=\"heading-9\">2. 데이터 파이프라인 테스트</h3>\n<pre><code class=\"language-python\">def test_data_pipeline_integration():\n    # Given\n    test_data = generate_test_market_data()\n\n    # When\n    pipeline.process(test_data)\n\n    # Then\n    processed_data = db.query_latest_data()\n    assert_data_integrity(test_data, processed_data)\n    assert_processing_latency() &lt; timedelta(milliseconds=100)\n</code></pre>\n<h2 id=\"heading-10\">📊 성능 테스트</h2>\n<h3 id=\"heading-11\">1. 부하 테스트</h3>\n<pre><code class=\"language-javascript\">import { check } from \"k6\";\nimport http from \"k6/http\";\n\nexport const options = {\n  scenarios: {\n    market_data: {\n      executor: \"ramping-vus\",\n      startVUs: 0,\n      stages: [\n        { duration: \"2m\", target: 100 },\n        { duration: \"5m\", target: 100 },\n        { duration: \"2m\", target: 0 },\n      ],\n      gracefulRampDown: \"30s\",\n    },\n  },\n  thresholds: {\n    http_req_duration: [\"p(95)&lt;500\"],\n  },\n};\n\nexport default function () {\n  const response = http.get(\"http://api.example.com/v1/market/price/BTC-USDT\");\n  check(response, {\n    \"is status 200\": (r) =&gt; r.status === 200,\n    \"response time &lt; 500ms\": (r) =&gt; r.timings.duration &lt; 500,\n  });\n}\n</code></pre>\n<h3 id=\"heading-12\">2. 스트레스 테스트</h3>\n<pre><code class=\"language-yaml\">stress_test_scenarios:\n  - name: \"급격한 시장 변동 시뮬레이션\"\n    duration: \"30m\"\n    data_rate: \"10000 events/second\"\n    expectations:\n      - max_latency: 100ms\n      - error_rate: &lt; 0.1%\n      - cpu_usage: &lt; 80%\n      - memory_usage: &lt; 85%\n</code></pre>\n<h2 id=\"heading-13\">🔒 보안 테스트</h2>\n<h3 id=\"heading-14\">1. 취약점 스캔</h3>\n<pre><code class=\"language-yaml\">security_scan:\n  tools:\n    - name: \"OWASP ZAP\"\n      target: \"https://api.example.com\"\n      rules:\n        - sql-injection\n        - xss\n        - csrf\n\n    - name: \"SonarQube\"\n      target: \"source-code\"\n      quality_gates:\n        security_rating: A\n        security_review_rating: A\n</code></pre>\n<h3 id=\"heading-15\">2. 침투 테스트</h3>\n<pre><code class=\"language-yaml\">penetration_test:\n  scenarios:\n    - name: \"인증 우회 시도\"\n      steps:\n        - jwt_token_manipulation\n        - session_hijacking\n        - brute_force_attack\n\n    - name: \"권한 상승 시도\"\n      steps:\n        - role_manipulation\n        - horizontal_privilege_escalation\n</code></pre>\n<h2 id=\"heading-16\">📱 사용자 수용 테스트</h2>\n<h3 id=\"heading-17\">1. 시나리오 테스트</h3>\n<pre><code class=\"language-typescript\">describe(\"Trading Workflow\", () =&gt; {\n  it(\"should complete basic trading cycle\", async () =&gt; {\n    // 1. 로그인\n    await user.login();\n\n    // 2. 시장 데이터 확인\n    const marketData = await dashboard.getMarketData();\n    expect(marketData).toBeValid();\n\n    // 3. 매매 신호 확인\n    const signal = await analysis.getTradingSignal();\n    expect(signal.confidence).toBeGreaterThan(0.7);\n\n    // 4. 주문 실행\n    const order = await trading.placeOrder(signal);\n    expect(order.status).toBe(\"SUCCESS\");\n  });\n});\n</code></pre>\n<h3 id=\"heading-18\">2. 사용성 테스트</h3>\n<pre><code class=\"language-yaml\">usability_test_cases:\n  - scenario: \"첫 거래 실행\"\n    user_group: \"초보 트레이더\"\n    success_criteria:\n      - max_time: 5분\n      - max_clicks: 7\n      - error_rate: 0%\n\n  - scenario: \"포트폴리오 분석\"\n    user_group: \"전문 트레이더\"\n    success_criteria:\n      - data_accuracy: 100%\n      - refresh_rate: &lt; 1초\n      - analysis_depth: 모든 지표 포함\n</code></pre>\n<h2 id=\"heading-19\">📈 품질 메트릭</h2>\n<h3 id=\"heading-20\">1. 코드 품질</h3>\n<pre><code class=\"language-yaml\">quality_metrics:\n  code_coverage:\n    unit_tests: &gt; 80%\n    integration_tests: &gt; 70%\n\n  complexity:\n    cyclomatic: &lt; 15\n    cognitive: &lt; 10\n\n  duplication:\n    threshold: &lt; 5%\n</code></pre>\n<h3 id=\"heading-21\">2. 성능 지표</h3>\n<pre><code class=\"language-yaml\">performance_metrics:\n  api_response_time:\n    p95: &lt; 500ms\n    p99: &lt; 1000ms\n\n  data_processing:\n    latency: &lt; 100ms\n    throughput: &gt; 5000 events/second\n\n  model_inference:\n    latency: &lt; 200ms\n    accuracy: &gt; 85%\n</code></pre>\n<p>이 문서는 금융 데이터 분석 시스템의 테스트 전략과 품질 보증 계획을 제공합니다. 시스템의 안정성과 신뢰성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Entasis Engine - 테스트 계획서\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 테스트 전략 및 품질 보증 계획\"\ntags:\n[\n\"testing\",\n\"qa\",\n\"unit-test\",\n\"integration-test\",\n\"performance-test\",\n\"security-test\",\n\"automation\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
-          "level": 2,
+          "text": "금융 데이터 분석 시스템 테스트 계획서",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "금융 데이터 분석 시스템 테스트 계획서",
-          "level": 1,
+          "text": "🎯 테스트 전략 개요",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "🎯 테스트 전략 개요",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 테스트 범위",
+          "level": 3,
+          "isMainTopic": false,
           "position": 100
         },
         {
           "id": "heading-3",
-          "text": "1. 테스트 범위",
+          "text": "2. 테스트 환경",
           "level": 3,
           "isMainTopic": false,
           "position": 150
         },
         {
           "id": "heading-4",
-          "text": "2. 테스트 환경",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "🧪 단위 테스트",
+          "level": 2,
+          "isMainTopic": true,
           "position": 200
         },
         {
           "id": "heading-5",
-          "text": "🧪 단위 테스트",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 백엔드 테스트",
+          "level": 3,
+          "isMainTopic": false,
           "position": 250
         },
         {
           "id": "heading-6",
-          "text": "1. 백엔드 테스트",
+          "text": "2. AI 모델 테스트",
           "level": 3,
           "isMainTopic": false,
           "position": 300
         },
         {
           "id": "heading-7",
-          "text": "2. AI 모델 테스트",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "🔄 통합 테스트",
+          "level": 2,
+          "isMainTopic": true,
           "position": 350
         },
         {
           "id": "heading-8",
-          "text": "🔄 통합 테스트",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. API 테스트",
+          "level": 3,
+          "isMainTopic": false,
           "position": 400
         },
         {
           "id": "heading-9",
-          "text": "1. API 테스트",
+          "text": "2. 데이터 파이프라인 테스트",
           "level": 3,
           "isMainTopic": false,
           "position": 450
         },
         {
           "id": "heading-10",
-          "text": "2. 데이터 파이프라인 테스트",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "📊 성능 테스트",
+          "level": 2,
+          "isMainTopic": true,
           "position": 500
         },
         {
           "id": "heading-11",
-          "text": "📊 성능 테스트",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 부하 테스트",
+          "level": 3,
+          "isMainTopic": false,
           "position": 550
         },
         {
           "id": "heading-12",
-          "text": "1. 부하 테스트",
+          "text": "2. 스트레스 테스트",
           "level": 3,
           "isMainTopic": false,
           "position": 600
         },
         {
           "id": "heading-13",
-          "text": "2. 스트레스 테스트",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "🔒 보안 테스트",
+          "level": 2,
+          "isMainTopic": true,
           "position": 650
         },
         {
           "id": "heading-14",
-          "text": "🔒 보안 테스트",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 취약점 스캔",
+          "level": 3,
+          "isMainTopic": false,
           "position": 700
         },
         {
           "id": "heading-15",
-          "text": "1. 취약점 스캔",
+          "text": "2. 침투 테스트",
           "level": 3,
           "isMainTopic": false,
           "position": 750
         },
         {
           "id": "heading-16",
-          "text": "2. 침투 테스트",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "📱 사용자 수용 테스트",
+          "level": 2,
+          "isMainTopic": true,
           "position": 800
         },
         {
           "id": "heading-17",
-          "text": "📱 사용자 수용 테스트",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 시나리오 테스트",
+          "level": 3,
+          "isMainTopic": false,
           "position": 850
         },
         {
           "id": "heading-18",
-          "text": "1. 시나리오 테스트",
+          "text": "2. 사용성 테스트",
           "level": 3,
           "isMainTopic": false,
           "position": 900
         },
         {
           "id": "heading-19",
-          "text": "2. 사용성 테스트",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "📈 품질 메트릭",
+          "level": 2,
+          "isMainTopic": true,
           "position": 950
         },
         {
           "id": "heading-20",
-          "text": "📈 품질 메트릭",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 코드 품질",
+          "level": 3,
+          "isMainTopic": false,
           "position": 1000
         },
         {
           "id": "heading-21",
-          "text": "1. 코드 품질",
-          "level": 3,
-          "isMainTopic": false,
-          "position": 1050
-        },
-        {
-          "id": "heading-22",
           "text": "2. 성능 지표",
           "level": 3,
           "isMainTopic": false,
-          "position": 1100
+          "position": 1050
         }
       ]
     },
     "en": {
       "title": "Entasis Engine - Test Plan",
       "description": "Test strategy and quality assurance plan for digital asset data analysis system",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - Test Plan\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Test strategy and quality assurance plan for digital asset data analysis system\"\ntags:\n[\n\"testing\",\n\"qa\",\n\"unit-test\",\n\"integration-test\",\n\"performance-test\",\n\"security-test\",\n\"automation\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">Financial Data Analysis System Test Plan</h1>\n<h2 id=\"heading-2\">🎯 Test Strategy Overview</h2>\n<h3 id=\"heading-3\">1. Test Scope</h3>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Test Plan</h1>\n<h2 id=\"heading-1\">🎯 Test Strategy Overview</h2>\n<h3 id=\"heading-2\">1. Test Scope</h3>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Entasis Engine - Test Plan\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Test strategy and quality assurance plan for digital asset data analysis system\"\ntags:\n[\n\"testing\",\n\"qa\",\n\"unit-test\",\n\"integration-test\",\n\"performance-test\",\n\"security-test\",\n\"automation\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
-          "level": 2,
+          "text": "Financial Data Analysis System Test Plan",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "Financial Data Analysis System Test Plan",
-          "level": 1,
+          "text": "🎯 Test Strategy Overview",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "🎯 Test Strategy Overview",
-          "level": 2,
-          "isMainTopic": true,
-          "position": 100
-        },
-        {
-          "id": "heading-3",
           "text": "1. Test Scope",
           "level": 3,
           "isMainTopic": false,
-          "position": 150
+          "position": 100
         }
       ]
     }

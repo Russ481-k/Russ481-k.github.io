@@ -106,18 +106,14 @@ async function calculateActualHeights(content: string) {
   return heights;
 }
 
-async function processMarkdown(content: string): Promise<{
-  content: string;
-  tocItems: TocItem[];
-  imageHeights: Record<string, number>;
-}> {
-  const result = await remark().use(html).process(content);
-  const htmlContent = marked(result.toString(), {
-    gfm: true,
-    breaks: true,
-    renderer,
-  });
+async function processMarkdown(content: string) {
+  // 메타데이터와 실제 콘텐츠 분리
+  const { content: markdownContent } = matter(content);
 
+  // HTML로 변환 (메타데이터 제외)
+  const processedContent = await remark().use(html).process(markdownContent);
+
+  const htmlContent = processedContent.toString();
   const dom = new JSDOM(htmlContent);
   const doc = dom.window.document;
 

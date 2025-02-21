@@ -23,217 +23,203 @@
     "ko": {
       "title": "Entasis Engine - 가상자산 데이터 분석 및 AI 연동 솔루션",
       "description": "현물/선물/옵션 데이터 통합 분석 및 AI 기반 투자 전략 제공 시스템",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - 가상자산 데이터 분석 및 AI 연동 솔루션\"\ndate: \"2025-02-10\"\ncategory: \"projects\"\ndescription: \"현물/선물/옵션 데이터 통합 분석 및 AI 기반 투자 전략 제공 시스템\"\ntags:\n[\n\"Java\",\n\"Python\",\n\"PostgreSQL\",\n\"TimescaleDB\",\n\"Next.js\",\n\"D3.js\",\n\"Apache Spark\",\n\"TensorFlow\",\n\"Apache Airflow\",\n\"CCXT\",\n\"금융공학\",\n\"머신러닝\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">금융 데이터 분석 및 AI 연동 솔루션 – 기술 스택 선정과 시스템 아키텍처</h1>\n<h2 id=\"heading-2\">🚀 프로젝트 개요</h2>\n<p>금융 시장에서 데이터 기반 의사결정의 중요성이 날로 증가하고 있습니다. 특히 현물, 선물, 옵션 시장의 데이터를 통합적으로 분석하고 AI를 활용한 시장 예측은 현대 트레이딩의 핵심 요소가 되었습니다.</p>\n<p>이 프로젝트는 <strong>실시간 데이터 수집 → 고성능 데이터 처리 → AI 기반 분석 → 실시간 대시보드 제공</strong>의 전체 프로세스를 자동화하여 사용자에게 데이터 기반의 투자 인사이트를 제공합니다.</p>\n<h3 id=\"heading-3\">핵심 목표</h3>\n<ul>\n<li>실시간 금융 데이터 통합 및 분석</li>\n<li>AI 기반 시장 예측 모델 구현</li>\n<li>포지션별 기대 수익률 계산</li>\n<li>리스크 관리 지표 제공</li>\n<li>사용자 친화적 대시보드 구현</li>\n</ul>\n<hr>\n<h2 id=\"heading-4\">🛠️ 기술 스택 및 아키텍처</h2>\n<h3 id=\"heading-5\">1. 데이터 파이프라인</h3>\n<ul>\n<li><strong>데이터 수집</strong>: CCXT, Deribit API</li>\n<li><strong>데이터 처리</strong>: Java, Apache Spark</li>\n<li><strong>저장소</strong>: PostgreSQL, TimescaleDB</li>\n<li><strong>워크플로우</strong>: Apache Airflow</li>\n</ul>\n<h3 id=\"heading-6\">2. 분석 엔진</h3>\n<ul>\n<li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>\n<li><strong>금융공학</strong>: Pandas, NumPy</li>\n<li><strong>분석 모델</strong>:\n<ul>\n<li>블랙숄즈 모델 (옵션 가격 평가)</li>\n<li>Heston 모델 (변동성 분석)</li>\n<li>LSTM 네트워크 (시계열 예측)</li>\n</ul>\n</li>\n</ul>\n<h3 id=\"heading-7\">3. 프론트엔드</h3>\n<ul>\n<li><strong>프레임워크</strong>: Next.js</li>\n<li><strong>시각화</strong>: D3.js</li>\n<li><strong>실시간 통신</strong>: WebSocket</li>\n</ul>\n<h2 id=\"heading-8\">📊 시스템 아키텍처</h2>\n<pre><code class=\"language-plaintext\">+-------------------+       +-------------------+       +-------------------+\n|   Data Sources    |       |   Backend (AI &amp;   |       |   Frontend (User   |\n|-------------------|       | Financial Models) |       |     Interface)    |\n| Binance API       | ----&gt; | Python (Pandas,   | ----&gt; | Next.js           |\n| Bybit API         | ----&gt; | TensorFlow)       | ----&gt; | D3.js             |\n| Deribit API       | ----&gt; |                   | ----&gt; | Interactive Charts|\n+-------------------+       +-------------------+       +-------------------+\n\n<p>+-------------------+</p><table>\n<thead>\n<tr>\n<th>Database</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>PostgreSQL</td>\n</tr>\n<tr>\n<td>TimescaleDB</td>\n</tr>\n<tr>\n<td>+-------------------+</td>\n</tr>\n</tbody></table>\n<p>+--------------------------------------------+</p><table>\n<thead>\n<tr>\n<th>Workflow Orchestration</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Apache Airflow</td>\n</tr>\n<tr>\n<td>+--------------------------------------------+</td>\n</tr>\n<tr>\n<td></td>\n</tr>\n</tbody></table>\n<hr>\n<h2 id=\"heading-9\">💡 주요 기능 및 구현</h2>\n<h3 id=\"heading-10\">1. 데이터 통합 시스템</h3>\n<ul>\n<li>멀티 거래소 실시간 데이터 수집</li>\n<li>시계열 데이터 최적화 저장</li>\n<li>분산 처리 기반 대용량 데이터 처리</li>\n</ul>\n<h3 id=\"heading-11\">2. AI 기반 분석 엔진</h3>\n<ul>\n<li>딥러닝 기반 가격 예측 모델</li>\n<li>변동성 예측 및 리스크 분석</li>\n<li>포트폴리오 최적화 알고리즘</li>\n</ul>\n<h3 id=\"heading-12\">3. 투자 전략 시스템</h3>\n<ul>\n<li>실시간 포지션 분석</li>\n<li>리스크-리턴 프로파일 생성</li>\n<li>백테스팅 및 시나리오 분석</li>\n</ul>\n<h3 id=\"heading-13\">4. 실시간 모니터링</h3>\n<ul>\n<li>대화형 차트 및 지표</li>\n<li>실시간 알림 시스템</li>\n<li>커스텀 대시보드 구성</li>\n</ul>\n<hr>\n<h2 id=\"heading-14\">🔄 워크플로우 상세</h2>\n<ol>\n<li>\n<p><strong>데이터 수집 단계</strong></p>\n<ul>\n<li>거래소 API 연동 및 데이터 수집</li>\n<li>WebSocket을 통한 실시간 데이터 스트리밍</li>\n<li>데이터 정합성 검증</li>\n</ul>\n</li>\n<li>\n<p><strong>전처리 및 저장 단계</strong></p>\n<ul>\n<li>Apache Spark 기반 대규모 데이터 처리</li>\n<li>시계열 데이터 최적화 저장</li>\n<li>파생 변수 계산 (변동성, 그리스 지표 등)</li>\n</ul>\n</li>\n<li>\n<p><strong>분석 및 예측 단계</strong></p>\n<ul>\n<li>머신러닝 모델 학습 및 예측</li>\n<li>금융공학 모델 적용</li>\n<li>리스크 지표 계산</li>\n</ul>\n</li>\n<li>\n<p><strong>시각화 및 제공 단계</strong></p>\n<ul>\n<li>실시간 대시보드 업데이트</li>\n<li>사용자 맞춤형 보고서 생성</li>\n<li>알림 및 통지 발송</li>\n</ul>\n</li>\n</ol>\n<hr>\n<h2 id=\"heading-15\">🎁 기대 효과</h2>\n<h3 id=\"heading-16\">1. 운영 효율성</h3>\n<ul>\n<li>자동화된 데이터 수집 및 분석</li>\n<li>실시간 시장 모니터링</li>\n<li>신속한 의사결정 지원</li>\n</ul>\n<h3 id=\"heading-17\">2. 리스크 관리</h3>\n<ul>\n<li>포트폴리오 리스크 실시간 모니터링</li>\n<li>시나리오 기반 스트레스 테스트</li>\n<li>손실 제한 전략 자동화</li>\n</ul>\n<h3 id=\"heading-18\">3. 투자 성과</h3>\n<ul>\n<li>데이터 기반 투자 전략 수립</li>\n<li>AI 기반 시장 예측</li>\n<li>체계적인 포트폴리오 관리</li>\n</ul>\n<hr>\n<h2 id=\"heading-19\">🚀 향후 발전 방향</h2>\n<ol>\n<li>\n<p><strong>기능 확장</strong></p>\n<ul>\n<li>추가 자산군 지원</li>\n<li>고급 AI 모델 도입</li>\n<li>소셜 트레이딩 기능</li>\n</ul>\n</li>\n<li>\n<p><strong>성능 개선</strong></p>\n<ul>\n<li>처리 속도 최적화</li>\n<li>확장성 강화</li>\n<li>보안 강화</li>\n</ul>\n</li>\n<li>\n<p><strong>사용자 경험</strong></p>\n<ul>\n<li>모바일 앱 개발</li>\n<li>맞춤형 알림 시스템</li>\n<li>API 서비스 제공</li>\n</ul>\n</li>\n</ol>\n<p>이 프로젝트는 금융 시장의 데이터를 효과적으로 분석하고 AI와 결합하여 실질적인 투자 인사이트를 제공하는 종합 솔루션을 목표로 합니다. 🎯</p>\n</code></pre>",
+      "content": "<h1 id=\"heading-0\">금융 데이터 분석 및 AI 연동 솔루션 – 기술 스택 선정과 시스템 아키텍처</h1>\n<h2 id=\"heading-1\">🚀 프로젝트 개요</h2>\n<p>금융 시장에서 데이터 기반 의사결정의 중요성이 날로 증가하고 있습니다. 특히 현물, 선물, 옵션 시장의 데이터를 통합적으로 분석하고 AI를 활용한 시장 예측은 현대 트레이딩의 핵심 요소가 되었습니다.</p>\n<p>이 프로젝트는 <strong>실시간 데이터 수집 → 고성능 데이터 처리 → AI 기반 분석 → 실시간 대시보드 제공</strong>의 전체 프로세스를 자동화하여 사용자에게 데이터 기반의 투자 인사이트를 제공합니다.</p>\n<h3 id=\"heading-2\">핵심 목표</h3>\n<ul>\n<li>실시간 금융 데이터 통합 및 분석</li>\n<li>AI 기반 시장 예측 모델 구현</li>\n<li>포지션별 기대 수익률 계산</li>\n<li>리스크 관리 지표 제공</li>\n<li>사용자 친화적 대시보드 구현</li>\n</ul>\n<hr>\n<h2 id=\"heading-3\">🛠️ 기술 스택 및 아키텍처</h2>\n<h3 id=\"heading-4\">1. 데이터 파이프라인</h3>\n<ul>\n<li><strong>데이터 수집</strong>: CCXT, Deribit API</li>\n<li><strong>데이터 처리</strong>: Java, Apache Spark</li>\n<li><strong>저장소</strong>: PostgreSQL, TimescaleDB</li>\n<li><strong>워크플로우</strong>: Apache Airflow</li>\n</ul>\n<h3 id=\"heading-5\">2. 분석 엔진</h3>\n<ul>\n<li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>\n<li><strong>금융공학</strong>: Pandas, NumPy</li>\n<li><strong>분석 모델</strong>:\n<ul>\n<li>블랙숄즈 모델 (옵션 가격 평가)</li>\n<li>Heston 모델 (변동성 분석)</li>\n<li>LSTM 네트워크 (시계열 예측)</li>\n</ul>\n</li>\n</ul>\n<h3 id=\"heading-6\">3. 프론트엔드</h3>\n<ul>\n<li><strong>프레임워크</strong>: Next.js</li>\n<li><strong>시각화</strong>: D3.js</li>\n<li><strong>실시간 통신</strong>: WebSocket</li>\n</ul>\n<h2 id=\"heading-7\">📊 시스템 아키텍처</h2>\n<pre><code class=\"language-plaintext\">+-------------------+       +-------------------+       +-------------------+\n|   Data Sources    |       |   Backend (AI &amp;   |       |   Frontend (User   |\n|-------------------|       | Financial Models) |       |     Interface)    |\n| Binance API       | ----&gt; | Python (Pandas,   | ----&gt; | Next.js           |\n| Bybit API         | ----&gt; | TensorFlow)       | ----&gt; | D3.js             |\n| Deribit API       | ----&gt; |                   | ----&gt; | Interactive Charts|\n+-------------------+       +-------------------+       +-------------------+\n\n+-------------------+\n| Database          |\n|-------------------|\n| PostgreSQL        |\n| TimescaleDB       |\n+-------------------+\n\n+--------------------------------------------+\n| Workflow Orchestration                     |\n|--------------------------------------------|\n| Apache Airflow                             |\n+--------------------------------------------+\n</code></pre>\n<hr>\n<h2 id=\"heading-8\">💡 주요 기능 및 구현</h2>\n<h3 id=\"heading-9\">1. 데이터 통합 시스템</h3>\n<ul>\n<li>멀티 거래소 실시간 데이터 수집</li>\n<li>시계열 데이터 최적화 저장</li>\n<li>분산 처리 기반 대용량 데이터 처리</li>\n</ul>\n<h3 id=\"heading-10\">2. AI 기반 분석 엔진</h3>\n<ul>\n<li>딥러닝 기반 가격 예측 모델</li>\n<li>변동성 예측 및 리스크 분석</li>\n<li>포트폴리오 최적화 알고리즘</li>\n</ul>\n<h3 id=\"heading-11\">3. 투자 전략 시스템</h3>\n<ul>\n<li>실시간 포지션 분석</li>\n<li>리스크-리턴 프로파일 생성</li>\n<li>백테스팅 및 시나리오 분석</li>\n</ul>\n<h3 id=\"heading-12\">4. 실시간 모니터링</h3>\n<ul>\n<li>대화형 차트 및 지표</li>\n<li>실시간 알림 시스템</li>\n<li>커스텀 대시보드 구성</li>\n</ul>\n<hr>\n<h2 id=\"heading-13\">🔄 워크플로우 상세</h2>\n<ol>\n<li>\n<p><strong>데이터 수집 단계</strong></p>\n<ul>\n<li>거래소 API 연동 및 데이터 수집</li>\n<li>WebSocket을 통한 실시간 데이터 스트리밍</li>\n<li>데이터 정합성 검증</li>\n</ul>\n</li>\n<li>\n<p><strong>전처리 및 저장 단계</strong></p>\n<ul>\n<li>Apache Spark 기반 대규모 데이터 처리</li>\n<li>시계열 데이터 최적화 저장</li>\n<li>파생 변수 계산 (변동성, 그리스 지표 등)</li>\n</ul>\n</li>\n<li>\n<p><strong>분석 및 예측 단계</strong></p>\n<ul>\n<li>머신러닝 모델 학습 및 예측</li>\n<li>금융공학 모델 적용</li>\n<li>리스크 지표 계산</li>\n</ul>\n</li>\n<li>\n<p><strong>시각화 및 제공 단계</strong></p>\n<ul>\n<li>실시간 대시보드 업데이트</li>\n<li>사용자 맞춤형 보고서 생성</li>\n<li>알림 및 통지 발송</li>\n</ul>\n</li>\n</ol>\n<hr>\n<h2 id=\"heading-14\">🎁 기대 효과</h2>\n<h3 id=\"heading-15\">1. 운영 효율성</h3>\n<ul>\n<li>자동화된 데이터 수집 및 분석</li>\n<li>실시간 시장 모니터링</li>\n<li>신속한 의사결정 지원</li>\n</ul>\n<h3 id=\"heading-16\">2. 리스크 관리</h3>\n<ul>\n<li>포트폴리오 리스크 실시간 모니터링</li>\n<li>시나리오 기반 스트레스 테스트</li>\n<li>손실 제한 전략 자동화</li>\n</ul>\n<h3 id=\"heading-17\">3. 투자 성과</h3>\n<ul>\n<li>데이터 기반 투자 전략 수립</li>\n<li>AI 기반 시장 예측</li>\n<li>체계적인 포트폴리오 관리</li>\n</ul>\n<hr>\n<h2 id=\"heading-18\">🚀 향후 발전 방향</h2>\n<ol>\n<li>\n<p><strong>기능 확장</strong></p>\n<ul>\n<li>추가 자산군 지원</li>\n<li>고급 AI 모델 도입</li>\n<li>소셜 트레이딩 기능</li>\n</ul>\n</li>\n<li>\n<p><strong>성능 개선</strong></p>\n<ul>\n<li>처리 속도 최적화</li>\n<li>확장성 강화</li>\n<li>보안 강화</li>\n</ul>\n</li>\n<li>\n<p><strong>사용자 경험</strong></p>\n<ul>\n<li>모바일 앱 개발</li>\n<li>맞춤형 알림 시스템</li>\n<li>API 서비스 제공</li>\n</ul>\n</li>\n</ol>\n<p>이 프로젝트는 금융 시장의 데이터를 효과적으로 분석하고 AI와 결합하여 실질적인 투자 인사이트를 제공하는 종합 솔루션을 목표로 합니다. 🎯</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Entasis Engine - 가상자산 데이터 분석 및 AI 연동 솔루션\"\ndate: \"2025-02-10\"\ncategory: \"projects\"\ndescription: \"현물/선물/옵션 데이터 통합 분석 및 AI 기반 투자 전략 제공 시스템\"\ntags:\n[\n\"Java\",\n\"Python\",\n\"PostgreSQL\",\n\"TimescaleDB\",\n\"Next.js\",\n\"D3.js\",\n\"Apache Spark\",\n\"TensorFlow\",\n\"Apache Airflow\",\n\"CCXT\",\n\"금융공학\",\n\"머신러닝\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
-          "level": 2,
+          "text": "금융 데이터 분석 및 AI 연동 솔루션 – 기술 스택 선정과 시스템 아키텍처",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "금융 데이터 분석 및 AI 연동 솔루션 – 기술 스택 선정과 시스템 아키텍처",
-          "level": 1,
+          "text": "🚀 프로젝트 개요",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "🚀 프로젝트 개요",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "핵심 목표",
+          "level": 3,
+          "isMainTopic": false,
           "position": 100
         },
         {
           "id": "heading-3",
-          "text": "핵심 목표",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "🛠️ 기술 스택 및 아키텍처",
+          "level": 2,
+          "isMainTopic": true,
           "position": 150
         },
         {
           "id": "heading-4",
-          "text": "🛠️ 기술 스택 및 아키텍처",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 데이터 파이프라인",
+          "level": 3,
+          "isMainTopic": false,
           "position": 200
         },
         {
           "id": "heading-5",
-          "text": "1. 데이터 파이프라인",
+          "text": "2. 분석 엔진",
           "level": 3,
           "isMainTopic": false,
           "position": 250
         },
         {
           "id": "heading-6",
-          "text": "2. 분석 엔진",
+          "text": "3. 프론트엔드",
           "level": 3,
           "isMainTopic": false,
           "position": 300
         },
         {
           "id": "heading-7",
-          "text": "3. 프론트엔드",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "📊 시스템 아키텍처",
+          "level": 2,
+          "isMainTopic": true,
           "position": 350
         },
         {
           "id": "heading-8",
-          "text": "📊 시스템 아키텍처",
+          "text": "💡 주요 기능 및 구현",
           "level": 2,
           "isMainTopic": true,
           "position": 400
         },
         {
           "id": "heading-9",
-          "text": "💡 주요 기능 및 구현",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 데이터 통합 시스템",
+          "level": 3,
+          "isMainTopic": false,
           "position": 450
         },
         {
           "id": "heading-10",
-          "text": "1. 데이터 통합 시스템",
+          "text": "2. AI 기반 분석 엔진",
           "level": 3,
           "isMainTopic": false,
           "position": 500
         },
         {
           "id": "heading-11",
-          "text": "2. AI 기반 분석 엔진",
+          "text": "3. 투자 전략 시스템",
           "level": 3,
           "isMainTopic": false,
           "position": 550
         },
         {
           "id": "heading-12",
-          "text": "3. 투자 전략 시스템",
+          "text": "4. 실시간 모니터링",
           "level": 3,
           "isMainTopic": false,
           "position": 600
         },
         {
           "id": "heading-13",
-          "text": "4. 실시간 모니터링",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "🔄 워크플로우 상세",
+          "level": 2,
+          "isMainTopic": true,
           "position": 650
         },
         {
           "id": "heading-14",
-          "text": "🔄 워크플로우 상세",
+          "text": "🎁 기대 효과",
           "level": 2,
           "isMainTopic": true,
           "position": 700
         },
         {
           "id": "heading-15",
-          "text": "🎁 기대 효과",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. 운영 효율성",
+          "level": 3,
+          "isMainTopic": false,
           "position": 750
         },
         {
           "id": "heading-16",
-          "text": "1. 운영 효율성",
+          "text": "2. 리스크 관리",
           "level": 3,
           "isMainTopic": false,
           "position": 800
         },
         {
           "id": "heading-17",
-          "text": "2. 리스크 관리",
+          "text": "3. 투자 성과",
           "level": 3,
           "isMainTopic": false,
           "position": 850
         },
         {
           "id": "heading-18",
-          "text": "3. 투자 성과",
-          "level": 3,
-          "isMainTopic": false,
-          "position": 900
-        },
-        {
-          "id": "heading-19",
           "text": "🚀 향후 발전 방향",
           "level": 2,
           "isMainTopic": true,
-          "position": 950
+          "position": 900
         }
       ]
     },
     "en": {
       "title": "Entasis Engine - Virtual Asset Data Analysis and AI Integration Solution",
       "description": "Integrated analysis system for spot/futures/options data with AI-based investment strategy",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - Virtual Asset Data Analysis and AI Integration Solution\"\ndate: \"2025-02-10\"\ncategory: \"projects\"\ndescription: \"Integrated analysis system for spot/futures/options data with AI-based investment strategy\"\ntags:\n[\n\"Java\",\n\"Python\",\n\"PostgreSQL\",\n\"TimescaleDB\",\n\"Next.js\",\n\"D3.js\",\n\"Apache Spark\",\n\"TensorFlow\",\n\"Apache Airflow\",\n\"CCXT\",\n\"Financial Engineering\",\n\"Machine Learning\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture</h1>\n<h2 id=\"heading-2\">🚀 Project Overview</h2>\n<p>The importance of data-driven decision making in financial markets continues to grow. In particular, integrated analysis of spot, futures, and options market data combined with AI-based market prediction has become a core element of modern trading.</p>\n<p>This project automates the entire process from <strong>real-time data collection → high-performance data processing → AI-based analysis → real-time dashboard delivery</strong> to provide users with data-driven investment insights.</p>\n<h3 id=\"heading-3\">Core Objectives</h3>\n<ul>\n<li>Real-time financial data integration and analysis</li>\n<li>Implementation of AI-based market prediction models</li>\n<li>Expected return calculation by position</li>\n<li>Risk management metrics provision</li>\n<li>User-friendly dashboard implementation</li>\n</ul>\n<hr>\n<h2 id=\"heading-4\">🛠️ Technology Stack &amp; Architecture</h2>\n<h3 id=\"heading-5\">1. Data Pipeline</h3>\n<ul>\n<li><strong>Data Collection</strong>: CCXT, Deribit API</li>\n<li><strong>Data Processing</strong>: Java, Apache Spark</li>\n<li><strong>Storage</strong>: PostgreSQL, TimescaleDB</li>\n<li><strong>Workflow</strong>: Apache Airflow</li>\n</ul>\n<h3 id=\"heading-6\">2. Analysis Engine</h3>\n<ul>\n<li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>\n<li><strong>Financial Engineering</strong>: Pandas, NumPy</li>\n<li><strong>Analysis Models</strong>:\n<ul>\n<li>Black-Scholes Model (Option Pricing)</li>\n<li>Heston Model (Volatility Analysis)</li>\n<li>LSTM Networks (Time Series Prediction)</li>\n</ul>\n</li>\n</ul>\n<h3 id=\"heading-7\">3. Frontend</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js</li>\n<li><strong>Visualization</strong>: D3.js</li>\n<li><strong>Real-time Communication</strong>: WebSocket</li>\n</ul>\n<h2 id=\"heading-8\">📊 System Architecture</h2>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture</h1>\n<h2 id=\"heading-1\">🚀 Project Overview</h2>\n<p>The importance of data-driven decision making in financial markets continues to grow. In particular, integrated analysis of spot, futures, and options market data combined with AI-based market prediction has become a core element of modern trading.</p>\n<p>This project automates the entire process from <strong>real-time data collection → high-performance data processing → AI-based analysis → real-time dashboard delivery</strong> to provide users with data-driven investment insights.</p>\n<h3 id=\"heading-2\">Core Objectives</h3>\n<ul>\n<li>Real-time financial data integration and analysis</li>\n<li>Implementation of AI-based market prediction models</li>\n<li>Expected return calculation by position</li>\n<li>Risk management metrics provision</li>\n<li>User-friendly dashboard implementation</li>\n</ul>\n<hr>\n<h2 id=\"heading-3\">🛠️ Technology Stack &amp; Architecture</h2>\n<h3 id=\"heading-4\">1. Data Pipeline</h3>\n<ul>\n<li><strong>Data Collection</strong>: CCXT, Deribit API</li>\n<li><strong>Data Processing</strong>: Java, Apache Spark</li>\n<li><strong>Storage</strong>: PostgreSQL, TimescaleDB</li>\n<li><strong>Workflow</strong>: Apache Airflow</li>\n</ul>\n<h3 id=\"heading-5\">2. Analysis Engine</h3>\n<ul>\n<li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>\n<li><strong>Financial Engineering</strong>: Pandas, NumPy</li>\n<li><strong>Analysis Models</strong>:\n<ul>\n<li>Black-Scholes Model (Option Pricing)</li>\n<li>Heston Model (Volatility Analysis)</li>\n<li>LSTM Networks (Time Series Prediction)</li>\n</ul>\n</li>\n</ul>\n<h3 id=\"heading-6\">3. Frontend</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js</li>\n<li><strong>Visualization</strong>: D3.js</li>\n<li><strong>Real-time Communication</strong>: WebSocket</li>\n</ul>\n<h2 id=\"heading-7\">📊 System Architecture</h2>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Entasis Engine - Virtual Asset Data Analysis and AI Integration Solution\"\ndate: \"2025-02-10\"\ncategory: \"projects\"\ndescription: \"Integrated analysis system for spot/futures/options data with AI-based investment strategy\"\ntags:\n[\n\"Java\",\n\"Python\",\n\"PostgreSQL\",\n\"TimescaleDB\",\n\"Next.js\",\n\"D3.js\",\n\"Apache Spark\",\n\"TensorFlow\",\n\"Apache Airflow\",\n\"CCXT\",\n\"Financial Engineering\",\n\"Machine Learning\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
-          "level": 2,
+          "text": "Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture",
-          "level": 1,
+          "text": "🚀 Project Overview",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "🚀 Project Overview",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "Core Objectives",
+          "level": 3,
+          "isMainTopic": false,
           "position": 100
         },
         {
           "id": "heading-3",
-          "text": "Core Objectives",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "🛠️ Technology Stack & Architecture",
+          "level": 2,
+          "isMainTopic": true,
           "position": 150
         },
         {
           "id": "heading-4",
-          "text": "🛠️ Technology Stack & Architecture",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "1. Data Pipeline",
+          "level": 3,
+          "isMainTopic": false,
           "position": 200
         },
         {
           "id": "heading-5",
-          "text": "1. Data Pipeline",
+          "text": "2. Analysis Engine",
           "level": 3,
           "isMainTopic": false,
           "position": 250
         },
         {
           "id": "heading-6",
-          "text": "2. Analysis Engine",
+          "text": "3. Frontend",
           "level": 3,
           "isMainTopic": false,
           "position": 300
         },
         {
           "id": "heading-7",
-          "text": "3. Frontend",
-          "level": 3,
-          "isMainTopic": false,
-          "position": 350
-        },
-        {
-          "id": "heading-8",
           "text": "📊 System Architecture",
           "level": 2,
           "isMainTopic": true,
-          "position": 400
+          "position": 350
         }
       ]
     }
