@@ -14,8 +14,8 @@ export const resources = {
         },
       },
       profile: {
-        position: "Full Stack Developer",
-        name: "Subin Yun",
+        position: "Solution Builder",
+        name: "Russ",
         image: "Profile Image",
         blog: "BLOG",
         emailLabel: "EMAIL",
@@ -87,7 +87,7 @@ export const resources = {
         },
       },
       profile: {
-        position: "풀스택 개발자",
+        position: "Solution Builder",
         name: "Russ",
         image: "프로필 이미지",
         blog: "블로그",
