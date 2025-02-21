@@ -15,61 +15,48 @@
     "ko": {
       "title": "전자고지 시스템 개발",
       "description": "카카오/네이버/KT 전자문서 발송 및 통계 시스템",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"전자고지 시스템 개발\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"카카오/네이버/KT 전자문서 발송 및 통계 시스템\"\ntags: [\"React\", \"NicePay\", \"TypeScript\", \"React Hook Form\"]\nthumbnail: \"/images/mobyn/mobyn_dashboard.gif\"</h2>\n<h2 id=\"heading-1\">시스템 개요</h2>\n<p>전자고지 시스템은 기업이나 기관에서 발행하는 각종 고지서를 카카오, 네이버, KT 등의 플랫폼을 통해 전자문서로 발송하고 관리하는 통합 솔루션입니다.</p>\n<h3 id=\"heading-2\">주요 기능</h3>\n<ol>\n<li><strong>전자고지서 발송 관리</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_document_payment.gif\" alt=\"3\">\n(결제 정보 관리 및 처리)</p>\n<ol start=\"2\">\n<li><strong>결제 시스템 연동</strong>\n<ul>\n<li>NICEpay 결제 모듈 통합</li>\n<li>실시간 결제 상태 확인</li>\n<li>결제 이력 관리</li>\n<li>환불 프로세스 지원</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_stats_1.gif\" alt=\"5\">\n(일별/월별 발송량 통계 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_2.gif\" alt=\"6\">\n(플랫폼별 발송 성공률 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_3.gif\" alt=\"7\">\n(결제 전환율 및 매출 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_4.gif\" alt=\"8\">\n(기간별 상세 통계 리포트)</p>\n<ol start=\"3\">\n<li><strong>통계 대시보드</strong></li>\n</ol>\n<ul>\n<li>발송 현황 분석</li>\n<li>플랫폼별 성공률 추적</li>\n<li>결제 전환율 모니터링</li>\n<li>기간별 통계 리포트</li>\n</ul>\n<p><img src=\"/images/mobyn/mobyn_document_management.gif\" alt=\"2\">\n(문서 템플릿 관리 및 편집)</p>\n<ol start=\"4\">\n<li><strong>발송 관리 시스템</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_status.gif\" alt=\"9\">\n(실시간 발송 상태 모니터링)</p>\n<ol start=\"5\">\n<li><strong>발송 제목 및 내용 관리</strong>\n<ul>\n<li>발송 제목 및 내용 관리</li>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_subject.gif\" alt=\"10\">\n(발송 제목 및 내용 관리)</p>\n<ol start=\"6\">\n<li><strong>발송 대상자 관리</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_send.gif\" alt=\"4\">\n(대량 발송 프로세스 실행)</p>\n<ol start=\"7\">\n<li><strong>발송 예약 관리</strong>\n<ul>\n<li>발송 예약 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n",
+      "content": "<h2 id=\"heading-0\">시스템 개요</h2>\n<p>전자고지 시스템은 기업이나 기관에서 발행하는 각종 고지서를 카카오, 네이버, KT 등의 플랫폼을 통해 전자문서로 발송하고 관리하는 통합 솔루션입니다.</p>\n<h3 id=\"heading-1\">주요 기능</h3>\n<ol>\n<li><strong>전자고지서 발송 관리</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_document_payment.gif\" alt=\"3\">\n(결제 정보 관리 및 처리)</p>\n<ol start=\"2\">\n<li><strong>결제 시스템 연동</strong>\n<ul>\n<li>NICEpay 결제 모듈 통합</li>\n<li>실시간 결제 상태 확인</li>\n<li>결제 이력 관리</li>\n<li>환불 프로세스 지원</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_stats_1.gif\" alt=\"5\">\n(일별/월별 발송량 통계 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_2.gif\" alt=\"6\">\n(플랫폼별 발송 성공률 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_3.gif\" alt=\"7\">\n(결제 전환율 및 매출 분석)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_4.gif\" alt=\"8\">\n(기간별 상세 통계 리포트)</p>\n<ol start=\"3\">\n<li><strong>통계 대시보드</strong></li>\n</ol>\n<ul>\n<li>발송 현황 분석</li>\n<li>플랫폼별 성공률 추적</li>\n<li>결제 전환율 모니터링</li>\n<li>기간별 통계 리포트</li>\n</ul>\n<p><img src=\"/images/mobyn/mobyn_document_management.gif\" alt=\"2\">\n(문서 템플릿 관리 및 편집)</p>\n<ol start=\"4\">\n<li><strong>발송 관리 시스템</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_status.gif\" alt=\"9\">\n(실시간 발송 상태 모니터링)</p>\n<ol start=\"5\">\n<li><strong>발송 제목 및 내용 관리</strong>\n<ul>\n<li>발송 제목 및 내용 관리</li>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_subject.gif\" alt=\"10\">\n(발송 제목 및 내용 관리)</p>\n<ol start=\"6\">\n<li><strong>발송 대상자 관리</strong>\n<ul>\n<li>대상자 그룹 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_send.gif\" alt=\"4\">\n(대량 발송 프로세스 실행)</p>\n<ol start=\"7\">\n<li><strong>발송 예약 관리</strong>\n<ul>\n<li>발송 예약 관리</li>\n<li>발송 이력 추적</li>\n<li>멀티 플랫폼 발송 설정</li>\n<li>발송 상태 모니터링</li>\n</ul>\n</li>\n</ol>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"전자고지 시스템 개발\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"카카오/네이버/KT 전자문서 발송 및 통계 시스템\"\ntags: [\"React\", \"NicePay\", \"TypeScript\", \"React Hook Form\"]\nthumbnail: \"/images/mobyn/mobyn_dashboard.gif\"",
+          "text": "시스템 개요",
           "level": 2,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "시스템 개요",
-          "level": 2,
-          "isMainTopic": true,
-          "position": 50
-        },
-        {
-          "id": "heading-2",
           "text": "주요 기능",
           "level": 3,
           "isMainTopic": false,
-          "position": 100
+          "position": 50
         }
       ]
     },
     "en": {
       "title": "Electronic Notification System Development",
       "description": "Electronic Document Delivery and Statistics System for Kakao/Naver/KT",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Electronic Notification System Development\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"Electronic Document Delivery and Statistics System for Kakao/Naver/KT\"\ntags: [\"React\", \"NicePay\", \"TypeScript\", \"React Hook Form\"]\nthumbnail: \"/images/mobyn/mobyn_dashboard.gif\"</h2>\n<h2 id=\"heading-1\">System Overview</h2>\n<p>The Electronic Notification System is an integrated solution that manages and delivers various notifications as electronic documents through platforms like Kakao, Naver, and KT for businesses and organizations.</p>\n<h3 id=\"heading-2\">Key Features</h3>\n<ol>\n<li><strong>Electronic Notification Management</strong>\n<ul>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_document_payment.gif\" alt=\"3\">\n(Payment Information Management and Processing)</p>\n<ol start=\"2\">\n<li><strong>Payment System Integration</strong>\n<ul>\n<li>NICEpay payment module integration</li>\n<li>Real-time payment status verification</li>\n<li>Payment history management</li>\n<li>Refund process support</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_stats_1.gif\" alt=\"5\">\n(Daily/Monthly Delivery Volume Analysis)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_2.gif\" alt=\"6\">\n(Platform-specific Delivery Success Rate Analysis)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_3.gif\" alt=\"7\">\n(Payment Conversion Rate and Revenue Analysis)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_4.gif\" alt=\"8\">\n(Detailed Statistical Reports by Period)</p>\n<ol start=\"3\">\n<li><strong>Statistics Dashboard</strong>\n<ul>\n<li>Delivery status analysis</li>\n<li>Platform success rate tracking</li>\n<li>Payment conversion monitoring</li>\n<li>Period-based statistical reports</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_document_management.gif\" alt=\"2\">\n(Document Template Management and Editing)</p>\n<ol start=\"4\">\n<li><strong>Delivery Management System</strong>\n<ul>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_status.gif\" alt=\"9\">\n(Real-time Delivery Status Monitoring)</p>\n<ol start=\"5\">\n<li><strong>Title and Content Management</strong>\n<ul>\n<li>Title and content management</li>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_subject.gif\" alt=\"10\">\n(Title and Content Management)</p>\n<ol start=\"6\">\n<li><strong>Recipient Management</strong>\n<ul>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_send.gif\" alt=\"4\">\n(Bulk Delivery Process Execution)</p>\n<ol start=\"7\">\n<li><strong>Delivery Schedule Management</strong>\n<ul>\n<li>Delivery schedule management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n",
+      "content": "<h2 id=\"heading-0\">System Overview</h2>\n<p>The Electronic Notification System is an integrated solution that manages and delivers various notifications as electronic documents through platforms like Kakao, Naver, and KT for businesses and organizations.</p>\n<h3 id=\"heading-1\">Key Features</h3>\n<ol>\n<li><strong>Electronic Notification Management</strong>\n<ul>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_document_payment.gif\" alt=\"3\">\n(Payment Information Management and Processing)</p>\n<ol start=\"2\">\n<li><strong>Payment System Integration</strong>\n<ul>\n<li>NICEpay payment module integration</li>\n<li>Real-time payment status verification</li>\n<li>Payment history management</li>\n<li>Refund process support</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_stats_1.gif\" alt=\"5\">\n(Daily/Monthly Delivery Volume Analysis)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_2.gif\" alt=\"6\">\n(Platform-specific Delivery Success Rate Analysis)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_3.gif\" alt=\"7\">\n(Payment Conversion Rate and Revenue Analysis)</p>\n<p><img src=\"/images/mobyn/mobyn_stats_4.gif\" alt=\"8\">\n(Detailed Statistical Reports by Period)</p>\n<ol start=\"3\">\n<li><strong>Statistics Dashboard</strong>\n<ul>\n<li>Delivery status analysis</li>\n<li>Platform success rate tracking</li>\n<li>Payment conversion monitoring</li>\n<li>Period-based statistical reports</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_document_management.gif\" alt=\"2\">\n(Document Template Management and Editing)</p>\n<ol start=\"4\">\n<li><strong>Delivery Management System</strong>\n<ul>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_status.gif\" alt=\"9\">\n(Real-time Delivery Status Monitoring)</p>\n<ol start=\"5\">\n<li><strong>Title and Content Management</strong>\n<ul>\n<li>Title and content management</li>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_subject.gif\" alt=\"10\">\n(Title and Content Management)</p>\n<ol start=\"6\">\n<li><strong>Recipient Management</strong>\n<ul>\n<li>Target group management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n<p><img src=\"/images/mobyn/mobyn_send.gif\" alt=\"4\">\n(Bulk Delivery Process Execution)</p>\n<ol start=\"7\">\n<li><strong>Delivery Schedule Management</strong>\n<ul>\n<li>Delivery schedule management</li>\n<li>Delivery history tracking</li>\n<li>Multi-platform delivery settings</li>\n<li>Delivery status monitoring</li>\n</ul>\n</li>\n</ol>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Electronic Notification System Development\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"Electronic Document Delivery and Statistics System for Kakao/Naver/KT\"\ntags: [\"React\", \"NicePay\", \"TypeScript\", \"React Hook Form\"]\nthumbnail: \"/images/mobyn/mobyn_dashboard.gif\"",
+          "text": "System Overview",
           "level": 2,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "System Overview",
-          "level": 2,
-          "isMainTopic": true,
-          "position": 50
-        },
-        {
-          "id": "heading-2",
           "text": "Key Features",
           "level": 3,
           "isMainTopic": false,
-          "position": 100
+          "position": 50
         }
       ]
     }
   },
   "imageHeights": {
+    "img-2": 400,
     "img-3": 400,
     "img-4": 400,
     "img-5": 400,
@@ -77,7 +64,6 @@
     "img-7": 400,
     "img-8": 400,
     "img-9": 400,
-    "img-10": 400,
-    "img-11": 400
+    "img-10": 400
   }
 }

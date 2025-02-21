@@ -18,140 +18,126 @@
     "ko": {
       "title": "Entasis Engine - 데이터베이스 구축",
       "description": "가상자산 데이터베이스 구축 및 TimescaleDB 활용 가이드",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - 데이터베이스 구축\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터베이스 구축 및 TimescaleDB 활용 가이드\"\ntags:\n[\n\"database\",\n\"postgresql\",\n\"timescaledb\",\n\"schema\",\n\"sql\",\n\"data-modeling\",\n\"optimization\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">PostgreSQL + TimescaleDB를 활용한 금융 데이터베이스 구축</h1>\n<p>안녕하세요! 이번 포스트에서는 <strong>PostgreSQL과 TimescaleDB</strong>를 활용해 금융 데이터베이스를 구축한 과정을 공유하려고 합니다. 최근 금융 데이터를 효율적으로 저장하고 조회하는 것이 점점 더 중요해지고 있는데요. 특히 실시간 시장 데이터를 다룰 때는 <strong>TimescaleDB의 하이퍼테이블 기능</strong>이 큰 도움이 됩니다. 그럼 하나씩 살펴보겠습니다! 🚀</p>\n<hr>\n<h2 id=\"heading-2\">📌 1. 기본 테이블 구조 설정 (V1init_tables.sql)</h2>\n<p>우선, 금융 데이터를 체계적으로 저장하기 위해 <strong>거래소 정보와 거래 심볼 정보를 저장할 테이블</strong>을 만들었습니다.</p>\n<h3 id=\"heading-3\">🔹 exchanges 테이블 (거래소 정보)</h3>\n<p>거래소마다 고유한 정보를 저장하는 테이블입니다. 기본적인 거래소 ID, 이름, API URL 등을 포함합니다.</p>\n<pre><code class=\"language-sql\">CREATE TABLE exchanges (\n    id SERIAL PRIMARY KEY,\n    name TEXT NOT NULL,\n    api_url TEXT NOT NULL,\n    created_at TIMESTAMP DEFAULT now()\n);\n</code></pre>\n<h3 id=\"heading-4\">🔹 symbols 테이블 (거래 심볼 정보)</h3>\n<p>거래소마다 지원하는 심볼(예: BTC/USDT, ETH/USDT 등)을 저장하는 테이블입니다.</p>\n<pre><code class=\"language-sql\">CREATE TABLE symbols (\n    id SERIAL PRIMARY KEY,\n    exchange_id INTEGER REFERENCES exchanges(id) ON DELETE CASCADE,\n    symbol TEXT NOT NULL,\n    base_currency TEXT NOT NULL,\n    quote_currency TEXT NOT NULL,\n    created_at TIMESTAMP DEFAULT now()\n);\n</code></pre>\n<hr>\n<h2 id=\"heading-5\">📌 2. 현물 시장 데이터 테이블 생성 (V2create_market_tables.sql)</h2>\n<p>현물 시장 데이터를 저장하기 위해 <strong>spot_market_data</strong> 테이블을 생성하고, 이를 TimescaleDB 하이퍼테이블로 변환했습니다.</p>\n<h3 id=\"heading-6\">🔹 spot_market_data 테이블</h3>\n<p>이 테이블은 실시간 가격 변동을 저장하는 역할을 합니다.</p>\n<pre><code class=\"language-sql\">CREATE TABLE spot_market_data (\n    time TIMESTAMPTZ NOT NULL,\n    symbol_id INTEGER REFERENCES symbols(id) ON DELETE CASCADE,\n    price DECIMAL(18, 8) NOT NULL,\n    volume DECIMAL(18, 8) NOT NULL,\n    created_at TIMESTAMP DEFAULT now(),\n    PRIMARY KEY (time, symbol_id)\n);\n</code></pre>\n<h3 id=\"heading-7\">🔹 TimescaleDB 하이퍼테이블 변환</h3>\n<p>하이퍼테이블을 생성하면, 시계열 데이터에 최적화된 성능을 제공할 수 있습니다.</p>\n<pre><code class=\"language-sql\">SELECT create_hypertable('spot_market_data', 'time');\n</code></pre>\n<h3 id=\"heading-8\">🔹 인덱스 생성</h3>\n<p>데이터 조회 속도를 높이기 위해 필요한 인덱스를 추가했습니다.</p>\n<pre><code class=\"language-sql\">CREATE INDEX ON spot_market_data (symbol_id, time DESC);\n</code></pre>\n<hr>\n<h2 id=\"heading-9\">📌 3. 선물 시장 데이터 테이블 생성 (V3create_futures_tables.sql)</h2>\n<p>선물 시장 데이터는 현물보다 저장해야 할 정보가 많습니다. 특히 <strong>미결제약정(open_interest), 펀딩 비율(funding_rate), 마크 가격(mark_price), 지수 가격(index_price)</strong> 같은 추가적인 정보가 포함됩니다.</p>\n<h3 id=\"heading-10\">🔹 futures_market_data 테이블</h3>\n<pre><code class=\"language-sql\">CREATE TABLE futures_market_data (\n    time TIMESTAMPTZ NOT NULL,\n    symbol_id INTEGER REFERENCES symbols(id) ON DELETE CASCADE,\n    price DECIMAL(18, 8) NOT NULL,\n    volume DECIMAL(18, 8) NOT NULL,\n    open_interest DECIMAL(18, 8),\n    funding_rate DECIMAL(18, 8),\n    mark_price DECIMAL(18, 8),\n    index_price DECIMAL(18, 8),\n    created_at TIMESTAMP DEFAULT now(),\n    PRIMARY KEY (time, symbol_id)\n);\n</code></pre>\n<h3 id=\"heading-11\">🔹 TimescaleDB 하이퍼테이블 변환</h3>\n<pre><code class=\"language-sql\">SELECT create_hypertable('futures_market_data', 'time');\n</code></pre>\n<h3 id=\"heading-12\">🔹 인덱스 생성</h3>\n<pre><code class=\"language-sql\">CREATE INDEX ON futures_market_data (symbol_id, time DESC);\n</code></pre>\n<hr>\n<h2 id=\"heading-13\">📌 마무리하며</h2>\n<p>이렇게 해서 <strong>현물 및 선물 시장 데이터를 저장하는 기본 데이터베이스 구조를 구축</strong>했습니다. PostgreSQL의 안정성과 TimescaleDB의 강력한 시계열 데이터 처리 기능을 활용하면 <strong>빠른 조회와 확장성을 동시에 확보할 수 있습니다.</strong> 💡</p>\n<p>다음 포스트에서는 <strong>실제 데이터를 수집하고 저장하는 과정</strong>을 다룰 예정이니 기대해주세요! 🤗</p>\n",
+      "content": "<h1 id=\"heading-0\">PostgreSQL + TimescaleDB를 활용한 금융 데이터베이스 구축</h1>\n<p>안녕하세요! 이번 포스트에서는 <strong>PostgreSQL과 TimescaleDB</strong>를 활용해 금융 데이터베이스를 구축한 과정을 공유하려고 합니다. 최근 금융 데이터를 효율적으로 저장하고 조회하는 것이 점점 더 중요해지고 있는데요. 특히 실시간 시장 데이터를 다룰 때는 <strong>TimescaleDB의 하이퍼테이블 기능</strong>이 큰 도움이 됩니다. 그럼 하나씩 살펴보겠습니다! 🚀</p>\n<hr>\n<h2 id=\"heading-1\">📌 1. 기본 테이블 구조 설정 (V1init_tables.sql)</h2>\n<p>우선, 금융 데이터를 체계적으로 저장하기 위해 <strong>거래소 정보와 거래 심볼 정보를 저장할 테이블</strong>을 만들었습니다.</p>\n<h3 id=\"heading-2\">🔹 exchanges 테이블 (거래소 정보)</h3>\n<p>거래소마다 고유한 정보를 저장하는 테이블입니다. 기본적인 거래소 ID, 이름, API URL 등을 포함합니다.</p>\n<pre><code class=\"language-sql\">CREATE TABLE exchanges (\n    id SERIAL PRIMARY KEY,\n    name TEXT NOT NULL,\n    api_url TEXT NOT NULL,\n    created_at TIMESTAMP DEFAULT now()\n);\n</code></pre>\n<h3 id=\"heading-3\">🔹 symbols 테이블 (거래 심볼 정보)</h3>\n<p>거래소마다 지원하는 심볼(예: BTC/USDT, ETH/USDT 등)을 저장하는 테이블입니다.</p>\n<pre><code class=\"language-sql\">CREATE TABLE symbols (\n    id SERIAL PRIMARY KEY,\n    exchange_id INTEGER REFERENCES exchanges(id) ON DELETE CASCADE,\n    symbol TEXT NOT NULL,\n    base_currency TEXT NOT NULL,\n    quote_currency TEXT NOT NULL,\n    created_at TIMESTAMP DEFAULT now()\n);\n</code></pre>\n<hr>\n<h2 id=\"heading-4\">📌 2. 현물 시장 데이터 테이블 생성 (V2create_market_tables.sql)</h2>\n<p>현물 시장 데이터를 저장하기 위해 <strong>spot_market_data</strong> 테이블을 생성하고, 이를 TimescaleDB 하이퍼테이블로 변환했습니다.</p>\n<h3 id=\"heading-5\">🔹 spot_market_data 테이블</h3>\n<p>이 테이블은 실시간 가격 변동을 저장하는 역할을 합니다.</p>\n<pre><code class=\"language-sql\">CREATE TABLE spot_market_data (\n    time TIMESTAMPTZ NOT NULL,\n    symbol_id INTEGER REFERENCES symbols(id) ON DELETE CASCADE,\n    price DECIMAL(18, 8) NOT NULL,\n    volume DECIMAL(18, 8) NOT NULL,\n    created_at TIMESTAMP DEFAULT now(),\n    PRIMARY KEY (time, symbol_id)\n);\n</code></pre>\n<h3 id=\"heading-6\">🔹 TimescaleDB 하이퍼테이블 변환</h3>\n<p>하이퍼테이블을 생성하면, 시계열 데이터에 최적화된 성능을 제공할 수 있습니다.</p>\n<pre><code class=\"language-sql\">SELECT create_hypertable('spot_market_data', 'time');\n</code></pre>\n<h3 id=\"heading-7\">🔹 인덱스 생성</h3>\n<p>데이터 조회 속도를 높이기 위해 필요한 인덱스를 추가했습니다.</p>\n<pre><code class=\"language-sql\">CREATE INDEX ON spot_market_data (symbol_id, time DESC);\n</code></pre>\n<hr>\n<h2 id=\"heading-8\">📌 3. 선물 시장 데이터 테이블 생성 (V3create_futures_tables.sql)</h2>\n<p>선물 시장 데이터는 현물보다 저장해야 할 정보가 많습니다. 특히 <strong>미결제약정(open_interest), 펀딩 비율(funding_rate), 마크 가격(mark_price), 지수 가격(index_price)</strong> 같은 추가적인 정보가 포함됩니다.</p>\n<h3 id=\"heading-9\">🔹 futures_market_data 테이블</h3>\n<pre><code class=\"language-sql\">CREATE TABLE futures_market_data (\n    time TIMESTAMPTZ NOT NULL,\n    symbol_id INTEGER REFERENCES symbols(id) ON DELETE CASCADE,\n    price DECIMAL(18, 8) NOT NULL,\n    volume DECIMAL(18, 8) NOT NULL,\n    open_interest DECIMAL(18, 8),\n    funding_rate DECIMAL(18, 8),\n    mark_price DECIMAL(18, 8),\n    index_price DECIMAL(18, 8),\n    created_at TIMESTAMP DEFAULT now(),\n    PRIMARY KEY (time, symbol_id)\n);\n</code></pre>\n<h3 id=\"heading-10\">🔹 TimescaleDB 하이퍼테이블 변환</h3>\n<pre><code class=\"language-sql\">SELECT create_hypertable('futures_market_data', 'time');\n</code></pre>\n<h3 id=\"heading-11\">🔹 인덱스 생성</h3>\n<pre><code class=\"language-sql\">CREATE INDEX ON futures_market_data (symbol_id, time DESC);\n</code></pre>\n<hr>\n<h2 id=\"heading-12\">📌 마무리하며</h2>\n<p>이렇게 해서 <strong>현물 및 선물 시장 데이터를 저장하는 기본 데이터베이스 구조를 구축</strong>했습니다. PostgreSQL의 안정성과 TimescaleDB의 강력한 시계열 데이터 처리 기능을 활용하면 <strong>빠른 조회와 확장성을 동시에 확보할 수 있습니다.</strong> 💡</p>\n<p>다음 포스트에서는 <strong>실제 데이터를 수집하고 저장하는 과정</strong>을 다룰 예정이니 기대해주세요! 🤗</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Entasis Engine - 데이터베이스 구축\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터베이스 구축 및 TimescaleDB 활용 가이드\"\ntags:\n[\n\"database\",\n\"postgresql\",\n\"timescaledb\",\n\"schema\",\n\"sql\",\n\"data-modeling\",\n\"optimization\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
-          "level": 2,
+          "text": "PostgreSQL + TimescaleDB를 활용한 금융 데이터베이스 구축",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "PostgreSQL + TimescaleDB를 활용한 금융 데이터베이스 구축",
-          "level": 1,
+          "text": "📌 1. 기본 테이블 구조 설정 (V1init_tables.sql)",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "📌 1. 기본 테이블 구조 설정 (V1init_tables.sql)",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "🔹 exchanges 테이블 (거래소 정보)",
+          "level": 3,
+          "isMainTopic": false,
           "position": 100
         },
         {
           "id": "heading-3",
-          "text": "🔹 exchanges 테이블 (거래소 정보)",
+          "text": "🔹 symbols 테이블 (거래 심볼 정보)",
           "level": 3,
           "isMainTopic": false,
           "position": 150
         },
         {
           "id": "heading-4",
-          "text": "🔹 symbols 테이블 (거래 심볼 정보)",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "📌 2. 현물 시장 데이터 테이블 생성 (V2create_market_tables.sql)",
+          "level": 2,
+          "isMainTopic": true,
           "position": 200
         },
         {
           "id": "heading-5",
-          "text": "📌 2. 현물 시장 데이터 테이블 생성 (V2create_market_tables.sql)",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "🔹 spot_market_data 테이블",
+          "level": 3,
+          "isMainTopic": false,
           "position": 250
         },
         {
           "id": "heading-6",
-          "text": "🔹 spot_market_data 테이블",
+          "text": "🔹 TimescaleDB 하이퍼테이블 변환",
           "level": 3,
           "isMainTopic": false,
           "position": 300
         },
         {
           "id": "heading-7",
-          "text": "🔹 TimescaleDB 하이퍼테이블 변환",
+          "text": "🔹 인덱스 생성",
           "level": 3,
           "isMainTopic": false,
           "position": 350
         },
         {
           "id": "heading-8",
-          "text": "🔹 인덱스 생성",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "📌 3. 선물 시장 데이터 테이블 생성 (V3create_futures_tables.sql)",
+          "level": 2,
+          "isMainTopic": true,
           "position": 400
         },
         {
           "id": "heading-9",
-          "text": "📌 3. 선물 시장 데이터 테이블 생성 (V3create_futures_tables.sql)",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "🔹 futures_market_data 테이블",
+          "level": 3,
+          "isMainTopic": false,
           "position": 450
         },
         {
           "id": "heading-10",
-          "text": "🔹 futures_market_data 테이블",
+          "text": "🔹 TimescaleDB 하이퍼테이블 변환",
           "level": 3,
           "isMainTopic": false,
           "position": 500
         },
         {
           "id": "heading-11",
-          "text": "🔹 TimescaleDB 하이퍼테이블 변환",
+          "text": "🔹 인덱스 생성",
           "level": 3,
           "isMainTopic": false,
           "position": 550
         },
         {
           "id": "heading-12",
-          "text": "🔹 인덱스 생성",
-          "level": 3,
-          "isMainTopic": false,
-          "position": 600
-        },
-        {
-          "id": "heading-13",
           "text": "📌 마무리하며",
           "level": 2,
           "isMainTopic": true,
-          "position": 650
+          "position": 600
         }
       ]
     },
     "en": {
       "title": "Entasis Engine - Database Setup",
       "description": "Guide for setting up digital asset database and utilizing TimescaleDB",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - Database Setup\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Guide for setting up digital asset database and utilizing TimescaleDB\"\ntags:\n[\n\"database\",\n\"postgresql\",\n\"timescaledb\",\n\"schema\",\n\"sql\",\n\"data-modeling\",\n\"optimization\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">Building Financial Database with PostgreSQL + TimescaleDB</h1>\n<p>Hello! In this post, I'll share how we built a financial database using <strong>PostgreSQL and TimescaleDB</strong>. Efficiently storing and querying financial data is becoming increasingly important. Particularly when dealing with real-time market data, <strong>TimescaleDB's hypertable functionality</strong> is incredibly helpful. Let's dive in! 🚀</p>\n<hr>\n<h2 id=\"heading-2\">📌 1. Setting Up Basic Table Structure (V1init_tables.sql)</h2>\n<p>First, we created tables to systematically store <strong>exchange information and trading symbol data</strong>.</p>\n<h3 id=\"heading-3\">🔹 exchanges Table (Exchange Information)</h3>\n<p>This table stores unique information for each exchange, including basic exchange ID, name, API URL, etc.</p>\n",
+      "content": "<h1 id=\"heading-0\">Building Financial Database with PostgreSQL + TimescaleDB</h1>\n<p>Hello! In this post, I'll share how we built a financial database using <strong>PostgreSQL and TimescaleDB</strong>. Efficiently storing and querying financial data is becoming increasingly important. Particularly when dealing with real-time market data, <strong>TimescaleDB's hypertable functionality</strong> is incredibly helpful. Let's dive in! 🚀</p>\n<hr>\n<h2 id=\"heading-1\">📌 1. Setting Up Basic Table Structure (V1init_tables.sql)</h2>\n<p>First, we created tables to systematically store <strong>exchange information and trading symbol data</strong>.</p>\n<h3 id=\"heading-2\">🔹 exchanges Table (Exchange Information)</h3>\n<p>This table stores unique information for each exchange, including basic exchange ID, name, API URL, etc.</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Entasis Engine - Database Setup\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Guide for setting up digital asset database and utilizing TimescaleDB\"\ntags:\n[\n\"database\",\n\"postgresql\",\n\"timescaledb\",\n\"schema\",\n\"sql\",\n\"data-modeling\",\n\"optimization\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
-          "level": 2,
+          "text": "Building Financial Database with PostgreSQL + TimescaleDB",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "Building Financial Database with PostgreSQL + TimescaleDB",
-          "level": 1,
+          "text": "📌 1. Setting Up Basic Table Structure (V1init_tables.sql)",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "📌 1. Setting Up Basic Table Structure (V1init_tables.sql)",
-          "level": 2,
-          "isMainTopic": true,
-          "position": 100
-        },
-        {
-          "id": "heading-3",
           "text": "🔹 exchanges Table (Exchange Information)",
           "level": 3,
           "isMainTopic": false,
-          "position": 150
+          "position": 100
         }
       ]
     }

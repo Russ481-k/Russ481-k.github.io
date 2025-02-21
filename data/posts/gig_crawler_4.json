@@ -24,112 +24,98 @@
     "ko": {
       "title": "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발",
       "description": "크롤러 프로젝트의 데이터 모델을 개선하고 구조를 정리해보았어요! 예산 필드 분리, 메타데이터 필드 개선, 그리고 새로운 필드 추가로 더 체계적인 데이터 관리가 가능해졌답니다. 🔧",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"크롤러 프로젝트의 데이터 모델을 개선하고 구조를 정리해보았어요! 예산 필드 분리, 메타데이터 필드 개선, 그리고 새로운 필드 추가로 더 체계적인 데이터 관리가 가능해졌답니다. 🔧\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"비동기처리\",\n\"데이터수집\",\n\"실시간처리\",\n\"데이터모델링\",\n\"리팩토링\",\n\"ORM\",\n\"데이터구조\",\n]\nthumbnail: \"/images/fastapi.png\"</h2>\n<h1 id=\"heading-1\">프로젝트 모델 개선: 구조 및 필드 정리하기</h1>\n<p>안녕하세요, 여러분!<br>\n이전 글들에서는 데이터베이스의 비동기 처리와 세션 관리 통합에 대해 알아보았는데요, 이번 글에서는 <strong>프로젝트 모델 개선</strong>에 대해 이야기해보려고 합니다. 데이터 모델은 애플리케이션의 핵심인데, 잘 정리된 모델은 유지보수와 확장에 큰 도움을 줍니다. 그럼 차근차근 개선 포인트를 살펴볼까요?</p>\n<hr>\n<h2 id=\"heading-2\">1. 왜 모델 개선이 필요할까요?</h2>\n<p>기존 모델을 사용하면서 몇 가지 문제점을 발견했어요. 예를 들어:</p>\n<ul>\n<li>\n<p><strong>budget 필드 하나로 관리:</strong><br>\n한 번에 예산 정보를 관리하려다 보니, 최소/최대 예산 값을 따로 활용하기 어려웠어요.</p>\n</li>\n<li>\n<p><strong>metadata라는 필드명:</strong><br>\nSQLAlchemy에서는 <code>metadata</code>가 예약어로 사용되어, 다른 용도로 사용하면 충돌 위험이 있었습니다.</p>\n</li>\n<li>\n<p><strong>새로운 요구사항 반영:</strong><br>\n프로젝트 정보에 추가적으로 <code>currency</code>, <code>posted_date</code>, <code>deadline</code>, <code>skills</code> 등의 정보가 필요해졌습니다.</p>\n</li>\n</ul>\n<p>이러한 이유로, 모델을 좀 더 세분화하고 명확하게 개선하고자 했어요.</p>\n<hr>\n<h2 id=\"heading-3\">2. 구체적인 개선 내용</h2>\n<h3 id=\"heading-4\">2.1 예산 필드 분리: budget_min &amp; budget_max</h3>\n<p>기존에는 하나의 <code>budget</code> 필드로 예산 정보를 저장했다면,<br>\n이제는 최소 예산과 최대 예산을 별도의 필드로 관리할 거예요.<br>\n이렇게 하면 검색, 필터링, 정렬 등에서 더 세밀하게 활용할 수 있습니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy import Column, Integer\n\n<p>class Project(Base):<br>    <strong>tablename</strong> = 'projects'</p><pre><code>id = Column(Integer, primary_key=True, index=True)\n# 기존 budget 필드 -&gt; 두 개로 분리\nbudget_min = Column(Integer, nullable=False)\nbudget_max = Column(Integer, nullable=False)\n</code></pre>\n</code><p><code class=\"language-python\"></code></p></pre><p></p><h3 id=\"heading-5\">2.2 예약어 충돌 해결: metadata → project_metadata</h3>\n<p>SQLAlchemy의 예약어인 <code>metadata</code> 대신, 혼동 없이 사용할 수 있도록 <code>project_metadata</code>로 변경합니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy import Column, JSON\n\n<p>class Project(Base):<br>    <strong>tablename</strong> = 'projects'</p><pre><code>id = Column(Integer, primary_key=True, index=True)\n# 예약어 문제 해결을 위해 변경\nproject_metadata = Column(JSON, nullable=True)\n</code></pre>\n</code><p><code class=\"language-python\"></code></p></pre><p></p><h3 id=\"heading-6\">2.3 새로운 필드 추가</h3>\n<p>프로젝트의 세부 정보를 더욱 풍부하게 표현하기 위해 몇 가지 새로운 필드를 추가했습니다.</p>\n<ul>\n<li><strong>currency:</strong> 예산 단위를 나타내는 필드</li>\n<li><strong>posted_date:</strong> 프로젝트가 게시된 날짜</li>\n<li><strong>deadline:</strong> 프로젝트 마감 기한</li>\n<li><strong>skills:</strong> 프로젝트에 필요한 기술 스택 정보</li>\n</ul>\n<pre><code class=\"language-python\">from sqlalchemy import Column, String, DateTime\nimport datetime\n\n<p>class Project(Base):<br>    <strong>tablename</strong> = 'projects'</p><pre><code>id = Column(Integer, primary_key=True, index=True)\nbudget_min = Column(Integer, nullable=False)\nbudget_max = Column(Integer, nullable=False)\nproject_metadata = Column(JSON, nullable=True)\n\n# 추가된 새로운 필드들\ncurrency = Column(String, default='USD')\nposted_date = Column(DateTime, default=datetime.datetime.utcnow)\ndeadline = Column(DateTime, nullable=True)\nskills = Column(String, nullable=True)  # 예: \"Python, JavaScript, SQL\"\n</code></pre>\n</code><p><code class=\"language-python\"></code></p></pre><p></p><p>이렇게 모델을 개선하면, 데이터가 더 구조적이고 명확하게 관리되어 추후 쿼리나 데이터 분석 시에도 큰 도움이 됩니다.</p>\n<hr>\n<h2 id=\"heading-7\">3. 개선된 모델의 장점</h2>\n<ul>\n<li><strong>명확한 데이터 표현:</strong><br>\n예산 정보를 최소/최대 값으로 분리하여 다양한 범위 검색 및 비교가 가능해집니다.</li>\n<li><strong>예약어 충돌 방지:</strong><br>\n<code>project_metadata</code>라는 명확한 필드명을 사용하여 SQLAlchemy 내 예약어와의 충돌을 피했습니다.</li>\n<li><strong>확장성 있는 모델:</strong><br>\n추가 필드를 통해 프로젝트 정보를 더욱 풍부하게 표현할 수 있고, 미래의 요구사항에도 유연하게 대응할 수 있습니다.</li>\n</ul>\n<hr>\n<h2 id=\"heading-8\">4. 마치며</h2>\n<p>이번 글에서는 프로젝트 모델 개선에 대해 자세히 살펴보았습니다.<br>\n데이터베이스 모델을 체계적으로 관리하는 것은 애플리케이션의 장기적인 유지보수와 성능 개선에 큰 영향을 미칩니다.<br>\n앞으로 남은 글에서는 <strong>크롤러 스케줄러 구현</strong> 및 <strong>암호화 시스템 도입</strong> 등, 더 많은 개선 사항들을 소개할 예정이니 많은 기대 부탁드립니다!</p>\n<p>혹시 개선 포인트에 대해 추가로 의견이 있으시거나 질문이 있다면 언제든지 댓글로 남겨주세요. 여러분의 피드백이 큰 힘이 됩니다. 감사합니다! 🚀</p>\n<hr>\n<p>다음 글에서 만나요!</p>\n",
+      "content": "<h1 id=\"heading-0\">프로젝트 모델 개선: 구조 및 필드 정리하기</h1>\n<p>안녕하세요, 여러분!<br>\n이전 글들에서는 데이터베이스의 비동기 처리와 세션 관리 통합에 대해 알아보았는데요, 이번 글에서는 <strong>프로젝트 모델 개선</strong>에 대해 이야기해보려고 합니다. 데이터 모델은 애플리케이션의 핵심인데, 잘 정리된 모델은 유지보수와 확장에 큰 도움을 줍니다. 그럼 차근차근 개선 포인트를 살펴볼까요?</p>\n<hr>\n<h2 id=\"heading-1\">1. 왜 모델 개선이 필요할까요?</h2>\n<p>기존 모델을 사용하면서 몇 가지 문제점을 발견했어요. 예를 들어:</p>\n<ul>\n<li>\n<p><strong>budget 필드 하나로 관리:</strong><br>\n한 번에 예산 정보를 관리하려다 보니, 최소/최대 예산 값을 따로 활용하기 어려웠어요.</p>\n</li>\n<li>\n<p><strong>metadata라는 필드명:</strong><br>\nSQLAlchemy에서는 <code>metadata</code>가 예약어로 사용되어, 다른 용도로 사용하면 충돌 위험이 있었습니다.</p>\n</li>\n<li>\n<p><strong>새로운 요구사항 반영:</strong><br>\n프로젝트 정보에 추가적으로 <code>currency</code>, <code>posted_date</code>, <code>deadline</code>, <code>skills</code> 등의 정보가 필요해졌습니다.</p>\n</li>\n</ul>\n<p>이러한 이유로, 모델을 좀 더 세분화하고 명확하게 개선하고자 했어요.</p>\n<hr>\n<h2 id=\"heading-2\">2. 구체적인 개선 내용</h2>\n<h3 id=\"heading-3\">2.1 예산 필드 분리: budget_min &amp; budget_max</h3>\n<p>기존에는 하나의 <code>budget</code> 필드로 예산 정보를 저장했다면,<br>\n이제는 최소 예산과 최대 예산을 별도의 필드로 관리할 거예요.<br>\n이렇게 하면 검색, 필터링, 정렬 등에서 더 세밀하게 활용할 수 있습니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy import Column, Integer\n\nclass Project(Base):\n    __tablename__ = 'projects'\n\n    id = Column(Integer, primary_key=True, index=True)\n    # 기존 budget 필드 -&gt; 두 개로 분리\n    budget_min = Column(Integer, nullable=False)\n    budget_max = Column(Integer, nullable=False)\n</code></pre>\n<h3 id=\"heading-4\">2.2 예약어 충돌 해결: metadata → project_metadata</h3>\n<p>SQLAlchemy의 예약어인 <code>metadata</code> 대신, 혼동 없이 사용할 수 있도록 <code>project_metadata</code>로 변경합니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy import Column, JSON\n\nclass Project(Base):\n    __tablename__ = 'projects'\n\n    id = Column(Integer, primary_key=True, index=True)\n    # 예약어 문제 해결을 위해 변경\n    project_metadata = Column(JSON, nullable=True)\n</code></pre>\n<h3 id=\"heading-5\">2.3 새로운 필드 추가</h3>\n<p>프로젝트의 세부 정보를 더욱 풍부하게 표현하기 위해 몇 가지 새로운 필드를 추가했습니다.</p>\n<ul>\n<li><strong>currency:</strong> 예산 단위를 나타내는 필드</li>\n<li><strong>posted_date:</strong> 프로젝트가 게시된 날짜</li>\n<li><strong>deadline:</strong> 프로젝트 마감 기한</li>\n<li><strong>skills:</strong> 프로젝트에 필요한 기술 스택 정보</li>\n</ul>\n<pre><code class=\"language-python\">from sqlalchemy import Column, String, DateTime\nimport datetime\n\nclass Project(Base):\n    __tablename__ = 'projects'\n\n    id = Column(Integer, primary_key=True, index=True)\n    budget_min = Column(Integer, nullable=False)\n    budget_max = Column(Integer, nullable=False)\n    project_metadata = Column(JSON, nullable=True)\n\n    # 추가된 새로운 필드들\n    currency = Column(String, default='USD')\n    posted_date = Column(DateTime, default=datetime.datetime.utcnow)\n    deadline = Column(DateTime, nullable=True)\n    skills = Column(String, nullable=True)  # 예: \"Python, JavaScript, SQL\"\n</code></pre>\n<p>이렇게 모델을 개선하면, 데이터가 더 구조적이고 명확하게 관리되어 추후 쿼리나 데이터 분석 시에도 큰 도움이 됩니다.</p>\n<hr>\n<h2 id=\"heading-6\">3. 개선된 모델의 장점</h2>\n<ul>\n<li><strong>명확한 데이터 표현:</strong><br>\n예산 정보를 최소/최대 값으로 분리하여 다양한 범위 검색 및 비교가 가능해집니다.</li>\n<li><strong>예약어 충돌 방지:</strong><br>\n<code>project_metadata</code>라는 명확한 필드명을 사용하여 SQLAlchemy 내 예약어와의 충돌을 피했습니다.</li>\n<li><strong>확장성 있는 모델:</strong><br>\n추가 필드를 통해 프로젝트 정보를 더욱 풍부하게 표현할 수 있고, 미래의 요구사항에도 유연하게 대응할 수 있습니다.</li>\n</ul>\n<hr>\n<h2 id=\"heading-7\">4. 마치며</h2>\n<p>이번 글에서는 프로젝트 모델 개선에 대해 자세히 살펴보았습니다.<br>\n데이터베이스 모델을 체계적으로 관리하는 것은 애플리케이션의 장기적인 유지보수와 성능 개선에 큰 영향을 미칩니다.<br>\n앞으로 남은 글에서는 <strong>크롤러 스케줄러 구현</strong> 및 <strong>암호화 시스템 도입</strong> 등, 더 많은 개선 사항들을 소개할 예정이니 많은 기대 부탁드립니다!</p>\n<p>혹시 개선 포인트에 대해 추가로 의견이 있으시거나 질문이 있다면 언제든지 댓글로 남겨주세요. 여러분의 피드백이 큰 힘이 됩니다. 감사합니다! 🚀</p>\n<hr>\n<p>다음 글에서 만나요!</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"크롤러 프로젝트의 데이터 모델을 개선하고 구조를 정리해보았어요! 예산 필드 분리, 메타데이터 필드 개선, 그리고 새로운 필드 추가로 더 체계적인 데이터 관리가 가능해졌답니다. 🔧\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"비동기처리\",\n\"데이터수집\",\n\"실시간처리\",\n\"데이터모델링\",\n\"리팩토링\",\n\"ORM\",\n\"데이터구조\",\n]\nthumbnail: \"/images/fastapi.png\"",
-          "level": 2,
+          "text": "프로젝트 모델 개선: 구조 및 필드 정리하기",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "프로젝트 모델 개선: 구조 및 필드 정리하기",
-          "level": 1,
+          "text": "1. 왜 모델 개선이 필요할까요?",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "1. 왜 모델 개선이 필요할까요?",
+          "text": "2. 구체적인 개선 내용",
           "level": 2,
           "isMainTopic": true,
           "position": 100
         },
         {
           "id": "heading-3",
-          "text": "2. 구체적인 개선 내용",
-          "level": 2,
-          "isMainTopic": true,
+          "text": "2.1 예산 필드 분리: budget_min & budget_max",
+          "level": 3,
+          "isMainTopic": false,
           "position": 150
         },
         {
           "id": "heading-4",
-          "text": "2.1 예산 필드 분리: budget_min & budget_max",
+          "text": "2.2 예약어 충돌 해결: metadata → project_metadata",
           "level": 3,
           "isMainTopic": false,
           "position": 200
         },
         {
           "id": "heading-5",
-          "text": "2.2 예약어 충돌 해결: metadata → project_metadata",
+          "text": "2.3 새로운 필드 추가",
           "level": 3,
           "isMainTopic": false,
           "position": 250
         },
         {
           "id": "heading-6",
-          "text": "2.3 새로운 필드 추가",
-          "level": 3,
-          "isMainTopic": false,
+          "text": "3. 개선된 모델의 장점",
+          "level": 2,
+          "isMainTopic": true,
           "position": 300
         },
         {
           "id": "heading-7",
-          "text": "3. 개선된 모델의 장점",
-          "level": 2,
-          "isMainTopic": true,
-          "position": 350
-        },
-        {
-          "id": "heading-8",
           "text": "4. 마치며",
           "level": 2,
           "isMainTopic": true,
-          "position": 400
+          "position": 350
         }
       ]
     },
     "en": {
       "title": "Building an Outsourcing Crawler with FastAPI and PostgreSQL",
       "description": "I improved the data model and structure of the crawler project! With budget field separation, metadata field improvements, and new field additions, more systematic data management is now possible. 🔧",
-      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Building an Outsourcing Crawler with FastAPI and PostgreSQL\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"I improved the data model and structure of the crawler project! With budget field separation, metadata field improvements, and new field additions, more systematic data management is now possible. 🔧\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"Async Processing\",\n\"Data Collection\",\n\"Real-time Processing\",\n\"Data Modeling\",\n\"Refactoring\",\n\"ORM\",\n\"Data Structure\",\n]\nthumbnail: \"/images/fastapi.png\"</h2>\n<h1 id=\"heading-1\">Project Model Improvement: Organizing Structure and Fields</h1>\n<p>Hello everyone!<br>\nIn previous posts, we looked at asynchronous database processing and session management integration. In this post, I'd like to discuss <strong>project model improvements</strong>. The data model is core to the application, and a well-organized model greatly helps with maintenance and scalability. Let's examine the improvement points step by step!</p>\n<hr>\n<h2 id=\"heading-2\">1. Why Do We Need Model Improvements?</h2>\n<p>We discovered several issues while using the existing model. For example:</p>\n<ul>\n<li>\n<p><strong>Managing budget in a single field:</strong><br>\nTrying to manage budget information in one field made it difficult to utilize minimum/maximum budget values separately.</p>\n</li>\n<li>\n<p><strong>Field name 'metadata':</strong><br>\nSince 'metadata' is a reserved word in SQLAlchemy, using it for other purposes could risk conflicts.</p>\n</li>\n<li>\n<p><strong>Reflecting new requirements:</strong><br>\nAdditional information like <code>currency</code>, <code>posted_date</code>, <code>deadline</code>, <code>skills</code> became necessary for project information.</p>\n</li>\n</ul>\n<p>For these reasons, we wanted to make the model more granular and clearer.</p>\n<hr>\n<h2 id=\"heading-3\">2. Specific Improvements</h2>\n<h3 id=\"heading-4\">2.1 Separating Budget Fields: budget_min &amp; budget_max</h3>\n<p>While we previously stored budget information in a single <code>budget</code> field,<br>\nwe'll now manage minimum and maximum budgets as separate fields.<br>\nThis allows for more precise usage in searching, filtering, and sorting.</p>\n",
+      "content": "<h1 id=\"heading-0\">Project Model Improvement: Organizing Structure and Fields</h1>\n<p>Hello everyone!<br>\nIn previous posts, we looked at asynchronous database processing and session management integration. In this post, I'd like to discuss <strong>project model improvements</strong>. The data model is core to the application, and a well-organized model greatly helps with maintenance and scalability. Let's examine the improvement points step by step!</p>\n<hr>\n<h2 id=\"heading-1\">1. Why Do We Need Model Improvements?</h2>\n<p>We discovered several issues while using the existing model. For example:</p>\n<ul>\n<li>\n<p><strong>Managing budget in a single field:</strong><br>\nTrying to manage budget information in one field made it difficult to utilize minimum/maximum budget values separately.</p>\n</li>\n<li>\n<p><strong>Field name 'metadata':</strong><br>\nSince 'metadata' is a reserved word in SQLAlchemy, using it for other purposes could risk conflicts.</p>\n</li>\n<li>\n<p><strong>Reflecting new requirements:</strong><br>\nAdditional information like <code>currency</code>, <code>posted_date</code>, <code>deadline</code>, <code>skills</code> became necessary for project information.</p>\n</li>\n</ul>\n<p>For these reasons, we wanted to make the model more granular and clearer.</p>\n<hr>\n<h2 id=\"heading-2\">2. Specific Improvements</h2>\n<h3 id=\"heading-3\">2.1 Separating Budget Fields: budget_min &amp; budget_max</h3>\n<p>While we previously stored budget information in a single <code>budget</code> field,<br>\nwe'll now manage minimum and maximum budgets as separate fields.<br>\nThis allows for more precise usage in searching, filtering, and sorting.</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
-          "text": "title: \"Building an Outsourcing Crawler with FastAPI and PostgreSQL\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"I improved the data model and structure of the crawler project! With budget field separation, metadata field improvements, and new field additions, more systematic data management is now possible. 🔧\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"Async Processing\",\n\"Data Collection\",\n\"Real-time Processing\",\n\"Data Modeling\",\n\"Refactoring\",\n\"ORM\",\n\"Data Structure\",\n]\nthumbnail: \"/images/fastapi.png\"",
-          "level": 2,
+          "text": "Project Model Improvement: Organizing Structure and Fields",
+          "level": 1,
           "isMainTopic": true,
           "position": 0
         },
         {
           "id": "heading-1",
-          "text": "Project Model Improvement: Organizing Structure and Fields",
-          "level": 1,
+          "text": "1. Why Do We Need Model Improvements?",
+          "level": 2,
           "isMainTopic": true,
           "position": 50
         },
         {
           "id": "heading-2",
-          "text": "1. Why Do We Need Model Improvements?",
+          "text": "2. Specific Improvements",
           "level": 2,
           "isMainTopic": true,
           "position": 100
         },
         {
           "id": "heading-3",
-          "text": "2. Specific Improvements",
-          "level": 2,
-          "isMainTopic": true,
-          "position": 150
-        },
-        {
-          "id": "heading-4",
           "text": "2.1 Separating Budget Fields: budget_min & budget_max",
           "level": 3,
           "isMainTopic": false,
-          "position": 200
+          "position": 150
         }
       ]
     }
