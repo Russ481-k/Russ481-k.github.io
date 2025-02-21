@@ -8,6 +8,7 @@ import { SiNotion } from "react-icons/si";
 import { useCategories } from "@/data/categories";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
+import { IconBaseProps } from "react-icons";
 
 interface MobileHeaderProps {
   selectedCategory: string;
@@ -146,7 +147,7 @@ export const MobileHeader = ({
                       rel="noopener noreferrer"
                       title={t("profile.social.github")}
                     >
-                      <FaGithub />
+                      {FaGithub({ size: 16 } as IconBaseProps)}
                     </a>
                     <a
                       href="https://binsspace.notion.site/..."
@@ -154,13 +155,13 @@ export const MobileHeader = ({
                       rel="noopener noreferrer"
                       title={t("profile.social.notion")}
                     >
-                      <SiNotion />
+                      {SiNotion({ size: 16 } as IconBaseProps)}
                     </a>
                     <a
                       href="mailto:yunsubin481@gmail.com"
                       title={t("profile.social.email")}
                     >
-                      <FaEnvelope />
+                      {FaEnvelope({ size: 16 } as IconBaseProps)}
                     </a>
                   </div>
                 </div>

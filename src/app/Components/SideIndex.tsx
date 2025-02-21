@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import "../Styles/side_index.scss";
-import { FaCode } from "react-icons/fa";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -33,6 +32,8 @@ import {
   SiKubernetes,
 } from "react-icons/si";
 import { BiCodeAlt } from "react-icons/bi";
+import type { IconType } from "react-icons";
+import React from "react";
 
 // 고유명사 리스트 (계속 추가 가능)
 const properNouns = [
@@ -270,36 +271,39 @@ const properNouns = [
   "캐싱",
 ];
 
-// 기술 스택 아이콘 매핑
-const techStackIcons: Record<string, JSX.Element> = {
-  HTML: <FaHtml5 />,
-  CSS: <FaCss3Alt />,
-  JavaScript: <FaJs />,
-  TypeScript: <SiTypescript />,
-  React: <FaReact />,
-  "Next.js": <SiNextdotjs />,
-  "Node.js": <FaNode />,
-  Redux: <SiRedux />,
-  GraphQL: <SiGraphql />,
-  MongoDB: <SiMongodb />,
-  PostgreSQL: <SiPostgresql />,
-  MySQL: <SiMysql />,
-  Tailwind: <SiTailwindcss />,
-  Jest: <SiJest />,
-  Electron: <SiElectron />,
-  Webpack: <SiWebpack />,
-  Babel: <SiBabel />,
-  Nginx: <SiNginx />,
-  Jenkins: <SiJenkins />,
-  Git: <FaGit />,
-  GitHub: <FaGithub />,
-  Docker: <FaDocker />,
-  Kubernetes: <SiKubernetes />,
-  AWS: <FaAws />,
-  // 기본 아이콘들
-  Database: <FaDatabase />, // DB 관련 기술들의 기본 아이콘
-  Server: <FaServer />, // 서버 관련 기술들의 기본 아이콘
-  Default: <BiCodeAlt />, // 기본 코드 아이콘
+const TechIcon = ({ name }: { name: string }) => {
+  const icons: Record<string, IconType> = {
+    HTML: FaHtml5,
+    CSS: FaCss3Alt,
+    JavaScript: FaJs,
+    TypeScript: SiTypescript,
+    React: FaReact,
+    "Next.js": SiNextdotjs,
+    "Node.js": FaNode,
+    Redux: SiRedux,
+    GraphQL: SiGraphql,
+    MongoDB: SiMongodb,
+    PostgreSQL: SiPostgresql,
+    MySQL: SiMysql,
+    Tailwind: SiTailwindcss,
+    Jest: SiJest,
+    Electron: SiElectron,
+    Webpack: SiWebpack,
+    Babel: SiBabel,
+    Nginx: SiNginx,
+    Jenkins: SiJenkins,
+    Git: FaGit,
+    GitHub: FaGithub,
+    Docker: FaDocker,
+    Kubernetes: SiKubernetes,
+    AWS: FaAws,
+    Database: FaDatabase,
+    Server: FaServer,
+    Default: BiCodeAlt,
+  };
+  const IconComponent = icons[name] || icons.Default;
+  //@ts-ignore
+  return React.createElement(IconComponent, { size: 16 });
 };
 
 interface SideIndexProps {
@@ -418,7 +422,7 @@ export const SideIndex = ({
         <span className="word">
           {isTechStack && (
             <span className="tech_icon">
-              {techStackIcons[word] || techStackIcons.Default}
+              <TechIcon name={word} />
             </span>
           )}
           {word}

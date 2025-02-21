@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
 import { SiNotion } from "react-icons/si";
+import type { IconBaseProps } from "react-icons";
 import "../Styles/footer.scss";
 
 export const Footer = () => {
@@ -21,7 +22,7 @@ export const Footer = () => {
             className="social_link"
             aria-label="GitHub Profile"
           >
-            <FaGithub size={16} />
+            {FaGithub({ size: 16 } as IconBaseProps)}
           </Link>
           <Link
             href="https://binsspace.notion.site/Bin-s-Space-1ebe0875dc7442cc91f7e1defc3802ab"
@@ -30,7 +31,7 @@ export const Footer = () => {
             className="social_link"
             aria-label="Notion Page"
           >
-            <SiNotion size={16} />
+            {SiNotion({ size: 16 } as IconBaseProps)}
           </Link>
         </div>
       </div>

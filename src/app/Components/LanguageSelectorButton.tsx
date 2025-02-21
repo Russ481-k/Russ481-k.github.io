@@ -17,7 +17,7 @@ export const LanguageSelectorButton = () => {
   return (
     <div className="language_selector">
       <button className="language_selector_button" onClick={toggleLanguage}>
-        {i18n.resolvedLanguage === "en" ? "eng" : "kor"}
+        {i18n.resolvedLanguage === "en" ? "Eng" : "Kor"}
       </button>
     </div>
   );
