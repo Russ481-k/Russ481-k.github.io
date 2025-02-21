@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_5",
+  "title": "Entasis Engine - 데이터베이스 설계",
+  "content": "\r\n# 금융 데이터 분석 시스템 데이터베이스 설계\r\n\r\n## 📊 데이터베이스 아키텍처\r\n\r\n### 1. 데이터베이스 선정 이유\r\n\r\n- **PostgreSQL**: 안정성과 확장성이 검증된 RDBMS\r\n- **TimescaleDB**: 시계열 데이터 처리에 최적화된 확장\r\n- **파티셔닝**: 대용량 데이터의 효율적 관리\r\n\r\n### 2. 핵심 테이블 구조\r\n\r\n#### 2.1 Market Data Tables\r\n\r\n```sql\r\n-- 실시간 시장 데이터\r\nCREATE TABLE market_data (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    symbol VARCHAR(20) NOT NULL,\r\n    exchange VARCHAR(20) NOT NULL,\r\n    timestamp TIMESTAMPTZ NOT NULL,\r\n    price DECIMAL(20,8) NOT NULL,\r\n    volume DECIMAL(20,8) NOT NULL,\r\n    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\r\n) PARTITION BY RANGE (timestamp);\r\n\r\n-- 옵션 데이터\r\nCREATE TABLE option_data (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    underlying VARCHAR(20) NOT NULL,\r\n    strike_price DECIMAL(20,8) NOT NULL,\r\n    expiry_date TIMESTAMPTZ NOT NULL,\r\n    option_type VARCHAR(4) NOT NULL,\r\n    iv DECIMAL(10,4),\r\n    delta DECIMAL(10,4),\r\n    gamma DECIMAL(10,4),\r\n    theta DECIMAL(10,4),\r\n    vega DECIMAL(10,4),\r\n    timestamp TIMESTAMPTZ NOT NULL\r\n) PARTITION BY RANGE (timestamp);\r\n```\r\n\r\n#### 2.2 분석 데이터 테이블\r\n\r\n```sql\r\n-- AI 모델 예측 결과\r\nCREATE TABLE predictions (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    model_id VARCHAR(50) NOT NULL,\r\n    symbol VARCHAR(20) NOT NULL,\r\n    prediction_type VARCHAR(20) NOT NULL,\r\n    predicted_value DECIMAL(20,8) NOT NULL,\r\n    confidence DECIMAL(5,4) NOT NULL,\r\n    timestamp TIMESTAMPTZ NOT NULL\r\n);\r\n\r\n-- 포트폴리오 상태\r\nCREATE TABLE portfolio_status (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    user_id UUID NOT NULL,\r\n    asset_type VARCHAR(20) NOT NULL,\r\n    position_size DECIMAL(20,8) NOT NULL,\r\n    entry_price DECIMAL(20,8) NOT NULL,\r\n    current_price DECIMAL(20,8) NOT NULL,\r\n    pnl DECIMAL(20,8) NOT NULL,\r\n    timestamp TIMESTAMPTZ NOT NULL\r\n);\r\n```\r\n\r\n### 3. 인덱싱 전략\r\n\r\n#### 3.1 시장 데이터 인덱스\r\n\r\n```sql\r\n-- 시장 데이터 조회 최적화\r\nCREATE INDEX idx_market_data_symbol_timestamp ON market_data (symbol, timestamp DESC);\r\nCREATE INDEX idx_market_data_exchange_timestamp ON market_data (exchange, timestamp DESC);\r\n\r\n-- 옵션 데이터 조회 최적화\r\nCREATE INDEX idx_option_data_underlying_expiry ON option_data (underlying, expiry_date);\r\nCREATE INDEX idx_option_data_strike_type ON option_data (strike_price, option_type);\r\n```\r\n\r\n#### 3.2 분석 데이터 인덱스\r\n\r\n```sql\r\n-- 예측 데이터 조회 최적화\r\nCREATE INDEX idx_predictions_model_symbol ON predictions (model_id, symbol);\r\nCREATE INDEX idx_predictions_timestamp ON predictions (timestamp DESC);\r\n\r\n-- 포트폴리오 조회 최적화\r\nCREATE INDEX idx_portfolio_user_timestamp ON portfolio_status (user_id, timestamp DESC);\r\n```\r\n\r\n### 4. 파티셔닝 전략\r\n\r\n#### 4.1 시계열 데이터 파티셔닝\r\n\r\n```sql\r\n-- 월별 파티션 생성\r\nCREATE TABLE market_data_y2024m01 PARTITION OF market_data\r\n    FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');\r\nCREATE TABLE market_data_y2024m02 PARTITION OF market_data\r\n    FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');\r\n```\r\n\r\n#### 4.2 보관 정책\r\n\r\n- 실시간 데이터: 최근 3개월\r\n- 집계 데이터: 최근 1년\r\n- 히스토리 데이터: S3 아카이브\r\n\r\n## 📈 성능 최적화\r\n\r\n### 1. 쿼리 최적화\r\n\r\n#### 1.1 자주 사용되는 쿼리\r\n\r\n```sql\r\n-- 특정 기간의 OHLCV 데이터 조회\r\nCREATE MATERIALIZED VIEW mv_ohlcv_1h AS\r\nSELECT\r\n    symbol,\r\n    date_trunc('hour', timestamp) as timeframe,\r\n    first(price) as open,\r\n    max(price) as high,\r\n    min(price) as low,\r\n    last(price) as close,\r\n    sum(volume) as volume\r\nFROM market_data\r\nGROUP BY symbol, timeframe;\r\n```\r\n\r\n#### 1.2 캐싱 전략\r\n\r\n- Redis 캐싱 레이어 구현\r\n- 실시간 데이터 메모리 캐싱\r\n- 집계 데이터 캐시 갱신 주기 설정\r\n\r\n### 2. 백업 전략\r\n\r\n#### 2.1 정기 백업\r\n\r\n- 일일 증분 백업\r\n- 주간 전체 백업\r\n- 월간 아카이브\r\n\r\n#### 2.2 복구 계획\r\n\r\n- Point-in-Time Recovery 설정\r\n- 장애 복구 시나리오 문서화\r\n- 복구 테스트 계획\r\n\r\n## 🔄 데이터 흐름\r\n\r\n### 1. 데이터 수집\r\n\r\n```mermaid\r\ngraph LR\r\n    A[거래소 API] --> B[데이터 수집기]\r\n    B --> C[데이터 정제]\r\n    C --> D[TimescaleDB]\r\n    D --> E[분석 엔진]\r\n```\r\n\r\n### 2. 데이터 처리\r\n\r\n- 실시간 스트림 처리\r\n- 배치 처리\r\n- 이상치 탐지 및 처리\r\n\r\n## ⚡ 확장성 고려사항\r\n\r\n### 1. 수평적 확장\r\n\r\n- 읽기 전용 복제본 구성\r\n- 샤딩 전략 수립\r\n- 로드 밸런싱 설정\r\n\r\n### 2. 수직적 확장\r\n\r\n- 리소스 모니터링\r\n- 성능 지표 설정\r\n- 스케일 업 임계값 정의\r\n\r\n이 문서는 금융 데이터 분석 시스템의 데이터베이스 설계 기준을 제공합니다. 시스템의 요구사항과 성능을 고려하여 지속적으로 업데이트될 예정입니다. 🚀\r\n",
   "date": "2025-02-12",
   "category": "projects",
   "tags": [
@@ -23,182 +25,182 @@
           "text": "title: \"Entasis Engine - 데이터베이스 설계\"\ndate: \"2025-02-12\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 데이터베이스 스키마 및 설계 문서\"\ntags:\n[\n\"database\",\n\"schema\",\n\"postgresql\",\n\"timescaledb\",\n\"erd\",\n\"indexing\",\n\"partitioning\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 시스템 데이터베이스 설계",
           "level": 1,
           "isMainTopic": true,
-          "position": 191.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 데이터베이스 아키텍처",
           "level": 2,
           "isMainTopic": true,
-          "position": 240.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. 데이터베이스 선정 이유",
           "level": 3,
           "isMainTopic": false,
-          "position": 292.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "2. 핵심 테이블 구조",
           "level": 3,
           "isMainTopic": false,
-          "position": 411.09375
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "2.1 Market Data Tables",
           "level": 4,
           "isMainTopic": false,
-          "position": 455.3671875
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2.2 분석 데이터 테이블",
           "level": 4,
           "isMainTopic": false,
-          "position": 1031.671875
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "3. 인덱싱 전략",
           "level": 3,
           "isMainTopic": false,
-          "position": 1553.8984375
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "3.1 시장 데이터 인덱스",
           "level": 4,
           "isMainTopic": false,
-          "position": 1598.171875
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "3.2 분석 데이터 인덱스",
           "level": 4,
           "isMainTopic": false,
-          "position": 1850.640625
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "4. 파티셔닝 전략",
           "level": 3,
           "isMainTopic": false,
-          "position": 2084.75
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "4.1 시계열 데이터 파티셔닝",
           "level": 4,
           "isMainTopic": false,
-          "position": 2129.0234375
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "4.2 보관 정책",
           "level": 4,
           "isMainTopic": false,
-          "position": 2310.28125
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "📈 성능 최적화",
           "level": 2,
           "isMainTopic": true,
-          "position": 2429.46875
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "1. 쿼리 최적화",
           "level": 3,
           "isMainTopic": false,
-          "position": 2480.8828125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "1.1 자주 사용되는 쿼리",
           "level": 4,
           "isMainTopic": false,
-          "position": 2525.15625
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "1.2 캐싱 전략",
           "level": 4,
           "isMainTopic": false,
-          "position": 2829.296875
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "2. 백업 전략",
           "level": 3,
           "isMainTopic": false,
-          "position": 2947.2890625
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "2.1 정기 백업",
           "level": 4,
           "isMainTopic": false,
-          "position": 2991.5625
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "2.2 복구 계획",
           "level": 4,
           "isMainTopic": false,
-          "position": 3112.109375
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "🔄 데이터 흐름",
           "level": 2,
           "isMainTopic": true,
-          "position": 3231.296875
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "1. 데이터 수집",
           "level": 3,
           "isMainTopic": false,
-          "position": 3282.7109375
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "2. 데이터 처리",
           "level": 3,
           "isMainTopic": false,
-          "position": 3467.46875
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "⚡ 확장성 고려사항",
           "level": 2,
           "isMainTopic": true,
-          "position": 3587.6015625
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "1. 수평적 확장",
           "level": 3,
           "isMainTopic": false,
-          "position": 3639.015625
+          "position": 1200
         },
         {
           "id": "heading-25",
           "text": "2. 수직적 확장",
           "level": 3,
           "isMainTopic": false,
-          "position": 3757.953125
+          "position": 1250
         }
       ]
     },
@@ -212,42 +214,42 @@
           "text": "title: \"Entasis Engine - Database Design\"\ndate: \"2025-02-12\"\ncategory: \"projects\"\ndescription: \"Database schema and design documentation for digital asset data analysis system\"\ntags:\n[\n\"database\",\n\"schema\",\n\"postgresql\",\n\"timescaledb\",\n\"erd\",\n\"indexing\",\n\"partitioning\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis System Database Design",
           "level": 1,
           "isMainTopic": true,
-          "position": 187.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 Database Architecture",
           "level": 2,
           "isMainTopic": true,
-          "position": 234.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. Database Selection Rationale",
           "level": 3,
           "isMainTopic": false,
-          "position": 286.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "2. Core Table Structures",
           "level": 3,
           "isMainTopic": false,
-          "position": 400.59375
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "2.1 Market Data Tables",
           "level": 4,
           "isMainTopic": false,
-          "position": 443.3671875
+          "position": 250
         }
       ]
     }

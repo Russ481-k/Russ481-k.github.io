@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_7",
+  "title": "Entasis Engine - AI 모델 설계",
+  "content": "\r\n# 금융 데이터 분석 시스템 AI 모델 설계\r\n\r\n## 📊 모델 아키텍처 개요\r\n\r\n### 1. 예측 모델 구조\r\n\r\n#### 1.1 LSTM 기반 시계열 예측\r\n\r\n```python\r\nclass PricePredictionLSTM(nn.Module):\r\n    def __init__(self, input_dim, hidden_dim, num_layers, output_dim):\r\n        super().__init__()\r\n        self.lstm = nn.LSTM(\r\n            input_dim,\r\n            hidden_dim,\r\n            num_layers,\r\n            batch_first=True,\r\n            dropout=0.2\r\n        )\r\n        self.fc = nn.Linear(hidden_dim, output_dim)\r\n\r\n    def forward(self, x):\r\n        lstm_out, _ = self.lstm(x)\r\n        predictions = self.fc(lstm_out[:, -1, :])\r\n        return predictions\r\n```\r\n\r\n#### 1.2 앙상블 모델 구성\r\n\r\n```python\r\nclass EnsembleModel:\r\n    def __init__(self):\r\n        self.models = {\r\n            'lstm': PricePredictionLSTM(...),\r\n            'random_forest': RandomForestRegressor(...),\r\n            'xgboost': XGBRegressor(...),\r\n            'lightgbm': LGBMRegressor(...)\r\n        }\r\n        self.weights = {\r\n            'lstm': 0.4,\r\n            'random_forest': 0.2,\r\n            'xgboost': 0.2,\r\n            'lightgbm': 0.2\r\n        }\r\n```\r\n\r\n### 2. 특징 엔지니어링\r\n\r\n#### 2.1 기술적 지표\r\n\r\n```python\r\ndef calculate_technical_indicators(df):\r\n    # 이동평균\r\n    df['sma_20'] = df['close'].rolling(window=20).mean()\r\n    df['sma_50'] = df['close'].rolling(window=50).mean()\r\n\r\n    # RSI\r\n    delta = df['close'].diff()\r\n    gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()\r\n    loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()\r\n    df['rsi'] = 100 - (100 / (1 + gain/loss))\r\n\r\n    # MACD\r\n    exp1 = df['close'].ewm(span=12, adjust=False).mean()\r\n    exp2 = df['close'].ewm(span=26, adjust=False).mean()\r\n    df['macd'] = exp1 - exp2\r\n    df['signal'] = df['macd'].ewm(span=9, adjust=False).mean()\r\n\r\n    return df\r\n```\r\n\r\n#### 2.2 시장 감성 분석\r\n\r\n```python\r\ndef analyze_market_sentiment(text_data):\r\n    sentiment_model = pipeline(\r\n        \"sentiment-analysis\",\r\n        model=\"finbert-sentiment\"\r\n    )\r\n    scores = sentiment_model(text_data)\r\n    return aggregate_sentiment_scores(scores)\r\n```\r\n\r\n## 🔄 학습 파이프라인\r\n\r\n### 1. 데이터 전처리\r\n\r\n#### 1.1 시계열 데이터 준비\r\n\r\n```python\r\ndef prepare_time_series(data, sequence_length):\r\n    sequences = []\r\n    targets = []\r\n\r\n    for i in range(len(data) - sequence_length):\r\n        seq = data[i:(i + sequence_length)]\r\n        target = data[i + sequence_length]\r\n        sequences.append(seq)\r\n        targets.append(target)\r\n\r\n    return np.array(sequences), np.array(targets)\r\n```\r\n\r\n#### 1.2 데이터 정규화\r\n\r\n```python\r\ndef normalize_features(data):\r\n    scaler = MinMaxScaler()\r\n    normalized_data = scaler.fit_transform(data)\r\n    return normalized_data, scaler\r\n```\r\n\r\n### 2. 모델 학습\r\n\r\n#### 2.1 LSTM 학습 프로세스\r\n\r\n```python\r\ndef train_lstm_model(model, train_loader, val_loader, epochs):\r\n    optimizer = optim.Adam(model.parameters())\r\n    criterion = nn.MSELoss()\r\n\r\n    for epoch in range(epochs):\r\n        model.train()\r\n        for batch_X, batch_y in train_loader:\r\n            optimizer.zero_grad()\r\n            outputs = model(batch_X)\r\n            loss = criterion(outputs, batch_y)\r\n            loss.backward()\r\n            optimizer.step()\r\n\r\n        # 검증\r\n        model.eval()\r\n        val_loss = validate_model(model, val_loader, criterion)\r\n        print(f'Epoch {epoch}: Val Loss = {val_loss:.4f}')\r\n```\r\n\r\n#### 2.2 앙상블 모델 통합\r\n\r\n```python\r\ndef ensemble_predict(models, weights, X):\r\n    predictions = []\r\n    for model_name, model in models.items():\r\n        pred = model.predict(X)\r\n        predictions.append(pred * weights[model_name])\r\n    return np.sum(predictions, axis=0)\r\n```\r\n\r\n## 📈 성능 평가\r\n\r\n### 1. 평가 메트릭\r\n\r\n#### 1.1 예측 정확도 평가\r\n\r\n```python\r\ndef evaluate_predictions(y_true, y_pred):\r\n    metrics = {\r\n        'mse': mean_squared_error(y_true, y_pred),\r\n        'mae': mean_absolute_error(y_true, y_pred),\r\n        'r2': r2_score(y_true, y_pred),\r\n        'mape': mean_absolute_percentage_error(y_true, y_pred)\r\n    }\r\n    return metrics\r\n```\r\n\r\n#### 1.2 백테스팅\r\n\r\n```python\r\ndef backtest_strategy(model, historical_data, initial_capital=10000):\r\n    portfolio = Portfolio(initial_capital)\r\n    signals = generate_trading_signals(model, historical_data)\r\n\r\n    for timestamp, signal in signals.items():\r\n        if signal > 0:\r\n            portfolio.long_position(timestamp)\r\n        elif signal < 0:\r\n            portfolio.short_position(timestamp)\r\n\r\n    return portfolio.calculate_returns()\r\n```\r\n\r\n## 🔍 리스크 관리\r\n\r\n### 1. 리스크 모니터링\r\n\r\n#### 1.1 Value at Risk (VaR) 계산\r\n\r\n```python\r\ndef calculate_var(returns, confidence_level=0.95):\r\n    return np.percentile(returns, (1 - confidence_level) * 100)\r\n```\r\n\r\n#### 1.2 Expected Shortfall\r\n\r\n```python\r\ndef calculate_expected_shortfall(returns, var):\r\n    return returns[returns <= var].mean()\r\n```\r\n\r\n### 2. 포지션 사이징\r\n\r\n```python\r\ndef calculate_position_size(prediction, confidence, account_size):\r\n    base_size = account_size * 0.02  # 2% 리스크 룰\r\n    adjusted_size = base_size * confidence\r\n    return min(adjusted_size, account_size * 0.05)  # 최대 5% 제한\r\n```\r\n\r\n## 🚀 배포 및 모니터링\r\n\r\n### 1. 모델 서빙\r\n\r\n#### 1.1 모델 직렬화\r\n\r\n```python\r\ndef save_model(model, path):\r\n    torch.save({\r\n        'model_state_dict': model.state_dict(),\r\n        'hyperparameters': model.hyperparameters,\r\n        'scaler': model.scaler\r\n    }, path)\r\n```\r\n\r\n#### 1.2 실시간 추론\r\n\r\n```python\r\n@app.route('/predict', methods=['POST'])\r\ndef predict():\r\n    data = request.json\r\n    prediction = model.predict(preprocess_data(data))\r\n    confidence = calculate_prediction_confidence(prediction)\r\n    return jsonify({\r\n        'prediction': prediction,\r\n        'confidence': confidence\r\n    })\r\n```\r\n\r\n### 2. 성능 모니터링\r\n\r\n```python\r\ndef monitor_model_performance(predictions, actuals):\r\n    metrics = calculate_metrics(predictions, actuals)\r\n    alert_if_degraded(metrics)\r\n    log_performance(metrics)\r\n```\r\n\r\n이 문서는 금융 데이터 분석 시스템의 AI 모델 설계 및 구현 상세를 제공합니다. 모델은 지속적으로 개선되며, 성능 메트릭과 리스크 관리 전략도 함께 업데이트됩니다. 🚀\r\n",
   "date": "2025-02-13",
   "category": "projects",
   "tags": [
@@ -23,210 +25,210 @@
           "text": "title: \"Entasis Engine - AI 모델 설계\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 AI 모델 아키텍처 및 구현 상세\"\ntags:\n[\n\"ai\",\n\"machine-learning\",\n\"deep-learning\",\n\"lstm\",\n\"ensemble\",\n\"prediction\",\n\"risk-analysis\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 시스템 AI 모델 설계",
           "level": 1,
           "isMainTopic": true,
-          "position": 191.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 모델 아키텍처 개요",
           "level": 2,
           "isMainTopic": true,
-          "position": 240.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. 예측 모델 구조",
           "level": 3,
           "isMainTopic": false,
-          "position": 292.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "1.1 LSTM 기반 시계열 예측",
           "level": 4,
           "isMainTopic": false,
-          "position": 336.4296875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "1.2 앙상블 모델 구성",
           "level": 4,
           "isMainTopic": false,
-          "position": 821.78125
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2. 특징 엔지니어링",
           "level": 3,
           "isMainTopic": false,
-          "position": 1161.03125
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "2.1 기술적 지표",
           "level": 4,
           "isMainTopic": false,
-          "position": 1205.3046875
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "2.2 시장 감성 분석",
           "level": 4,
           "isMainTopic": false,
-          "position": 1709.9453125
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "🔄 학습 파이프라인",
           "level": 2,
           "isMainTopic": true,
-          "position": 1926.3125
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "1. 데이터 전처리",
           "level": 3,
           "isMainTopic": false,
-          "position": 1977.7265625
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "1.1 시계열 데이터 준비",
           "level": 4,
           "isMainTopic": false,
-          "position": 2022
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "1.2 데이터 정규화",
           "level": 4,
           "isMainTopic": false,
-          "position": 2414.3046875
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "2. 모델 학습",
           "level": 3,
           "isMainTopic": false,
-          "position": 2578.0078125
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "2.1 LSTM 학습 프로세스",
           "level": 4,
           "isMainTopic": false,
-          "position": 2622.28125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "2.2 앙상블 모델 통합",
           "level": 4,
           "isMainTopic": false,
-          "position": 3109.3671875
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "📈 성능 평가",
           "level": 2,
           "isMainTopic": true,
-          "position": 3308.1796875
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "1. 평가 메트릭",
           "level": 3,
           "isMainTopic": false,
-          "position": 3359.59375
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "1.1 예측 정확도 평가",
           "level": 4,
           "isMainTopic": false,
-          "position": 3403.8671875
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "1.2 백테스팅",
           "level": 4,
           "isMainTopic": false,
-          "position": 3637.7890625
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "🔍 리스크 관리",
           "level": 2,
           "isMainTopic": true,
-          "position": 4030.09375
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "1. 리스크 모니터링",
           "level": 3,
           "isMainTopic": false,
-          "position": 4081.5078125
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "1.1 Value at Risk (VaR) 계산",
           "level": 4,
           "isMainTopic": false,
-          "position": 4125.78125
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "1.2 Expected Shortfall",
           "level": 4,
           "isMainTopic": false,
-          "position": 4254.375
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "2. 포지션 사이징",
           "level": 3,
           "isMainTopic": false,
-          "position": 4381.96875
+          "position": 1200
         },
         {
           "id": "heading-25",
           "text": "🚀 배포 및 모니터링",
           "level": 2,
           "isMainTopic": true,
-          "position": 4549.171875
+          "position": 1250
         },
         {
           "id": "heading-26",
           "text": "1. 모델 서빙",
           "level": 3,
           "isMainTopic": false,
-          "position": 4600.5859375
+          "position": 1300
         },
         {
           "id": "heading-27",
           "text": "1.1 모델 직렬화",
           "level": 4,
           "isMainTopic": false,
-          "position": 4644.859375
+          "position": 1350
         },
         {
           "id": "heading-28",
           "text": "1.2 실시간 추론",
           "level": 4,
           "isMainTopic": false,
-          "position": 4843.671875
+          "position": 1400
         },
         {
           "id": "heading-29",
           "text": "2. 성능 모니터링",
           "level": 3,
           "isMainTopic": false,
-          "position": 5095.1484375
+          "position": 1450
         }
       ]
     },
@@ -240,35 +242,35 @@
           "text": "title: \"Entasis Engine - AI Model Design\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"AI model architecture and implementation details for digital asset data analysis system\"\ntags:\n[\n\"ai\",\n\"machine-learning\",\n\"deep-learning\",\n\"lstm\",\n\"ensemble\",\n\"prediction\",\n\"risk-analysis\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis System AI Model Design",
           "level": 1,
           "isMainTopic": true,
-          "position": 187.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 Model Architecture Overview",
           "level": 2,
           "isMainTopic": true,
-          "position": 234.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. Prediction Model Structure",
           "level": 3,
           "isMainTopic": false,
-          "position": 286.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "1.1 LSTM-based Time Series Prediction",
           "level": 4,
           "isMainTopic": false,
-          "position": 328.9296875
+          "position": 200
         }
       ]
     }

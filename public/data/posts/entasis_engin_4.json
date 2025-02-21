@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_4",
+  "title": "Entasis Engine - 세부 기능 정의",
+  "content": "\r\n# 금융 데이터 분석 시스템 세부 기능 정의\r\n\r\n## 📊 핵심 기능 상세\r\n\r\n### 1. 데이터 수집 시스템\r\n\r\n#### 1.1 거래소 연동\r\n\r\n- [ ] Binance API 연동 구현\r\n  - WebSocket 실시간 데이터 수신\r\n  - REST API 히스토리 데이터 수집\r\n- [ ] Bybit API 연동 구현\r\n  - 선물 거래 데이터 수집\r\n  - 레버리지 정보 수집\r\n- [ ] Deribit API 연동 구현\r\n  - 옵션 데이터 수집\r\n  - 그리스 지표 계산\r\n\r\n#### 1.2 데이터 정제\r\n\r\n- [ ] 실시간 데이터 정규화\r\n- [ ] 이상치 탐지 및 제거\r\n- [ ] 누락 데이터 처리\r\n\r\n### 2. AI 분석 엔진\r\n\r\n#### 2.1 시계열 예측\r\n\r\n- [ ] LSTM 모델 구현\r\n  - 가격 예측 모델\r\n  - 변동성 예측 모델\r\n- [ ] 앙상블 모델 구현\r\n  - Random Forest\r\n  - XGBoost\r\n  - LightGBM\r\n\r\n#### 2.2 포트폴리오 최적화\r\n\r\n- [ ] Modern Portfolio Theory 구현\r\n- [ ] Risk Parity 전략 구현\r\n- [ ] 동적 자산 배분 알고리즘\r\n\r\n### 3. 리스크 관리 시스템\r\n\r\n#### 3.1 리스크 지표 계산\r\n\r\n- [ ] Value at Risk (VaR) 계산\r\n- [ ] Expected Shortfall 계산\r\n- [ ] 변동성 지표 모니터링\r\n\r\n#### 3.2 포지션 관리\r\n\r\n- [ ] 레버리지 최적화\r\n- [ ] 스탑로스 자동화\r\n- [ ] 마진 콜 알림\r\n\r\n### 4. 대시보드 UI\r\n\r\n#### 4.1 차트 시스템\r\n\r\n- [ ] 캔들스틱 차트 구현\r\n- [ ] 기술적 지표 표시\r\n- [ ] 실시간 업데이트\r\n\r\n#### 4.2 포트폴리오 뷰\r\n\r\n- [ ] 자산 배분 현황\r\n- [ ] 수익률 트래킹\r\n- [ ] 리스크 지표 시각화\r\n\r\n---\r\n\r\n## 📋 칸반보드 구성\r\n\r\n### 🎯 백로그 (Backlog)\r\n\r\n#### 우선순위: 높음\r\n\r\n- [ ] 데이터베이스 스키마 설계\r\n- [ ] API 서버 기본 구조 구축\r\n- [ ] 사용자 인증 시스템 구현\r\n- [ ] 기본 대시보드 레이아웃\r\n\r\n#### 우선순위: 중간\r\n\r\n- [ ] 백테스팅 엔진 구현\r\n- [ ] 알림 시스템 구축\r\n- [ ] 포트폴리오 분석 도구\r\n- [ ] 리포트 생성 시스템\r\n\r\n#### 우선순위: 낮음\r\n\r\n- [ ] 소셜 트레이딩 기능\r\n- [ ] 모바일 앱 개발\r\n- [ ] API 문서화\r\n- [ ] 튜토리얼 시스템\r\n\r\n### 🏃 진행 중 (In Progress)\r\n\r\n#### Sprint 1: 기반 시스템\r\n\r\n- [ ] PostgreSQL 데이터베이스 설정\r\n- [ ] Spring Boot 프로젝트 셋업\r\n- [ ] Next.js 프로젝트 초기화\r\n\r\n#### Sprint 2: 데이터 파이프라인\r\n\r\n- [ ] CCXT 라이브러리 연동\r\n- [ ] 실시간 데이터 수집 구현\r\n- [ ] 데이터 정제 파이프라인\r\n\r\n### ✅ 완료 (Done)\r\n\r\n#### 초기 설정\r\n\r\n- [x] 프로젝트 요구사항 정의\r\n- [x] 기술 스택 선정\r\n- [x] 개발 환경 구성\r\n\r\n---\r\n\r\n## 📅 스프린트별 작업 항목\r\n\r\n### Sprint 1 (1-2주차)\r\n\r\n```plaintext\r\n+------------------+     +------------------+     +------------------+\r\n|      To Do       |     |   In Progress    |     |      Done        |\r\n+------------------+     +------------------+     +------------------+\r\n| - DB 스키마 설계    |     | - 개발환경 설정     |     | - 요구사항 정의      |\r\n| - API 구조 설계     |     | - Git 저장소      |     | - 팀 구성          |\r\n+------------------+     +------------------+     +------------------+\r\n```\r\n\r\n### Sprint 2 (3-4주차)\r\n\r\n```plaintext\r\n+------------------+     +------------------+     +------------------+\r\n|      To Do       |     |   In Progress    |     |      Done        |\r\n+------------------+     +------------------+     +------------------+\r\n| - 데이터 정제       |     | - DB 구축         |     | - 스키마 설계       |\r\n| - API 구현        |     | - 기본 API 개발    |     | - 환경 설정         |\r\n+------------------+     +------------------+     +------------------+\r\n```\r\n\r\n---\r\n\r\n## 🔄 작업 추적\r\n\r\n### 현재 진행상황\r\n\r\n- 전체 진행률: 15%\r\n- 주요 마일스톤: MVP 개발 단계\r\n- 예상 완료일: 2024년 9월\r\n\r\n### 다음 단계 준비사항\r\n\r\n1. 스프린트 1 회고\r\n2. 스프린트 2 계획 수립\r\n3. 리스크 요소 점검\r\n\r\n이 문서는 프로젝트의 진행 상황을 추적하고 관리하기 위한 기준으로 사용됩니다. 각 기능과 작업은 우선순위와 의존성을 고려하여 순차적으로 구현될 예정입니다. 🚀\r\n",
   "date": "2025-02-12",
   "category": "projects",
   "tags": [
@@ -22,217 +24,217 @@
           "text": "title: \"Entasis Engine - 세부 기능 정의\"\ndate: \"2025-02-12\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 세부 기능 정의 및 칸반보드\"\ntags: [\"definition\", \"kanban\", \"task\", \"backlog\", \"sprint\", \"tracking\"]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 시스템 세부 기능 정의",
           "level": 1,
           "isMainTopic": true,
-          "position": 164.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 핵심 기능 상세",
           "level": 2,
           "isMainTopic": true,
-          "position": 213.2421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. 데이터 수집 시스템",
           "level": 3,
           "isMainTopic": false,
-          "position": 264.65625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "1.1 거래소 연동",
           "level": 4,
           "isMainTopic": false,
-          "position": 308.9296875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "1.2 데이터 정제",
           "level": 4,
           "isMainTopic": false,
-          "position": 546.4765625
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2. AI 분석 엔진",
           "level": 3,
           "isMainTopic": false,
-          "position": 664.46875
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "2.1 시계열 예측",
           "level": 4,
           "isMainTopic": false,
-          "position": 708.7421875
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "2.2 포트폴리오 최적화",
           "level": 4,
           "isMainTopic": false,
-          "position": 904.2890625
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "3. 리스크 관리 시스템",
           "level": 3,
           "isMainTopic": false,
-          "position": 1022.28125
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "3.1 리스크 지표 계산",
           "level": 4,
           "isMainTopic": false,
-          "position": 1066.5546875
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "3.2 포지션 관리",
           "level": 4,
           "isMainTopic": false,
-          "position": 1187.1015625
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "4. 대시보드 UI",
           "level": 3,
           "isMainTopic": false,
-          "position": 1305.09375
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "4.1 차트 시스템",
           "level": 4,
           "isMainTopic": false,
-          "position": 1349.3671875
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "4.2 포트폴리오 뷰",
           "level": 4,
           "isMainTopic": false,
-          "position": 1469.9140625
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "📋 칸반보드 구성",
           "level": 2,
           "isMainTopic": true,
-          "position": 1607.1015625
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "🎯 백로그 (Backlog)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1658.515625
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "우선순위: 높음",
           "level": 4,
           "isMainTopic": false,
-          "position": 1704.2890625
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "우선순위: 중간",
           "level": 4,
           "isMainTopic": false,
-          "position": 1844.3359375
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "우선순위: 낮음",
           "level": 4,
           "isMainTopic": false,
-          "position": 1984.3828125
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "🏃 진행 중 (In Progress)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2121.875
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "Sprint 1: 기반 시스템",
           "level": 4,
           "isMainTopic": false,
-          "position": 2167.6484375
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "Sprint 2: 데이터 파이프라인",
           "level": 4,
           "isMainTopic": false,
-          "position": 2288.1953125
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "✅ 완료 (Done)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2406.1875
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "초기 설정",
           "level": 4,
           "isMainTopic": false,
-          "position": 2451.9609375
+          "position": 1200
         },
         {
           "id": "heading-25",
           "text": "📅 스프린트별 작업 항목",
           "level": 2,
           "isMainTopic": true,
-          "position": 2589.1484375
+          "position": 1250
         },
         {
           "id": "heading-26",
           "text": "Sprint 1 (1-2주차)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2640.5625
+          "position": 1300
         },
         {
           "id": "heading-27",
           "text": "Sprint 2 (3-4주차)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2842.875
+          "position": 1350
         },
         {
           "id": "heading-28",
           "text": "🔄 작업 추적",
           "level": 2,
           "isMainTopic": true,
-          "position": 3067.1015625
+          "position": 1400
         },
         {
           "id": "heading-29",
           "text": "현재 진행상황",
           "level": 3,
           "isMainTopic": false,
-          "position": 3118.515625
+          "position": 1450
         },
         {
           "id": "heading-30",
           "text": "다음 단계 준비사항",
           "level": 3,
           "isMainTopic": false,
-          "position": 3237.453125
+          "position": 1500
         }
       ]
     },
@@ -246,189 +248,189 @@
           "text": "title: \"Entasis Engine - Detailed Feature Definition\"\ndate: \"2025-02-12\"\ncategory: \"projects\"\ndescription: \"Detailed feature definition and kanban board for virtual asset data analysis system\"\ntags: [\"definition\", \"kanban\", \"task\", \"backlog\", \"sprint\", \"tracking\"]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis System Detailed Feature Definition",
           "level": 1,
           "isMainTopic": true,
-          "position": 187.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 Core Features Detail",
           "level": 2,
           "isMainTopic": true,
-          "position": 234.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. Data Collection System",
           "level": 3,
           "isMainTopic": false,
-          "position": 286.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "1.1 Exchange Integration",
           "level": 4,
           "isMainTopic": false,
-          "position": 328.9296875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "1.2 Data Cleansing",
           "level": 4,
           "isMainTopic": false,
-          "position": 556.4765625
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2. AI Analysis Engine",
           "level": 3,
           "isMainTopic": false,
-          "position": 670.46875
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "2.1 Time Series Prediction",
           "level": 4,
           "isMainTopic": false,
-          "position": 713.2421875
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "2.2 Portfolio Optimization",
           "level": 4,
           "isMainTopic": false,
-          "position": 903.7890625
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "3. Risk Management System",
           "level": 3,
           "isMainTopic": false,
-          "position": 1017.78125
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "3.1 Risk Metrics Calculation",
           "level": 4,
           "isMainTopic": false,
-          "position": 1060.5546875
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "3.2 Position Management",
           "level": 4,
           "isMainTopic": false,
-          "position": 1177.1015625
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "4. Dashboard UI",
           "level": 3,
           "isMainTopic": false,
-          "position": 1291.09375
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "4.1 Chart System",
           "level": 4,
           "isMainTopic": false,
-          "position": 1333.8671875
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "4.2 Portfolio View",
           "level": 4,
           "isMainTopic": false,
-          "position": 1450.4140625
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "📋 Kanban Board Structure",
           "level": 2,
           "isMainTopic": true,
-          "position": 1583.6015625
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "🎯 Backlog",
           "level": 3,
           "isMainTopic": false,
-          "position": 1635.015625
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "High Priority",
           "level": 4,
           "isMainTopic": false,
-          "position": 1680.7890625
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "Medium Priority",
           "level": 4,
           "isMainTopic": false,
-          "position": 1815.8359375
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "Low Priority",
           "level": 4,
           "isMainTopic": false,
-          "position": 1950.8828125
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "🏃 In Progress",
           "level": 3,
           "isMainTopic": false,
-          "position": 2083.375
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "Sprint 1: Foundation System",
           "level": 4,
           "isMainTopic": false,
-          "position": 2129.1484375
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "Sprint 2: Data Pipeline",
           "level": 4,
           "isMainTopic": false,
-          "position": 2245.6953125
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "✅ Done",
           "level": 3,
           "isMainTopic": false,
-          "position": 2359.6875
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "Initial Setup",
           "level": 4,
           "isMainTopic": false,
-          "position": 2405.4609375
+          "position": 1200
         },
         {
           "id": "heading-25",
           "text": "📅 Sprint Work Items",
           "level": 2,
           "isMainTopic": true,
-          "position": 2538.6484375
+          "position": 1250
         },
         {
           "id": "heading-26",
           "text": "Sprint 1 (Weeks 1-2)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2590.0625
+          "position": 1300
         }
       ]
     }

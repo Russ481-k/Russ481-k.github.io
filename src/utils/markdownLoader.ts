@@ -22,6 +22,8 @@ export async function getPost(id: string): Promise<Post> {
     category: koMatter.data.category,
     tags: koMatter.data.tags,
     thumbnail: koMatter.data.thumbnail,
+    title: koMatter.data.title,
+    content: koMatter.content,
     translations: {
       ko: {
         title: koMatter.data.title,

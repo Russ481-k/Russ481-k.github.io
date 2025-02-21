@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
+    "build": "next build",
+    "start": "serve out",
     "prebuild": "tsx src/scripts/generate-posts.ts",
-    "predeploy": "next build && next export",
+    "predeploy": "next build",
     "deploy": "gh-pages -d out",
     "lint": "next lint",
     "convert:md": "tsx src/scripts/convert-markdowns.ts"
@@ -30,7 +30,6 @@
     "marked": "^9.1.6",
     "next": "13.4.2",
     "next-i18next": "^15.4.2",
-    "puppeteer": "^24.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-i18next": "^13.5.0",

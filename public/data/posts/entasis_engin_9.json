@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_9",
+  "title": "Entasis Engine - 인프라 구성도",
+  "content": "\r\n# 금융 데이터 분석 시스템 인프라 구성도\r\n\r\n## 🏗️ 시스템 아키텍처\r\n\r\n### 1. 전체 구성도\r\n\r\n```mermaid\r\ngraph TB\r\n    subgraph External[외부 시스템]\r\n        API1[거래소 API]\r\n        API2[데이터 피드]\r\n    end\r\n\r\n    subgraph LoadBalancer[로드 밸런서]\r\n        LB1[AWS ALB]\r\n        LB2[내부 L4]\r\n    end\r\n\r\n    subgraph ServiceMesh[서비스 메시]\r\n        direction TB\r\n        subgraph DataCollection[데이터 수집 계층]\r\n            DC1[Collector-1]\r\n            DC2[Collector-2]\r\n        end\r\n\r\n        subgraph Processing[처리 계층]\r\n            P1[Spark Cluster]\r\n            P2[Stream Processing]\r\n        end\r\n\r\n        subgraph AI[AI 분석 계층]\r\n            AI1[Model Serving]\r\n            AI2[Training Pipeline]\r\n        end\r\n\r\n        subgraph API[API 계층]\r\n            API3[REST API]\r\n            API4[WebSocket]\r\n        end\r\n    end\r\n\r\n    subgraph Storage[스토리지]\r\n        DB1[(TimescaleDB)]\r\n        DB2[(Redis)]\r\n        S3[Object Storage]\r\n    end\r\n\r\n    subgraph Monitoring[모니터링]\r\n        M1[Prometheus]\r\n        M2[Grafana]\r\n        M3[ELK Stack]\r\n    end\r\n\r\n    External --> LoadBalancer\r\n    LoadBalancer --> ServiceMesh\r\n    ServiceMesh --> Storage\r\n    ServiceMesh --> Monitoring\r\n```\r\n\r\n## 🌐 네트워크 구성\r\n\r\n### 1. 네트워크 세그먼트\r\n\r\n```plaintext\r\n+------------------------+     +------------------------+\r\n|     Public Subnet      |     |    Private Subnet      |\r\n|------------------------|     |------------------------|\r\n| - Load Balancer        |     | - Application Servers  |\r\n| - Bastion Host         |     | - Database Clusters    |\r\n| - NAT Gateway          |     | - Cache Servers        |\r\n+------------------------+     +------------------------+\r\n           |                              |\r\n           |        VPC Peering           |\r\n           +------------------------------+\r\n```\r\n\r\n### 2. 보안 그룹 설정\r\n\r\n```yaml\r\nsecurity_groups:\r\n  frontend:\r\n    inbound:\r\n      - port: 80\r\n        source: 0.0.0.0/0\r\n      - port: 443\r\n        source: 0.0.0.0/0\r\n\r\n  application:\r\n    inbound:\r\n      - port: 8080\r\n        source: frontend_sg\r\n      - port: 9000\r\n        source: monitoring_sg\r\n\r\n  database:\r\n    inbound:\r\n      - port: 5432\r\n        source: application_sg\r\n      - port: 6379\r\n        source: application_sg\r\n```\r\n\r\n## 🚀 쿠버네티스 클러스터\r\n\r\n### 1. 노드 구성\r\n\r\n```yaml\r\nnode_pools:\r\n  - name: general\r\n    instance_type: c5.2xlarge\r\n    min_size: 3\r\n    max_size: 10\r\n    labels:\r\n      role: general\r\n\r\n  - name: ai-inference\r\n    instance_type: g4dn.xlarge\r\n    min_size: 2\r\n    max_size: 5\r\n    labels:\r\n      role: ai-inference\r\n\r\n  - name: data-processing\r\n    instance_type: r5.2xlarge\r\n    min_size: 2\r\n    max_size: 8\r\n    labels:\r\n      role: data-processing\r\n```\r\n\r\n### 2. 서비스 배포\r\n\r\n```yaml\r\napiVersion: apps/v1\r\nkind: Deployment\r\nmetadata:\r\n  name: trading-api\r\nspec:\r\n  replicas: 3\r\n  selector:\r\n    matchLabels:\r\n      app: trading-api\r\n  template:\r\n    metadata:\r\n      labels:\r\n        app: trading-api\r\n    spec:\r\n      containers:\r\n        - name: trading-api\r\n          image: trading-api:1.0.0\r\n          resources:\r\n            requests:\r\n              cpu: 1\r\n              memory: 2Gi\r\n            limits:\r\n              cpu: 2\r\n              memory: 4Gi\r\n```\r\n\r\n## 📊 모니터링 시스템\r\n\r\n### 1. 메트릭 수집\r\n\r\n```yaml\r\nprometheus:\r\n  scrape_configs:\r\n    - job_name: \"kubernetes-pods\"\r\n      kubernetes_sd_configs:\r\n        - role: pod\r\n      relabel_configs:\r\n        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]\r\n          action: keep\r\n          regex: true\r\n\r\n    - job_name: \"trading-metrics\"\r\n      static_configs:\r\n        - targets: [\"trading-api:9090\"]\r\n```\r\n\r\n### 2. 알림 설정\r\n\r\n```yaml\r\nalertmanager:\r\n  config:\r\n    route:\r\n      receiver: \"slack\"\r\n      group_wait: 30s\r\n      group_interval: 5m\r\n      repeat_interval: 4h\r\n\r\n    receivers:\r\n      - name: \"slack\"\r\n        slack_configs:\r\n          - channel: \"#alerts\"\r\n            send_resolved: true\r\n```\r\n\r\n## 🔒 보안 설정\r\n\r\n### 1. 네트워크 정책\r\n\r\n```yaml\r\napiVersion: networking.k8s.io/v1\r\nkind: NetworkPolicy\r\nmetadata:\r\n  name: api-network-policy\r\nspec:\r\n  podSelector:\r\n    matchLabels:\r\n      app: trading-api\r\n  policyTypes:\r\n    - Ingress\r\n    - Egress\r\n  ingress:\r\n    - from:\r\n        - podSelector:\r\n            matchLabels:\r\n              role: frontend\r\n      ports:\r\n        - protocol: TCP\r\n          port: 8080\r\n```\r\n\r\n### 2. 암호화 설정\r\n\r\n```yaml\r\nencryption:\r\n  - resources:\r\n      - secrets\r\n    providers:\r\n      - aescbc:\r\n          keys:\r\n            - name: key1\r\n              secret: <base64-encoded-key>\r\n      - identity: {}\r\n```\r\n\r\n## 🔄 스케일링 전략\r\n\r\n### 1. 수평적 확장\r\n\r\n```yaml\r\napiVersion: autoscaling/v2\r\nkind: HorizontalPodAutoscaler\r\nmetadata:\r\n  name: trading-api-hpa\r\nspec:\r\n  scaleTargetRef:\r\n    apiVersion: apps/v1\r\n    kind: Deployment\r\n    name: trading-api\r\n  minReplicas: 3\r\n  maxReplicas: 10\r\n  metrics:\r\n    - type: Resource\r\n      resource:\r\n        name: cpu\r\n        target:\r\n          type: Utilization\r\n          averageUtilization: 70\r\n```\r\n\r\n### 2. 수직적 확장\r\n\r\n```yaml\r\napiVersion: autoscaling.k8s.io/v1\r\nkind: VerticalPodAutoscaler\r\nmetadata:\r\n  name: trading-api-vpa\r\nspec:\r\n  targetRef:\r\n    apiVersion: apps/v1\r\n    kind: Deployment\r\n    name: trading-api\r\n  updatePolicy:\r\n    updateMode: Auto\r\n```\r\n\r\n## 🔧 운영 관리\r\n\r\n### 1. 로깅 설정\r\n\r\n```yaml\r\nfilebeat:\r\n  inputs:\r\n    - type: container\r\n      paths:\r\n        - /var/log/containers/*.log\r\n      processors:\r\n        - add_kubernetes_metadata:\r\n            host: ${NODE_NAME}\r\n            matchers:\r\n              - logs_path:\r\n                  logs_path: \"/var/log/containers/\"\r\n```\r\n\r\n### 2. 백업 정책\r\n\r\n```yaml\r\nbackup:\r\n  schedule: \"0 1 * * *\" # 매일 01:00\r\n  retention:\r\n    hourly: 24\r\n    daily: 7\r\n    weekly: 4\r\n    monthly: 12\r\n  storage:\r\n    type: s3\r\n    bucket: backup-bucket\r\n    region: ap-northeast-2\r\n```\r\n\r\n이 문서는 금융 데이터 분석 시스템의 인프라 구성을 상세히 설명합니다. 시스템의 안정성과 확장성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀\r\n",
   "date": "2025-02-13",
   "category": "projects",
   "tags": [
@@ -23,154 +25,154 @@
           "text": "title: \"Entasis Engine - 인프라 구성도\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세\"\ntags:\n[\n\"infrastructure\",\n\"cloud\",\n\"kubernetes\",\n\"devops\",\n\"security\",\n\"monitoring\",\n\"scaling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 시스템 인프라 구성도",
           "level": 1,
           "isMainTopic": true,
-          "position": 191.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "🏗️ 시스템 아키텍처",
           "level": 2,
           "isMainTopic": true,
-          "position": 240.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. 전체 구성도",
           "level": 3,
           "isMainTopic": false,
-          "position": 292.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "🌐 네트워크 구성",
           "level": 2,
           "isMainTopic": true,
-          "position": 1307.5546875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "1. 네트워크 세그먼트",
           "level": 3,
           "isMainTopic": false,
-          "position": 1358.96875
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2. 보안 그룹 설정",
           "level": 3,
           "isMainTopic": false,
-          "position": 1631.5
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "🚀 쿠버네티스 클러스터",
           "level": 2,
           "isMainTopic": true,
-          "position": 2129.7890625
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "1. 노드 구성",
           "level": 3,
           "isMainTopic": false,
-          "position": 2181.203125
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "2. 서비스 배포",
           "level": 3,
           "isMainTopic": false,
-          "position": 2758.046875
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "📊 모니터링 시스템",
           "level": 2,
           "isMainTopic": true,
-          "position": 3327.5859375
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "1. 메트릭 수집",
           "level": 3,
           "isMainTopic": false,
-          "position": 3379
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "2. 알림 설정",
           "level": 3,
           "isMainTopic": false,
-          "position": 3816.9453125
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "🔒 보안 설정",
           "level": 2,
           "isMainTopic": true,
-          "position": 4251.375
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "1. 네트워크 정책",
           "level": 3,
           "isMainTopic": false,
-          "position": 4302.7890625
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "2. 암호화 설정",
           "level": 3,
           "isMainTopic": false,
-          "position": 4733.3125
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "🔄 스케일링 전략",
           "level": 2,
           "isMainTopic": true,
-          "position": 4988.2890625
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "1. 수평적 확장",
           "level": 3,
           "isMainTopic": false,
-          "position": 5039.703125
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "2. 수직적 확장",
           "level": 3,
           "isMainTopic": false,
-          "position": 5452.671875
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "🔧 운영 관리",
           "level": 2,
           "isMainTopic": true,
-          "position": 5742.7578125
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "1. 로깅 설정",
           "level": 3,
           "isMainTopic": false,
-          "position": 5794.171875
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "2. 백업 정책",
           "level": 3,
           "isMainTopic": false,
-          "position": 6084.2578125
+          "position": 1050
         }
       ]
     },
@@ -184,28 +186,28 @@
           "text": "title: \"Entasis Engine - Infrastructure Architecture\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Detailed infrastructure architecture and configuration for digital asset data analysis system\"\ntags:\n[\n\"infrastructure\",\n\"cloud\",\n\"kubernetes\",\n\"devops\",\n\"security\",\n\"monitoring\",\n\"scaling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis System Infrastructure Architecture",
           "level": 1,
           "isMainTopic": true,
-          "position": 187.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "🏗️ System Architecture",
           "level": 2,
           "isMainTopic": true,
-          "position": 234.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. Overall Architecture",
           "level": 3,
           "isMainTopic": false,
-          "position": 286.15625
+          "position": 150
         }
       ]
     }

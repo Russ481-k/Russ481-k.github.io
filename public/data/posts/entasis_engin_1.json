@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_1",
+  "title": "Entasis Engine - 가상자산 데이터 분석 및 AI 연동 솔루션",
+  "content": "\r\n# 금융 데이터 분석 및 AI 연동 솔루션 – 기술 스택 선정과 시스템 아키텍처\r\n\r\n## 🚀 프로젝트 개요\r\n\r\n금융 시장에서 데이터 기반 의사결정의 중요성이 날로 증가하고 있습니다. 특히 현물, 선물, 옵션 시장의 데이터를 통합적으로 분석하고 AI를 활용한 시장 예측은 현대 트레이딩의 핵심 요소가 되었습니다.\r\n\r\n이 프로젝트는 **실시간 데이터 수집 → 고성능 데이터 처리 → AI 기반 분석 → 실시간 대시보드 제공**의 전체 프로세스를 자동화하여 사용자에게 데이터 기반의 투자 인사이트를 제공합니다.\r\n\r\n### 핵심 목표\r\n\r\n- 실시간 금융 데이터 통합 및 분석\r\n- AI 기반 시장 예측 모델 구현\r\n- 포지션별 기대 수익률 계산\r\n- 리스크 관리 지표 제공\r\n- 사용자 친화적 대시보드 구현\r\n\r\n---\r\n\r\n## 🛠️ 기술 스택 및 아키텍처\r\n\r\n### 1. 데이터 파이프라인\r\n\r\n- **데이터 수집**: CCXT, Deribit API\r\n- **데이터 처리**: Java, Apache Spark\r\n- **저장소**: PostgreSQL, TimescaleDB\r\n- **워크플로우**: Apache Airflow\r\n\r\n### 2. 분석 엔진\r\n\r\n- **AI/ML**: Python, TensorFlow, Scikit-learn\r\n- **금융공학**: Pandas, NumPy\r\n- **분석 모델**:\r\n  - 블랙숄즈 모델 (옵션 가격 평가)\r\n  - Heston 모델 (변동성 분석)\r\n  - LSTM 네트워크 (시계열 예측)\r\n\r\n### 3. 프론트엔드\r\n\r\n- **프레임워크**: Next.js\r\n- **시각화**: D3.js\r\n- **실시간 통신**: WebSocket\r\n\r\n## 📊 시스템 아키텍처\r\n\r\n```plaintext\r\n+-------------------+       +-------------------+       +-------------------+\r\n|   Data Sources    |       |   Backend (AI &   |       |   Frontend (User   |\r\n|-------------------|       | Financial Models) |       |     Interface)    |\r\n| Binance API       | ----> | Python (Pandas,   | ----> | Next.js           |\r\n| Bybit API         | ----> | TensorFlow)       | ----> | D3.js             |\r\n| Deribit API       | ----> |                   | ----> | Interactive Charts|\r\n+-------------------+       +-------------------+       +-------------------+\r\n\r\n+-------------------+\r\n| Database          |\r\n|-------------------|\r\n| PostgreSQL        |\r\n| TimescaleDB       |\r\n+-------------------+\r\n\r\n+--------------------------------------------+\r\n| Workflow Orchestration                     |\r\n|--------------------------------------------|\r\n| Apache Airflow                             |\r\n+--------------------------------------------+\r\n```\r\n\r\n---\r\n\r\n## 💡 주요 기능 및 구현\r\n\r\n### 1. 데이터 통합 시스템\r\n\r\n- 멀티 거래소 실시간 데이터 수집\r\n- 시계열 데이터 최적화 저장\r\n- 분산 처리 기반 대용량 데이터 처리\r\n\r\n### 2. AI 기반 분석 엔진\r\n\r\n- 딥러닝 기반 가격 예측 모델\r\n- 변동성 예측 및 리스크 분석\r\n- 포트폴리오 최적화 알고리즘\r\n\r\n### 3. 투자 전략 시스템\r\n\r\n- 실시간 포지션 분석\r\n- 리스크-리턴 프로파일 생성\r\n- 백테스팅 및 시나리오 분석\r\n\r\n### 4. 실시간 모니터링\r\n\r\n- 대화형 차트 및 지표\r\n- 실시간 알림 시스템\r\n- 커스텀 대시보드 구성\r\n\r\n---\r\n\r\n## 🔄 워크플로우 상세\r\n\r\n1. **데이터 수집 단계**\r\n\r\n   - 거래소 API 연동 및 데이터 수집\r\n   - WebSocket을 통한 실시간 데이터 스트리밍\r\n   - 데이터 정합성 검증\r\n\r\n2. **전처리 및 저장 단계**\r\n\r\n   - Apache Spark 기반 대규모 데이터 처리\r\n   - 시계열 데이터 최적화 저장\r\n   - 파생 변수 계산 (변동성, 그리스 지표 등)\r\n\r\n3. **분석 및 예측 단계**\r\n\r\n   - 머신러닝 모델 학습 및 예측\r\n   - 금융공학 모델 적용\r\n   - 리스크 지표 계산\r\n\r\n4. **시각화 및 제공 단계**\r\n   - 실시간 대시보드 업데이트\r\n   - 사용자 맞춤형 보고서 생성\r\n   - 알림 및 통지 발송\r\n\r\n---\r\n\r\n## 🎁 기대 효과\r\n\r\n### 1. 운영 효율성\r\n\r\n- 자동화된 데이터 수집 및 분석\r\n- 실시간 시장 모니터링\r\n- 신속한 의사결정 지원\r\n\r\n### 2. 리스크 관리\r\n\r\n- 포트폴리오 리스크 실시간 모니터링\r\n- 시나리오 기반 스트레스 테스트\r\n- 손실 제한 전략 자동화\r\n\r\n### 3. 투자 성과\r\n\r\n- 데이터 기반 투자 전략 수립\r\n- AI 기반 시장 예측\r\n- 체계적인 포트폴리오 관리\r\n\r\n---\r\n\r\n## 🚀 향후 발전 방향\r\n\r\n1. **기능 확장**\r\n\r\n   - 추가 자산군 지원\r\n   - 고급 AI 모델 도입\r\n   - 소셜 트레이딩 기능\r\n\r\n2. **성능 개선**\r\n\r\n   - 처리 속도 최적화\r\n   - 확장성 강화\r\n   - 보안 강화\r\n\r\n3. **사용자 경험**\r\n   - 모바일 앱 개발\r\n   - 맞춤형 알림 시스템\r\n   - API 서비스 제공\r\n\r\n이 프로젝트는 금융 시장의 데이터를 효과적으로 분석하고 AI와 결합하여 실질적인 투자 인사이트를 제공하는 종합 솔루션을 목표로 합니다. 🎯\r\n",
   "date": "2025-02-10",
   "category": "projects",
   "tags": [
@@ -28,140 +30,140 @@
           "text": "title: \"Entasis Engine - 가상자산 데이터 분석 및 AI 연동 솔루션\"\ndate: \"2025-02-10\"\ncategory: \"projects\"\ndescription: \"현물/선물/옵션 데이터 통합 분석 및 AI 기반 투자 전략 제공 시스템\"\ntags:\n[\n\"Java\",\n\"Python\",\n\"PostgreSQL\",\n\"TimescaleDB\",\n\"Next.js\",\n\"D3.js\",\n\"Apache Spark\",\n\"TensorFlow\",\n\"Apache Airflow\",\n\"CCXT\",\n\"금융공학\",\n\"머신러닝\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 및 AI 연동 솔루션 – 기술 스택 선정과 시스템 아키텍처",
           "level": 1,
           "isMainTopic": true,
-          "position": 220.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "🚀 프로젝트 개요",
           "level": 2,
           "isMainTopic": true,
-          "position": 269.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "핵심 목표",
           "level": 3,
           "isMainTopic": false,
-          "position": 433.875
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "🛠️ 기술 스택 및 아키텍처",
           "level": 2,
           "isMainTopic": true,
-          "position": 611.0078125
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "1. 데이터 파이프라인",
           "level": 3,
           "isMainTopic": false,
-          "position": 662.421875
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2. 분석 엔진",
           "level": 3,
           "isMainTopic": false,
-          "position": 800.859375
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "3. 프론트엔드",
           "level": 3,
           "isMainTopic": false,
-          "position": 977.296875
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "📊 시스템 아키텍처",
           "level": 2,
           "isMainTopic": true,
-          "position": 1097.4296875
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "💡 주요 기능 및 구현",
           "level": 2,
           "isMainTopic": true,
-          "position": 1628.046875
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "1. 데이터 통합 시스템",
           "level": 3,
           "isMainTopic": false,
-          "position": 1700.171875
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "2. AI 기반 분석 엔진",
           "level": 3,
           "isMainTopic": false,
-          "position": 1929.4609375
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "3. 투자 전략 시스템",
           "level": 3,
           "isMainTopic": false,
-          "position": 2158.75
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "4. 실시간 모니터링",
           "level": 3,
           "isMainTopic": false,
-          "position": 2388.0390625
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "🔄 워크플로우 상세",
           "level": 2,
           "isMainTopic": true,
-          "position": 2649.4453125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "🎁 기대 효과",
           "level": 2,
           "isMainTopic": true,
-          "position": 3748.375
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "1. 운영 효율성",
           "level": 3,
           "isMainTopic": false,
-          "position": 3820.5
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "2. 리스크 관리",
           "level": 3,
           "isMainTopic": false,
-          "position": 4049.7890625
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "3. 투자 성과",
           "level": 3,
           "isMainTopic": false,
-          "position": 4279.078125
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "🚀 향후 발전 방향",
           "level": 2,
           "isMainTopic": true,
-          "position": 4540.484375
+          "position": 950
         }
       ]
     },
@@ -175,63 +177,63 @@
           "text": "title: \"Entasis Engine - Virtual Asset Data Analysis and AI Integration Solution\"\ndate: \"2025-02-10\"\ncategory: \"projects\"\ndescription: \"Integrated analysis system for spot/futures/options data with AI-based investment strategy\"\ntags:\n[\n\"Java\",\n\"Python\",\n\"PostgreSQL\",\n\"TimescaleDB\",\n\"Next.js\",\n\"D3.js\",\n\"Apache Spark\",\n\"TensorFlow\",\n\"Apache Airflow\",\n\"CCXT\",\n\"Financial Engineering\",\n\"Machine Learning\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture",
           "level": 1,
           "isMainTopic": true,
-          "position": 242.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "🚀 Project Overview",
           "level": 2,
           "isMainTopic": true,
-          "position": 317.2421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "Core Objectives",
           "level": 3,
           "isMainTopic": false,
-          "position": 497.875
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "🛠️ Technology Stack & Architecture",
           "level": 2,
           "isMainTopic": true,
-          "position": 668.5078125
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "1. Data Pipeline",
           "level": 3,
           "isMainTopic": false,
-          "position": 719.921875
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2. Analysis Engine",
           "level": 3,
           "isMainTopic": false,
-          "position": 852.859375
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "3. Frontend",
           "level": 3,
           "isMainTopic": false,
-          "position": 1022.796875
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "📊 System Architecture",
           "level": 2,
           "isMainTopic": true,
-          "position": 1138.4296875
+          "position": 400
         }
       ]
     }

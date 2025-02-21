@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_6",
+  "title": "Entasis Engine - API 명세서",
+  "content": "\r\n# 금융 데이터 분석 시스템 API 명세서\r\n\r\n## 🔐 인증 및 보안\r\n\r\n### 1. 인증 방식\r\n\r\n#### 1.1 JWT 인증\r\n\r\n```json\r\n{\r\n  \"Authorization\": \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\"\r\n}\r\n```\r\n\r\n#### 1.2 API Key 인증\r\n\r\n```json\r\n{\r\n  \"X-API-Key\": \"your-api-key-here\"\r\n}\r\n```\r\n\r\n### 2. 보안 정책\r\n\r\n- Rate Limiting: 1000 requests/minute\r\n- IP Whitelisting 지원\r\n- SSL/TLS 필수\r\n\r\n## 📡 RESTful API 엔드포인트\r\n\r\n### 1. 시장 데이터 API\r\n\r\n#### 1.1 실시간 시세 조회\r\n\r\n```http\r\nGET /api/v1/market/price/{symbol}\r\n\r\nResponse 200:\r\n{\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"price\": \"65432.10\",\r\n  \"timestamp\": \"2024-03-21T09:30:00Z\",\r\n  \"volume\": \"123.45\",\r\n  \"exchange\": \"binance\"\r\n}\r\n```\r\n\r\n#### 1.2 과거 데이터 조회\r\n\r\n```http\r\nGET /api/v1/market/history/{symbol}\r\nParameters:\r\n  - interval: \"1m\" | \"5m\" | \"1h\" | \"1d\"\r\n  - start: ISO8601\r\n  - end: ISO8601\r\n\r\nResponse 200:\r\n{\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"data\": [\r\n    {\r\n      \"timestamp\": \"2024-03-21T09:00:00Z\",\r\n      \"open\": \"65000.00\",\r\n      \"high\": \"65100.00\",\r\n      \"low\": \"64900.00\",\r\n      \"close\": \"65050.00\",\r\n      \"volume\": \"234.56\"\r\n    }\r\n  ]\r\n}\r\n```\r\n\r\n### 2. 포트폴리오 API\r\n\r\n#### 2.1 포지션 조회\r\n\r\n```http\r\nGET /api/v1/portfolio/positions\r\n\r\nResponse 200:\r\n{\r\n  \"positions\": [\r\n    {\r\n      \"symbol\": \"BTC-USDT\",\r\n      \"size\": \"1.5\",\r\n      \"entry_price\": \"64000.00\",\r\n      \"current_price\": \"65000.00\",\r\n      \"pnl\": \"1500.00\",\r\n      \"timestamp\": \"2024-03-21T09:30:00Z\"\r\n    }\r\n  ]\r\n}\r\n```\r\n\r\n#### 2.2 포지션 생성\r\n\r\n```http\r\nPOST /api/v1/portfolio/positions\r\nRequest:\r\n{\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"size\": \"1.5\",\r\n  \"type\": \"long\",\r\n  \"leverage\": \"1\"\r\n}\r\n\r\nResponse 201:\r\n{\r\n  \"position_id\": \"pos_123456\",\r\n  \"status\": \"success\",\r\n  \"timestamp\": \"2024-03-21T09:30:00Z\"\r\n}\r\n```\r\n\r\n### 3. AI 분석 API\r\n\r\n#### 3.1 가격 예측\r\n\r\n```http\r\nGET /api/v1/analysis/prediction/{symbol}\r\nParameters:\r\n  - timeframe: \"1h\" | \"4h\" | \"1d\"\r\n  - model: \"lstm\" | \"ensemble\"\r\n\r\nResponse 200:\r\n{\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"prediction\": \"66000.00\",\r\n  \"confidence\": 0.85,\r\n  \"timeframe\": \"1h\",\r\n  \"model\": \"ensemble\",\r\n  \"timestamp\": \"2024-03-21T09:30:00Z\"\r\n}\r\n```\r\n\r\n#### 3.2 리스크 분석\r\n\r\n```http\r\nGET /api/v1/analysis/risk/{symbol}\r\n\r\nResponse 200:\r\n{\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"var_95\": \"3200.00\",\r\n  \"expected_shortfall\": \"3800.00\",\r\n  \"volatility\": \"0.45\",\r\n  \"timestamp\": \"2024-03-21T09:30:00Z\"\r\n}\r\n```\r\n\r\n## 🔄 WebSocket API\r\n\r\n### 1. 시장 데이터 스트림\r\n\r\n#### 1.1 실시간 시세 구독\r\n\r\n```javascript\r\n// 연결\r\nws://api.example.com/ws/market\r\n\r\n// 구독 메시지\r\n{\r\n  \"action\": \"subscribe\",\r\n  \"channel\": \"market\",\r\n  \"symbols\": [\"BTC-USDT\", \"ETH-USDT\"]\r\n}\r\n\r\n// 수신 데이터\r\n{\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"price\": \"65432.10\",\r\n  \"timestamp\": \"2024-03-21T09:30:00.123Z\",\r\n  \"volume\": \"1.23\"\r\n}\r\n```\r\n\r\n#### 1.2 주문북 구독\r\n\r\n```javascript\r\n// 구독 메시지\r\n{\r\n  \"action\": \"subscribe\",\r\n  \"channel\": \"orderbook\",\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"depth\": 10\r\n}\r\n\r\n// 수신 데이터\r\n{\r\n  \"symbol\": \"BTC-USDT\",\r\n  \"bids\": [\r\n    [\"65000.00\", \"1.234\"],\r\n    [\"64999.00\", \"2.345\"]\r\n  ],\r\n  \"asks\": [\r\n    [\"65001.00\", \"1.234\"],\r\n    [\"65002.00\", \"2.345\"]\r\n  ],\r\n  \"timestamp\": \"2024-03-21T09:30:00.123Z\"\r\n}\r\n```\r\n\r\n## 📊 에러 코드\r\n\r\n### 1. HTTP 상태 코드\r\n\r\n```json\r\n{\r\n  \"400\": \"잘못된 요청\",\r\n  \"401\": \"인증 실패\",\r\n  \"403\": \"권한 없음\",\r\n  \"404\": \"리소스 없음\",\r\n  \"429\": \"요청 한도 초과\",\r\n  \"500\": \"서버 내부 오류\"\r\n}\r\n```\r\n\r\n### 2. 비즈니스 에러 코드\r\n\r\n```json\r\n{\r\n  \"MARKET_001\": \"유효하지 않은 심볼\",\r\n  \"MARKET_002\": \"거래소 연결 실패\",\r\n  \"PORT_001\": \"잔액 부족\",\r\n  \"PORT_002\": \"포지션 한도 초과\",\r\n  \"AI_001\": \"모델 로딩 실패\",\r\n  \"AI_002\": \"예측 실패\"\r\n}\r\n```\r\n\r\n## 📝 API 사용 예시\r\n\r\n### 1. REST API 호출\r\n\r\n```python\r\nimport requests\r\n\r\n# 시장 데이터 조회\r\ndef get_market_price(symbol):\r\n    url = f\"https://api.example.com/v1/market/price/{symbol}\"\r\n    headers = {\r\n        \"Authorization\": f\"Bearer {token}\",\r\n        \"X-API-Key\": \"your-api-key\"\r\n    }\r\n    response = requests.get(url, headers=headers)\r\n    return response.json()\r\n\r\n# 포지션 생성\r\ndef create_position(symbol, size):\r\n    url = \"https://api.example.com/v1/portfolio/positions\"\r\n    data = {\r\n        \"symbol\": symbol,\r\n        \"size\": size,\r\n        \"type\": \"long\"\r\n    }\r\n    response = requests.post(url, json=data, headers=headers)\r\n    return response.json()\r\n```\r\n\r\n### 2. WebSocket 연결\r\n\r\n```javascript\r\nconst ws = new WebSocket(\"ws://api.example.com/ws/market\");\r\n\r\nws.onopen = () => {\r\n  ws.send(\r\n    JSON.stringify({\r\n      action: \"subscribe\",\r\n      channel: \"market\",\r\n      symbols: [\"BTC-USDT\"],\r\n    })\r\n  );\r\n};\r\n\r\nws.onmessage = (event) => {\r\n  const data = JSON.parse(event.data);\r\n  console.log(`${data.symbol}: ${data.price}`);\r\n};\r\n```\r\n\r\n이 문서는 금융 데이터 분석 시스템의 API 명세를 제공합니다. API는 지속적으로 업데이트되며, 최신 버전은 Swagger UI를 통해 확인할 수 있습니다. 🚀\r\n",
   "date": "2025-02-12",
   "category": "projects",
   "tags": [
@@ -23,203 +25,203 @@
           "text": "title: \"Entasis Engine - API 명세서\"\ndate: \"2025-02-12\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 RESTful API 및 WebSocket 명세\"\ntags:\n[\n\"api\",\n\"rest\",\n\"websocket\",\n\"swagger\",\n\"endpoint\",\n\"authentication\",\n\"documentation\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 시스템 API 명세서",
           "level": 1,
           "isMainTopic": true,
-          "position": 191.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "🔐 인증 및 보안",
           "level": 2,
           "isMainTopic": true,
-          "position": 240.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. 인증 방식",
           "level": 3,
           "isMainTopic": false,
-          "position": 292.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "1.1 JWT 인증",
           "level": 4,
           "isMainTopic": false,
-          "position": 336.4296875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "1.2 API Key 인증",
           "level": 4,
           "isMainTopic": false,
-          "position": 482.578125
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "2. 보안 정책",
           "level": 3,
           "isMainTopic": false,
-          "position": 628.7265625
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "📡 RESTful API 엔드포인트",
           "level": 2,
           "isMainTopic": true,
-          "position": 747.859375
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "1. 시장 데이터 API",
           "level": 3,
           "isMainTopic": false,
-          "position": 799.2734375
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "1.1 실시간 시세 조회",
           "level": 4,
           "isMainTopic": false,
-          "position": 843.546875
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "1.2 과거 데이터 조회",
           "level": 4,
           "isMainTopic": false,
-          "position": 1152.703125
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "2. 포트폴리오 API",
           "level": 3,
           "isMainTopic": false,
-          "position": 1642.234375
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "2.1 포지션 조회",
           "level": 4,
           "isMainTopic": false,
-          "position": 1686.5078125
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "2.2 포지션 생성",
           "level": 4,
           "isMainTopic": false,
-          "position": 2087.4609375
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "3. AI 분석 API",
           "level": 3,
           "isMainTopic": false,
-          "position": 2482.78125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "3.1 가격 예측",
           "level": 4,
           "isMainTopic": false,
-          "position": 2527.0546875
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "3.2 리스크 분석",
           "level": 4,
           "isMainTopic": false,
-          "position": 2907.234375
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "🔄 WebSocket API",
           "level": 2,
           "isMainTopic": true,
-          "position": 3216.390625
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "1. 시장 데이터 스트림",
           "level": 3,
           "isMainTopic": false,
-          "position": 3267.8046875
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "1.1 실시간 시세 구독",
           "level": 4,
           "isMainTopic": false,
-          "position": 3312.078125
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "1.2 주문북 구독",
           "level": 4,
           "isMainTopic": false,
-          "position": 3737.453125
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "📊 에러 코드",
           "level": 2,
           "isMainTopic": true,
-          "position": 4243.734375
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "1. HTTP 상태 코드",
           "level": 3,
           "isMainTopic": false,
-          "position": 4295.1484375
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "2. 비즈니스 에러 코드",
           "level": 3,
           "isMainTopic": false,
-          "position": 4532.5703125
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "📝 API 사용 예시",
           "level": 2,
           "isMainTopic": true,
-          "position": 4769.9921875
+          "position": 1200
         },
         {
           "id": "heading-25",
           "text": "1. REST API 호출",
           "level": 3,
           "isMainTopic": false,
-          "position": 4821.40625
+          "position": 1250
         },
         {
           "id": "heading-26",
           "text": "시장 데이터 조회",
           "level": 1,
           "isMainTopic": true,
-          "position": 4931.0703125
+          "position": 1300
         },
         {
           "id": "heading-27",
           "text": "포지션 생성",
           "level": 1,
           "isMainTopic": true,
-          "position": 5156.203125
+          "position": 1350
         },
         {
           "id": "heading-28",
           "text": "2. WebSocket 연결",
           "level": 3,
           "isMainTopic": false,
-          "position": 5450.5546875
+          "position": 1400
         }
       ]
     },
@@ -233,35 +235,35 @@
           "text": "title: \"Entasis Engine - API Specification\"\ndate: \"2025-02-12\"\ncategory: \"projects\"\ndescription: \"RESTful API and WebSocket specifications for digital asset data analysis system\"\ntags:\n[\n\"api\",\n\"rest\",\n\"websocket\",\n\"swagger\",\n\"endpoint\",\n\"authentication\",\n\"documentation\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis System API Specification",
           "level": 1,
           "isMainTopic": true,
-          "position": 187.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "🔐 Authentication & Security",
           "level": 2,
           "isMainTopic": true,
-          "position": 234.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. Authentication Methods",
           "level": 3,
           "isMainTopic": false,
-          "position": 286.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "1.1 JWT Authentication",
           "level": 4,
           "isMainTopic": false,
-          "position": 328.9296875
+          "position": 200
         }
       ]
     }

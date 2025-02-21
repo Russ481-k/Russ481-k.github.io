@@ -1,5 +1,7 @@
 {
   "id": "gig_crawler_1",
+  "title": "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발",
+  "content": "\r\n# 프로젝트 시작하기: FastAPI와 PostgreSQL 환경 설정 🛠️\r\n\r\n안녕하세요! 오늘은 프리랜서 프로젝트 크롤러 개발을 시작하면서 FastAPI와 PostgreSQL 환경을 어떻게 설정했는지 공유해볼게요.\r\n\r\n### **FastAPI와 PostgreSQL을 연동하는 가장 쉬운 방법! 🚀**\r\n\r\n안녕하세요! 이번에는 **FastAPI**와 **PostgreSQL**을 연결하는 방법을 쉽게 설명해드릴게요.  \r\n혹시 **FastAPI**를 처음 써보신다면? 너무 걱정하지 마세요! 차근차근 따라오시면 금방 이해하실 거예요. 😃\r\n\r\n---\r\n\r\n## **1. 프로젝트 기본 구조 만들기**\r\n\r\n먼저, 프로젝트 폴더를 아래처럼 구성해볼게요.\r\n\r\n```\r\nbackend/\r\n├── .env                  # 환경 변수 설정\r\n├── requirements.txt      # 필요한 패키지 리스트\r\n└── app/\r\n    ├── main.py          # FastAPI 메인 애플리케이션\r\n    ├── config.py        # 설정 파일\r\n    ├── models/          # SQLAlchemy 모델 파일들\r\n    ├── schemas/         # Pydantic 스키마 파일들\r\n    ├── api/             # API 엔드포인트\r\n    └── db/              # 데이터베이스 관련 파일\r\n```\r\n\r\n이제 하나씩 설정해봅시다! 😊\r\n\r\n---\r\n\r\n## **2. 필요한 패키지 설치하기**\r\n\r\nFastAPI와 PostgreSQL을 연동하려면 몇 가지 패키지가 필요해요.  \r\n먼저 `requirements.txt` 파일을 만들어서 아래 내용을 추가해주세요.\r\n\r\n```text\r\nfastapi==0.104.1\r\nuvicorn==0.24.0\r\nsqlalchemy==2.0.23\r\npydantic==2.5.2\r\npydantic-settings==2.1.0\r\npython-dotenv==1.0.0\r\npsycopg2-binary==2.9.9\r\n```\r\n\r\n그리고 터미널에서 아래 명령어를 실행하면 한 번에 설치됩니다! 🎯\r\n\r\n```bash\r\npip install -r requirements.txt\r\n```\r\n\r\n---\r\n\r\n## **3. 환경 변수 설정 (.env 파일 만들기)**\r\n\r\nPostgreSQL 연결 정보를 `.env` 파일에 저장할 거예요.  \r\n`.env` 파일을 만들어서 아래 내용을 입력해주세요.\r\n\r\n```env\r\nPOSTGRES_USER=postgres\r\nPOSTGRES_PASSWORD=postgres123\r\nPOSTGRES_HOST=localhost\r\nPOSTGRES_PORT=5432\r\nPOSTGRES_DB=gig_crawler\r\n```\r\n\r\n**✅ 왜 이렇게 설정할까요?**  \r\n👉 보안과 유지보수를 위해 코드에 직접 DB 정보를 적지 않고 환경 변수로 관리하는 게 좋아요!\r\n\r\n---\r\n\r\n## **4. 설정 관리 (config.py 만들기)**\r\n\r\n이제 `.env` 파일에 있는 환경 변수를 가져올 수 있도록 `config.py` 파일을 만들어봅시다.\r\n\r\n```python\r\nfrom pydantic_settings import BaseSettings\r\n\r\nclass Settings(BaseSettings):\r\n    POSTGRES_USER: str\r\n    POSTGRES_PASSWORD: str\r\n    POSTGRES_HOST: str\r\n    POSTGRES_PORT: str\r\n    POSTGRES_DB: str\r\n\r\n    class Config:\r\n        env_file = \".env\"\r\n\r\nsettings = Settings()\r\n```\r\n\r\n이제 `settings.POSTGRES_USER` 이런 식으로 환경 변수를 불러올 수 있어요! 🎉\r\n\r\n---\r\n\r\n## **5. 데이터베이스 연결 설정 (database.py 만들기)**\r\n\r\n이제 본격적으로 **PostgreSQL**과 연결할 `database.py` 파일을 만들어볼게요.\r\n\r\n```python\r\nfrom sqlalchemy import create_engine\r\nfrom sqlalchemy.ext.declarative import declarative_base\r\nfrom sqlalchemy.orm import sessionmaker\r\nfrom ..config import settings\r\nfrom urllib.parse import quote_plus\r\n\r\n# URL 인코딩을 사용한 DB 연결 문자열 만들기\r\npassword = quote_plus(settings.POSTGRES_PASSWORD)\r\nDATABASE_URL = f\"postgresql://{settings.POSTGRES_USER}:{password}@{settings.POSTGRES_HOST}:{settings.POSTGRES_PORT}/{settings.POSTGRES_DB}\"\r\n\r\n# SQLAlchemy 엔진 생성\r\nengine = create_engine(\r\n    DATABASE_URL,\r\n    echo=True,  # SQL 쿼리 로그 확인용\r\n    pool_pre_ping=True,\r\n    connect_args={'application_name': 'gig_crawler'}\r\n)\r\n\r\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\r\nBase = declarative_base()\r\n```\r\n\r\n---\r\n\r\n## **6. FastAPI 앱 설정 (main.py 만들기)**\r\n\r\n이제 FastAPI 서버를 실행할 `main.py` 파일을 만들어봅시다.\r\n\r\n```python\r\nfrom fastapi import FastAPI\r\nfrom fastapi.middleware.cors import CORSMiddleware\r\n\r\napp = FastAPI(title=\"Project Crawler API\")\r\n\r\n# CORS 설정\r\napp.add_middleware(\r\n    CORSMiddleware,\r\n    allow_origins=[\"http://localhost:3000\"],  # 프론트엔드 도메인\r\n    allow_credentials=True,\r\n    allow_methods=[\"*\"],\r\n    allow_headers=[\"*\"],\r\n)\r\n\r\n@app.get(\"/\")\r\ndef read_root():\r\n    return {\"message\": \"Hello, FastAPI & PostgreSQL!\"}\r\n```\r\n\r\n이제 `http://localhost:8000/` 에 접속하면 **\"Hello, FastAPI & PostgreSQL!\"** 메시지가 나와야 해요!\r\n\r\n---\r\n\r\n## **7. PostgreSQL 데이터베이스 생성하기**\r\n\r\n이제 PostgreSQL에서 사용할 데이터베이스를 만들어봅시다.  \r\n터미널에서 `psql`을 실행한 다음, 아래 명령어를 입력하세요.\r\n\r\n```sql\r\nCREATE DATABASE gig_crawler WITH ENCODING 'UTF8' LC_COLLATE='Korean_Korea.949' LC_CTYPE='Korean_Korea.949';\r\n```\r\n\r\n이제 데이터베이스가 준비되었습니다! 🎉\r\n\r\n---\r\n\r\n## **8. 서버 실행하기! 🚀**\r\n\r\n이제 마지막 단계입니다!  \r\n아래 명령어를 실행해서 FastAPI 서버를 켜볼까요?\r\n\r\n```bash\r\nuvicorn app.main:app --reload\r\n```\r\n\r\n터미널에 **\"Uvicorn running on http://127.0.0.1:8000\"** 이런 메시지가 나오면 성공이에요!  \r\n이제 브라우저에서 `http://127.0.0.1:8000/docs` 로 들어가면 API 문서도 자동으로 생성된 걸 확인할 수 있어요.\r\n\r\n---\r\n\r\n## **마무리 🎯**\r\n\r\n지금까지 **FastAPI + PostgreSQL** 연동을 설정해봤어요!  \r\n혹시 실행하면서 문제가 생기면 아래 사항을 다시 확인해보세요.\r\n\r\n✅ `.env` 파일을 UTF-8로 저장했나요?  \r\n✅ PostgreSQL 서버가 실행 중인가요?  \r\n✅ 데이터베이스가 생성되어 있나요?  \r\n✅ `uvicorn app.main:app --reload` 명령어를 실행했나요?\r\n\r\n이제 여기에 **CRUD API**를 추가해서 원하는 프로젝트를 만들어보세요! 💡  \r\n궁금한 점 있으면 언제든지 질문하세요~! 😃\r\n",
   "date": "2025-02-12",
   "category": "backend",
   "tags": [
@@ -25,105 +27,105 @@
           "text": "title: \"FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"FastAPI와 PostgreSQL을 사용하여 국내외 프리랜서 플랫폼의 프로젝트 정보를 수집하는 크롤러 시스템 구축 프로젝트\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"비동기처리\",\n\"데이터수집\",\n\"실시간처리\",\n]\nthumbnail: \"/images/fastapi.png\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "프로젝트 시작하기: FastAPI와 PostgreSQL 환경 설정 🛠️",
           "level": 1,
           "isMainTopic": true,
-          "position": 223.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "FastAPI와 PostgreSQL을 연동하는 가장 쉬운 방법! 🚀",
           "level": 3,
           "isMainTopic": false,
-          "position": 332.9609375
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. 프로젝트 기본 구조 만들기",
           "level": 2,
           "isMainTopic": true,
-          "position": 454.59375
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "2. 필요한 패키지 설치하기",
           "level": 2,
           "isMainTopic": true,
-          "position": 831.453125
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "3. 환경 변수 설정 (.env 파일 만들기)",
           "level": 2,
           "isMainTopic": true,
-          "position": 1250.6875
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "4. 설정 관리 (config.py 만들기)",
           "level": 2,
           "isMainTopic": true,
-          "position": 1580.2734375
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "5. 데이터베이스 연결 설정 (database.py 만들기)",
           "level": 2,
           "isMainTopic": true,
-          "position": 2101.6953125
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "URL 인코딩을 사용한 DB 연결 문자열 만들기",
           "level": 1,
           "isMainTopic": true,
-          "position": 2326.9921875
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "SQLAlchemy 엔진 생성",
           "level": 1,
           "isMainTopic": true,
-          "position": 2464.3515625
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "6. FastAPI 앱 설정 (main.py 만들기)",
           "level": 2,
           "isMainTopic": true,
-          "position": 2769.125
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "CORS 설정",
           "level": 1,
           "isMainTopic": true,
-          "position": 2971.0078125
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "7. PostgreSQL 데이터베이스 생성하기",
           "level": 2,
           "isMainTopic": true,
-          "position": 3347.1953125
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "8. 서버 실행하기! 🚀",
           "level": 2,
           "isMainTopic": true,
-          "position": 3603.1171875
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "마무리 🎯",
           "level": 2,
           "isMainTopic": true,
-          "position": 3881.484375
+          "position": 700
         }
       ]
     },
@@ -137,28 +139,28 @@
           "text": "title: \"Outsourcing Crawler Development using FastAPI and PostgreSQL\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"Building a crawler system to collect project information from domestic and international freelance platforms using FastAPI and PostgreSQL\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"async processing\",\n\"data collection\",\n\"real-time processing\",\n]\nthumbnail: \"/images/fastapi.png\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Getting Started: Setting up FastAPI and PostgreSQL Environment 🛠️",
           "level": 1,
           "isMainTopic": true,
-          "position": 242.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "The Easiest Way to Connect FastAPI and PostgreSQL! 🚀",
           "level": 3,
           "isMainTopic": false,
-          "position": 330.9609375
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. Creating Basic Project Structure",
           "level": 2,
           "isMainTopic": true,
-          "position": 451.59375
+          "position": 150
         }
       ]
     }

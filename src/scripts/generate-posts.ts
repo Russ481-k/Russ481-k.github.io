@@ -7,13 +7,12 @@ import { remark } from "remark";
 import html from "remark-html";
 import { JSDOM } from "jsdom";
 import matter from "gray-matter";
-import puppeteer from "puppeteer";
 
 // getAllPosts 함수 추가
 async function getAllPosts(): Promise<
   Omit<Post, "tocItems" | "imageHeights">[]
 > {
-  const postsDirectory = path.join(process.cwd(), "posts/ko"); // ko 디렉토리 사용
+  const postsDirectory = path.join(process.cwd(), "posts/ko");
   const fileNames = await fs.readdir(postsDirectory);
 
   return Promise.all(
@@ -21,17 +20,22 @@ async function getAllPosts(): Promise<
       .filter((fileName) => fileName.endsWith(".md"))
       .map(async (fileName) => {
         const id = fileName.replace(/\.md$/, "");
-        const koPath = path.join(process.cwd(), "posts/ko", fileName);
-        const enPath = path.join(process.cwd(), "posts/en", fileName);
-
-        const koContent = await fs.readFile(koPath, "utf8");
-        const enContent = await fs.readFile(enPath, "utf8");
+        const koContent = await fs.readFile(
+          path.join(postsDirectory, fileName),
+          "utf8"
+        );
+        const enContent = await fs.readFile(
+          path.join(process.cwd(), "posts/en", fileName),
+          "utf8"
+        );
 
         const koMatter = matter(koContent);
         const enMatter = matter(enContent);
 
         return {
           id,
+          title: koMatter.data.title,
+          content: koMatter.content,
           date: koMatter.data.date,
           category: koMatter.data.category?.toLowerCase() || "uncategorized",
           tags: koMatter.data.tags || [],
@@ -78,71 +82,28 @@ renderer.image = (href, title, text) => {
   />`;
 };
 
-async function calculateActualHeights(
-  content: string
-): Promise<Map<string, { top: number; height: number; type: string }>> {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+async function calculateActualHeights(content: string) {
+  const dom = new JSDOM(content);
+  const doc = dom.window.document;
 
-  const html = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <style>
-          ${fsSync.readFileSync(
-            path.join(process.cwd(), "src/app/Styles/post_modal.scss"),
-            "utf8"
-          )}
-        </style>
-      </head>
-      <body>
-        <div class="modal_content">
-          <div class="content_wrapper">
-            <article class="content">${content}</article>
-          </div>
-        </div>
-      </body>
-    </html>
-  `;
+  const elements = doc.querySelectorAll("h1, h2, h3, h4, h5, h6, img");
+  const heights = new Map();
 
-  await page.setContent(html);
+  elements.forEach((el, index) => {
+    const type = el.tagName.toLowerCase();
+    const id = type === "img" ? `img-${index}` : `heading-${index}`;
 
-  // 모든 이미지가 로드될 때까지 대기
-  await page.evaluate(() => {
-    return Promise.all(
-      Array.from(document.images)
-        .filter((img) => !img.complete)
-        .map(
-          (img) =>
-            new Promise((resolve) => {
-              img.onload = img.onerror = resolve;
-            })
-        )
-    );
-  });
+    // 기본 높이 계산
+    const computedHeight = type === "img" ? 400 : 50; // 예상 높이
 
-  // 헤딩과 이미지의 위치 계산
-  const heights = await page.evaluate(() => {
-    const elements = document.querySelectorAll("h1, h2, h3, h4, h5, h6, img");
-    const result = new Map();
-
-    elements.forEach((el, index) => {
-      const rect = el.getBoundingClientRect();
-      const type = el.tagName.toLowerCase();
-      const id = type === "img" ? `img-${index}` : `heading-${index}`;
-
-      result.set(id, {
-        top: rect.top,
-        height: rect.height,
-        type,
-      });
+    heights.set(id, {
+      top: index * computedHeight, // 예상 위치
+      height: computedHeight,
+      type,
     });
-
-    return Object.fromEntries(result);
   });
 
-  await browser.close();
-  return new Map(Object.entries(heights));
+  return heights;
 }
 
 async function processMarkdown(content: string): Promise<{

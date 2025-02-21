@@ -14,10 +14,13 @@ export default function ClientLayout({
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    useTranslation(lang, "common").then(({ i18n }) => {
-      i18n.changeLanguage(lang);
+    const initI18n = async () => {
+      const { i18n } = await useTranslation(lang, "common");
+      await i18n.changeLanguage(lang);
       setInitialized(true);
-    });
+    };
+
+    initI18n().catch(console.error);
   }, [lang]);
 
   if (!initialized) return null;

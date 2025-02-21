@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_13",
+  "title": "Entasis Engine - 데이터 수집기 구현",
+  "content": "\r\n안녕하세요, 여러분! 😊\r\n\r\n오늘은 **Spring Boot** 기반으로 바이낸스의 현물과 선물 시장 데이터를 실시간으로 수집하여 **TimescaleDB**에 저장하는 데이터 수집기를 어떻게 구현했는지 공유해보려고 해요. 이 글에서는 시스템 아키텍처, API 호출 방법, 서비스 레이어 구성, 에러 처리 등 다양한 구현 포인트를 친근하게 풀어드릴게요!\r\n\r\n---\r\n\r\n## 시스템 개요\r\n\r\n우리 시스템은 아래와 같은 역할을 수행합니다:\r\n\r\n- **데이터 수집기**\r\n  - **BinanceExchange**: 바이낸스의 **현물 시장** 데이터(BTC/USDT, ETH/USDT) 수집\r\n  - **BinanceFuturesExchange**: 바이낸스의 **선물 시장** 데이터(BTCUSDT, ETHUSDT) 수집\r\n- **API 호출**: `WebClient`를 사용해 바이낸스 API를 호출합니다.\r\n- **서비스 레이어**\r\n  - `SpotMarketDataServiceImpl`: 현물 시장 데이터 처리\r\n  - `FuturesMarketDataServiceImpl`: 선물 시장 데이터 처리\r\n  - `ExchangeRepository`: 거래소 정보 관리 및 TimescaleDB 저장\r\n- **데이터 수집 주기**: 1초 간격으로 데이터 수집 및 저장\r\n- **에러 처리**: API 응답 null 체크, 예외 처리 및 로깅, 데이터베이스 제약조건 관련 오류 처리\r\n\r\n---\r\n\r\n## 주요 구현 포인트\r\n\r\n### 1. WebClient를 활용한 API 호출\r\n\r\n비동기 방식의 **WebClient**를 이용하여 바이낸스 API로부터 데이터를 호출합니다. 아래는 `BinanceExchange` 클래스의 예시입니다:\r\n\r\n```java\r\n@Service\r\npublic class BinanceExchange {\r\n\r\n    private static final Logger log = LoggerFactory.getLogger(BinanceExchange.class);\r\n    private final WebClient webClient = WebClient.create(\"https://api.binance.com\");\r\n\r\n    public Mono<JsonNode> getSpotMarketData(String symbol) {\r\n        return webClient.get()\r\n            .uri(uriBuilder -> uriBuilder\r\n                .path(\"/api/v3/ticker/price\")\r\n                .queryParam(\"symbol\", symbol)\r\n                .build())\r\n            .retrieve()\r\n            .bodyToMono(JsonNode.class)\r\n            .doOnError(e -> log.error(\"API 호출 중 에러 발생: {}\", e.getMessage()))\r\n            .onErrorReturn(null);\r\n    }\r\n}\r\n```\r\n\r\n> **Tip:** 에러 발생 시 로깅을 통해 문제를 쉽게 파악할 수 있고, `onErrorReturn(null)`을 사용해 null 체크로 이어지는 처리를 간편하게 했어요. 😉\r\n\r\n---\r\n\r\n### 2. 서비스 레이어 구현\r\n\r\n각 시장별 데이터를 처리하는 서비스 레이어에서는 API로부터 받은 데이터를 가공 후 저장하는 역할을 합니다. 예를 들어, `SpotMarketDataServiceImpl` 클래스는 다음과 같이 구성됩니다:\r\n\r\n```java\r\n@Service\r\npublic class SpotMarketDataServiceImpl implements SpotMarketDataService {\r\n\r\n    private static final Logger log = LoggerFactory.getLogger(SpotMarketDataServiceImpl.class);\r\n    private final BinanceExchange binanceExchange;\r\n    private final ExchangeRepository exchangeRepository;\r\n\r\n    public SpotMarketDataServiceImpl(BinanceExchange binanceExchange,\r\n                                     ExchangeRepository exchangeRepository) {\r\n        this.binanceExchange = binanceExchange;\r\n        this.exchangeRepository = exchangeRepository;\r\n    }\r\n\r\n    @Override\r\n    public void collectData() {\r\n        // 현물 시장: BTC/USDT, ETH/USDT 데이터를 수집합니다.\r\n        List<String> symbols = Arrays.asList(\"BTCUSDT\", \"ETHUSDT\");\r\n        for (String symbol : symbols) {\r\n            try {\r\n                JsonNode response = binanceExchange.getSpotMarketData(symbol).block();\r\n                if (response != null) {\r\n                    String price = response.get(\"price\").asText();\r\n                    ExchangeData data = new ExchangeData(symbol, price, LocalDateTime.now());\r\n                    exchangeRepository.save(data);\r\n                    log.info(\"데이터 저장 성공 - {}: {}\", symbol, price);\r\n                } else {\r\n                    log.warn(\"API 응답이 null입니다. symbol: {}\", symbol);\r\n                }\r\n            } catch (Exception e) {\r\n                log.error(\"데이터 수집 중 예외 발생: {}\", e.getMessage());\r\n            }\r\n        }\r\n    }\r\n}\r\n```\r\n\r\n> **참고:** 선물 시장 데이터 처리는 `FuturesMarketDataServiceImpl`에서 비슷한 로직으로 구현되며, 바이낸스의 선물 API 엔드포인트를 호출하도록 구성되어 있어요.\r\n\r\n---\r\n\r\n### 3. 스케줄러를 통한 주기적 데이터 수집\r\n\r\n데이터를 1초 간격으로 수집하기 위해 Spring의 `@Scheduled` 애노테이션을 활용했습니다:\r\n\r\n```java\r\n@Component\r\npublic class MarketDataScheduler {\r\n\r\n    private final SpotMarketDataService spotMarketDataService;\r\n    private final FuturesMarketDataService futuresMarketDataService;\r\n\r\n    public MarketDataScheduler(SpotMarketDataService spotMarketDataService,\r\n                               FuturesMarketDataService futuresMarketDataService) {\r\n        this.spotMarketDataService = spotMarketDataService;\r\n        this.futuresMarketDataService = futuresMarketDataService;\r\n    }\r\n\r\n    @Scheduled(fixedRate = 1000)\r\n    public void collectMarketData() {\r\n        spotMarketDataService.collectData();\r\n        futuresMarketDataService.collectData();\r\n    }\r\n}\r\n```\r\n\r\n> **노하우:** 주기적 데이터 수집 시, 반드시 예외 처리를 통해 스케줄러가 중단되지 않도록 하는 것이 중요해요. 😊\r\n\r\n---\r\n\r\n## 에러 처리 및 로깅\r\n\r\n- **API 응답 null 체크:** 응답이 null인 경우 적절한 경고 로깅을 수행하여 문제를 파악합니다.\r\n- **예외 처리:** try-catch 블록을 통해 예외 발생 시 로깅하고, 시스템 전체에 영향이 없도록 합니다.\r\n- **데이터베이스 제약조건 오류:** 저장 시 발생할 수 있는 제약조건 오류를 사전에 확인하고, 필요한 경우 트랜잭션 처리를 통해 안정성을 보장합니다.\r\n\r\n---\r\n\r\n## 마치며\r\n\r\n이와 같이 구현함으로써 **바이낸스**의 현물 및 선물 시장 데이터를 실시간으로 안정적으로 수집하고 **TimescaleDB**에 저장할 수 있게 되었어요. 이 과정에서 `WebClient`, 스케줄링, 에러 처리, 로깅 등 다양한 Spring Boot의 기능들을 활용하였는데요, 여러분의 프로젝트에도 도움이 되길 바랍니다! 🚀\r\n\r\n궁금한 점이나 의견이 있으시면 언제든지 편하게 이야기해 주세요! 좋은 하루 보내세요! 😄\r\n\r\nHappy Coding!\r\n",
   "date": "2025-02-14",
   "category": "projects",
   "tags": [
@@ -23,56 +25,56 @@
           "text": "title: \"Entasis Engine - 데이터 수집기 구현\"\ndate: \"2025-02-14\"\ncategory: \"projects\"\ndescription: \"가상자산 거래소 데이터 수집 및 저장 시스템 구현 가이드\"\ntags:\n[\n\"spring-boot\",\n\"binance-api\",\n\"webclient\",\n\"scheduler\",\n\"timescaledb\",\n\"data-collection\",\n\"error-handling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "시스템 개요",
           "level": 2,
           "isMainTopic": true,
-          "position": 325.2421875
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "주요 구현 포인트",
           "level": 2,
           "isMainTopic": true,
-          "position": 642.5703125
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. WebClient를 활용한 API 호출",
           "level": 3,
           "isMainTopic": false,
-          "position": 691.484375
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "2. 서비스 레이어 구현",
           "level": 3,
           "isMainTopic": false,
-          "position": 1333.609375
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "3. 스케줄러를 통한 주기적 데이터 수집",
           "level": 3,
           "isMainTopic": false,
-          "position": 2226.984375
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "에러 처리 및 로깅",
           "level": 2,
           "isMainTopic": true,
-          "position": 2850.8046875
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "마치며",
           "level": 2,
           "isMainTopic": true,
-          "position": 3015.6328125
+          "position": 350
         }
       ]
     },
@@ -86,28 +88,28 @@
           "text": "title: \"Entasis Engine - Data Collector Implementation\"\ndate: \"2025-02-14\"\ncategory: \"projects\"\ndescription: \"Guide for implementing cryptocurrency exchange data collection and storage system\"\ntags:\n[\n\"spring-boot\",\n\"binance-api\",\n\"webclient\",\n\"scheduler\",\n\"timescaledb\",\n\"data-collection\",\n\"error-handling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "System Overview",
           "level": 2,
           "isMainTopic": true,
-          "position": 317.7421875
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "Key Implementation Points",
           "level": 2,
           "isMainTopic": true,
-          "position": 622.5703125
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. API Calls Using WebClient",
           "level": 3,
           "isMainTopic": false,
-          "position": 669.984375
+          "position": 150
         }
       ]
     }

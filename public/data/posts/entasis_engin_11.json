@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_11",
+  "title": "Entasis Engine - 운영 매뉴얼",
+  "content": "\r\n# 금융 데이터 분석 시스템 운영 매뉴얼\r\n\r\n## 📊 시스템 모니터링\r\n\r\n### 1. 핵심 메트릭 모니터링\r\n\r\n```yaml\r\nmonitoring_metrics:\r\n  system_health:\r\n    - cpu_usage:\r\n        warning: 70%\r\n        critical: 85%\r\n    - memory_usage:\r\n        warning: 75%\r\n        critical: 90%\r\n    - disk_usage:\r\n        warning: 80%\r\n        critical: 90%\r\n\r\n  application_metrics:\r\n    - api_latency:\r\n        p95_threshold: 500ms\r\n        p99_threshold: 1000ms\r\n    - error_rate:\r\n        threshold: 0.1%\r\n    - request_rate:\r\n        min: 100/s\r\n        max: 10000/s\r\n```\r\n\r\n### 2. 알림 설정\r\n\r\n```yaml\r\nalert_rules:\r\n  high_priority:\r\n    - condition: \"error_rate > 1%\"\r\n      duration: \"5m\"\r\n      channels:\r\n        - slack: \"#alerts-critical\"\r\n        - pagerduty: \"trading-team\"\r\n\r\n  medium_priority:\r\n    - condition: \"api_latency_p95 > 500ms\"\r\n      duration: \"10m\"\r\n      channels:\r\n        - slack: \"#alerts-warning\"\r\n\r\n  low_priority:\r\n    - condition: \"cpu_usage > 70%\"\r\n      duration: \"15m\"\r\n      channels:\r\n        - slack: \"#alerts-info\"\r\n```\r\n\r\n## 🔄 일상 운영 작업\r\n\r\n### 1. 데이터베이스 관리\r\n\r\n```sql\r\n-- 일일 유지보수 쿼리\r\n-- 1. 인덱스 재구축\r\nREINDEX DATABASE trading_db;\r\n\r\n-- 2. 통계 업데이트\r\nANALYZE VERBOSE;\r\n\r\n-- 3. 오래된 데이터 아카이빙\r\nINSERT INTO market_data_archive\r\nSELECT * FROM market_data\r\nWHERE timestamp < NOW() - INTERVAL '3 months';\r\n\r\nDELETE FROM market_data\r\nWHERE timestamp < NOW() - INTERVAL '3 months';\r\n```\r\n\r\n### 2. 로그 관리\r\n\r\n```yaml\r\nlog_rotation:\r\n  application_logs:\r\n    retention: 30d\r\n    max_size: 10GB\r\n    compression: true\r\n\r\n  system_logs:\r\n    retention: 90d\r\n    max_size: 50GB\r\n    compression: true\r\n\r\n  audit_logs:\r\n    retention: 365d\r\n    max_size: 100GB\r\n    compression: true\r\n    encryption: true\r\n```\r\n\r\n## 🚨 장애 대응\r\n\r\n### 1. 장애 레벨 정의\r\n\r\n```yaml\r\nincident_levels:\r\n  p1_critical:\r\n    description: \"서비스 완전 중단\"\r\n    response_time: \"15분 이내\"\r\n    resolution_time: \"2시간 이내\"\r\n    escalation:\r\n      - devops_lead\r\n      - system_architect\r\n      - cto\r\n\r\n  p2_major:\r\n    description: \"주요 기능 장애\"\r\n    response_time: \"30분 이내\"\r\n    resolution_time: \"4시간 이내\"\r\n    escalation:\r\n      - devops_engineer\r\n      - team_lead\r\n\r\n  p3_minor:\r\n    description: \"부분 기능 장애\"\r\n    response_time: \"2시간 이내\"\r\n    resolution_time: \"8시간 이내\"\r\n    escalation:\r\n      - on_call_engineer\r\n```\r\n\r\n### 2. 장애 대응 절차\r\n\r\n```mermaid\r\ngraph TD\r\n    A[장애 감지] --> B{심각도 판단}\r\n    B -->|P1| C[긴급 대응팀 소집]\r\n    B -->|P2| D[담당자 할당]\r\n    B -->|P3| E[일반 처리]\r\n    C --> F[상황 보고]\r\n    D --> F\r\n    E --> F\r\n    F --> G[원인 분석]\r\n    G --> H[해결 방안 실행]\r\n    H --> I[복구 확인]\r\n    I --> J[사후 분석]\r\n```\r\n\r\n## 💾 백업 및 복구\r\n\r\n### 1. 백업 정책\r\n\r\n```yaml\r\nbackup_policy:\r\n  full_backup:\r\n    schedule: \"매주 일요일 01:00\"\r\n    retention: \"4주\"\r\n    type: \"스냅샷\"\r\n\r\n  incremental_backup:\r\n    schedule: \"매일 01:00\"\r\n    retention: \"7일\"\r\n    type: \"WAL\"\r\n\r\n  transaction_logs:\r\n    archive: true\r\n    retention: \"30일\"\r\n```\r\n\r\n### 2. 복구 절차\r\n\r\n```bash\r\n#!/bin/bash\r\n\r\n# 1. 서비스 중지\r\nkubectl scale deployment trading-api --replicas=0\r\n\r\n# 2. 데이터베이스 복구\r\npg_restore -h $DB_HOST -U $DB_USER -d trading_db backup.dump\r\n\r\n# 3. 데이터 정합성 검증\r\npython verify_data_integrity.py\r\n\r\n# 4. 서비스 재시작\r\nkubectl scale deployment trading-api --replicas=3\r\n\r\n# 5. 상태 확인\r\nkubectl get pods -l app=trading-api\r\n```\r\n\r\n## 🔒 보안 관리\r\n\r\n### 1. 접근 제어\r\n\r\n```yaml\r\naccess_control:\r\n  production:\r\n    ssh_access:\r\n      - role: admin\r\n        auth: public_key + 2FA\r\n      - role: developer\r\n        auth: public_key + 2FA\r\n        restrictions:\r\n          - read_only\r\n          - audit_logging\r\n\r\n    kubernetes:\r\n      - role: cluster-admin\r\n        users: [\"devops-lead\"]\r\n      - role: developer\r\n        users: [\"dev-team\"]\r\n        namespace: [\"dev\", \"staging\"]\r\n```\r\n\r\n### 2. 보안 점검\r\n\r\n```yaml\r\nsecurity_checks:\r\n  daily:\r\n    - vulnerability_scan\r\n    - auth_log_review\r\n    - failed_login_attempts\r\n\r\n  weekly:\r\n    - dependency_updates\r\n    - ssl_cert_check\r\n    - firewall_rule_review\r\n\r\n  monthly:\r\n    - penetration_test\r\n    - security_policy_review\r\n    - access_right_audit\r\n```\r\n\r\n## 📈 성능 최적화\r\n\r\n### 1. 캐시 관리\r\n\r\n```yaml\r\ncache_strategy:\r\n  market_data:\r\n    ttl: 60s\r\n    max_size: 1GB\r\n    eviction: LRU\r\n\r\n  user_portfolio:\r\n    ttl: 300s\r\n    max_size: 500MB\r\n    eviction: LFU\r\n\r\n  trading_signals:\r\n    ttl: 30s\r\n    max_size: 200MB\r\n    eviction: FIFO\r\n```\r\n\r\n### 2. 리소스 최적화\r\n\r\n```yaml\r\nresource_optimization:\r\n  autoscaling:\r\n    cpu_target: 70%\r\n    memory_target: 75%\r\n    min_replicas: 3\r\n    max_replicas: 10\r\n\r\n  pod_resources:\r\n    requests:\r\n      cpu: 1\r\n      memory: 2Gi\r\n    limits:\r\n      cpu: 2\r\n      memory: 4Gi\r\n```\r\n\r\n이 문서는 금융 데이터 분석 시스템의 운영 및 유지보수 가이드를 제공합니다. 시스템의 안정적인 운영을 위해 지속적으로 업데이트됩니다. 🚀\r\n",
   "date": "2025-02-13",
   "category": "projects",
   "tags": [
@@ -23,175 +25,175 @@
           "text": "title: \"Entasis Engine - 운영 매뉴얼\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 운영 및 유지보수 가이드\"\ntags:\n[\n\"operation\",\n\"maintenance\",\n\"monitoring\",\n\"troubleshooting\",\n\"backup\",\n\"recovery\",\n\"sre\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 시스템 운영 매뉴얼",
           "level": 1,
           "isMainTopic": true,
-          "position": 191.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 시스템 모니터링",
           "level": 2,
           "isMainTopic": true,
-          "position": 240.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. 핵심 메트릭 모니터링",
           "level": 3,
           "isMainTopic": false,
-          "position": 292.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "2. 알림 설정",
           "level": 3,
           "isMainTopic": false,
-          "position": 798.71875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "🔄 일상 운영 작업",
           "level": 2,
           "isMainTopic": true,
-          "position": 1261.09375
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "1. 데이터베이스 관리",
           "level": 3,
           "isMainTopic": false,
-          "position": 1312.5078125
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "2. 로그 관리",
           "level": 3,
           "isMainTopic": false,
-          "position": 1678.8359375
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "🚨 장애 대응",
           "level": 2,
           "isMainTopic": true,
-          "position": 2088.546875
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "1. 장애 레벨 정의",
           "level": 3,
           "isMainTopic": false,
-          "position": 2139.9609375
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "2. 장애 대응 절차",
           "level": 3,
           "isMainTopic": false,
-          "position": 2690.9140625
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "💾 백업 및 복구",
           "level": 2,
           "isMainTopic": true,
-          "position": 2998.5546875
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "1. 백업 정책",
           "level": 3,
           "isMainTopic": false,
-          "position": 3049.96875
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "2. 복구 절차",
           "level": 3,
           "isMainTopic": false,
-          "position": 3422.9609375
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "1. 서비스 중지",
           "level": 1,
           "isMainTopic": true,
-          "position": 3532.625
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "2. 데이터베이스 복구",
           "level": 1,
           "isMainTopic": true,
-          "position": 3634.875
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "3. 데이터 정합성 검증",
           "level": 1,
           "isMainTopic": true,
-          "position": 3737.125
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "4. 서비스 재시작",
           "level": 1,
           "isMainTopic": true,
-          "position": 3839.375
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "5. 상태 확인",
           "level": 1,
           "isMainTopic": true,
-          "position": 3941.625
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "🔒 보안 관리",
           "level": 2,
           "isMainTopic": true,
-          "position": 4089.1015625
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "1. 접근 제어",
           "level": 3,
           "isMainTopic": false,
-          "position": 4140.515625
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "2. 보안 점검",
           "level": 3,
           "isMainTopic": false,
-          "position": 4643.40625
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "📈 성능 최적화",
           "level": 2,
           "isMainTopic": true,
-          "position": 5034.7578125
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "1. 캐시 관리",
           "level": 3,
           "isMainTopic": false,
-          "position": 5086.171875
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "2. 리소스 최적화",
           "level": 3,
           "isMainTopic": false,
-          "position": 5477.5234375
+          "position": 1200
         }
       ]
     },
@@ -205,28 +207,28 @@
           "text": "title: \"Entasis Engine - Operations Manual\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Operations and maintenance guide for digital asset data analysis system\"\ntags:\n[\n\"operation\",\n\"maintenance\",\n\"monitoring\",\n\"troubleshooting\",\n\"backup\",\n\"recovery\",\n\"sre\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis System Operations Manual",
           "level": 1,
           "isMainTopic": true,
-          "position": 187.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📊 System Monitoring",
           "level": 2,
           "isMainTopic": true,
-          "position": 234.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "1. Core Metrics Monitoring",
           "level": 3,
           "isMainTopic": false,
-          "position": 286.15625
+          "position": 150
         }
       ]
     }

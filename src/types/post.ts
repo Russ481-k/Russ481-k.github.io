@@ -19,8 +19,10 @@ export interface Post {
   id: string;
   date: string;
   category: (typeof CATEGORY_ORDER)[number];
+  content: string;
   tags: string[];
   thumbnail: string;
+  title: string;
   translations: {
     ko: Translation;
     en: Translation;

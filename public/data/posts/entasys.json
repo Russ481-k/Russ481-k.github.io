@@ -1,5 +1,7 @@
 {
   "id": "entasys",
+  "title": "Entasis",
+  "content": "\r\n## 1. 프로젝트 개요\r\n\r\n### 프로젝트 명\r\n\r\n- ENTASYS (엔타시스) SIEM 솔루션\r\n\r\n### 프로젝트 목적\r\n\r\n- 기업의 보안 위협을 실시간으로 탐지하고 대응하는 통합 보안 관제 시스템 구축\r\n- 다양한 보안 장비와 시스템의 로그를 수집/분석하여 보안 위협 조기 발견\r\n- AI/ML 기반의 지능형 위협 탐지 및 대응 체계 구현\r\n\r\n### 핵심 기능\r\n\r\n1. 통합 로그 수집 및 관리\r\n\r\n   - 방화벽, IPS, WAF 등 보안장비 로그 수집\r\n   - 서버, 네트워크 장비, 애플리케이션 로그 통합\r\n   - 실시간 로그 정규화 및 상관분석\r\n   - 로그 원본 보관 및 위/변조 방지\r\n\r\n2. 실시간 위협 탐지\r\n\r\n   - AI 기반 이상행위 탐지(User/Entity Behavior Analytics)\r\n   - 알려진/알려지지 않은 위협 탐지\r\n   - 취약점 스캐닝 및 모니터링\r\n   - 실시간 위협 인텔리전스 연동\r\n\r\n3. 보안 대시보드 및 분석\r\n\r\n   - 직관적인 통합 보안 대시보드\r\n   - 실시간 보안 이벤트 모니터링\r\n   - 드릴다운 분석 및 포렌식 기능\r\n   - 맞춤형 보고서 자동 생성\r\n\r\n4. 자동화된 대응체계\r\n   - 위협 탐지시 자동 차단/격리\r\n   - 담당자 알림 및 티켓팅 연동\r\n   - 플레이북 기반 대응 자동화\r\n   - 보안장비 연동 및 제어\r\n\r\n## 시스템 아키텍처\r\n\r\n### 수집 계층\r\n\r\n- 분산 로그 수집기(Collector) 구조\r\n- 초당 50,000 EPS 처리 성능\r\n- 로그 필터링 및 정규화\r\n- 데이터 압축 및 암호화 전송\r\n\r\n### 저장 계층\r\n\r\n- 분산 스토리지(Elasticsearch) 기반\r\n- 실시간/장기 보관 이원화\r\n- 데이터 암호화 저장\r\n- 자동 백업 및 복구\r\n\r\n### 분석 계층\r\n\r\n- 실시간 상관분석 엔진\r\n- ML 기반 이상행위 탐지\r\n- 위협 인텔리전스 연동\r\n- 규칙 기반 탐지\r\n\r\n### 표현 계층\r\n\r\n- HTML5 기반 웹 콘솔\r\n- 반응형 대시보드\r\n- 드릴다운 분석 도구\r\n- 맞춤형 보고서\r\n\r\n## 구축 요구사항\r\n\r\n### 하드웨어\r\n\r\n- 수집서버: 최소 8코어/32GB RAM\r\n- 분석서버: 최소 16코어/64GB RAM\r\n- 저장장치: 최소 10TB SSD\r\n\r\n### 소프트웨어\r\n\r\n- OS: RHEL/CentOS 7 이상\r\n- Docker/Kubernetes\r\n- Elasticsearch 7.x\r\n- Node.js 16.x\r\n\r\n## 향후 로드맵\r\n\r\n### 2024년 하반기\r\n\r\n- AI 엔진 고도화\r\n- 클라우드 네이티브 아키텍처 전환\r\n- 글로벌 위협 인텔리전스 연동 확대\r\n\r\n### 2025년\r\n\r\n- 제로트러스트 보안 프레임워크 적용\r\n- 블록체인 기반 로그 무결성 검증\r\n- 멀티클라우드 통합 모니터링\r\n",
   "date": "2024-03-20",
   "category": "projects",
   "tags": [
@@ -26,112 +28,112 @@
           "text": "title: \"Entasis\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"가상자산 거래소 개발\"\ntags:\n[\n\"React\",\n\"Express\",\n\"MySQL\",\n\"Web3.js\",\n\"AWS\",\n\"Ganache\",\n\"Truffle\",\n\"ERC20\",\n\"MetaMask\",\n\"Figma\",\n]\nthumbnail: \"/images/entasis/entasis_circuit.gif\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "1. 프로젝트 개요",
           "level": 2,
           "isMainTopic": true,
-          "position": 162.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "프로젝트 명",
           "level": 3,
           "isMainTopic": false,
-          "position": 211.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "프로젝트 목적",
           "level": 3,
           "isMainTopic": false,
-          "position": 291.6796875
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "핵심 기능",
           "level": 3,
           "isMainTopic": false,
-          "position": 410.6171875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "시스템 아키텍처",
           "level": 2,
           "isMainTopic": true,
-          "position": 974.25
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "수집 계층",
           "level": 3,
           "isMainTopic": false,
-          "position": 1023.1640625
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "저장 계층",
           "level": 3,
           "isMainTopic": false,
-          "position": 1161.6015625
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "분석 계층",
           "level": 3,
           "isMainTopic": false,
-          "position": 1300.0390625
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "표현 계층",
           "level": 3,
           "isMainTopic": false,
-          "position": 1438.4765625
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "구축 요구사항",
           "level": 2,
           "isMainTopic": true,
-          "position": 1578.109375
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "하드웨어",
           "level": 3,
           "isMainTopic": false,
-          "position": 1627.0234375
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "소프트웨어",
           "level": 3,
           "isMainTopic": false,
-          "position": 1745.9609375
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "향후 로드맵",
           "level": 2,
           "isMainTopic": true,
-          "position": 1882.59375
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "2024년 하반기",
           "level": 3,
           "isMainTopic": false,
-          "position": 1931.5078125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "2025년",
           "level": 3,
           "isMainTopic": false,
-          "position": 2050.4453125
+          "position": 750
         }
       ]
     },
@@ -145,112 +147,112 @@
           "text": "title: \"Entasis\"\ndate: \"2024-03-20\"\ncategory: \"projects\"\ndescription: \"Development of Virtual Asset Exchange\"\ntags:\n[\n\"React\",\n\"Express\",\n\"MySQL\",\n\"Web3.js\",\n\"AWS\",\n\"Ganache\",\n\"Truffle\",\n\"ERC20\",\n\"MetaMask\",\n\"Figma\",\n]\nthumbnail: \"/images/entasis/entasis_circuit.gif\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "1. Project Overview",
           "level": 2,
           "isMainTopic": true,
-          "position": 159.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "Project Name",
           "level": 3,
           "isMainTopic": false,
-          "position": 207.2421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "Project Purpose",
           "level": 3,
           "isMainTopic": false,
-          "position": 284.6796875
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "Core Features",
           "level": 3,
           "isMainTopic": false,
-          "position": 399.1171875
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "System Architecture",
           "level": 2,
           "isMainTopic": true,
-          "position": 941.25
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "Collection Layer",
           "level": 3,
           "isMainTopic": false,
-          "position": 988.6640625
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "Storage Layer",
           "level": 3,
           "isMainTopic": false,
-          "position": 1121.6015625
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "Analysis Layer",
           "level": 3,
           "isMainTopic": false,
-          "position": 1254.5390625
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "Presentation Layer",
           "level": 3,
           "isMainTopic": false,
-          "position": 1387.4765625
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "Implementation Requirements",
           "level": 2,
           "isMainTopic": true,
-          "position": 1521.609375
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "Hardware",
           "level": 3,
           "isMainTopic": false,
-          "position": 1569.0234375
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "Software",
           "level": 3,
           "isMainTopic": false,
-          "position": 1683.4609375
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "Future Roadmap",
           "level": 2,
           "isMainTopic": true,
-          "position": 1817.59375
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "2024 Second Half",
           "level": 3,
           "isMainTopic": false,
-          "position": 1865.0078125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "2025",
           "level": 3,
           "isMainTopic": false,
-          "position": 1979.4453125
+          "position": 750
         }
       ]
     }

@@ -1,5 +1,7 @@
 {
   "id": "about-me",
+  "title": "개발자 윤수빈입니다.",
+  "content": "\r\n## About Me\r\n\r\n금융공학과 데이터 처리에 특화된 풀스택 엔지니어입니다. Next.js, Python, Java를 활용하여 대규모 데이터 처리 및 금융 시스템을 구축하며, 알고리즘 최적화와 안정적인 웹 솔루션 개발에 중점을 두고 있습니다.\r\n\r\n다양한 프로젝트 경험을 통해 복잡한 데이터 구조를 효율적으로 처리하고, 금융 모델을 실시간으로 구현하는 데 강점을 가지고 있습니다. 금융 플랫폼 개발에 있어 혁신적인 접근을 추구하며, 확장성 있는 웹 애플리케이션과 데이터를 활용한 전략적 시스템 구축을 통해 비즈니스 가치를 창출하고자 합니다.\r\n\r\n## Contact\r\n\r\n- **Location**: Busan, South Korea\r\n- **E-mail**: yunsubin481@gmail.com\r\n- **Notion**: [Bin's Space](https://binsspace.notion.site/Bin-s-Space)\r\n\r\n## Research & Studies\r\n\r\n- **금융공학**: 투자론, 거시경제, 회계 연구\r\n- **컴퓨터 과학**: 자료구조, 네트워크, 데이터베이스, AI 연구\r\n- **블록체인**: STO 기반 증권형 토큰 거래소, NFT 거래소 프로젝트 연구\r\n\r\n## Education\r\n\r\n- **2018 - 2019**: Bachelor of Business (독학학위제)\r\n  - 금융공학, 투자론, 거시경제, 회계 전공\r\n- **2019 - 2024**: Bachelor of Computer Science (독학학위제)\r\n  - 자료구조, 네트워크, 데이터베이스, AI 전공\r\n- **2022 - 2023**: BootCamp BlockChain (CodeStates)\r\n  - STO, NFT, DeFi 플랫폼 개발 과정 수료\r\n\r\n## Experience\r\n\r\n### VISIONTEC (FullStack Developer)\r\n\r\n**2024-05 ~ 2025-01**\r\n\r\n- 삼성화재, 한양대학교 데이터 관리 시스템 총괄\r\n- 실시간 데이터 처리 속도 최적화 (800건/초 → 25,000건/초)\r\n- 대규모 로그 데이터 분석 및 시각화 시스템 구축\r\n- Next.js, PostgreSQL, Prisma, Docker, ChakraUI\r\n- 기획 및 디자인 포함 기여도 100%\r\n\r\n**2024-01 ~ 2024-05**\r\n\r\n- 금융 ERP 시스템 마이그레이션\r\n- 레거시 시스템을 React와 Flask 기반으로 현대화\r\n- 실시간 금융 데이터 처리 및 성능 최적화\r\n- React, ChakraUI, Python Flask, MariaDB\r\n- 기여도 35%\r\n\r\n### IDINO (FullStack Developer)\r\n\r\n**2024-05 ~ 현재**\r\n\r\n- 학사행정 시스템 개발\r\n- 마산대학교, 강원대학교, 여주대학교 장학생 관리 시스템 개발\r\n- 기업 협업 및 자문 결재 시스템 개발\r\n- 교원 평가 관리 및 학생 평가 관리 시스템 구축\r\n- JAVA JSP, WebSquare, MySQL\r\n- 기여도 35%\r\n\r\n### KT, NAVER, KAKAO 연동 (Frontend Developer)\r\n\r\n**2023-09 ~ 2024-01**\r\n\r\n- 문자 대량 발송 상담 챗봇 관리 시스템 개발\r\n- Redux를 이용한 사용자 데이터 및 권한 관리 기능 구현\r\n- KT API를 통한 대량 문자 발송 기능 구현\r\n- 카카오톡 알림톡 대량 발송 기능 구현\r\n- 챗봇 시나리오 및 템플릿 관리 기능 구현\r\n- 기여도 90%\r\n\r\n### NICEpay, 반응형 웹 (Frontend Developer)\r\n\r\n**2023-04 ~ 2023-09**\r\n\r\n- 전자문서 및 전자고지 발송 기능 개발\r\n- NICEpay 결제 기능 연동\r\n- 통계 페이지 및 반응형 웹 기능 개발\r\n\r\n![Profile Image 3](/images/profile3.jpg)\r\n\r\n## Core Competencies\r\n\r\n### 금융 시스템 개발 전문성\r\n\r\n복잡한 금융 모델을 실시간으로 처리하고 시각화하는 시스템 개발에 전문성을 보유하고 있습니다.\r\n대규모 데이터 처리 시스템 구축 경험을 통해, 금융 시장의 빠른 변화에 대응할 수 있는 확장성 있는 솔루션을 제공합니다.\r\n\r\n### 지속적인 학습과 혁신\r\n\r\n금융 시장과 기술의 빠른 변화에 대응하기 위해 끊임없이 새로운 것을 학습하고 있습니다.\r\n독학으로 금융공학과 컴퓨터 과학을 습득했으며, 블록체인과 같은 최신 기술을 금융 시스템에 접목시키는 시도를 지속하고 있습니다.\r\n\r\n### 문제 해결 능력\r\n\r\n복잡한 금융 데이터 처리 문제를 분석하고 효과적인 해결책을 찾아내는 과정에서 큰 성과를 이루어냈습니다.\r\n삼성화재와 한양대학교 프로젝트에서 데이터 처리 속도를 획기적으로 향상시킨 경험은 문제 해결에 대한 자신감을 더해주었습니다.\r\n\r\n### 건강한 신체 관리\r\n\r\n지속적인 성과 창출을 위해 체력 관리를 중요하게 생각합니다.\r\n주 5회, 하루 1시간 30분의 꾸준한 운동을 통해 업무 효율성과 집중력을 유지하고 있습니다.\r\n",
   "date": "2024-03-20",
   "category": "about",
   "tags": [
@@ -20,70 +22,70 @@
           "text": "title: \"개발자 윤수빈입니다.\"\ndate: \"2024-03-20\"\ncategory: \"about\"\ndescription: \"Hello! 👋 I am a Full Stack Engineer specialized in Financial Engineering and Data Processing.\"\ntags: [\"Full Stack\", \"Next.js\", \"Python\", \"Financial\"]\nthumbnail: \"/images/profile1.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "About Me",
           "level": 2,
           "isMainTopic": true,
-          "position": 165.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "Contact",
           "level": 2,
           "isMainTopic": true,
-          "position": 346.15625
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "Research & Studies",
           "level": 2,
           "isMainTopic": true,
-          "position": 468.984375
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "Education",
           "level": 2,
           "isMainTopic": true,
-          "position": 594.8125
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "Experience",
           "level": 2,
           "isMainTopic": true,
-          "position": 778.140625
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "VISIONTEC (FullStack Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 825.5546875
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "IDINO (FullStack Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1162.4921875
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "KT, NAVER, KAKAO 연동 (Frontend Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1372.9296875
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "NICEpay, 반응형 웹 (Frontend Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1584.8671875
+          "position": 450
         },
         {
           "id": "heading-10",
@@ -97,28 +99,28 @@
           "text": "금융 시스템 개발 전문성",
           "level": 3,
           "isMainTopic": false,
-          "position": 1774
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "지속적인 학습과 혁신",
           "level": 3,
           "isMainTopic": false,
-          "position": 1821.4140625
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "문제 해결 능력",
           "level": 3,
           "isMainTopic": false,
-          "position": 1920.8515625
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "건강한 신체 관리",
           "level": 3,
           "isMainTopic": false,
-          "position": 2020.2890625
+          "position": 700
         }
       ]
     },
@@ -132,70 +134,70 @@
           "text": "title: \"I am Developer Subin Yun\"\ndate: \"2024-03-20\"\ncategory: \"about\"\ndescription: \"Hello! 👋 I am a Full Stack Engineer specialized in Financial Engineering and Data Processing.\"\ntags: [\"Full Stack\", \"Next.js\", \"Python\", \"Financial\"]\nthumbnail: \"/images/profile1.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "About Me",
           "level": 2,
           "isMainTopic": true,
-          "position": 163.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "Contact",
           "level": 2,
           "isMainTopic": true,
-          "position": 358.15625
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "Research & Studies",
           "level": 2,
           "isMainTopic": true,
-          "position": 480.984375
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "Education",
           "level": 2,
           "isMainTopic": true,
-          "position": 603.8125
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "Experience",
           "level": 2,
           "isMainTopic": true,
-          "position": 782.140625
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "VISIONTEC (FullStack Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 829.5546875
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "IDINO (FullStack Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1159.4921875
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "KT, NAVER, KAKAO Integration (Frontend Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1363.9296875
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "NICEpay, Responsive Web (Frontend Developer)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1568.3671875
+          "position": 450
         },
         {
           "id": "heading-10",
@@ -209,33 +211,33 @@
           "text": "Financial System Development Expertise",
           "level": 3,
           "isMainTopic": false,
-          "position": 1753
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "Continuous Learning and Innovation",
           "level": 3,
           "isMainTopic": false,
-          "position": 1800.4140625
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "Problem-Solving Ability",
           "level": 3,
           "isMainTopic": false,
-          "position": 1914.8515625
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "Physical Health Management",
           "level": 3,
           "isMainTopic": false,
-          "position": 2029.2890625
+          "position": 700
         }
       ]
     }
   },
   "imageHeights": {
-    "img-10": 18.5
+    "img-10": 400
   }
 }

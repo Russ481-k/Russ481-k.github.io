@@ -71,7 +71,7 @@ export const PostContainer = ({
     }
 
     return searchFiltered;
-  }, [externalPosts, debouncedSearchTerm, selectedCategory]);
+  }, [externalPosts, debouncedSearchTerm, selectedCategory, i18n.language]);
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +85,6 @@ export const PostContainer = ({
     // 필터링된 포스트가 없으면 모든 포스트의 키워드 사용
     const postsToUse =
       filteredPosts.length === 0 ? externalPosts : filteredPosts;
-
     const currentLang = i18n.language as "ko" | "en";
     const texts = postsToUse.map((post) => {
       const translation =
@@ -93,7 +92,7 @@ export const PostContainer = ({
       return `${translation?.title} ${translation?.content} ${translation?.description}`;
     });
     onSearchResults(texts);
-  }, [filteredPosts, externalPosts, onSearchResults]);
+  }, [filteredPosts, externalPosts, onSearchResults, i18n.language]);
 
   return (
     <div className="post_container">

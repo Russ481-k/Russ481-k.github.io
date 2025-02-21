@@ -38,6 +38,8 @@ export const Header = () => {
 
   const experiencePost: Post = {
     id: "experience",
+    title: t("header.nav.work"),
+    content: t("experience.content"),
     date: new Date().toISOString(),
     category: "about",
     tags: [],

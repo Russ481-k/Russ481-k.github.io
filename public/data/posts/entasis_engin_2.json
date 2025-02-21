@@ -1,5 +1,7 @@
 {
   "id": "entasis_engin_2",
+  "title": "Entasis Engine - 개발 계획서",
+  "content": "\r\n# 금융 데이터 분석 및 AI 연동 솔루션 개발 계획서\r\n\r\n## 📋 개발 단계 개요\r\n\r\n### Phase 1: 기반 시스템 구축 (1-2개월)\r\n\r\n1. **데이터 파이프라인 구축**\r\n\r\n   - PostgreSQL + TimescaleDB 설정\r\n   - 기본 데이터 스키마 설계\r\n   - CCXT 연동 및 데이터 수집 구현\r\n\r\n2. **백엔드 기초 시스템**\r\n\r\n   - Java + Spring Boot 기반 서버 구축\r\n   - RESTful API 설계\r\n   - 기본 인증/인가 시스템 구현\r\n\r\n3. **프론트엔드 기초 작업**\r\n   - Next.js 프로젝트 설정\r\n   - 기본 UI/UX 디자인\r\n   - 컴포넌트 구조 설계\r\n\r\n### Phase 2: 핵심 기능 개발 (2-3개월)\r\n\r\n1. **데이터 처리 시스템**\r\n\r\n   - Apache Spark 기반 데이터 처리\r\n   - 실시간 데이터 스트리밍\r\n   - 데이터 정제 및 가공\r\n\r\n2. **AI 모델 개발**\r\n\r\n   - 기본 예측 모델 구현\r\n   - 백테스팅 시스템 구축\r\n   - 모델 평가 및 최적화\r\n\r\n3. **시각화 구현**\r\n   - D3.js 차트 구현\r\n   - 실시간 데이터 업데이트\r\n   - 대시보드 레이아웃 구성\r\n\r\n### Phase 3: 고도화 및 최적화 (2-3개월)\r\n\r\n1. **AI 모델 고도화**\r\n\r\n   - 고급 예측 모델 추가\r\n   - 앙상블 모델 구현\r\n   - 실시간 학습 시스템\r\n\r\n2. **성능 최적화**\r\n\r\n   - 데이터베이스 쿼리 최적화\r\n   - 캐싱 시스템 구현\r\n   - 분산 처리 시스템 보완\r\n\r\n3. **사용자 경험 개선**\r\n   - 반응형 UI 개선\r\n   - 성능 모니터링 추가\r\n   - 에러 처리 강화\r\n\r\n## 🎯 스프린트 계획\r\n\r\n### Sprint 1-2: 기반 시스템 (4주)\r\n\r\n- 데이터베이스 설계 및 구축\r\n- 기본 API 서버 구현\r\n- 프론트엔드 프로젝트 셋업\r\n\r\n### Sprint 3-4: 데이터 파이프라인 (4주)\r\n\r\n- CCXT 연동 구현\r\n- 실시간 데이터 수집\r\n- 기본 데이터 처리 로직\r\n\r\n### Sprint 5-6: AI 모델 기초 (4주)\r\n\r\n- 기본 예측 모델 개발\r\n- 백테스팅 시스템\r\n- 모델 평가 지표\r\n\r\n### Sprint 7-8: 시각화 (4주)\r\n\r\n- 차트 컴포넌트 개발\r\n- 대시보드 구현\r\n- 실시간 업데이트\r\n\r\n### Sprint 9-10: 고도화 (4주)\r\n\r\n- AI 모델 개선\r\n- 성능 최적화\r\n- UI/UX 개선\r\n\r\n## 📊 마일스톤\r\n\r\n### Milestone 1: MVP 출시 (2개월)\r\n\r\n- [x] 기본 데이터 수집\r\n- [x] 단순 예측 모델\r\n- [x] 기본 대시보드\r\n\r\n### Milestone 2: 베타 버전 (4개월)\r\n\r\n- [ ] 실시간 데이터 처리\r\n- [ ] 고급 AI 모델\r\n- [ ] 완성된 대시보드\r\n\r\n### Milestone 3: 정식 버전 (6개월)\r\n\r\n- [ ] 전체 기능 구현\r\n- [ ] 성능 최적화\r\n- [ ] 안정성 확보\r\n\r\n## 🛠 개발 환경 및 도구\r\n\r\n### 개발 환경\r\n\r\n- IDE: IntelliJ IDEA, VSCode\r\n- 버전 관리: Git, GitHub\r\n- CI/CD: Jenkins, GitHub Actions\r\n\r\n### 모니터링 도구\r\n\r\n- 서버 모니터링: Prometheus, Grafana\r\n- 로그 관리: ELK Stack\r\n- 성능 분석: JProfiler\r\n\r\n## 📈 품질 관리\r\n\r\n### 테스트 전략\r\n\r\n1. 단위 테스트\r\n\r\n   - JUnit, Jest\r\n   - 코드 커버리지 80% 이상\r\n\r\n2. 통합 테스트\r\n\r\n   - API 테스트\r\n   - E2E 테스트\r\n\r\n3. 성능 테스트\r\n   - 부하 테스트\r\n   - 스트레스 테스트\r\n\r\n### 코드 품질\r\n\r\n- ESLint, Prettier\r\n- SonarQube\r\n- 코드 리뷰 프로세스\r\n\r\n## 🔄 배포 전략\r\n\r\n### 개발 환경\r\n\r\n- 로컬 개발 환경\r\n- 개발 서버\r\n- 스테이징 서버\r\n- 프로덕션 서버\r\n\r\n### 배포 프로세스\r\n\r\n1. 개발 환경 테스트\r\n2. 스테이징 환경 검증\r\n3. 프로덕션 배포\r\n4. 모니터링 및 롤백 계획\r\n\r\n## ⚠️ 리스크 관리\r\n\r\n### 예상 리스크\r\n\r\n1. 데이터 처리 지연\r\n2. AI 모델 정확도\r\n3. 시스템 확장성\r\n\r\n### 대응 전략\r\n\r\n1. 캐싱 및 최적화\r\n2. 모델 평가 및 개선\r\n3. 확장 가능한 아키텍처\r\n\r\n## 📝 문서화\r\n\r\n### 개발 문서\r\n\r\n- API 문서 (Swagger)\r\n- 시스템 아키텍처 문서\r\n- 데이터베이스 스키마\r\n\r\n### 사용자 문서\r\n\r\n- 사용자 가이드\r\n- API 사용 설명서\r\n- 트러블슈팅 가이드\r\n\r\n이 프로젝트는 6개월간의 개발 기간을 통해 완성도 높은 금융 데이터 분석 시스템을 구축하는 것을 목표로 합니다. 각 단계별 세부 계획을 통해 체계적인 개발을 진행하겠습니다. 🚀\r\n",
   "date": "2025-02-11",
   "category": "projects",
   "tags": [
@@ -23,217 +25,217 @@
           "text": "title: \"Entasis Engine - 개발 계획서\"\ndate: \"2025-02-11\"\ncategory: \"projects\"\ndescription: \"현물/선물/옵션 데이터 통합 분석 시스템 개발 로드맵\"\ntags:\n[\n\"Project Management\",\n\"Development Planning\",\n\"System Design\",\n\"Roadmap\",\n\"Agile\",\n\"Sprint\",\n\"Milestone\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "금융 데이터 분석 및 AI 연동 솔루션 개발 계획서",
           "level": 1,
           "isMainTopic": true,
-          "position": 191.828125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📋 개발 단계 개요",
           "level": 2,
           "isMainTopic": true,
-          "position": 240.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "Phase 1: 기반 시스템 구축 (1-2개월)",
           "level": 3,
           "isMainTopic": false,
-          "position": 292.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "Phase 2: 핵심 기능 개발 (2-3개월)",
           "level": 3,
           "isMainTopic": false,
-          "position": 666.59375
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "Phase 3: 고도화 및 최적화 (2-3개월)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1041.03125
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "🎯 스프린트 계획",
           "level": 2,
           "isMainTopic": true,
-          "position": 1416.6640625
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "Sprint 1-2: 기반 시스템 (4주)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1468.078125
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "Sprint 3-4: 데이터 파이프라인 (4주)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1587.015625
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "Sprint 5-6: AI 모델 기초 (4주)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1705.953125
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "Sprint 7-8: 시각화 (4주)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1824.890625
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "Sprint 9-10: 고도화 (4주)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1943.828125
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "📊 마일스톤",
           "level": 2,
           "isMainTopic": true,
-          "position": 2063.9609375
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "Milestone 1: MVP 출시 (2개월)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2115.375
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "Milestone 2: 베타 버전 (4개월)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2234.3125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "Milestone 3: 정식 버전 (6개월)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2353.25
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "🛠 개발 환경 및 도구",
           "level": 2,
           "isMainTopic": true,
-          "position": 2473.3828125
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "개발 환경",
           "level": 3,
           "isMainTopic": false,
-          "position": 2524.796875
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "모니터링 도구",
           "level": 3,
           "isMainTopic": false,
-          "position": 2641.734375
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "📈 품질 관리",
           "level": 2,
           "isMainTopic": true,
-          "position": 2761.8671875
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "테스트 전략",
           "level": 3,
           "isMainTopic": false,
-          "position": 2813.28125
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "코드 품질",
           "level": 3,
           "isMainTopic": false,
-          "position": 3128.21875
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "🔄 배포 전략",
           "level": 2,
           "isMainTopic": true,
-          "position": 3246.3515625
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "개발 환경",
           "level": 3,
           "isMainTopic": false,
-          "position": 3297.765625
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "배포 프로세스",
           "level": 3,
           "isMainTopic": false,
-          "position": 3436.203125
+          "position": 1200
         },
         {
           "id": "heading-25",
           "text": "⚠️ 리스크 관리",
           "level": 2,
           "isMainTopic": true,
-          "position": 3575.8359375
+          "position": 1250
         },
         {
           "id": "heading-26",
           "text": "예상 리스크",
           "level": 3,
           "isMainTopic": false,
-          "position": 3627.25
+          "position": 1300
         },
         {
           "id": "heading-27",
           "text": "대응 전략",
           "level": 3,
           "isMainTopic": false,
-          "position": 3746.1875
+          "position": 1350
         },
         {
           "id": "heading-28",
           "text": "📝 문서화",
           "level": 2,
           "isMainTopic": true,
-          "position": 3866.3203125
+          "position": 1400
         },
         {
           "id": "heading-29",
           "text": "개발 문서",
           "level": 3,
           "isMainTopic": false,
-          "position": 3917.734375
+          "position": 1450
         },
         {
           "id": "heading-30",
           "text": "사용자 문서",
           "level": 3,
           "isMainTopic": false,
-          "position": 4036.671875
+          "position": 1500
         }
       ]
     },
@@ -247,217 +249,217 @@
           "text": "title: \"Entasis Engine - Development Plan\"\ndate: \"2025-02-11\"\ncategory: \"projects\"\ndescription: \"Development roadmap for integrated spot/futures/options data analysis system\"\ntags:\n[\n\"Project Management\",\n\"Development Planning\",\n\"System Design\",\n\"Roadmap\",\n\"Agile\",\n\"Sprint\",\n\"Milestone\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
           "level": 2,
           "isMainTopic": true,
-          "position": 29.9140625
+          "position": 0
         },
         {
           "id": "heading-1",
           "text": "Financial Data Analysis and AI Integration Solution Development Plan",
           "level": 1,
           "isMainTopic": true,
-          "position": 187.328125
+          "position": 50
         },
         {
           "id": "heading-2",
           "text": "📋 Development Phase Overview",
           "level": 2,
           "isMainTopic": true,
-          "position": 234.7421875
+          "position": 100
         },
         {
           "id": "heading-3",
           "text": "Phase 1: Foundation System Setup (1-2 months)",
           "level": 3,
           "isMainTopic": false,
-          "position": 286.15625
+          "position": 150
         },
         {
           "id": "heading-4",
           "text": "Phase 2: Core Feature Development (2-3 months)",
           "level": 3,
           "isMainTopic": false,
-          "position": 647.09375
+          "position": 200
         },
         {
           "id": "heading-5",
           "text": "Phase 3: Advanced Development and Optimization (2-3 months)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1008.03125
+          "position": 250
         },
         {
           "id": "heading-6",
           "text": "🎯 Sprint Plan",
           "level": 2,
           "isMainTopic": true,
-          "position": 1370.1640625
+          "position": 300
         },
         {
           "id": "heading-7",
           "text": "Sprint 1-2: Foundation System (4 weeks)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1421.578125
+          "position": 350
         },
         {
           "id": "heading-8",
           "text": "Sprint 3-4: Data Pipeline (4 weeks)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1536.015625
+          "position": 400
         },
         {
           "id": "heading-9",
           "text": "Sprint 5-6: AI Model Basics (4 weeks)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1650.453125
+          "position": 450
         },
         {
           "id": "heading-10",
           "text": "Sprint 7-8: Visualization (4 weeks)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1764.890625
+          "position": 500
         },
         {
           "id": "heading-11",
           "text": "Sprint 9-10: Enhancement (4 weeks)",
           "level": 3,
           "isMainTopic": false,
-          "position": 1879.328125
+          "position": 550
         },
         {
           "id": "heading-12",
           "text": "📊 Milestones",
           "level": 2,
           "isMainTopic": true,
-          "position": 1994.9609375
+          "position": 600
         },
         {
           "id": "heading-13",
           "text": "Milestone 1: MVP Release (2 months)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2046.375
+          "position": 650
         },
         {
           "id": "heading-14",
           "text": "Milestone 2: Beta Version (4 months)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2160.8125
+          "position": 700
         },
         {
           "id": "heading-15",
           "text": "Milestone 3: Official Version (6 months)",
           "level": 3,
           "isMainTopic": false,
-          "position": 2275.25
+          "position": 750
         },
         {
           "id": "heading-16",
           "text": "🛠 Development Environment and Tools",
           "level": 2,
           "isMainTopic": true,
-          "position": 2390.8828125
+          "position": 800
         },
         {
           "id": "heading-17",
           "text": "Development Environment",
           "level": 3,
           "isMainTopic": false,
-          "position": 2442.296875
+          "position": 850
         },
         {
           "id": "heading-18",
           "text": "Monitoring Tools",
           "level": 3,
           "isMainTopic": false,
-          "position": 2556.734375
+          "position": 900
         },
         {
           "id": "heading-19",
           "text": "📈 Quality Management",
           "level": 2,
           "isMainTopic": true,
-          "position": 2672.3671875
+          "position": 950
         },
         {
           "id": "heading-20",
           "text": "Testing Strategy",
           "level": 3,
           "isMainTopic": false,
-          "position": 2723.78125
+          "position": 1000
         },
         {
           "id": "heading-21",
           "text": "Code Quality",
           "level": 3,
           "isMainTopic": false,
-          "position": 3029.21875
+          "position": 1050
         },
         {
           "id": "heading-22",
           "text": "🔄 Deployment Strategy",
           "level": 2,
           "isMainTopic": true,
-          "position": 3144.8515625
+          "position": 1100
         },
         {
           "id": "heading-23",
           "text": "Development Environment",
           "level": 3,
           "isMainTopic": false,
-          "position": 3196.265625
+          "position": 1150
         },
         {
           "id": "heading-24",
           "text": "Deployment Process",
           "level": 3,
           "isMainTopic": false,
-          "position": 3329.203125
+          "position": 1200
         },
         {
           "id": "heading-25",
           "text": "⚠️ Risk Management",
           "level": 2,
           "isMainTopic": true,
-          "position": 3463.3359375
+          "position": 1250
         },
         {
           "id": "heading-26",
           "text": "Anticipated Risks",
           "level": 3,
           "isMainTopic": false,
-          "position": 3514.75
+          "position": 1300
         },
         {
           "id": "heading-27",
           "text": "Response Strategy",
           "level": 3,
           "isMainTopic": false,
-          "position": 3629.1875
+          "position": 1350
         },
         {
           "id": "heading-28",
           "text": "📝 Documentation",
           "level": 2,
           "isMainTopic": true,
-          "position": 3744.8203125
+          "position": 1400
         },
         {
           "id": "heading-29",
           "text": "Development Documentation",
           "level": 3,
           "isMainTopic": false,
-          "position": 3796.234375
+          "position": 1450
         },
         {
           "id": "heading-30",
           "text": "User Documentation",
           "level": 3,
           "isMainTopic": false,
-          "position": 3910.671875
+          "position": 1500
         }
       ]
     }
