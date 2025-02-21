@@ -1,7 +1,7 @@
 {
   "id": "gig_crawler_3",
   "title": "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발",
-  "content": "<h1 id=\"heading-0\">database.py를 비동기 방식으로 변경하고 세션 관리 통합하기</h1>\n<p>안녕하세요, 여러분!<br>\n지난 번 글에서는 SQLAlchemy의 비동기 설정에 대해 알아보았는데요, 오늘은 그 연장선상에서 <strong>database.py</strong> 파일을 어떻게 비동기 방식으로 변경하고, <strong>세션 관리 코드를 통합</strong>할 수 있는지 자세히 설명해 드리려고 해요.</p>\n<p>비동기 처리를 도입하면 데이터베이스 작업 시 기다리는 시간을 줄이고, 여러 요청을 동시에 효율적으로 처리할 수 있답니다. 한 번 차근차근 살펴볼게요!</p>\n<hr>\n<h2 id=\"heading-1\">1. 왜 비동기 방식일까요?</h2>\n<p>먼저, 동기 방식과 비동기 방식의 차이를 간단히 짚어보겠습니다.</p>\n<ul>\n<li><strong>동기 방식:</strong><br>\n데이터베이스에 요청하면 결과가 반환될 때까지 기다리게 됩니다. 그래서 요청이 많은 경우, 한 작업이 끝날 때까지 다른 작업이 대기하는 문제가 발생할 수 있어요.</li>\n<li><strong>비동기 방식:</strong><br>\n데이터베이스 요청을 보낸 후에도 다른 작업을 동시에 진행할 수 있습니다. 즉, 한 작업이 끝날 때까지 기다리지 않고, 효율적으로 여러 작업을 처리할 수 있게 해줍니다.</li>\n</ul>\n<p>비동기 처리를 통해 우리 애플리케이션의 응답 속도와 동시 처리 능력을 크게 향상시킬 수 있어요!</p>\n<hr>\n<h2 id=\"heading-2\">2. 기존 동기 방식의 database.py</h2>\n<p>우리의 기존 <strong>database.py</strong>는 동기 방식으로 작성되어 있었어요. 예를 들어, 아래와 같이 데이터베이스 엔진과 세션을 생성했었죠:</p>\n<pre><code class=\"language-python\"># 기존 database.py (동기 방식)\nfrom sqlalchemy import create_engine\nfrom sqlalchemy.orm import sessionmaker\n\n<p>DATABASE_URL = \"postgresql://user:password@localhost/dbname\"</p><p>engine = create_engine(DATABASE_URL, echo=True)<br>SessionLocal = sessionmaker(bind=engine)</p></code><p><code class=\"language-python\">def get_db():<br>    db = SessionLocal()<br>    try:<br>        yield db<br>    finally:<br>        db.close()<br></code></p></pre><p></p><p>이 방식은 구현이 간단하다는 장점이 있지만, 많은 요청이 들어올 때는 <strong>I/O 블로킹</strong> 현상이 발생하여 성능 저하의 원인이 되곤 합니다.</p>\n<hr>\n<h2 id=\"heading-3\">3. 비동기 방식으로 변경하기</h2>\n<p>이제 비동기 방식으로 전환해 볼 건데요, 주요 변경 사항을 하나씩 짚어보겠습니다.</p>\n<h3 id=\"heading-4\">3.1. 비동기 엔진 생성하기</h3>\n<p>동기 방식 대신 <code>sqlalchemy.ext.asyncio</code> 모듈의 <code>create_async_engine</code> 함수를 사용하여 비동기 엔진을 생성합니다.<br>\n먼저 데이터베이스 URL에 <code>+asyncpg</code>를 추가해서 비동기 드라이버를 사용하도록 합니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy.ext.asyncio import create_async_engine\n\n</code><p><code class=\"language-python\">DATABASE_URL = \"postgresql+asyncpg://user:password@localhost/dbname\"<br>engine = create_async_engine(DATABASE_URL, echo=True)<br></code></p></pre><p></p><p>이제 엔진은 비동기 처리를 위해 최적화되어 준비되었어요!</p>\n<h3 id=\"heading-5\">3.2. 비동기 세션 생성 및 통합</h3>\n<p>다음으로, 비동기 세션을 생성하기 위해 <code>AsyncSession</code>과 <code>sessionmaker</code>를 활용합니다.<br>\n동기 코드와는 달리 <code>class_</code> 매개변수에 <code>AsyncSession</code>을 지정해주고, <code>expire_on_commit=False</code> 옵션을 사용해 세션의 만료를 방지합니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy.ext.asyncio import AsyncSession\nfrom sqlalchemy.orm import sessionmaker\n\n</code><p><code class=\"language-python\">async_session = sessionmaker(<br>    bind=engine,<br>    class_=AsyncSession,<br>    expire_on_commit=False<br>)<br></code></p></pre><p></p><p>이제 모든 데이터베이스 요청은 이 <strong>비동기 세션</strong>을 사용하게 됩니다.</p>\n<h3 id=\"heading-6\">3.3. 비동기 세션 관리 함수 구현하기</h3>\n<p>비동기 방식에서는 <code>async with</code> 구문을 활용해 세션을 안전하게 열고 닫는 것이 중요해요.<br>\n아래와 같이 <code>get_db</code> 함수를 비동기 제너레이터로 변경하여, 세션을 열고 사용 후 자동으로 종료하도록 구현할 수 있습니다.</p>\n<pre><code class=\"language-python\">async def get_db():\n    async with async_session() as session:\n        yield session\n</code></pre>\n<p>이 코드는 데이터베이스 작업이 끝나면 <code>async with</code> 블록이 종료되면서 세션을 깔끔하게 닫아줘요.<br>\n예외가 발생하더라도 자동으로 리소스가 정리되므로, 안정적인 운영이 가능합니다.</p>\n<hr>\n<h2 id=\"heading-7\">4. 통합 세션 관리의 장점</h2>\n<p>이번에 세션 관리 코드를 통합하면서 얻을 수 있는 이점은 다음과 같습니다:</p>\n<ul>\n<li><strong>코드의 간결함:</strong><br>\n모든 데이터베이스 접근 시 동일한 비동기 세션 관리 로직을 사용하므로, 코드가 훨씬 깔끔해졌습니다.</li>\n<li><strong>안정성 강화:</strong><br>\n<code>async with</code>를 사용하면, 예외가 발생해도 세션이 자동으로 종료되어 리소스 누수가 없어요.</li>\n<li><strong>유지보수 용이성:</strong><br>\n세션 관리 코드가 한 곳에 모여 있으니, 향후 수정이나 확장이 필요할 때 한 곳만 관리하면 됩니다.</li>\n</ul>\n<hr>\n<h2 id=\"heading-8\">5. 마치며</h2>\n<p>오늘은 <strong>database.py</strong> 파일을 비동기 방식으로 전환하고, 세션 관리 코드를 통합하는 방법을 살펴보았습니다.<br>\n이렇게 변경하면, 앞으로 API 서버나 크롤러에서 발생하는 데이터베이스 I/O 작업을 훨씬 더 효율적으로 처리할 수 있게 됩니다.</p>\n<p>다음 글에서는 <strong>프로젝트 모델 개선 및 필드 업데이트</strong>에 대해 다룰 예정이에요.</p>\n<p>여러분의 피드백이 큰 힘이 됩니다. 다음 글에서 또 만나요! 🚀</p>\n<hr>\n<p>이 글이 도움이 되었길 바라며, 앞으로도 지속적으로 개선된 기술들을 공유할 예정입니다. 감사합니다!</p>\n",
+  "content": "\n# database.py를 비동기 방식으로 변경하고 세션 관리 통합하기\n\n안녕하세요, 여러분!  \n지난 번 글에서는 SQLAlchemy의 비동기 설정에 대해 알아보았는데요, 오늘은 그 연장선상에서 **database.py** 파일을 어떻게 비동기 방식으로 변경하고, **세션 관리 코드를 통합**할 수 있는지 자세히 설명해 드리려고 해요.\n\n비동기 처리를 도입하면 데이터베이스 작업 시 기다리는 시간을 줄이고, 여러 요청을 동시에 효율적으로 처리할 수 있답니다. 한 번 차근차근 살펴볼게요!\n\n---\n\n## 1. 왜 비동기 방식일까요?\n\n먼저, 동기 방식과 비동기 방식의 차이를 간단히 짚어보겠습니다.\n\n- **동기 방식:**  \n  데이터베이스에 요청하면 결과가 반환될 때까지 기다리게 됩니다. 그래서 요청이 많은 경우, 한 작업이 끝날 때까지 다른 작업이 대기하는 문제가 발생할 수 있어요.\n- **비동기 방식:**  \n  데이터베이스 요청을 보낸 후에도 다른 작업을 동시에 진행할 수 있습니다. 즉, 한 작업이 끝날 때까지 기다리지 않고, 효율적으로 여러 작업을 처리할 수 있게 해줍니다.\n\n비동기 처리를 통해 우리 애플리케이션의 응답 속도와 동시 처리 능력을 크게 향상시킬 수 있어요!\n\n---\n\n## 2. 기존 동기 방식의 database.py\n\n우리의 기존 **database.py**는 동기 방식으로 작성되어 있었어요. 예를 들어, 아래와 같이 데이터베이스 엔진과 세션을 생성했었죠:\n\n```python\n# 기존 database.py (동기 방식)\nfrom sqlalchemy import create_engine\nfrom sqlalchemy.orm import sessionmaker\n\nDATABASE_URL = \"postgresql://user:password@localhost/dbname\"\n\nengine = create_engine(DATABASE_URL, echo=True)\nSessionLocal = sessionmaker(bind=engine)\n\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n```\n\n이 방식은 구현이 간단하다는 장점이 있지만, 많은 요청이 들어올 때는 **I/O 블로킹** 현상이 발생하여 성능 저하의 원인이 되곤 합니다.\n\n---\n\n## 3. 비동기 방식으로 변경하기\n\n이제 비동기 방식으로 전환해 볼 건데요, 주요 변경 사항을 하나씩 짚어보겠습니다.\n\n### 3.1. 비동기 엔진 생성하기\n\n동기 방식 대신 `sqlalchemy.ext.asyncio` 모듈의 `create_async_engine` 함수를 사용하여 비동기 엔진을 생성합니다.  \n먼저 데이터베이스 URL에 `+asyncpg`를 추가해서 비동기 드라이버를 사용하도록 합니다.\n\n```python\nfrom sqlalchemy.ext.asyncio import create_async_engine\n\nDATABASE_URL = \"postgresql+asyncpg://user:password@localhost/dbname\"\nengine = create_async_engine(DATABASE_URL, echo=True)\n```\n\n이제 엔진은 비동기 처리를 위해 최적화되어 준비되었어요!\n\n### 3.2. 비동기 세션 생성 및 통합\n\n다음으로, 비동기 세션을 생성하기 위해 `AsyncSession`과 `sessionmaker`를 활용합니다.  \n동기 코드와는 달리 `class_` 매개변수에 `AsyncSession`을 지정해주고, `expire_on_commit=False` 옵션을 사용해 세션의 만료를 방지합니다.\n\n```python\nfrom sqlalchemy.ext.asyncio import AsyncSession\nfrom sqlalchemy.orm import sessionmaker\n\nasync_session = sessionmaker(\n    bind=engine,\n    class_=AsyncSession,\n    expire_on_commit=False\n)\n```\n\n이제 모든 데이터베이스 요청은 이 **비동기 세션**을 사용하게 됩니다.\n\n### 3.3. 비동기 세션 관리 함수 구현하기\n\n비동기 방식에서는 `async with` 구문을 활용해 세션을 안전하게 열고 닫는 것이 중요해요.  \n아래와 같이 `get_db` 함수를 비동기 제너레이터로 변경하여, 세션을 열고 사용 후 자동으로 종료하도록 구현할 수 있습니다.\n\n```python\nasync def get_db():\n    async with async_session() as session:\n        yield session\n```\n\n이 코드는 데이터베이스 작업이 끝나면 `async with` 블록이 종료되면서 세션을 깔끔하게 닫아줘요.  \n예외가 발생하더라도 자동으로 리소스가 정리되므로, 안정적인 운영이 가능합니다.\n\n---\n\n## 4. 통합 세션 관리의 장점\n\n이번에 세션 관리 코드를 통합하면서 얻을 수 있는 이점은 다음과 같습니다:\n\n- **코드의 간결함:**  \n  모든 데이터베이스 접근 시 동일한 비동기 세션 관리 로직을 사용하므로, 코드가 훨씬 깔끔해졌습니다.\n- **안정성 강화:**  \n  `async with`를 사용하면, 예외가 발생해도 세션이 자동으로 종료되어 리소스 누수가 없어요.\n- **유지보수 용이성:**  \n  세션 관리 코드가 한 곳에 모여 있으니, 향후 수정이나 확장이 필요할 때 한 곳만 관리하면 됩니다.\n\n---\n\n## 5. 마치며\n\n오늘은 **database.py** 파일을 비동기 방식으로 전환하고, 세션 관리 코드를 통합하는 방법을 살펴보았습니다.  \n이렇게 변경하면, 앞으로 API 서버나 크롤러에서 발생하는 데이터베이스 I/O 작업을 훨씬 더 효율적으로 처리할 수 있게 됩니다.\n\n다음 글에서는 **프로젝트 모델 개선 및 필드 업데이트**에 대해 다룰 예정이에요.\n\n여러분의 피드백이 큰 힘이 됩니다. 다음 글에서 또 만나요! 🚀\n\n---\n\n이 글이 도움이 되었길 바라며, 앞으로도 지속적으로 개선된 기술들을 공유할 예정입니다. 감사합니다!\n",
   "date": "2025-02-12",
   "category": "backend",
   "tags": [
@@ -15,72 +15,120 @@
     "데이터수집",
     "실시간처리"
   ],
-  "description": "프리랜서 플랫폼의 프로젝트 정보를 실시간으로 수집하고 분석하는 크롤러를 만들어보았어요. FastAPI의 비동기 처리와 PostgreSQL의 강력한 기능을 활용해서 효율적인 시스템을 구축했답니다! 🚀",
   "thumbnail": "/images/fastapi.png",
-  "tocItems": [
-    {
-      "id": "heading-0",
-      "text": "database.py를 비동기 방식으로 변경하고 세션 관리 통합하기",
-      "level": 1,
-      "isMainTopic": true,
-      "position": 19.9140625
+  "translations": {
+    "ko": {
+      "title": "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발",
+      "description": "프리랜서 플랫폼의 프로젝트 정보를 실시간으로 수집하고 분석하는 크롤러를 만들어보았어요. FastAPI의 비동기 처리와 PostgreSQL의 강력한 기능을 활용해서 효율적인 시스템을 구축했답니다! 🚀",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"프리랜서 플랫폼의 프로젝트 정보를 실시간으로 수집하고 분석하는 크롤러를 만들어보았어요. FastAPI의 비동기 처리와 PostgreSQL의 강력한 기능을 활용해서 효율적인 시스템을 구축했답니다! 🚀\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"비동기처리\",\n\"데이터수집\",\n\"실시간처리\",\n]\nthumbnail: \"/images/fastapi.png\"</h2>\n<h1 id=\"heading-1\">database.py를 비동기 방식으로 변경하고 세션 관리 통합하기</h1>\n<p>안녕하세요, 여러분!<br>\n지난 번 글에서는 SQLAlchemy의 비동기 설정에 대해 알아보았는데요, 오늘은 그 연장선상에서 <strong>database.py</strong> 파일을 어떻게 비동기 방식으로 변경하고, <strong>세션 관리 코드를 통합</strong>할 수 있는지 자세히 설명해 드리려고 해요.</p>\n<p>비동기 처리를 도입하면 데이터베이스 작업 시 기다리는 시간을 줄이고, 여러 요청을 동시에 효율적으로 처리할 수 있답니다. 한 번 차근차근 살펴볼게요!</p>\n<hr>\n<h2 id=\"heading-2\">1. 왜 비동기 방식일까요?</h2>\n<p>먼저, 동기 방식과 비동기 방식의 차이를 간단히 짚어보겠습니다.</p>\n<ul>\n<li><strong>동기 방식:</strong><br>\n데이터베이스에 요청하면 결과가 반환될 때까지 기다리게 됩니다. 그래서 요청이 많은 경우, 한 작업이 끝날 때까지 다른 작업이 대기하는 문제가 발생할 수 있어요.</li>\n<li><strong>비동기 방식:</strong><br>\n데이터베이스 요청을 보낸 후에도 다른 작업을 동시에 진행할 수 있습니다. 즉, 한 작업이 끝날 때까지 기다리지 않고, 효율적으로 여러 작업을 처리할 수 있게 해줍니다.</li>\n</ul>\n<p>비동기 처리를 통해 우리 애플리케이션의 응답 속도와 동시 처리 능력을 크게 향상시킬 수 있어요!</p>\n<hr>\n<h2 id=\"heading-3\">2. 기존 동기 방식의 database.py</h2>\n<p>우리의 기존 <strong>database.py</strong>는 동기 방식으로 작성되어 있었어요. 예를 들어, 아래와 같이 데이터베이스 엔진과 세션을 생성했었죠:</p>\n<pre><code class=\"language-python\"># 기존 database.py (동기 방식)\nfrom sqlalchemy import create_engine\nfrom sqlalchemy.orm import sessionmaker\n\n<p>DATABASE_URL = \"postgresql://user:password@localhost/dbname\"</p><p>engine = create_engine(DATABASE_URL, echo=True)<br>SessionLocal = sessionmaker(bind=engine)</p></code><p><code class=\"language-python\">def get_db():<br>    db = SessionLocal()<br>    try:<br>        yield db<br>    finally:<br>        db.close()<br></code></p></pre><p></p><p>이 방식은 구현이 간단하다는 장점이 있지만, 많은 요청이 들어올 때는 <strong>I/O 블로킹</strong> 현상이 발생하여 성능 저하의 원인이 되곤 합니다.</p>\n<hr>\n<h2 id=\"heading-4\">3. 비동기 방식으로 변경하기</h2>\n<p>이제 비동기 방식으로 전환해 볼 건데요, 주요 변경 사항을 하나씩 짚어보겠습니다.</p>\n<h3 id=\"heading-5\">3.1. 비동기 엔진 생성하기</h3>\n<p>동기 방식 대신 <code>sqlalchemy.ext.asyncio</code> 모듈의 <code>create_async_engine</code> 함수를 사용하여 비동기 엔진을 생성합니다.<br>\n먼저 데이터베이스 URL에 <code>+asyncpg</code>를 추가해서 비동기 드라이버를 사용하도록 합니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy.ext.asyncio import create_async_engine\n\n</code><p><code class=\"language-python\">DATABASE_URL = \"postgresql+asyncpg://user:password@localhost/dbname\"<br>engine = create_async_engine(DATABASE_URL, echo=True)<br></code></p></pre><p></p><p>이제 엔진은 비동기 처리를 위해 최적화되어 준비되었어요!</p>\n<h3 id=\"heading-6\">3.2. 비동기 세션 생성 및 통합</h3>\n<p>다음으로, 비동기 세션을 생성하기 위해 <code>AsyncSession</code>과 <code>sessionmaker</code>를 활용합니다.<br>\n동기 코드와는 달리 <code>class_</code> 매개변수에 <code>AsyncSession</code>을 지정해주고, <code>expire_on_commit=False</code> 옵션을 사용해 세션의 만료를 방지합니다.</p>\n<pre><code class=\"language-python\">from sqlalchemy.ext.asyncio import AsyncSession\nfrom sqlalchemy.orm import sessionmaker\n\n</code><p><code class=\"language-python\">async_session = sessionmaker(<br>    bind=engine,<br>    class_=AsyncSession,<br>    expire_on_commit=False<br>)<br></code></p></pre><p></p><p>이제 모든 데이터베이스 요청은 이 <strong>비동기 세션</strong>을 사용하게 됩니다.</p>\n<h3 id=\"heading-7\">3.3. 비동기 세션 관리 함수 구현하기</h3>\n<p>비동기 방식에서는 <code>async with</code> 구문을 활용해 세션을 안전하게 열고 닫는 것이 중요해요.<br>\n아래와 같이 <code>get_db</code> 함수를 비동기 제너레이터로 변경하여, 세션을 열고 사용 후 자동으로 종료하도록 구현할 수 있습니다.</p>\n<pre><code class=\"language-python\">async def get_db():\n    async with async_session() as session:\n        yield session\n</code></pre>\n<p>이 코드는 데이터베이스 작업이 끝나면 <code>async with</code> 블록이 종료되면서 세션을 깔끔하게 닫아줘요.<br>\n예외가 발생하더라도 자동으로 리소스가 정리되므로, 안정적인 운영이 가능합니다.</p>\n<hr>\n<h2 id=\"heading-8\">4. 통합 세션 관리의 장점</h2>\n<p>이번에 세션 관리 코드를 통합하면서 얻을 수 있는 이점은 다음과 같습니다:</p>\n<ul>\n<li><strong>코드의 간결함:</strong><br>\n모든 데이터베이스 접근 시 동일한 비동기 세션 관리 로직을 사용하므로, 코드가 훨씬 깔끔해졌습니다.</li>\n<li><strong>안정성 강화:</strong><br>\n<code>async with</code>를 사용하면, 예외가 발생해도 세션이 자동으로 종료되어 리소스 누수가 없어요.</li>\n<li><strong>유지보수 용이성:</strong><br>\n세션 관리 코드가 한 곳에 모여 있으니, 향후 수정이나 확장이 필요할 때 한 곳만 관리하면 됩니다.</li>\n</ul>\n<hr>\n<h2 id=\"heading-9\">5. 마치며</h2>\n<p>오늘은 <strong>database.py</strong> 파일을 비동기 방식으로 전환하고, 세션 관리 코드를 통합하는 방법을 살펴보았습니다.<br>\n이렇게 변경하면, 앞으로 API 서버나 크롤러에서 발생하는 데이터베이스 I/O 작업을 훨씬 더 효율적으로 처리할 수 있게 됩니다.</p>\n<p>다음 글에서는 <strong>프로젝트 모델 개선 및 필드 업데이트</strong>에 대해 다룰 예정이에요.</p>\n<p>여러분의 피드백이 큰 힘이 됩니다. 다음 글에서 또 만나요! 🚀</p>\n<hr>\n<p>이 글이 도움이 되었길 바라며, 앞으로도 지속적으로 개선된 기술들을 공유할 예정입니다. 감사합니다!</p>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"프리랜서 플랫폼의 프로젝트 정보를 실시간으로 수집하고 분석하는 크롤러를 만들어보았어요. FastAPI의 비동기 처리와 PostgreSQL의 강력한 기능을 활용해서 효율적인 시스템을 구축했답니다! 🚀\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"비동기처리\",\n\"데이터수집\",\n\"실시간처리\",\n]\nthumbnail: \"/images/fastapi.png\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "database.py를 비동기 방식으로 변경하고 세션 관리 통합하기",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1. 왜 비동기 방식일까요?",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "2. 기존 동기 방식의 database.py",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "3. 비동기 방식으로 변경하기",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "3.1. 비동기 엔진 생성하기",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "3.2. 비동기 세션 생성 및 통합",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "3.3. 비동기 세션 관리 함수 구현하기",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "4. 통합 세션 관리의 장점",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "5. 마치며",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 450
+        }
+      ]
     },
-    {
-      "id": "heading-1",
-      "text": "1. 왜 비동기 방식일까요?",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 220.2421875
-    },
-    {
-      "id": "heading-2",
-      "text": "2. 기존 동기 방식의 database.py",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 495.0703125
-    },
-    {
-      "id": "heading-3",
-      "text": "3. 비동기 방식으로 변경하기",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 1024
-    },
-    {
-      "id": "heading-4",
-      "text": "3.1. 비동기 엔진 생성하기",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1111.1328125
-    },
-    {
-      "id": "heading-5",
-      "text": "3.2. 비동기 세션 생성 및 통합",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1429.0703125
-    },
-    {
-      "id": "heading-6",
-      "text": "3.3. 비동기 세션 관리 함수 구현하기",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1819.640625
-    },
-    {
-      "id": "heading-7",
-      "text": "4. 통합 세션 관리의 장점",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 2123.421875
-    },
-    {
-      "id": "heading-8",
-      "text": "5. 마치며",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 2362.75
+    "en": {
+      "title": "Building an Outsourcing Crawler with FastAPI and PostgreSQL",
+      "description": "I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! 🚀",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Building an Outsourcing Crawler with FastAPI and PostgreSQL\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! 🚀\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"async processing\",\n\"data collection\",\n\"real-time processing\",\n]\nthumbnail: \"/images/fastapi.png\"</h2>\n<h1 id=\"heading-1\">Converting database.py to Async and Integrating Session Management</h1>\n<p>Hello everyone!<br>\nIn our last post, we looked at SQLAlchemy's async configuration. Today, we'll dive deeper into how to convert our <strong>database.py</strong> file to async mode and integrate session management code.</p>\n<p>By introducing async processing, we can reduce database operation wait times and efficiently handle multiple requests simultaneously. Let's take a look step by step!</p>\n<hr>\n<h2 id=\"heading-2\">1. Why Async?</h2>\n<p>First, let's briefly cover the difference between synchronous and asynchronous approaches:</p>\n<ul>\n<li><strong>Synchronous:</strong><br>\nWhen making a database request, you have to wait for the result to return. This can cause bottlenecks when there are many requests, as other tasks must wait for the current one to complete.</li>\n<li><strong>Asynchronous:</strong><br>\nYou can continue with other tasks after sending a database request. This means you don't have to wait for one task to finish before starting another, allowing for more efficient handling of multiple operations.</li>\n</ul>\n<p>Async processing can significantly improve our application's response time and concurrent processing capabilities!</p>\n<hr>\n<h2 id=\"heading-3\">2. Original Synchronous database.py</h2>\n<p>Our original <strong>database.py</strong> was written synchronously. For example, we created the database engine and session like this:</p>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Building an Outsourcing Crawler with FastAPI and PostgreSQL\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! 🚀\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"async processing\",\n\"data collection\",\n\"real-time processing\",\n]\nthumbnail: \"/images/fastapi.png\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "Converting database.py to Async and Integrating Session Management",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1. Why Async?",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "2. Original Synchronous database.py",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 150
+        }
+      ]
     }
-  ],
+  },
   "imageHeights": {}
 }

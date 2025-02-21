@@ -1,7 +1,7 @@
 {
   "id": "entasis_engin_9",
   "title": "Entasis Engine - 인프라 구성도",
-  "content": "<h1 id=\"heading-0\">금융 데이터 분석 시스템 인프라 구성도</h1>\n<h2 id=\"heading-1\">🏗️ 시스템 아키텍처</h2>\n<h3 id=\"heading-2\">1. 전체 구성도</h3>\n<pre><code class=\"language-mermaid\">graph TB\n    subgraph External[외부 시스템]\n        API1[거래소 API]\n        API2[데이터 피드]\n    end\n\n<pre><code>subgraph LoadBalancer[로드 밸런서]\n    LB1[AWS ALB]\n    LB2[내부 L4]\nend\n\nsubgraph ServiceMesh[서비스 메시]\n    direction TB\n    subgraph DataCollection[데이터 수집 계층]\n        DC1[Collector-1]\n        DC2[Collector-2]\n    end\n\n    subgraph Processing[처리 계층]\n        P1[Spark Cluster]\n        P2[Stream Processing]\n    end\n\n    subgraph AI[AI 분석 계층]\n        AI1[Model Serving]\n        AI2[Training Pipeline]\n    end\n\n    subgraph API[API 계층]\n        API3[REST API]\n        API4[WebSocket]\n    end\nend\n\nsubgraph Storage[스토리지]\n    DB1[(TimescaleDB)]\n    DB2[(Redis)]\n    S3[Object Storage]\nend\n\nsubgraph Monitoring[모니터링]\n    M1[Prometheus]\n    M2[Grafana]\n    M3[ELK Stack]\nend\n\nExternal --&gt; LoadBalancer\nLoadBalancer --&gt; ServiceMesh\nServiceMesh --&gt; Storage\nServiceMesh --&gt; Monitoring\n</code></pre>\n</code><p><code class=\"language-mermaid\"></code></p></pre><p></p><h2 id=\"heading-3\">🌐 네트워크 구성</h2>\n<h3 id=\"heading-4\">1. 네트워크 세그먼트</h3>\n<pre><code class=\"language-plaintext\">+------------------------+     +------------------------+\n|     Public Subnet      |     |    Private Subnet      |\n|------------------------|     |------------------------|\n| - Load Balancer        |     | - Application Servers  |\n| - Bastion Host         |     | - Database Clusters    |\n| - NAT Gateway          |     | - Cache Servers        |\n+------------------------+     +------------------------+\n           |                              |\n           |        VPC Peering           |\n           +------------------------------+\n</code></pre>\n<h3 id=\"heading-5\">2. 보안 그룹 설정</h3>\n<pre><code class=\"language-yaml\">security_groups:\n  frontend:\n    inbound:\n      - port: 80\n        source: 0.0.0.0/0\n      - port: 443\n        source: 0.0.0.0/0\n\n<p>  application:<br>    inbound:<br>      - port: 8080<br>        source: frontend_sg<br>      - port: 9000<br>        source: monitoring_sg</p></code><p><code class=\"language-yaml\">  database:<br>    inbound:<br>      - port: 5432<br>        source: application_sg<br>      - port: 6379<br>        source: application_sg<br></code></p></pre><p></p><h2 id=\"heading-6\">🚀 쿠버네티스 클러스터</h2>\n<h3 id=\"heading-7\">1. 노드 구성</h3>\n<pre><code class=\"language-yaml\">node_pools:\n  - name: general\n    instance_type: c5.2xlarge\n    min_size: 3\n    max_size: 10\n    labels:\n      role: general\n\n</code><ul><code class=\"language-yaml\">\n<li><p>name: ai-inference<br>instance_type: g4dn.xlarge<br>min_size: 2<br>max_size: 5<br>labels:<br>  role: ai-inference</p></li>\n</code><li><code class=\"language-yaml\"></code><p><code class=\"language-yaml\">name: data-processing<br>instance_type: r5.2xlarge<br>min_size: 2<br>max_size: 8<br>labels:<br>  role: data-processing<br></code></p></li></ul></pre><p></p><h3 id=\"heading-8\">2. 서비스 배포</h3>\n<pre><code class=\"language-yaml\">apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: trading-api\nspec:\n  replicas: 3\n  selector:\nmatchLabels:\n  app: trading-api\n  template:\nmetadata:\n  labels:\n    app: trading-api\nspec:\n  containers:\n    - name: trading-api\n      image: trading-api:1.0.0\n      resources:\n        requests:\n          cpu: 1\n          memory: 2Gi\n        limits:\n          cpu: 2\n          memory: 4Gi\n\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h2 id=\"heading-9\">📊 모니터링 시스템</h2>\n<h3 id=\"heading-10\">1. 메트릭 수집</h3>\n<pre><code class=\"language-yaml\">prometheus:\n  scrape_configs:\n    - job_name: \"kubernetes-pods\"\n      kubernetes_sd_configs:\n        - role: pod\n      relabel_configs:\n        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]\n          action: keep\n          regex: true\n\n<pre><code>- job_name: \"trading-metrics\"\n  static_configs:\n    - targets: [\"trading-api:9090\"]\n</code></pre>\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h3 id=\"heading-11\">2. 알림 설정</h3>\n<pre><code class=\"language-yaml\">alertmanager:\n  config:\n    route:\n      receiver: \"slack\"\n      group_wait: 30s\n      group_interval: 5m\n      repeat_interval: 4h\n\n<pre><code>receivers:\n  - name: \"slack\"\n    slack_configs:\n      - channel: \"#alerts\"\n        send_resolved: true\n</code></pre>\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h2 id=\"heading-12\">🔒 보안 설정</h2>\n<h3 id=\"heading-13\">1. 네트워크 정책</h3>\n<pre><code class=\"language-yaml\">apiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: api-network-policy\nspec:\n  podSelector:\n    matchLabels:\n      app: trading-api\n  policyTypes:\n    - Ingress\n    - Egress\n  ingress:\n    - from:\n        - podSelector:\n            matchLabels:\n              role: frontend\n      ports:\n        - protocol: TCP\n          port: 8080\n</code></pre>\n<h3 id=\"heading-14\">2. 암호화 설정</h3>\n<pre><code class=\"language-yaml\">encryption:\n  - resources:\n      - secrets\n    providers:\n      - aescbc:\n          keys:\n            - name: key1\n              secret: &lt;base64-encoded-key&gt;\n      - identity: {}\n</code></pre>\n<h2 id=\"heading-15\">🔄 스케일링 전략</h2>\n<h3 id=\"heading-16\">1. 수평적 확장</h3>\n<pre><code class=\"language-yaml\">apiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: trading-api-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  minReplicas: 3\n  maxReplicas: 10\n  metrics:\n    - type: Resource\n      resource:\n        name: cpu\n        target:\n          type: Utilization\n          averageUtilization: 70\n</code></pre>\n<h3 id=\"heading-17\">2. 수직적 확장</h3>\n<pre><code class=\"language-yaml\">apiVersion: autoscaling.k8s.io/v1\nkind: VerticalPodAutoscaler\nmetadata:\n  name: trading-api-vpa\nspec:\n  targetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  updatePolicy:\n    updateMode: Auto\n</code></pre>\n<h2 id=\"heading-18\">🔧 운영 관리</h2>\n<h3 id=\"heading-19\">1. 로깅 설정</h3>\n<pre><code class=\"language-yaml\">filebeat:\n  inputs:\n    - type: container\n      paths:\n        - /var/log/containers/*.log\n      processors:\n        - add_kubernetes_metadata:\n            host: ${NODE_NAME}\n            matchers:\n              - logs_path:\n                  logs_path: \"/var/log/containers/\"\n</code></pre>\n<h3 id=\"heading-20\">2. 백업 정책</h3>\n<pre><code class=\"language-yaml\">backup:\n  schedule: \"0 1 * * *\" # 매일 01:00\n  retention:\n    hourly: 24\n    daily: 7\n    weekly: 4\n    monthly: 12\n  storage:\n    type: s3\n    bucket: backup-bucket\n    region: ap-northeast-2\n</code></pre>\n<p>이 문서는 금융 데이터 분석 시스템의 인프라 구성을 상세히 설명합니다. 시스템의 안정성과 확장성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀</p>\n",
+  "content": "\n# 금융 데이터 분석 시스템 인프라 구성도\n\n## 🏗️ 시스템 아키텍처\n\n### 1. 전체 구성도\n\n```mermaid\ngraph TB\n    subgraph External[외부 시스템]\n        API1[거래소 API]\n        API2[데이터 피드]\n    end\n\n    subgraph LoadBalancer[로드 밸런서]\n        LB1[AWS ALB]\n        LB2[내부 L4]\n    end\n\n    subgraph ServiceMesh[서비스 메시]\n        direction TB\n        subgraph DataCollection[데이터 수집 계층]\n            DC1[Collector-1]\n            DC2[Collector-2]\n        end\n\n        subgraph Processing[처리 계층]\n            P1[Spark Cluster]\n            P2[Stream Processing]\n        end\n\n        subgraph AI[AI 분석 계층]\n            AI1[Model Serving]\n            AI2[Training Pipeline]\n        end\n\n        subgraph API[API 계층]\n            API3[REST API]\n            API4[WebSocket]\n        end\n    end\n\n    subgraph Storage[스토리지]\n        DB1[(TimescaleDB)]\n        DB2[(Redis)]\n        S3[Object Storage]\n    end\n\n    subgraph Monitoring[모니터링]\n        M1[Prometheus]\n        M2[Grafana]\n        M3[ELK Stack]\n    end\n\n    External --> LoadBalancer\n    LoadBalancer --> ServiceMesh\n    ServiceMesh --> Storage\n    ServiceMesh --> Monitoring\n```\n\n## 🌐 네트워크 구성\n\n### 1. 네트워크 세그먼트\n\n```plaintext\n+------------------------+     +------------------------+\n|     Public Subnet      |     |    Private Subnet      |\n|------------------------|     |------------------------|\n| - Load Balancer        |     | - Application Servers  |\n| - Bastion Host         |     | - Database Clusters    |\n| - NAT Gateway          |     | - Cache Servers        |\n+------------------------+     +------------------------+\n           |                              |\n           |        VPC Peering           |\n           +------------------------------+\n```\n\n### 2. 보안 그룹 설정\n\n```yaml\nsecurity_groups:\n  frontend:\n    inbound:\n      - port: 80\n        source: 0.0.0.0/0\n      - port: 443\n        source: 0.0.0.0/0\n\n  application:\n    inbound:\n      - port: 8080\n        source: frontend_sg\n      - port: 9000\n        source: monitoring_sg\n\n  database:\n    inbound:\n      - port: 5432\n        source: application_sg\n      - port: 6379\n        source: application_sg\n```\n\n## 🚀 쿠버네티스 클러스터\n\n### 1. 노드 구성\n\n```yaml\nnode_pools:\n  - name: general\n    instance_type: c5.2xlarge\n    min_size: 3\n    max_size: 10\n    labels:\n      role: general\n\n  - name: ai-inference\n    instance_type: g4dn.xlarge\n    min_size: 2\n    max_size: 5\n    labels:\n      role: ai-inference\n\n  - name: data-processing\n    instance_type: r5.2xlarge\n    min_size: 2\n    max_size: 8\n    labels:\n      role: data-processing\n```\n\n### 2. 서비스 배포\n\n```yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: trading-api\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: trading-api\n  template:\n    metadata:\n      labels:\n        app: trading-api\n    spec:\n      containers:\n        - name: trading-api\n          image: trading-api:1.0.0\n          resources:\n            requests:\n              cpu: 1\n              memory: 2Gi\n            limits:\n              cpu: 2\n              memory: 4Gi\n```\n\n## 📊 모니터링 시스템\n\n### 1. 메트릭 수집\n\n```yaml\nprometheus:\n  scrape_configs:\n    - job_name: \"kubernetes-pods\"\n      kubernetes_sd_configs:\n        - role: pod\n      relabel_configs:\n        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]\n          action: keep\n          regex: true\n\n    - job_name: \"trading-metrics\"\n      static_configs:\n        - targets: [\"trading-api:9090\"]\n```\n\n### 2. 알림 설정\n\n```yaml\nalertmanager:\n  config:\n    route:\n      receiver: \"slack\"\n      group_wait: 30s\n      group_interval: 5m\n      repeat_interval: 4h\n\n    receivers:\n      - name: \"slack\"\n        slack_configs:\n          - channel: \"#alerts\"\n            send_resolved: true\n```\n\n## 🔒 보안 설정\n\n### 1. 네트워크 정책\n\n```yaml\napiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: api-network-policy\nspec:\n  podSelector:\n    matchLabels:\n      app: trading-api\n  policyTypes:\n    - Ingress\n    - Egress\n  ingress:\n    - from:\n        - podSelector:\n            matchLabels:\n              role: frontend\n      ports:\n        - protocol: TCP\n          port: 8080\n```\n\n### 2. 암호화 설정\n\n```yaml\nencryption:\n  - resources:\n      - secrets\n    providers:\n      - aescbc:\n          keys:\n            - name: key1\n              secret: <base64-encoded-key>\n      - identity: {}\n```\n\n## 🔄 스케일링 전략\n\n### 1. 수평적 확장\n\n```yaml\napiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: trading-api-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  minReplicas: 3\n  maxReplicas: 10\n  metrics:\n    - type: Resource\n      resource:\n        name: cpu\n        target:\n          type: Utilization\n          averageUtilization: 70\n```\n\n### 2. 수직적 확장\n\n```yaml\napiVersion: autoscaling.k8s.io/v1\nkind: VerticalPodAutoscaler\nmetadata:\n  name: trading-api-vpa\nspec:\n  targetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  updatePolicy:\n    updateMode: Auto\n```\n\n## 🔧 운영 관리\n\n### 1. 로깅 설정\n\n```yaml\nfilebeat:\n  inputs:\n    - type: container\n      paths:\n        - /var/log/containers/*.log\n      processors:\n        - add_kubernetes_metadata:\n            host: ${NODE_NAME}\n            matchers:\n              - logs_path:\n                  logs_path: \"/var/log/containers/\"\n```\n\n### 2. 백업 정책\n\n```yaml\nbackup:\n  schedule: \"0 1 * * *\" # 매일 01:00\n  retention:\n    hourly: 24\n    daily: 7\n    weekly: 4\n    monthly: 12\n  storage:\n    type: s3\n    bucket: backup-bucket\n    region: ap-northeast-2\n```\n\n이 문서는 금융 데이터 분석 시스템의 인프라 구성을 상세히 설명합니다. 시스템의 안정성과 확장성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀\n",
   "date": "2025-02-13",
   "category": "projects",
   "tags": [
@@ -13,156 +13,204 @@
     "monitoring",
     "scaling"
   ],
-  "description": "가상자산 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세",
   "thumbnail": "/images/cryptocurrency.jpg",
-  "tocItems": [
-    {
-      "id": "heading-0",
-      "text": "금융 데이터 분석 시스템 인프라 구성도",
-      "level": 1,
-      "isMainTopic": true,
-      "position": 19.9140625
+  "translations": {
+    "ko": {
+      "title": "Entasis Engine - 인프라 구성도",
+      "description": "가상자산 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - 인프라 구성도\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세\"\ntags:\n[\n\"infrastructure\",\n\"cloud\",\n\"kubernetes\",\n\"devops\",\n\"security\",\n\"monitoring\",\n\"scaling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">금융 데이터 분석 시스템 인프라 구성도</h1>\n<h2 id=\"heading-2\">🏗️ 시스템 아키텍처</h2>\n<h3 id=\"heading-3\">1. 전체 구성도</h3>\n<pre><code class=\"language-mermaid\">graph TB\n    subgraph External[외부 시스템]\n        API1[거래소 API]\n        API2[데이터 피드]\n    end\n\n<pre><code>subgraph LoadBalancer[로드 밸런서]\n    LB1[AWS ALB]\n    LB2[내부 L4]\nend\n\nsubgraph ServiceMesh[서비스 메시]\n    direction TB\n    subgraph DataCollection[데이터 수집 계층]\n        DC1[Collector-1]\n        DC2[Collector-2]\n    end\n\n    subgraph Processing[처리 계층]\n        P1[Spark Cluster]\n        P2[Stream Processing]\n    end\n\n    subgraph AI[AI 분석 계층]\n        AI1[Model Serving]\n        AI2[Training Pipeline]\n    end\n\n    subgraph API[API 계층]\n        API3[REST API]\n        API4[WebSocket]\n    end\nend\n\nsubgraph Storage[스토리지]\n    DB1[(TimescaleDB)]\n    DB2[(Redis)]\n    S3[Object Storage]\nend\n\nsubgraph Monitoring[모니터링]\n    M1[Prometheus]\n    M2[Grafana]\n    M3[ELK Stack]\nend\n\nExternal --&gt; LoadBalancer\nLoadBalancer --&gt; ServiceMesh\nServiceMesh --&gt; Storage\nServiceMesh --&gt; Monitoring\n</code></pre>\n</code><p><code class=\"language-mermaid\"></code></p></pre><p></p><h2 id=\"heading-4\">🌐 네트워크 구성</h2>\n<h3 id=\"heading-5\">1. 네트워크 세그먼트</h3>\n<pre><code class=\"language-plaintext\">+------------------------+     +------------------------+\n|     Public Subnet      |     |    Private Subnet      |\n|------------------------|     |------------------------|\n| - Load Balancer        |     | - Application Servers  |\n| - Bastion Host         |     | - Database Clusters    |\n| - NAT Gateway          |     | - Cache Servers        |\n+------------------------+     +------------------------+\n           |                              |\n           |        VPC Peering           |\n           +------------------------------+\n</code></pre>\n<h3 id=\"heading-6\">2. 보안 그룹 설정</h3>\n<pre><code class=\"language-yaml\">security_groups:\n  frontend:\n    inbound:\n      - port: 80\n        source: 0.0.0.0/0\n      - port: 443\n        source: 0.0.0.0/0\n\n<p>  application:<br>    inbound:<br>      - port: 8080<br>        source: frontend_sg<br>      - port: 9000<br>        source: monitoring_sg</p></code><p><code class=\"language-yaml\">  database:<br>    inbound:<br>      - port: 5432<br>        source: application_sg<br>      - port: 6379<br>        source: application_sg<br></code></p></pre><p></p><h2 id=\"heading-7\">🚀 쿠버네티스 클러스터</h2>\n<h3 id=\"heading-8\">1. 노드 구성</h3>\n<pre><code class=\"language-yaml\">node_pools:\n  - name: general\n    instance_type: c5.2xlarge\n    min_size: 3\n    max_size: 10\n    labels:\n      role: general\n\n</code><ul><code class=\"language-yaml\">\n<li><p>name: ai-inference<br>instance_type: g4dn.xlarge<br>min_size: 2<br>max_size: 5<br>labels:<br>  role: ai-inference</p></li>\n</code><li><code class=\"language-yaml\"></code><p><code class=\"language-yaml\">name: data-processing<br>instance_type: r5.2xlarge<br>min_size: 2<br>max_size: 8<br>labels:<br>  role: data-processing<br></code></p></li></ul></pre><p></p><h3 id=\"heading-9\">2. 서비스 배포</h3>\n<pre><code class=\"language-yaml\">apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: trading-api\nspec:\n  replicas: 3\n  selector:\nmatchLabels:\n  app: trading-api\n  template:\nmetadata:\n  labels:\n    app: trading-api\nspec:\n  containers:\n    - name: trading-api\n      image: trading-api:1.0.0\n      resources:\n        requests:\n          cpu: 1\n          memory: 2Gi\n        limits:\n          cpu: 2\n          memory: 4Gi\n\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h2 id=\"heading-10\">📊 모니터링 시스템</h2>\n<h3 id=\"heading-11\">1. 메트릭 수집</h3>\n<pre><code class=\"language-yaml\">prometheus:\n  scrape_configs:\n    - job_name: \"kubernetes-pods\"\n      kubernetes_sd_configs:\n        - role: pod\n      relabel_configs:\n        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]\n          action: keep\n          regex: true\n\n<pre><code>- job_name: \"trading-metrics\"\n  static_configs:\n    - targets: [\"trading-api:9090\"]\n</code></pre>\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h3 id=\"heading-12\">2. 알림 설정</h3>\n<pre><code class=\"language-yaml\">alertmanager:\n  config:\n    route:\n      receiver: \"slack\"\n      group_wait: 30s\n      group_interval: 5m\n      repeat_interval: 4h\n\n<pre><code>receivers:\n  - name: \"slack\"\n    slack_configs:\n      - channel: \"#alerts\"\n        send_resolved: true\n</code></pre>\n</code><p><code class=\"language-yaml\"></code></p></pre><p></p><h2 id=\"heading-13\">🔒 보안 설정</h2>\n<h3 id=\"heading-14\">1. 네트워크 정책</h3>\n<pre><code class=\"language-yaml\">apiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: api-network-policy\nspec:\n  podSelector:\n    matchLabels:\n      app: trading-api\n  policyTypes:\n    - Ingress\n    - Egress\n  ingress:\n    - from:\n        - podSelector:\n            matchLabels:\n              role: frontend\n      ports:\n        - protocol: TCP\n          port: 8080\n</code></pre>\n<h3 id=\"heading-15\">2. 암호화 설정</h3>\n<pre><code class=\"language-yaml\">encryption:\n  - resources:\n      - secrets\n    providers:\n      - aescbc:\n          keys:\n            - name: key1\n              secret: &lt;base64-encoded-key&gt;\n      - identity: {}\n</code></pre>\n<h2 id=\"heading-16\">🔄 스케일링 전략</h2>\n<h3 id=\"heading-17\">1. 수평적 확장</h3>\n<pre><code class=\"language-yaml\">apiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: trading-api-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  minReplicas: 3\n  maxReplicas: 10\n  metrics:\n    - type: Resource\n      resource:\n        name: cpu\n        target:\n          type: Utilization\n          averageUtilization: 70\n</code></pre>\n<h3 id=\"heading-18\">2. 수직적 확장</h3>\n<pre><code class=\"language-yaml\">apiVersion: autoscaling.k8s.io/v1\nkind: VerticalPodAutoscaler\nmetadata:\n  name: trading-api-vpa\nspec:\n  targetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  updatePolicy:\n    updateMode: Auto\n</code></pre>\n<h2 id=\"heading-19\">🔧 운영 관리</h2>\n<h3 id=\"heading-20\">1. 로깅 설정</h3>\n<pre><code class=\"language-yaml\">filebeat:\n  inputs:\n    - type: container\n      paths:\n        - /var/log/containers/*.log\n      processors:\n        - add_kubernetes_metadata:\n            host: ${NODE_NAME}\n            matchers:\n              - logs_path:\n                  logs_path: \"/var/log/containers/\"\n</code></pre>\n<h3 id=\"heading-21\">2. 백업 정책</h3>\n<pre><code class=\"language-yaml\">backup:\n  schedule: \"0 1 * * *\" # 매일 01:00\n  retention:\n    hourly: 24\n    daily: 7\n    weekly: 4\n    monthly: 12\n  storage:\n    type: s3\n    bucket: backup-bucket\n    region: ap-northeast-2\n</code></pre>\n<p>이 문서는 금융 데이터 분석 시스템의 인프라 구성을 상세히 설명합니다. 시스템의 안정성과 확장성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀</p>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Entasis Engine - 인프라 구성도\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"가상자산 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세\"\ntags:\n[\n\"infrastructure\",\n\"cloud\",\n\"kubernetes\",\n\"devops\",\n\"security\",\n\"monitoring\",\n\"scaling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "금융 데이터 분석 시스템 인프라 구성도",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "🏗️ 시스템 아키텍처",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "1. 전체 구성도",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "🌐 네트워크 구성",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "1. 네트워크 세그먼트",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "2. 보안 그룹 설정",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "🚀 쿠버네티스 클러스터",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "1. 노드 구성",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "2. 서비스 배포",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "📊 모니터링 시스템",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "1. 메트릭 수집",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "2. 알림 설정",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "🔒 보안 설정",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "1. 네트워크 정책",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "2. 암호화 설정",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 750
+        },
+        {
+          "id": "heading-16",
+          "text": "🔄 스케일링 전략",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 800
+        },
+        {
+          "id": "heading-17",
+          "text": "1. 수평적 확장",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "2. 수직적 확장",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 900
+        },
+        {
+          "id": "heading-19",
+          "text": "🔧 운영 관리",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 950
+        },
+        {
+          "id": "heading-20",
+          "text": "1. 로깅 설정",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1000
+        },
+        {
+          "id": "heading-21",
+          "text": "2. 백업 정책",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1050
+        }
+      ]
     },
-    {
-      "id": "heading-1",
-      "text": "🏗️ 시스템 아키텍처",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 68.828125
-    },
-    {
-      "id": "heading-2",
-      "text": "1. 전체 구성도",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 120.2421875
-    },
-    {
-      "id": "heading-3",
-      "text": "🌐 네트워크 구성",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 1135.640625
-    },
-    {
-      "id": "heading-4",
-      "text": "1. 네트워크 세그먼트",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1187.0546875
-    },
-    {
-      "id": "heading-5",
-      "text": "2. 보안 그룹 설정",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1459.5859375
-    },
-    {
-      "id": "heading-6",
-      "text": "🚀 쿠버네티스 클러스터",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 1957.875
-    },
-    {
-      "id": "heading-7",
-      "text": "1. 노드 구성",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 2009.2890625
-    },
-    {
-      "id": "heading-8",
-      "text": "2. 서비스 배포",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 2586.1328125
-    },
-    {
-      "id": "heading-9",
-      "text": "📊 모니터링 시스템",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 3155.671875
-    },
-    {
-      "id": "heading-10",
-      "text": "1. 메트릭 수집",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 3207.0859375
-    },
-    {
-      "id": "heading-11",
-      "text": "2. 알림 설정",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 3645.03125
-    },
-    {
-      "id": "heading-12",
-      "text": "🔒 보안 설정",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 4079.4609375
-    },
-    {
-      "id": "heading-13",
-      "text": "1. 네트워크 정책",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 4130.875
-    },
-    {
-      "id": "heading-14",
-      "text": "2. 암호화 설정",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 4561.3984375
-    },
-    {
-      "id": "heading-15",
-      "text": "🔄 스케일링 전략",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 4816.375
-    },
-    {
-      "id": "heading-16",
-      "text": "1. 수평적 확장",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 4867.7890625
-    },
-    {
-      "id": "heading-17",
-      "text": "2. 수직적 확장",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 5280.7578125
-    },
-    {
-      "id": "heading-18",
-      "text": "🔧 운영 관리",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 5570.84375
-    },
-    {
-      "id": "heading-19",
-      "text": "1. 로깅 설정",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 5622.2578125
-    },
-    {
-      "id": "heading-20",
-      "text": "2. 백업 정책",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 5912.34375
+    "en": {
+      "title": "Entasis Engine - Infrastructure Architecture",
+      "description": "Detailed infrastructure architecture and configuration for digital asset data analysis system",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Entasis Engine - Infrastructure Architecture\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Detailed infrastructure architecture and configuration for digital asset data analysis system\"\ntags:\n[\n\"infrastructure\",\n\"cloud\",\n\"kubernetes\",\n\"devops\",\n\"security\",\n\"monitoring\",\n\"scaling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"</h2>\n<h1 id=\"heading-1\">Financial Data Analysis System Infrastructure Architecture</h1>\n<h2 id=\"heading-2\">🏗️ System Architecture</h2>\n<h3 id=\"heading-3\">1. Overall Architecture</h3>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Entasis Engine - Infrastructure Architecture\"\ndate: \"2025-02-13\"\ncategory: \"projects\"\ndescription: \"Detailed infrastructure architecture and configuration for digital asset data analysis system\"\ntags:\n[\n\"infrastructure\",\n\"cloud\",\n\"kubernetes\",\n\"devops\",\n\"security\",\n\"monitoring\",\n\"scaling\",\n]\nthumbnail: \"/images/cryptocurrency.jpg\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "Financial Data Analysis System Infrastructure Architecture",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "🏗️ System Architecture",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "1. Overall Architecture",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        }
+      ]
     }
-  ],
+  },
   "imageHeights": {}
 }

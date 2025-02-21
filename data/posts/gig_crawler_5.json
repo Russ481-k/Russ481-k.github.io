@@ -1,7 +1,7 @@
 {
   "id": "gig_crawler_5",
   "title": "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발",
-  "content": "<p>이번 글에서는 <strong>암호화 시스템 구현</strong>에 대해 자세히 소개할게요!</p>\n<hr>\n<h1 id=\"heading-0\">암호화 시스템 구현: CryptoUtil 클래스와 프로젝트 ID 보호</h1>\n<p>안녕하세요, 여러분!<br>\n이전 글들에서 데이터베이스 비동기 처리, 세션 관리, 모델 개선, 크롤러 스케줄러 등에 대해 다뤘는데요, 이번 글에서는 <strong>암호화 시스템 구현</strong>에 대해 이야기해보려고 합니다.</p>\n<p>우리 프로젝트에서는 보안이 매우 중요한 요소 중 하나입니다. 특히, 프로젝트 ID와 같이 민감한 정보는 암호화를 통해 외부로 노출되지 않도록 보호할 필요가 있죠. 이번 글에서는 <strong>Fernet</strong>을 활용한 대칭키 암호화 방식을 적용하여, 프로젝트 ID의 암호화와 복호화를 구현하는 방법을 소개하겠습니다.</p>\n<hr>\n<h2 id=\"heading-1\">1. 암호화가 필요한 이유</h2>\n<ul>\n<li>\n<p><strong>보안 강화:</strong><br>\n데이터가 외부에 노출되면 악의적인 공격에 취약해집니다. 암호화를 통해 중요한 정보(예: 프로젝트 ID)를 안전하게 보호할 수 있습니다.</p>\n</li>\n<li>\n<p><strong>데이터 무결성 유지:</strong><br>\n암호화된 데이터는 전송 중 변조 여부를 쉽게 확인할 수 있어, 데이터의 신뢰성을 보장할 수 있습니다.</p>\n</li>\n<li>\n<p><strong>규정 준수:</strong><br>\n여러 보안 규제와 컴플라이언스 요건을 만족시키기 위해 민감 정보를 암호화하는 것은 필수적입니다.</p>\n</li>\n</ul>\n<hr>\n<h2 id=\"heading-2\">2. Fernet 대칭키 암호화란?</h2>\n<p><strong>Fernet</strong>은 파이썬의 <a href=\"https://cryptography.io/\">cryptography</a> 라이브러리에서 제공하는 대칭키 암호화 방식입니다.</p>\n<ul>\n<li><strong>대칭키 암호화:</strong> 암호화와 복호화에 동일한 키를 사용합니다.</li>\n<li><strong>사용법이 간단:</strong> 몇 줄의 코드로 강력한 암호화 기능을 구현할 수 있습니다.</li>\n<li><strong>안전성:</strong> 암호화된 메시지의 무결성과 인증을 보장합니다.</li>\n</ul>\n<hr>\n<h2 id=\"heading-3\">3. CryptoUtil 클래스 구현</h2>\n<p>이제 실제로 <code>CryptoUtil</code> 클래스를 구현해 보겠습니다. 이 클래스는 암호화와 복호화 기능을 제공하며, 주로 프로젝트 ID와 같은 민감한 데이터를 보호하는 데 사용됩니다.</p>\n<pre><code class=\"language-python\">from cryptography.fernet import Fernet\n\n<p>class CryptoUtil:<br>    def <strong>init</strong>(self, key: str):<br>        \"\"\"<br>        생성자: 암호화에 사용할 Fernet 인스턴스를 초기화합니다.<br>        :param key: Fernet 암호화 키 (문자열)<br>        \"\"\"<br>        self.fernet = Fernet(key)</p><pre><code>def encrypt(self, data: str) -&gt; str:\n    \"\"\"\n    데이터를 암호화합니다.\n    :param data: 암호화할 문자열 데이터\n    :return: 암호화된 문자열 (토큰)\n    \"\"\"\n    return self.fernet.encrypt(data.encode()).decode()\n\ndef decrypt(self, token: str) -&gt; str:\n    \"\"\"\n    암호화된 토큰을 복호화합니다.\n    :param token: 암호화된 문자열 (토큰)\n    :return: 복호화된 원본 문자열\n    \"\"\"\n    return self.fernet.decrypt(token.encode()).decode()\n</code></pre>\n<h1 id=\"heading-4\">예시 사용법</h1>\n<p>if <strong>name</strong> == '<strong>main</strong>':<br>    # 암호화 키는 보통 환경 변수나 설정 파일에서 안전하게 로드합니다.<br>    # 여기서는 예시로 새로운 키를 생성합니다.<br>    key = Fernet.generate_key()<br>    crypto_util = CryptoUtil(key)</p><pre><code>original_id = \"project123\"\nencrypted_id = crypto_util.encrypt(original_id)\ndecrypted_id = crypto_util.decrypt(encrypted_id)\n\nprint(\"원본 프로젝트 ID:\", original_id)\nprint(\"암호화된 프로젝트 ID:\", encrypted_id)\nprint(\"복호화된 프로젝트 ID:\", decrypted_id)\n</code></pre>\n</code><p><code class=\"language-python\"></code></p></pre><p></p><h3 id=\"heading-5\">3.1 코드 설명</h3>\n<ul>\n<li>\n<p><strong>초기화:</strong><br>\n<code>__init__</code> 메서드에서 전달받은 암호화 키로 <code>Fernet</code> 인스턴스를 초기화합니다.</p>\n</li>\n<li>\n<p><strong>encrypt 메서드:</strong><br>\n문자열 데이터를 바이트로 변환한 후 암호화하여, 다시 문자열로 디코딩합니다.</p>\n</li>\n<li>\n<p><strong>decrypt 메서드:</strong><br>\n암호화된 토큰을 바이트로 변환하여 복호화하고, 원래의 문자열로 디코딩합니다.</p>\n</li>\n</ul>\n<hr>\n<h2 id=\"heading-6\">4. 설정에 암호화 키 추가하기</h2>\n<p>실제 운영 환경에서는 암호화 키를 코드에 하드코딩하지 않고, 보안 설정 파일이나 환경 변수에서 로드하는 것이 좋습니다. 예를 들어, <code>config.py</code> 파일을 만들어 아래와 같이 작성할 수 있습니다:</p>\n<pre><code class=\"language-python\">import os\n\n<h1 id=\"heading-7\">환경 변수에서 암호화 키를 가져오거나, 기본값을 설정합니다.</h1>\n</code><p><code class=\"language-python\">ENCRYPTION_KEY = os.getenv(\"ENCRYPTION_KEY\", Fernet.generate_key().decode())<br></code></p></pre><p></p><p>이렇게 설정해두면, 운영 환경에서 별도의 암호화 키를 안전하게 관리할 수 있어 보안성이 한층 강화됩니다.</p>\n<hr>\n<h2 id=\"heading-8\">5. 암호화 시스템의 적용</h2>\n<p>이제 API 엔드포인트나 데이터 저장 시, 프로젝트 ID를 직접 노출하는 대신 암호화된 값을 사용하면 됩니다.<br>\n예를 들어, 프로젝트 조회 API에서는 클라이언트에게 암호화된 ID를 제공하고, 이후 클라이언트의 요청 시 해당 암호화된 ID를 복호화하여 내부 데이터베이스에서 조회할 수 있습니다.</p>\n<p>이와 같이 암호화 시스템을 도입하면, 민감 정보의 노출 위험을 줄이고 보안을 강화할 수 있습니다.</p>\n<hr>\n<h2 id=\"heading-9\">6. 마치며</h2>\n<p>오늘은 <strong>암호화 시스템 구현</strong>에 대해 살펴보았습니다.<br>\n<code>CryptoUtil</code> 클래스를 통해 간단하게 암호화와 복호화 기능을 구현할 수 있었고, 이를 통해 프로젝트 ID와 같은 민감한 데이터를 효과적으로 보호할 수 있음을 확인했습니다.</p>\n<p>다음 글에서는 <strong>API 엔드포인트 개선</strong> 및 비동기 데이터베이스 쿼리 적용에 대해 다룰 예정입니다.</p>\n<p>감사합니다. 다음 글에서 또 만나요! 🚀</p>\n<hr>\n",
+  "content": "\n이번 글에서는 **암호화 시스템 구현**에 대해 자세히 소개할게요!\n\n---\n\n# 암호화 시스템 구현: CryptoUtil 클래스와 프로젝트 ID 보호\n\n안녕하세요, 여러분!  \n이전 글들에서 데이터베이스 비동기 처리, 세션 관리, 모델 개선, 크롤러 스케줄러 등에 대해 다뤘는데요, 이번 글에서는 **암호화 시스템 구현**에 대해 이야기해보려고 합니다.\n\n우리 프로젝트에서는 보안이 매우 중요한 요소 중 하나입니다. 특히, 프로젝트 ID와 같이 민감한 정보는 암호화를 통해 외부로 노출되지 않도록 보호할 필요가 있죠. 이번 글에서는 **Fernet**을 활용한 대칭키 암호화 방식을 적용하여, 프로젝트 ID의 암호화와 복호화를 구현하는 방법을 소개하겠습니다.\n\n---\n\n## 1. 암호화가 필요한 이유\n\n- **보안 강화:**  \n  데이터가 외부에 노출되면 악의적인 공격에 취약해집니다. 암호화를 통해 중요한 정보(예: 프로젝트 ID)를 안전하게 보호할 수 있습니다.\n\n- **데이터 무결성 유지:**  \n  암호화된 데이터는 전송 중 변조 여부를 쉽게 확인할 수 있어, 데이터의 신뢰성을 보장할 수 있습니다.\n\n- **규정 준수:**  \n  여러 보안 규제와 컴플라이언스 요건을 만족시키기 위해 민감 정보를 암호화하는 것은 필수적입니다.\n\n---\n\n## 2. Fernet 대칭키 암호화란?\n\n**Fernet**은 파이썬의 [cryptography](https://cryptography.io/) 라이브러리에서 제공하는 대칭키 암호화 방식입니다.\n\n- **대칭키 암호화:** 암호화와 복호화에 동일한 키를 사용합니다.\n- **사용법이 간단:** 몇 줄의 코드로 강력한 암호화 기능을 구현할 수 있습니다.\n- **안전성:** 암호화된 메시지의 무결성과 인증을 보장합니다.\n\n---\n\n## 3. CryptoUtil 클래스 구현\n\n이제 실제로 `CryptoUtil` 클래스를 구현해 보겠습니다. 이 클래스는 암호화와 복호화 기능을 제공하며, 주로 프로젝트 ID와 같은 민감한 데이터를 보호하는 데 사용됩니다.\n\n```python\nfrom cryptography.fernet import Fernet\n\nclass CryptoUtil:\n    def __init__(self, key: str):\n        \"\"\"\n        생성자: 암호화에 사용할 Fernet 인스턴스를 초기화합니다.\n        :param key: Fernet 암호화 키 (문자열)\n        \"\"\"\n        self.fernet = Fernet(key)\n\n    def encrypt(self, data: str) -> str:\n        \"\"\"\n        데이터를 암호화합니다.\n        :param data: 암호화할 문자열 데이터\n        :return: 암호화된 문자열 (토큰)\n        \"\"\"\n        return self.fernet.encrypt(data.encode()).decode()\n\n    def decrypt(self, token: str) -> str:\n        \"\"\"\n        암호화된 토큰을 복호화합니다.\n        :param token: 암호화된 문자열 (토큰)\n        :return: 복호화된 원본 문자열\n        \"\"\"\n        return self.fernet.decrypt(token.encode()).decode()\n\n\n# 예시 사용법\nif __name__ == '__main__':\n    # 암호화 키는 보통 환경 변수나 설정 파일에서 안전하게 로드합니다.\n    # 여기서는 예시로 새로운 키를 생성합니다.\n    key = Fernet.generate_key()\n    crypto_util = CryptoUtil(key)\n\n    original_id = \"project123\"\n    encrypted_id = crypto_util.encrypt(original_id)\n    decrypted_id = crypto_util.decrypt(encrypted_id)\n\n    print(\"원본 프로젝트 ID:\", original_id)\n    print(\"암호화된 프로젝트 ID:\", encrypted_id)\n    print(\"복호화된 프로젝트 ID:\", decrypted_id)\n```\n\n### 3.1 코드 설명\n\n- **초기화:**  \n  `__init__` 메서드에서 전달받은 암호화 키로 `Fernet` 인스턴스를 초기화합니다.\n\n- **encrypt 메서드:**  \n  문자열 데이터를 바이트로 변환한 후 암호화하여, 다시 문자열로 디코딩합니다.\n\n- **decrypt 메서드:**  \n  암호화된 토큰을 바이트로 변환하여 복호화하고, 원래의 문자열로 디코딩합니다.\n\n---\n\n## 4. 설정에 암호화 키 추가하기\n\n실제 운영 환경에서는 암호화 키를 코드에 하드코딩하지 않고, 보안 설정 파일이나 환경 변수에서 로드하는 것이 좋습니다. 예를 들어, `config.py` 파일을 만들어 아래와 같이 작성할 수 있습니다:\n\n```python\nimport os\n\n# 환경 변수에서 암호화 키를 가져오거나, 기본값을 설정합니다.\nENCRYPTION_KEY = os.getenv(\"ENCRYPTION_KEY\", Fernet.generate_key().decode())\n```\n\n이렇게 설정해두면, 운영 환경에서 별도의 암호화 키를 안전하게 관리할 수 있어 보안성이 한층 강화됩니다.\n\n---\n\n## 5. 암호화 시스템의 적용\n\n이제 API 엔드포인트나 데이터 저장 시, 프로젝트 ID를 직접 노출하는 대신 암호화된 값을 사용하면 됩니다.  \n예를 들어, 프로젝트 조회 API에서는 클라이언트에게 암호화된 ID를 제공하고, 이후 클라이언트의 요청 시 해당 암호화된 ID를 복호화하여 내부 데이터베이스에서 조회할 수 있습니다.\n\n이와 같이 암호화 시스템을 도입하면, 민감 정보의 노출 위험을 줄이고 보안을 강화할 수 있습니다.\n\n---\n\n## 6. 마치며\n\n오늘은 **암호화 시스템 구현**에 대해 살펴보았습니다.  \n`CryptoUtil` 클래스를 통해 간단하게 암호화와 복호화 기능을 구현할 수 있었고, 이를 통해 프로젝트 ID와 같은 민감한 데이터를 효과적으로 보호할 수 있음을 확인했습니다.\n\n다음 글에서는 **API 엔드포인트 개선** 및 비동기 데이터베이스 쿼리 적용에 대해 다룰 예정입니다.\n\n감사합니다. 다음 글에서 또 만나요! 🚀\n\n---\n",
   "date": "2025-02-12",
   "category": "backend",
   "tags": [
@@ -20,79 +20,134 @@
     "cryptography",
     "데이터보호"
   ],
-  "description": "크롤러 프로젝트에 암호화 시스템을 도입했어요! Fernet을 활용한 대칭키 암호화로 프로젝트 ID를 안전하게 보호하고, CryptoUtil 클래스로 편리하게 관리할 수 있게 되었답니다. 🔒",
   "thumbnail": "/images/fastapi.png",
-  "tocItems": [
-    {
-      "id": "heading-0",
-      "text": "암호화 시스템 구현: CryptoUtil 클래스와 프로젝트 ID 보호",
-      "level": 1,
-      "isMainTopic": true,
-      "position": 73.4140625
+  "translations": {
+    "ko": {
+      "title": "FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발",
+      "description": "크롤러 프로젝트에 암호화 시스템을 도입했어요! Fernet을 활용한 대칭키 암호화로 프로젝트 ID를 안전하게 보호하고, CryptoUtil 클래스로 편리하게 관리할 수 있게 되었답니다. 🔒",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"크롤러 프로젝트에 암호화 시스템을 도입했어요! Fernet을 활용한 대칭키 암호화로 프로젝트 ID를 안전하게 보호하고, CryptoUtil 클래스로 편리하게 관리할 수 있게 되었답니다. 🔒\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"비동기처리\",\n\"데이터수집\",\n\"실시간처리\",\n\"암호화\",\n\"Fernet\",\n\"보안\",\n\"cryptography\",\n\"데이터보호\",\n]\nthumbnail: \"/images/fastapi.png\"</h2>\n<p>이번 글에서는 <strong>암호화 시스템 구현</strong>에 대해 자세히 소개할게요!</p>\n<hr>\n<h1 id=\"heading-1\">암호화 시스템 구현: CryptoUtil 클래스와 프로젝트 ID 보호</h1>\n<p>안녕하세요, 여러분!<br>\n이전 글들에서 데이터베이스 비동기 처리, 세션 관리, 모델 개선, 크롤러 스케줄러 등에 대해 다뤘는데요, 이번 글에서는 <strong>암호화 시스템 구현</strong>에 대해 이야기해보려고 합니다.</p>\n<p>우리 프로젝트에서는 보안이 매우 중요한 요소 중 하나입니다. 특히, 프로젝트 ID와 같이 민감한 정보는 암호화를 통해 외부로 노출되지 않도록 보호할 필요가 있죠. 이번 글에서는 <strong>Fernet</strong>을 활용한 대칭키 암호화 방식을 적용하여, 프로젝트 ID의 암호화와 복호화를 구현하는 방법을 소개하겠습니다.</p>\n<hr>\n<h2 id=\"heading-2\">1. 암호화가 필요한 이유</h2>\n<ul>\n<li>\n<p><strong>보안 강화:</strong><br>\n데이터가 외부에 노출되면 악의적인 공격에 취약해집니다. 암호화를 통해 중요한 정보(예: 프로젝트 ID)를 안전하게 보호할 수 있습니다.</p>\n</li>\n<li>\n<p><strong>데이터 무결성 유지:</strong><br>\n암호화된 데이터는 전송 중 변조 여부를 쉽게 확인할 수 있어, 데이터의 신뢰성을 보장할 수 있습니다.</p>\n</li>\n<li>\n<p><strong>규정 준수:</strong><br>\n여러 보안 규제와 컴플라이언스 요건을 만족시키기 위해 민감 정보를 암호화하는 것은 필수적입니다.</p>\n</li>\n</ul>\n<hr>\n<h2 id=\"heading-3\">2. Fernet 대칭키 암호화란?</h2>\n<p><strong>Fernet</strong>은 파이썬의 <a href=\"https://cryptography.io/\">cryptography</a> 라이브러리에서 제공하는 대칭키 암호화 방식입니다.</p>\n<ul>\n<li><strong>대칭키 암호화:</strong> 암호화와 복호화에 동일한 키를 사용합니다.</li>\n<li><strong>사용법이 간단:</strong> 몇 줄의 코드로 강력한 암호화 기능을 구현할 수 있습니다.</li>\n<li><strong>안전성:</strong> 암호화된 메시지의 무결성과 인증을 보장합니다.</li>\n</ul>\n<hr>\n<h2 id=\"heading-4\">3. CryptoUtil 클래스 구현</h2>\n<p>이제 실제로 <code>CryptoUtil</code> 클래스를 구현해 보겠습니다. 이 클래스는 암호화와 복호화 기능을 제공하며, 주로 프로젝트 ID와 같은 민감한 데이터를 보호하는 데 사용됩니다.</p>\n<pre><code class=\"language-python\">from cryptography.fernet import Fernet\n\n<p>class CryptoUtil:<br>    def <strong>init</strong>(self, key: str):<br>        \"\"\"<br>        생성자: 암호화에 사용할 Fernet 인스턴스를 초기화합니다.<br>        :param key: Fernet 암호화 키 (문자열)<br>        \"\"\"<br>        self.fernet = Fernet(key)</p><pre><code>def encrypt(self, data: str) -&gt; str:\n    \"\"\"\n    데이터를 암호화합니다.\n    :param data: 암호화할 문자열 데이터\n    :return: 암호화된 문자열 (토큰)\n    \"\"\"\n    return self.fernet.encrypt(data.encode()).decode()\n\ndef decrypt(self, token: str) -&gt; str:\n    \"\"\"\n    암호화된 토큰을 복호화합니다.\n    :param token: 암호화된 문자열 (토큰)\n    :return: 복호화된 원본 문자열\n    \"\"\"\n    return self.fernet.decrypt(token.encode()).decode()\n</code></pre>\n<h1 id=\"heading-5\">예시 사용법</h1>\n<p>if <strong>name</strong> == '<strong>main</strong>':<br>    # 암호화 키는 보통 환경 변수나 설정 파일에서 안전하게 로드합니다.<br>    # 여기서는 예시로 새로운 키를 생성합니다.<br>    key = Fernet.generate_key()<br>    crypto_util = CryptoUtil(key)</p><pre><code>original_id = \"project123\"\nencrypted_id = crypto_util.encrypt(original_id)\ndecrypted_id = crypto_util.decrypt(encrypted_id)\n\nprint(\"원본 프로젝트 ID:\", original_id)\nprint(\"암호화된 프로젝트 ID:\", encrypted_id)\nprint(\"복호화된 프로젝트 ID:\", decrypted_id)\n</code></pre>\n</code><p><code class=\"language-python\"></code></p></pre><p></p><h3 id=\"heading-6\">3.1 코드 설명</h3>\n<ul>\n<li>\n<p><strong>초기화:</strong><br>\n<code>__init__</code> 메서드에서 전달받은 암호화 키로 <code>Fernet</code> 인스턴스를 초기화합니다.</p>\n</li>\n<li>\n<p><strong>encrypt 메서드:</strong><br>\n문자열 데이터를 바이트로 변환한 후 암호화하여, 다시 문자열로 디코딩합니다.</p>\n</li>\n<li>\n<p><strong>decrypt 메서드:</strong><br>\n암호화된 토큰을 바이트로 변환하여 복호화하고, 원래의 문자열로 디코딩합니다.</p>\n</li>\n</ul>\n<hr>\n<h2 id=\"heading-7\">4. 설정에 암호화 키 추가하기</h2>\n<p>실제 운영 환경에서는 암호화 키를 코드에 하드코딩하지 않고, 보안 설정 파일이나 환경 변수에서 로드하는 것이 좋습니다. 예를 들어, <code>config.py</code> 파일을 만들어 아래와 같이 작성할 수 있습니다:</p>\n<pre><code class=\"language-python\">import os\n\n<h1 id=\"heading-8\">환경 변수에서 암호화 키를 가져오거나, 기본값을 설정합니다.</h1>\n</code><p><code class=\"language-python\">ENCRYPTION_KEY = os.getenv(\"ENCRYPTION_KEY\", Fernet.generate_key().decode())<br></code></p></pre><p></p><p>이렇게 설정해두면, 운영 환경에서 별도의 암호화 키를 안전하게 관리할 수 있어 보안성이 한층 강화됩니다.</p>\n<hr>\n<h2 id=\"heading-9\">5. 암호화 시스템의 적용</h2>\n<p>이제 API 엔드포인트나 데이터 저장 시, 프로젝트 ID를 직접 노출하는 대신 암호화된 값을 사용하면 됩니다.<br>\n예를 들어, 프로젝트 조회 API에서는 클라이언트에게 암호화된 ID를 제공하고, 이후 클라이언트의 요청 시 해당 암호화된 ID를 복호화하여 내부 데이터베이스에서 조회할 수 있습니다.</p>\n<p>이와 같이 암호화 시스템을 도입하면, 민감 정보의 노출 위험을 줄이고 보안을 강화할 수 있습니다.</p>\n<hr>\n<h2 id=\"heading-10\">6. 마치며</h2>\n<p>오늘은 <strong>암호화 시스템 구현</strong>에 대해 살펴보았습니다.<br>\n<code>CryptoUtil</code> 클래스를 통해 간단하게 암호화와 복호화 기능을 구현할 수 있었고, 이를 통해 프로젝트 ID와 같은 민감한 데이터를 효과적으로 보호할 수 있음을 확인했습니다.</p>\n<p>다음 글에서는 <strong>API 엔드포인트 개선</strong> 및 비동기 데이터베이스 쿼리 적용에 대해 다룰 예정입니다.</p>\n<p>감사합니다. 다음 글에서 또 만나요! 🚀</p>\n<hr>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"FastAPI와 PostgreSQL을 활용한 아웃소싱 크롤러 개발\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"크롤러 프로젝트에 암호화 시스템을 도입했어요! Fernet을 활용한 대칭키 암호화로 프로젝트 ID를 안전하게 보호하고, CryptoUtil 클래스로 편리하게 관리할 수 있게 되었답니다. 🔒\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"비동기처리\",\n\"데이터수집\",\n\"실시간처리\",\n\"암호화\",\n\"Fernet\",\n\"보안\",\n\"cryptography\",\n\"데이터보호\",\n]\nthumbnail: \"/images/fastapi.png\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "암호화 시스템 구현: CryptoUtil 클래스와 프로젝트 ID 보호",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1. 암호화가 필요한 이유",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "2. Fernet 대칭키 암호화란?",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "3. CryptoUtil 클래스 구현",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "예시 사용법",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "3.1 코드 설명",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "4. 설정에 암호화 키 추가하기",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "환경 변수에서 암호화 키를 가져오거나, 기본값을 설정합니다.",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "5. 암호화 시스템의 적용",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "6. 마치며",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 500
+        }
+      ]
     },
-    {
-      "id": "heading-1",
-      "text": "1. 암호화가 필요한 이유",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 293.2421875
-    },
-    {
-      "id": "heading-2",
-      "text": "2. Fernet 대칭키 암호화란?",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 548.5703125
-    },
-    {
-      "id": "heading-3",
-      "text": "3. CryptoUtil 클래스 구현",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 729.3984375
-    },
-    {
-      "id": "heading-4",
-      "text": "예시 사용법",
-      "level": 1,
-      "isMainTopic": true,
-      "position": 1359.84375
-    },
-    {
-      "id": "heading-5",
-      "text": "3.1 코드 설명",
-      "level": 3,
-      "isMainTopic": false,
-      "position": 1783.34375
-    },
-    {
-      "id": "heading-6",
-      "text": "4. 설정에 암호화 키 추가하기",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 2011.9765625
-    },
-    {
-      "id": "heading-7",
-      "text": "환경 변수에서 암호화 키를 가져오거나, 기본값을 설정합니다.",
-      "level": 1,
-      "isMainTopic": true,
-      "position": 2186.5546875
-    },
-    {
-      "id": "heading-8",
-      "text": "5. 암호화 시스템의 적용",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 2391.4453125
-    },
-    {
-      "id": "heading-9",
-      "text": "6. 마치며",
-      "level": 2,
-      "isMainTopic": true,
-      "position": 2572.2734375
+    "en": {
+      "title": "Building an Outsourcing Crawler with FastAPI and PostgreSQL",
+      "description": "I implemented an encryption system in the crawler project! Using Fernet symmetric key encryption to securely protect project IDs and manage them conveniently with the CryptoUtil class. 🔒",
+      "content": "<hr>\n<h2 id=\"heading-0\">title: \"Building an Outsourcing Crawler with FastAPI and PostgreSQL\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"I implemented an encryption system in the crawler project! Using Fernet symmetric key encryption to securely protect project IDs and manage them conveniently with the CryptoUtil class. 🔒\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"Async Processing\",\n\"Data Collection\",\n\"Real-time Processing\",\n\"Encryption\",\n\"Fernet\",\n\"Security\",\n\"cryptography\",\n\"Data Protection\",\n]\nthumbnail: \"/images/fastapi.png\"</h2>\n<p>In this post, I'll introduce the <strong>implementation of the encryption system</strong> in detail!</p>\n<hr>\n<h1 id=\"heading-1\">Implementing Encryption: CryptoUtil Class and Project ID Protection</h1>\n<p>Hello everyone!<br>\nIn previous posts, we covered database async processing, session management, model improvements, and crawler scheduling. Today, we'll discuss the <strong>implementation of an encryption system</strong>.</p>\n<p>Security is one of the most critical elements in our project. In particular, sensitive information like project IDs needs to be protected from external exposure through encryption. In this post, I'll introduce how to implement encryption and decryption of project IDs using <strong>Fernet</strong> symmetric key encryption.</p>\n<hr>\n<h2 id=\"heading-2\">1. Why Do We Need Encryption?</h2>\n<ul>\n<li>\n<p><strong>Enhanced Security:</strong><br>\nWhen data is exposed externally, it becomes vulnerable to malicious attacks. Through encryption, we can securely protect important information (e.g., project IDs).</p>\n</li>\n<li>\n<p><strong>Maintaining Data Integrity:</strong><br>\nEncrypted data makes it easy to verify if tampering occurred during transmission, ensuring data reliability.</p>\n</li>\n<li>\n<p><strong>Regulatory Compliance:</strong><br>\nEncrypting sensitive information is essential to meet various security regulations and compliance requirements.</p>\n</li>\n</ul>\n<hr>\n<h2 id=\"heading-3\">2. What is Fernet Symmetric Key Encryption?</h2>\n<p><strong>Fernet</strong> is a symmetric key encryption method provided by Python's <a href=\"https://cryptography.io/\">cryptography</a> library.</p>\n<ul>\n<li><strong>Symmetric Key Encryption:</strong> Uses the same key for encryption and decryption</li>\n<li><strong>Simple Usage:</strong> Implements powerful encryption features with just a few lines of code</li>\n<li><strong>Security:</strong> Ensures integrity and authentication of encrypted messages</li>\n</ul>\n<hr>\n<h2 id=\"heading-4\">3. Implementing the CryptoUtil Class</h2>\n<p>Now let's implement the <code>CryptoUtil</code> class. This class provides encryption and decryption functionality, primarily used to protect sensitive data like project IDs.</p>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "title: \"Building an Outsourcing Crawler with FastAPI and PostgreSQL\"\ndate: \"2025-02-12\"\ncategory: \"backend\"\ndescription: \"I implemented an encryption system in the crawler project! Using Fernet symmetric key encryption to securely protect project IDs and manage them conveniently with the CryptoUtil class. 🔒\"\ntags:\n[\n\"FastAPI\",\n\"PostgreSQL\",\n\"Python\",\n\"Crawler\",\n\"asyncio\",\n\"SQLAlchemy\",\n\"Async Processing\",\n\"Data Collection\",\n\"Real-time Processing\",\n\"Encryption\",\n\"Fernet\",\n\"Security\",\n\"cryptography\",\n\"Data Protection\",\n]\nthumbnail: \"/images/fastapi.png\"",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "Implementing Encryption: CryptoUtil Class and Project ID Protection",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1. Why Do We Need Encryption?",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "2. What is Fernet Symmetric Key Encryption?",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "3. Implementing the CryptoUtil Class",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        }
+      ]
     }
-  ],
+  },
   "imageHeights": {}
 }
