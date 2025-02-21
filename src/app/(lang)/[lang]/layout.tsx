@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lang: lng }));
 }
 
-export default function Layout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: {
@@ -30,7 +30,11 @@ export default function Layout({
   }
 
   return (
-    <html lang={lang}>
+    <html suppressHydrationWarning>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className={inter.className}>
         <ClientLayout params={{ lang }}>
           {children}
