@@ -1,0 +1,206 @@
+{
+  "id": "career",
+  "title": "개발자 윤수빈입니다.",
+  "content": "\n## 프로젝트 경력\n\n---\n\n### 국제 아웃소싱 데이터 크롤링 웹서비스\n\n- **기간**: 2025.02 ~ 2025.03\n- **역할**: Full Stack Developer (기여도 100%)\n- **기술**: FastAPI, Next.js, React Query, PostgreSQL\n- **주요 성과**:\n  - 아웃소싱 플랫폼의 신규 프로젝트 실시간 DB 반영 (INSERT, UPDATE)\n  - 국가 간 임금 격차 해소 및 한국 개발자의 해외 진출 지원\n\n---\n\n### 사이니지 통합관제 플랫폼\n\n- **기간**: 2024.12 ~ 2025.03\n- **역할**: Full Stack Developer (기여도 100%)\n- **기술**: React Native (Expo), Socket, 음성인식 알고리즘\n- **주요 성과**:\n  - 음성인식률 95% 달성 (리히텐슈타인 거리, 자카드 유사도, 초성, 한글 특화 알고리즘 조합)\n  - 기능 도달률 99%\n  - 안드로이드 사이니지 클라이언트 개발\n  - 초당 1만건 데이터 처리 기능 구현\n\n---\n\n### 삼성화재, 한양대학교 PoC 로그데이터 관리 시스템\n\n- **기간**: 2024.05 ~ 2024.11\n- **역할**: Full Stack Developer (기여도 100%)\n- **기술**: Next.js, PostgreSQL, Prisma, Docker, ChakraUI\n- **주요 성과**:\n  - 로그 데이터 관리 시스템 전체 개발\n  - 데이터 처리 및 시각화 최적화\n\n---\n\n### 네트워크 보안 장비 업체 ERP 시스템 마이그레이션\n\n- **기간**: 2024.01 ~ 2024.05\n- **역할**: Full Stack Developer (기여도 35%)\n- **기술**: React, ChakraUI, Python Flask, MariaDB\n- **주요 성과**:\n  - 레거시 시스템을 React와 Flask 기반으로 마이그레이션\n  - 사용자 UI/UX 개선 및 성능 향상\n\n---\n\n### 학사행정프로그램 개발\n\n#### 마산대학교\n\n- **기간**: 2024.05\n- **역할**: Full Stack Developer (기여도 100%)\n- **기술**: JAVA JSP, WebSquare, MySQL\n- **주요 성과**: 장학생 관리 시스템 개발, 학사 관리 시스템 구현\n\n#### 강원대학교\n\n- **기간**: 2024.08 ~ 2024.11\n- **기술**: JAVA JSP, WebSquare, OracleDB\n- **주요 성과**: 기업 협업 및 자문 결재 시스템 개발, 결재내역 문서화 및 출력 기능 구현\n\n#### 여주대학교\n\n- **기간**: 2024.06 ~ 2024.07\n- **기술**: JAVA JSP, WebSquare, OracleDB\n- **주요 성과**: 교원 평가 관리 및 학생 평가 관리 시스템 구축\n\n---\n\n### 문자 대량 발송 상담 챗봇 관리 시스템\n\n- **기간**: 2023.09 ~ 2024.01\n- **역할**: Frontend Developer (기여도 90%)\n- **기술**: Redux, KT 연동 API, 카카오톡 연동\n- **주요 성과**:\n  - Redux를 이용한 사용자 데이터 및 권한 관리 기능 구현\n  - KT API를 통한 대량 문자 발송 기능 구현\n  - 카카오톡 알림톡 대량 발송 기능 구현\n  - 챗봇 시나리오 및 템플릿 관리 기능 구현\n  - 통계 페이지 구현\n\n---\n\n### 전자고지 시스템 개발\n\n- **기간**: 2023.04 ~ 2023.09\n- **역할**: Frontend Developer (기여도 40%)\n- **기술**: NICEpay, 반응형 웹\n- **주요 성과**:\n  - 전자문서 및 전자고지 발송 기능 개발\n  - NICEpay 결제 기능 연동\n  - 사용자 데이터 및 권한 관리 기능 개발\n  - 전자고지 미리보기 기능 구현\n  - 통계 페이지 및 반응형 웹 기능 개발\n\n---\n\n### FreqTrade 커스터마이징\n\n- **기간**: 2024.04 ~ 2024.09\n- **역할**: Full Stack Developer (기여도 100%)\n- **기술**: Python, FreqTrade\n- **주요 성과**: 자동매매 전략 개발 및 커스터마이징\n\n---\n\n| 프로젝트명                                                     | 기간              | 역할 및 기여도               | 기술 스택                                      | 주요 성과                                                                                                                                                                                        |\n| -------------------------------------------------------------- | ----------------- | ---------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| 국제 아웃소싱 데이터 크롤링 웹서비스                           | 2025-02 ~ 2025-03 | FullStack 기여도 100%        | FastAPI, Next.js, React Query, PostgreSQL      | - 아웃소싱 플랫폼의 신규 프로젝트 실시간 DB 반영 (INSERT, UPDATE)- 국가 간 임금 격차 해소 및 한국 개발자의 해외 진출 지원                                                                        |\n| **사이니지 통합관제 플랫폼**                                   | 2024-12 ~ 2025-03 | FullStack 기여도 100%        | React Native (Expo), Socket, 음성인식 알고리즘 | - 음성인식률 95% 달성 (리히텐슈타인 거리, 자카드 유사도, 초성, 한글 특화 알고리즘 조합) - 기능 도달률 99% - 안드로이드 사이니지 클라이언트 개발 (실시간 데이터 패칭, 컨텐츠 및 스케줄링 적용)    |\n| - 초당 1만건 데이터 처리 기능 구현                             |\n| **삼성화재, 한양대학교 PoC 로그데이터 관리 시스템**            | 2024-05 ~ 2024-11 | FullStack 기여도 100%        | Next.js, PostgreSQL, Prisma, Docker, ChakraUI  | - 로그 데이터 관리 시스템 전체 개발 - 데이터 처리 및 시각화 최적화                                                                                                                               |\n| **네트워크 보안 장비 업체 ERP 시스템 마이그레이션**            | 2024-01 ~ 2024-05 | 프론트엔드/백엔드 기여도 35% | React, ChakraUI, Python Flask, MariaDB         | - 레거시 시스템을 React와 Flask 기반으로 마이그레이션 - 사용자 UI/UX 개선 및 성능 향상                                                                                                           |\n| **마산대학교 학사행정프로그램**                                | 2024-05           | FullStack 기여도 100%        | JAVA JSP, WebSquare, MySQL                     | - 장학생 관리 시스템 개발 - 학사 관리 시스템 구현                                                                                                                                                |\n| **강원대학교 학사행정프로그램**                                | 2024-08 ~ 2024-11 | FullStack 기여도 100%        | JAVA JSP, WebSquare, OracleDB                  | - 기업 협업 및 자문 결재 시스템 개발 - 결재내역 문서화 및 출력 기능 구현                                                                                                                         |\n| **여주대학교 학사행정프로그램**                                | 2024-06 ~ 2024-07 | FullStack 기여도 100%        | JAVA JSP, WebSquare, OracleDB                  | - 교원 평가 관리 및 학생 평가 관리 시스템 구축                                                                                                                                                   |\n| **문자 대량 발송 상담 챗봇 관리 시스템 개발**                  | 2023-09 ~ 2024-01 | 프론트엔드 기여도 90%        | Redux, KT 연동 API, 카카오톡 연동              | - Redux를 이용한 사용자 데이터 및 권한 관리 기능 구현 - KT API를 통한 대량 문자 발송 기능 구현 - 카카오톡 알림톡 대량 발송 기능 구현 - 챗봇 시나리오 및 템플릿 관리 기능 구현 - 통계 페이지 구현 |\n| **카카오 네이버 KT 전자문서 발송을 통한 전자고지 시스템 개발** | 2023-04 ~ 2023-09 | 프론트엔드 기여도 40%        | NICEpay, 반응형 웹                             | - 전자문서 및 전자고지 발송 기능 개발 - NICEpay 결제 기능 연동 - 사용자 데이터 및 권한 관리 기능 개발 - 전자고지 미리보기 기능 구현 - 통계 페이지 및 반응형 웹 기능 개발                         |\n| **자동매매 오픈소스 FreqTrade 커스터마이징**                   | 2024-04 ~ 2024-09 | 풀스택 기여도 100%           | Python, FreqTrade                              | - 자동매매 전략 개발 및 커스터마이징                                                                                                                                                             |\n",
+  "date": "2024-03-20",
+  "category": "career",
+  "tags": [
+    "Full Stack",
+    "Next.js",
+    "React",
+    "Python",
+    "PostgreSQL",
+    "Docker",
+    "React Native",
+    "음성인식",
+    "ERP Systems",
+    "Financial Engineering",
+    "Data Processing"
+  ],
+  "thumbnail": "/images/profile1.jpg",
+  "translations": {
+    "ko": {
+      "title": "개발자 윤수빈입니다.",
+      "description": "웹 개발, 금융 시스템, 기업솔루션 분야의 Full Stack 엔지니어입니다. Next.js, React, Python, 데이터베이스 관리에 능숙하며, 삼성화재 등 대기업 프로젝트를 성공적으로 수행했습니다.",
+      "content": "<h2 id=\"heading-0\">프로젝트 경력</h2>\n<hr>\n<h3 id=\"heading-1\">국제 아웃소싱 데이터 크롤링 웹서비스</h3>\n<ul>\n<li><strong>기간</strong>: 2025.02 ~ 2025.03</li>\n<li><strong>역할</strong>: Full Stack Developer (기여도 100%)</li>\n<li><strong>기술</strong>: FastAPI, Next.js, React Query, PostgreSQL</li>\n<li><strong>주요 성과</strong>:\n<ul>\n<li>아웃소싱 플랫폼의 신규 프로젝트 실시간 DB 반영 (INSERT, UPDATE)</li>\n<li>국가 간 임금 격차 해소 및 한국 개발자의 해외 진출 지원</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-2\">사이니지 통합관제 플랫폼</h3>\n<ul>\n<li><strong>기간</strong>: 2024.12 ~ 2025.03</li>\n<li><strong>역할</strong>: Full Stack Developer (기여도 100%)</li>\n<li><strong>기술</strong>: React Native (Expo), Socket, 음성인식 알고리즘</li>\n<li><strong>주요 성과</strong>:\n<ul>\n<li>음성인식률 95% 달성 (리히텐슈타인 거리, 자카드 유사도, 초성, 한글 특화 알고리즘 조합)</li>\n<li>기능 도달률 99%</li>\n<li>안드로이드 사이니지 클라이언트 개발</li>\n<li>초당 1만건 데이터 처리 기능 구현</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-3\">삼성화재, 한양대학교 PoC 로그데이터 관리 시스템</h3>\n<ul>\n<li><strong>기간</strong>: 2024.05 ~ 2024.11</li>\n<li><strong>역할</strong>: Full Stack Developer (기여도 100%)</li>\n<li><strong>기술</strong>: Next.js, PostgreSQL, Prisma, Docker, ChakraUI</li>\n<li><strong>주요 성과</strong>:\n<ul>\n<li>로그 데이터 관리 시스템 전체 개발</li>\n<li>데이터 처리 및 시각화 최적화</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-4\">네트워크 보안 장비 업체 ERP 시스템 마이그레이션</h3>\n<ul>\n<li><strong>기간</strong>: 2024.01 ~ 2024.05</li>\n<li><strong>역할</strong>: Full Stack Developer (기여도 35%)</li>\n<li><strong>기술</strong>: React, ChakraUI, Python Flask, MariaDB</li>\n<li><strong>주요 성과</strong>:\n<ul>\n<li>레거시 시스템을 React와 Flask 기반으로 마이그레이션</li>\n<li>사용자 UI/UX 개선 및 성능 향상</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-5\">학사행정프로그램 개발</h3>\n<h4 id=\"heading-6\">마산대학교</h4>\n<ul>\n<li><strong>기간</strong>: 2024.05</li>\n<li><strong>역할</strong>: Full Stack Developer (기여도 100%)</li>\n<li><strong>기술</strong>: JAVA JSP, WebSquare, MySQL</li>\n<li><strong>주요 성과</strong>: 장학생 관리 시스템 개발, 학사 관리 시스템 구현</li>\n</ul>\n<h4 id=\"heading-7\">강원대학교</h4>\n<ul>\n<li><strong>기간</strong>: 2024.08 ~ 2024.11</li>\n<li><strong>기술</strong>: JAVA JSP, WebSquare, OracleDB</li>\n<li><strong>주요 성과</strong>: 기업 협업 및 자문 결재 시스템 개발, 결재내역 문서화 및 출력 기능 구현</li>\n</ul>\n<h4 id=\"heading-8\">여주대학교</h4>\n<ul>\n<li><strong>기간</strong>: 2024.06 ~ 2024.07</li>\n<li><strong>기술</strong>: JAVA JSP, WebSquare, OracleDB</li>\n<li><strong>주요 성과</strong>: 교원 평가 관리 및 학생 평가 관리 시스템 구축</li>\n</ul>\n<hr>\n<h3 id=\"heading-9\">문자 대량 발송 상담 챗봇 관리 시스템</h3>\n<ul>\n<li><strong>기간</strong>: 2023.09 ~ 2024.01</li>\n<li><strong>역할</strong>: Frontend Developer (기여도 90%)</li>\n<li><strong>기술</strong>: Redux, KT 연동 API, 카카오톡 연동</li>\n<li><strong>주요 성과</strong>:\n<ul>\n<li>Redux를 이용한 사용자 데이터 및 권한 관리 기능 구현</li>\n<li>KT API를 통한 대량 문자 발송 기능 구현</li>\n<li>카카오톡 알림톡 대량 발송 기능 구현</li>\n<li>챗봇 시나리오 및 템플릿 관리 기능 구현</li>\n<li>통계 페이지 구현</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-10\">전자고지 시스템 개발</h3>\n<ul>\n<li><strong>기간</strong>: 2023.04 ~ 2023.09</li>\n<li><strong>역할</strong>: Frontend Developer (기여도 40%)</li>\n<li><strong>기술</strong>: NICEpay, 반응형 웹</li>\n<li><strong>주요 성과</strong>:\n<ul>\n<li>전자문서 및 전자고지 발송 기능 개발</li>\n<li>NICEpay 결제 기능 연동</li>\n<li>사용자 데이터 및 권한 관리 기능 개발</li>\n<li>전자고지 미리보기 기능 구현</li>\n<li>통계 페이지 및 반응형 웹 기능 개발</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-11\">FreqTrade 커스터마이징</h3>\n<ul>\n<li><strong>기간</strong>: 2024.04 ~ 2024.09</li>\n<li><strong>역할</strong>: Full Stack Developer (기여도 100%)</li>\n<li><strong>기술</strong>: Python, FreqTrade</li>\n<li><strong>주요 성과</strong>: 자동매매 전략 개발 및 커스터마이징</li>\n</ul>\n<hr>\n<table class=\"markdown-table\">\n<thead>\n<tr>\n<th>프로젝트명</th>\n<th>기간</th>\n<th>역할 및 기여도</th>\n<th>기술 스택</th>\n<th>주요 성과</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>국제 아웃소싱 데이터 크롤링 웹서비스</td>\n<td>2025-02 ~ 2025-03</td>\n<td>FullStack 기여도 100%</td>\n<td>FastAPI, Next.js, React Query, PostgreSQL</td>\n<td>- 아웃소싱 플랫폼의 신규 프로젝트 실시간 DB 반영 (INSERT, UPDATE)- 국가 간 임금 격차 해소 및 한국 개발자의 해외 진출 지원</td>\n</tr>\n<tr>\n<td><strong>사이니지 통합관제 플랫폼</strong></td>\n<td>2024-12 ~ 2025-03</td>\n<td>FullStack 기여도 100%</td>\n<td>React Native (Expo), Socket, 음성인식 알고리즘</td>\n<td>- 음성인식률 95% 달성 (리히텐슈타인 거리, 자카드 유사도, 초성, 한글 특화 알고리즘 조합) - 기능 도달률 99% - 안드로이드 사이니지 클라이언트 개발 (실시간 데이터 패칭, 컨텐츠 및 스케줄링 적용)</td>\n</tr>\n<tr>\n<td>- 초당 1만건 데이터 처리 기능 구현</td>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n<tr>\n<td><strong>삼성화재, 한양대학교 PoC 로그데이터 관리 시스템</strong></td>\n<td>2024-05 ~ 2024-11</td>\n<td>FullStack 기여도 100%</td>\n<td>Next.js, PostgreSQL, Prisma, Docker, ChakraUI</td>\n<td>- 로그 데이터 관리 시스템 전체 개발 - 데이터 처리 및 시각화 최적화</td>\n</tr>\n<tr>\n<td><strong>네트워크 보안 장비 업체 ERP 시스템 마이그레이션</strong></td>\n<td>2024-01 ~ 2024-05</td>\n<td>프론트엔드/백엔드 기여도 35%</td>\n<td>React, ChakraUI, Python Flask, MariaDB</td>\n<td>- 레거시 시스템을 React와 Flask 기반으로 마이그레이션 - 사용자 UI/UX 개선 및 성능 향상</td>\n</tr>\n<tr>\n<td><strong>마산대학교 학사행정프로그램</strong></td>\n<td>2024-05</td>\n<td>FullStack 기여도 100%</td>\n<td>JAVA JSP, WebSquare, MySQL</td>\n<td>- 장학생 관리 시스템 개발 - 학사 관리 시스템 구현</td>\n</tr>\n<tr>\n<td><strong>강원대학교 학사행정프로그램</strong></td>\n<td>2024-08 ~ 2024-11</td>\n<td>FullStack 기여도 100%</td>\n<td>JAVA JSP, WebSquare, OracleDB</td>\n<td>- 기업 협업 및 자문 결재 시스템 개발 - 결재내역 문서화 및 출력 기능 구현</td>\n</tr>\n<tr>\n<td><strong>여주대학교 학사행정프로그램</strong></td>\n<td>2024-06 ~ 2024-07</td>\n<td>FullStack 기여도 100%</td>\n<td>JAVA JSP, WebSquare, OracleDB</td>\n<td>- 교원 평가 관리 및 학생 평가 관리 시스템 구축</td>\n</tr>\n<tr>\n<td><strong>문자 대량 발송 상담 챗봇 관리 시스템 개발</strong></td>\n<td>2023-09 ~ 2024-01</td>\n<td>프론트엔드 기여도 90%</td>\n<td>Redux, KT 연동 API, 카카오톡 연동</td>\n<td>- Redux를 이용한 사용자 데이터 및 권한 관리 기능 구현 - KT API를 통한 대량 문자 발송 기능 구현 - 카카오톡 알림톡 대량 발송 기능 구현 - 챗봇 시나리오 및 템플릿 관리 기능 구현 - 통계 페이지 구현</td>\n</tr>\n<tr>\n<td><strong>카카오 네이버 KT 전자문서 발송을 통한 전자고지 시스템 개발</strong></td>\n<td>2023-04 ~ 2023-09</td>\n<td>프론트엔드 기여도 40%</td>\n<td>NICEpay, 반응형 웹</td>\n<td>- 전자문서 및 전자고지 발송 기능 개발 - NICEpay 결제 기능 연동 - 사용자 데이터 및 권한 관리 기능 개발 - 전자고지 미리보기 기능 구현 - 통계 페이지 및 반응형 웹 기능 개발</td>\n</tr>\n<tr>\n<td><strong>자동매매 오픈소스 FreqTrade 커스터마이징</strong></td>\n<td>2024-04 ~ 2024-09</td>\n<td>풀스택 기여도 100%</td>\n<td>Python, FreqTrade</td>\n<td>- 자동매매 전략 개발 및 커스터마이징</td>\n</tr>\n</tbody>\n</table>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "프로젝트 경력",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "국제 아웃소싱 데이터 크롤링 웹서비스",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "사이니지 통합관제 플랫폼",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "삼성화재, 한양대학교 PoC 로그데이터 관리 시스템",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "네트워크 보안 장비 업체 ERP 시스템 마이그레이션",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "학사행정프로그램 개발",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "마산대학교",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "강원대학교",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "여주대학교",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "문자 대량 발송 상담 챗봇 관리 시스템",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "전자고지 시스템 개발",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "FreqTrade 커스터마이징",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        }
+      ]
+    },
+    "en": {
+      "title": "Subin Yoon, Software Developer",
+      "description": "Full Stack Engineer with expertise in Web Development, Financial Systems, and Enterprise Solutions. Experienced in Next.js, React, Python, and Database Management. Successfully delivered projects for major corporations including Samsung Fire & Marine Insurance.",
+      "content": "<h2 id=\"heading-0\">Project Experience</h2>\n<h3 id=\"heading-1\">International Outsourcing Data Crawling Web Service</h3>\n<ul>\n<li><strong>Period</strong>: Feb 2025 - Mar 2025</li>\n<li><strong>Role</strong>: Full Stack Developer (Contribution 100%)</li>\n<li><strong>Tech Stack</strong>: FastAPI, Next.js, React Query, PostgreSQL</li>\n<li><strong>Key Achievements</strong>:\n<ul>\n<li>Implemented real-time DB updates for new outsourcing projects (INSERT, UPDATE)</li>\n<li>Facilitated global wage gap resolution and supported Korean developers' overseas expansion</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-2\">Digital Signage Integrated Control Platform</h3>\n<ul>\n<li><strong>Period</strong>: Dec 2024 - Mar 2025</li>\n<li><strong>Role</strong>: Full Stack Developer (Contribution 100%)</li>\n<li><strong>Tech Stack</strong>: React Native (Expo), Socket, Voice Recognition Algorithm</li>\n<li><strong>Key Achievements</strong>:\n<ul>\n<li>Achieved 95% voice recognition accuracy (using Levenshtein distance, Jaccard similarity, Korean-specific algorithms)</li>\n<li>Reached 99% feature implementation rate</li>\n<li>Developed Android signage client with real-time data fetching</li>\n<li>Implemented processing of 10,000 data points per second</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-3\">Samsung Fire &amp; Marine Insurance, Hanyang University PoC Log Data Management System</h3>\n<ul>\n<li><strong>Period</strong>: May 2024 - Nov 2024</li>\n<li><strong>Role</strong>: Full Stack Developer (Contribution 100%)</li>\n<li><strong>Tech Stack</strong>: Next.js, PostgreSQL, Prisma, Docker, ChakraUI</li>\n<li><strong>Key Achievements</strong>:\n<ul>\n<li>Developed complete log data management system</li>\n<li>Optimized data processing and visualization</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-4\">Network Security Equipment Company ERP System Migration</h3>\n<ul>\n<li><strong>Period</strong>: Jan 2024 - May 2024</li>\n<li><strong>Role</strong>: Full Stack Developer (Contribution 35%)</li>\n<li><strong>Tech Stack</strong>: React, ChakraUI, Python Flask, MariaDB</li>\n<li><strong>Key Achievements</strong>:\n<ul>\n<li>Migrated legacy system to React and Flask</li>\n<li>Enhanced user UI/UX and improved performance</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-5\">Academic Administration Program Development</h3>\n<h4 id=\"heading-6\">Masan University</h4>\n<ul>\n<li><strong>Period</strong>: May 2024</li>\n<li><strong>Role</strong>: Full Stack Developer (Contribution 100%)</li>\n<li><strong>Tech Stack</strong>: JAVA JSP, WebSquare, MySQL</li>\n<li><strong>Key Achievements</strong>: Developed scholarship management and academic administration systems</li>\n</ul>\n<h4 id=\"heading-7\">Kangwon University</h4>\n<ul>\n<li><strong>Period</strong>: Aug 2024 - Nov 2024</li>\n<li><strong>Tech Stack</strong>: JAVA JSP, WebSquare, OracleDB</li>\n<li><strong>Key Achievements</strong>: Implemented corporate collaboration and consultation approval system</li>\n</ul>\n<h4 id=\"heading-8\">Yeoju University</h4>\n<ul>\n<li><strong>Period</strong>: Jun 2024 - Jul 2024</li>\n<li><strong>Tech Stack</strong>: JAVA JSP, WebSquare, OracleDB</li>\n<li><strong>Key Achievements</strong>: Built faculty and student evaluation management system</li>\n</ul>\n<hr>\n<h3 id=\"heading-9\">Bulk SMS Chatbot Management System</h3>\n<ul>\n<li><strong>Period</strong>: Sep 2023 - Jan 2024</li>\n<li><strong>Role</strong>: Frontend Developer (Contribution 90%)</li>\n<li><strong>Tech Stack</strong>: Redux, KT API Integration, KakaoTalk Integration</li>\n<li><strong>Key Achievements</strong>:\n<ul>\n<li>Implemented user data and permission management using Redux</li>\n<li>Developed bulk SMS sending functionality using KT API</li>\n<li>Integrated KakaoTalk notification system</li>\n<li>Created chatbot scenario and template management</li>\n<li>Built statistics dashboard</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-10\">Electronic Notification System Development</h3>\n<ul>\n<li><strong>Period</strong>: Apr 2023 - Sep 2023</li>\n<li><strong>Role</strong>: Frontend Developer (Contribution 40%)</li>\n<li><strong>Tech Stack</strong>: NICEpay, Responsive Web</li>\n<li><strong>Key Achievements</strong>:\n<ul>\n<li>Developed electronic document delivery system</li>\n<li>Integrated NICEpay payment functionality</li>\n<li>Implemented user data and permission management</li>\n<li>Created notification preview feature</li>\n<li>Built responsive statistics dashboard</li>\n</ul>\n</li>\n</ul>\n<hr>\n<h3 id=\"heading-11\">FreqTrade Customization</h3>\n<ul>\n<li><strong>Period</strong>: Apr 2024 - Sep 2024</li>\n<li><strong>Role</strong>: Full Stack Developer (Contribution 100%)</li>\n<li><strong>Tech Stack</strong>: Python, FreqTrade</li>\n<li><strong>Key Achievements</strong>: Developed and customized automated trading strategies</li>\n</ul>\n<hr>\n<table class=\"markdown-table\">\n<thead>\n<tr>\n<th>Project Name</th>\n<th>Period</th>\n<th>Role &amp; Contribution</th>\n<th>Tech Stack</th>\n<th>Key Achievements</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>International Outsourcing Data Crawling Web Service</td>\n<td>Feb 2025 - Mar 2025</td>\n<td>Full Stack (100%)</td>\n<td>FastAPI, Next.js, React Query, PostgreSQL</td>\n<td>- Real-time DB updates for new outsourcing projects (INSERT, UPDATE) - Facilitated global wage gap resolution and supported Korean developers' overseas expansion</td>\n</tr>\n<tr>\n<td>Digital Signage Integrated Control Platform</td>\n<td>Dec 2024 - Mar 2025</td>\n<td>Full Stack (100%)</td>\n<td>React Native (Expo), Socket, Voice Recognition Algorithm</td>\n<td>- Achieved 95% voice recognition accuracy (using Levenshtein distance, Jaccard similarity, Korean-specific algorithms) - Reached 99% feature implementation rate - Developed Android signage client with real-time data fetching - Implemented processing of 10,000 data points per second</td>\n</tr>\n<tr>\n<td>Samsung Fire &amp; Marine Insurance, Hanyang University PoC Log Data Management System</td>\n<td>May 2024 - Nov 2024</td>\n<td>Full Stack (100%)</td>\n<td>Next.js, PostgreSQL, Prisma, Docker, ChakraUI</td>\n<td>- Developed complete log data management system - Optimized data processing and visualization</td>\n</tr>\n<tr>\n<td>Network Security Equipment Company ERP System Migration</td>\n<td>Jan 2024 - May 2024</td>\n<td>Full Stack (35%)</td>\n<td>React, ChakraUI, Python Flask, MariaDB</td>\n<td>- Migrated legacy system to React and Flask - Enhanced user UI/UX and improved performance</td>\n</tr>\n<tr>\n<td>Masan University Academic Administration Program</td>\n<td>May 2024</td>\n<td>Full Stack (100%)</td>\n<td>JAVA JSP, WebSquare, MySQL</td>\n<td>- Developed scholarship management system - Implemented academic administration system</td>\n</tr>\n<tr>\n<td>Kangwon University Academic Administration Program</td>\n<td>Aug 2024 - Nov 2024</td>\n<td>Full Stack (100%)</td>\n<td>JAVA JSP, WebSquare, OracleDB</td>\n<td>- Developed corporate collaboration and consultation approval system - Implemented document processing and printing functionality</td>\n</tr>\n<tr>\n<td>Yeoju University Academic Administration Program</td>\n<td>Jun 2024 - Jul 2024</td>\n<td>Full Stack (100%)</td>\n<td>JAVA JSP, WebSquare, OracleDB</td>\n<td>- Built faculty and student evaluation management system</td>\n</tr>\n<tr>\n<td>Bulk SMS Chatbot Management System</td>\n<td>Sep 2023 - Jan 2024</td>\n<td>Frontend (90%)</td>\n<td>Redux, KT API Integration, KakaoTalk Integration</td>\n<td>- Implemented user data and permission management using Redux - Developed bulk SMS sending functionality - Integrated KakaoTalk notification system - Created chatbot scenario and template management - Built statistics dashboard</td>\n</tr>\n<tr>\n<td>Electronic Notification System</td>\n<td>Apr 2023 - Sep 2023</td>\n<td>Frontend (40%)</td>\n<td>NICEpay, Responsive Web</td>\n<td>- Developed electronic document delivery system - Integrated NICEpay payment functionality - Implemented user data and permission management - Created notification preview feature - Built responsive statistics dashboard</td>\n</tr>\n<tr>\n<td>FreqTrade Automated Trading Customization</td>\n<td>Apr 2024 - Sep 2024</td>\n<td>Full Stack (100%)</td>\n<td>Python, FreqTrade</td>\n<td>- Developed and customized automated trading strategies</td>\n</tr>\n</tbody>\n</table>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "Project Experience",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "International Outsourcing Data Crawling Web Service",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "Digital Signage Integrated Control Platform",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "Samsung Fire & Marine Insurance, Hanyang University PoC Log Data Management System",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "Network Security Equipment Company ERP System Migration",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "Academic Administration Program Development",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "Masan University",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "Kangwon University",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "Yeoju University",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "Bulk SMS Chatbot Management System",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "Electronic Notification System Development",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "FreqTrade Customization",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        }
+      ]
+    }
+  },
+  "imageHeights": {}
+}

@@ -1,0 +1,127 @@
+<p>Hello everyone! 😊</p>
+<p>Today, I'd like to share how we implemented a data collector based on <strong>Spring Boot</strong> that collects real-time spot and futures market data from Binance and stores it in <strong>TimescaleDB</strong>. In this post, I'll walk you through various implementation points including system architecture, API calls, service layer configuration, and error handling in a friendly way!</p>
+<hr>
+<h2>System Overview</h2>
+<p>Our system performs the following roles:</p>
+<ul>
+<li><strong>Data Collector</strong>
+<ul>
+<li><strong>BinanceExchange</strong>: Collects <strong>spot market</strong> data (BTC/USDT, ETH/USDT) from Binance</li>
+<li><strong>BinanceFuturesExchange</strong>: Collects <strong>futures market</strong> data (BTCUSDT, ETHUSDT) from Binance</li>
+</ul>
+</li>
+<li><strong>API Calls</strong>: Uses <code>WebClient</code> to call Binance APIs</li>
+<li><strong>Service Layer</strong>
+<ul>
+<li><code>SpotMarketDataServiceImpl</code>: Processes spot market data</li>
+<li><code>FuturesMarketDataServiceImpl</code>: Processes futures market data</li>
+<li><code>ExchangeRepository</code>: Manages exchange information and TimescaleDB storage</li>
+</ul>
+</li>
+<li><strong>Data Collection Interval</strong>: Collects and stores data at 1-second intervals</li>
+<li><strong>Error Handling</strong>: API response null checks, exception handling and logging, database constraint error handling</li>
+</ul>
+<hr>
+<h2>Key Implementation Points</h2>
+<h3>1. API Calls Using WebClient</h3>
+<p>We use the asynchronous <strong>WebClient</strong> to call data from the Binance API. Here's an example from the <code>BinanceExchange</code> class:</p>
+<pre><code class="language-java">@Service
+public class BinanceExchange {
+
+    private static final Logger log = LoggerFactory.getLogger(BinanceExchange.class);
+    private final WebClient webClient = WebClient.create("https://api.binance.com");
+
+    public Mono&#x3C;JsonNode> getSpotMarketData(String symbol) {
+        return webClient.get()
+            .uri(uriBuilder -> uriBuilder
+                .path("/api/v3/ticker/price")
+                .queryParam("symbol", symbol)
+                .build())
+            .retrieve()
+            .bodyToMono(JsonNode.class)
+            .doOnError(e -> log.error("Error occurred while calling API: {}", e.getMessage()))
+            .onErrorReturn(null);
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> When an error occurs, logging helps easily identify the problem, and using <code>onErrorReturn(null)</code> makes it easy to continue with null checks. 😉</p>
+</blockquote>
+<hr>
+<h3>2. Service Layer Implementation</h3>
+<p>The service layer responsible for processing data for each market processes the data received from the API and stores it. For example, the <code>SpotMarketDataServiceImpl</code> class is configured as follows:</p>
+<pre><code class="language-java">@Service
+public class SpotMarketDataServiceImpl implements SpotMarketDataService {
+
+    private static final Logger log = LoggerFactory.getLogger(SpotMarketDataServiceImpl.class);
+    private final BinanceExchange binanceExchange;
+    private final ExchangeRepository exchangeRepository;
+
+    public SpotMarketDataServiceImpl(BinanceExchange binanceExchange,
+                                     ExchangeRepository exchangeRepository) {
+        this.binanceExchange = binanceExchange;
+        this.exchangeRepository = exchangeRepository;
+    }
+
+    @Override
+    public void collectData() {
+        // Spot market: Collect BTC/USDT, ETH/USDT data
+        List&#x3C;String> symbols = Arrays.asList("BTCUSDT", "ETHUSDT");
+        for (String symbol : symbols) {
+            try {
+                JsonNode response = binanceExchange.getSpotMarketData(symbol).block();
+                if (response != null) {
+                    String price = response.get("price").asText();
+                    ExchangeData data = new ExchangeData(symbol, price, LocalDateTime.now());
+                    exchangeRepository.save(data);
+                    log.info("Data saved successfully - {}: {}", symbol, price);
+                } else {
+                    log.warn("API response is null. symbol: {}", symbol);
+                }
+            } catch (Exception e) {
+                log.error("Exception occurred while collecting data: {}", e.getMessage());
+            }
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> Futures market data processing is implemented in the <code>FuturesMarketDataServiceImpl</code> with similar logic, and it is configured to call the Binance futures API endpoints.</p>
+</blockquote>
+<hr>
+<h3>3. Data Collection with Scheduler</h3>
+<p>To collect data at 1-second intervals, we used Spring's <code>@Scheduled</code> annotation:</p>
+<pre><code class="language-java">@Component
+public class MarketDataScheduler {
+
+    private final SpotMarketDataService spotMarketDataService;
+    private final FuturesMarketDataService futuresMarketDataService;
+
+    public MarketDataScheduler(SpotMarketDataService spotMarketDataService,
+                               FuturesMarketDataService futuresMarketDataService) {
+        this.spotMarketDataService = spotMarketDataService;
+        this.futuresMarketDataService = futuresMarketDataService;
+    }
+
+    @Scheduled(fixedRate = 1000)
+    public void collectMarketData() {
+        spotMarketDataService.collectData();
+        futuresMarketDataService.collectData();
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Tip:</strong> When collecting periodic data, it is important to ensure that the scheduler does not stop through exception handling. 😊</p>
+</blockquote>
+<hr>
+<h2>Error Handling and Logging</h2>
+<ul>
+<li><strong>API response null check:</strong> If the response is null, perform appropriate warning logging to identify the problem.</li>
+<li><strong>Exception handling:</strong> Use try-catch blocks to log exceptions and ensure that the system as a whole is not affected.</li>
+<li><strong>Database constraint error:</strong> Check for possible constraint errors before saving and ensure stability through transaction processing if necessary.</li>
+</ul>
+<hr>
+<h2>Conclusion</h2>
+<p>In this way, we were able to collect and store the spot and futures market data from Binance in real-time and stably in <strong>TimescaleDB</strong>. During this process, we used various features of Spring Boot such as <code>WebClient</code>, scheduling, error handling, and logging, and we hope this will be helpful for your project! 🚀</p>
+<p>If you have any questions or comments, please feel free to contact me anytime! Have a good day! 😄</p>
+<p>Happy Coding!</p>

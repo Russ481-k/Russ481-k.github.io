@@ -247,28 +247,30 @@ It was valuable time learning we could implement services ourselves and identify
 
 1. Without clear criteria for manageable workload per minimum time unit, we over-ambitiously added features requiring significant time to rescope relative to 4 weeks
 2. Implemented transaction data, user returns and transaction data in CSR form difficult for search engines to index beyond charts
-3. 최소 단위기간에 1인이 감당할 수 있는 작업량에 대해 명확한 기준이 없이 무리하게 기능을 추가하여 4주라는 시간 대비 과한 범위를 적용하였고 그 범위를 재설정하는 것에 적지 않은 시간이 소요되었다.
-4. 차트 이외에 트렌젝션 데이터와 유저 수익률 및 트랜잭션 데이터를 검색엔진에 노출되기 어려운 CSR형태로 구현하였다.
-5. 상태관리 라이브러리를 활용하지 못하여 실시간 가격(currentPrice)이 자식 컴포넌트로 깊게 내려가는 props drilling 현상이 발생했다.
-6. 잘못된 접근을 알리는 404페이지를 구현하였으나, 지갑이 등록 되었을 경우에만 접근할 수 있는 페이지로 구분하지 못했다.
-7. 서버와의 통신을 HTTP요청을 통해 구현하여 대규모 트래픽에 대비하지 못했다.
+3. Without clear criteria for manageable workload per minimum time unit, we over-ambitiously added features requiring significant time to rescope relative to 4 weeks
+4. Chart data and transaction data and user returns data are implemented in CSR form difficult for search engines to index beyond charts
+5. We did not use state management libraries and experienced props drilling phenomenon where real-time price (currentPrice) goes deeply into child components
+6. We implemented a 404 page to indicate incorrect access, but failed to separate pages that can only be accessed if a wallet is registered
+7. We implemented server communication through HTTP requests and did not handle large-scale traffic
 
 ## Future Action
 
-1. 프로젝트를 진행함에 따라 그 기간을 어떻게 설정해야 적절한지 알 수 있었고 그것을 측정하는 것 또한 프로젝트의 중요한 부분이라는 점을 알 수 있었다. 프로젝트 초기부터 CPM을 설정하여 진행상황 평가를 공유하며 작업 진도에 대한 합의를 하는 것이 필요하다는 것을 알 수 있었다.
-2. NEXTJS를 통해 SSR을 구현, SEO를 실현할 수 있는, 사용자들에게 노출될 수 있는 웹 서비스로 구현해야겠다.
-3. 효율적인 컴포넌트 구조를 찾기 위해 Redux, Mobx, Recoil 등의 상태관리 라이브러리와 리액트의 컴포지션, 컨택스트, 포탈을 사용을 고려하여 데이터 흐름 최적화에 대한 고민을 해야겠다.
-4. 지갑의 등록되었을 경우에만 볼 수 있는 버튼을 구현함으로 유저데이터를 안전하게 관리하는 접근 영역이 명료한 웹 서비스로 리팩토링해야겠다.
-5. 데이터 처리에 대한 피드백 받은 내용을 토대로 실시간 데이터 연동 웹소켓을 적용해야겠다.
+1. As we progressed, we learned how to set the project duration appropriately and how to measure it, which is an important part of the project. It was valuable to set CPM from the beginning of the project and share progress evaluations to reach an agreement on the project's progress.
+2. We need to implement SSR through NEXTJS to achieve SEO and create a web service that can be exposed to users.
+3. To find an efficient component structure, we need to consider using state management libraries like Redux, Mobx, Recoil and React's composition, context, and portal to optimize data flow.
+4. We need to refactor the web service to be a secure web service that can only be accessed if a wallet is registered by implementing a button that can only be viewed if a wallet is registered.
+5. We need to apply a real-time data-linked web socket based on feedback on data processing.
 
-## **기술적 문제 해결**
+## **Technical Problem Solving**
 
-- **랜더링 최적화**에 문제가 있었다. **프로젝트 종료 3일 전**에 거래 토큰 다양화 과정에서 실시간 차트 **데이터 요청이 기하급수로 늘어나는 것**을 보았다. **웹은 시간이 갈수록 무거워졌고 DB의 용량이 무한히 커졌으며 체인 네트워크는 수 시간 만에 8G의 용량을 소진해 버렸다.** 같은 내용을 랜더링 하지 않는 **useMemo**나 랜더링을 최소화하기 위해 상태를 전역으로 관리하는 **Redux** 사용을 고려 하였으나, 우선 기존의 작성되었던 모든 **useEffect의 디펜던시**를 확인 해 보았다. 차트 데이터, 실시간 데이터, 실시간 데이터들의 일정시간 경과 후 차트 배열에 축적 시키는 과정에서 useEffect의 디펜던시에 해당 **요소 값**이 전부 들어가 있었다. 즉 **차트에 포함되는 함수와 배열이 변경될 때 마다 관련된 모든 컴포넌트에서 리랜더링이 일어났던 것**이다. 해당 디펜던시에 난수 적용 **단위 기간과 같은 간격으로 비동기 처리**를 할 수 있도록 했더니 기하급수 리랜더링 문제는 해결되었다.
-- **캔들 차트**에서 **스크롤 이벤트**에 대한 이해 없이 작업을 진행하다 보니, 차트를 제외한 페이지와의 **스크롤 값 충돌** 문제와 **마우스 포인터의 값**을 구하는 작업에 어려움을 느꼈다. 입력되는 스크롤 값에 대해 차트 컴포넌트와 메인페이지와의 입력 값의 구분이 필요했고 **스크롤을 제한하고 제한을 푸는 작업**이 필요하다 생각했다. 해당 키워드로 검색해보니, **document.body.style.overflow의 값을 unset과 hidden으로 독립**시킬 수 있다는 것을 알게 되었고, 메인페이지에서 스크롤을 할 때마다 차트에 영향을 주는 문제를 해결했다.
-- **SVG**를 통해 차트의 가격 높이 값과 거래량 높이 값을 설정해 준 후 **마우스 포인터의 위치에 비례한 값**을 보여주는 것에서 어려움이 있었다. 분명 해당 가격의 소수점 둘째 자리까지 **정확히** 맞아 떨어지는 것을 확인했는데, 며칠 뒤에 그 값이 **음수**로 바뀌어 있었다. 당혹스러웠지만 다시 살펴 보았다. 차트의 위치 값은 위로 **올라갈수록** 커지지만 마우스의 위치 값은 **아래로 내려올수록** 커진다는 것에서 값이 반전되거나 음수를 출력하는 문제가 발생한 것이었다. **방정식**으로 정확한 값을 구할 수 있었으나 잘못된 식을 대입했었고 **차트와 거래량 간의 값 차이**를 생각하지 않고 동일한 요소 값을 설정 했던 것에서 문제가 발생했음을 깨닫고 **캔들은 최댓값과 최솟값**이 달라질 수 있지만 **거래량은 최솟값이 0으로 고정**인 것을 이해하여 오류를 해결했다.
+- There was an issue with **rendering optimization**. **3 days before project completion**, we observed **exponential growth in data requests** for real-time charts during token diversification. **The web became increasingly heavy over time, DB capacity grew infinitely, and the chain network consumed 8G of capacity within hours.** We considered using **useMemo** to avoid rendering the same content or **Redux** for global state management to minimize rendering, but first checked all **useEffect dependencies** in existing code. Chart data, real-time data, and the process of accumulating real-time data into chart arrays after a certain time period had all their **element values** in useEffect dependencies. In other words, **re-rendering occurred in all related components whenever functions and arrays included in charts changed**. The exponential re-rendering issue was resolved by applying **asynchronous processing at intervals matching random number generation periods** to those dependencies.
 
-### 프로젝트를 마치며
+- Working on the **candlestick chart** without understanding **scroll events** led to difficulties with **scroll value conflicts** between the chart and other pages, and obtaining **mouse pointer values**. We needed to distinguish between input values for the chart component and main page, and thought we needed to work on **restricting and unrestricting scrolling**. Searching these keywords, we learned we could **isolate document.body.style.overflow values between unset and hidden**, resolving the issue of main page scrolling affecting the chart.
 
-NEXTjs를 통해 SSR을 구현하여 SEO를 구현하기를 바란다.
+- After setting price height and volume height values through **SVG**, we faced challenges showing values **proportional to mouse pointer position**. While we confirmed values matched precisely to two decimal places, days later those values had become **negative**. Upon review, we realized chart position values **increase upward** while mouse position values **increase downward**, causing value inversion and negative output issues. While we could find exact values using **equations**, we had applied incorrect formulas and set identical element values without considering **differences between chart and volume values**. We resolved the error by understanding that while **candles can have different max and min values**, **volume has a fixed minimum of 0**.
 
-서버의 차트데이터 로직 구현 외 백엔드와 컨트랙트 부분에 역할을 맡지 못한 점 또한 추후 솔로 프로젝트로 구현해야겠다.
+### At the end of the project
+
+I hope to implement SSR through NEXTjs to achieve SEO.
+
+In addition to implementing the chart data logic on the server, I also failed to take on the role of the backend and contract parts in the future solo project.

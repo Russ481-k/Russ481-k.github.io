@@ -1,7 +1,7 @@
 {
   "id": "entasis_engin_5",
   "title": "Entasis Engine - 데이터베이스 설계",
-  "content": "\r\n# 금융 데이터 분석 시스템 데이터베이스 설계\r\n\r\n## 📊 데이터베이스 아키텍처\r\n\r\n### 1. 데이터베이스 선정 이유\r\n\r\n- **PostgreSQL**: 안정성과 확장성이 검증된 RDBMS\r\n- **TimescaleDB**: 시계열 데이터 처리에 최적화된 확장\r\n- **파티셔닝**: 대용량 데이터의 효율적 관리\r\n\r\n### 2. 핵심 테이블 구조\r\n\r\n#### 2.1 Market Data Tables\r\n\r\n```sql\r\n-- 실시간 시장 데이터\r\nCREATE TABLE market_data (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    symbol VARCHAR(20) NOT NULL,\r\n    exchange VARCHAR(20) NOT NULL,\r\n    timestamp TIMESTAMPTZ NOT NULL,\r\n    price DECIMAL(20,8) NOT NULL,\r\n    volume DECIMAL(20,8) NOT NULL,\r\n    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\r\n) PARTITION BY RANGE (timestamp);\r\n\r\n-- 옵션 데이터\r\nCREATE TABLE option_data (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    underlying VARCHAR(20) NOT NULL,\r\n    strike_price DECIMAL(20,8) NOT NULL,\r\n    expiry_date TIMESTAMPTZ NOT NULL,\r\n    option_type VARCHAR(4) NOT NULL,\r\n    iv DECIMAL(10,4),\r\n    delta DECIMAL(10,4),\r\n    gamma DECIMAL(10,4),\r\n    theta DECIMAL(10,4),\r\n    vega DECIMAL(10,4),\r\n    timestamp TIMESTAMPTZ NOT NULL\r\n) PARTITION BY RANGE (timestamp);\r\n```\r\n\r\n#### 2.2 분석 데이터 테이블\r\n\r\n```sql\r\n-- AI 모델 예측 결과\r\nCREATE TABLE predictions (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    model_id VARCHAR(50) NOT NULL,\r\n    symbol VARCHAR(20) NOT NULL,\r\n    prediction_type VARCHAR(20) NOT NULL,\r\n    predicted_value DECIMAL(20,8) NOT NULL,\r\n    confidence DECIMAL(5,4) NOT NULL,\r\n    timestamp TIMESTAMPTZ NOT NULL\r\n);\r\n\r\n-- 포트폴리오 상태\r\nCREATE TABLE portfolio_status (\r\n    id BIGSERIAL PRIMARY KEY,\r\n    user_id UUID NOT NULL,\r\n    asset_type VARCHAR(20) NOT NULL,\r\n    position_size DECIMAL(20,8) NOT NULL,\r\n    entry_price DECIMAL(20,8) NOT NULL,\r\n    current_price DECIMAL(20,8) NOT NULL,\r\n    pnl DECIMAL(20,8) NOT NULL,\r\n    timestamp TIMESTAMPTZ NOT NULL\r\n);\r\n```\r\n\r\n### 3. 인덱싱 전략\r\n\r\n#### 3.1 시장 데이터 인덱스\r\n\r\n```sql\r\n-- 시장 데이터 조회 최적화\r\nCREATE INDEX idx_market_data_symbol_timestamp ON market_data (symbol, timestamp DESC);\r\nCREATE INDEX idx_market_data_exchange_timestamp ON market_data (exchange, timestamp DESC);\r\n\r\n-- 옵션 데이터 조회 최적화\r\nCREATE INDEX idx_option_data_underlying_expiry ON option_data (underlying, expiry_date);\r\nCREATE INDEX idx_option_data_strike_type ON option_data (strike_price, option_type);\r\n```\r\n\r\n#### 3.2 분석 데이터 인덱스\r\n\r\n```sql\r\n-- 예측 데이터 조회 최적화\r\nCREATE INDEX idx_predictions_model_symbol ON predictions (model_id, symbol);\r\nCREATE INDEX idx_predictions_timestamp ON predictions (timestamp DESC);\r\n\r\n-- 포트폴리오 조회 최적화\r\nCREATE INDEX idx_portfolio_user_timestamp ON portfolio_status (user_id, timestamp DESC);\r\n```\r\n\r\n### 4. 파티셔닝 전략\r\n\r\n#### 4.1 시계열 데이터 파티셔닝\r\n\r\n```sql\r\n-- 월별 파티션 생성\r\nCREATE TABLE market_data_y2024m01 PARTITION OF market_data\r\n    FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');\r\nCREATE TABLE market_data_y2024m02 PARTITION OF market_data\r\n    FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');\r\n```\r\n\r\n#### 4.2 보관 정책\r\n\r\n- 실시간 데이터: 최근 3개월\r\n- 집계 데이터: 최근 1년\r\n- 히스토리 데이터: S3 아카이브\r\n\r\n## 📈 성능 최적화\r\n\r\n### 1. 쿼리 최적화\r\n\r\n#### 1.1 자주 사용되는 쿼리\r\n\r\n```sql\r\n-- 특정 기간의 OHLCV 데이터 조회\r\nCREATE MATERIALIZED VIEW mv_ohlcv_1h AS\r\nSELECT\r\n    symbol,\r\n    date_trunc('hour', timestamp) as timeframe,\r\n    first(price) as open,\r\n    max(price) as high,\r\n    min(price) as low,\r\n    last(price) as close,\r\n    sum(volume) as volume\r\nFROM market_data\r\nGROUP BY symbol, timeframe;\r\n```\r\n\r\n#### 1.2 캐싱 전략\r\n\r\n- Redis 캐싱 레이어 구현\r\n- 실시간 데이터 메모리 캐싱\r\n- 집계 데이터 캐시 갱신 주기 설정\r\n\r\n### 2. 백업 전략\r\n\r\n#### 2.1 정기 백업\r\n\r\n- 일일 증분 백업\r\n- 주간 전체 백업\r\n- 월간 아카이브\r\n\r\n#### 2.2 복구 계획\r\n\r\n- Point-in-Time Recovery 설정\r\n- 장애 복구 시나리오 문서화\r\n- 복구 테스트 계획\r\n\r\n## 🔄 데이터 흐름\r\n\r\n### 1. 데이터 수집\r\n\r\n```mermaid\r\ngraph LR\r\n    A[거래소 API] --> B[데이터 수집기]\r\n    B --> C[데이터 정제]\r\n    C --> D[TimescaleDB]\r\n    D --> E[분석 엔진]\r\n```\r\n\r\n### 2. 데이터 처리\r\n\r\n- 실시간 스트림 처리\r\n- 배치 처리\r\n- 이상치 탐지 및 처리\r\n\r\n## ⚡ 확장성 고려사항\r\n\r\n### 1. 수평적 확장\r\n\r\n- 읽기 전용 복제본 구성\r\n- 샤딩 전략 수립\r\n- 로드 밸런싱 설정\r\n\r\n### 2. 수직적 확장\r\n\r\n- 리소스 모니터링\r\n- 성능 지표 설정\r\n- 스케일 업 임계값 정의\r\n\r\n이 문서는 금융 데이터 분석 시스템의 데이터베이스 설계 기준을 제공합니다. 시스템의 요구사항과 성능을 고려하여 지속적으로 업데이트될 예정입니다. 🚀\r\n",
+  "content": "\n# 금융 데이터 분석 시스템 데이터베이스 설계\n\n## 📊 데이터베이스 아키텍처\n\n### 1. 데이터베이스 선정 이유\n\n- **PostgreSQL**: 안정성과 확장성이 검증된 RDBMS\n- **TimescaleDB**: 시계열 데이터 처리에 최적화된 확장\n- **파티셔닝**: 대용량 데이터의 효율적 관리\n\n### 2. 핵심 테이블 구조\n\n#### 2.1 Market Data Tables\n\n```sql\n-- 실시간 시장 데이터\nCREATE TABLE market_data (\n    id BIGSERIAL PRIMARY KEY,\n    symbol VARCHAR(20) NOT NULL,\n    exchange VARCHAR(20) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL,\n    price DECIMAL(20,8) NOT NULL,\n    volume DECIMAL(20,8) NOT NULL,\n    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\n) PARTITION BY RANGE (timestamp);\n\n-- 옵션 데이터\nCREATE TABLE option_data (\n    id BIGSERIAL PRIMARY KEY,\n    underlying VARCHAR(20) NOT NULL,\n    strike_price DECIMAL(20,8) NOT NULL,\n    expiry_date TIMESTAMPTZ NOT NULL,\n    option_type VARCHAR(4) NOT NULL,\n    iv DECIMAL(10,4),\n    delta DECIMAL(10,4),\n    gamma DECIMAL(10,4),\n    theta DECIMAL(10,4),\n    vega DECIMAL(10,4),\n    timestamp TIMESTAMPTZ NOT NULL\n) PARTITION BY RANGE (timestamp);\n```\n\n#### 2.2 분석 데이터 테이블\n\n```sql\n-- AI 모델 예측 결과\nCREATE TABLE predictions (\n    id BIGSERIAL PRIMARY KEY,\n    model_id VARCHAR(50) NOT NULL,\n    symbol VARCHAR(20) NOT NULL,\n    prediction_type VARCHAR(20) NOT NULL,\n    predicted_value DECIMAL(20,8) NOT NULL,\n    confidence DECIMAL(5,4) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL\n);\n\n-- 포트폴리오 상태\nCREATE TABLE portfolio_status (\n    id BIGSERIAL PRIMARY KEY,\n    user_id UUID NOT NULL,\n    asset_type VARCHAR(20) NOT NULL,\n    position_size DECIMAL(20,8) NOT NULL,\n    entry_price DECIMAL(20,8) NOT NULL,\n    current_price DECIMAL(20,8) NOT NULL,\n    pnl DECIMAL(20,8) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL\n);\n```\n\n### 3. 인덱싱 전략\n\n#### 3.1 시장 데이터 인덱스\n\n```sql\n-- 시장 데이터 조회 최적화\nCREATE INDEX idx_market_data_symbol_timestamp ON market_data (symbol, timestamp DESC);\nCREATE INDEX idx_market_data_exchange_timestamp ON market_data (exchange, timestamp DESC);\n\n-- 옵션 데이터 조회 최적화\nCREATE INDEX idx_option_data_underlying_expiry ON option_data (underlying, expiry_date);\nCREATE INDEX idx_option_data_strike_type ON option_data (strike_price, option_type);\n```\n\n#### 3.2 분석 데이터 인덱스\n\n```sql\n-- 예측 데이터 조회 최적화\nCREATE INDEX idx_predictions_model_symbol ON predictions (model_id, symbol);\nCREATE INDEX idx_predictions_timestamp ON predictions (timestamp DESC);\n\n-- 포트폴리오 조회 최적화\nCREATE INDEX idx_portfolio_user_timestamp ON portfolio_status (user_id, timestamp DESC);\n```\n\n### 4. 파티셔닝 전략\n\n#### 4.1 시계열 데이터 파티셔닝\n\n```sql\n-- 월별 파티션 생성\nCREATE TABLE market_data_y2024m01 PARTITION OF market_data\n    FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');\nCREATE TABLE market_data_y2024m02 PARTITION OF market_data\n    FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');\n```\n\n#### 4.2 보관 정책\n\n- 실시간 데이터: 최근 3개월\n- 집계 데이터: 최근 1년\n- 히스토리 데이터: S3 아카이브\n\n## 📈 성능 최적화\n\n### 1. 쿼리 최적화\n\n#### 1.1 자주 사용되는 쿼리\n\n```sql\n-- 특정 기간의 OHLCV 데이터 조회\nCREATE MATERIALIZED VIEW mv_ohlcv_1h AS\nSELECT\n    symbol,\n    date_trunc('hour', timestamp) as timeframe,\n    first(price) as open,\n    max(price) as high,\n    min(price) as low,\n    last(price) as close,\n    sum(volume) as volume\nFROM market_data\nGROUP BY symbol, timeframe;\n```\n\n#### 1.2 캐싱 전략\n\n- Redis 캐싱 레이어 구현\n- 실시간 데이터 메모리 캐싱\n- 집계 데이터 캐시 갱신 주기 설정\n\n### 2. 백업 전략\n\n#### 2.1 정기 백업\n\n- 일일 증분 백업\n- 주간 전체 백업\n- 월간 아카이브\n\n#### 2.2 복구 계획\n\n- Point-in-Time Recovery 설정\n- 장애 복구 시나리오 문서화\n- 복구 테스트 계획\n\n## 🔄 데이터 흐름\n\n### 1. 데이터 수집\n\n```mermaid\ngraph LR\n    A[거래소 API] --> B[데이터 수집기]\n    B --> C[데이터 정제]\n    C --> D[TimescaleDB]\n    D --> E[분석 엔진]\n```\n\n### 2. 데이터 처리\n\n- 실시간 스트림 처리\n- 배치 처리\n- 이상치 탐지 및 처리\n\n## ⚡ 확장성 고려사항\n\n### 1. 수평적 확장\n\n- 읽기 전용 복제본 구성\n- 샤딩 전략 수립\n- 로드 밸런싱 설정\n\n### 2. 수직적 확장\n\n- 리소스 모니터링\n- 성능 지표 설정\n- 스케일 업 임계값 정의\n\n이 문서는 금융 데이터 분석 시스템의 데이터베이스 설계 기준을 제공합니다. 시스템의 요구사항과 성능을 고려하여 지속적으로 업데이트될 예정입니다. 🚀\n",
   "date": "2025-02-12",
   "category": "projects",
   "tags": [
@@ -200,7 +200,7 @@
     "en": {
       "title": "Entasis Engine - Database Design",
       "description": "Database schema and design documentation for digital asset data analysis system",
-      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Database Design</h1>\n<h2 id=\"heading-1\">📊 Database Architecture</h2>\n<h3 id=\"heading-2\">1. Database Selection Rationale</h3>\n<ul>\n<li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>\n<li><strong>TimescaleDB</strong>: Extension optimized for time-series data processing</li>\n<li><strong>Partitioning</strong>: Efficient management of large-scale data</li>\n</ul>\n<h3 id=\"heading-3\">2. Core Table Structures</h3>\n<h4 id=\"heading-4\">2.1 Market Data Tables</h4>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Database Design</h1>\n<h2 id=\"heading-1\">📊 Database Architecture</h2>\n<h3 id=\"heading-2\">1. Database Selection Rationale</h3>\n<ul>\n<li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>\n<li><strong>TimescaleDB</strong>: Extension optimized for time-series data processing</li>\n<li><strong>Partitioning</strong>: Efficient management of large-scale data</li>\n</ul>\n<h3 id=\"heading-3\">2. Core Table Structures</h3>\n<h4 id=\"heading-4\">2.1 Market Data Tables</h4>\n<pre><code class=\"language-sql\">-- 실시간 시장 데이터\nCREATE TABLE market_data (\n    id BIGSERIAL PRIMARY KEY,\n    symbol VARCHAR(20) NOT NULL,\n    exchange VARCHAR(20) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL,\n    price DECIMAL(20,8) NOT NULL,\n    volume DECIMAL(20,8) NOT NULL,\n    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\n) PARTITION BY RANGE (timestamp);\n\n-- 옵션 데이터\nCREATE TABLE option_data (\n    id BIGSERIAL PRIMARY KEY,\n    underlying VARCHAR(20) NOT NULL,\n    strike_price DECIMAL(20,8) NOT NULL,\n    expiry_date TIMESTAMPTZ NOT NULL,\n    option_type VARCHAR(4) NOT NULL,\n    iv DECIMAL(10,4),\n    delta DECIMAL(10,4),\n    gamma DECIMAL(10,4),\n    theta DECIMAL(10,4),\n    vega DECIMAL(10,4),\n    timestamp TIMESTAMPTZ NOT NULL\n) PARTITION BY RANGE (timestamp);\n</code></pre>\n<h4 id=\"heading-5\">2.2 분석 데이터 테이블</h4>\n<pre><code class=\"language-sql\">-- AI Model Prediction Results\nCREATE TABLE predictions (\n    id BIGSERIAL PRIMARY KEY,\n    model_id VARCHAR(50) NOT NULL,\n    symbol VARCHAR(20) NOT NULL,\n    prediction_type VARCHAR(20) NOT NULL,\n    predicted_value DECIMAL(20,8) NOT NULL,\n    confidence DECIMAL(5,4) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL\n);\n\n-- Portfolio Status\nCREATE TABLE portfolio_status (\n    id BIGSERIAL PRIMARY KEY,\n    user_id UUID NOT NULL,\n    asset_type VARCHAR(20) NOT NULL,\n    position_size DECIMAL(20,8) NOT NULL,\n    entry_price DECIMAL(20,8) NOT NULL,\n    current_price DECIMAL(20,8) NOT NULL,\n    pnl DECIMAL(20,8) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL\n);\n</code></pre>\n<h3 id=\"heading-6\">3. Indexing Strategy</h3>\n<h4 id=\"heading-7\">3.1 Market Data Indexing</h4>\n<pre><code class=\"language-sql\">-- Optimize market data query\nCREATE INDEX idx_market_data_symbol_timestamp ON market_data (symbol, timestamp DESC);\nCREATE INDEX idx_market_data_exchange_timestamp ON market_data (exchange, timestamp DESC);\n\n-- Optimize option data query\nCREATE INDEX idx_option_data_underlying_expiry ON option_data (underlying, expiry_date);\nCREATE INDEX idx_option_data_strike_type ON option_data (strike_price, option_type);\n</code></pre>\n<h4 id=\"heading-8\">3.2 Analysis Data Indexing</h4>\n<pre><code class=\"language-sql\">-- Optimize prediction data query\nCREATE INDEX idx_predictions_model_symbol ON predictions (model_id, symbol);\nCREATE INDEX idx_predictions_timestamp ON predictions (timestamp DESC);\n\n-- Optimize portfolio query\nCREATE INDEX idx_portfolio_user_timestamp ON portfolio_status (user_id, timestamp DESC);\n</code></pre>\n<h3 id=\"heading-9\">4. Partitioning Strategy</h3>\n<h4 id=\"heading-10\">4.1 Time-series Data Partitioning</h4>\n<pre><code class=\"language-sql\">-- Create monthly partitions\nCREATE TABLE market_data_y2024m01 PARTITION OF market_data\n    FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');\nCREATE TABLE market_data_y2024m02 PARTITION OF market_data\n    FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');\n</code></pre>\n<h4 id=\"heading-11\">4.2 Retention Policy</h4>\n<ul>\n<li>Real-time data: Latest 3 months</li>\n<li>Aggregated data: Latest 1 year</li>\n<li>Historical data: S3 archive</li>\n</ul>\n<h2 id=\"heading-12\">📈 Performance Optimization</h2>\n<h3 id=\"heading-13\">1. Query Optimization</h3>\n<h4 id=\"heading-14\">1.1 Frequent Queries</h4>\n<pre><code class=\"language-sql\">-- Query specific period OHLCV data\nCREATE MATERIALIZED VIEW mv_ohlcv_1h AS\nSELECT\n    symbol,\n    date_trunc('hour', timestamp) as timeframe,\n    first(price) as open,\n    max(price) as high,\n    min(price) as low,\n    last(price) as close,\n    sum(volume) as volume\nFROM market_data\nGROUP BY symbol, timeframe;\n</code></pre>\n<h4 id=\"heading-15\">1.2 Caching Strategy</h4>\n<ul>\n<li>Implement Redis caching layer</li>\n<li>Real-time data memory caching</li>\n<li>Configure aggregated data cache refresh interval</li>\n</ul>\n<h3 id=\"heading-16\">2. Backup Strategy</h3>\n<h4 id=\"heading-17\">2.1 Regular Backups</h4>\n<ul>\n<li>Daily incremental backups</li>\n<li>Weekly full backups</li>\n<li>Monthly archive</li>\n</ul>\n<h4 id=\"heading-18\">2.2 Recovery Plan</h4>\n<ul>\n<li>Point-in-Time Recovery setup</li>\n<li>Documented disaster recovery scenarios</li>\n<li>Planned recovery tests</li>\n</ul>\n<h2 id=\"heading-19\">🔄 Data Flow</h2>\n<h3 id=\"heading-20\">1. Data Collection</h3>\n<pre><code class=\"language-mermaid\">graph LR\n    A[Exchange API] --&gt; B[Data Collector]\n    B --&gt; C[Data Cleaning]\n    C --&gt; D[TimescaleDB]\n    D --&gt; E[Analysis Engine]\n</code></pre>\n<h3 id=\"heading-21\">2. Data Processing</h3>\n<ul>\n<li>Real-time stream processing</li>\n<li>Batch processing</li>\n<li>Anomaly detection and handling</li>\n</ul>\n<h2 id=\"heading-22\">⚡ Considerations for Scalability</h2>\n<h3 id=\"heading-23\">1. Horizontal Scaling</h3>\n<ul>\n<li>Configure read-only replicas</li>\n<li>Establish sharding strategy</li>\n<li>Set up load balancing</li>\n</ul>\n<h3 id=\"heading-24\">2. Vertical Scaling</h3>\n<ul>\n<li>Monitor resource usage</li>\n<li>Set performance metrics</li>\n<li>Define scaling thresholds</li>\n</ul>\n<p>This document provides the database design standards for the financial data analysis system. It will be updated continuously considering the system requirements and performance. 🚀</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -236,6 +236,146 @@
           "level": 4,
           "isMainTopic": false,
           "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2.2 분석 데이터 테이블",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "3. Indexing Strategy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "3.1 Market Data Indexing",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "3.2 Analysis Data Indexing",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "4. Partitioning Strategy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "4.1 Time-series Data Partitioning",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "4.2 Retention Policy",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "📈 Performance Optimization",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "1. Query Optimization",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "1.1 Frequent Queries",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "1.2 Caching Strategy",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 750
+        },
+        {
+          "id": "heading-16",
+          "text": "2. Backup Strategy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 800
+        },
+        {
+          "id": "heading-17",
+          "text": "2.1 Regular Backups",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "2.2 Recovery Plan",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 900
+        },
+        {
+          "id": "heading-19",
+          "text": "🔄 Data Flow",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 950
+        },
+        {
+          "id": "heading-20",
+          "text": "1. Data Collection",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1000
+        },
+        {
+          "id": "heading-21",
+          "text": "2. Data Processing",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1050
+        },
+        {
+          "id": "heading-22",
+          "text": "⚡ Considerations for Scalability",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1100
+        },
+        {
+          "id": "heading-23",
+          "text": "1. Horizontal Scaling",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1150
+        },
+        {
+          "id": "heading-24",
+          "text": "2. Vertical Scaling",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1200
         }
       ]
     }

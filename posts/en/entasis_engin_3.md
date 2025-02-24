@@ -139,3 +139,41 @@ thumbnail: "/images/cryptocurrency.jpg"
 ## 📅 Sprint Work Items
 
 ### Sprint 1 (Weeks 1-2)
+
+```plaintext
++------------------+     +------------------+     +------------------+
+|      To Do       |     |   In Progress    |     |      Done        |
++------------------+     +------------------+     +------------------+
+| - DB Schema Design |     | - Dev Env Setup   |     | - Requirements Def |
+| - API Design      |     | - Git Repository  |     | - Team Formation   |
++------------------+     +------------------+     +------------------+
+```
+
+### Sprint 2 (3-4주차)
+
+```plaintext
++------------------+     +------------------+     +------------------+
+|      To Do       |     |   In Progress    |     |      Done        |
++------------------+     +------------------+     +------------------+
+| - Data Cleansing |     | - DB Setup       |     | - Schema Design  |
+| - API Implementation |  | - Basic API Dev  |     | - Env Setup     |
++------------------+     +------------------+     +------------------+
+```
+
+---
+
+## 🔄 Progress Tracking
+
+### Current Status
+
+- Overall Progress: 15%
+- Major Milestone: MVP Development Phase
+- Expected Completion: September 2024
+
+### Next Steps Preparation
+
+1. Sprint 1 Retrospective
+2. Sprint 2 Planning
+3. Risk Factor Review
+
+This document serves as a baseline for tracking and managing project progress. Each feature and task will be implemented sequentially, considering priorities and dependencies. 🚀

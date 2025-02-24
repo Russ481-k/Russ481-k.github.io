@@ -55,3 +55,55 @@ We can address these issues using **SQLAlchemy's async mode**.
 ### 3.2 Setting Up SQLAlchemy for Async Operations
 
 #### 1) Creating an Async Engine (`create_async_engine`)
+
+```python
+from sqlalchemy.ext.asyncio import create_async_engine
+
+DATABASE_URL = "postgresql+asyncpg://user:password@localhost/dbname"
+engine = create_async_engine(DATABASE_URL, echo=True)
+```
+
+#### 2) Creating an Async Session (`async_session`)
+
+```python
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import sessionmaker
+
+async_session = sessionmaker(
+    bind=engine,
+    class_=AsyncSession,
+    expire_on_commit=False
+)
+```
+
+#### 3) Database Operation Example (Async Mode)
+
+```python
+from models import User  # assumed model
+
+async def get_user_by_id(user_id: int):
+    async with async_session() as session:
+        result = await session.get(User, user_id)
+        return result
+```
+
+In the example above, we use `async_session` to asynchronously retrieve a user from the database.
+
+---
+
+## 4. Comparison with Traditional Synchronous Approach
+
+| Approach             | Pros                            | Cons                               |
+| -------------------- | ------------------------------- | ---------------------------------- |
+| Synchronous (Sync)   | Simple code, familiar pattern   | Slow response, limited scalability |
+| Asynchronous (Async) | Fast response, high concurrency | Slightly complex setup             |
+
+Asynchronous processing is particularly useful when handling **API servers** or **crawlers** that require **large amounts of requests**.
+
+---
+
+## 5. Conclusion
+
+In this post, we looked at the SQLAlchemy asynchronous configuration method. Next, we'll cover **integrating session management code** and **changing `database.py` to asynchronous mode**.
+
+See you next time! 😊
