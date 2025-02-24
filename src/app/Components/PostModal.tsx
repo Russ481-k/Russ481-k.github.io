@@ -236,9 +236,11 @@ const PostModal = ({
             </div>
           )}
           <div className="content_wrapper">
-            <article
-              className="content"
-              dangerouslySetInnerHTML={{ __html: content }}
+            <div
+              className="post-content"
+              dangerouslySetInnerHTML={{
+                __html: post.translations[currentLang].content,
+              }}
             />
             {tocItems?.length > 0 && (
               <nav className="table_of_contents">

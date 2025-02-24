@@ -11,10 +11,12 @@
             "id": "51b93a9526ac471e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "New tab"
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.7"
             }
           }
         ]
@@ -163,6 +165,11 @@
   },
   "active": "51b93a9526ac471e",
   "lastOpenFiles": [
+    "ko/career.md",
+    "ko/경력.md",
+    "ko/about-me copy.md",
+    "ko/package_manager.md",
+    "en/package_manager.md",
     "en/signage_android_ver_1.md",
     "en/mobyn.md",
     "en/manbok.md",
@@ -184,11 +191,6 @@
     "en/entasis_engin_6.md",
     "en/entasis_engin_5.md",
     "en/entasis_engin_4.md",
-    "en/entasis_engin_3.md",
-    "en/entasis_engin_2.md",
-    "en/entasis_engin_1.md",
-    "en/cursor_ai.md",
-    "en/convention_document.md",
     "en",
     "ko"
   ]
