@@ -85,13 +85,13 @@ thumbnail: "/images/package-manager.png"
 
 | 기능                       | pnpm        | Yarn        | npm |
 | -------------------------- | ----------- | ----------- | --- |
-| 워크스페이스 지원          | ✔️          | ✔️          | ✔️  |
-| Isolated node_modules      | ✔️ (기본값) | ✔️          | ✔️  |
-| 피어 자동 설치             | ✔️          | ❌          | ✔️  |
-| Plug'n'Play                | ✔️          | ✔️ (기본값) | ❌  |
-| Zero-Installs              | ❌          | ✔️          | ❌  |
-| 의존성 패치                | ✔️          | ✔️          | ❌  |
-| Content-addressable 저장소 | ✔️          | ❌          | ❌  |
+| 워크스페이스 지원          | ✅          | ✅          | ✅  |
+| Isolated node_modules      | ✅ (기본값) | ✅          | ✅  |
+| 피어 자동 설치             | ✅          | ❌          | ✅  |
+| Plug'n'Play                | ✅          | ✅ (기본값) | ❌  |
+| Zero-Installs              | ❌          | ✅          | ❌  |
+| 의존성 패치                | ✅          | ✅          | ❌  |
+| Content-addressable 저장소 | ✅          | ❌          | ❌  |
 
 ---
 

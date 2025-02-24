@@ -85,13 +85,13 @@ So! Let's compare **npm, Yarn, and pnpm** by looking at their advantages and dis
 
 | Feature                   | pnpm         | Yarn         | npm |
 | ------------------------- | ------------ | ------------ | --- |
-| Workspace Support         | ✔️           | ✔️           | ✔️  |
-| Isolated node_modules     | ✔️ (default) | ✔️           | ✔️  |
-| Auto Peer Installation    | ✔️           | ❌           | ✔️  |
-| Plug'n'Play               | ✔️           | ✔️ (default) | ❌  |
-| Zero-Installs             | ❌           | ✔️           | ❌  |
-| Dependency Patching       | ✔️           | ✔️           | ❌  |
-| Content-addressable Store | ✔️           | ❌           | ❌  |
+| Workspace Support         | ✅           | ✅           | ✅  |
+| Isolated node_modules     | ✅ (default) | ✅           | ✅  |
+| Auto Peer Installation    | ✅           | ❌           | ✅  |
+| Plug'n'Play               | ✅           | ✅ (default) | ❌  |
+| Zero-Installs             | ❌           | ✅           | ❌  |
+| Dependency Patching       | ✅           | ✅           | ❌  |
+| Content-addressable Store | ✅           | ❌           | ❌  |
 
 ---
 

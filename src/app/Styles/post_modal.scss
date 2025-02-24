@@ -191,56 +191,84 @@
             border: 1px solid rgba(183, 237, 246, 0.2);
           }
 
-          table {
+          table,
+          .markdown-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
+            background: rgba(30, 30, 30, 0.6);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 0 0 1px var(--border-color);
+            font-size: 0.9rem;
+            border: 1px solid rgba(183, 237, 246, 0.1);
 
             th,
             td {
-              padding: 1rem;
+              padding: 0.75rem 1rem;
               text-align: left;
-              border: 1px solid var(--border-color);
-              white-space: nowrap;
+              border: 1px solid rgba(183, 237, 246, 0.1);
 
               &:first-child {
-                white-space: normal;
+                padding-left: 1.5rem;
+              }
+
+              &:last-child {
+                padding-right: 1.5rem;
               }
             }
 
             th {
-              background-color: var(--bg-secondary);
-              font-weight: 600;
+              background: rgba(183, 237, 246, 0.1);
               color: #b7edf6;
+              font-weight: 600;
+              white-space: nowrap;
             }
 
             tr {
               &:nth-child(even) {
-                background-color: var(--bg-tertiary);
+                background: rgba(183, 237, 246, 0.03);
               }
 
               &:hover {
-                background-color: var(--bg-hover);
+                background: rgba(183, 237, 246, 0.05);
               }
             }
 
-            // 테이블 스크롤을 위한 래퍼
-            display: block;
-            overflow-x: auto;
-            max-width: 100%;
-
             // 체크마크 스타일
-            td:has(✔️) {
-              text-align: center;
-              color: #4caf50;
+            td {
+              &:has(✔️) {
+                text-align: center;
+                color: #4caf50;
+              }
+
+              &:has(❌) {
+                text-align: center;
+                color: #f44336;
+              }
             }
 
-            td:has(❌) {
-              text-align: center;
-              color: #f44336;
+            // 반응형 스크롤
+            @media screen and (max-width: 768px) {
+              display: block;
+              overflow-x: auto;
+              -webkit-overflow-scrolling: touch;
+
+              &::-webkit-scrollbar {
+                height: 6px;
+              }
+
+              &::-webkit-scrollbar-track {
+                background: rgba(183, 237, 246, 0.1);
+              }
+
+              &::-webkit-scrollbar-thumb {
+                background: rgba(183, 237, 246, 0.2);
+                border-radius: 3px;
+
+                &:hover {
+                  background: rgba(183, 237, 246, 0.3);
+                }
+              }
             }
           }
 
@@ -536,121 +564,6 @@
 
     &:hover {
       background-color: rgba(183, 237, 246, 0.2);
-    }
-  }
-}
-
-/* 코드 블록 스타일링 */
-.content {
-  pre {
-    margin: 1.5em 0;
-    padding: 1em;
-    overflow-x: auto;
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 6px;
-    font-family: "Roboto Mono", monospace;
-    font-size: 0.9em;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    max-width: 100%;
-
-    code {
-      display: block;
-      color: #e0e0e0;
-      padding: 0;
-      background: none;
-      font-size: inherit;
-    }
-  }
-
-  /* 인라인 코드 스타일 */
-  :not(pre) > code {
-    padding: 0.2em 0.4em;
-    background: #333;
-    border-radius: 3px;
-    font-family: "Roboto Mono", monospace;
-    font-size: 0.85em;
-    color: #e0e0e0;
-  }
-
-  .markdown-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 2rem 0;
-    background: rgba(30, 30, 30, 0.6);
-    border-radius: 8px;
-    overflow: hidden;
-    font-size: 0.9rem;
-
-    th,
-    td {
-      padding: 0.75rem 1rem;
-      text-align: left;
-      border: 1px solid rgba(183, 237, 246, 0.1);
-
-      &:first-child {
-        padding-left: 1.5rem;
-      }
-
-      &:last-child {
-        padding-right: 1.5rem;
-      }
-    }
-
-    th {
-      background: rgba(183, 237, 246, 0.1);
-      color: #b7edf6;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    tr {
-      &:nth-child(even) {
-        background: rgba(183, 237, 246, 0.03);
-      }
-
-      &:hover {
-        background: rgba(183, 237, 246, 0.05);
-      }
-    }
-
-    // 체크마크 스타일
-    td {
-      &:has(✔️) {
-        text-align: center;
-        color: #4caf50;
-      }
-
-      &:has(❌) {
-        text-align: center;
-        color: #f44336;
-      }
-    }
-
-    // 반응형 스크롤
-    @media screen and (max-width: 768px) {
-      display: block;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-
-      &::-webkit-scrollbar {
-        height: 6px;
-      }
-
-      &::-webkit-scrollbar-track {
-        background: rgba(183, 237, 246, 0.1);
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: rgba(183, 237, 246, 0.2);
-        border-radius: 3px;
-
-        &:hover {
-          background: rgba(183, 237, 246, 0.3);
-        }
-      }
     }
   }
 }
