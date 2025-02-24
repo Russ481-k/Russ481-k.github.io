@@ -186,6 +186,64 @@
           min-width: 0;
           max-width: calc(100% - 280px);
 
+          hr {
+            margin: 2em 0;
+            border: 1px solid rgba(183, 237, 246, 0.2);
+          }
+
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px var(--border-color);
+
+            th,
+            td {
+              padding: 1rem;
+              text-align: left;
+              border: 1px solid var(--border-color);
+              white-space: nowrap;
+
+              &:first-child {
+                white-space: normal;
+              }
+            }
+
+            th {
+              background-color: var(--bg-secondary);
+              font-weight: 600;
+              color: #b7edf6;
+            }
+
+            tr {
+              &:nth-child(even) {
+                background-color: var(--bg-tertiary);
+              }
+
+              &:hover {
+                background-color: var(--bg-hover);
+              }
+            }
+
+            // 테이블 스크롤을 위한 래퍼
+            display: block;
+            overflow-x: auto;
+            max-width: 100%;
+
+            // 체크마크 스타일
+            td:has(✔️) {
+              text-align: center;
+              color: #4caf50;
+            }
+
+            td:has(❌) {
+              text-align: center;
+              color: #f44336;
+            }
+          }
+
           @media screen and (max-width: 1024px) {
             max-width: 100%;
           }
@@ -341,7 +399,7 @@
           opacity: 0.5;
           position: sticky;
           top: 0;
-          width: 260px;
+          width: 300px;
           height: fit-content;
           padding: 1.5rem;
           margin-left: auto;
@@ -349,7 +407,7 @@
 
           h3 {
             color: #b7edf6;
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 0.2rem;
             font-weight: 600;
           }
@@ -365,13 +423,13 @@
             padding: 0 0.5rem;
             color: rgba(255, 255, 255, 0.7);
             transition: all 0.2s ease;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             border-radius: 4px;
 
             &.main_topic {
               color: #b7edf6;
               font-weight: 500;
-              font-size: 1rem;
+              font-size: 0.9rem;
             }
 
             &.sub_topic {
@@ -515,6 +573,85 @@
     font-family: "Roboto Mono", monospace;
     font-size: 0.85em;
     color: #e0e0e0;
+  }
+
+  .markdown-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background: rgba(30, 30, 30, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.9rem;
+
+    th,
+    td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border: 1px solid rgba(183, 237, 246, 0.1);
+
+      &:first-child {
+        padding-left: 1.5rem;
+      }
+
+      &:last-child {
+        padding-right: 1.5rem;
+      }
+    }
+
+    th {
+      background: rgba(183, 237, 246, 0.1);
+      color: #b7edf6;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    tr {
+      &:nth-child(even) {
+        background: rgba(183, 237, 246, 0.03);
+      }
+
+      &:hover {
+        background: rgba(183, 237, 246, 0.05);
+      }
+    }
+
+    // 체크마크 스타일
+    td {
+      &:has(✔️) {
+        text-align: center;
+        color: #4caf50;
+      }
+
+      &:has(❌) {
+        text-align: center;
+        color: #f44336;
+      }
+    }
+
+    // 반응형 스크롤
+    @media screen and (max-width: 768px) {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      &::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: rgba(183, 237, 246, 0.1);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: rgba(183, 237, 246, 0.2);
+        border-radius: 3px;
+
+        &:hover {
+          background: rgba(183, 237, 246, 0.3);
+        }
+      }
+    }
   }
 }
 

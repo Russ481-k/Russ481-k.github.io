@@ -7,6 +7,10 @@ import { remark } from "remark";
 import html from "remark-html";
 import { JSDOM } from "jsdom";
 import matter from "gray-matter";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
+import remarkHtml from "remark-html";
 
 // getAllPosts 함수 추가
 async function getAllPosts(): Promise<
@@ -111,7 +115,13 @@ async function processMarkdown(content: string) {
   const { content: markdownContent } = matter(content);
 
   // HTML로 변환 (메타데이터 제외)
-  const processedContent = await remark().use(html).process(markdownContent);
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkGfm) // GitHub Flavored Markdown 지원 추가
+    .use(remarkHtml, {
+      sanitize: false,
+    })
+    .process(markdownContent);
 
   const htmlContent = processedContent.toString();
   const dom = new JSDOM(htmlContent);
@@ -158,6 +168,50 @@ async function processMarkdown(content: string) {
   };
 }
 
+async function convertMarkdownToHtml(markdown: string) {
+  const result = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkHtml, {
+      sanitize: false,
+    })
+    .process(markdown);
+
+  return result.toString();
+}
+
+async function generatePosts() {
+  const postsDirectory = path.join(process.cwd(), "posts");
+  const languages = ["ko", "en"];
+
+  for (const lang of languages) {
+    const langDirectory = path.join(postsDirectory, lang);
+    const files = fsSync.readdirSync(langDirectory);
+
+    for (const file of files) {
+      const content = fsSync.readFileSync(
+        path.join(langDirectory, file),
+        "utf-8"
+      );
+      const { data, content: markdownContent } = matter(content);
+
+      // 마크다운을 HTML로 변환
+      const htmlContent = await convertMarkdownToHtml(markdownContent);
+
+      // 변환된 HTML 저장
+      const outputDir = path.join(process.cwd(), "public", "posts", lang);
+      if (!fsSync.existsSync(outputDir)) {
+        fsSync.mkdirSync(outputDir, { recursive: true });
+      }
+
+      fsSync.writeFileSync(
+        path.join(outputDir, `${path.parse(file).name}.html`),
+        htmlContent
+      );
+    }
+  }
+}
+
 async function generatePostsJson() {
   const posts = await getAllPosts();
   const dataDir = path.join(process.cwd(), "public", "data");
@@ -173,21 +227,31 @@ async function generatePostsJson() {
       const koProcessed = await processMarkdown(post.translations.ko.content);
       const enProcessed = await processMarkdown(post.translations.en.content);
 
+      // 변환된 HTML에서 테이블 스타일 클래스 추가
+      const koContent = koProcessed.content.replace(
+        /<table>/g,
+        '<table class="markdown-table">'
+      );
+      const enContent = enProcessed.content.replace(
+        /<table>/g,
+        '<table class="markdown-table">'
+      );
+
       return {
         ...post,
         translations: {
           ko: {
             ...post.translations.ko,
-            content: koProcessed.content,
+            content: koContent,
             tocItems: koProcessed.tocItems,
           },
           en: {
             ...post.translations.en,
-            content: enProcessed.content,
+            content: enContent,
             tocItems: enProcessed.tocItems,
           },
         },
-        imageHeights: koProcessed.imageHeights, // 한글 버전의 이미지 높이 사용
+        imageHeights: koProcessed.imageHeights,
       };
     })
   );
@@ -209,3 +273,5 @@ async function generatePostsJson() {
 }
 
 generatePostsJson().catch(console.error);
+
+generatePosts();

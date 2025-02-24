@@ -40,7 +40,7 @@ export const resources = {
       modal: {
         loading: "Loading...",
         close: "Close",
-        toc: "Table of Contents",
+        toc: "Index",
         prev: "Prev",
         next: "Next",
         share: {

@@ -237,7 +237,7 @@ const PostModal = ({
           )}
           <div className="content_wrapper">
             <div
-              className="post-content"
+              className="content"
               dangerouslySetInnerHTML={{
                 __html: post.translations[currentLang].content,
               }}
