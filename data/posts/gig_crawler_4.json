@@ -87,7 +87,7 @@
     "en": {
       "title": "Building an Outsourcing Crawler with FastAPI and PostgreSQL",
       "description": "I improved the data model and structure of the crawler project! With budget field separation, metadata field improvements, and new field additions, more systematic data management is now possible. 🔧",
-      "content": "<h1 id=\"heading-0\">Project Model Improvement: Organizing Structure and Fields</h1>\n<p>Hello everyone!<br>\nIn previous posts, we looked at asynchronous database processing and session management integration. In this post, I'd like to discuss <strong>project model improvements</strong>. The data model is core to the application, and a well-organized model greatly helps with maintenance and scalability. Let's examine the improvement points step by step!</p>\n<hr>\n<h2 id=\"heading-1\">1. Why Do We Need Model Improvements?</h2>\n<p>We discovered several issues while using the existing model. For example:</p>\n<ul>\n<li>\n<p><strong>Managing budget in a single field:</strong><br>\nTrying to manage budget information in one field made it difficult to utilize minimum/maximum budget values separately.</p>\n</li>\n<li>\n<p><strong>Field name 'metadata':</strong><br>\nSince 'metadata' is a reserved word in SQLAlchemy, using it for other purposes could risk conflicts.</p>\n</li>\n<li>\n<p><strong>Reflecting new requirements:</strong><br>\nAdditional information like <code>currency</code>, <code>posted_date</code>, <code>deadline</code>, <code>skills</code> became necessary for project information.</p>\n</li>\n</ul>\n<p>For these reasons, we wanted to make the model more granular and clearer.</p>\n<hr>\n<h2 id=\"heading-2\">2. Specific Improvements</h2>\n<h3 id=\"heading-3\">2.1 Separating Budget Fields: budget_min &amp; budget_max</h3>\n<p>While we previously stored budget information in a single <code>budget</code> field,<br>\nwe'll now manage minimum and maximum budgets as separate fields.<br>\nThis allows for more precise usage in searching, filtering, and sorting.</p>\n",
+      "content": "<h1 id=\"heading-0\">Project Model Improvement: Organizing Structure and Fields</h1>\n<p>Hello everyone!<br>\nIn previous posts, we looked at asynchronous database processing and session management integration. In this post, I'd like to discuss <strong>project model improvements</strong>. The data model is core to the application, and a well-organized model greatly helps with maintenance and scalability. Let's examine the improvement points step by step!</p>\n<hr>\n<h2 id=\"heading-1\">1. Why Do We Need Model Improvements?</h2>\n<p>We discovered several issues while using the existing model. For example:</p>\n<ul>\n<li>\n<p><strong>Managing budget in a single field:</strong><br>\nTrying to manage budget information in one field made it difficult to utilize minimum/maximum budget values separately.</p>\n</li>\n<li>\n<p><strong>Field name 'metadata':</strong><br>\nSince 'metadata' is a reserved word in SQLAlchemy, using it for other purposes could risk conflicts.</p>\n</li>\n<li>\n<p><strong>Reflecting new requirements:</strong><br>\nAdditional information like <code>currency</code>, <code>posted_date</code>, <code>deadline</code>, <code>skills</code> became necessary for project information.</p>\n</li>\n</ul>\n<p>For these reasons, we wanted to make the model more granular and clearer.</p>\n<hr>\n<h2 id=\"heading-2\">2. Specific Improvements</h2>\n<h3 id=\"heading-3\">2.1 Separating Budget Fields: budget_min &amp; budget_max</h3>\n<p>While we previously stored budget information in a single <code>budget</code> field,<br>\nwe'll now manage minimum and maximum budgets as separate fields.<br>\nThis allows for more precise usage in searching, filtering, and sorting.</p>\n<pre><code class=\"language-python\">from sqlalchemy import Column, Integer\n\nclass Project(Base):\n    __tablename__ = 'projects'\n\n    id = Column(Integer, primary_key=True, index=True)\n    # Existing budget field -&gt; split into two\n    budget_min = Column(Integer, nullable=False)\n    budget_max = Column(Integer, nullable=False)\n</code></pre>\n<h3 id=\"heading-4\">2.2 Resolving Reserved Word Collision: metadata → project_metadata</h3>\n<p>Instead of using the reserved word <code>metadata</code> in SQLAlchemy,<br>\nwe'll use <code>project_metadata</code> to avoid confusion.</p>\n<pre><code class=\"language-python\">from sqlalchemy import Column, JSON\n\nclass Project(Base):\n    __tablename__ = 'projects'\n\n    id = Column(Integer, primary_key=True, index=True)\n    # To resolve the reserved word problem, we'll change it\n    project_metadata = Column(JSON, nullable=True)\n</code></pre>\n<h3 id=\"heading-5\">2.3 Adding New Fields</h3>\n<p>To represent more detailed project information, we added several new fields.</p>\n<ul>\n<li><strong>currency:</strong> Field representing the budget unit</li>\n<li><strong>posted_date:</strong> Field representing the project posting date</li>\n<li><strong>deadline:</strong> Field representing the project deadline</li>\n<li><strong>skills:</strong> Field representing the technical stack needed for the project</li>\n</ul>\n<pre><code class=\"language-python\">from sqlalchemy import Column, String, DateTime\nimport datetime\n\nclass Project(Base):\n    __tablename__ = 'projects'\n\n    id = Column(Integer, primary_key=True, index=True)\n    budget_min = Column(Integer, nullable=False)\n    budget_max = Column(Integer, nullable=False)\n    project_metadata = Column(JSON, nullable=True)\n\n    # Added new fields\n    currency = Column(String, default='USD')\n    posted_date = Column(DateTime, default=datetime.datetime.utcnow)\n    deadline = Column(DateTime, nullable=True)\n    skills = Column(String, nullable=True)  # For example: \"Python, JavaScript, SQL\"\n</code></pre>\n<p>By improving the model, data is more structured and clearly managed, which will be helpful for future queries or data analysis.</p>\n<hr>\n<h2 id=\"heading-6\">3. Benefits of Improved Model</h2>\n<ul>\n<li><strong>Clear data representation:</strong><br>\nBy separating budget information into minimum/maximum values,<br>\nit is possible to search and compare various ranges.</li>\n<li><strong>Avoiding reserved word collisions:</strong><br>\nBy using the clear field name <code>project_metadata</code>,<br>\nwe avoided conflicts with reserved words in SQLAlchemy.</li>\n<li><strong>Extensible model:</strong><br>\nBy adding additional fields,<br>\nwe can represent project information more richly and flexibly.</li>\n</ul>\n<hr>\n<h2 id=\"heading-7\">4. Conclusion</h2>\n<p>In this article, we looked at the project model improvements in detail.<br>\nManaging the database model systematically is a big influence on the long-term maintenance and performance improvement of the application.<br>\nIn the remaining articles, we will introduce more improvements such as <strong>crawler scheduler implementation</strong> and <strong>encryption system introduction</strong>, so please look forward to it!</p>\n<p>If you have any additional points or questions about the improvements, please leave a comment anytime. Your feedback is a big help! 🚀</p>\n<hr>\n<p>See you next time!</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -116,6 +116,34 @@
           "level": 3,
           "isMainTopic": false,
           "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "2.2 Resolving Reserved Word Collision: metadata → project_metadata",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2.3 Adding New Fields",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "3. Benefits of Improved Model",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "4. Conclusion",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 350
         }
       ]
     }

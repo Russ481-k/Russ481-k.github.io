@@ -71,7 +71,7 @@
     "en": {
       "title": "Building APK with React Native Expo - A Troubleshooting Journey",
       "description": "A detailed guide on resolving HTTP API issues when building APK with React Native Expo",
-      "content": "<h3 id=\"heading-0\">My Journey of Troubleshooting APK Build with React Native Expo</h3>\n<p>Hello everyone! Today I'd like to share my <strong>troubleshooting experience while building an APK with React Native Expo</strong>. I particularly struggled with <code>http://</code> API usage issues, and I hope this helps anyone facing similar problems. 😊</p>\n<hr>\n<h2 id=\"heading-1\">📦 First Build – <code>development</code> Build</h2>\n<p>Initially, I followed the Expo documentation and ran <code>eas build</code>. I configured <code>eas.json</code> as shown below and executed the build command.</p>\n",
+      "content": "<h3 id=\"heading-0\">My Journey of Troubleshooting APK Build with React Native Expo</h3>\n<p>Hello everyone! Today I'd like to share my <strong>troubleshooting experience while building an APK with React Native Expo</strong>. I particularly struggled with <code>http://</code> API usage issues, and I hope this helps anyone facing similar problems. 😊</p>\n<hr>\n<h2 id=\"heading-1\">📦 First Build – <code>development</code> Build</h2>\n<p>Initially, I followed the Expo documentation and ran <code>eas build</code>. I configured <code>eas.json</code> as shown below and executed the build command.</p>\n<pre><code class=\"language-json\">{\n  \"build\": {\n    \"development\": {\n      \"developmentClient\": true,\n      \"distribution\": \"internal\"\n    },\n    \"preview\": {\n      \"distribution\": \"internal\"\n    },\n    \"production\": {}\n  }\n}\n</code></pre>\n<pre><code class=\"language-bash\">eas build --profile development --platform android\n</code></pre>\n<p>After the build is complete, download the APK from Expo.dev and run the app...<br>\n🤦‍♂️ <strong>\"development build\" so it can only be run in the Expo Go environment.</strong><br>\nOh no, this wasn't what I wanted.</p>\n<p>So I removed <code>development</code> and built again.</p>\n<pre><code class=\"language-bash\">eas build --platform android\n</code></pre>\n<p>This time, <strong>an AAB file was created</strong>.<br>\nAAB is the format used when distributing to the Google Play Store, so <strong>local APK installation is not possible</strong>.<br>\n(I just wanted to create an APK, but...)</p>\n<hr>\n<h2 id=\"heading-2\">🛠 Second Build – Creating APK</h2>\n<p>To create an APK, I modified <code>eas.json</code> as follows.</p>\n<pre><code class=\"language-json\">{\n  \"build\": {\n    \"preview\": {\n      \"android\": {\n        \"buildType\": \"apk\"\n      }\n    }\n  }\n}\n</code></pre>\n<p>And then build again!</p>\n<pre><code class=\"language-bash\">eas build -p android --profile preview\n</code></pre>\n<p>Finally, the APK was created! 🎉<br>\nHowever...<br>\n🤦‍♂️ <strong>The data is not loaded from the API.</strong><br>\nThe data did not appear due to the \"Network Error\" error.</p>\n<hr>\n<h2 id=\"heading-3\">🤔 Problem Analysis – <code>http://</code> API Blocked?!</h2>\n<p>When I checked the logs, I saw <code>AxiosError: Network Error</code>.<br>\nAfter searching Google and ChatGPT, I learned that <strong>in Android 9 (Pie) and above, HTTP traffic is blocked by default</strong>.</p>\n<p>To solve this, <strong>you need to add <code>android:usesCleartextTraffic=\"true\"</code> to AndroidManifest.xml</strong>.<br>\nIn Expo, you need to modify <code>app.json</code>.</p>\n<pre><code class=\"language-json\">{\n  \"expo\": {\n    \"android\": {\n      \"useCleartextTraffic\": true,\n      \"permissions\": [\"INTERNET\", \"ACCESS_NETWORK_STATE\"]\n    }\n  }\n}\n</code></pre>\n<p>After modifying, I built again, but...<br>\n<strong>Failed again</strong>. 😭<br>\nThis time, even when I changed to <code>fetch</code>, the same <code>Network request failed</code> error occurred.</p>\n<hr>\n<h2 id=\"heading-4\">🔍 Final Solution – Installing the <code>expo-build-properties</code> Plugin</h2>\n<p>After searching Stack Overflow, I found the solution.<br>\nIn Expo, <strong>you need to install the <code>expo-build-properties</code> plugin and add the <code>useCleartextTraffic</code> setting</strong>.</p>\n<pre><code class=\"language-bash\">npx expo install expo-build-properties\n</code></pre>\n<p>Then, I added the plugin in <code>app.json</code>.</p>\n<pre><code class=\"language-json\">\"plugins\": [\n  [\n    \"expo-build-properties\",\n    {\n      \"android\": {\n        \"usesCleartextTraffic\": true\n      }\n    }\n  ]\n]\n</code></pre>\n<p>After building again, I decompiled the APK using <code>apktool</code> and checked it...<br>\n🤯 <strong><code>useCleartextTraffic</code> was not applied!!!</strong><br>\nWhat's this?</p>\n<p>I thought maybe the spelling was wrong, so I checked it again,<br>\n<code>useCleartextTraffic</code> → <strong><code>usesCleartextTraffic</code>(s added)</strong></p>\n<p>After modifying the spelling, I built again...<br>\n🎉 <strong>Finally succeeded!!!</strong></p>\n<hr>\n<h2 id=\"heading-5\">🚨 Additional Problem – Emulator Connection Not Working?!</h2>\n<p>After solving this, <strong>the problem of API requests not working in the emulator occurred</strong>.<br>\nI'm still looking for a solution, but it seems I need to look into Expo's network settings more.</p>\n<hr>\n<h2 id=\"heading-6\">📌 Conclusion – What I Learned from the Process</h2>\n<ol>\n<li><strong>APK build requires adding the <code>buildType: \"apk\"</code> setting</strong></li>\n<li><strong>In Android 9 and above, <code>http://</code> API requires the <code>usesCleartextTraffic: true</code> setting</strong></li>\n<li><strong>Expo requires installing the <code>expo-build-properties</code> plugin</strong></li>\n<li><strong>Be careful with typos... <code>useCleartextTraffic</code> is not <code>usesCleartextTraffic</code> (s is present)</strong></li>\n</ol>\n<p>I'm finally getting the hang of the build process.<br>\nIf you're experiencing similar issues, I hope this helps you! 😆</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -86,6 +86,41 @@
           "level": 2,
           "isMainTopic": true,
           "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "🛠 Second Build – Creating APK",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "🤔 Problem Analysis – http:// API Blocked?!",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "🔍 Final Solution – Installing the expo-build-properties Plugin",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "🚨 Additional Problem – Emulator Connection Not Working?!",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "📌 Conclusion – What I Learned from the Process",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 300
         }
       ]
     }

@@ -179,7 +179,7 @@
     "en": {
       "title": "Entasis Engine - UI/UX Design Guide",
       "description": "User interface and experience design guide for digital asset data analysis system",
-      "content": "<h1 id=\"heading-0\">Financial Data Analysis System UI/UX Design Guide</h1>\n<h2 id=\"heading-1\">🎨 Design System</h2>\n<h3 id=\"heading-2\">1. Color Palette</h3>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis System UI/UX Design Guide</h1>\n<h2 id=\"heading-1\">🎨 Design System</h2>\n<h3 id=\"heading-2\">1. Color Palette</h3>\n<pre><code class=\"language-css\">:root {\n  /* Main colors */\n  --primary-100: #e3f2fd;\n  --primary-500: #2196f3;\n  --primary-900: #0d47a1;\n\n  /* Secondary colors */\n  --secondary-100: #f3e5f5;\n  --secondary-500: #9c27b0;\n  --secondary-900: #4a148c;\n\n  /* Status colors */\n  --success: #4caf50;\n  --warning: #ffc107;\n  --error: #f44336;\n  --info: #2196f3;\n\n  /* Neutral colors */\n  --neutral-100: #f5f5f5;\n  --neutral-300: #e0e0e0;\n  --neutral-500: #9e9e9e;\n  --neutral-700: #616161;\n  --neutral-900: #212121;\n}\n</code></pre>\n<h3 id=\"heading-3\">2. Typography</h3>\n<pre><code class=\"language-css\">:root {\n  /* Font families */\n  --font-primary: \"Inter\", sans-serif;\n  --font-secondary: \"Roboto Mono\", monospace;\n\n  /* Font sizes */\n  --text-xs: 0.75rem; /* 12px */\n  --text-sm: 0.875rem; /* 14px */\n  --text-base: 1rem; /* 16px */\n  --text-lg: 1.125rem; /* 18px */\n  --text-xl: 1.25rem; /* 20px */\n  --text-2xl: 1.5rem; /* 24px */\n\n  /* Font weights */\n  --font-light: 300;\n  --font-regular: 400;\n  --font-medium: 500;\n  --font-bold: 700;\n}\n</code></pre>\n<h3 id=\"heading-4\">3. Grid System</h3>\n<pre><code class=\"language-css\">.container {\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  gap: var(--spacing-4);\n\n  @media (max-width: 768px) {\n    grid-template-columns: repeat(4, 1fr);\n  }\n}\n</code></pre>\n<h2 id=\"heading-5\">📱 Component Library</h2>\n<h3 id=\"heading-6\">1. Chart Component</h3>\n<h4 id=\"heading-7\">1.1 Candlestick Chart</h4>\n<pre><code class=\"language-typescript\">interface CandlestickProps {\n  data: {\n    timestamp: string;\n    open: number;\n    high: number;\n    low: number;\n    close: number;\n  }[];\n  width?: number;\n  height?: number;\n  theme?: \"light\" | \"dark\";\n}\n\nconst Candlestick: React.FC&lt;CandlestickProps&gt; = ({\n  data,\n  width = 800,\n  height = 400,\n  theme = \"light\",\n}) =&gt; {\n  // Chart implementation\n};\n</code></pre>\n<h4 id=\"heading-8\">1.2 Technical Indicators</h4>\n<pre><code class=\"language-typescript\">interface TechnicalIndicatorProps {\n  type: \"MA\" | \"RSI\" | \"MACD\";\n  data: number[];\n  parameters: {\n    period?: number;\n    signal?: number;\n  };\n}\n</code></pre>\n<h3 id=\"heading-9\">2. Dashboard Layout</h3>\n<pre><code class=\"language-typescript\">interface DashboardLayoutProps {\n  sidebar?: React.ReactNode;\n  header?: React.ReactNode;\n  main: React.ReactNode;\n  footer?: React.ReactNode;\n}\n\nconst DashboardLayout: React.FC&lt;DashboardLayoutProps&gt; = ({\n  sidebar,\n  header,\n  main,\n  footer,\n}) =&gt; (\n  &lt;div className=\"dashboard-layout\"&gt;\n    {sidebar &amp;&amp; &lt;aside className=\"sidebar\"&gt;{sidebar}&lt;/aside&gt;}\n    &lt;div className=\"main-content\"&gt;\n      {header &amp;&amp; &lt;header className=\"header\"&gt;{header}&lt;/header&gt;}\n      &lt;main className=\"main\"&gt;{main}&lt;/main&gt;\n      {footer &amp;&amp; &lt;footer className=\"footer\"&gt;{footer}&lt;/footer&gt;}\n    &lt;/div&gt;\n  &lt;/div&gt;\n);\n</code></pre>\n<h2 id=\"heading-10\">🔄 User Flow</h2>\n<h3 id=\"heading-11\">1. Trading Flow</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[Dashboard Entry] --&gt; B[Market Data Check]\n    B --&gt; C{Analysis Tool Selection}\n    C --&gt;|Technical Analysis| D[Indicator Settings]\n    C --&gt;|AI Prediction| E[Model Selection]\n    D --&gt; F[Trade Signal Verification]\n    E --&gt; F\n    F --&gt; G[Position Settings]\n    G --&gt; H[Order Execution]\n    H --&gt; I[Monitoring]\n</code></pre>\n<h3 id=\"heading-12\">2. Portfolio Management</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[Portfolio View] --&gt; B[Asset Allocation Check]\n    B --&gt; C[Risk Analysis]\n    C --&gt; D{Adjustment Required?}\n    D --&gt;|Yes| E[Rebalancing]\n    D --&gt;|No| F[Monitoring]\n    E --&gt; G[Order Execution]\n    G --&gt; F\n</code></pre>\n<h2 id=\"heading-13\">📐 Responsive Design</h2>\n<h3 id=\"heading-14\">1. Breakpoints</h3>\n<pre><code class=\"language-scss\">$breakpoints: (\n  \"mobile\": 320px,\n  \"tablet\": 768px,\n  \"desktop\": 1024px,\n  \"wide\": 1440px,\n);\n\n@mixin respond-to($breakpoint) {\n  @if map-has-key($breakpoints, $breakpoint) {\n    @media (min-width: map-get($breakpoints, $breakpoint)) {\n      @content;\n    }\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">2. Layout Adjustment</h3>\n<pre><code class=\"language-scss\">.trading-view {\n  display: grid;\n  gap: 1rem;\n\n  @include respond-to(\"mobile\") {\n    grid-template-columns: 1fr;\n  }\n\n  @include respond-to(\"tablet\") {\n    grid-template-columns: repeat(2, 1fr);\n  }\n\n  @include respond-to(\"desktop\") {\n    grid-template-columns: repeat(3, 1fr);\n  }\n}\n</code></pre>\n<h2 id=\"heading-16\">♿ Accessibility</h2>\n<h3 id=\"heading-17\">1. ARIA Labels</h3>\n<pre><code class=\"language-typescript\">const PriceAlert: React.FC = () =&gt; (\n  &lt;div role=\"alert\" aria-live=\"polite\" aria-atomic=\"true\"&gt;\n    &lt;span className=\"price-change\"&gt;+5.23%&lt;/span&gt;\n  &lt;/div&gt;\n);\n</code></pre>\n<h3 id=\"heading-18\">2. Keyboard Navigation</h3>\n<pre><code class=\"language-typescript\">const TradingPanel: React.FC = () =&gt; {\n  const handleKeyPress = (e: KeyboardEvent) =&gt; {\n    switch (e.key) {\n      case \"ArrowUp\":\n        incrementPrice();\n        break;\n      case \"ArrowDown\":\n        decrementPrice();\n        break;\n      case \"Enter\":\n        submitOrder();\n        break;\n    }\n  };\n\n  return (\n    &lt;div\n      tabIndex={0}\n      onKeyDown={handleKeyPress}\n      role=\"region\"\n      aria-label=\"거래 패널\"\n    &gt;\n      {/* Trading panel content */}\n    &lt;/div&gt;\n  );\n};\n</code></pre>\n<h2 id=\"heading-19\">🎯 Usability Testing</h2>\n<h3 id=\"heading-20\">1. Test Scenarios</h3>\n<pre><code class=\"language-typescript\">const usabilityTests = [\n  {\n    name: \"Basic Trading Flow\",\n    steps: [\n      \"Dashboard Access\",\n      \"Chart Analysis\",\n      \"Order Settings\",\n      \"Order Execution\",\n      \"Result Verification\",\n    ],\n    success_criteria: [\n      \"3 minutes completion\",\n      \"Error-free execution\",\n      \"User satisfaction 4/5 or higher\",\n    ],\n  },\n];\n</code></pre>\n<h3 id=\"heading-21\">2. Feedback Collection</h3>\n<pre><code class=\"language-typescript\">interface UserFeedback {\n  task: string;\n  completion_time: number;\n  error_count: number;\n  satisfaction: number;\n  comments: string;\n}\n</code></pre>\n<p>This document provides the UI/UX design guide for the financial data analysis system. It will be updated continuously to optimize user experience, reflecting feedback and improvements. 🚀</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -201,6 +201,139 @@
           "level": 3,
           "isMainTopic": false,
           "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "2. Typography",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "3. Grid System",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "📱 Component Library",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "1. Chart Component",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "1.1 Candlestick Chart",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "1.2 Technical Indicators",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "2. Dashboard Layout",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "🔄 User Flow",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "1. Trading Flow",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "2. Portfolio Management",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "📐 Responsive Design",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "1. Breakpoints",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "2. Layout Adjustment",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 750
+        },
+        {
+          "id": "heading-16",
+          "text": "♿ Accessibility",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 800
+        },
+        {
+          "id": "heading-17",
+          "text": "1. ARIA Labels",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "2. Keyboard Navigation",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 900
+        },
+        {
+          "id": "heading-19",
+          "text": "🎯 Usability Testing",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 950
+        },
+        {
+          "id": "heading-20",
+          "text": "1. Test Scenarios",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1000
+        },
+        {
+          "id": "heading-21",
+          "text": "2. Feedback Collection",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1050
         }
       ]
     }

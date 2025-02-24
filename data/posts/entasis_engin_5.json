@@ -200,7 +200,7 @@
     "en": {
       "title": "Entasis Engine - Database Design",
       "description": "Database schema and design documentation for digital asset data analysis system",
-      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Database Design</h1>\n<h2 id=\"heading-1\">📊 Database Architecture</h2>\n<h3 id=\"heading-2\">1. Database Selection Rationale</h3>\n<ul>\n<li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>\n<li><strong>TimescaleDB</strong>: Extension optimized for time-series data processing</li>\n<li><strong>Partitioning</strong>: Efficient management of large-scale data</li>\n</ul>\n<h3 id=\"heading-3\">2. Core Table Structures</h3>\n<h4 id=\"heading-4\">2.1 Market Data Tables</h4>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Database Design</h1>\n<h2 id=\"heading-1\">📊 Database Architecture</h2>\n<h3 id=\"heading-2\">1. Database Selection Rationale</h3>\n<ul>\n<li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>\n<li><strong>TimescaleDB</strong>: Extension optimized for time-series data processing</li>\n<li><strong>Partitioning</strong>: Efficient management of large-scale data</li>\n</ul>\n<h3 id=\"heading-3\">2. Core Table Structures</h3>\n<h4 id=\"heading-4\">2.1 Market Data Tables</h4>\n<pre><code class=\"language-sql\">-- 실시간 시장 데이터\nCREATE TABLE market_data (\n    id BIGSERIAL PRIMARY KEY,\n    symbol VARCHAR(20) NOT NULL,\n    exchange VARCHAR(20) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL,\n    price DECIMAL(20,8) NOT NULL,\n    volume DECIMAL(20,8) NOT NULL,\n    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP\n) PARTITION BY RANGE (timestamp);\n\n-- 옵션 데이터\nCREATE TABLE option_data (\n    id BIGSERIAL PRIMARY KEY,\n    underlying VARCHAR(20) NOT NULL,\n    strike_price DECIMAL(20,8) NOT NULL,\n    expiry_date TIMESTAMPTZ NOT NULL,\n    option_type VARCHAR(4) NOT NULL,\n    iv DECIMAL(10,4),\n    delta DECIMAL(10,4),\n    gamma DECIMAL(10,4),\n    theta DECIMAL(10,4),\n    vega DECIMAL(10,4),\n    timestamp TIMESTAMPTZ NOT NULL\n) PARTITION BY RANGE (timestamp);\n</code></pre>\n<h4 id=\"heading-5\">2.2 분석 데이터 테이블</h4>\n<pre><code class=\"language-sql\">-- AI Model Prediction Results\nCREATE TABLE predictions (\n    id BIGSERIAL PRIMARY KEY,\n    model_id VARCHAR(50) NOT NULL,\n    symbol VARCHAR(20) NOT NULL,\n    prediction_type VARCHAR(20) NOT NULL,\n    predicted_value DECIMAL(20,8) NOT NULL,\n    confidence DECIMAL(5,4) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL\n);\n\n-- Portfolio Status\nCREATE TABLE portfolio_status (\n    id BIGSERIAL PRIMARY KEY,\n    user_id UUID NOT NULL,\n    asset_type VARCHAR(20) NOT NULL,\n    position_size DECIMAL(20,8) NOT NULL,\n    entry_price DECIMAL(20,8) NOT NULL,\n    current_price DECIMAL(20,8) NOT NULL,\n    pnl DECIMAL(20,8) NOT NULL,\n    timestamp TIMESTAMPTZ NOT NULL\n);\n</code></pre>\n<h3 id=\"heading-6\">3. Indexing Strategy</h3>\n<h4 id=\"heading-7\">3.1 Market Data Indexing</h4>\n<pre><code class=\"language-sql\">-- Optimize market data query\nCREATE INDEX idx_market_data_symbol_timestamp ON market_data (symbol, timestamp DESC);\nCREATE INDEX idx_market_data_exchange_timestamp ON market_data (exchange, timestamp DESC);\n\n-- Optimize option data query\nCREATE INDEX idx_option_data_underlying_expiry ON option_data (underlying, expiry_date);\nCREATE INDEX idx_option_data_strike_type ON option_data (strike_price, option_type);\n</code></pre>\n<h4 id=\"heading-8\">3.2 Analysis Data Indexing</h4>\n<pre><code class=\"language-sql\">-- Optimize prediction data query\nCREATE INDEX idx_predictions_model_symbol ON predictions (model_id, symbol);\nCREATE INDEX idx_predictions_timestamp ON predictions (timestamp DESC);\n\n-- Optimize portfolio query\nCREATE INDEX idx_portfolio_user_timestamp ON portfolio_status (user_id, timestamp DESC);\n</code></pre>\n<h3 id=\"heading-9\">4. Partitioning Strategy</h3>\n<h4 id=\"heading-10\">4.1 Time-series Data Partitioning</h4>\n<pre><code class=\"language-sql\">-- Create monthly partitions\nCREATE TABLE market_data_y2024m01 PARTITION OF market_data\n    FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');\nCREATE TABLE market_data_y2024m02 PARTITION OF market_data\n    FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');\n</code></pre>\n<h4 id=\"heading-11\">4.2 Retention Policy</h4>\n<ul>\n<li>Real-time data: Latest 3 months</li>\n<li>Aggregated data: Latest 1 year</li>\n<li>Historical data: S3 archive</li>\n</ul>\n<h2 id=\"heading-12\">📈 Performance Optimization</h2>\n<h3 id=\"heading-13\">1. Query Optimization</h3>\n<h4 id=\"heading-14\">1.1 Frequent Queries</h4>\n<pre><code class=\"language-sql\">-- Query specific period OHLCV data\nCREATE MATERIALIZED VIEW mv_ohlcv_1h AS\nSELECT\n    symbol,\n    date_trunc('hour', timestamp) as timeframe,\n    first(price) as open,\n    max(price) as high,\n    min(price) as low,\n    last(price) as close,\n    sum(volume) as volume\nFROM market_data\nGROUP BY symbol, timeframe;\n</code></pre>\n<h4 id=\"heading-15\">1.2 Caching Strategy</h4>\n<ul>\n<li>Implement Redis caching layer</li>\n<li>Real-time data memory caching</li>\n<li>Configure aggregated data cache refresh interval</li>\n</ul>\n<h3 id=\"heading-16\">2. Backup Strategy</h3>\n<h4 id=\"heading-17\">2.1 Regular Backups</h4>\n<ul>\n<li>Daily incremental backups</li>\n<li>Weekly full backups</li>\n<li>Monthly archive</li>\n</ul>\n<h4 id=\"heading-18\">2.2 Recovery Plan</h4>\n<ul>\n<li>Point-in-Time Recovery setup</li>\n<li>Documented disaster recovery scenarios</li>\n<li>Planned recovery tests</li>\n</ul>\n<h2 id=\"heading-19\">🔄 Data Flow</h2>\n<h3 id=\"heading-20\">1. Data Collection</h3>\n<pre><code class=\"language-mermaid\">graph LR\n    A[Exchange API] --&gt; B[Data Collector]\n    B --&gt; C[Data Cleaning]\n    C --&gt; D[TimescaleDB]\n    D --&gt; E[Analysis Engine]\n</code></pre>\n<h3 id=\"heading-21\">2. Data Processing</h3>\n<ul>\n<li>Real-time stream processing</li>\n<li>Batch processing</li>\n<li>Anomaly detection and handling</li>\n</ul>\n<h2 id=\"heading-22\">⚡ Considerations for Scalability</h2>\n<h3 id=\"heading-23\">1. Horizontal Scaling</h3>\n<ul>\n<li>Configure read-only replicas</li>\n<li>Establish sharding strategy</li>\n<li>Set up load balancing</li>\n</ul>\n<h3 id=\"heading-24\">2. Vertical Scaling</h3>\n<ul>\n<li>Monitor resource usage</li>\n<li>Set performance metrics</li>\n<li>Define scaling thresholds</li>\n</ul>\n<p>This document provides the database design standards for the financial data analysis system. It will be updated continuously considering the system requirements and performance. 🚀</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -236,6 +236,146 @@
           "level": 4,
           "isMainTopic": false,
           "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2.2 분석 데이터 테이블",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "3. Indexing Strategy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "3.1 Market Data Indexing",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "3.2 Analysis Data Indexing",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "4. Partitioning Strategy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "4.1 Time-series Data Partitioning",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "4.2 Retention Policy",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "📈 Performance Optimization",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "1. Query Optimization",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "1.1 Frequent Queries",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "1.2 Caching Strategy",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 750
+        },
+        {
+          "id": "heading-16",
+          "text": "2. Backup Strategy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 800
+        },
+        {
+          "id": "heading-17",
+          "text": "2.1 Regular Backups",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "2.2 Recovery Plan",
+          "level": 4,
+          "isMainTopic": false,
+          "position": 900
+        },
+        {
+          "id": "heading-19",
+          "text": "🔄 Data Flow",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 950
+        },
+        {
+          "id": "heading-20",
+          "text": "1. Data Collection",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1000
+        },
+        {
+          "id": "heading-21",
+          "text": "2. Data Processing",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1050
+        },
+        {
+          "id": "heading-22",
+          "text": "⚡ Considerations for Scalability",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 1100
+        },
+        {
+          "id": "heading-23",
+          "text": "1. Horizontal Scaling",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1150
+        },
+        {
+          "id": "heading-24",
+          "text": "2. Vertical Scaling",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1200
         }
       ]
     }

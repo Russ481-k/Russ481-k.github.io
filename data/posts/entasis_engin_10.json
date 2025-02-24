@@ -179,7 +179,7 @@
     "en": {
       "title": "Entasis Engine - Test Plan",
       "description": "Test strategy and quality assurance plan for digital asset data analysis system",
-      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Test Plan</h1>\n<h2 id=\"heading-1\">🎯 Test Strategy Overview</h2>\n<h3 id=\"heading-2\">1. Test Scope</h3>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Test Plan</h1>\n<h2 id=\"heading-1\">🎯 Test Strategy Overview</h2>\n<h3 id=\"heading-2\">1. Test Scope</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    A[Unit Test] --&gt; B[Integration Test]\n    B --&gt; C[System Test]\n    C --&gt; D[Performance Test]\n    D --&gt; E[Security Test]\n    E --&gt; F[User Acceptance Test]\n</code></pre>\n<h3 id=\"heading-3\">2. Test Environment</h3>\n<pre><code class=\"language-yaml\">environments:\n  development:\n    type: local\n    database: h2\n    cache: local-redis\n\n  testing:\n    type: kubernetes\n    namespace: test\n    database: test-timescaledb\n    cache: test-redis\n\n  staging:\n    type: kubernetes\n    namespace: staging\n    database: staging-timescaledb\n    cache: staging-redis\n\n  production:\n    type: kubernetes\n    namespace: production\n    database: prod-timescaledb\n    cache: prod-redis\n</code></pre>\n<h2 id=\"heading-4\">🧪 Unit Test</h2>\n<h3 id=\"heading-5\">1. Backend Test</h3>\n<pre><code class=\"language-java\">@Test\npublic void testMarketDataProcessing() {\n    // Given\n    MarketData data = new MarketData(\n        \"BTC-USDT\",\n        new BigDecimal(\"50000.00\"),\n        new BigDecimal(\"100.0\"),\n        LocalDateTime.now()\n    );\n\n    // When\n    ProcessedData result = marketDataService.process(data);\n\n    // Then\n    assertNotNull(result);\n    assertEquals(data.getSymbol(), result.getSymbol());\n    assertTrue(result.isValid());\n}\n</code></pre>\n<h3 id=\"heading-6\">2. AI Model Test</h3>\n<pre><code class=\"language-python\">def test_price_prediction():\n    # Given\n    model = PricePredictionModel()\n    test_data = load_test_data()\n\n    # When\n    predictions = model.predict(test_data)\n\n    # Then\n    assert predictions.shape == (len(test_data), 1)\n    assert np.all(predictions &gt; 0)  # Price is always positive\n    assert calculate_mape(test_data.y, predictions) &lt; 0.1  # MAPE &lt; 10%\n</code></pre>\n<h2 id=\"heading-7\">🔄 Integration Test</h2>\n<h3 id=\"heading-8\">1. API Test</h3>\n<pre><code class=\"language-typescript\">describe(\"Trading API Integration Tests\", () =&gt; {\n  it(\"should place market order successfully\", async () =&gt; {\n    // Given\n    const order = {\n      symbol: \"BTC-USDT\",\n      type: \"MARKET\",\n      side: \"BUY\",\n      quantity: \"0.1\",\n    };\n\n    // When\n    const response = await api.post(\"/v1/orders\", order);\n\n    // Then\n    expect(response.status).toBe(201);\n    expect(response.data.orderId).toBeDefined();\n    expect(response.data.status).toBe(\"FILLED\");\n  });\n});\n</code></pre>\n<h3 id=\"heading-9\">2. Data Pipeline Test</h3>\n<pre><code class=\"language-python\">def test_data_pipeline_integration():\n    # Given\n    test_data = generate_test_market_data()\n\n    # When\n    pipeline.process(test_data)\n\n    # Then\n    processed_data = db.query_latest_data()\n    assert_data_integrity(test_data, processed_data)\n    assert_processing_latency() &lt; timedelta(milliseconds=100)\n</code></pre>\n<h2 id=\"heading-10\">📊 Performance Test</h2>\n<h3 id=\"heading-11\">1. Load Test</h3>\n<pre><code class=\"language-javascript\">import { check } from \"k6\";\nimport http from \"k6/http\";\n\nexport const options = {\n  scenarios: {\n    market_data: {\n      executor: \"ramping-vus\",\n      startVUs: 0,\n      stages: [\n        { duration: \"2m\", target: 100 },\n        { duration: \"5m\", target: 100 },\n        { duration: \"2m\", target: 0 },\n      ],\n      gracefulRampDown: \"30s\",\n    },\n  },\n  thresholds: {\n    http_req_duration: [\"p(95)&lt;500\"],\n  },\n};\n\nexport default function () {\n  const response = http.get(\"http://api.example.com/v1/market/price/BTC-USDT\");\n  check(response, {\n    \"is status 200\": (r) =&gt; r.status === 200,\n    \"response time &lt; 500ms\": (r) =&gt; r.timings.duration &lt; 500,\n  });\n}\n</code></pre>\n<h3 id=\"heading-12\">2. Stress Test</h3>\n<pre><code class=\"language-yaml\">stress_test_scenarios:\n  - name: \"급격한 시장 변동 시뮬레이션\"\n    duration: \"30m\"\n    data_rate: \"10000 events/second\"\n    expectations:\n      - max_latency: 100ms\n      - error_rate: &lt; 0.1%\n      - cpu_usage: &lt; 80%\n      - memory_usage: &lt; 85%\n</code></pre>\n<h2 id=\"heading-13\">🔒 Security Test</h2>\n<h3 id=\"heading-14\">1. Vulnerability Scan</h3>\n<pre><code class=\"language-yaml\">security_scan:\n  tools:\n    - name: \"OWASP ZAP\"\n      target: \"https://api.example.com\"\n      rules:\n        - sql-injection\n        - xss\n        - csrf\n\n    - name: \"SonarQube\"\n      target: \"source-code\"\n      quality_gates:\n        security_rating: A\n        security_review_rating: A\n</code></pre>\n<h3 id=\"heading-15\">2. Penetration Test</h3>\n<pre><code class=\"language-yaml\">penetration_test:\n  scenarios:\n    - name: \"인증 우회 시도\"\n      steps:\n        - jwt_token_manipulation\n        - session_hijacking\n        - brute_force_attack\n\n    - name: \"권한 상승 시도\"\n      steps:\n        - role_manipulation\n        - horizontal_privilege_escalation\n</code></pre>\n<h2 id=\"heading-16\">📱 User Acceptance Test</h2>\n<h3 id=\"heading-17\">1. Scenario Test</h3>\n<pre><code class=\"language-typescript\">describe(\"Trading Workflow\", () =&gt; {\n  it(\"should complete basic trading cycle\", async () =&gt; {\n    // 1. Login\n    await user.login();\n\n    // 2. Check market data\n    const marketData = await dashboard.getMarketData();\n    expect(marketData).toBeValid();\n\n    // 3. Check trading signal\n    const signal = await analysis.getTradingSignal();\n    expect(signal.confidence).toBeGreaterThan(0.7);\n\n    // 4. Execute order\n    const order = await trading.placeOrder(signal);\n    expect(order.status).toBe(\"SUCCESS\");\n  });\n});\n</code></pre>\n<h3 id=\"heading-18\">2. Usability Test</h3>\n<pre><code class=\"language-yaml\">usability_test_cases:\n  - scenario: \"First trading execution\"\n    user_group: \"Beginner trader\"\n    success_criteria:\n      - max_time: 5 minutes\n      - max_clicks: 7\n      - error_rate: 0%\n\n  - scenario: \"Portfolio analysis\"\n    user_group: \"Expert trader\"\n    success_criteria:\n      - data_accuracy: 100%\n      - refresh_rate: &lt; 1 second\n      - analysis_depth: All indicators included\n</code></pre>\n<h2 id=\"heading-19\">📈 Quality Metrics</h2>\n<h3 id=\"heading-20\">1. Code Quality</h3>\n<pre><code class=\"language-yaml\">quality_metrics:\n  code_coverage:\n    unit_tests: &gt; 80%\n    integration_tests: &gt; 70%\n\n  complexity:\n    cyclomatic: &lt; 15\n    cognitive: &lt; 10\n\n  duplication:\n    threshold: &lt; 5%\n</code></pre>\n<h3 id=\"heading-21\">2. Performance Metrics</h3>\n<pre><code class=\"language-yaml\">performance_metrics:\n  api_response_time:\n    p95: &lt; 500ms\n    p99: &lt; 1000ms\n\n  data_processing:\n    latency: &lt; 100ms\n    throughput: &gt; 5000 events/second\n\n  model_inference:\n    latency: &lt; 200ms\n    accuracy: &gt; 85%\n</code></pre>\n<p>This document provides the test strategy and quality assurance plan for the financial data analysis system. It will be updated continuously to ensure the stability and reliability of the system. 🚀</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -201,6 +201,139 @@
           "level": 3,
           "isMainTopic": false,
           "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "2. Test Environment",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "🧪 Unit Test",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "1. Backend Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "2. AI Model Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "🔄 Integration Test",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "1. API Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "2. Data Pipeline Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "📊 Performance Test",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "1. Load Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "2. Stress Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "🔒 Security Test",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "1. Vulnerability Scan",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "2. Penetration Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 750
+        },
+        {
+          "id": "heading-16",
+          "text": "📱 User Acceptance Test",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 800
+        },
+        {
+          "id": "heading-17",
+          "text": "1. Scenario Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "2. Usability Test",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 900
+        },
+        {
+          "id": "heading-19",
+          "text": "📈 Quality Metrics",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 950
+        },
+        {
+          "id": "heading-20",
+          "text": "1. Code Quality",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1000
+        },
+        {
+          "id": "heading-21",
+          "text": "2. Performance Metrics",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1050
         }
       ]
     }

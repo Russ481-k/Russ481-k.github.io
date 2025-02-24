@@ -90,7 +90,7 @@
     "en": {
       "title": "Building an Outsourcing Crawler with FastAPI and PostgreSQL",
       "description": "I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! 🚀",
-      "content": "<h1 id=\"heading-0\">Converting database.py to Async and Integrating Session Management</h1>\n<p>Hello everyone!<br>\nIn our last post, we looked at SQLAlchemy's async configuration. Today, we'll dive deeper into how to convert our <strong>database.py</strong> file to async mode and integrate session management code.</p>\n<p>By introducing async processing, we can reduce database operation wait times and efficiently handle multiple requests simultaneously. Let's take a look step by step!</p>\n<hr>\n<h2 id=\"heading-1\">1. Why Async?</h2>\n<p>First, let's briefly cover the difference between synchronous and asynchronous approaches:</p>\n<ul>\n<li><strong>Synchronous:</strong><br>\nWhen making a database request, you have to wait for the result to return. This can cause bottlenecks when there are many requests, as other tasks must wait for the current one to complete.</li>\n<li><strong>Asynchronous:</strong><br>\nYou can continue with other tasks after sending a database request. This means you don't have to wait for one task to finish before starting another, allowing for more efficient handling of multiple operations.</li>\n</ul>\n<p>Async processing can significantly improve our application's response time and concurrent processing capabilities!</p>\n<hr>\n<h2 id=\"heading-2\">2. Original Synchronous database.py</h2>\n<p>Our original <strong>database.py</strong> was written synchronously. For example, we created the database engine and session like this:</p>\n",
+      "content": "<h1 id=\"heading-0\">Converting database.py to Async and Integrating Session Management</h1>\n<p>Hello everyone!<br>\nIn our last post, we looked at SQLAlchemy's async configuration. Today, we'll dive deeper into how to convert our <strong>database.py</strong> file to async mode and integrate session management code.</p>\n<p>By introducing async processing, we can reduce database operation wait times and efficiently handle multiple requests simultaneously. Let's take a look step by step!</p>\n<hr>\n<h2 id=\"heading-1\">1. Why Async?</h2>\n<p>First, let's briefly cover the difference between synchronous and asynchronous approaches:</p>\n<ul>\n<li><strong>Synchronous:</strong><br>\nWhen making a database request, you have to wait for the result to return. This can cause bottlenecks when there are many requests, as other tasks must wait for the current one to complete.</li>\n<li><strong>Asynchronous:</strong><br>\nYou can continue with other tasks after sending a database request. This means you don't have to wait for one task to finish before starting another, allowing for more efficient handling of multiple operations.</li>\n</ul>\n<p>Async processing can significantly improve our application's response time and concurrent processing capabilities!</p>\n<hr>\n<h2 id=\"heading-2\">2. Original Synchronous database.py</h2>\n<p>Our original <strong>database.py</strong> was written synchronously. For example, we created the database engine and session like this:</p>\n<pre><code class=\"language-python\"># Original database.py (synchronous mode)\nfrom sqlalchemy import create_engine\nfrom sqlalchemy.orm import sessionmaker\n\nDATABASE_URL = \"postgresql://user:password@localhost/dbname\"\n\nengine = create_engine(DATABASE_URL, echo=True)\nSessionLocal = sessionmaker(bind=engine)\n\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n</code></pre>\n<p>This approach has the advantage of being simple to implement, but when many requests come in, <strong>I/O blocking</strong> occurs, causing performance degradation.</p>\n<hr>\n<h2 id=\"heading-3\">3. Change to Asynchronous Mode</h2>\n<p>Now, let's switch to the asynchronous mode. I'll go through the main changes one by one.</p>\n<h3 id=\"heading-4\">3.1. Create an Asynchronous Engine</h3>\n<p>Instead of using the synchronous <code>create_engine</code> function, use the <code>create_async_engine</code> function from the <code>sqlalchemy.ext.asyncio</code> module to create an asynchronous engine.<br>\nFirst, add <code>+asyncpg</code> to the database URL to use the asynchronous driver.</p>\n<pre><code class=\"language-python\">from sqlalchemy.ext.asyncio import create_async_engine\n\nDATABASE_URL = \"postgresql+asyncpg://user:password@localhost/dbname\"\nengine = create_async_engine(DATABASE_URL, echo=True)\n</code></pre>\n<p>Now, the engine is optimized for asynchronous processing and ready to go!</p>\n<h3 id=\"heading-5\">3.2. Create an Asynchronous Session</h3>\n<p>Next, use <code>AsyncSession</code> and <code>sessionmaker</code> to create an asynchronous session.<br>\nUnlike the synchronous code, specify <code>AsyncSession</code> in the <code>class_</code> parameter and use the <code>expire_on_commit=False</code> option to prevent the session from expiring.</p>\n<pre><code class=\"language-python\">from sqlalchemy.ext.asyncio import AsyncSession\nfrom sqlalchemy.orm import sessionmaker\n\nasync_session = sessionmaker(\n    bind=engine,\n    class_=AsyncSession,\n    expire_on_commit=False\n)\n</code></pre>\n<p>Now, all database requests will use this <strong>asynchronous session</strong>.</p>\n<h3 id=\"heading-6\">3.3. Implement the Asynchronous Session Management Function</h3>\n<p>In the asynchronous mode, it is important to safely open and close the session using the <code>async with</code> statement.<br>\nYou can implement it by changing the <code>get_db</code> function to an asynchronous generator, which opens the session, uses it, and automatically closes it after the operation is complete.</p>\n<pre><code class=\"language-python\">async def get_db():\n    async with async_session() as session:\n        yield session\n</code></pre>\n<p>This code ensures that the session is closed cleanly when the database operation is complete.<br>\nEven if an exception occurs, the resources are automatically cleaned up, ensuring stable operation.</p>\n<hr>\n<h2 id=\"heading-7\">4. Benefits of Integrating Session Management</h2>\n<p>When integrating the session management code, we can achieve the following benefits:</p>\n<ul>\n<li><strong>Clarity:</strong><br>\nAll database access uses the same asynchronous session management logic, making the code much cleaner.</li>\n<li><strong>Stability:</strong><br>\nUsing <code>async with</code> ensures that the session is automatically closed even if an exception occurs, preventing resource leaks.</li>\n<li><strong>Ease of Maintenance:</strong><br>\nThe session management code is all in one place, so it is easy to manage future modifications or extensions.</li>\n</ul>\n<hr>\n<h2 id=\"heading-8\">5. Conclusion</h2>\n<p>Today, we looked at how to convert the <strong>database.py</strong> file to asynchronous mode and integrate session management code.<br>\nBy doing this, we can handle database I/O operations in API servers or crawlers much more efficiently.</p>\n<p>Next, we will cover <strong>improving project models and updating fields</strong>.</p>\n<p>Your feedback is a great help! See you next time! 🚀</p>\n<hr>\n<p>I hope this article was helpful, and I will continue to share improved technologies. Thank you!</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -112,6 +112,48 @@
           "level": 2,
           "isMainTopic": true,
           "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "3. Change to Asynchronous Mode",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "3.1. Create an Asynchronous Engine",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "3.2. Create an Asynchronous Session",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "3.3. Implement the Asynchronous Session Management Function",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "4. Benefits of Integrating Session Management",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "5. Conclusion",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 400
         }
       ]
     }

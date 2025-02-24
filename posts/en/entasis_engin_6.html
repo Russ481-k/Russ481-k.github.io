@@ -1,0 +1,228 @@
+<h1>Financial Data Analysis System API Specification</h1>
+<h2>🔐 Authentication &#x26; Security</h2>
+<h3>1. Authentication Methods</h3>
+<h4>1.1 JWT Authentication</h4>
+<pre><code class="language-json">{
+  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+</code></pre>
+<h4>1.2 API Key Authentication</h4>
+<pre><code class="language-json">{
+  "X-API-Key": "your-api-key-here"
+}
+</code></pre>
+<h3>2. Security Policies</h3>
+<ul>
+<li>Rate Limiting: 1000 requests/minute</li>
+<li>IP Whitelisting</li>
+<li>SSL/TLS required</li>
+</ul>
+<h2>📡 RESTful API Endpoints</h2>
+<h3>1. Market Data API</h3>
+<h4>1.1 Real-time Price Retrieval</h4>
+<pre><code class="language-http">GET /api/v1/market/price/{symbol}
+
+Response 200:
+{
+  "symbol": "BTC-USDT",
+  "price": "65432.10",
+  "timestamp": "2024-03-21T09:30:00Z",
+  "volume": "123.45",
+  "exchange": "binance"
+}
+</code></pre>
+<h4>1.2 Historical Data Retrieval</h4>
+<pre><code class="language-http">GET /api/v1/market/history/{symbol}
+Parameters:
+  - interval: "1m" | "5m" | "1h" | "1d"
+  - start: ISO8601
+  - end: ISO8601
+
+Response 200:
+{
+  "symbol": "BTC-USDT",
+  "data": [
+    {
+      "timestamp": "2024-03-21T09:00:00Z",
+      "open": "65000.00",
+      "high": "65100.00",
+      "low": "64900.00",
+      "close": "65050.00",
+      "volume": "234.56"
+    }
+  ]
+}
+</code></pre>
+<h3>2. Portfolio API</h3>
+<h4>2.1 Position Retrieval</h4>
+<pre><code class="language-http">GET /api/v1/portfolio/positions
+
+Response 200:
+{
+  "positions": [
+    {
+      "symbol": "BTC-USDT",
+      "size": "1.5",
+      "entry_price": "64000.00",
+      "current_price": "65000.00",
+      "pnl": "1500.00",
+      "timestamp": "2024-03-21T09:30:00Z"
+    }
+  ]
+}
+</code></pre>
+<h4>2.2 Position Creation</h4>
+<pre><code class="language-http">POST /api/v1/portfolio/positions
+Request:
+{
+  "symbol": "BTC-USDT",
+  "size": "1.5",
+  "type": "long",
+  "leverage": "1"
+}
+
+Response 201:
+{
+  "position_id": "pos_123456",
+  "status": "success",
+  "timestamp": "2024-03-21T09:30:00Z"
+}
+</code></pre>
+<h3>3. AI Analysis API</h3>
+<h4>3.1 Price Prediction</h4>
+<pre><code class="language-http">GET /api/v1/analysis/prediction/{symbol}
+Parameters:
+  - timeframe: "1h" | "4h" | "1d"
+  - model: "lstm" | "ensemble"
+
+Response 200:
+{
+  "symbol": "BTC-USDT",
+  "prediction": "66000.00",
+  "confidence": 0.85,
+  "timeframe": "1h",
+  "model": "ensemble",
+  "timestamp": "2024-03-21T09:30:00Z"
+}
+</code></pre>
+<h4>3.2 Risk Analysis</h4>
+<pre><code class="language-http">GET /api/v1/analysis/risk/{symbol}
+
+Response 200:
+{
+  "symbol": "BTC-USDT",
+  "var_95": "3200.00",
+  "expected_shortfall": "3800.00",
+  "volatility": "0.45",
+  "timestamp": "2024-03-21T09:30:00Z"
+}
+</code></pre>
+<h2>🔄 WebSocket API</h2>
+<h3>1. Market Data Stream</h3>
+<h4>1.1 Real-time Price Subscription</h4>
+<pre><code class="language-javascript">// Connection
+ws://api.example.com/ws/market
+
+// Subscription message
+{
+  "action": "subscribe",
+  "channel": "market",
+  "symbols": ["BTC-USDT", "ETH-USDT"]
+}
+
+// Received data
+{
+  "symbol": "BTC-USDT",
+  "price": "65432.10",
+  "timestamp": "2024-03-21T09:30:00.123Z",
+  "volume": "1.23"
+}
+</code></pre>
+<h4>1.2 Orderbook Subscription</h4>
+<pre><code class="language-javascript">// Subscription message
+{
+  "action": "subscribe",
+  "channel": "orderbook",
+  "symbol": "BTC-USDT",
+  "depth": 10
+}
+
+// Received data
+{
+  "symbol": "BTC-USDT",
+  "bids": [
+    ["65000.00", "1.234"],
+    ["64999.00", "2.345"]
+  ],
+  "asks": [
+    ["65001.00", "1.234"],
+    ["65002.00", "2.345"]
+  ],
+  "timestamp": "2024-03-21T09:30:00.123Z"
+}
+</code></pre>
+<h2>📊 Error Codes</h2>
+<h3>1. HTTP Status Codes</h3>
+<pre><code class="language-json">{
+  "400": "잘못된 요청",
+  "401": "인증 실패",
+  "403": "권한 없음",
+  "404": "리소스 없음",
+  "429": "요청 한도 초과",
+  "500": "서버 내부 오류"
+}
+</code></pre>
+<h3>2. Business Error Codes</h3>
+<pre><code class="language-json">{
+  "MARKET_001": "유효하지 않은 심볼",
+  "MARKET_002": "거래소 연결 실패",
+  "PORT_001": "잔액 부족",
+  "PORT_002": "포지션 한도 초과",
+  "AI_001": "모델 로딩 실패",
+  "AI_002": "예측 실패"
+}
+</code></pre>
+<h2>📝 API Usage Examples</h2>
+<h3>1. REST API Call</h3>
+<pre><code class="language-python">import requests
+
+# Market data retrieval
+def get_market_price(symbol):
+    url = f"https://api.example.com/v1/market/price/{symbol}"
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "X-API-Key": "your-api-key"
+    }
+    response = requests.get(url, headers=headers)
+    return response.json()
+
+# Position creation
+def create_position(symbol, size):
+    url = "https://api.example.com/v1/portfolio/positions"
+    data = {
+        "symbol": symbol,
+        "size": size,
+        "type": "long"
+    }
+    response = requests.post(url, json=data, headers=headers)
+    return response.json()
+</code></pre>
+<h3>2. WebSocket Connection</h3>
+<pre><code class="language-javascript">const ws = new WebSocket("ws://api.example.com/ws/market");
+
+ws.onopen = () => {
+  ws.send(
+    JSON.stringify({
+      action: "subscribe",
+      channel: "market",
+      symbols: ["BTC-USDT"],
+    })
+  );
+};
+
+ws.onmessage = (event) => {
+  const data = JSON.parse(event.data);
+  console.log(`${data.symbol}: ${data.price}`);
+};
+</code></pre>
+<p>This document provides the API specification for the financial data analysis system. APIs are continuously updated, and the latest version can be viewed through the Swagger UI. 🚀</p>

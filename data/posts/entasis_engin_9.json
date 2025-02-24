@@ -172,7 +172,7 @@
     "en": {
       "title": "Entasis Engine - Infrastructure Architecture",
       "description": "Detailed infrastructure architecture and configuration for digital asset data analysis system",
-      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Infrastructure Architecture</h1>\n<h2 id=\"heading-1\">🏗️ System Architecture</h2>\n<h3 id=\"heading-2\">1. Overall Architecture</h3>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis System Infrastructure Architecture</h1>\n<h2 id=\"heading-1\">🏗️ System Architecture</h2>\n<h3 id=\"heading-2\">1. Overall Architecture</h3>\n<pre><code class=\"language-mermaid\">graph TB\n    subgraph External[External Systems]\n        API1[Exchange API]\n        API2[Data Feed]\n    end\n\n    subgraph LoadBalancer[LoadBalancer]\n        LB1[AWS ALB]\n        LB2[Internal L4]\n    end\n\n    subgraph ServiceMesh[Service Mesh]\n        direction TB\n        subgraph DataCollection[Data Collection Layer]\n            DC1[Collector-1]\n            DC2[Collector-2]\n        end\n\n        subgraph Processing[Processing Layer]\n            P1[Spark Cluster]\n            P2[Stream Processing]\n        end\n\n        subgraph AI[AI Analysis Layer]\n            AI1[Model Serving]\n            AI2[Training Pipeline]\n        end\n\n        subgraph API[API Layer]\n            API3[REST API]\n            API4[WebSocket]\n        end\n    end\n\n    subgraph Storage[Storage]\n        DB1[(TimescaleDB)]\n        DB2[(Redis)]\n        S3[Object Storage]\n    end\n\n    subgraph Monitoring[Monitoring]\n        M1[Prometheus]\n        M2[Grafana]\n        M3[ELK Stack]\n    end\n\n    External --&gt; LoadBalancer\n    LoadBalancer --&gt; ServiceMesh\n    ServiceMesh --&gt; Storage\n    ServiceMesh --&gt; Monitoring\n</code></pre>\n<h2 id=\"heading-3\">🌐 Network Configuration</h2>\n<h3 id=\"heading-4\">1. Network Segments</h3>\n<pre><code class=\"language-plaintext\">+------------------------+     +------------------------+\n|     Public Subnet      |     |    Private Subnet      |\n|------------------------|     |------------------------|\n| - Load Balancer        |     | - Application Servers  |\n| - Bastion Host         |     | - Database Clusters    |\n| - NAT Gateway          |     | - Cache Servers        |\n+------------------------+     +------------------------+\n           |                              |\n           |        VPC Peering           |\n           +------------------------------+\n</code></pre>\n<h3 id=\"heading-5\">2. Security Group Configuration</h3>\n<pre><code class=\"language-yaml\">security_groups:\n  frontend:\n    inbound:\n      - port: 80\n        source: 0.0.0.0/0\n      - port: 443\n        source: 0.0.0.0/0\n\n  application:\n    inbound:\n      - port: 8080\n        source: frontend_sg\n      - port: 9000\n        source: monitoring_sg\n\n  database:\n    inbound:\n      - port: 5432\n        source: application_sg\n      - port: 6379\n        source: application_sg\n</code></pre>\n<h2 id=\"heading-6\">🚀 Kubernetes Cluster</h2>\n<h3 id=\"heading-7\">1. Node Configuration</h3>\n<pre><code class=\"language-yaml\">node_pools:\n  - name: general\n    instance_type: c5.2xlarge\n    min_size: 3\n    max_size: 10\n    labels:\n      role: general\n\n  - name: ai-inference\n    instance_type: g4dn.xlarge\n    min_size: 2\n    max_size: 5\n    labels:\n      role: ai-inference\n\n  - name: data-processing\n    instance_type: r5.2xlarge\n    min_size: 2\n    max_size: 8\n    labels:\n      role: data-processing\n</code></pre>\n<h3 id=\"heading-8\">2. Service Deployment</h3>\n<pre><code class=\"language-yaml\">apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: trading-api\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: trading-api\n  template:\n    metadata:\n      labels:\n        app: trading-api\n    spec:\n      containers:\n        - name: trading-api\n          image: trading-api:1.0.0\n          resources:\n            requests:\n              cpu: 1\n              memory: 2Gi\n            limits:\n              cpu: 2\n              memory: 4Gi\n</code></pre>\n<h2 id=\"heading-9\">📊 Monitoring System</h2>\n<h3 id=\"heading-10\">1. Metric Collection</h3>\n<pre><code class=\"language-yaml\">prometheus:\n  scrape_configs:\n    - job_name: \"kubernetes-pods\"\n      kubernetes_sd_configs:\n        - role: pod\n      relabel_configs:\n        - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]\n          action: keep\n          regex: true\n\n    - job_name: \"trading-metrics\"\n      static_configs:\n        - targets: [\"trading-api:9090\"]\n</code></pre>\n<h3 id=\"heading-11\">2. Alert Configuration</h3>\n<pre><code class=\"language-yaml\">alertmanager:\n  config:\n    route:\n      receiver: \"slack\"\n      group_wait: 30s\n      group_interval: 5m\n      repeat_interval: 4h\n\n    receivers:\n      - name: \"slack\"\n        slack_configs:\n          - channel: \"#alerts\"\n            send_resolved: true\n</code></pre>\n<h2 id=\"heading-12\">🔒 Security Configuration</h2>\n<h3 id=\"heading-13\">1. Network Policy</h3>\n<pre><code class=\"language-yaml\">apiVersion: networking.k8s.io/v1\nkind: NetworkPolicy\nmetadata:\n  name: api-network-policy\nspec:\n  podSelector:\n    matchLabels:\n      app: trading-api\n  policyTypes:\n    - Ingress\n    - Egress\n  ingress:\n    - from:\n        - podSelector:\n            matchLabels:\n              role: frontend\n      ports:\n        - protocol: TCP\n          port: 8080\n</code></pre>\n<h3 id=\"heading-14\">2. Encryption Configuration</h3>\n<pre><code class=\"language-yaml\">encryption:\n  - resources:\n      - secrets\n    providers:\n      - aescbc:\n          keys:\n            - name: key1\n              secret: &lt;base64-encoded-key&gt;\n      - identity: {}\n</code></pre>\n<h2 id=\"heading-15\">🔄 Scaling Strategy</h2>\n<h3 id=\"heading-16\">1. Horizontal Scaling</h3>\n<pre><code class=\"language-yaml\">apiVersion: autoscaling/v2\nkind: HorizontalPodAutoscaler\nmetadata:\n  name: trading-api-hpa\nspec:\n  scaleTargetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  minReplicas: 3\n  maxReplicas: 10\n  metrics:\n    - type: Resource\n      resource:\n        name: cpu\n        target:\n          type: Utilization\n          averageUtilization: 70\n</code></pre>\n<h3 id=\"heading-17\">2. Vertical Scaling</h3>\n<pre><code class=\"language-yaml\">apiVersion: autoscaling.k8s.io/v1\nkind: VerticalPodAutoscaler\nmetadata:\n  name: trading-api-vpa\nspec:\n  targetRef:\n    apiVersion: apps/v1\n    kind: Deployment\n    name: trading-api\n  updatePolicy:\n    updateMode: Auto\n</code></pre>\n<h2 id=\"heading-18\">🔧 Operations Management</h2>\n<h3 id=\"heading-19\">1. Logging Configuration</h3>\n<pre><code class=\"language-yaml\">filebeat:\n  inputs:\n    - type: container\n      paths:\n        - /var/log/containers/*.log\n      processors:\n        - add_kubernetes_metadata:\n            host: ${NODE_NAME}\n            matchers:\n              - logs_path:\n                  logs_path: \"/var/log/containers/\"\n</code></pre>\n<h3 id=\"heading-20\">2. Backup Policy</h3>\n<pre><code class=\"language-yaml\">backup:\n  schedule: \"0 1 * * *\" # Daily at 01:00\n  retention:\n    hourly: 24\n    daily: 7\n    weekly: 4\n    monthly: 12\n  storage:\n    type: s3\n    bucket: backup-bucket\n    region: ap-northeast-2\n</code></pre>\n<p>This document provides the infrastructure architecture and configuration for the financial data analysis system. It will be updated continuously to ensure stability and scalability. 🚀</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -194,6 +194,132 @@
           "level": 3,
           "isMainTopic": false,
           "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "🌐 Network Configuration",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "1. Network Segments",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2. Security Group Configuration",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "🚀 Kubernetes Cluster",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "1. Node Configuration",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "2. Service Deployment",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "📊 Monitoring System",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "1. Metric Collection",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "2. Alert Configuration",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "🔒 Security Configuration",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "1. Network Policy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "2. Encryption Configuration",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "🔄 Scaling Strategy",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 750
+        },
+        {
+          "id": "heading-16",
+          "text": "1. Horizontal Scaling",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 800
+        },
+        {
+          "id": "heading-17",
+          "text": "2. Vertical Scaling",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "🔧 Operations Management",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 900
+        },
+        {
+          "id": "heading-19",
+          "text": "1. Logging Configuration",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 950
+        },
+        {
+          "id": "heading-20",
+          "text": "2. Backup Policy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 1000
         }
       ]
     }

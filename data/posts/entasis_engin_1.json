@@ -163,7 +163,7 @@
     "en": {
       "title": "Entasis Engine - Virtual Asset Data Analysis and AI Integration Solution",
       "description": "Integrated analysis system for spot/futures/options data with AI-based investment strategy",
-      "content": "<h1 id=\"heading-0\">Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture</h1>\n<h2 id=\"heading-1\">🚀 Project Overview</h2>\n<p>The importance of data-driven decision making in financial markets continues to grow. In particular, integrated analysis of spot, futures, and options market data combined with AI-based market prediction has become a core element of modern trading.</p>\n<p>This project automates the entire process from <strong>real-time data collection → high-performance data processing → AI-based analysis → real-time dashboard delivery</strong> to provide users with data-driven investment insights.</p>\n<h3 id=\"heading-2\">Core Objectives</h3>\n<ul>\n<li>Real-time financial data integration and analysis</li>\n<li>Implementation of AI-based market prediction models</li>\n<li>Expected return calculation by position</li>\n<li>Risk management metrics provision</li>\n<li>User-friendly dashboard implementation</li>\n</ul>\n<hr>\n<h2 id=\"heading-3\">🛠️ Technology Stack &amp; Architecture</h2>\n<h3 id=\"heading-4\">1. Data Pipeline</h3>\n<ul>\n<li><strong>Data Collection</strong>: CCXT, Deribit API</li>\n<li><strong>Data Processing</strong>: Java, Apache Spark</li>\n<li><strong>Storage</strong>: PostgreSQL, TimescaleDB</li>\n<li><strong>Workflow</strong>: Apache Airflow</li>\n</ul>\n<h3 id=\"heading-5\">2. Analysis Engine</h3>\n<ul>\n<li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>\n<li><strong>Financial Engineering</strong>: Pandas, NumPy</li>\n<li><strong>Analysis Models</strong>:\n<ul>\n<li>Black-Scholes Model (Option Pricing)</li>\n<li>Heston Model (Volatility Analysis)</li>\n<li>LSTM Networks (Time Series Prediction)</li>\n</ul>\n</li>\n</ul>\n<h3 id=\"heading-6\">3. Frontend</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js</li>\n<li><strong>Visualization</strong>: D3.js</li>\n<li><strong>Real-time Communication</strong>: WebSocket</li>\n</ul>\n<h2 id=\"heading-7\">📊 System Architecture</h2>\n",
+      "content": "<h1 id=\"heading-0\">Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture</h1>\n<h2 id=\"heading-1\">🚀 Project Overview</h2>\n<p>The importance of data-driven decision making in financial markets continues to grow. In particular, integrated analysis of spot, futures, and options market data combined with AI-based market prediction has become a core element of modern trading.</p>\n<p>This project automates the entire process from <strong>real-time data collection → high-performance data processing → AI-based analysis → real-time dashboard delivery</strong> to provide users with data-driven investment insights.</p>\n<h3 id=\"heading-2\">Core Objectives</h3>\n<ul>\n<li>Real-time financial data integration and analysis</li>\n<li>Implementation of AI-based market prediction models</li>\n<li>Expected return calculation by position</li>\n<li>Risk management metrics provision</li>\n<li>User-friendly dashboard implementation</li>\n</ul>\n<hr>\n<h2 id=\"heading-3\">🛠️ Technology Stack &amp; Architecture</h2>\n<h3 id=\"heading-4\">1. Data Pipeline</h3>\n<ul>\n<li><strong>Data Collection</strong>: CCXT, Deribit API</li>\n<li><strong>Data Processing</strong>: Java, Apache Spark</li>\n<li><strong>Storage</strong>: PostgreSQL, TimescaleDB</li>\n<li><strong>Workflow</strong>: Apache Airflow</li>\n</ul>\n<h3 id=\"heading-5\">2. Analysis Engine</h3>\n<ul>\n<li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>\n<li><strong>Financial Engineering</strong>: Pandas, NumPy</li>\n<li><strong>Analysis Models</strong>:\n<ul>\n<li>Black-Scholes Model (Option Pricing)</li>\n<li>Heston Model (Volatility Analysis)</li>\n<li>LSTM Networks (Time Series Prediction)</li>\n</ul>\n</li>\n</ul>\n<h3 id=\"heading-6\">3. Frontend</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js</li>\n<li><strong>Visualization</strong>: D3.js</li>\n<li><strong>Real-time Communication</strong>: WebSocket</li>\n</ul>\n<h2 id=\"heading-7\">📊 System Architecture</h2>\n<h2 id=\"heading-8\">📊 시스템 아키텍처</h2>\n<pre><code class=\"language-plaintext\">+-------------------+       +-------------------+       +-------------------+\n|   Data Sources    |       |   Backend (AI &amp;   |       |   Frontend (User   |\n|-------------------|       | Financial Models) |       |     Interface)    |\n| Binance API       | ----&gt; | Python (Pandas,   | ----&gt; | Next.js           |\n| Bybit API         | ----&gt; | TensorFlow)       | ----&gt; | D3.js             |\n| Deribit API       | ----&gt; |                   | ----&gt; | Interactive Charts|\n+-------------------+       +-------------------+       +-------------------+\n\n+-------------------+\n| Database          |\n|-------------------|\n| PostgreSQL        |\n| TimescaleDB       |\n+-------------------+\n\n+--------------------------------------------+\n| Workflow Orchestration                     |\n|--------------------------------------------|\n| Apache Airflow                             |\n+--------------------------------------------+\n</code></pre>\n<hr>\n<h2 id=\"heading-9\">💡 Key Features &amp; Implementation</h2>\n<h3 id=\"heading-10\">1. Data Integration System</h3>\n<ul>\n<li>Multi-exchange real-time data collection</li>\n<li>Time series data optimization storage</li>\n<li>Distributed processing for large-scale data</li>\n</ul>\n<h3 id=\"heading-11\">2. AI-based Analysis Engine</h3>\n<ul>\n<li>Deep learning-based price prediction models</li>\n<li>Volatility prediction and risk analysis</li>\n<li>Portfolio optimization algorithms</li>\n</ul>\n<h3 id=\"heading-12\">3. Investment Strategy System</h3>\n<ul>\n<li>Real-time position analysis</li>\n<li>Risk-return profile generation</li>\n<li>Backtesting and scenario analysis</li>\n</ul>\n<h3 id=\"heading-13\">4. Real-time Monitoring</h3>\n<ul>\n<li>Interactive charts and indicators</li>\n<li>Real-time alert system</li>\n<li>Custom dashboard configuration</li>\n</ul>\n<hr>\n<h2 id=\"heading-14\">🔄 Detailed Workflow</h2>\n<ol>\n<li>\n<p><strong>Data Collection Phase</strong></p>\n<ul>\n<li>Exchange API integration and data collection</li>\n<li>Real-time data streaming via WebSocket</li>\n<li>Data consistency validation</li>\n</ul>\n</li>\n<li>\n<p><strong>Preprocessing &amp; Storage Phase</strong></p>\n<ul>\n<li>Large-scale data processing with Apache Spark</li>\n<li>Time series data optimization storage</li>\n<li>Derivative variable calculation (volatility, Greeks, etc.)</li>\n</ul>\n</li>\n<li>\n<p><strong>Analysis &amp; Prediction Phase</strong></p>\n<ul>\n<li>Machine learning model training and prediction</li>\n<li>Financial engineering model application</li>\n<li>Risk metric calculation</li>\n</ul>\n</li>\n<li>\n<p><strong>Visualization &amp; Delivery Phase</strong></p>\n<ul>\n<li>Real-time dashboard updates</li>\n<li>Customized report generation</li>\n<li>Alert and notification delivery</li>\n</ul>\n</li>\n</ol>\n<hr>\n<h2 id=\"heading-15\">🎁 Expected Benefits</h2>\n<h3 id=\"heading-16\">1. Operational Efficiency</h3>\n<ul>\n<li>Automated data collection and analysis</li>\n<li>Real-time market monitoring</li>\n<li>Quick decision support</li>\n</ul>\n<h3 id=\"heading-17\">2. Risk Management</h3>\n<ul>\n<li>Real-time portfolio risk monitoring</li>\n<li>Scenario-based stress testing</li>\n<li>Automated loss limitation strategies</li>\n</ul>\n<h3 id=\"heading-18\">3. Investment Performance</h3>\n<ul>\n<li>Data-driven investment strategy development</li>\n<li>AI-based market prediction</li>\n<li>Systematic portfolio management</li>\n</ul>\n<hr>\n<h2 id=\"heading-19\">🚀 Future Development</h2>\n<ol>\n<li>\n<p><strong>Feature Expansion</strong></p>\n<ul>\n<li>Additional asset class support</li>\n<li>Advanced AI model integration</li>\n<li>Social trading functionality</li>\n</ul>\n</li>\n<li>\n<p><strong>Performance Enhancement</strong></p>\n<ul>\n<li>Processing speed optimization</li>\n<li>Scalability improvement</li>\n<li>Security enhancement</li>\n</ul>\n</li>\n<li>\n<p><strong>User Experience</strong></p>\n<ul>\n<li>Mobile app development</li>\n<li>Personalized notification system</li>\n<li>API service provision</li>\n</ul>\n</li>\n</ol>\n<p>This project aims to be a comprehensive solution that effectively analyzes financial market data and combines it with AI to provide practical investment insights. 🎯</p>\n",
       "tocItems": [
         {
           "id": "heading-0",
@@ -220,6 +220,90 @@
           "level": 2,
           "isMainTopic": true,
           "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "📊 시스템 아키텍처",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "💡 Key Features & Implementation",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "1. Data Integration System",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "2. AI-based Analysis Engine",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "3. Investment Strategy System",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "4. Real-time Monitoring",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "🔄 Detailed Workflow",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "🎁 Expected Benefits",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 750
+        },
+        {
+          "id": "heading-16",
+          "text": "1. Operational Efficiency",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 800
+        },
+        {
+          "id": "heading-17",
+          "text": "2. Risk Management",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "3. Investment Performance",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 900
+        },
+        {
+          "id": "heading-19",
+          "text": "🚀 Future Development",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 950
         }
       ]
     }

@@ -1,0 +1,248 @@
+<h2>1. Introduction</h2>
+<ul>
+<li>Project Name: ENTASIS</li>
+<li>Github Link: <a href="https://github.com/codestates-beb/BEB-07-final-entasis">GitHub - codestates-beb/BEB-07-final-entasis</a></li>
+<li>Blockchain Network Address: <a href="http://18.183.252.200:8545/">http://18.183.252.200:8545</a> Chain ID: 1337</li>
+</ul>
+<h3>Yoon Subin</h3>
+<ul>
+<li>Position: PM / Full Stack / Design</li>
+<li>Personal Github: <a href="https://github.com/Russ481-k">https://github.com/Russ481-k</a></li>
+<li>Tech Stack: Figma / Javascript / React / HTML / CSS / MySQL / Sequelize / Node.js / Scale-Liner / Axios</li>
+<li>Implemented Features:
+<ul>
+<li>Project Planning &#x26; Management</li>
+<li>Design Conceptualization and Implementation</li>
+<li>Frontend UI/UX Implementation</li>
+<li>Chart Implementation</li>
+<li>Data Requests through Server APIs</li>
+<li>Real-time Data Generation Implementation</li>
+</ul>
+</li>
+</ul>
+<h2>2. Project Overview</h2>
+<p>[ STO Exchange "ENTASIS" ]
+<img src="/images/entasis/entasis_trade.gif" alt="Trading"></p>
+<p>The goal of this project is to help investors understand what STOs are, what features they have, and how to invest in them, thereby expanding investment in security tokens.</p>
+<p><a href="https://www.youtube.com/watch?v=0fmODCTVs0g">Larry Fink Interview</a></p>
+<p>In an interview on December 1, 2022, BlackRock CEO Larry Fink stated that through STOs, broker fees included in current securities trading costs would be distributed to trading parties, lowering fees, and ST holders would be able to vote.</p>
+<p>Larry Fink's perspective on STOs helped inform our project topic selection.</p>
+<p><a href="https://www.youtube.com/watch?v=PSVpth7uqb4&#x26;t=650s">STO Explanation Video</a></p>
+<p>The tokens we commonly know are 'utility tokens' based on ICOs.</p>
+<p>So what is an STO?</p>
+<p><img src="/images/entasis/entasis_sto.png" alt="STO Explanation"></p>
+<p>First, we need to understand what "Security Tokens" are, which form the basis of STOs.</p>
+<p>Security tokens (ST) are securities issued by companies in cryptocurrency form instead of stocks or bonds. These security tokens represent legal ownership in the company, rather than just rights to use services provided by the blockchain platform.</p>
+<p>Therefore, holding security tokens allows you to receive dividends from the company's profits or blockchain platform assets.</p>
+<p>Since security tokens serve the same purpose as securities like stocks and bonds, they must be subject to legal and policy regulation. They must be issued according to relevant laws, just as stocks are issued according to commercial law procedures.</p>
+<p>STO refers to listing these security tokens for trading, similar to an IPO.</p>
+<p><img src="/images/entasis/entasis_sto2.png" alt="STO Explanation 2"></p>
+<p>[ About Service ]
+Entasis is an "STO Exchange Tutorial" that helps individual investors better understand and approach security tokens by allowing them to invest in actual STs, with some features of real STO exchanges scaled down.</p>
+<h2>3. Basic Environment Setup</h2>
+<h3>Token Price Formation and Volatility</h3>
+<p>While prices are typically formed through Market Maker &#x26; Market Taker trading in real exchanges, we implemented price formation through random numbers due to the tutorial nature of this project and limited expected traffic.</p>
+<p>We created three ST markets with short-term volatility, medium-long term volatility, and company quarterly profit announcements set by random numbers. Dividends are distributed according to shareholding ratio by applying dividend rates to quarterly profits.
+Token holders can vote according to their shareholding ratio.</p>
+<h3>Blockchain</h3>
+<p>Ethereum: We ran the Ganache network in the background on an EC2 instance and deployed contracts using Truffle.
+We fundamentally used ERC20 for token trading functionality and extracted operator/controller variables and trading restriction functions from ERC1400 to add some security token features.
+We deployed three contracts diversifying into three companies, as investors need to analyze and trade various tokens. When token trades occur, holder arrays store token ownership to verify dividend distribution eligibility.
+All staking features were implemented within the contract to enforce trading restrictions during staking, using block.timestamp to verify expiration.</p>
+<h2>4. Project Documentation</h2>
+<p>I want to document Project Entasis using the 4F method.</p>
+<ul>
+<li>Fact: Document what issues were considered through the project and how concepts were understood and problems solved</li>
+<li>Feeling: Honestly record emotions felt during project progress</li>
+<li>Finding: Record what was learned while solving problems and areas needing improvement in attempted solutions</li>
+<li>Future Action: Record learning methods to apply in the next project, items needing more consideration, communication methods, etc.</li>
+</ul>
+<h3>Fact</h3>
+<p>Key Features</p>
+<ul>
+<li><strong>Main page centered on real-time price movement charts updating every second</strong>
+<ul>
+<li>Charts can be adjusted to view candles in 1min, 15min, 1hr, 4hr, 1day, 1week units</li>
+<li>When chart is focused, scroll value adjusts chart range rather than page height by setting candle width values</li>
+<li>When chart is focused, crosshair coordinates are displayed with point values shown at corresponding heights for price and volume areas</li>
+</ul>
+</li>
+<li><strong>Wallet Registration via MetaMask</strong></li>
+</ul>
+<p><img src="/images/entasis/entasis_metamask.png" alt="MetaMask Integration"></p>
+<ul>
+<li>
+<p>Aiming for WEB3.0, user state is managed primarily through wallets</p>
+</li>
+<li>
+<p>No separate signup needed; automatic login with MetaMask wallet registration</p>
+</li>
+<li>
+<p>Redirects to MetaMask installation link if not installed</p>
+</li>
+<li>
+<p>Registers new MetaMask wallets in DB on first login</p>
+</li>
+<li>
+<p><strong>Tutorial and Usage Instructions</strong>
+<img src="/images/entasis/entasis_tutorial.gif" alt="Tutorial"></p>
+<ul>
+<li>Uses CSS transitions to move modals while conveying overall service usage to users</li>
+<li>Implemented as modal process tutorial rather than forcing actual trading experience due to concerns about mandating profit/loss experiences</li>
+</ul>
+</li>
+<li>
+<p><strong>FAUCET: Initial Capital of 50ETH</strong></p>
+</li>
+</ul>
+<p><img src="/images/entasis/entasis_tutorial.gif" alt="Tutorial Process"></p>
+<p><img src="/images/entasis/entasis_faucet.png" alt="Faucet"></p>
+<ul>
+<li>
+<p>Automatically grants 50ETH through faucet feature upon tutorial completion</p>
+</li>
+<li>
+<p>Faucet limited to one-time use</p>
+</li>
+<li>
+<p><strong>Security Token Purchase and Sale using ETH</strong></p>
+</li>
+</ul>
+<p><img src="/images/entasis/entasis_sign.png" alt="Trading Fees"></p>
+<ul>
+<li>Users can buy and sell tokens based on real-time price changes</li>
+<li>Investors sign transactions through MetaMask for token trading</li>
+</ul>
+<p><img src="/images/entasis/entasis_fee.png" alt="Trading Fees"></p>
+<ul>
+<li>
+<p>Trading fee automatically calculated at 0.04% of transaction amount</p>
+</li>
+<li>
+<p><strong>Dividend Voting</strong></p>
+</li>
+</ul>
+<p><img src="/images/entasis/entasis_vote.gif" alt="Voting"></p>
+<ul>
+<li>
+<p>Dividend rate voting conducted to determine rate for dividends paid every 10 minutes</p>
+</li>
+<li>
+<p>Dividends received even without voting</p>
+</li>
+<li>
+<p><strong>Dividend Distribution</strong>
+<img src="/images/entasis/entasis_dividend.gif" alt="Dividends"></p>
+<ul>
+<li>Dividends paid according to investor's token holdings relative to totalSupply per token</li>
+</ul>
+</li>
+</ul>
+<p>[Transaction History Before Dividend Payment]
+<img src="/images/entasis/entasis_trade.gif" alt="Trade History"></p>
+<p>[Transaction History After Dividend Payment]
+<img src="/images/entasis/entasis_after_trade.png" alt="Post-Trade History"></p>
+<p>When dividend payment time shown below website logo passes, dividends are automatically paid and recorded in History.</p>
+<ul>
+<li><strong>Trading Restrictions (Circuit Breaker)</strong></li>
+</ul>
+<p><img src="/images/entasis/entasis_circuit_breaker.png" alt="Circuit Breaker"></p>
+<ul>
+<li>Restricts trading on all tokens in case of extreme price volatility</li>
+<li>Trading disabled for 1 minute with token prices frozen</li>
+<li>Due to unlikely extreme price movements in this project, circuit breaker activates via button press to demonstrate trading restriction functionality</li>
+</ul>
+<p>[Circuit Breaker Activation]
+<img src="/images/entasis/entasis_circuit.gif" alt="Circuit Breaker Activation"></p>
+<p>[Circuit Breaker Deactivation]
+<img src="/images/entasis/entasis_circuit_end.gif" alt="Circuit Breaker Deactivation"></p>
+<ul>
+<li><strong>Staking Feature</strong>
+<img src="/images/entasis/entasis_staking.png" alt="Staking">
+<ul>
+<li>Staking involves depositing digital assets to blockchain network, similar to bank deposits</li>
+<li>Means lending held digital assets for blockchain validation</li>
+<li>When staking, tokens are deposited for a period and returned with relatively high interest rewards upon maturity</li>
+<li>However, tokens cannot be used during staking period - even if price changes make you want tokens back, they cannot be withdrawn during this period</li>
+</ul>
+</li>
+</ul>
+<p>[When Requesting Staking]
+<img src="/images/entasis/entasis_staking_1.png" alt="Staking Screen 1"></p>
+<ul>
+<li>Users click Staking button to send MetaMask-signed data to desired ST contract</li>
+<li>Returns error if already staking or token balance less than entered Amount</li>
+<li>Upon successful staking, Amount List and Reward List update with remaining reward time shown</li>
+</ul>
+<p>[When Withdrawing Rewards]
+<img src="/images/entasis/entasis_staking_2.png" alt="Staking Screen 2"></p>
+<ul>
+<li>When Reward Time changes to "Able", users can click Reward button to send MetaMask-signed reward withdrawal function data</li>
+<li>Contract verifies maturity date and sends staked Amount plus Reward if valid
+<ul>
+<li>Reward button disabled if not matured</li>
+</ul>
+</li>
+<li>Amount List and Reward List reset to 0 after token and reward transfer</li>
+</ul>
+<h1>[About Dev]</h1>
+<h2>Tech Stack</h2>
+<p><img src="/images/entasis/entasis_tech_stack.png" alt="Tech Stack"></p>
+<h2>Wireframe</h2>
+<p><a href="https://www.figma.com/embed?embed_host=notion&#x26;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHP5FZix2FedecrcLWhUsb7%2FProject_Entasis%3Fnode-id%3D0%253A1%26t%3DL4XWojmyo6BCQvJK-1">https://www.figma.com/embed?embed_host=notion&#x26;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FHP5FZix2FedecrcLWhUsb7%2FProject_Entasis%3Fnode-id%3D0%253A1%26t%3DL4XWojmyo6BCQvJK-1</a></p>
+<h2>Flowchart</h2>
+<ul>
+<li><strong>Chart Data Flow</strong></li>
+</ul>
+<p><a href="https://www.figma.com/embed?embed_host=notion&#x26;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FjC6wwRAyBiQJ8Y0nB6iyiH%2FUntitled%3Fnode-id%3D0%253A1%26t%3DrlPZeEHfPYzyxIO4-1">https://www.figma.com/embed?embed_host=notion&#x26;url=https%3A%2F%2Fwww.figma.com%2Ffile%2FjC6wwRAyBiQJ8Y0nB6iyiH%2FUntitled%3Fnode-id%3D0%253A1%26t%3DrlPZeEHfPYzyxIO4-1</a></p>
+<h2>Architecture</h2>
+<p><img src="/images/entasis/entasis_arch.png" alt="Architecture"></p>
+<p>The architecture consists of static host pages using S3, service server using EC2, cloud database server, and blockchain network server.</p>
+<ul>
+<li>CI/CD pipeline configured using Github Actions for automatic deployment on Github pushes</li>
+<li>Client deployed through AWS IAM S3 access, blockchain network runs Ganache in background on AWS EC2</li>
+<li>Server designed for automatic background service using Docker and Github Container Registry on EC2</li>
+</ul>
+<h2>Database Schema Diagram</h2>
+<p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7a81b8d5-5578-4f17-9037-10eedb81a23a/Untitled.png" alt="Untitled"></p>
+<h2>API Documentation</h2>
+<p><a href="https://www.notion.so/API-feb98146eeb4481193df2505f966b9c6?pvs=21">API Documentation</a></p>
+<h2>Smart Contract and Token Economy Design</h2>
+<p><a href="https://www.notion.so/ebe74ce3e9af4b7db5edf7ae39c7728e?pvs=21">Smart Contract Design</a></p>
+<h2>Feeling</h2>
+<p>The 4-week period was meaningful in implementing volatility and market forms. Most memorable was sharing the joy of growing assets as team members shared their returns.</p>
+<p>While we wanted to cover NFTs and derivatives like futures/options, time constraints left us wanting more.</p>
+<p>It was valuable time learning we could implement services ourselves and identifying needed technologies.</p>
+<h2>Finding</h2>
+<ol>
+<li>Without clear criteria for manageable workload per minimum time unit, we over-ambitiously added features requiring significant time to rescope relative to 4 weeks</li>
+<li>Implemented transaction data, user returns and transaction data in CSR form difficult for search engines to index beyond charts</li>
+<li>Without clear criteria for manageable workload per minimum time unit, we over-ambitiously added features requiring significant time to rescope relative to 4 weeks</li>
+<li>Chart data and transaction data and user returns data are implemented in CSR form difficult for search engines to index beyond charts</li>
+<li>We did not use state management libraries and experienced props drilling phenomenon where real-time price (currentPrice) goes deeply into child components</li>
+<li>We implemented a 404 page to indicate incorrect access, but failed to separate pages that can only be accessed if a wallet is registered</li>
+<li>We implemented server communication through HTTP requests and did not handle large-scale traffic</li>
+</ol>
+<h2>Future Action</h2>
+<ol>
+<li>As we progressed, we learned how to set the project duration appropriately and how to measure it, which is an important part of the project. It was valuable to set CPM from the beginning of the project and share progress evaluations to reach an agreement on the project's progress.</li>
+<li>We need to implement SSR through NEXTJS to achieve SEO and create a web service that can be exposed to users.</li>
+<li>To find an efficient component structure, we need to consider using state management libraries like Redux, Mobx, Recoil and React's composition, context, and portal to optimize data flow.</li>
+<li>We need to refactor the web service to be a secure web service that can only be accessed if a wallet is registered by implementing a button that can only be viewed if a wallet is registered.</li>
+<li>We need to apply a real-time data-linked web socket based on feedback on data processing.</li>
+</ol>
+<h2><strong>Technical Problem Solving</strong></h2>
+<ul>
+<li>
+<p>There was an issue with <strong>rendering optimization</strong>. <strong>3 days before project completion</strong>, we observed <strong>exponential growth in data requests</strong> for real-time charts during token diversification. <strong>The web became increasingly heavy over time, DB capacity grew infinitely, and the chain network consumed 8G of capacity within hours.</strong> We considered using <strong>useMemo</strong> to avoid rendering the same content or <strong>Redux</strong> for global state management to minimize rendering, but first checked all <strong>useEffect dependencies</strong> in existing code. Chart data, real-time data, and the process of accumulating real-time data into chart arrays after a certain time period had all their <strong>element values</strong> in useEffect dependencies. In other words, <strong>re-rendering occurred in all related components whenever functions and arrays included in charts changed</strong>. The exponential re-rendering issue was resolved by applying <strong>asynchronous processing at intervals matching random number generation periods</strong> to those dependencies.</p>
+</li>
+<li>
+<p>Working on the <strong>candlestick chart</strong> without understanding <strong>scroll events</strong> led to difficulties with <strong>scroll value conflicts</strong> between the chart and other pages, and obtaining <strong>mouse pointer values</strong>. We needed to distinguish between input values for the chart component and main page, and thought we needed to work on <strong>restricting and unrestricting scrolling</strong>. Searching these keywords, we learned we could <strong>isolate document.body.style.overflow values between unset and hidden</strong>, resolving the issue of main page scrolling affecting the chart.</p>
+</li>
+<li>
+<p>After setting price height and volume height values through <strong>SVG</strong>, we faced challenges showing values <strong>proportional to mouse pointer position</strong>. While we confirmed values matched precisely to two decimal places, days later those values had become <strong>negative</strong>. Upon review, we realized chart position values <strong>increase upward</strong> while mouse position values <strong>increase downward</strong>, causing value inversion and negative output issues. While we could find exact values using <strong>equations</strong>, we had applied incorrect formulas and set identical element values without considering <strong>differences between chart and volume values</strong>. We resolved the error by understanding that while <strong>candles can have different max and min values</strong>, <strong>volume has a fixed minimum of 0</strong>.</p>
+</li>
+</ul>
+<h3>At the end of the project</h3>
+<p>I hope to implement SSR through NEXTjs to achieve SEO.</p>
+<p>In addition to implementing the chart data logic on the server, I also failed to take on the role of the backend and contract parts in the future solo project.</p>

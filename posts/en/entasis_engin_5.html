@@ -1,0 +1,155 @@
+<h1>Financial Data Analysis System Database Design</h1>
+<h2>📊 Database Architecture</h2>
+<h3>1. Database Selection Rationale</h3>
+<ul>
+<li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>
+<li><strong>TimescaleDB</strong>: Extension optimized for time-series data processing</li>
+<li><strong>Partitioning</strong>: Efficient management of large-scale data</li>
+</ul>
+<h3>2. Core Table Structures</h3>
+<h4>2.1 Market Data Tables</h4>
+<pre><code class="language-sql">-- 실시간 시장 데이터
+CREATE TABLE market_data (
+    id BIGSERIAL PRIMARY KEY,
+    symbol VARCHAR(20) NOT NULL,
+    exchange VARCHAR(20) NOT NULL,
+    timestamp TIMESTAMPTZ NOT NULL,
+    price DECIMAL(20,8) NOT NULL,
+    volume DECIMAL(20,8) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
+) PARTITION BY RANGE (timestamp);
+
+-- 옵션 데이터
+CREATE TABLE option_data (
+    id BIGSERIAL PRIMARY KEY,
+    underlying VARCHAR(20) NOT NULL,
+    strike_price DECIMAL(20,8) NOT NULL,
+    expiry_date TIMESTAMPTZ NOT NULL,
+    option_type VARCHAR(4) NOT NULL,
+    iv DECIMAL(10,4),
+    delta DECIMAL(10,4),
+    gamma DECIMAL(10,4),
+    theta DECIMAL(10,4),
+    vega DECIMAL(10,4),
+    timestamp TIMESTAMPTZ NOT NULL
+) PARTITION BY RANGE (timestamp);
+</code></pre>
+<h4>2.2 분석 데이터 테이블</h4>
+<pre><code class="language-sql">-- AI Model Prediction Results
+CREATE TABLE predictions (
+    id BIGSERIAL PRIMARY KEY,
+    model_id VARCHAR(50) NOT NULL,
+    symbol VARCHAR(20) NOT NULL,
+    prediction_type VARCHAR(20) NOT NULL,
+    predicted_value DECIMAL(20,8) NOT NULL,
+    confidence DECIMAL(5,4) NOT NULL,
+    timestamp TIMESTAMPTZ NOT NULL
+);
+
+-- Portfolio Status
+CREATE TABLE portfolio_status (
+    id BIGSERIAL PRIMARY KEY,
+    user_id UUID NOT NULL,
+    asset_type VARCHAR(20) NOT NULL,
+    position_size DECIMAL(20,8) NOT NULL,
+    entry_price DECIMAL(20,8) NOT NULL,
+    current_price DECIMAL(20,8) NOT NULL,
+    pnl DECIMAL(20,8) NOT NULL,
+    timestamp TIMESTAMPTZ NOT NULL
+);
+</code></pre>
+<h3>3. Indexing Strategy</h3>
+<h4>3.1 Market Data Indexing</h4>
+<pre><code class="language-sql">-- Optimize market data query
+CREATE INDEX idx_market_data_symbol_timestamp ON market_data (symbol, timestamp DESC);
+CREATE INDEX idx_market_data_exchange_timestamp ON market_data (exchange, timestamp DESC);
+
+-- Optimize option data query
+CREATE INDEX idx_option_data_underlying_expiry ON option_data (underlying, expiry_date);
+CREATE INDEX idx_option_data_strike_type ON option_data (strike_price, option_type);
+</code></pre>
+<h4>3.2 Analysis Data Indexing</h4>
+<pre><code class="language-sql">-- Optimize prediction data query
+CREATE INDEX idx_predictions_model_symbol ON predictions (model_id, symbol);
+CREATE INDEX idx_predictions_timestamp ON predictions (timestamp DESC);
+
+-- Optimize portfolio query
+CREATE INDEX idx_portfolio_user_timestamp ON portfolio_status (user_id, timestamp DESC);
+</code></pre>
+<h3>4. Partitioning Strategy</h3>
+<h4>4.1 Time-series Data Partitioning</h4>
+<pre><code class="language-sql">-- Create monthly partitions
+CREATE TABLE market_data_y2024m01 PARTITION OF market_data
+    FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');
+CREATE TABLE market_data_y2024m02 PARTITION OF market_data
+    FOR VALUES FROM ('2024-02-01') TO ('2024-03-01');
+</code></pre>
+<h4>4.2 Retention Policy</h4>
+<ul>
+<li>Real-time data: Latest 3 months</li>
+<li>Aggregated data: Latest 1 year</li>
+<li>Historical data: S3 archive</li>
+</ul>
+<h2>📈 Performance Optimization</h2>
+<h3>1. Query Optimization</h3>
+<h4>1.1 Frequent Queries</h4>
+<pre><code class="language-sql">-- Query specific period OHLCV data
+CREATE MATERIALIZED VIEW mv_ohlcv_1h AS
+SELECT
+    symbol,
+    date_trunc('hour', timestamp) as timeframe,
+    first(price) as open,
+    max(price) as high,
+    min(price) as low,
+    last(price) as close,
+    sum(volume) as volume
+FROM market_data
+GROUP BY symbol, timeframe;
+</code></pre>
+<h4>1.2 Caching Strategy</h4>
+<ul>
+<li>Implement Redis caching layer</li>
+<li>Real-time data memory caching</li>
+<li>Configure aggregated data cache refresh interval</li>
+</ul>
+<h3>2. Backup Strategy</h3>
+<h4>2.1 Regular Backups</h4>
+<ul>
+<li>Daily incremental backups</li>
+<li>Weekly full backups</li>
+<li>Monthly archive</li>
+</ul>
+<h4>2.2 Recovery Plan</h4>
+<ul>
+<li>Point-in-Time Recovery setup</li>
+<li>Documented disaster recovery scenarios</li>
+<li>Planned recovery tests</li>
+</ul>
+<h2>🔄 Data Flow</h2>
+<h3>1. Data Collection</h3>
+<pre><code class="language-mermaid">graph LR
+    A[Exchange API] --> B[Data Collector]
+    B --> C[Data Cleaning]
+    C --> D[TimescaleDB]
+    D --> E[Analysis Engine]
+</code></pre>
+<h3>2. Data Processing</h3>
+<ul>
+<li>Real-time stream processing</li>
+<li>Batch processing</li>
+<li>Anomaly detection and handling</li>
+</ul>
+<h2>⚡ Considerations for Scalability</h2>
+<h3>1. Horizontal Scaling</h3>
+<ul>
+<li>Configure read-only replicas</li>
+<li>Establish sharding strategy</li>
+<li>Set up load balancing</li>
+</ul>
+<h3>2. Vertical Scaling</h3>
+<ul>
+<li>Monitor resource usage</li>
+<li>Set performance metrics</li>
+<li>Define scaling thresholds</li>
+</ul>
+<p>This document provides the database design standards for the financial data analysis system. It will be updated continuously considering the system requirements and performance. 🚀</p>
