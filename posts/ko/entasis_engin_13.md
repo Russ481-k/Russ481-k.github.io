@@ -13,7 +13,7 @@ tags:
     "data-collection",
     "error-handling",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 안녕하세요, 여러분! 😊

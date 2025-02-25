@@ -13,7 +13,7 @@ tags:
     "indexing",
     "partitioning",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 시스템 데이터베이스 설계

@@ -1,8 +1,8 @@
 ---
-title: "개발자 윤수빈입니다."
+title: "자기 소개서"
 date: "2024-03-20"
 category: "about"
-description: "Hello! 👋 I am a Full Stack Engineer specialized in Financial Engineering and Data Processing."
+description: "안녕하세요! 👋 금융공학과 데이터 처리에 특화된 풀스택 엔지니어입니다."
 tags: ["Full Stack", "Next.js", "Python", "Financial"]
 thumbnail: "/images/profile1.jpg"
 ---

@@ -4,7 +4,7 @@ date: "2025-02-12"
 category: "projects"
 description: "가상자산 데이터 분석 시스템의 세부 기능 정의 및 칸반보드"
 tags: ["definition", "kanban", "task", "backlog", "sprint", "tracking"]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 시스템 세부 기능 정의

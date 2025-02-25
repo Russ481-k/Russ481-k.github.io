@@ -13,7 +13,7 @@ tags:
     "data-modeling",
     "optimization",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Building Financial Database with PostgreSQL + TimescaleDB

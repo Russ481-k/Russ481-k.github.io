@@ -13,7 +13,7 @@ tags:
     "authentication",
     "documentation",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System API Specification

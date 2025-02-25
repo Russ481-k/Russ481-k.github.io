@@ -18,7 +18,7 @@ tags:
     "금융공학",
     "머신러닝",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 및 AI 연동 솔루션 – 기술 스택 선정과 시스템 아키텍처

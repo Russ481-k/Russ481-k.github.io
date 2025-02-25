@@ -13,7 +13,7 @@ tags:
     "monitoring",
     "scaling",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 시스템 인프라 구성도

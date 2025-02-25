@@ -13,7 +13,7 @@ tags:
     "data-modeling",
     "optimization",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # PostgreSQL + TimescaleDB를 활용한 금융 데이터베이스 구축

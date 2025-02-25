@@ -13,7 +13,7 @@ tags:
     "data-collection",
     "error-handling",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 Hello everyone! 😊

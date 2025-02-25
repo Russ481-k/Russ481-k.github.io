@@ -13,7 +13,7 @@ tags:
     "security-test",
     "automation",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System Test Plan

@@ -13,7 +13,7 @@ tags:
     "indexing",
     "partitioning",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System Database Design

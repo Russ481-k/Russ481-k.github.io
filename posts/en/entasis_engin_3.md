@@ -12,7 +12,7 @@ tags:
     "Sprint",
     "Work Tracking",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System Detailed Feature Definition

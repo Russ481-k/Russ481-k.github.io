@@ -13,7 +13,7 @@ tags:
     "responsive",
     "accessibility",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System UI/UX Design Guide

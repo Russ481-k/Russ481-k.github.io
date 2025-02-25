@@ -13,7 +13,7 @@ tags:
     "prediction",
     "risk-analysis",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System AI Model Design

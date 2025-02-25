@@ -13,7 +13,7 @@ tags:
     "security-test",
     "automation",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 시스템 테스트 계획서

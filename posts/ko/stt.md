@@ -4,7 +4,7 @@ date: "2025-02-12"
 category: "frontend"
 description: "브라우저의 Web Speech API를 활용해 음성을 텍스트로 변환하는 SpeechRecognition 클래스에 대해 알아보고, 그 주요 기능과 사용법을 소개하는 가이드입니다."
 tags: ["SpeechRecognition", "Web Speech API", "JavaScript", "Frontend"]
-thumbnail: "/images/speech-recognition.png"
+thumbnail: ""
 ---
 
 안녕하세요! 오늘은 웹에서 음성 인식 기능을 쉽게 구현할 수 있도록 도와주는 **SpeechRecognition 클래스**에 대해 알아보려고 해요. 이 클래스는 브라우저에 내장된 Web Speech API를 활용해 여러분의 음성을 텍스트로 변환해 주는데요, 복잡한 설정 없이도 간편하게 음성 인식 기능을 사용할 수 있게 만들어졌답니다.

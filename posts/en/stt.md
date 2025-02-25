@@ -1,10 +1,10 @@
 ---
-title: "Implementing Web Voice Recognition with the SpeechRecognition Class"
+title: "Implementing Web Voice Recognition "
 date: "2025-02-12"
 category: "frontend"
 description: "A guide on using the SpeechRecognition class that leverages the browser's Web Speech API to convert voice to text, including an introduction to its key features and usage."
 tags: ["SpeechRecognition", "Web Speech API", "JavaScript", "Frontend"]
-thumbnail: "/images/speech-recognition.png"
+thumbnail: ""
 ---
 
 Hello! Today, we're going to explore the **SpeechRecognition Class**, which makes it easy to implement voice recognition functionality on the web. This class leverages the browser's built-in Web Speech API to convert your speech into text, allowing you to use voice recognition features effortlessly without complex configurations.

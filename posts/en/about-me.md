@@ -1,5 +1,5 @@
 ---
-title: "I am Developer Subin Yun"
+title: "Introduction"
 date: "2024-03-20"
 category: "about"
 description: "Hello! 👋 I am a Full Stack Engineer specialized in Financial Engineering and Data Processing."

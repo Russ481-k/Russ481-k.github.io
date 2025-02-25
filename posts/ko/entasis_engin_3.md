@@ -5,7 +5,7 @@ category: "projects"
 description: "금융 데이터 분석 시스템의 세부 기능 정의 및 칸반보드"
 tags:
   ["기능 정의", "칸반보드", "태스크 관리", "백로그", "스프린트", "작업 추적"]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 시스템 세부 기능 정의

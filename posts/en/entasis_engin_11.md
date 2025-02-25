@@ -13,7 +13,7 @@ tags:
     "recovery",
     "sre",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System Operations Manual

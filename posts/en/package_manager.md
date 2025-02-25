@@ -4,7 +4,7 @@ date: "2025-03-20"
 category: "architecture"
 description: "Comparing features and trade-offs of npm, Yarn, and pnpm package managers"
 tags: ["JavaScript", "npm", "Yarn", "pnpm", "package manager", "Node.js"]
-thumbnail: "/images/package-manager.png"
+thumbnail: ""
 ---
 
 ---

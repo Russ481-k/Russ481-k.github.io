@@ -13,7 +13,7 @@ tags:
     "recovery",
     "sre",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 시스템 운영 매뉴얼

@@ -18,7 +18,7 @@ tags:
     "Financial Engineering",
     "Machine Learning",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture

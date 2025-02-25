@@ -13,7 +13,7 @@ tags:
     "responsive",
     "accessibility",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # 금융 데이터 분석 시스템 UI/UX 디자인 가이드

@@ -1,5 +1,5 @@
 ---
-title: "개발자 윤수빈입니다."
+title: "경력기술서"
 date: "2024-03-20"
 category: "career"
 description: "웹 개발, 금융 시스템, 기업솔루션 분야의 Full Stack 엔지니어입니다. Next.js, React, Python, 데이터베이스 관리에 능숙하며, 삼성화재 등 대기업 프로젝트를 성공적으로 수행했습니다."
@@ -17,7 +17,7 @@ tags:
     "Financial Engineering",
     "Data Processing",
   ]
-thumbnail: "/images/profile1.jpg"
+thumbnail: "/images/profile3.jpg"
 position: "Full Stack Developer"
 experience: "2+ years"
 expertise:

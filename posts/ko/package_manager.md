@@ -4,7 +4,7 @@ date: "2025-03-20"
 category: "architecture"
 description: "npm, Yarn, pnpm 패키지 매니저의 특징과 장단점 비교"
 tags: ["JavaScript", "npm", "Yarn", "pnpm", "package manager", "Node.js"]
-thumbnail: "/images/package-manager.png"
+thumbnail: ""
 ---
 
 ---

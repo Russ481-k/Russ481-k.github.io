@@ -4,7 +4,7 @@ date: "2025-02-12"
 category: "projects"
 description: "Detailed feature definition and kanban board for virtual asset data analysis system"
 tags: ["definition", "kanban", "task", "backlog", "sprint", "tracking"]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System Detailed Feature Definition

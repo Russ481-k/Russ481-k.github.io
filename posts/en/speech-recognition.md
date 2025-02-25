@@ -1,10 +1,10 @@
 ---
-title: "Voice Analysis Algorithms and Similarity Improvements: Enhancing Voice Recognition in Signage Systems"
+title: "Voice Analysis Algorithms and Similarity Improvements"
 date: "2025-02-12"
 category: "frontend"
 description: "A guide introducing various algorithms used in voice recognition systems and the adoption of similarity algorithms to improve voice recognition in an integrated signage management platform."
 tags: ["voice", "algorithm", "similarity", "frontend", "sinei"]
-thumbnail: "/images/speech-recognition.png"
+thumbnail: ""
 ---
 
 Hello! Today, we’ll explore several voice analysis algorithms used in voice recognition systems and take an in-depth look at the **similarity algorithms** implemented to enhance the voice recognition functionality in an integrated signage management platform. I hope this post provides you with a clear overview of the various stages and improvement methods in voice recognition.

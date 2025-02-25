@@ -13,7 +13,7 @@ tags:
     "Sprint",
     "Milestone",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis and AI Integration Solution Development Plan

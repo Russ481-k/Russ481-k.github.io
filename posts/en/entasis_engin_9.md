@@ -13,7 +13,7 @@ tags:
     "monitoring",
     "scaling",
   ]
-thumbnail: "/images/cryptocurrency.jpg"
+thumbnail: ""
 ---
 
 # Financial Data Analysis System Infrastructure Architecture

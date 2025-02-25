@@ -1,5 +1,5 @@
 ---
-title: "Subin Yoon, Software Developer"
+title: "Career"
 date: "2024-03-20"
 category: "career"
 description: "Full Stack Engineer with expertise in Web Development, Financial Systems, and Enterprise Solutions. Experienced in Next.js, React, Python, and Database Management. Successfully delivered projects for major corporations including Samsung Fire & Marine Insurance."
@@ -17,7 +17,7 @@ tags:
     "Financial Engineering",
     "Data Processing",
   ]
-thumbnail: "/images/profile1.jpg"
+thumbnail: "/images/profile3.jpg"
 position: "Full Stack Developer"
 experience: "2+ years"
 expertise:
