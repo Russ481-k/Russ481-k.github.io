@@ -8,7 +8,9 @@ import "../Styles/post_container.scss";
 import { useCategories } from "@/data/categories";
 import { useTranslation } from "react-i18next";
 import { CATEGORY_ORDER } from "@/constants/categoryOrder";
-import { I18NProvider } from "next/dist/server/future/helpers/i18n-provider";
+import { useForm } from "react-hook-form";
+
+import { FaSearch } from "react-icons/fa";
 
 interface PostContainerProps {
   selectedCategory: string;
@@ -16,6 +18,10 @@ interface PostContainerProps {
   onSearchChange: (value: string) => void;
   onSearchResults: (results: string[]) => void;
   posts: PostType[]; // 또는 더 구체적인 타입 (예: Post[])
+}
+
+interface SearchForm {
+  searchTerm: string;
 }
 
 export const PostContainer = ({
@@ -33,6 +39,12 @@ export const PostContainer = ({
 
   // searchTerm state를 제거하고 props로 받은 값 사용
   const debouncedSearchTerm = useDebounce(externalSearchTerm, 300);
+
+  const { register, handleSubmit } = useForm<SearchForm>({
+    defaultValues: {
+      searchTerm: externalSearchTerm,
+    },
+  });
 
   // 필터링 로직 메모이제이션
   const filteredPosts = useMemo(() => {
@@ -73,9 +85,9 @@ export const PostContainer = ({
     return searchFiltered;
   }, [externalPosts, debouncedSearchTerm, selectedCategory, i18n.language]);
 
-  const handleSearchChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      onSearchChange(e.target.value);
+  const onSubmit = useCallback(
+    (data: SearchForm) => {
+      onSearchChange(data.searchTerm);
     },
     [onSearchChange]
   );
@@ -101,15 +113,20 @@ export const PostContainer = ({
           <h2>{currentCategory?.name || t("categories.all")}</h2>
           <p>{currentCategory?.description}</p>
         </div>
-        <div className="search_container">
-          <input
-            type="text"
-            placeholder={t("search.placeholder")}
-            value={externalSearchTerm}
-            onChange={handleSearchChange}
-            className="search_input"
-          />
-        </div>
+        <form className="search_container" onSubmit={handleSubmit(onSubmit)}>
+          <div className="search_input_wrapper">
+            <input
+              type="text"
+              placeholder={t("search.placeholder")}
+              className="search_input"
+              {...register("searchTerm")}
+            />
+            <button type="submit" className="search_button">
+              {/* @ts-ignore */}
+              <FaSearch />
+            </button>
+          </div>
+        </form>
         <div className="post_count">
           {t("search.totalPosts", { count: filteredPosts.length })}
         </div>

@@ -1,10 +1,10 @@
 import { DynamicThumbnail } from "@/app/Components/DynamicThumbnail";
-import React from "react";
+import React, { ReactElement } from "react";
 
 export const getPostImage = (
   thumbnail: string | undefined,
   post?: { title: string; tags: string[]; id: string }
-): string | JSX.Element => {
+): string | ReactElement => {
   if (!thumbnail || thumbnail === "") {
     return React.createElement(DynamicThumbnail, {
       title: post?.title || "",
