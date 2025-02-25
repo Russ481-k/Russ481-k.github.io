@@ -67,7 +67,7 @@ export const MobileHeader = ({
       <div className="nav">
         <div className="mobile_header_container">
           <div className="left_section">
-            {t("header.title")}
+            <h4 className="logo">{t("header.title")}</h4>
             <LanguageSelector />
           </div>
           <div className="category_dropdown" ref={categoryDropdownRef}>

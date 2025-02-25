@@ -111,7 +111,7 @@ export const PostContainer = ({
       <div className="category_header">
         <div className="category_info">
           <h2>{currentCategory?.name || t("categories.all")}</h2>
-          <p>{currentCategory?.description}</p>
+          <p className="category_description">{currentCategory?.description}</p>
         </div>
         <form className="search_container" onSubmit={handleSubmit(onSubmit)}>
           <div className="search_input_wrapper">
@@ -130,6 +130,7 @@ export const PostContainer = ({
         <div className="post_count">
           {t("search.totalPosts", { count: filteredPosts.length })}
         </div>
+        <div className="post_count_mobile">{filteredPosts.length}</div>
       </div>
       {filteredPosts.map((post: PostType) => (
         <Post

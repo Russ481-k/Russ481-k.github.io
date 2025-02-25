@@ -343,6 +343,10 @@
       border-radius: 16px;
     }
 
+    .post_count_mobile {
+      display: none;
+    } 
+
     .search_container {
       flex: 1;
       max-width: 600px;
@@ -412,6 +416,26 @@
     width: 100%;
     min-width: 100%;
     padding: 16px 0;
+    .category_header {
+      align-items: center;
+      gap: 8px;
+      .category_info {
+        .category_description {
+          display: none;
+        }
+      }
+      .post_count_mobile {
+        display: block;
+        font-size: 0.9em;
+        opacity: 0.7;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 4px 12px;
+        border-radius: 16px;
+      }
+      .post_count {
+        display: none;
+      }
+    }
     .post {
       grid-template-columns: 1fr;
       height: 460px;
