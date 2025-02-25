@@ -12,7 +12,7 @@
     "package manager",
     "Node.js"
   ],
-  "thumbnail": "/images/package-manager.png",
+  "thumbnail": "",
   "translations": {
     "ko": {
       "title": "JavaScript 패키지 매니저 비교",

@@ -13,7 +13,7 @@
     "authentication",
     "documentation"
   ],
-  "thumbnail": "/images/cryptocurrency.jpg",
+  "thumbnail": "",
   "translations": {
     "ko": {
       "title": "Entasis Engine - API 명세서",
