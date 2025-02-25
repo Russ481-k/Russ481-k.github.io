@@ -1,13 +1,11 @@
 import "../../Styles/globals.scss";
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import ClientLayout from "./ClientLayout";
 import { languages } from "@/app/i18n/settings";
 import { Footer } from "@/app/Components/Footer";
 import { LanguageSelectorButton } from "@/app/Components/LanguageSelectorButton";
 import { TopButton } from "@/app/TopButton";
-
-const inter = Inter({ subsets: ["latin"] });
+import { pretendard } from "@/app/Styles/fonts";
 
 export const metadata: Metadata = {
   title: `Bin's Space`,
@@ -30,12 +28,12 @@ export default async function RootLayout({
   }
 
   return (
-    <html suppressHydrationWarning>
+    <html lang={lang} className={pretendard.variable} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={inter.className}>
+      <body className={pretendard.className} suppressHydrationWarning>
         <ClientLayout params={{ lang }}>
           {children}
           <TopButton />

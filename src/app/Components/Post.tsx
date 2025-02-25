@@ -24,7 +24,11 @@ const Post = (props: PostProps) => {
   const { title, description, content, tocItems } = translation;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const imageUrl = getPostImage(props.thumbnail);
+  const imageUrl = getPostImage(props.thumbnail, {
+    title: translation.title,
+    tags: props.tags,
+    id: props.id,
+  });
   const formattedDate = new Date(props.date).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
@@ -75,14 +79,18 @@ const Post = (props: PostProps) => {
         style={{ cursor: "pointer" }}
       >
         <div className="post_image_container">
-          <Image
-            className="post_image"
-            src={imageUrl}
-            width={260}
-            height={260}
-            alt={title || "post thumbnail"}
-            priority
-          />
+          {typeof imageUrl === "string" ? (
+            <Image
+              src={imageUrl}
+              alt={title}
+              className="post_image"
+              width={260}
+              height={260}
+              priority
+            />
+          ) : (
+            imageUrl // DynamicThumbnail 컴포넌트 렌더링
+          )}
         </div>
         <div className="post_content">
           <div className="post_header">

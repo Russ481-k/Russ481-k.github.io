@@ -224,7 +224,7 @@ const PostModal = ({
           <span className="date">{formattedDate}</span>
         </div>
         <div className="modal_body" ref={contentRef}>
-          {post.thumbnail && (
+          {post.thumbnail && typeof imageUrl === "string" && (
             <div className="modal_thumbnail">
               <Image
                 src={imageUrl}

@@ -1,12 +1,23 @@
-export function getPostImage(path: string | undefined): string {
-  if (!path) {
-    return "/images/posts/default-thumbnail.jpg";
+import { DynamicThumbnail } from "@/app/Components/DynamicThumbnail";
+import React from "react";
+
+export const getPostImage = (
+  thumbnail: string | undefined,
+  post?: { title: string; tags: string[]; id: string }
+): string | JSX.Element => {
+  if (!thumbnail || thumbnail === "") {
+    return React.createElement(DynamicThumbnail, {
+      title: post?.title || "",
+      tags: post?.tags || [],
+      width: 260,
+      height: 260,
+      postId: post?.id || "default",
+    });
   }
 
-  // public 폴더의 이미지 경로 확인
-  if (path.startsWith("/images/")) {
-    return path;
+  if (thumbnail.startsWith("http")) {
+    return thumbnail;
   }
 
-  return "/images/posts/default-thumbnail.jpg";
-}
+  return thumbnail.startsWith("/") ? thumbnail : `/${thumbnail}`;
+};

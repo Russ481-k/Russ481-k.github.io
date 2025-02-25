@@ -194,10 +194,8 @@ export const Header = () => {
     <header className={`header ${isExpanded ? "expanded" : ""}`}>
       <div className="header_content">
         <div className="title_area">
-          <h1 className="title">
-            <Link href={`/${lng}`}>{t("header.title")}</Link>
-          </h1>
-          {!isExpanded && <LanguageSelector />}
+          <h1 className="title">{t("header.title")}</h1>
+          <LanguageSelector disabled={isExpanded} />
         </div>
         {!isExpanded && (
           <nav className="nav">

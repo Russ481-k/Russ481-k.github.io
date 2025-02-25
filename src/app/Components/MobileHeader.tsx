@@ -67,9 +67,7 @@ export const MobileHeader = ({
       <div className="nav">
         <div className="mobile_header_container">
           <div className="left_section">
-            <Link href="/" className="logo">
-              {t("header.title")}
-            </Link>
+            {t("header.title")}
             <LanguageSelector />
           </div>
           <div className="category_dropdown" ref={categoryDropdownRef}>

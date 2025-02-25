@@ -26,7 +26,7 @@ export const PostDetail = ({ post }: { post: PostType }) => {
           <span className="date">{formattedDate}</span>
         </div>
       </div>
-      {post.thumbnail && (
+      {post.thumbnail && typeof imageUrl === "string" && (
         <div className="post_image">
           <Image
             src={imageUrl}
