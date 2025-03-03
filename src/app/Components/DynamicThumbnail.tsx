@@ -5,14 +5,12 @@ import { generateGradient } from "@/utils/generateGradient";
 
 interface DynamicThumbnailProps {
   title: string;
-  tags: string[];
   postId: string;
   className?: string;
 }
 
 export const DynamicThumbnail = ({
   title,
-  tags,
   postId,
   className = "",
 }: DynamicThumbnailProps) => {
@@ -55,21 +53,7 @@ export const DynamicThumbnail = ({
           gap: "0.5rem",
           justifyContent: "center",
         }}
-      >
-        {tags.map((tag, index) => (
-          <span
-            key={index}
-            style={{
-              background: "rgba(255,255,255,0.2)",
-              padding: "0.25rem 0.75rem",
-              borderRadius: "50px",
-              fontSize: "0.8rem",
-            }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      ></div>
     </div>
   );
 };

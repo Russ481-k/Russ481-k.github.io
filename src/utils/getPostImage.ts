@@ -8,7 +8,6 @@ export const getPostImage = (
   if (!thumbnail || thumbnail === "") {
     return React.createElement(DynamicThumbnail, {
       title: post?.title || "",
-      tags: post?.tags || [],
       postId: post?.id || "default",
       className: "dynamic-thumbnail",
     });

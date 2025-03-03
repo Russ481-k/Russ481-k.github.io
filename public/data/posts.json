@@ -442,9 +442,9 @@
     "category": "frontend",
     "tags": [
       "Convention",
-      "Document"
+      "Documentation"
     ],
-    "thumbnail": "/images/convention.png",
+    "thumbnail": "",
     "translations": {
       "ko": {
         "title": "Convention Document",
