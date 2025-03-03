@@ -9,9 +9,8 @@ export const getPostImage = (
     return React.createElement(DynamicThumbnail, {
       title: post?.title || "",
       tags: post?.tags || [],
-      width: 260,
-      height: 260,
       postId: post?.id || "default",
+      className: "dynamic-thumbnail",
     });
   }
 

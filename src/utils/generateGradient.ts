@@ -17,8 +17,23 @@ const generateColorFromHash = (str: string, index: number = 0) => {
   return `hsl(${h}, ${s}%, ${l}%)`;
 };
 
-export const generateGradient = (postId: string) => {
+interface GradientResult {
+  colors: string[];
+  angle: number;
+  gradient: string;
+}
+
+export const generateGradient = (postId: string): GradientResult => {
   const color1 = generateColorFromHash(postId);
   const color2 = generateColorFromHash(postId, 1);
-  return `linear-gradient(135deg, ${color1}, ${color2})`;
+  const angle =
+    Math.abs(
+      postId.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    ) % 360;
+
+  return {
+    colors: [color1, color2],
+    angle: angle,
+    gradient: `linear-gradient(${angle}deg, ${color1}, ${color2})`,
+  };
 };
