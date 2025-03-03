@@ -1,8 +1,8 @@
 ---
-title: "FDS(이상거래 탐지 시스템) - 기술 아키텍처 및 시스템 설계"
+title: "FDS(Fraud Detection Service) - 기술 아키텍처 및 시스템 설계"
 date: "2024-06-18"
 category: "projects"
-description: "가상자산 파생상품 FDS의 기술 아키텍처 및 시스템 설계, 데이터 처리, 분석 엔진, 모니터링 시스템 구현 방안"
+description: "가상자산 파생상품 FDS의 기술 아키텍처, 시스템 설계, 데이터 처리 및 분석 엔진 구현 방안"
 tags:
   [
     "Architecture",

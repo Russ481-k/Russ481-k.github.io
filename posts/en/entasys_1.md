@@ -73,18 +73,22 @@ graph TD
 
 ### 3.2 Search Feature
 
-Search Term Input and Results Display:
+#### Search Term Input and Results Display
+
 ![Search Term Input](/images/entasys/entaasys_search_term.gif)
 
-Search Results Filtering:
+#### Search Results Filtering
+
 ![Search Results](/images/entasys/entaasys_search.gif)
 
 ### 3.3 Download Feature
 
-Download Initiation:
+#### Download Initiation
+
 ![Download 1](/images/entasys/entaasys_download_1.gif)
 
-Download Progress Status:
+#### Download Progress Status
+
 ![Download 2](/images/entasys/entaasys_download_2.gif)
 
 ### 3.4 Download Management

@@ -1,8 +1,8 @@
 ---
-title: "FDS(이상거래 탐지 시스템) - 구현 및 운영 방안"
+title: "FDS(Fraud Detection Service) - 구현 및 운영 방안"
 date: "2024-06-18"
 category: "projects"
-description: "마이크로서비스 아키텍처, 데이터 파이프라인, 성능 최적화를 포함한 FDS 시스템의 구현 및 운영 방안"
+description: "가상자산 파생상품 FDS의 마이크로서비스 아키텍처, 데이터 파이프라인, 성능 최적화 및 운영 방안"
 tags:
   [
     "Implementation",

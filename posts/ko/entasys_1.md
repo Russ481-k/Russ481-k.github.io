@@ -73,18 +73,22 @@ graph TD
 
 ### 3.2 검색 기능
 
-검색어 입력 및 결과 표시:
+#### 검색어 입력 및 결과 표시
+
 ![검색어 입력](/images/entasys/entaasys_search_term.gif)
 
-검색 결과 필터링:
+#### 검색 결과 필터링
+
 ![검색 결과](/images/entasys/entaasys_search.gif)
 
 ### 3.3 다운로드 기능
 
-다운로드 시작:
+#### 다운로드 시작
+
 ![다운로드 1](/images/entasys/entaasys_download_1.gif)
 
-다운로드 진행 상태:
+#### 다운로드 진행 상태
+
 ![다운로드 2](/images/entasys/entaasys_download_2.gif)
 
 ### 3.4 다운로드 관리

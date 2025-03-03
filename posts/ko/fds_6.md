@@ -1,8 +1,8 @@
 ---
-title: "FDS(이상거래 탐지 시스템) - 규제 대응 및 향후 발전 방향"
+title: "FDS(Fraud Detection Service) - 규제 대응 및 향후 발전 방향"
 date: "2024-06-18"
 category: "projects"
-description: "가상자산 파생상품 FDS의 규제 준수 프레임워크, 국제 표준 구현, 향후 발전 로드맵"
+description: "가상자산 파생상품 FDS의 규제 준수, 국제 표준 구현 및 향후 발전 로드맵"
 tags:
   [
     "Compliance",

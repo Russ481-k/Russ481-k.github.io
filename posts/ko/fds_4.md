@@ -1,8 +1,8 @@
 ---
-title: "FDS(이상거래 탐지 시스템) - AI/ML 모델 및 분석 방법론"
+title: "FDS(Fraud Detection Service) - AI/ML 모델 및 분석 방법론"
 date: "2024-06-18"
 category: "projects"
-description: "가상자산 파생상품의 이상거래 패턴 탐지를 위한 고급 AI/ML 모델 및 분석 방법론"
+description: "가상자산 파생상품 FDS의 AI/ML 모델 설계, 분석 방법론 및 실시간 패턴 인식 구현 방안"
 tags:
   [
     "AI",

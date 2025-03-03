@@ -1,8 +1,8 @@
 ---
-title: "파생상품 FDS 확장 기획"
+title: "FDS(Fraud Detection Service) - 이상거래 유형 및 패턴"
 date: "2024-06-18"
 category: "projects"
-description: "블록체인 기반 가상자산 파생상품 거래의 이상 탐지 시스템 설계"
+description: "가상자산 파생상품 시장의 이상거래 유형, 패턴 분석 및 탐지 방안"
 tags: ["Blockchain", "FDS", "Derivatives", "Security", "AI"]
 thumbnail: ""
 ---

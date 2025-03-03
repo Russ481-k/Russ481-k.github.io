@@ -1,8 +1,8 @@
 ---
-title: "FDS(Fraud Detection Service) - 구현 및 운영 방안"
+title: "FDS(Fraud Detection Service) - 종합 인덱스 가이드"
 date: "2024-03-25"
 category: "projects"
-description: "FDS 시스템의 구현 전략, 운영 관리, 성능 최적화 및 보안 방안"
+description: "가상자산 파생상품 FDS 시스템의 종합적인 가이드 및 구현 방안"
 tags:
   ["Implementation", "Operations", "Performance", "Security", "Microservices"]
 thumbnail: ""
