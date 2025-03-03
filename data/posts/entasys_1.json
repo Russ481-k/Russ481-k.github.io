@@ -1,0 +1,309 @@
+{
+  "id": "entasys_1",
+  "title": "Entasys",
+  "content": "\n# 프로젝트 개요\n\n## 1. 시스템 아키텍처\n\n### 1.1 전체 구조\n\n```mermaid\ngraph TD\n    Client[클라이언트] --> |WebSocket| WS[WebSocket Server]\n    WS --> |이벤트| DM[Download Manager]\n    DM --> |청크 관리| CM[Chunk Manager]\n    CM --> |쿼리| OS[OpenSearch]\n    CM --> |파일 저장| FS[File System]\n    DM --> |상태 관리| SM[State Manager]\n```\n\n### 1.2 주요 컴포넌트\n\n- **WebSocket Server**: 실시간 통신 처리\n- **Download Manager**: 다운로드 프로세스 조율\n- **Chunk Manager**: 데이터 청크 처리\n- **State Manager**: 상태 및 진행률 관리\n\n## 2. 기술 스택\n\n### 2.1 프론트엔드\n\n- **Framework**: Next.js 13+\n- **상태 관리**: React Query\n- **WebSocket**: Socket.IO-client\n- **UI 라이브러리**: MUI/Tailwind\n\n### 2.2 백엔드\n\n- **Runtime**: Node.js 18+\n- **WebSocket**: Socket.IO\n- **데이터베이스**: OpenSearch\n- **파일 처리**: Node.js Streams\n\n### 2.3 개발 도구\n\n- **언어**: TypeScript 4.9+\n- **빌드**: Webpack/Babel\n- **테스트**: Jest\n- **린팅**: ESLint/Prettier\n\n## 3. 핵심 기능\n\n### 3.1 로그인 기능\n\n![로그인 화면](/images/entasys/entaasys_login.gif)\n\n### 3.2 검색 기능\n\n검색어 입력 및 결과 표시:\n![검색어 입력](/images/entasys/entaasys_search_term.gif)\n\n검색 결과 필터링:\n![검색 결과](/images/entasys/entaasys_search.gif)\n\n### 3.3 다운로드 기능\n\n다운로드 시작:\n![다운로드 1](/images/entasys/entaasys_download_1.gif)\n\n다운로드 진행 상태:\n![다운로드 2](/images/entasys/entaasys_download_2.gif)\n\n### 3.4 다운로드 관리\n\n- 대용량 파일 청크 처리\n- 진행률 실시간 업데이트\n- 자동 재시도 메커니즘\n- 메모리 사용량 최적화\n\n### 3.5 에러 처리\n\n- 네트워크 오류 복구\n- 메모리 부족 대응\n- 타임아웃 관리\n- 불완전 파일 정리\n\n### 3.6 모니터링\n\n- 실시간 진행률 추적\n- 리소스 사용량 모니터링\n- 에러 로깅\n- 성능 메트릭 수집\n\n## 4. 프로젝트 구조\n\n```bash\nsrc/\n├── server/\n│   ├── lib/\n│   │   ├── downloadManager.ts      # 다운로드 관리\n│   │   ├── downloadChunkManager.ts # 청크 처리\n│   │   ├── stateManager.ts        # 상태 관리\n│   │   ├── opensearch.ts          # DB 연동\n│   │   └── utils/\n│   │       ├── logger.ts          # 로깅\n│   │       └── errors.ts          # 에러 처리\n│   └── index.ts                   # 서버 시작점\n├── client/\n│   ├── components/\n│   │   ├── DownloadButton.tsx     # 다운로드 버튼\n│   │   ├── ProgressBar.tsx        # 진행률 표시\n│   │   └── ErrorDisplay.tsx       # 에러 표시\n│   ├── hooks/\n│   │   ├── useDownload.ts         # 다운로드 훅\n│   │   └── useWebSocket.ts        # 웹소켓 훅\n│   └── utils/\n│       ├── api.ts                 # API 유틸\n│       └── format.ts              # 포맷 유틸\n└── shared/\n    ├── types/                     # 타입 정의\n    └── constants/                 # 상수 정의\n```\n\n## 5. 설정 관리\n\n### 5.1 환경 변수\n\n```env\n# Server\nPORT=8001\nWS_PORT=8001\nNODE_ENV=development\n\n# OpenSearch\nOPENSEARCH_HOST=localhost\nOPENSEARCH_PORT=9200\nOPENSEARCH_USERNAME=admin\nOPENSEARCH_PASSWORD=admin\n\n# Download\nMAX_CHUNK_SIZE=500000\nMAX_MEMORY_USAGE=1024\nDOWNLOAD_TIMEOUT=300000\n```\n\n### 5.2 설정 파일\n\n```typescript\n// config.ts\nexport const CONFIG = {\n  download: {\n    chunkSize: 500000,\n    maxRetries: 3,\n    timeout: 300000,\n    tempDir: \"./temp\",\n  },\n  websocket: {\n    pingInterval: 10000,\n    pingTimeout: 5000,\n  },\n  opensearch: {\n    scrollTimeout: \"2m\",\n    batchSize: 1000,\n  },\n};\n```\n",
+  "date": "2024-03-20",
+  "category": "projects",
+  "tags": [
+    "React",
+    "Express",
+    "MySQL",
+    "Web3.js",
+    "AWS",
+    "Ganache",
+    "Truffle",
+    "ERC20",
+    "MetaMask",
+    "Figma"
+  ],
+  "thumbnail": "/images/entasys/entaasys_download_1.gif",
+  "translations": {
+    "ko": {
+      "title": "Entasys",
+      "description": "Development of Virtual Asset Exchange",
+      "content": "<h1 id=\"heading-0\">프로젝트 개요</h1>\n<h2 id=\"heading-1\">1. 시스템 아키텍처</h2>\n<h3 id=\"heading-2\">1.1 전체 구조</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    Client[클라이언트] --&gt; |WebSocket| WS[WebSocket Server]\n    WS --&gt; |이벤트| DM[Download Manager]\n    DM --&gt; |청크 관리| CM[Chunk Manager]\n    CM --&gt; |쿼리| OS[OpenSearch]\n    CM --&gt; |파일 저장| FS[File System]\n    DM --&gt; |상태 관리| SM[State Manager]\n</code></pre>\n<h3 id=\"heading-3\">1.2 주요 컴포넌트</h3>\n<ul>\n<li><strong>WebSocket Server</strong>: 실시간 통신 처리</li>\n<li><strong>Download Manager</strong>: 다운로드 프로세스 조율</li>\n<li><strong>Chunk Manager</strong>: 데이터 청크 처리</li>\n<li><strong>State Manager</strong>: 상태 및 진행률 관리</li>\n</ul>\n<h2 id=\"heading-4\">2. 기술 스택</h2>\n<h3 id=\"heading-5\">2.1 프론트엔드</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js 13+</li>\n<li><strong>상태 관리</strong>: React Query</li>\n<li><strong>WebSocket</strong>: Socket.IO-client</li>\n<li><strong>UI 라이브러리</strong>: MUI/Tailwind</li>\n</ul>\n<h3 id=\"heading-6\">2.2 백엔드</h3>\n<ul>\n<li><strong>Runtime</strong>: Node.js 18+</li>\n<li><strong>WebSocket</strong>: Socket.IO</li>\n<li><strong>데이터베이스</strong>: OpenSearch</li>\n<li><strong>파일 처리</strong>: Node.js Streams</li>\n</ul>\n<h3 id=\"heading-7\">2.3 개발 도구</h3>\n<ul>\n<li><strong>언어</strong>: TypeScript 4.9+</li>\n<li><strong>빌드</strong>: Webpack/Babel</li>\n<li><strong>테스트</strong>: Jest</li>\n<li><strong>린팅</strong>: ESLint/Prettier</li>\n</ul>\n<h2 id=\"heading-8\">3. 핵심 기능</h2>\n<h3 id=\"heading-9\">3.1 로그인 기능</h3>\n<p><img src=\"/images/entasys/entaasys_login.gif\" alt=\"로그인 화면\"></p>\n<h3 id=\"heading-10\">3.2 검색 기능</h3>\n<p>검색어 입력 및 결과 표시:\n<img src=\"/images/entasys/entaasys_search_term.gif\" alt=\"검색어 입력\"></p>\n<p>검색 결과 필터링:\n<img src=\"/images/entasys/entaasys_search.gif\" alt=\"검색 결과\"></p>\n<h3 id=\"heading-11\">3.3 다운로드 기능</h3>\n<p>다운로드 시작:\n<img src=\"/images/entasys/entaasys_download_1.gif\" alt=\"다운로드 1\"></p>\n<p>다운로드 진행 상태:\n<img src=\"/images/entasys/entaasys_download_2.gif\" alt=\"다운로드 2\"></p>\n<h3 id=\"heading-12\">3.4 다운로드 관리</h3>\n<ul>\n<li>대용량 파일 청크 처리</li>\n<li>진행률 실시간 업데이트</li>\n<li>자동 재시도 메커니즘</li>\n<li>메모리 사용량 최적화</li>\n</ul>\n<h3 id=\"heading-13\">3.5 에러 처리</h3>\n<ul>\n<li>네트워크 오류 복구</li>\n<li>메모리 부족 대응</li>\n<li>타임아웃 관리</li>\n<li>불완전 파일 정리</li>\n</ul>\n<h3 id=\"heading-14\">3.6 모니터링</h3>\n<ul>\n<li>실시간 진행률 추적</li>\n<li>리소스 사용량 모니터링</li>\n<li>에러 로깅</li>\n<li>성능 메트릭 수집</li>\n</ul>\n<h2 id=\"heading-15\">4. 프로젝트 구조</h2>\n<pre><code class=\"language-bash\">src/\n├── server/\n│   ├── lib/\n│   │   ├── downloadManager.ts      # 다운로드 관리\n│   │   ├── downloadChunkManager.ts # 청크 처리\n│   │   ├── stateManager.ts        # 상태 관리\n│   │   ├── opensearch.ts          # DB 연동\n│   │   └── utils/\n│   │       ├── logger.ts          # 로깅\n│   │       └── errors.ts          # 에러 처리\n│   └── index.ts                   # 서버 시작점\n├── client/\n│   ├── components/\n│   │   ├── DownloadButton.tsx     # 다운로드 버튼\n│   │   ├── ProgressBar.tsx        # 진행률 표시\n│   │   └── ErrorDisplay.tsx       # 에러 표시\n│   ├── hooks/\n│   │   ├── useDownload.ts         # 다운로드 훅\n│   │   └── useWebSocket.ts        # 웹소켓 훅\n│   └── utils/\n│       ├── api.ts                 # API 유틸\n│       └── format.ts              # 포맷 유틸\n└── shared/\n    ├── types/                     # 타입 정의\n    └── constants/                 # 상수 정의\n</code></pre>\n<h2 id=\"heading-16\">5. 설정 관리</h2>\n<h3 id=\"heading-17\">5.1 환경 변수</h3>\n<pre><code class=\"language-env\"># Server\nPORT=8001\nWS_PORT=8001\nNODE_ENV=development\n\n# OpenSearch\nOPENSEARCH_HOST=localhost\nOPENSEARCH_PORT=9200\nOPENSEARCH_USERNAME=admin\nOPENSEARCH_PASSWORD=admin\n\n# Download\nMAX_CHUNK_SIZE=500000\nMAX_MEMORY_USAGE=1024\nDOWNLOAD_TIMEOUT=300000\n</code></pre>\n<h3 id=\"heading-18\">5.2 설정 파일</h3>\n<pre><code class=\"language-typescript\">// config.ts\nexport const CONFIG = {\n  download: {\n    chunkSize: 500000,\n    maxRetries: 3,\n    timeout: 300000,\n    tempDir: \"./temp\",\n  },\n  websocket: {\n    pingInterval: 10000,\n    pingTimeout: 5000,\n  },\n  opensearch: {\n    scrollTimeout: \"2m\",\n    batchSize: 1000,\n  },\n};\n</code></pre>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "프로젝트 개요",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "1. 시스템 아키텍처",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1.1 전체 구조",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "1.2 주요 컴포넌트",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "2. 기술 스택",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2.1 프론트엔드",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "2.2 백엔드",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "2.3 개발 도구",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "3. 핵심 기능",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "3.1 로그인 기능",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "3.2 검색 기능",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-11",
+          "text": "3.3 다운로드 기능",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "3.4 다운로드 관리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-13",
+          "text": "3.5 에러 처리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-14",
+          "text": "3.6 모니터링",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "4. 프로젝트 구조",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-16",
+          "text": "5. 설정 관리",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-17",
+          "text": "5.1 환경 변수",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "5.2 설정 파일",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 900
+        }
+      ]
+    },
+    "en": {
+      "title": "Entasys",
+      "description": "Development of Virtual Asset Exchange",
+      "content": "<h1 id=\"heading-0\">Project Overview</h1>\n<h2 id=\"heading-1\">1. System Architecture</h2>\n<h3 id=\"heading-2\">1.1 Overall Structure</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    Client[Client] --&gt; |WebSocket| WS[WebSocket Server]\n    WS --&gt; |Events| DM[Download Manager]\n    DM --&gt; |Chunk Management| CM[Chunk Manager]\n    CM --&gt; |Query| OS[OpenSearch]\n    CM --&gt; |File Storage| FS[File System]\n    DM --&gt; |State Management| SM[State Manager]\n</code></pre>\n<h3 id=\"heading-3\">1.2 Key Components</h3>\n<ul>\n<li><strong>WebSocket Server</strong>: Real-time communication processing</li>\n<li><strong>Download Manager</strong>: Download process coordination</li>\n<li><strong>Chunk Manager</strong>: Data chunk processing</li>\n<li><strong>State Manager</strong>: Status and progress management</li>\n</ul>\n<h2 id=\"heading-4\">2. Technology Stack</h2>\n<h3 id=\"heading-5\">2.1 Frontend</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js 13+</li>\n<li><strong>State Management</strong>: React Query</li>\n<li><strong>WebSocket</strong>: Socket.IO-client</li>\n<li><strong>UI Library</strong>: MUI/Tailwind</li>\n</ul>\n<h3 id=\"heading-6\">2.2 Backend</h3>\n<ul>\n<li><strong>Runtime</strong>: Node.js 18+</li>\n<li><strong>WebSocket</strong>: Socket.IO</li>\n<li><strong>Database</strong>: OpenSearch</li>\n<li><strong>File Processing</strong>: Node.js Streams</li>\n</ul>\n<h3 id=\"heading-7\">2.3 Development Tools</h3>\n<ul>\n<li><strong>Language</strong>: TypeScript 4.9+</li>\n<li><strong>Build</strong>: Webpack/Babel</li>\n<li><strong>Testing</strong>: Jest</li>\n<li><strong>Linting</strong>: ESLint/Prettier</li>\n</ul>\n<h2 id=\"heading-8\">3. Core Features</h2>\n<h3 id=\"heading-9\">3.1 Login Feature</h3>\n<p><img src=\"/images/entasys/entaasys_login.gif\" alt=\"Login Screen\"></p>\n<h3 id=\"heading-10\">3.2 Search Feature</h3>\n<p>Search Term Input and Results Display:\n<img src=\"/images/entasys/entaasys_search_term.gif\" alt=\"Search Term Input\"></p>\n<p>Search Results Filtering:\n<img src=\"/images/entasys/entaasys_search.gif\" alt=\"Search Results\"></p>\n<h3 id=\"heading-11\">3.3 Download Feature</h3>\n<p>Download Initiation:\n<img src=\"/images/entasys/entaasys_download_1.gif\" alt=\"Download 1\"></p>\n<p>Download Progress Status:\n<img src=\"/images/entasys/entaasys_download_2.gif\" alt=\"Download 2\"></p>\n<h3 id=\"heading-12\">3.4 Download Management</h3>\n<ul>\n<li>Large file chunk processing</li>\n<li>Real-time progress updates</li>\n<li>Automatic retry mechanism</li>\n<li>Memory usage optimization</li>\n</ul>\n<h3 id=\"heading-13\">3.5 Error Handling</h3>\n<ul>\n<li>Network error recovery</li>\n<li>Memory shortage handling</li>\n<li>Timeout management</li>\n<li>Incomplete file cleanup</li>\n</ul>\n<h3 id=\"heading-14\">3.6 Monitoring</h3>\n<ul>\n<li>Real-time progress tracking</li>\n<li>Resource usage monitoring</li>\n<li>Error logging</li>\n<li>Performance metrics collection</li>\n</ul>\n<h2 id=\"heading-15\">4. Project Structure</h2>\n<pre><code class=\"language-bash\">src/\n├── server/\n│   ├── lib/\n│   │   ├── downloadManager.ts      # Download management\n│   │   ├── downloadChunkManager.ts # Chunk processing\n│   │   ├── stateManager.ts        # State management\n│   │   ├── opensearch.ts          # DB connection\n│   │   └── utils/\n│   │       ├── logger.ts          # Logging\n│   │       └── errors.ts          # Error handling\n│   └── index.ts                   # Server entry point\n├── client/\n│   ├── components/\n│   │   ├── DownloadButton.tsx     # Download button\n│   │   ├── ProgressBar.tsx        # Progress display\n│   │   └── ErrorDisplay.tsx       # Error display\n│   ├── hooks/\n│   │   ├── useDownload.ts         # Download hook\n│   │   └── useWebSocket.ts        # WebSocket hook\n│   └── utils/\n│       ├── api.ts                 # API utilities\n│       └── format.ts              # Format utilities\n└── shared/\n    ├── types/                     # Type definitions\n    └── constants/                 # Constant definitions\n</code></pre>\n<h2 id=\"heading-16\">5. Configuration Management</h2>\n<h3 id=\"heading-17\">5.1 Environment Variables</h3>\n<pre><code class=\"language-env\"># Server\nPORT=8001\nWS_PORT=8001\nNODE_ENV=development\n\n# OpenSearch\nOPENSEARCH_HOST=localhost\nOPENSEARCH_PORT=9200\nOPENSEARCH_USERNAME=dev\nOPENSEARCH_PASSWORD=dev\n\n# Download\nMAX_CHUNK_SIZE=500000\nMAX_MEMORY_USAGE=1024\nDOWNLOAD_TIMEOUT=300000\n</code></pre>\n<h3 id=\"heading-18\">5.2 Configuration File</h3>\n<pre><code class=\"language-typescript\">// config.ts\nexport const CONFIG = {\n  download: {\n    chunkSize: 500000,\n    maxRetries: 3,\n    timeout: 300000,\n    tempDir: \"./temp\",\n  },\n  websocket: {\n    pingInterval: 10000,\n    pingTimeout: 5000,\n  },\n  opensearch: {\n    scrollTimeout: \"2m\",\n    batchSize: 1000,\n  },\n};\n</code></pre>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "Project Overview",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "1. System Architecture",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1.1 Overall Structure",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "1.2 Key Components",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "2. Technology Stack",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2.1 Frontend",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "2.2 Backend",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "2.3 Development Tools",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "3. Core Features",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "3.1 Login Feature",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "3.2 Search Feature",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-11",
+          "text": "3.3 Download Feature",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "3.4 Download Management",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-13",
+          "text": "3.5 Error Handling",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 0
+        },
+        {
+          "id": "heading-14",
+          "text": "3.6 Monitoring",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "4. Project Structure",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-16",
+          "text": "5. Configuration Management",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-17",
+          "text": "5.1 Environment Variables",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 850
+        },
+        {
+          "id": "heading-18",
+          "text": "5.2 Configuration File",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 900
+        }
+      ]
+    }
+  },
+  "imageHeights": {
+    "img-10": 400,
+    "img-12": 400,
+    "img-13": 400,
+    "img-15": 400,
+    "img-16": 400
+  }
+}
