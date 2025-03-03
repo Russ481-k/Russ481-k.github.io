@@ -16,7 +16,7 @@ tags:
     "MetaMask",
     "Figma",
   ]
-thumbnail: "/images/entasis/entasis_circuit.gif"
+thumbnail: ""
 ---
 
 ## 1. Introduction

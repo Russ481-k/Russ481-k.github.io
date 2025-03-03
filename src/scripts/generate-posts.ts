@@ -3,8 +3,7 @@ import * as fsSync from "fs";
 import path from "path";
 import { Post, TocItem } from "@/types/post";
 import { marked } from "marked";
-import { remark } from "remark";
-import html from "remark-html";
+
 import { JSDOM } from "jsdom";
 import matter from "gray-matter";
 import { unified } from "unified";

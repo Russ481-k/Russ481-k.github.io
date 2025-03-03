@@ -1,0 +1,138 @@
+<h1>Project Overview</h1>
+<h2>1. System Architecture</h2>
+<h3>1.1 Overall Structure</h3>
+<pre><code class="language-mermaid">graph TD
+    Client[Client] --> |WebSocket| WS[WebSocket Server]
+    WS --> |Events| DM[Download Manager]
+    DM --> |Chunk Management| CM[Chunk Manager]
+    CM --> |Query| OS[OpenSearch]
+    CM --> |File Storage| FS[File System]
+    DM --> |State Management| SM[State Manager]
+</code></pre>
+<h3>1.2 Key Components</h3>
+<ul>
+<li><strong>WebSocket Server</strong>: Real-time communication processing</li>
+<li><strong>Download Manager</strong>: Download process coordination</li>
+<li><strong>Chunk Manager</strong>: Data chunk processing</li>
+<li><strong>State Manager</strong>: Status and progress management</li>
+</ul>
+<h2>2. Technology Stack</h2>
+<h3>2.1 Frontend</h3>
+<ul>
+<li><strong>Framework</strong>: Next.js 13+</li>
+<li><strong>State Management</strong>: React Query</li>
+<li><strong>WebSocket</strong>: Socket.IO-client</li>
+<li><strong>UI Library</strong>: MUI/Tailwind</li>
+</ul>
+<h3>2.2 Backend</h3>
+<ul>
+<li><strong>Runtime</strong>: Node.js 18+</li>
+<li><strong>WebSocket</strong>: Socket.IO</li>
+<li><strong>Database</strong>: OpenSearch</li>
+<li><strong>File Processing</strong>: Node.js Streams</li>
+</ul>
+<h3>2.3 Development Tools</h3>
+<ul>
+<li><strong>Language</strong>: TypeScript 4.9+</li>
+<li><strong>Build</strong>: Webpack/Babel</li>
+<li><strong>Testing</strong>: Jest</li>
+<li><strong>Linting</strong>: ESLint/Prettier</li>
+</ul>
+<h2>3. Core Features</h2>
+<h3>3.1 Login Feature</h3>
+<p><img src="/images/entasys/entaasys_login.gif" alt="Login Screen"></p>
+<h3>3.2 Search Feature</h3>
+<p>Search Term Input and Results Display:
+<img src="/images/entasys/entaasys_search_term.gif" alt="Search Term Input"></p>
+<p>Search Results Filtering:
+<img src="/images/entasys/entaasys_search.gif" alt="Search Results"></p>
+<h3>3.3 Download Feature</h3>
+<p>Download Initiation:
+<img src="/images/entasys/entaasys_download_1.gif" alt="Download 1"></p>
+<p>Download Progress Status:
+<img src="/images/entasys/entaasys_download_2.gif" alt="Download 2"></p>
+<h3>3.4 Download Management</h3>
+<ul>
+<li>Large file chunk processing</li>
+<li>Real-time progress updates</li>
+<li>Automatic retry mechanism</li>
+<li>Memory usage optimization</li>
+</ul>
+<h3>3.5 Error Handling</h3>
+<ul>
+<li>Network error recovery</li>
+<li>Memory shortage handling</li>
+<li>Timeout management</li>
+<li>Incomplete file cleanup</li>
+</ul>
+<h3>3.6 Monitoring</h3>
+<ul>
+<li>Real-time progress tracking</li>
+<li>Resource usage monitoring</li>
+<li>Error logging</li>
+<li>Performance metrics collection</li>
+</ul>
+<h2>4. Project Structure</h2>
+<pre><code class="language-bash">src/
+├── server/
+│   ├── lib/
+│   │   ├── downloadManager.ts      # Download management
+│   │   ├── downloadChunkManager.ts # Chunk processing
+│   │   ├── stateManager.ts        # State management
+│   │   ├── opensearch.ts          # DB connection
+│   │   └── utils/
+│   │       ├── logger.ts          # Logging
+│   │       └── errors.ts          # Error handling
+│   └── index.ts                   # Server entry point
+├── client/
+│   ├── components/
+│   │   ├── DownloadButton.tsx     # Download button
+│   │   ├── ProgressBar.tsx        # Progress display
+│   │   └── ErrorDisplay.tsx       # Error display
+│   ├── hooks/
+│   │   ├── useDownload.ts         # Download hook
+│   │   └── useWebSocket.ts        # WebSocket hook
+│   └── utils/
+│       ├── api.ts                 # API utilities
+│       └── format.ts              # Format utilities
+└── shared/
+    ├── types/                     # Type definitions
+    └── constants/                 # Constant definitions
+</code></pre>
+<h2>5. Configuration Management</h2>
+<h3>5.1 Environment Variables</h3>
+<pre><code class="language-env"># Server
+PORT=8001
+WS_PORT=8001
+NODE_ENV=development
+
+# OpenSearch
+OPENSEARCH_HOST=localhost
+OPENSEARCH_PORT=9200
+OPENSEARCH_USERNAME=dev
+OPENSEARCH_PASSWORD=dev
+
+# Download
+MAX_CHUNK_SIZE=500000
+MAX_MEMORY_USAGE=1024
+DOWNLOAD_TIMEOUT=300000
+</code></pre>
+<h3>5.2 Configuration File</h3>
+<pre><code class="language-typescript">// config.ts
+export const CONFIG = {
+  download: {
+    chunkSize: 500000,
+    maxRetries: 3,
+    timeout: 300000,
+    tempDir: "./temp",
+  },
+  websocket: {
+    pingInterval: 10000,
+    pingTimeout: 5000,
+  },
+  opensearch: {
+    scrollTimeout: "2m",
+    batchSize: 1000,
+  },
+};
+</code></pre>

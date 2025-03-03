@@ -1,0 +1,261 @@
+{
+  "id": "entasys_4",
+  "title": "Entasys",
+  "content": "\n# 핵심 컴포넌트\n\n## 1. DownloadManager\n\n### 1.1 기본 구조\n\n```typescript\nclass DownloadManager {\n  private activeDownloads: Map<string, Download>;\n  private chunkManager: DownloadChunkManager;\n  private eventEmitter: EventEmitter;\n\n  constructor(config: DownloadManagerConfig) {\n    this.maxConcurrent = config.maxConcurrent;\n    this.tempDir = config.tempDir;\n    this.chunkSize = config.chunkSize;\n  }\n\n  async createDownload(params: DownloadParams): Promise<string> {\n    const downloadId = generateUniqueId();\n    const download = new Download(params, this.chunkManager);\n    this.activeDownloads.set(downloadId, download);\n    return downloadId;\n  }\n}\n```\n\n### 1.2 다운로드 상태 관리\n\n```typescript\ninterface DownloadState {\n  status: DownloadStatus;\n  progress: number;\n  error?: Error;\n  startTime: number;\n  endTime?: number;\n  totalChunks: number;\n  completedChunks: number;\n}\n\nclass Download {\n  private state: DownloadState;\n\n  updateProgress(completedChunks: number) {\n    this.state.completedChunks = completedChunks;\n    this.state.progress = (completedChunks / this.state.totalChunks) * 100;\n    this.emitProgress();\n  }\n}\n```\n\n## 2. DownloadChunkManager\n\n### 2.1 청크 처리\n\n```typescript\nclass DownloadChunkManager {\n  private activeChunks: Map<string, ChunkProcess>;\n  private maxParallelChunks: number;\n\n  async processChunk(chunk: DataChunk): Promise<void> {\n    const chunkProcess = new ChunkProcess(chunk);\n    this.activeChunks.set(chunk.id, chunkProcess);\n\n    try {\n      await chunkProcess.process();\n      await this.mergeChunkFile(chunk.id);\n    } finally {\n      this.activeChunks.delete(chunk.id);\n    }\n  }\n}\n```\n\n### 2.2 메모리 관리\n\n```typescript\nclass ChunkProcess {\n  private memoryLimit: number;\n  private buffer: Buffer;\n\n  async processWithMemoryCheck(data: any) {\n    const memoryUsage = process.memoryUsage().heapUsed;\n\n    if (memoryUsage > this.memoryLimit) {\n      await this.flushToFile();\n      this.buffer = Buffer.alloc(0);\n    }\n\n    this.buffer = Buffer.concat([this.buffer, data]);\n  }\n}\n```\n\n## 3. 파일 시스템 관리\n\n### 3.1 파일 작업\n\n```typescript\nclass FileSystemManager {\n  private readonly baseDir: string;\n\n  async createTempDirectory(): Promise<string> {\n    const tempDir = path.join(this.baseDir, \"temp\", uuidv4());\n    await fs.promises.mkdir(tempDir, { recursive: true });\n    return tempDir;\n  }\n\n  async cleanupTempFiles(downloadId: string): Promise<void> {\n    const tempDir = this.getTempDirectory(downloadId);\n    await fs.promises.rm(tempDir, { recursive: true, force: true });\n  }\n}\n```\n\n### 3.2 스트림 처리\n\n```typescript\nclass StreamManager {\n  createReadStream(filePath: string, options: StreamOptions): ReadStream {\n    return fs.createReadStream(filePath, {\n      highWaterMark: this.calculateOptimalBufferSize(),\n      ...options,\n    });\n  }\n\n  async pipeWithProgress(\n    readStream: ReadStream,\n    writeStream: WriteStream,\n    onProgress: (progress: number) => void\n  ): Promise<void> {\n    return new Promise((resolve, reject) => {\n      readStream.pipe(writeStream).on(\"error\", reject).on(\"finish\", resolve);\n    });\n  }\n}\n```\n\n## 4. 상태 관리\n\n### 4.1 상태 저장소\n\n```typescript\nclass StateStore {\n  private state: Map<string, any>;\n  private subscribers: Set<(state: any) => void>;\n\n  setState(key: string, value: any) {\n    this.state.set(key, value);\n    this.notifySubscribers();\n  }\n\n  subscribe(callback: (state: any) => void) {\n    this.subscribers.add(callback);\n    return () => this.subscribers.delete(callback);\n  }\n}\n```\n\n### 4.2 이벤트 관리\n\n```typescript\nclass EventManager extends EventEmitter {\n  private readonly eventHistory: Map<string, any[]>;\n\n  emitWithHistory(event: string, data: any) {\n    this.saveToHistory(event, data);\n    this.emit(event, data);\n  }\n\n  getEventHistory(event: string): any[] {\n    return this.eventHistory.get(event) || [];\n  }\n}\n```\n\n## 5. 의존성 관리\n\n### 5.1 의존성 주입\n\n```typescript\ninterface Dependencies {\n  fileManager: FileSystemManager;\n  stateStore: StateStore;\n  eventManager: EventManager;\n  chunkManager: DownloadChunkManager;\n}\n\nclass DependencyContainer {\n  private static instance: DependencyContainer;\n  private dependencies: Dependencies;\n\n  static getInstance(): DependencyContainer {\n    if (!DependencyContainer.instance) {\n      DependencyContainer.instance = new DependencyContainer();\n    }\n    return DependencyContainer.instance;\n  }\n\n  register<K extends keyof Dependencies>(key: K, dependency: Dependencies[K]) {\n    this.dependencies[key] = dependency;\n  }\n}\n```\n\n### 5.2 서비스 로케이터\n\n```typescript\nclass ServiceLocator {\n  private static services: Map<string, any> = new Map();\n\n  static register(name: string, service: any) {\n    this.services.set(name, service);\n  }\n\n  static get<T>(name: string): T {\n    if (!this.services.has(name)) {\n      throw new Error(`Service ${name} not found`);\n    }\n    return this.services.get(name);\n  }\n}\n```\n",
+  "date": "2024-03-20",
+  "category": "projects",
+  "tags": [
+    "React",
+    "Express",
+    "MySQL",
+    "Web3.js",
+    "AWS",
+    "Ganache",
+    "Truffle",
+    "ERC20",
+    "MetaMask",
+    "Figma"
+  ],
+  "thumbnail": "/images/entasys/entaasys_search.gif",
+  "translations": {
+    "ko": {
+      "title": "Entasys",
+      "description": "Development of Virtual Asset Exchange",
+      "content": "<h1 id=\"heading-0\">핵심 컴포넌트</h1>\n<h2 id=\"heading-1\">1. DownloadManager</h2>\n<h3 id=\"heading-2\">1.1 기본 구조</h3>\n<pre><code class=\"language-typescript\">class DownloadManager {\n  private activeDownloads: Map&lt;string, Download&gt;;\n  private chunkManager: DownloadChunkManager;\n  private eventEmitter: EventEmitter;\n\n  constructor(config: DownloadManagerConfig) {\n    this.maxConcurrent = config.maxConcurrent;\n    this.tempDir = config.tempDir;\n    this.chunkSize = config.chunkSize;\n  }\n\n  async createDownload(params: DownloadParams): Promise&lt;string&gt; {\n    const downloadId = generateUniqueId();\n    const download = new Download(params, this.chunkManager);\n    this.activeDownloads.set(downloadId, download);\n    return downloadId;\n  }\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 다운로드 상태 관리</h3>\n<pre><code class=\"language-typescript\">interface DownloadState {\n  status: DownloadStatus;\n  progress: number;\n  error?: Error;\n  startTime: number;\n  endTime?: number;\n  totalChunks: number;\n  completedChunks: number;\n}\n\nclass Download {\n  private state: DownloadState;\n\n  updateProgress(completedChunks: number) {\n    this.state.completedChunks = completedChunks;\n    this.state.progress = (completedChunks / this.state.totalChunks) * 100;\n    this.emitProgress();\n  }\n}\n</code></pre>\n<h2 id=\"heading-4\">2. DownloadChunkManager</h2>\n<h3 id=\"heading-5\">2.1 청크 처리</h3>\n<pre><code class=\"language-typescript\">class DownloadChunkManager {\n  private activeChunks: Map&lt;string, ChunkProcess&gt;;\n  private maxParallelChunks: number;\n\n  async processChunk(chunk: DataChunk): Promise&lt;void&gt; {\n    const chunkProcess = new ChunkProcess(chunk);\n    this.activeChunks.set(chunk.id, chunkProcess);\n\n    try {\n      await chunkProcess.process();\n      await this.mergeChunkFile(chunk.id);\n    } finally {\n      this.activeChunks.delete(chunk.id);\n    }\n  }\n}\n</code></pre>\n<h3 id=\"heading-6\">2.2 메모리 관리</h3>\n<pre><code class=\"language-typescript\">class ChunkProcess {\n  private memoryLimit: number;\n  private buffer: Buffer;\n\n  async processWithMemoryCheck(data: any) {\n    const memoryUsage = process.memoryUsage().heapUsed;\n\n    if (memoryUsage &gt; this.memoryLimit) {\n      await this.flushToFile();\n      this.buffer = Buffer.alloc(0);\n    }\n\n    this.buffer = Buffer.concat([this.buffer, data]);\n  }\n}\n</code></pre>\n<h2 id=\"heading-7\">3. 파일 시스템 관리</h2>\n<h3 id=\"heading-8\">3.1 파일 작업</h3>\n<pre><code class=\"language-typescript\">class FileSystemManager {\n  private readonly baseDir: string;\n\n  async createTempDirectory(): Promise&lt;string&gt; {\n    const tempDir = path.join(this.baseDir, \"temp\", uuidv4());\n    await fs.promises.mkdir(tempDir, { recursive: true });\n    return tempDir;\n  }\n\n  async cleanupTempFiles(downloadId: string): Promise&lt;void&gt; {\n    const tempDir = this.getTempDirectory(downloadId);\n    await fs.promises.rm(tempDir, { recursive: true, force: true });\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 스트림 처리</h3>\n<pre><code class=\"language-typescript\">class StreamManager {\n  createReadStream(filePath: string, options: StreamOptions): ReadStream {\n    return fs.createReadStream(filePath, {\n      highWaterMark: this.calculateOptimalBufferSize(),\n      ...options,\n    });\n  }\n\n  async pipeWithProgress(\n    readStream: ReadStream,\n    writeStream: WriteStream,\n    onProgress: (progress: number) =&gt; void\n  ): Promise&lt;void&gt; {\n    return new Promise((resolve, reject) =&gt; {\n      readStream.pipe(writeStream).on(\"error\", reject).on(\"finish\", resolve);\n    });\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">4. 상태 관리</h2>\n<h3 id=\"heading-11\">4.1 상태 저장소</h3>\n<pre><code class=\"language-typescript\">class StateStore {\n  private state: Map&lt;string, any&gt;;\n  private subscribers: Set&lt;(state: any) =&gt; void&gt;;\n\n  setState(key: string, value: any) {\n    this.state.set(key, value);\n    this.notifySubscribers();\n  }\n\n  subscribe(callback: (state: any) =&gt; void) {\n    this.subscribers.add(callback);\n    return () =&gt; this.subscribers.delete(callback);\n  }\n}\n</code></pre>\n<h3 id=\"heading-12\">4.2 이벤트 관리</h3>\n<pre><code class=\"language-typescript\">class EventManager extends EventEmitter {\n  private readonly eventHistory: Map&lt;string, any[]&gt;;\n\n  emitWithHistory(event: string, data: any) {\n    this.saveToHistory(event, data);\n    this.emit(event, data);\n  }\n\n  getEventHistory(event: string): any[] {\n    return this.eventHistory.get(event) || [];\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. 의존성 관리</h2>\n<h3 id=\"heading-14\">5.1 의존성 주입</h3>\n<pre><code class=\"language-typescript\">interface Dependencies {\n  fileManager: FileSystemManager;\n  stateStore: StateStore;\n  eventManager: EventManager;\n  chunkManager: DownloadChunkManager;\n}\n\nclass DependencyContainer {\n  private static instance: DependencyContainer;\n  private dependencies: Dependencies;\n\n  static getInstance(): DependencyContainer {\n    if (!DependencyContainer.instance) {\n      DependencyContainer.instance = new DependencyContainer();\n    }\n    return DependencyContainer.instance;\n  }\n\n  register&lt;K extends keyof Dependencies&gt;(key: K, dependency: Dependencies[K]) {\n    this.dependencies[key] = dependency;\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 서비스 로케이터</h3>\n<pre><code class=\"language-typescript\">class ServiceLocator {\n  private static services: Map&lt;string, any&gt; = new Map();\n\n  static register(name: string, service: any) {\n    this.services.set(name, service);\n  }\n\n  static get&lt;T&gt;(name: string): T {\n    if (!this.services.has(name)) {\n      throw new Error(`Service ${name} not found`);\n    }\n    return this.services.get(name);\n  }\n}\n</code></pre>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "핵심 컴포넌트",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "1. DownloadManager",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1.1 기본 구조",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "1.2 다운로드 상태 관리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "2. DownloadChunkManager",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2.1 청크 처리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "2.2 메모리 관리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "3. 파일 시스템 관리",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "3.1 파일 작업",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "3.2 스트림 처리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "4. 상태 관리",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "4.1 상태 저장소",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "4.2 이벤트 관리",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "5. 의존성 관리",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "5.1 의존성 주입",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "5.2 서비스 로케이터",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 750
+        }
+      ]
+    },
+    "en": {
+      "title": "Entasys",
+      "description": "Development of Virtual Asset Exchange",
+      "content": "<h1 id=\"heading-0\">Core Components</h1>\n<h2 id=\"heading-1\">1. DownloadManager</h2>\n<h3 id=\"heading-2\">1.1 Initial Structure</h3>\n<pre><code class=\"language-typescript\">class DownloadManager {\n  private activeDownloads: Map&lt;string, Download&gt;;\n  private chunkManager: DownloadChunkManager;\n  private eventEmitter: EventEmitter;\n\n  constructor(config: DownloadManagerConfig) {\n    this.maxConcurrent = config.maxConcurrent;\n    this.tempDir = config.tempDir;\n    this.chunkSize = config.chunkSize;\n  }\n\n  async createDownload(params: DownloadParams): Promise&lt;string&gt; {\n    const downloadId = generateUniqueId();\n    const download = new Download(params, this.chunkManager);\n    this.activeDownloads.set(downloadId, download);\n    return downloadId;\n  }\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 Status of Download Management</h3>\n<pre><code class=\"language-typescript\">interface DownloadState {\n  status: DownloadStatus;\n  progress: number;\n  error?: Error;\n  startTime: number;\n  endTime?: number;\n  totalChunks: number;\n  completedChunks: number;\n}\n\nclass Download {\n  private state: DownloadState;\n\n  updateProgress(completedChunks: number) {\n    this.state.completedChunks = completedChunks;\n    this.state.progress = (completedChunks / this.state.totalChunks) * 100;\n    this.emitProgress();\n  }\n}\n</code></pre>\n<h2 id=\"heading-4\">2. DownloadChunkManager</h2>\n<h3 id=\"heading-5\">2.1 Chunk Treatment</h3>\n<pre><code class=\"language-typescript\">class DownloadChunkManager {\n  private activeChunks: Map&lt;string, ChunkProcess&gt;;\n  private maxParallelChunks: number;\n\n  async processChunk(chunk: DataChunk): Promise&lt;void&gt; {\n    const chunkProcess = new ChunkProcess(chunk);\n    this.activeChunks.set(chunk.id, chunkProcess);\n\n    try {\n      await chunkProcess.process();\n      await this.mergeChunkFile(chunk.id);\n    } finally {\n      this.activeChunks.delete(chunk.id);\n    }\n  }\n}\n</code></pre>\n<h3 id=\"heading-6\">2.2 Memory Management</h3>\n<pre><code class=\"language-typescript\">class ChunkProcess {\n  private memoryLimit: number;\n  private buffer: Buffer;\n\n  async processWithMemoryCheck(data: any) {\n    const memoryUsage = process.memoryUsage().heapUsed;\n\n    if (memoryUsage &gt; this.memoryLimit) {\n      await this.flushToFile();\n      this.buffer = Buffer.alloc(0);\n    }\n\n    this.buffer = Buffer.concat([this.buffer, data]);\n  }\n}\n</code></pre>\n<h2 id=\"heading-7\">3. File System Management</h2>\n<h3 id=\"heading-8\">3.1 File Operations</h3>\n<pre><code class=\"language-typescript\">class FileSystemManager {\n  private readonly baseDir: string;\n\n  async createTempDirectory(): Promise&lt;string&gt; {\n    const tempDir = path.join(this.baseDir, \"temp\", uuidv4());\n    await fs.promises.mkdir(tempDir, { recursive: true });\n    return tempDir;\n  }\n\n  async cleanupTempFiles(downloadId: string): Promise&lt;void&gt; {\n    const tempDir = this.getTempDirectory(downloadId);\n    await fs.promises.rm(tempDir, { recursive: true, force: true });\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 Stream Processing</h3>\n<pre><code class=\"language-typescript\">class StreamManager {\n  createReadStream(filePath: string, options: StreamOptions): ReadStream {\n    return fs.createReadStream(filePath, {\n      highWaterMark: this.calculateOptimalBufferSize(),\n      ...options,\n    });\n  }\n\n  async pipeWithProgress(\n    readStream: ReadStream,\n    writeStream: WriteStream,\n    onProgress: (progress: number) =&gt; void\n  ): Promise&lt;void&gt; {\n    return new Promise((resolve, reject) =&gt; {\n      readStream.pipe(writeStream).on(\"error\", reject).on(\"finish\", resolve);\n    });\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">4. State Management</h2>\n<h3 id=\"heading-11\">4.1 State Store</h3>\n<pre><code class=\"language-typescript\">class StateStore {\n  private state: Map&lt;string, any&gt;;\n  private subscribers: Set&lt;(state: any) =&gt; void&gt;;\n\n  setState(key: string, value: any) {\n    this.state.set(key, value);\n    this.notifySubscribers();\n  }\n\n  subscribe(callback: (state: any) =&gt; void) {\n    this.subscribers.add(callback);\n    return () =&gt; this.subscribers.delete(callback);\n  }\n}\n</code></pre>\n<h3 id=\"heading-12\">4.2 Event Management</h3>\n<pre><code class=\"language-typescript\">class EventManager extends EventEmitter {\n  private readonly eventHistory: Map&lt;string, any[]&gt;;\n\n  emitWithHistory(event: string, data: any) {\n    this.saveToHistory(event, data);\n    this.emit(event, data);\n  }\n\n  getEventHistory(event: string): any[] {\n    return this.eventHistory.get(event) || [];\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. Dependency Management</h2>\n<h3 id=\"heading-14\">5.1 Dependency Injection</h3>\n<pre><code class=\"language-typescript\">interface Dependencies {\n  fileManager: FileSystemManager;\n  stateStore: StateStore;\n  eventManager: EventManager;\n  chunkManager: DownloadChunkManager;\n}\n\nclass DependencyContainer {\n  private static instance: DependencyContainer;\n  private dependencies: Dependencies;\n\n  static getInstance(): DependencyContainer {\n    if (!DependencyContainer.instance) {\n      DependencyContainer.instance = new DependencyContainer();\n    }\n    return DependencyContainer.instance;\n  }\n\n  register&lt;K extends keyof Dependencies&gt;(key: K, dependency: Dependencies[K]) {\n    this.dependencies[key] = dependency;\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 Service Locator</h3>\n<pre><code class=\"language-typescript\">class ServiceLocator {\n  private static services: Map&lt;string, any&gt; = new Map();\n\n  static register(name: string, service: any) {\n    this.services.set(name, service);\n  }\n\n  static get&lt;T&gt;(name: string): T {\n    if (!this.services.has(name)) {\n      throw new Error(`Service ${name} not found`);\n    }\n    return this.services.get(name);\n  }\n}\n</code></pre>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "Core Components",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "1. DownloadManager",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "1.1 Initial Structure",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "1.2 Status of Download Management",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "2. DownloadChunkManager",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "2.1 Chunk Treatment",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "2.2 Memory Management",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "3. File System Management",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "3.1 File Operations",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "3.2 Stream Processing",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "4. State Management",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "4.1 State Store",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "4.2 Event Management",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "5. Dependency Management",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "5.1 Dependency Injection",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "5.2 Service Locator",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 750
+        }
+      ]
+    }
+  },
+  "imageHeights": {}
+}

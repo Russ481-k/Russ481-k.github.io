@@ -5711,9 +5711,9 @@
     "imageHeights": {}
   },
   {
-    "id": "entasys",
+    "id": "entasys_1",
     "title": "Entasys",
-    "content": "\n## 1. 프로젝트 개요\n\n### 프로젝트 명\n\n- ENTASYS (엔타시스) SIEM 솔루션\n\n### 프로젝트 목적\n\n- 기업의 보안 위협을 실시간으로 탐지하고 대응하는 통합 보안 관제 시스템 구축\n- 다양한 보안 장비와 시스템의 로그를 수집/분석하여 보안 위협 조기 발견\n- AI/ML 기반의 지능형 위협 탐지 및 대응 체계 구현\n\n### 핵심 기능\n\n1. 통합 로그 수집 및 관리\n\n   - 방화벽, IPS, WAF 등 보안장비 로그 수집\n   - 서버, 네트워크 장비, 애플리케이션 로그 통합\n   - 실시간 로그 정규화 및 상관분석\n   - 로그 원본 보관 및 위/변조 방지\n\n2. 실시간 위협 탐지\n\n   - AI 기반 이상행위 탐지(User/Entity Behavior Analytics)\n   - 알려진/알려지지 않은 위협 탐지\n   - 취약점 스캐닝 및 모니터링\n   - 실시간 위협 인텔리전스 연동\n\n3. 보안 대시보드 및 분석\n\n   - 직관적인 통합 보안 대시보드\n   - 실시간 보안 이벤트 모니터링\n   - 드릴다운 분석 및 포렌식 기능\n   - 맞춤형 보고서 자동 생성\n\n4. 자동화된 대응체계\n   - 위협 탐지시 자동 차단/격리\n   - 담당자 알림 및 티켓팅 연동\n   - 플레이북 기반 대응 자동화\n   - 보안장비 연동 및 제어\n\n## 시스템 아키텍처\n\n### 수집 계층\n\n- 분산 로그 수집기(Collector) 구조\n- 초당 50,000 EPS 처리 성능\n- 로그 필터링 및 정규화\n- 데이터 압축 및 암호화 전송\n\n### 저장 계층\n\n- 분산 스토리지(Elasticsearch) 기반\n- 실시간/장기 보관 이원화\n- 데이터 암호화 저장\n- 자동 백업 및 복구\n\n### 분석 계층\n\n- 실시간 상관분석 엔진\n- ML 기반 이상행위 탐지\n- 위협 인텔리전스 연동\n- 규칙 기반 탐지\n\n### 표현 계층\n\n- HTML5 기반 웹 콘솔\n- 반응형 대시보드\n- 드릴다운 분석 도구\n- 맞춤형 보고서\n\n## 구축 요구사항\n\n### 하드웨어\n\n- 수집서버: 최소 8코어/32GB RAM\n- 분석서버: 최소 16코어/64GB RAM\n- 저장장치: 최소 10TB SSD\n\n### 소프트웨어\n\n- OS: RHEL/CentOS 7 이상\n- Docker/Kubernetes\n- Elasticsearch 7.x\n- Node.js 16.x\n\n## 향후 로드맵\n\n### 2024년 하반기\n\n- AI 엔진 고도화\n- 클라우드 네이티브 아키텍처 전환\n- 글로벌 위협 인텔리전스 연동 확대\n\n### 2025년\n\n- 제로트러스트 보안 프레임워크 적용\n- 블록체인 기반 로그 무결성 검증\n- 멀티클라우드 통합 모니터링\n",
+    "content": "\n# 프로젝트 개요\n\n## 1. 시스템 아키텍처\n\n### 1.1 전체 구조\n\n```mermaid\ngraph TD\n    Client[클라이언트] --> |WebSocket| WS[WebSocket Server]\n    WS --> |이벤트| DM[Download Manager]\n    DM --> |청크 관리| CM[Chunk Manager]\n    CM --> |쿼리| OS[OpenSearch]\n    CM --> |파일 저장| FS[File System]\n    DM --> |상태 관리| SM[State Manager]\n```\n\n### 1.2 주요 컴포넌트\n\n- **WebSocket Server**: 실시간 통신 처리\n- **Download Manager**: 다운로드 프로세스 조율\n- **Chunk Manager**: 데이터 청크 처리\n- **State Manager**: 상태 및 진행률 관리\n\n## 2. 기술 스택\n\n### 2.1 프론트엔드\n\n- **Framework**: Next.js 13+\n- **상태 관리**: React Query\n- **WebSocket**: Socket.IO-client\n- **UI 라이브러리**: MUI/Tailwind\n\n### 2.2 백엔드\n\n- **Runtime**: Node.js 18+\n- **WebSocket**: Socket.IO\n- **데이터베이스**: OpenSearch\n- **파일 처리**: Node.js Streams\n\n### 2.3 개발 도구\n\n- **언어**: TypeScript 4.9+\n- **빌드**: Webpack/Babel\n- **테스트**: Jest\n- **린팅**: ESLint/Prettier\n\n## 3. 핵심 기능\n\n### 3.1 로그인 기능\n\n![로그인 화면](/images/entasys/entaasys_login.gif)\n\n### 3.2 검색 기능\n\n검색어 입력 및 결과 표시:\n![검색어 입력](/images/entasys/entaasys_search_term.gif)\n\n검색 결과 필터링:\n![검색 결과](/images/entasys/entaasys_search.gif)\n\n### 3.3 다운로드 기능\n\n다운로드 시작:\n![다운로드 1](/images/entasys/entaasys_download_1.gif)\n\n다운로드 진행 상태:\n![다운로드 2](/images/entasys/entaasys_download_2.gif)\n\n### 3.4 다운로드 관리\n\n- 대용량 파일 청크 처리\n- 진행률 실시간 업데이트\n- 자동 재시도 메커니즘\n- 메모리 사용량 최적화\n\n### 3.5 에러 처리\n\n- 네트워크 오류 복구\n- 메모리 부족 대응\n- 타임아웃 관리\n- 불완전 파일 정리\n\n### 3.6 모니터링\n\n- 실시간 진행률 추적\n- 리소스 사용량 모니터링\n- 에러 로깅\n- 성능 메트릭 수집\n\n## 4. 프로젝트 구조\n\n```bash\nsrc/\n├── server/\n│   ├── lib/\n│   │   ├── downloadManager.ts      # 다운로드 관리\n│   │   ├── downloadChunkManager.ts # 청크 처리\n│   │   ├── stateManager.ts        # 상태 관리\n│   │   ├── opensearch.ts          # DB 연동\n│   │   └── utils/\n│   │       ├── logger.ts          # 로깅\n│   │       └── errors.ts          # 에러 처리\n│   └── index.ts                   # 서버 시작점\n├── client/\n│   ├── components/\n│   │   ├── DownloadButton.tsx     # 다운로드 버튼\n│   │   ├── ProgressBar.tsx        # 진행률 표시\n│   │   └── ErrorDisplay.tsx       # 에러 표시\n│   ├── hooks/\n│   │   ├── useDownload.ts         # 다운로드 훅\n│   │   └── useWebSocket.ts        # 웹소켓 훅\n│   └── utils/\n│       ├── api.ts                 # API 유틸\n│       └── format.ts              # 포맷 유틸\n└── shared/\n    ├── types/                     # 타입 정의\n    └── constants/                 # 상수 정의\n```\n\n## 5. 설정 관리\n\n### 5.1 환경 변수\n\n```env\n# Server\nPORT=8001\nWS_PORT=8001\nNODE_ENV=development\n\n# OpenSearch\nOPENSEARCH_HOST=localhost\nOPENSEARCH_PORT=9200\nOPENSEARCH_USERNAME=admin\nOPENSEARCH_PASSWORD=admin\n\n# Download\nMAX_CHUNK_SIZE=500000\nMAX_MEMORY_USAGE=1024\nDOWNLOAD_TIMEOUT=300000\n```\n\n### 5.2 설정 파일\n\n```typescript\n// config.ts\nexport const CONFIG = {\n  download: {\n    chunkSize: 500000,\n    maxRetries: 3,\n    timeout: 300000,\n    tempDir: \"./temp\",\n  },\n  websocket: {\n    pingInterval: 10000,\n    pingTimeout: 5000,\n  },\n  opensearch: {\n    scrollTimeout: \"2m\",\n    batchSize: 1000,\n  },\n};\n```\n",
     "date": "2024-03-20",
     "category": "projects",
     "tags": [
@@ -5728,229 +5728,1377 @@
       "MetaMask",
       "Figma"
     ],
-    "thumbnail": "",
+    "thumbnail": "/images/entasys/entaasys_download_1.gif",
     "translations": {
       "ko": {
         "title": "Entasys",
-        "description": "가상자산 거래소 개발",
-        "content": "<h2 id=\"heading-0\">1. 프로젝트 개요</h2>\n<h3 id=\"heading-1\">프로젝트 명</h3>\n<ul>\n<li>ENTASYS (엔타시스) SIEM 솔루션</li>\n</ul>\n<h3 id=\"heading-2\">프로젝트 목적</h3>\n<ul>\n<li>기업의 보안 위협을 실시간으로 탐지하고 대응하는 통합 보안 관제 시스템 구축</li>\n<li>다양한 보안 장비와 시스템의 로그를 수집/분석하여 보안 위협 조기 발견</li>\n<li>AI/ML 기반의 지능형 위협 탐지 및 대응 체계 구현</li>\n</ul>\n<h3 id=\"heading-3\">핵심 기능</h3>\n<ol>\n<li>\n<p>통합 로그 수집 및 관리</p>\n<ul>\n<li>방화벽, IPS, WAF 등 보안장비 로그 수집</li>\n<li>서버, 네트워크 장비, 애플리케이션 로그 통합</li>\n<li>실시간 로그 정규화 및 상관분석</li>\n<li>로그 원본 보관 및 위/변조 방지</li>\n</ul>\n</li>\n<li>\n<p>실시간 위협 탐지</p>\n<ul>\n<li>AI 기반 이상행위 탐지(User/Entity Behavior Analytics)</li>\n<li>알려진/알려지지 않은 위협 탐지</li>\n<li>취약점 스캐닝 및 모니터링</li>\n<li>실시간 위협 인텔리전스 연동</li>\n</ul>\n</li>\n<li>\n<p>보안 대시보드 및 분석</p>\n<ul>\n<li>직관적인 통합 보안 대시보드</li>\n<li>실시간 보안 이벤트 모니터링</li>\n<li>드릴다운 분석 및 포렌식 기능</li>\n<li>맞춤형 보고서 자동 생성</li>\n</ul>\n</li>\n<li>\n<p>자동화된 대응체계</p>\n<ul>\n<li>위협 탐지시 자동 차단/격리</li>\n<li>담당자 알림 및 티켓팅 연동</li>\n<li>플레이북 기반 대응 자동화</li>\n<li>보안장비 연동 및 제어</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-4\">시스템 아키텍처</h2>\n<h3 id=\"heading-5\">수집 계층</h3>\n<ul>\n<li>분산 로그 수집기(Collector) 구조</li>\n<li>초당 50,000 EPS 처리 성능</li>\n<li>로그 필터링 및 정규화</li>\n<li>데이터 압축 및 암호화 전송</li>\n</ul>\n<h3 id=\"heading-6\">저장 계층</h3>\n<ul>\n<li>분산 스토리지(Elasticsearch) 기반</li>\n<li>실시간/장기 보관 이원화</li>\n<li>데이터 암호화 저장</li>\n<li>자동 백업 및 복구</li>\n</ul>\n<h3 id=\"heading-7\">분석 계층</h3>\n<ul>\n<li>실시간 상관분석 엔진</li>\n<li>ML 기반 이상행위 탐지</li>\n<li>위협 인텔리전스 연동</li>\n<li>규칙 기반 탐지</li>\n</ul>\n<h3 id=\"heading-8\">표현 계층</h3>\n<ul>\n<li>HTML5 기반 웹 콘솔</li>\n<li>반응형 대시보드</li>\n<li>드릴다운 분석 도구</li>\n<li>맞춤형 보고서</li>\n</ul>\n<h2 id=\"heading-9\">구축 요구사항</h2>\n<h3 id=\"heading-10\">하드웨어</h3>\n<ul>\n<li>수집서버: 최소 8코어/32GB RAM</li>\n<li>분석서버: 최소 16코어/64GB RAM</li>\n<li>저장장치: 최소 10TB SSD</li>\n</ul>\n<h3 id=\"heading-11\">소프트웨어</h3>\n<ul>\n<li>OS: RHEL/CentOS 7 이상</li>\n<li>Docker/Kubernetes</li>\n<li>Elasticsearch 7.x</li>\n<li>Node.js 16.x</li>\n</ul>\n<h2 id=\"heading-12\">향후 로드맵</h2>\n<h3 id=\"heading-13\">2024년 하반기</h3>\n<ul>\n<li>AI 엔진 고도화</li>\n<li>클라우드 네이티브 아키텍처 전환</li>\n<li>글로벌 위협 인텔리전스 연동 확대</li>\n</ul>\n<h3 id=\"heading-14\">2025년</h3>\n<ul>\n<li>제로트러스트 보안 프레임워크 적용</li>\n<li>블록체인 기반 로그 무결성 검증</li>\n<li>멀티클라우드 통합 모니터링</li>\n</ul>\n",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">프로젝트 개요</h1>\n<h2 id=\"heading-1\">1. 시스템 아키텍처</h2>\n<h3 id=\"heading-2\">1.1 전체 구조</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    Client[클라이언트] --&gt; |WebSocket| WS[WebSocket Server]\n    WS --&gt; |이벤트| DM[Download Manager]\n    DM --&gt; |청크 관리| CM[Chunk Manager]\n    CM --&gt; |쿼리| OS[OpenSearch]\n    CM --&gt; |파일 저장| FS[File System]\n    DM --&gt; |상태 관리| SM[State Manager]\n</code></pre>\n<h3 id=\"heading-3\">1.2 주요 컴포넌트</h3>\n<ul>\n<li><strong>WebSocket Server</strong>: 실시간 통신 처리</li>\n<li><strong>Download Manager</strong>: 다운로드 프로세스 조율</li>\n<li><strong>Chunk Manager</strong>: 데이터 청크 처리</li>\n<li><strong>State Manager</strong>: 상태 및 진행률 관리</li>\n</ul>\n<h2 id=\"heading-4\">2. 기술 스택</h2>\n<h3 id=\"heading-5\">2.1 프론트엔드</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js 13+</li>\n<li><strong>상태 관리</strong>: React Query</li>\n<li><strong>WebSocket</strong>: Socket.IO-client</li>\n<li><strong>UI 라이브러리</strong>: MUI/Tailwind</li>\n</ul>\n<h3 id=\"heading-6\">2.2 백엔드</h3>\n<ul>\n<li><strong>Runtime</strong>: Node.js 18+</li>\n<li><strong>WebSocket</strong>: Socket.IO</li>\n<li><strong>데이터베이스</strong>: OpenSearch</li>\n<li><strong>파일 처리</strong>: Node.js Streams</li>\n</ul>\n<h3 id=\"heading-7\">2.3 개발 도구</h3>\n<ul>\n<li><strong>언어</strong>: TypeScript 4.9+</li>\n<li><strong>빌드</strong>: Webpack/Babel</li>\n<li><strong>테스트</strong>: Jest</li>\n<li><strong>린팅</strong>: ESLint/Prettier</li>\n</ul>\n<h2 id=\"heading-8\">3. 핵심 기능</h2>\n<h3 id=\"heading-9\">3.1 로그인 기능</h3>\n<p><img src=\"/images/entasys/entaasys_login.gif\" alt=\"로그인 화면\"></p>\n<h3 id=\"heading-10\">3.2 검색 기능</h3>\n<p>검색어 입력 및 결과 표시:\n<img src=\"/images/entasys/entaasys_search_term.gif\" alt=\"검색어 입력\"></p>\n<p>검색 결과 필터링:\n<img src=\"/images/entasys/entaasys_search.gif\" alt=\"검색 결과\"></p>\n<h3 id=\"heading-11\">3.3 다운로드 기능</h3>\n<p>다운로드 시작:\n<img src=\"/images/entasys/entaasys_download_1.gif\" alt=\"다운로드 1\"></p>\n<p>다운로드 진행 상태:\n<img src=\"/images/entasys/entaasys_download_2.gif\" alt=\"다운로드 2\"></p>\n<h3 id=\"heading-12\">3.4 다운로드 관리</h3>\n<ul>\n<li>대용량 파일 청크 처리</li>\n<li>진행률 실시간 업데이트</li>\n<li>자동 재시도 메커니즘</li>\n<li>메모리 사용량 최적화</li>\n</ul>\n<h3 id=\"heading-13\">3.5 에러 처리</h3>\n<ul>\n<li>네트워크 오류 복구</li>\n<li>메모리 부족 대응</li>\n<li>타임아웃 관리</li>\n<li>불완전 파일 정리</li>\n</ul>\n<h3 id=\"heading-14\">3.6 모니터링</h3>\n<ul>\n<li>실시간 진행률 추적</li>\n<li>리소스 사용량 모니터링</li>\n<li>에러 로깅</li>\n<li>성능 메트릭 수집</li>\n</ul>\n<h2 id=\"heading-15\">4. 프로젝트 구조</h2>\n<pre><code class=\"language-bash\">src/\n├── server/\n│   ├── lib/\n│   │   ├── downloadManager.ts      # 다운로드 관리\n│   │   ├── downloadChunkManager.ts # 청크 처리\n│   │   ├── stateManager.ts        # 상태 관리\n│   │   ├── opensearch.ts          # DB 연동\n│   │   └── utils/\n│   │       ├── logger.ts          # 로깅\n│   │       └── errors.ts          # 에러 처리\n│   └── index.ts                   # 서버 시작점\n├── client/\n│   ├── components/\n│   │   ├── DownloadButton.tsx     # 다운로드 버튼\n│   │   ├── ProgressBar.tsx        # 진행률 표시\n│   │   └── ErrorDisplay.tsx       # 에러 표시\n│   ├── hooks/\n│   │   ├── useDownload.ts         # 다운로드 훅\n│   │   └── useWebSocket.ts        # 웹소켓 훅\n│   └── utils/\n│       ├── api.ts                 # API 유틸\n│       └── format.ts              # 포맷 유틸\n└── shared/\n    ├── types/                     # 타입 정의\n    └── constants/                 # 상수 정의\n</code></pre>\n<h2 id=\"heading-16\">5. 설정 관리</h2>\n<h3 id=\"heading-17\">5.1 환경 변수</h3>\n<pre><code class=\"language-env\"># Server\nPORT=8001\nWS_PORT=8001\nNODE_ENV=development\n\n# OpenSearch\nOPENSEARCH_HOST=localhost\nOPENSEARCH_PORT=9200\nOPENSEARCH_USERNAME=admin\nOPENSEARCH_PASSWORD=admin\n\n# Download\nMAX_CHUNK_SIZE=500000\nMAX_MEMORY_USAGE=1024\nDOWNLOAD_TIMEOUT=300000\n</code></pre>\n<h3 id=\"heading-18\">5.2 설정 파일</h3>\n<pre><code class=\"language-typescript\">// config.ts\nexport const CONFIG = {\n  download: {\n    chunkSize: 500000,\n    maxRetries: 3,\n    timeout: 300000,\n    tempDir: \"./temp\",\n  },\n  websocket: {\n    pingInterval: 10000,\n    pingTimeout: 5000,\n  },\n  opensearch: {\n    scrollTimeout: \"2m\",\n    batchSize: 1000,\n  },\n};\n</code></pre>\n",
         "tocItems": [
           {
             "id": "heading-0",
-            "text": "1. 프로젝트 개요",
-            "level": 2,
+            "text": "프로젝트 개요",
+            "level": 1,
             "isMainTopic": true,
             "position": 0
           },
           {
             "id": "heading-1",
-            "text": "프로젝트 명",
-            "level": 3,
-            "isMainTopic": false,
+            "text": "1. 시스템 아키텍처",
+            "level": 2,
+            "isMainTopic": true,
             "position": 50
           },
           {
             "id": "heading-2",
-            "text": "프로젝트 목적",
+            "text": "1.1 전체 구조",
             "level": 3,
             "isMainTopic": false,
             "position": 100
           },
           {
             "id": "heading-3",
-            "text": "핵심 기능",
+            "text": "1.2 주요 컴포넌트",
             "level": 3,
             "isMainTopic": false,
             "position": 150
           },
           {
             "id": "heading-4",
-            "text": "시스템 아키텍처",
+            "text": "2. 기술 스택",
             "level": 2,
             "isMainTopic": true,
             "position": 200
           },
           {
             "id": "heading-5",
-            "text": "수집 계층",
+            "text": "2.1 프론트엔드",
             "level": 3,
             "isMainTopic": false,
             "position": 250
           },
           {
             "id": "heading-6",
-            "text": "저장 계층",
+            "text": "2.2 백엔드",
             "level": 3,
             "isMainTopic": false,
             "position": 300
           },
           {
             "id": "heading-7",
-            "text": "분석 계층",
+            "text": "2.3 개발 도구",
             "level": 3,
             "isMainTopic": false,
             "position": 350
           },
           {
             "id": "heading-8",
-            "text": "표현 계층",
-            "level": 3,
-            "isMainTopic": false,
+            "text": "3. 핵심 기능",
+            "level": 2,
+            "isMainTopic": true,
             "position": 400
           },
           {
             "id": "heading-9",
-            "text": "구축 요구사항",
-            "level": 2,
-            "isMainTopic": true,
+            "text": "3.1 로그인 기능",
+            "level": 3,
+            "isMainTopic": false,
             "position": 450
           },
           {
             "id": "heading-10",
-            "text": "하드웨어",
+            "text": "3.2 검색 기능",
             "level": 3,
             "isMainTopic": false,
-            "position": 500
+            "position": 0
           },
           {
             "id": "heading-11",
-            "text": "소프트웨어",
+            "text": "3.3 다운로드 기능",
             "level": 3,
             "isMainTopic": false,
             "position": 550
           },
           {
             "id": "heading-12",
-            "text": "향후 로드맵",
-            "level": 2,
-            "isMainTopic": true,
-            "position": 600
+            "text": "3.4 다운로드 관리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 0
           },
           {
             "id": "heading-13",
-            "text": "2024년 하반기",
+            "text": "3.5 에러 처리",
             "level": 3,
             "isMainTopic": false,
-            "position": 650
+            "position": 0
           },
           {
             "id": "heading-14",
-            "text": "2025년",
+            "text": "3.6 모니터링",
             "level": 3,
             "isMainTopic": false,
             "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "4. 프로젝트 구조",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-16",
+            "text": "5. 설정 관리",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-17",
+            "text": "5.1 환경 변수",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 850
+          },
+          {
+            "id": "heading-18",
+            "text": "5.2 설정 파일",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 900
           }
         ]
       },
       "en": {
         "title": "Entasys",
         "description": "Development of Virtual Asset Exchange",
-        "content": "<h2 id=\"heading-0\">1. Project Overview</h2>\n<h3 id=\"heading-1\">Project Name</h3>\n<ul>\n<li>ENTASYS SIEM Solution</li>\n</ul>\n<h3 id=\"heading-2\">Project Purpose</h3>\n<ul>\n<li>Build an integrated security monitoring system that detects and responds to enterprise security threats in real-time</li>\n<li>Early detection of security threats by collecting and analyzing logs from various security equipment and systems</li>\n<li>Implementation of AI/ML-based intelligent threat detection and response system</li>\n</ul>\n<h3 id=\"heading-3\">Core Features</h3>\n<ol>\n<li>\n<p>Integrated Log Collection and Management</p>\n<ul>\n<li>Collect logs from security devices like firewalls, IPS, WAF</li>\n<li>Integration of server, network equipment, and application logs</li>\n<li>Real-time log normalization and correlation analysis</li>\n<li>Log original storage and tampering prevention</li>\n</ul>\n</li>\n<li>\n<p>Real-time Threat Detection</p>\n<ul>\n<li>AI-based User/Entity Behavior Analytics</li>\n<li>Detection of known and unknown threats</li>\n<li>Vulnerability scanning and monitoring</li>\n<li>Real-time threat intelligence integration</li>\n</ul>\n</li>\n<li>\n<p>Security Dashboard and Analysis</p>\n<ul>\n<li>Intuitive integrated security dashboard</li>\n<li>Real-time security event monitoring</li>\n<li>Drill-down analysis and forensic capabilities</li>\n<li>Automated custom report generation</li>\n</ul>\n</li>\n<li>\n<p>Automated Response System</p>\n<ul>\n<li>Automatic blocking/isolation upon threat detection</li>\n<li>Staff notification and ticketing integration</li>\n<li>Playbook-based response automation</li>\n<li>Security device integration and control</li>\n</ul>\n</li>\n</ol>\n<h2 id=\"heading-4\">System Architecture</h2>\n<h3 id=\"heading-5\">Collection Layer</h3>\n<ul>\n<li>Distributed log collector structure</li>\n<li>50,000 EPS processing performance per second</li>\n<li>Log filtering and normalization</li>\n<li>Data compression and encrypted transmission</li>\n</ul>\n<h3 id=\"heading-6\">Storage Layer</h3>\n<ul>\n<li>Based on distributed storage (Elasticsearch)</li>\n<li>Dual storage for real-time/long-term retention</li>\n<li>Encrypted data storage</li>\n<li>Automatic backup and recovery</li>\n</ul>\n<h3 id=\"heading-7\">Analysis Layer</h3>\n<ul>\n<li>Real-time correlation analysis engine</li>\n<li>ML-based anomaly detection</li>\n<li>Threat intelligence integration</li>\n<li>Rule-based detection</li>\n</ul>\n<h3 id=\"heading-8\">Presentation Layer</h3>\n<ul>\n<li>HTML5-based web console</li>\n<li>Responsive dashboard</li>\n<li>Drill-down analysis tools</li>\n<li>Customized reporting</li>\n</ul>\n<h2 id=\"heading-9\">Implementation Requirements</h2>\n<h3 id=\"heading-10\">Hardware</h3>\n<ul>\n<li>Collection Server: Minimum 8 cores/32GB RAM</li>\n<li>Analysis Server: Minimum 16 cores/64GB RAM</li>\n<li>Storage: Minimum 10TB SSD</li>\n</ul>\n<h3 id=\"heading-11\">Software</h3>\n<ul>\n<li>OS: RHEL/CentOS 7 or higher</li>\n<li>Docker/Kubernetes</li>\n<li>Elasticsearch 7.x</li>\n<li>Node.js 16.x</li>\n</ul>\n<h2 id=\"heading-12\">Future Roadmap</h2>\n<h3 id=\"heading-13\">2024 Second Half</h3>\n<ul>\n<li>AI engine advancement</li>\n<li>Transition to cloud-native architecture</li>\n<li>Expansion of global threat intelligence integration</li>\n</ul>\n<h3 id=\"heading-14\">2025</h3>\n<ul>\n<li>Application of Zero Trust security framework</li>\n<li>Blockchain-based log integrity verification</li>\n<li>Multi-cloud integrated monitoring</li>\n</ul>\n",
+        "content": "<h1 id=\"heading-0\">Project Overview</h1>\n<h2 id=\"heading-1\">1. System Architecture</h2>\n<h3 id=\"heading-2\">1.1 Overall Structure</h3>\n<pre><code class=\"language-mermaid\">graph TD\n    Client[Client] --&gt; |WebSocket| WS[WebSocket Server]\n    WS --&gt; |Events| DM[Download Manager]\n    DM --&gt; |Chunk Management| CM[Chunk Manager]\n    CM --&gt; |Query| OS[OpenSearch]\n    CM --&gt; |File Storage| FS[File System]\n    DM --&gt; |State Management| SM[State Manager]\n</code></pre>\n<h3 id=\"heading-3\">1.2 Key Components</h3>\n<ul>\n<li><strong>WebSocket Server</strong>: Real-time communication processing</li>\n<li><strong>Download Manager</strong>: Download process coordination</li>\n<li><strong>Chunk Manager</strong>: Data chunk processing</li>\n<li><strong>State Manager</strong>: Status and progress management</li>\n</ul>\n<h2 id=\"heading-4\">2. Technology Stack</h2>\n<h3 id=\"heading-5\">2.1 Frontend</h3>\n<ul>\n<li><strong>Framework</strong>: Next.js 13+</li>\n<li><strong>State Management</strong>: React Query</li>\n<li><strong>WebSocket</strong>: Socket.IO-client</li>\n<li><strong>UI Library</strong>: MUI/Tailwind</li>\n</ul>\n<h3 id=\"heading-6\">2.2 Backend</h3>\n<ul>\n<li><strong>Runtime</strong>: Node.js 18+</li>\n<li><strong>WebSocket</strong>: Socket.IO</li>\n<li><strong>Database</strong>: OpenSearch</li>\n<li><strong>File Processing</strong>: Node.js Streams</li>\n</ul>\n<h3 id=\"heading-7\">2.3 Development Tools</h3>\n<ul>\n<li><strong>Language</strong>: TypeScript 4.9+</li>\n<li><strong>Build</strong>: Webpack/Babel</li>\n<li><strong>Testing</strong>: Jest</li>\n<li><strong>Linting</strong>: ESLint/Prettier</li>\n</ul>\n<h2 id=\"heading-8\">3. Core Features</h2>\n<h3 id=\"heading-9\">3.1 Login Feature</h3>\n<p><img src=\"/images/entasys/entaasys_login.gif\" alt=\"Login Screen\"></p>\n<h3 id=\"heading-10\">3.2 Search Feature</h3>\n<p>Search Term Input and Results Display:\n<img src=\"/images/entasys/entaasys_search_term.gif\" alt=\"Search Term Input\"></p>\n<p>Search Results Filtering:\n<img src=\"/images/entasys/entaasys_search.gif\" alt=\"Search Results\"></p>\n<h3 id=\"heading-11\">3.3 Download Feature</h3>\n<p>Download Initiation:\n<img src=\"/images/entasys/entaasys_download_1.gif\" alt=\"Download 1\"></p>\n<p>Download Progress Status:\n<img src=\"/images/entasys/entaasys_download_2.gif\" alt=\"Download 2\"></p>\n<h3 id=\"heading-12\">3.4 Download Management</h3>\n<ul>\n<li>Large file chunk processing</li>\n<li>Real-time progress updates</li>\n<li>Automatic retry mechanism</li>\n<li>Memory usage optimization</li>\n</ul>\n<h3 id=\"heading-13\">3.5 Error Handling</h3>\n<ul>\n<li>Network error recovery</li>\n<li>Memory shortage handling</li>\n<li>Timeout management</li>\n<li>Incomplete file cleanup</li>\n</ul>\n<h3 id=\"heading-14\">3.6 Monitoring</h3>\n<ul>\n<li>Real-time progress tracking</li>\n<li>Resource usage monitoring</li>\n<li>Error logging</li>\n<li>Performance metrics collection</li>\n</ul>\n<h2 id=\"heading-15\">4. Project Structure</h2>\n<pre><code class=\"language-bash\">src/\n├── server/\n│   ├── lib/\n│   │   ├── downloadManager.ts      # Download management\n│   │   ├── downloadChunkManager.ts # Chunk processing\n│   │   ├── stateManager.ts        # State management\n│   │   ├── opensearch.ts          # DB connection\n│   │   └── utils/\n│   │       ├── logger.ts          # Logging\n│   │       └── errors.ts          # Error handling\n│   └── index.ts                   # Server entry point\n├── client/\n│   ├── components/\n│   │   ├── DownloadButton.tsx     # Download button\n│   │   ├── ProgressBar.tsx        # Progress display\n│   │   └── ErrorDisplay.tsx       # Error display\n│   ├── hooks/\n│   │   ├── useDownload.ts         # Download hook\n│   │   └── useWebSocket.ts        # WebSocket hook\n│   └── utils/\n│       ├── api.ts                 # API utilities\n│       └── format.ts              # Format utilities\n└── shared/\n    ├── types/                     # Type definitions\n    └── constants/                 # Constant definitions\n</code></pre>\n<h2 id=\"heading-16\">5. Configuration Management</h2>\n<h3 id=\"heading-17\">5.1 Environment Variables</h3>\n<pre><code class=\"language-env\"># Server\nPORT=8001\nWS_PORT=8001\nNODE_ENV=development\n\n# OpenSearch\nOPENSEARCH_HOST=localhost\nOPENSEARCH_PORT=9200\nOPENSEARCH_USERNAME=dev\nOPENSEARCH_PASSWORD=dev\n\n# Download\nMAX_CHUNK_SIZE=500000\nMAX_MEMORY_USAGE=1024\nDOWNLOAD_TIMEOUT=300000\n</code></pre>\n<h3 id=\"heading-18\">5.2 Configuration File</h3>\n<pre><code class=\"language-typescript\">// config.ts\nexport const CONFIG = {\n  download: {\n    chunkSize: 500000,\n    maxRetries: 3,\n    timeout: 300000,\n    tempDir: \"./temp\",\n  },\n  websocket: {\n    pingInterval: 10000,\n    pingTimeout: 5000,\n  },\n  opensearch: {\n    scrollTimeout: \"2m\",\n    batchSize: 1000,\n  },\n};\n</code></pre>\n",
         "tocItems": [
           {
             "id": "heading-0",
-            "text": "1. Project Overview",
-            "level": 2,
+            "text": "Project Overview",
+            "level": 1,
             "isMainTopic": true,
             "position": 0
           },
           {
             "id": "heading-1",
-            "text": "Project Name",
-            "level": 3,
-            "isMainTopic": false,
+            "text": "1. System Architecture",
+            "level": 2,
+            "isMainTopic": true,
             "position": 50
           },
           {
             "id": "heading-2",
-            "text": "Project Purpose",
+            "text": "1.1 Overall Structure",
             "level": 3,
             "isMainTopic": false,
             "position": 100
           },
           {
             "id": "heading-3",
-            "text": "Core Features",
+            "text": "1.2 Key Components",
             "level": 3,
             "isMainTopic": false,
             "position": 150
           },
           {
             "id": "heading-4",
-            "text": "System Architecture",
+            "text": "2. Technology Stack",
             "level": 2,
             "isMainTopic": true,
             "position": 200
           },
           {
             "id": "heading-5",
-            "text": "Collection Layer",
+            "text": "2.1 Frontend",
             "level": 3,
             "isMainTopic": false,
             "position": 250
           },
           {
             "id": "heading-6",
-            "text": "Storage Layer",
+            "text": "2.2 Backend",
             "level": 3,
             "isMainTopic": false,
             "position": 300
           },
           {
             "id": "heading-7",
-            "text": "Analysis Layer",
+            "text": "2.3 Development Tools",
             "level": 3,
             "isMainTopic": false,
             "position": 350
           },
           {
             "id": "heading-8",
-            "text": "Presentation Layer",
-            "level": 3,
-            "isMainTopic": false,
+            "text": "3. Core Features",
+            "level": 2,
+            "isMainTopic": true,
             "position": 400
           },
           {
             "id": "heading-9",
-            "text": "Implementation Requirements",
-            "level": 2,
-            "isMainTopic": true,
+            "text": "3.1 Login Feature",
+            "level": 3,
+            "isMainTopic": false,
             "position": 450
           },
           {
             "id": "heading-10",
-            "text": "Hardware",
+            "text": "3.2 Search Feature",
             "level": 3,
             "isMainTopic": false,
-            "position": 500
+            "position": 0
           },
           {
             "id": "heading-11",
-            "text": "Software",
+            "text": "3.3 Download Feature",
             "level": 3,
             "isMainTopic": false,
             "position": 550
           },
           {
             "id": "heading-12",
-            "text": "Future Roadmap",
+            "text": "3.4 Download Management",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 0
+          },
+          {
+            "id": "heading-13",
+            "text": "3.5 Error Handling",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 0
+          },
+          {
+            "id": "heading-14",
+            "text": "3.6 Monitoring",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "4. Project Structure",
             "level": 2,
             "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-16",
+            "text": "5. Configuration Management",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-17",
+            "text": "5.1 Environment Variables",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 850
+          },
+          {
+            "id": "heading-18",
+            "text": "5.2 Configuration File",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 900
+          }
+        ]
+      }
+    },
+    "imageHeights": {
+      "img-10": 400,
+      "img-12": 400,
+      "img-13": 400,
+      "img-15": 400,
+      "img-16": 400
+    }
+  },
+  {
+    "id": "entasys_2",
+    "title": "Entasys",
+    "content": "\n# 데이터 흐름\n\n## 1. OpenSearch 데이터 처리\n\n### 1.1 쿼리 최적화\n\n```typescript\n// opensearch.ts\nexport const buildOptimizedQuery = (searchParams: SearchParams) => {\n  return {\n    index: \"logs-*\",\n    body: {\n      query: {\n        bool: {\n          must: [\n            {\n              range: {\n                \"@timestamp\": {\n                  gte: searchParams.timeFrom,\n                  lte: searchParams.timeTo,\n                  format: \"strict_date_time\",\n                  time_zone: \"+09:00\",\n                },\n              },\n            },\n            // 추가 필터\n          ],\n        },\n      },\n      sort: [{ \"@timestamp\": \"asc\" }],\n      _source: [\"필요한 필드만 선택\"],\n    },\n    scroll: \"2m\",\n    size: 1000,\n  };\n};\n```\n\n### 1.2 스크롤 API 활용\n\n```typescript\nasync function* scrollSearch(client: Client, query: SearchParams) {\n  let response = await client.search(buildOptimizedQuery(query));\n  let scrollId = response._scroll_id;\n\n  while (true) {\n    yield response.hits.hits;\n\n    if (!response.hits.hits.length) break;\n\n    response = await client.scroll({\n      scroll_id: scrollId,\n      scroll: \"2m\",\n    });\n  }\n}\n```\n\n### 1.3 Circuit Breaker 설정\n\n```yaml\n# opensearch.yml\nindices.breaker.total.limit: 70%\nindices.breaker.request.limit: 60%\nindices.breaker.fielddata.limit: 40%\n```\n\n### 1.4 데이터 변환 파이프라인\n\n```typescript\ninterface TransformPipeline {\n  preProcess: (data: RawData) => ProcessedData;\n  transform: (data: ProcessedData) => TransformedData;\n  validate: (data: TransformedData) => boolean;\n  format: (data: TransformedData) => string;\n}\n```\n\n## 2. 파일 처리 프로세스\n\n### 2.1 청크 관리\n\n```typescript\ninterface ChunkManager {\n  chunkSize: number;\n  maxParallel: number;\n  chunks: Map<string, ChunkStatus>;\n\n  calculateChunks(totalSize: number): number;\n  processChunk(chunkId: string): Promise<void>;\n  mergeChunks(chunks: string[]): Promise<string>;\n}\n```\n\n### 2.2 스트림 처리\n\n```typescript\nclass DownloadStream extends Transform {\n  constructor(options: TransformOptions) {\n    super(options);\n  }\n\n  _transform(chunk: any, encoding: string, callback: Function) {\n    // 메모리 효율적인 변환 처리\n    const transformed = this.transformData(chunk);\n    this.push(transformed);\n    callback();\n  }\n}\n```\n\n### 2.3 파일 시스템 작업\n\n```typescript\nclass FileManager {\n  async createTempFile(chunkId: string): Promise<string> {\n    const path = `${TEMP_DIR}/${chunkId}.tmp`;\n    await fs.promises.mkdir(TEMP_DIR, { recursive: true });\n    return path;\n  }\n\n  async mergeFiles(files: string[], output: string): Promise<void> {\n    const writeStream = fs.createWriteStream(output);\n    for (const file of files) {\n      await pipeline(fs.createReadStream(file), writeStream);\n    }\n  }\n}\n```\n\n## 3. 진행률 추적\n\n### 3.1 진행률 계산\n\n```typescript\ninterface ProgressTracker {\n  totalRows: number;\n  processedRows: number;\n  startTime: number;\n\n  calculateProgress(): number;\n  estimateTimeRemaining(): number;\n  calculateSpeed(): number;\n}\n```\n\n### 3.2 상태 업데이트\n\n```typescript\nclass ProgressEmitter extends EventEmitter {\n  private updateInterval: number = 1000;\n  private lastUpdate: number = 0;\n\n  emitProgress(progress: ProgressData) {\n    const now = Date.now();\n    if (now - this.lastUpdate >= this.updateInterval) {\n      this.emit(\"progress\", progress);\n      this.lastUpdate = now;\n    }\n  }\n}\n```\n\n## 4. 메모리 관리\n\n### 4.1 메모리 모니터링\n\n```typescript\nclass MemoryMonitor {\n  private maxMemoryUsage: number;\n  private warningThreshold: number;\n\n  checkMemoryUsage(): MemoryStatus {\n    const used = process.memoryUsage();\n    return {\n      heapUsed: used.heapUsed,\n      heapTotal: used.heapTotal,\n      external: used.external,\n      warning: this.isWarningLevel(used.heapUsed),\n    };\n  }\n}\n```\n\n### 4.2 가비지 컬렉션 최적화\n\n```typescript\nconst gcOptimization = {\n  scheduleGC() {\n    if (global.gc) {\n      setInterval(() => {\n        if (this.shouldRunGC()) {\n          global.gc();\n        }\n      }, 30000);\n    }\n  },\n};\n```\n\n## 5. 에러 처리 전략\n\n### 5.1 에러 타입 정의\n\n```typescript\nenum DownloadError {\n  MEMORY_LIMIT = \"MEMORY_LIMIT\",\n  NETWORK_ERROR = \"NETWORK_ERROR\",\n  FILE_SYSTEM = \"FILE_SYSTEM\",\n  OPENSEARCH = \"OPENSEARCH\",\n  TIMEOUT = \"TIMEOUT\",\n}\n```\n\n### 5.2 재시도 메커니즘\n\n```typescript\nclass RetryManager {\n  private maxRetries: number = 3;\n  private backoffMs: number = 1000;\n\n  async withRetry<T>(operation: () => Promise<T>, context: string): Promise<T> {\n    let lastError: Error;\n\n    for (let i = 0; i < this.maxRetries; i++) {\n      try {\n        return await operation();\n      } catch (error) {\n        lastError = error;\n        await this.delay(this.calculateBackoff(i));\n      }\n    }\n\n    throw new Error(\n      `${context} failed after ${this.maxRetries} retries: ${lastError}`\n    );\n  }\n}\n```\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      "Express",
+      "MySQL",
+      "Web3.js",
+      "AWS",
+      "Ganache",
+      "Truffle",
+      "ERC20",
+      "MetaMask",
+      "Figma"
+    ],
+    "thumbnail": "/images/entasys/entaasys_search_term.gif",
+    "translations": {
+      "ko": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">데이터 흐름</h1>\n<h2 id=\"heading-1\">1. OpenSearch 데이터 처리</h2>\n<h3 id=\"heading-2\">1.1 쿼리 최적화</h3>\n<pre><code class=\"language-typescript\">// opensearch.ts\nexport const buildOptimizedQuery = (searchParams: SearchParams) =&gt; {\n  return {\n    index: \"logs-*\",\n    body: {\n      query: {\n        bool: {\n          must: [\n            {\n              range: {\n                \"@timestamp\": {\n                  gte: searchParams.timeFrom,\n                  lte: searchParams.timeTo,\n                  format: \"strict_date_time\",\n                  time_zone: \"+09:00\",\n                },\n              },\n            },\n            // 추가 필터\n          ],\n        },\n      },\n      sort: [{ \"@timestamp\": \"asc\" }],\n      _source: [\"필요한 필드만 선택\"],\n    },\n    scroll: \"2m\",\n    size: 1000,\n  };\n};\n</code></pre>\n<h3 id=\"heading-3\">1.2 스크롤 API 활용</h3>\n<pre><code class=\"language-typescript\">async function* scrollSearch(client: Client, query: SearchParams) {\n  let response = await client.search(buildOptimizedQuery(query));\n  let scrollId = response._scroll_id;\n\n  while (true) {\n    yield response.hits.hits;\n\n    if (!response.hits.hits.length) break;\n\n    response = await client.scroll({\n      scroll_id: scrollId,\n      scroll: \"2m\",\n    });\n  }\n}\n</code></pre>\n<h3 id=\"heading-4\">1.3 Circuit Breaker 설정</h3>\n<pre><code class=\"language-yaml\"># opensearch.yml\nindices.breaker.total.limit: 70%\nindices.breaker.request.limit: 60%\nindices.breaker.fielddata.limit: 40%\n</code></pre>\n<h3 id=\"heading-5\">1.4 데이터 변환 파이프라인</h3>\n<pre><code class=\"language-typescript\">interface TransformPipeline {\n  preProcess: (data: RawData) =&gt; ProcessedData;\n  transform: (data: ProcessedData) =&gt; TransformedData;\n  validate: (data: TransformedData) =&gt; boolean;\n  format: (data: TransformedData) =&gt; string;\n}\n</code></pre>\n<h2 id=\"heading-6\">2. 파일 처리 프로세스</h2>\n<h3 id=\"heading-7\">2.1 청크 관리</h3>\n<pre><code class=\"language-typescript\">interface ChunkManager {\n  chunkSize: number;\n  maxParallel: number;\n  chunks: Map&lt;string, ChunkStatus&gt;;\n\n  calculateChunks(totalSize: number): number;\n  processChunk(chunkId: string): Promise&lt;void&gt;;\n  mergeChunks(chunks: string[]): Promise&lt;string&gt;;\n}\n</code></pre>\n<h3 id=\"heading-8\">2.2 스트림 처리</h3>\n<pre><code class=\"language-typescript\">class DownloadStream extends Transform {\n  constructor(options: TransformOptions) {\n    super(options);\n  }\n\n  _transform(chunk: any, encoding: string, callback: Function) {\n    // 메모리 효율적인 변환 처리\n    const transformed = this.transformData(chunk);\n    this.push(transformed);\n    callback();\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">2.3 파일 시스템 작업</h3>\n<pre><code class=\"language-typescript\">class FileManager {\n  async createTempFile(chunkId: string): Promise&lt;string&gt; {\n    const path = `${TEMP_DIR}/${chunkId}.tmp`;\n    await fs.promises.mkdir(TEMP_DIR, { recursive: true });\n    return path;\n  }\n\n  async mergeFiles(files: string[], output: string): Promise&lt;void&gt; {\n    const writeStream = fs.createWriteStream(output);\n    for (const file of files) {\n      await pipeline(fs.createReadStream(file), writeStream);\n    }\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">3. 진행률 추적</h2>\n<h3 id=\"heading-11\">3.1 진행률 계산</h3>\n<pre><code class=\"language-typescript\">interface ProgressTracker {\n  totalRows: number;\n  processedRows: number;\n  startTime: number;\n\n  calculateProgress(): number;\n  estimateTimeRemaining(): number;\n  calculateSpeed(): number;\n}\n</code></pre>\n<h3 id=\"heading-12\">3.2 상태 업데이트</h3>\n<pre><code class=\"language-typescript\">class ProgressEmitter extends EventEmitter {\n  private updateInterval: number = 1000;\n  private lastUpdate: number = 0;\n\n  emitProgress(progress: ProgressData) {\n    const now = Date.now();\n    if (now - this.lastUpdate &gt;= this.updateInterval) {\n      this.emit(\"progress\", progress);\n      this.lastUpdate = now;\n    }\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">4. 메모리 관리</h2>\n<h3 id=\"heading-14\">4.1 메모리 모니터링</h3>\n<pre><code class=\"language-typescript\">class MemoryMonitor {\n  private maxMemoryUsage: number;\n  private warningThreshold: number;\n\n  checkMemoryUsage(): MemoryStatus {\n    const used = process.memoryUsage();\n    return {\n      heapUsed: used.heapUsed,\n      heapTotal: used.heapTotal,\n      external: used.external,\n      warning: this.isWarningLevel(used.heapUsed),\n    };\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">4.2 가비지 컬렉션 최적화</h3>\n<pre><code class=\"language-typescript\">const gcOptimization = {\n  scheduleGC() {\n    if (global.gc) {\n      setInterval(() =&gt; {\n        if (this.shouldRunGC()) {\n          global.gc();\n        }\n      }, 30000);\n    }\n  },\n};\n</code></pre>\n<h2 id=\"heading-16\">5. 에러 처리 전략</h2>\n<h3 id=\"heading-17\">5.1 에러 타입 정의</h3>\n<pre><code class=\"language-typescript\">enum DownloadError {\n  MEMORY_LIMIT = \"MEMORY_LIMIT\",\n  NETWORK_ERROR = \"NETWORK_ERROR\",\n  FILE_SYSTEM = \"FILE_SYSTEM\",\n  OPENSEARCH = \"OPENSEARCH\",\n  TIMEOUT = \"TIMEOUT\",\n}\n</code></pre>\n<h3 id=\"heading-18\">5.2 재시도 메커니즘</h3>\n<pre><code class=\"language-typescript\">class RetryManager {\n  private maxRetries: number = 3;\n  private backoffMs: number = 1000;\n\n  async withRetry&lt;T&gt;(operation: () =&gt; Promise&lt;T&gt;, context: string): Promise&lt;T&gt; {\n    let lastError: Error;\n\n    for (let i = 0; i &lt; this.maxRetries; i++) {\n      try {\n        return await operation();\n      } catch (error) {\n        lastError = error;\n        await this.delay(this.calculateBackoff(i));\n      }\n    }\n\n    throw new Error(\n      `${context} failed after ${this.maxRetries} retries: ${lastError}`\n    );\n  }\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "데이터 흐름",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. OpenSearch 데이터 처리",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 쿼리 최적화",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 스크롤 API 활용",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "1.3 Circuit Breaker 설정",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "1.4 데이터 변환 파이프라인",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2. 파일 처리 프로세스",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "2.1 청크 관리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "2.2 스트림 처리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "2.3 파일 시스템 작업",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "3. 진행률 추적",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "3.1 진행률 계산",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "3.2 상태 업데이트",
+            "level": 3,
+            "isMainTopic": false,
             "position": 600
           },
           {
             "id": "heading-13",
-            "text": "2024 Second Half",
-            "level": 3,
-            "isMainTopic": false,
+            "text": "4. 메모리 관리",
+            "level": 2,
+            "isMainTopic": true,
             "position": 650
           },
           {
             "id": "heading-14",
-            "text": "2025",
+            "text": "4.1 메모리 모니터링",
             "level": 3,
             "isMainTopic": false,
             "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "4.2 가비지 컬렉션 최적화",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
+          },
+          {
+            "id": "heading-16",
+            "text": "5. 에러 처리 전략",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 800
+          },
+          {
+            "id": "heading-17",
+            "text": "5.1 에러 타입 정의",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 850
+          },
+          {
+            "id": "heading-18",
+            "text": "5.2 재시도 메커니즘",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 900
+          }
+        ]
+      },
+      "en": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">Data Flow</h1>\n<h2 id=\"heading-1\">1. OpenSearch Data Processing</h2>\n<h3 id=\"heading-2\">1.1 Query Optimization</h3>\n<pre><code class=\"language-typescript\">// opensearch.ts\nexport const buildOptimizedQuery = (searchParams: SearchParams) =&gt; {\n  return {\n    index: \"logs-*\",\n    body: {\n      query: {\n        bool: {\n          must: [\n            {\n              range: {\n                \"@timestamp\": {\n                  gte: searchParams.timeFrom,\n                  lte: searchParams.timeTo,\n                  format: \"strict_date_time\",\n                  time_zone: \"+09:00\",\n                },\n              },\n            },\n            // Additional filters\n          ],\n        },\n      },\n      sort: [{ \"@timestamp\": \"asc\" }],\n      _source: [\"Select only required fields\"],\n    },\n    scroll: \"2m\",\n    size: 1000,\n  };\n};\n</code></pre>\n<h3 id=\"heading-3\">1.2 Using Scroll API</h3>\n<pre><code class=\"language-typescript\">async function* scrollSearch(client: Client, query: SearchParams) {\n  let response = await client.search(buildOptimizedQuery(query));\n  let scrollId = response._scroll_id;\n\n  while (true) {\n    yield response.hits.hits;\n\n    if (!response.hits.hits.length) break;\n\n    response = await client.scroll({\n      scroll_id: scrollId,\n      scroll: \"2m\",\n    });\n  }\n}\n</code></pre>\n<h3 id=\"heading-4\">1.3 Circuit Breaker Settings</h3>\n<pre><code class=\"language-yaml\"># opensearch.yml\nindices.breaker.total.limit: 70%\nindices.breaker.request.limit: 60%\nindices.breaker.fielddata.limit: 40%\n</code></pre>\n<h3 id=\"heading-5\">1.4 Data Transformation Pipeline</h3>\n<pre><code class=\"language-typescript\">interface TransformPipeline {\n  preProcess: (data: RawData) =&gt; ProcessedData;\n  transform: (data: ProcessedData) =&gt; TransformedData;\n  validate: (data: TransformedData) =&gt; boolean;\n  format: (data: TransformedData) =&gt; string;\n}\n</code></pre>\n<h2 id=\"heading-6\">2. File Processing Process</h2>\n<h3 id=\"heading-7\">2.1 Chunk Management</h3>\n<pre><code class=\"language-typescript\">interface ChunkManager {\n  chunkSize: number;\n  maxParallel: number;\n  chunks: Map&lt;string, ChunkStatus&gt;;\n\n  calculateChunks(totalSize: number): number;\n  processChunk(chunkId: string): Promise&lt;void&gt;;\n  mergeChunks(chunks: string[]): Promise&lt;string&gt;;\n}\n</code></pre>\n<h3 id=\"heading-8\">2.2 Stream Processing</h3>\n<pre><code class=\"language-typescript\">class DownloadStream extends Transform {\n  constructor(options: TransformOptions) {\n    super(options);\n  }\n\n  _transform(chunk: any, encoding: string, callback: Function) {\n    // Memory-efficient transformation processing\n    const transformed = this.transformData(chunk);\n    this.push(transformed);\n    callback();\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">2.3 File System Operations</h3>\n<pre><code class=\"language-typescript\">class FileManager {\n  async createTempFile(chunkId: string): Promise&lt;string&gt; {\n    const path = `${TEMP_DIR}/${chunkId}.tmp`;\n    await fs.promises.mkdir(TEMP_DIR, { recursive: true });\n    return path;\n  }\n\n  async mergeFiles(files: string[], output: string): Promise&lt;void&gt; {\n    const writeStream = fs.createWriteStream(output);\n    for (const file of files) {\n      await pipeline(fs.createReadStream(file), writeStream);\n    }\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">3. Progress Tracking</h2>\n<h3 id=\"heading-11\">3.1 Progress Calculation</h3>\n<pre><code class=\"language-typescript\">interface ProgressTracker {\n  totalRows: number;\n  processedRows: number;\n  startTime: number;\n\n  calculateProgress(): number;\n  estimateTimeRemaining(): number;\n  calculateSpeed(): number;\n}\n</code></pre>\n<h3 id=\"heading-12\">3.2 Status Updates</h3>\n<pre><code class=\"language-typescript\">class ProgressEmitter extends EventEmitter {\n  private updateInterval: number = 1000;\n  private lastUpdate: number = 0;\n\n  emitProgress(progress: ProgressData) {\n    const now = Date.now();\n    if (now - this.lastUpdate &gt;= this.updateInterval) {\n      this.emit(\"progress\", progress);\n      this.lastUpdate = now;\n    }\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">4. Memory Management</h2>\n<h3 id=\"heading-14\">4.1 Memory Monitoring</h3>\n<pre><code class=\"language-typescript\">class MemoryMonitor {\n  private maxMemoryUsage: number;\n  private warningThreshold: number;\n\n  checkMemoryUsage(): MemoryStatus {\n    const used = process.memoryUsage();\n    return {\n      heapUsed: used.heapUsed,\n      heapTotal: used.heapTotal,\n      external: used.external,\n      warning: this.isWarningLevel(used.heapUsed),\n    };\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">4.2 Garbage Collection Optimization</h3>\n<pre><code class=\"language-typescript\">const gcOptimization = {\n  scheduleGC() {\n    if (global.gc) {\n      setInterval(() =&gt; {\n        if (this.shouldRunGC()) {\n          global.gc();\n        }\n      }, 30000);\n    }\n  },\n};\n</code></pre>\n<h2 id=\"heading-16\">5. Error Handling Strategy</h2>\n<h3 id=\"heading-17\">5.1 Error Type Definition</h3>\n<pre><code class=\"language-typescript\">enum DownloadError {\n  MEMORY_LIMIT = \"MEMORY_LIMIT\",\n  NETWORK_ERROR = \"NETWORK_ERROR\",\n  FILE_SYSTEM = \"FILE_SYSTEM\",\n  OPENSEARCH = \"OPENSEARCH\",\n  TIMEOUT = \"TIMEOUT\",\n}\n</code></pre>\n<h3 id=\"heading-18\">5.2 Retry Mechanism</h3>\n<pre><code class=\"language-typescript\">class RetryManager {\n  private maxRetries: number = 3;\n  private backoffMs: number = 1000;\n\n  async withRetry&lt;T&gt;(operation: () =&gt; Promise&lt;T&gt;, context: string): Promise&lt;T&gt; {\n    let lastError: Error;\n\n    for (let i = 0; i &lt; this.maxRetries; i++) {\n      try {\n        return await operation();\n      } catch (error) {\n        lastError = error;\n        await this.delay(this.calculateBackoff(i));\n      }\n    }\n\n    throw new Error(\n      `${context} failed after ${this.maxRetries} retries: ${lastError}`\n    );\n  }\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "Data Flow",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. OpenSearch Data Processing",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 Query Optimization",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 Using Scroll API",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "1.3 Circuit Breaker Settings",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "1.4 Data Transformation Pipeline",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2. File Processing Process",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "2.1 Chunk Management",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "2.2 Stream Processing",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "2.3 File System Operations",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "3. Progress Tracking",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "3.1 Progress Calculation",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "3.2 Status Updates",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 600
+          },
+          {
+            "id": "heading-13",
+            "text": "4. Memory Management",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 650
+          },
+          {
+            "id": "heading-14",
+            "text": "4.1 Memory Monitoring",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "4.2 Garbage Collection Optimization",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
+          },
+          {
+            "id": "heading-16",
+            "text": "5. Error Handling Strategy",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 800
+          },
+          {
+            "id": "heading-17",
+            "text": "5.1 Error Type Definition",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 850
+          },
+          {
+            "id": "heading-18",
+            "text": "5.2 Retry Mechanism",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 900
+          }
+        ]
+      }
+    },
+    "imageHeights": {}
+  },
+  {
+    "id": "entasys_3",
+    "title": "Entasys",
+    "content": "\n# 통신 프로토콜\n\n## 1. WebSocket 이벤트 정의\n\n### 1.1 이벤트 타입\n\n```typescript\nenum WebSocketEvent {\n  // 다운로드 관련\n  DOWNLOAD_REQUEST = \"download:request\",\n  DOWNLOAD_START = \"download:start\",\n  DOWNLOAD_PROGRESS = \"download:progress\",\n  DOWNLOAD_COMPLETE = \"download:complete\",\n  DOWNLOAD_ERROR = \"download:error\",\n\n  // 상태 관련\n  STATUS_UPDATE = \"status:update\",\n  STATUS_CHECK = \"status:check\",\n\n  // 시스템 관련\n  SYSTEM_ERROR = \"system:error\",\n  CONNECTION_HEALTH = \"connection:health\",\n}\n```\n\n### 1.2 메시지 포맷\n\n```typescript\ninterface WebSocketMessage<T = any> {\n  event: WebSocketEvent;\n  data: T;\n  timestamp: number;\n  requestId: string;\n}\n\ninterface DownloadRequest {\n  searchParams: {\n    timeFrom: string;\n    timeTo: string;\n    filters: Filter[];\n  };\n  outputFormat: \"csv\" | \"json\";\n  compression: boolean;\n}\n\ninterface ProgressUpdate {\n  requestId: string;\n  progress: number;\n  processedRows: number;\n  totalRows: number;\n  speed: number;\n  estimatedTimeRemaining: number;\n}\n```\n\n## 2. 메시지 흐름\n\n### 2.1 다운로드 시작\n\n```mermaid\nsequenceDiagram\n    Client->>Server: DOWNLOAD_REQUEST\n    Server->>Client: DOWNLOAD_START\n    loop Progress Updates\n        Server->>Client: DOWNLOAD_PROGRESS\n    end\n    Server->>Client: DOWNLOAD_COMPLETE\n```\n\n### 2.2 에러 처리 흐름\n\n```typescript\ninterface ErrorResponse {\n  code: string;\n  message: string;\n  details?: any;\n  recoverable: boolean;\n  retryAfter?: number;\n}\n\nconst errorHandler = {\n  handleError(error: Error): ErrorResponse {\n    return {\n      code: determineErrorCode(error),\n      message: error.message,\n      recoverable: isRecoverable(error),\n      retryAfter: calculateRetryDelay(error),\n    };\n  },\n};\n```\n\n## 3. 상태 관리\n\n### 3.1 연결 상태 관리\n\n```typescript\nclass ConnectionManager {\n  private reconnectAttempts: number = 0;\n  private maxReconnectAttempts: number = 5;\n  private reconnectDelay: number = 1000;\n\n  async handleDisconnect() {\n    if (this.reconnectAttempts < this.maxReconnectAttempts) {\n      await this.reconnect();\n    } else {\n      this.emit(\"connection:failed\");\n    }\n  }\n}\n```\n\n### 3.2 세션 상태\n\n```typescript\ninterface SessionState {\n  connected: boolean;\n  lastHeartbeat: number;\n  activeDownloads: Map<string, DownloadStatus>;\n  systemHealth: SystemHealth;\n}\n```\n\n## 4. 보안\n\n### 4.1 인증\n\n```typescript\ninterface AuthenticatedMessage extends WebSocketMessage {\n  auth: {\n    token: string;\n    timestamp: number;\n    signature: string;\n  };\n}\n\nconst authenticator = {\n  validateMessage(message: AuthenticatedMessage): boolean {\n    return (\n      this.verifySignature(message) &&\n      this.checkTimestamp(message.auth.timestamp)\n    );\n  },\n};\n```\n\n### 4.2 메시지 암호화\n\n```typescript\nclass MessageEncryption {\n  private readonly algorithm = \"aes-256-gcm\";\n\n  encrypt(message: WebSocketMessage): EncryptedMessage {\n    const iv = crypto.randomBytes(12);\n    const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);\n\n    return {\n      encrypted: Buffer.concat([\n        cipher.update(JSON.stringify(message)),\n        cipher.final(),\n      ]),\n      iv: iv,\n      tag: cipher.getAuthTag(),\n    };\n  }\n}\n```\n\n## 5. 성능 최적화\n\n### 5.1 메시지 압축\n\n```typescript\nclass MessageCompression {\n  compress(message: WebSocketMessage): Buffer {\n    return zlib.deflateSync(JSON.stringify(message));\n  }\n\n  decompress(compressed: Buffer): WebSocketMessage {\n    return JSON.parse(zlib.inflateSync(compressed).toString());\n  }\n}\n```\n\n### 5.2 배치 처리\n\n```typescript\nclass MessageBatcher {\n  private batchSize: number = 100;\n  private batchTimeout: number = 1000;\n  private batch: ProgressUpdate[] = [];\n\n  addToBatch(update: ProgressUpdate) {\n    this.batch.push(update);\n\n    if (this.shouldFlush()) {\n      this.flushBatch();\n    }\n  }\n}\n```\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      "Express",
+      "MySQL",
+      "Web3.js",
+      "AWS",
+      "Ganache",
+      "Truffle",
+      "ERC20",
+      "MetaMask",
+      "Figma"
+    ],
+    "thumbnail": "/images/entasys/entaasys_login.gif",
+    "translations": {
+      "ko": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">통신 프로토콜</h1>\n<h2 id=\"heading-1\">1. WebSocket 이벤트 정의</h2>\n<h3 id=\"heading-2\">1.1 이벤트 타입</h3>\n<pre><code class=\"language-typescript\">enum WebSocketEvent {\n  // 다운로드 관련\n  DOWNLOAD_REQUEST = \"download:request\",\n  DOWNLOAD_START = \"download:start\",\n  DOWNLOAD_PROGRESS = \"download:progress\",\n  DOWNLOAD_COMPLETE = \"download:complete\",\n  DOWNLOAD_ERROR = \"download:error\",\n\n  // 상태 관련\n  STATUS_UPDATE = \"status:update\",\n  STATUS_CHECK = \"status:check\",\n\n  // 시스템 관련\n  SYSTEM_ERROR = \"system:error\",\n  CONNECTION_HEALTH = \"connection:health\",\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 메시지 포맷</h3>\n<pre><code class=\"language-typescript\">interface WebSocketMessage&lt;T = any&gt; {\n  event: WebSocketEvent;\n  data: T;\n  timestamp: number;\n  requestId: string;\n}\n\ninterface DownloadRequest {\n  searchParams: {\n    timeFrom: string;\n    timeTo: string;\n    filters: Filter[];\n  };\n  outputFormat: \"csv\" | \"json\";\n  compression: boolean;\n}\n\ninterface ProgressUpdate {\n  requestId: string;\n  progress: number;\n  processedRows: number;\n  totalRows: number;\n  speed: number;\n  estimatedTimeRemaining: number;\n}\n</code></pre>\n<h2 id=\"heading-4\">2. 메시지 흐름</h2>\n<h3 id=\"heading-5\">2.1 다운로드 시작</h3>\n<pre><code class=\"language-mermaid\">sequenceDiagram\n    Client-&gt;&gt;Server: DOWNLOAD_REQUEST\n    Server-&gt;&gt;Client: DOWNLOAD_START\n    loop Progress Updates\n        Server-&gt;&gt;Client: DOWNLOAD_PROGRESS\n    end\n    Server-&gt;&gt;Client: DOWNLOAD_COMPLETE\n</code></pre>\n<h3 id=\"heading-6\">2.2 에러 처리 흐름</h3>\n<pre><code class=\"language-typescript\">interface ErrorResponse {\n  code: string;\n  message: string;\n  details?: any;\n  recoverable: boolean;\n  retryAfter?: number;\n}\n\nconst errorHandler = {\n  handleError(error: Error): ErrorResponse {\n    return {\n      code: determineErrorCode(error),\n      message: error.message,\n      recoverable: isRecoverable(error),\n      retryAfter: calculateRetryDelay(error),\n    };\n  },\n};\n</code></pre>\n<h2 id=\"heading-7\">3. 상태 관리</h2>\n<h3 id=\"heading-8\">3.1 연결 상태 관리</h3>\n<pre><code class=\"language-typescript\">class ConnectionManager {\n  private reconnectAttempts: number = 0;\n  private maxReconnectAttempts: number = 5;\n  private reconnectDelay: number = 1000;\n\n  async handleDisconnect() {\n    if (this.reconnectAttempts &lt; this.maxReconnectAttempts) {\n      await this.reconnect();\n    } else {\n      this.emit(\"connection:failed\");\n    }\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 세션 상태</h3>\n<pre><code class=\"language-typescript\">interface SessionState {\n  connected: boolean;\n  lastHeartbeat: number;\n  activeDownloads: Map&lt;string, DownloadStatus&gt;;\n  systemHealth: SystemHealth;\n}\n</code></pre>\n<h2 id=\"heading-10\">4. 보안</h2>\n<h3 id=\"heading-11\">4.1 인증</h3>\n<pre><code class=\"language-typescript\">interface AuthenticatedMessage extends WebSocketMessage {\n  auth: {\n    token: string;\n    timestamp: number;\n    signature: string;\n  };\n}\n\nconst authenticator = {\n  validateMessage(message: AuthenticatedMessage): boolean {\n    return (\n      this.verifySignature(message) &amp;&amp;\n      this.checkTimestamp(message.auth.timestamp)\n    );\n  },\n};\n</code></pre>\n<h3 id=\"heading-12\">4.2 메시지 암호화</h3>\n<pre><code class=\"language-typescript\">class MessageEncryption {\n  private readonly algorithm = \"aes-256-gcm\";\n\n  encrypt(message: WebSocketMessage): EncryptedMessage {\n    const iv = crypto.randomBytes(12);\n    const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);\n\n    return {\n      encrypted: Buffer.concat([\n        cipher.update(JSON.stringify(message)),\n        cipher.final(),\n      ]),\n      iv: iv,\n      tag: cipher.getAuthTag(),\n    };\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. 성능 최적화</h2>\n<h3 id=\"heading-14\">5.1 메시지 압축</h3>\n<pre><code class=\"language-typescript\">class MessageCompression {\n  compress(message: WebSocketMessage): Buffer {\n    return zlib.deflateSync(JSON.stringify(message));\n  }\n\n  decompress(compressed: Buffer): WebSocketMessage {\n    return JSON.parse(zlib.inflateSync(compressed).toString());\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 배치 처리</h3>\n<pre><code class=\"language-typescript\">class MessageBatcher {\n  private batchSize: number = 100;\n  private batchTimeout: number = 1000;\n  private batch: ProgressUpdate[] = [];\n\n  addToBatch(update: ProgressUpdate) {\n    this.batch.push(update);\n\n    if (this.shouldFlush()) {\n      this.flushBatch();\n    }\n  }\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "통신 프로토콜",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. WebSocket 이벤트 정의",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 이벤트 타입",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 메시지 포맷",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "2. 메시지 흐름",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "2.1 다운로드 시작",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2.2 에러 처리 흐름",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "3. 상태 관리",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "3.1 연결 상태 관리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "3.2 세션 상태",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "4. 보안",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "4.1 인증",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "4.2 메시지 암호화",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 600
+          },
+          {
+            "id": "heading-13",
+            "text": "5. 성능 최적화",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 650
+          },
+          {
+            "id": "heading-14",
+            "text": "5.1 메시지 압축",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "5.2 배치 처리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
+          }
+        ]
+      },
+      "en": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">Communication Protocol</h1>\n<h2 id=\"heading-1\">1. WebSocket Event Definition</h2>\n<h3 id=\"heading-2\">1.1 Event Type</h3>\n<pre><code class=\"language-typescript\">enum WebSocketEvent {\n  // Download related\n  DOWNLOAD_REQUEST = \"download:request\",\n  DOWNLOAD_START = \"download:start\",\n  DOWNLOAD_PROGRESS = \"download:progress\",\n  DOWNLOAD_COMPLETE = \"download:complete\",\n  DOWNLOAD_ERROR = \"download:error\",\n\n  // Status related\n  STATUS_UPDATE = \"status:update\",\n  STATUS_CHECK = \"status:check\",\n\n  // System related\n  SYSTEM_ERROR = \"system:error\",\n  CONNECTION_HEALTH = \"connection:health\",\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 Message Format</h3>\n<pre><code class=\"language-typescript\">interface WebSocketMessage&lt;T = any&gt; {\n  event: WebSocketEvent;\n  data: T;\n  timestamp: number;\n  requestId: string;\n}\n\ninterface DownloadRequest {\n  searchParams: {\n    timeFrom: string;\n    timeTo: string;\n    filters: Filter[];\n  };\n  outputFormat: \"csv\" | \"json\";\n  compression: boolean;\n}\n\ninterface ProgressUpdate {\n  requestId: string;\n  progress: number;\n  processedRows: number;\n  totalRows: number;\n  speed: number;\n  estimatedTimeRemaining: number;\n}\n</code></pre>\n<h2 id=\"heading-4\">2. Message Flow</h2>\n<h3 id=\"heading-5\">2.1 Download Start</h3>\n<pre><code class=\"language-mermaid\">sequenceDiagram\n    Client-&gt;&gt;Server: DOWNLOAD_REQUEST\n    Server-&gt;&gt;Client: DOWNLOAD_START\n    loop Progress Updates\n        Server-&gt;&gt;Client: DOWNLOAD_PROGRESS\n    end\n    Server-&gt;&gt;Client: DOWNLOAD_COMPLETE\n</code></pre>\n<h3 id=\"heading-6\">2.2 Error Handling Flow</h3>\n<pre><code class=\"language-typescript\">interface ErrorResponse {\n  code: string;\n  message: string;\n  details?: any;\n  recoverable: boolean;\n  retryAfter?: number;\n}\n\nconst errorHandler = {\n  handleError(error: Error): ErrorResponse {\n    return {\n      code: determineErrorCode(error),\n      message: error.message,\n      recoverable: isRecoverable(error),\n      retryAfter: calculateRetryDelay(error),\n    };\n  },\n};\n</code></pre>\n<h2 id=\"heading-7\">3. Status Management</h2>\n<h3 id=\"heading-8\">3.1 Connection State Management</h3>\n<pre><code class=\"language-typescript\">class ConnectionManager {\n  private reconnectAttempts: number = 0;\n  private maxReconnectAttempts: number = 5;\n  private reconnectDelay: number = 1000;\n\n  async handleDisconnect() {\n    if (this.reconnectAttempts &lt; this.maxReconnectAttempts) {\n      await this.reconnect();\n    } else {\n      this.emit(\"connection:failed\");\n    }\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 Session State</h3>\n<pre><code class=\"language-typescript\">interface SessionState {\n  connected: boolean;\n  lastHeartbeat: number;\n  activeDownloads: Map&lt;string, DownloadStatus&gt;;\n  systemHealth: SystemHealth;\n}\n</code></pre>\n<h2 id=\"heading-10\">4. Security</h2>\n<h3 id=\"heading-11\">4.1 Authentication</h3>\n<pre><code class=\"language-typescript\">interface AuthenticatedMessage extends WebSocketMessage {\n  auth: {\n    token: string;\n    timestamp: number;\n    signature: string;\n  };\n}\n\nconst authenticator = {\n  validateMessage(message: AuthenticatedMessage): boolean {\n    return (\n      this.verifySignature(message) &amp;&amp;\n      this.checkTimestamp(message.auth.timestamp)\n    );\n  },\n};\n</code></pre>\n<h3 id=\"heading-12\">4.2 Message Encryption</h3>\n<pre><code class=\"language-typescript\">class MessageEncryption {\n  private readonly algorithm = \"aes-256-gcm\";\n\n  encrypt(message: WebSocketMessage): EncryptedMessage {\n    const iv = crypto.randomBytes(12);\n    const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);\n\n    return {\n      encrypted: Buffer.concat([\n        cipher.update(JSON.stringify(message)),\n        cipher.final(),\n      ]),\n      iv: iv,\n      tag: cipher.getAuthTag(),\n    };\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. Performance Optimization</h2>\n<h3 id=\"heading-14\">5.1 Message Compression</h3>\n<pre><code class=\"language-typescript\">class MessageCompression {\n  compress(message: WebSocketMessage): Buffer {\n    return zlib.deflateSync(JSON.stringify(message));\n  }\n\n  decompress(compressed: Buffer): WebSocketMessage {\n    return JSON.parse(zlib.inflateSync(compressed).toString());\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 Batch Processing</h3>\n<pre><code class=\"language-typescript\">class MessageBatcher {\n  private batchSize: number = 100;\n  private batchTimeout: number = 1000;\n  private batch: ProgressUpdate[] = [];\n\n  addToBatch(update: ProgressUpdate) {\n    this.batch.push(update);\n\n    if (this.shouldFlush()) {\n      this.flushBatch();\n    }\n  }\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "Communication Protocol",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. WebSocket Event Definition",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 Event Type",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 Message Format",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "2. Message Flow",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "2.1 Download Start",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2.2 Error Handling Flow",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "3. Status Management",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "3.1 Connection State Management",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "3.2 Session State",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "4. Security",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "4.1 Authentication",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "4.2 Message Encryption",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 600
+          },
+          {
+            "id": "heading-13",
+            "text": "5. Performance Optimization",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 650
+          },
+          {
+            "id": "heading-14",
+            "text": "5.1 Message Compression",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "5.2 Batch Processing",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
+          }
+        ]
+      }
+    },
+    "imageHeights": {}
+  },
+  {
+    "id": "entasys_4",
+    "title": "Entasys",
+    "content": "\n# 핵심 컴포넌트\n\n## 1. DownloadManager\n\n### 1.1 기본 구조\n\n```typescript\nclass DownloadManager {\n  private activeDownloads: Map<string, Download>;\n  private chunkManager: DownloadChunkManager;\n  private eventEmitter: EventEmitter;\n\n  constructor(config: DownloadManagerConfig) {\n    this.maxConcurrent = config.maxConcurrent;\n    this.tempDir = config.tempDir;\n    this.chunkSize = config.chunkSize;\n  }\n\n  async createDownload(params: DownloadParams): Promise<string> {\n    const downloadId = generateUniqueId();\n    const download = new Download(params, this.chunkManager);\n    this.activeDownloads.set(downloadId, download);\n    return downloadId;\n  }\n}\n```\n\n### 1.2 다운로드 상태 관리\n\n```typescript\ninterface DownloadState {\n  status: DownloadStatus;\n  progress: number;\n  error?: Error;\n  startTime: number;\n  endTime?: number;\n  totalChunks: number;\n  completedChunks: number;\n}\n\nclass Download {\n  private state: DownloadState;\n\n  updateProgress(completedChunks: number) {\n    this.state.completedChunks = completedChunks;\n    this.state.progress = (completedChunks / this.state.totalChunks) * 100;\n    this.emitProgress();\n  }\n}\n```\n\n## 2. DownloadChunkManager\n\n### 2.1 청크 처리\n\n```typescript\nclass DownloadChunkManager {\n  private activeChunks: Map<string, ChunkProcess>;\n  private maxParallelChunks: number;\n\n  async processChunk(chunk: DataChunk): Promise<void> {\n    const chunkProcess = new ChunkProcess(chunk);\n    this.activeChunks.set(chunk.id, chunkProcess);\n\n    try {\n      await chunkProcess.process();\n      await this.mergeChunkFile(chunk.id);\n    } finally {\n      this.activeChunks.delete(chunk.id);\n    }\n  }\n}\n```\n\n### 2.2 메모리 관리\n\n```typescript\nclass ChunkProcess {\n  private memoryLimit: number;\n  private buffer: Buffer;\n\n  async processWithMemoryCheck(data: any) {\n    const memoryUsage = process.memoryUsage().heapUsed;\n\n    if (memoryUsage > this.memoryLimit) {\n      await this.flushToFile();\n      this.buffer = Buffer.alloc(0);\n    }\n\n    this.buffer = Buffer.concat([this.buffer, data]);\n  }\n}\n```\n\n## 3. 파일 시스템 관리\n\n### 3.1 파일 작업\n\n```typescript\nclass FileSystemManager {\n  private readonly baseDir: string;\n\n  async createTempDirectory(): Promise<string> {\n    const tempDir = path.join(this.baseDir, \"temp\", uuidv4());\n    await fs.promises.mkdir(tempDir, { recursive: true });\n    return tempDir;\n  }\n\n  async cleanupTempFiles(downloadId: string): Promise<void> {\n    const tempDir = this.getTempDirectory(downloadId);\n    await fs.promises.rm(tempDir, { recursive: true, force: true });\n  }\n}\n```\n\n### 3.2 스트림 처리\n\n```typescript\nclass StreamManager {\n  createReadStream(filePath: string, options: StreamOptions): ReadStream {\n    return fs.createReadStream(filePath, {\n      highWaterMark: this.calculateOptimalBufferSize(),\n      ...options,\n    });\n  }\n\n  async pipeWithProgress(\n    readStream: ReadStream,\n    writeStream: WriteStream,\n    onProgress: (progress: number) => void\n  ): Promise<void> {\n    return new Promise((resolve, reject) => {\n      readStream.pipe(writeStream).on(\"error\", reject).on(\"finish\", resolve);\n    });\n  }\n}\n```\n\n## 4. 상태 관리\n\n### 4.1 상태 저장소\n\n```typescript\nclass StateStore {\n  private state: Map<string, any>;\n  private subscribers: Set<(state: any) => void>;\n\n  setState(key: string, value: any) {\n    this.state.set(key, value);\n    this.notifySubscribers();\n  }\n\n  subscribe(callback: (state: any) => void) {\n    this.subscribers.add(callback);\n    return () => this.subscribers.delete(callback);\n  }\n}\n```\n\n### 4.2 이벤트 관리\n\n```typescript\nclass EventManager extends EventEmitter {\n  private readonly eventHistory: Map<string, any[]>;\n\n  emitWithHistory(event: string, data: any) {\n    this.saveToHistory(event, data);\n    this.emit(event, data);\n  }\n\n  getEventHistory(event: string): any[] {\n    return this.eventHistory.get(event) || [];\n  }\n}\n```\n\n## 5. 의존성 관리\n\n### 5.1 의존성 주입\n\n```typescript\ninterface Dependencies {\n  fileManager: FileSystemManager;\n  stateStore: StateStore;\n  eventManager: EventManager;\n  chunkManager: DownloadChunkManager;\n}\n\nclass DependencyContainer {\n  private static instance: DependencyContainer;\n  private dependencies: Dependencies;\n\n  static getInstance(): DependencyContainer {\n    if (!DependencyContainer.instance) {\n      DependencyContainer.instance = new DependencyContainer();\n    }\n    return DependencyContainer.instance;\n  }\n\n  register<K extends keyof Dependencies>(key: K, dependency: Dependencies[K]) {\n    this.dependencies[key] = dependency;\n  }\n}\n```\n\n### 5.2 서비스 로케이터\n\n```typescript\nclass ServiceLocator {\n  private static services: Map<string, any> = new Map();\n\n  static register(name: string, service: any) {\n    this.services.set(name, service);\n  }\n\n  static get<T>(name: string): T {\n    if (!this.services.has(name)) {\n      throw new Error(`Service ${name} not found`);\n    }\n    return this.services.get(name);\n  }\n}\n```\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      "Express",
+      "MySQL",
+      "Web3.js",
+      "AWS",
+      "Ganache",
+      "Truffle",
+      "ERC20",
+      "MetaMask",
+      "Figma"
+    ],
+    "thumbnail": "/images/entasys/entaasys_search.gif",
+    "translations": {
+      "ko": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">핵심 컴포넌트</h1>\n<h2 id=\"heading-1\">1. DownloadManager</h2>\n<h3 id=\"heading-2\">1.1 기본 구조</h3>\n<pre><code class=\"language-typescript\">class DownloadManager {\n  private activeDownloads: Map&lt;string, Download&gt;;\n  private chunkManager: DownloadChunkManager;\n  private eventEmitter: EventEmitter;\n\n  constructor(config: DownloadManagerConfig) {\n    this.maxConcurrent = config.maxConcurrent;\n    this.tempDir = config.tempDir;\n    this.chunkSize = config.chunkSize;\n  }\n\n  async createDownload(params: DownloadParams): Promise&lt;string&gt; {\n    const downloadId = generateUniqueId();\n    const download = new Download(params, this.chunkManager);\n    this.activeDownloads.set(downloadId, download);\n    return downloadId;\n  }\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 다운로드 상태 관리</h3>\n<pre><code class=\"language-typescript\">interface DownloadState {\n  status: DownloadStatus;\n  progress: number;\n  error?: Error;\n  startTime: number;\n  endTime?: number;\n  totalChunks: number;\n  completedChunks: number;\n}\n\nclass Download {\n  private state: DownloadState;\n\n  updateProgress(completedChunks: number) {\n    this.state.completedChunks = completedChunks;\n    this.state.progress = (completedChunks / this.state.totalChunks) * 100;\n    this.emitProgress();\n  }\n}\n</code></pre>\n<h2 id=\"heading-4\">2. DownloadChunkManager</h2>\n<h3 id=\"heading-5\">2.1 청크 처리</h3>\n<pre><code class=\"language-typescript\">class DownloadChunkManager {\n  private activeChunks: Map&lt;string, ChunkProcess&gt;;\n  private maxParallelChunks: number;\n\n  async processChunk(chunk: DataChunk): Promise&lt;void&gt; {\n    const chunkProcess = new ChunkProcess(chunk);\n    this.activeChunks.set(chunk.id, chunkProcess);\n\n    try {\n      await chunkProcess.process();\n      await this.mergeChunkFile(chunk.id);\n    } finally {\n      this.activeChunks.delete(chunk.id);\n    }\n  }\n}\n</code></pre>\n<h3 id=\"heading-6\">2.2 메모리 관리</h3>\n<pre><code class=\"language-typescript\">class ChunkProcess {\n  private memoryLimit: number;\n  private buffer: Buffer;\n\n  async processWithMemoryCheck(data: any) {\n    const memoryUsage = process.memoryUsage().heapUsed;\n\n    if (memoryUsage &gt; this.memoryLimit) {\n      await this.flushToFile();\n      this.buffer = Buffer.alloc(0);\n    }\n\n    this.buffer = Buffer.concat([this.buffer, data]);\n  }\n}\n</code></pre>\n<h2 id=\"heading-7\">3. 파일 시스템 관리</h2>\n<h3 id=\"heading-8\">3.1 파일 작업</h3>\n<pre><code class=\"language-typescript\">class FileSystemManager {\n  private readonly baseDir: string;\n\n  async createTempDirectory(): Promise&lt;string&gt; {\n    const tempDir = path.join(this.baseDir, \"temp\", uuidv4());\n    await fs.promises.mkdir(tempDir, { recursive: true });\n    return tempDir;\n  }\n\n  async cleanupTempFiles(downloadId: string): Promise&lt;void&gt; {\n    const tempDir = this.getTempDirectory(downloadId);\n    await fs.promises.rm(tempDir, { recursive: true, force: true });\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 스트림 처리</h3>\n<pre><code class=\"language-typescript\">class StreamManager {\n  createReadStream(filePath: string, options: StreamOptions): ReadStream {\n    return fs.createReadStream(filePath, {\n      highWaterMark: this.calculateOptimalBufferSize(),\n      ...options,\n    });\n  }\n\n  async pipeWithProgress(\n    readStream: ReadStream,\n    writeStream: WriteStream,\n    onProgress: (progress: number) =&gt; void\n  ): Promise&lt;void&gt; {\n    return new Promise((resolve, reject) =&gt; {\n      readStream.pipe(writeStream).on(\"error\", reject).on(\"finish\", resolve);\n    });\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">4. 상태 관리</h2>\n<h3 id=\"heading-11\">4.1 상태 저장소</h3>\n<pre><code class=\"language-typescript\">class StateStore {\n  private state: Map&lt;string, any&gt;;\n  private subscribers: Set&lt;(state: any) =&gt; void&gt;;\n\n  setState(key: string, value: any) {\n    this.state.set(key, value);\n    this.notifySubscribers();\n  }\n\n  subscribe(callback: (state: any) =&gt; void) {\n    this.subscribers.add(callback);\n    return () =&gt; this.subscribers.delete(callback);\n  }\n}\n</code></pre>\n<h3 id=\"heading-12\">4.2 이벤트 관리</h3>\n<pre><code class=\"language-typescript\">class EventManager extends EventEmitter {\n  private readonly eventHistory: Map&lt;string, any[]&gt;;\n\n  emitWithHistory(event: string, data: any) {\n    this.saveToHistory(event, data);\n    this.emit(event, data);\n  }\n\n  getEventHistory(event: string): any[] {\n    return this.eventHistory.get(event) || [];\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. 의존성 관리</h2>\n<h3 id=\"heading-14\">5.1 의존성 주입</h3>\n<pre><code class=\"language-typescript\">interface Dependencies {\n  fileManager: FileSystemManager;\n  stateStore: StateStore;\n  eventManager: EventManager;\n  chunkManager: DownloadChunkManager;\n}\n\nclass DependencyContainer {\n  private static instance: DependencyContainer;\n  private dependencies: Dependencies;\n\n  static getInstance(): DependencyContainer {\n    if (!DependencyContainer.instance) {\n      DependencyContainer.instance = new DependencyContainer();\n    }\n    return DependencyContainer.instance;\n  }\n\n  register&lt;K extends keyof Dependencies&gt;(key: K, dependency: Dependencies[K]) {\n    this.dependencies[key] = dependency;\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 서비스 로케이터</h3>\n<pre><code class=\"language-typescript\">class ServiceLocator {\n  private static services: Map&lt;string, any&gt; = new Map();\n\n  static register(name: string, service: any) {\n    this.services.set(name, service);\n  }\n\n  static get&lt;T&gt;(name: string): T {\n    if (!this.services.has(name)) {\n      throw new Error(`Service ${name} not found`);\n    }\n    return this.services.get(name);\n  }\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "핵심 컴포넌트",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. DownloadManager",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 기본 구조",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 다운로드 상태 관리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "2. DownloadChunkManager",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "2.1 청크 처리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2.2 메모리 관리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "3. 파일 시스템 관리",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "3.1 파일 작업",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "3.2 스트림 처리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "4. 상태 관리",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "4.1 상태 저장소",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "4.2 이벤트 관리",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 600
+          },
+          {
+            "id": "heading-13",
+            "text": "5. 의존성 관리",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 650
+          },
+          {
+            "id": "heading-14",
+            "text": "5.1 의존성 주입",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "5.2 서비스 로케이터",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
+          }
+        ]
+      },
+      "en": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">Core Components</h1>\n<h2 id=\"heading-1\">1. DownloadManager</h2>\n<h3 id=\"heading-2\">1.1 Initial Structure</h3>\n<pre><code class=\"language-typescript\">class DownloadManager {\n  private activeDownloads: Map&lt;string, Download&gt;;\n  private chunkManager: DownloadChunkManager;\n  private eventEmitter: EventEmitter;\n\n  constructor(config: DownloadManagerConfig) {\n    this.maxConcurrent = config.maxConcurrent;\n    this.tempDir = config.tempDir;\n    this.chunkSize = config.chunkSize;\n  }\n\n  async createDownload(params: DownloadParams): Promise&lt;string&gt; {\n    const downloadId = generateUniqueId();\n    const download = new Download(params, this.chunkManager);\n    this.activeDownloads.set(downloadId, download);\n    return downloadId;\n  }\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 Status of Download Management</h3>\n<pre><code class=\"language-typescript\">interface DownloadState {\n  status: DownloadStatus;\n  progress: number;\n  error?: Error;\n  startTime: number;\n  endTime?: number;\n  totalChunks: number;\n  completedChunks: number;\n}\n\nclass Download {\n  private state: DownloadState;\n\n  updateProgress(completedChunks: number) {\n    this.state.completedChunks = completedChunks;\n    this.state.progress = (completedChunks / this.state.totalChunks) * 100;\n    this.emitProgress();\n  }\n}\n</code></pre>\n<h2 id=\"heading-4\">2. DownloadChunkManager</h2>\n<h3 id=\"heading-5\">2.1 Chunk Treatment</h3>\n<pre><code class=\"language-typescript\">class DownloadChunkManager {\n  private activeChunks: Map&lt;string, ChunkProcess&gt;;\n  private maxParallelChunks: number;\n\n  async processChunk(chunk: DataChunk): Promise&lt;void&gt; {\n    const chunkProcess = new ChunkProcess(chunk);\n    this.activeChunks.set(chunk.id, chunkProcess);\n\n    try {\n      await chunkProcess.process();\n      await this.mergeChunkFile(chunk.id);\n    } finally {\n      this.activeChunks.delete(chunk.id);\n    }\n  }\n}\n</code></pre>\n<h3 id=\"heading-6\">2.2 Memory Management</h3>\n<pre><code class=\"language-typescript\">class ChunkProcess {\n  private memoryLimit: number;\n  private buffer: Buffer;\n\n  async processWithMemoryCheck(data: any) {\n    const memoryUsage = process.memoryUsage().heapUsed;\n\n    if (memoryUsage &gt; this.memoryLimit) {\n      await this.flushToFile();\n      this.buffer = Buffer.alloc(0);\n    }\n\n    this.buffer = Buffer.concat([this.buffer, data]);\n  }\n}\n</code></pre>\n<h2 id=\"heading-7\">3. File System Management</h2>\n<h3 id=\"heading-8\">3.1 File Operations</h3>\n<pre><code class=\"language-typescript\">class FileSystemManager {\n  private readonly baseDir: string;\n\n  async createTempDirectory(): Promise&lt;string&gt; {\n    const tempDir = path.join(this.baseDir, \"temp\", uuidv4());\n    await fs.promises.mkdir(tempDir, { recursive: true });\n    return tempDir;\n  }\n\n  async cleanupTempFiles(downloadId: string): Promise&lt;void&gt; {\n    const tempDir = this.getTempDirectory(downloadId);\n    await fs.promises.rm(tempDir, { recursive: true, force: true });\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 Stream Processing</h3>\n<pre><code class=\"language-typescript\">class StreamManager {\n  createReadStream(filePath: string, options: StreamOptions): ReadStream {\n    return fs.createReadStream(filePath, {\n      highWaterMark: this.calculateOptimalBufferSize(),\n      ...options,\n    });\n  }\n\n  async pipeWithProgress(\n    readStream: ReadStream,\n    writeStream: WriteStream,\n    onProgress: (progress: number) =&gt; void\n  ): Promise&lt;void&gt; {\n    return new Promise((resolve, reject) =&gt; {\n      readStream.pipe(writeStream).on(\"error\", reject).on(\"finish\", resolve);\n    });\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">4. State Management</h2>\n<h3 id=\"heading-11\">4.1 State Store</h3>\n<pre><code class=\"language-typescript\">class StateStore {\n  private state: Map&lt;string, any&gt;;\n  private subscribers: Set&lt;(state: any) =&gt; void&gt;;\n\n  setState(key: string, value: any) {\n    this.state.set(key, value);\n    this.notifySubscribers();\n  }\n\n  subscribe(callback: (state: any) =&gt; void) {\n    this.subscribers.add(callback);\n    return () =&gt; this.subscribers.delete(callback);\n  }\n}\n</code></pre>\n<h3 id=\"heading-12\">4.2 Event Management</h3>\n<pre><code class=\"language-typescript\">class EventManager extends EventEmitter {\n  private readonly eventHistory: Map&lt;string, any[]&gt;;\n\n  emitWithHistory(event: string, data: any) {\n    this.saveToHistory(event, data);\n    this.emit(event, data);\n  }\n\n  getEventHistory(event: string): any[] {\n    return this.eventHistory.get(event) || [];\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. Dependency Management</h2>\n<h3 id=\"heading-14\">5.1 Dependency Injection</h3>\n<pre><code class=\"language-typescript\">interface Dependencies {\n  fileManager: FileSystemManager;\n  stateStore: StateStore;\n  eventManager: EventManager;\n  chunkManager: DownloadChunkManager;\n}\n\nclass DependencyContainer {\n  private static instance: DependencyContainer;\n  private dependencies: Dependencies;\n\n  static getInstance(): DependencyContainer {\n    if (!DependencyContainer.instance) {\n      DependencyContainer.instance = new DependencyContainer();\n    }\n    return DependencyContainer.instance;\n  }\n\n  register&lt;K extends keyof Dependencies&gt;(key: K, dependency: Dependencies[K]) {\n    this.dependencies[key] = dependency;\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 Service Locator</h3>\n<pre><code class=\"language-typescript\">class ServiceLocator {\n  private static services: Map&lt;string, any&gt; = new Map();\n\n  static register(name: string, service: any) {\n    this.services.set(name, service);\n  }\n\n  static get&lt;T&gt;(name: string): T {\n    if (!this.services.has(name)) {\n      throw new Error(`Service ${name} not found`);\n    }\n    return this.services.get(name);\n  }\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "Core Components",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. DownloadManager",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 Initial Structure",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 Status of Download Management",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "2. DownloadChunkManager",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "2.1 Chunk Treatment",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2.2 Memory Management",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "3. File System Management",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "3.1 File Operations",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "3.2 Stream Processing",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "4. State Management",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "4.1 State Store",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "4.2 Event Management",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 600
+          },
+          {
+            "id": "heading-13",
+            "text": "5. Dependency Management",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 650
+          },
+          {
+            "id": "heading-14",
+            "text": "5.1 Dependency Injection",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "5.2 Service Locator",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
+          }
+        ]
+      }
+    },
+    "imageHeights": {}
+  },
+  {
+    "id": "entasys_5",
+    "title": "Entasys",
+    "content": "\n# 운영 및 디버깅 가이드\n\n## 1. 환경 설정\n\n### 1.1 주요 설정값\n\n```typescript\ninterface SystemConfig {\n  // 다운로드 관련 설정\n  download: {\n    maxConcurrent: number; // 동시 다운로드 수\n    chunkSize: number; // 청크 크기 (bytes)\n    tempDir: string; // 임시 파일 저장 경로\n    timeout: number; // 타임아웃 (ms)\n  };\n\n  // OpenSearch 설정\n  opensearch: {\n    nodes: string[]; // 노드 주소 목록\n    maxRetries: number; // 최대 재시도 횟수\n    requestTimeout: number; // 요청 타임아웃\n    scrollTimeout: string; // 스크롤 타임아웃\n  };\n\n  // 메모리 관련 설정\n  memory: {\n    maxHeapSize: number; // 최대 힙 사이즈\n    gcInterval: number; // GC 간격\n    warningThreshold: number; // 경고 임계값\n  };\n}\n```\n\n### 1.2 환경변수\n\n```bash\n# .env 예시\nNODE_ENV=production\nLOG_LEVEL=info\nMAX_CONCURRENT_DOWNLOADS=5\nCHUNK_SIZE=5242880\nTEMP_DIR=/tmp/downloads\nOPENSEARCH_NODES=[\"http://opensearch1:9200\",\"http://opensearch2:9200\"]\nMAX_HEAP_SIZE=4096\nGC_INTERVAL=30000\n```\n\n## 2. 로깅 전략\n\n### 2.1 로그 설정\n\n```typescript\nconst logger = winston.createLogger({\n  level: process.env.LOG_LEVEL || \"info\",\n  format: winston.format.combine(\n    winston.format.timestamp(),\n    winston.format.json()\n  ),\n  transports: [\n    new winston.transports.File({\n      filename: \"error.log\",\n      level: \"error\",\n      maxsize: 5242880,\n      maxFiles: 5,\n    }),\n    new winston.transports.File({\n      filename: \"combined.log\",\n      maxsize: 10485760,\n      maxFiles: 10,\n    }),\n  ],\n});\n```\n\n### 2.2 주요 로깅 포인트\n\n```typescript\nclass LoggingPoints {\n  static downloadStart(downloadId: string, params: DownloadParams) {\n    logger.info(\"Download started\", {\n      downloadId,\n      params,\n      timestamp: new Date().toISOString(),\n    });\n  }\n\n  static chunkProcessing(downloadId: string, chunkId: string, status: string) {\n    logger.debug(\"Chunk processing\", {\n      downloadId,\n      chunkId,\n      status,\n      memoryUsage: process.memoryUsage(),\n    });\n  }\n\n  static error(error: Error, context: string) {\n    logger.error(\"Error occurred\", {\n      error: error.message,\n      stack: error.stack,\n      context,\n      timestamp: new Date().toISOString(),\n    });\n  }\n}\n```\n\n## 3. 모니터링\n\n### 3.1 성능 메트릭\n\n```typescript\nclass PerformanceMonitor {\n  private metrics: Map<string, Metric> = new Map();\n\n  trackMetric(name: string, value: number, tags: Record<string, string>) {\n    const metric = {\n      value,\n      timestamp: Date.now(),\n      tags,\n    };\n\n    this.metrics.set(name, metric);\n    this.reportMetric(name, metric);\n  }\n\n  getMetrics(): Record<string, Metric[]> {\n    return Object.fromEntries(this.metrics);\n  }\n}\n```\n\n### 3.2 헬스체크\n\n```typescript\nclass HealthCheck {\n  async checkSystem(): Promise<HealthStatus> {\n    const checks = await Promise.all([\n      this.checkOpenSearch(),\n      this.checkFileSystem(),\n      this.checkMemory(),\n    ]);\n\n    return {\n      status: checks.every((c) => c.status === \"ok\") ? \"healthy\" : \"unhealthy\",\n      checks,\n      timestamp: new Date().toISOString(),\n    };\n  }\n}\n```\n\n## 4. 문제 해결\n\n### 4.1 일반적인 에러 케이스\n\n```typescript\nclass TroubleshootingGuide {\n  static async diagnose(error: Error): Promise<DiagnosisResult> {\n    const errorPatterns = {\n      ECONNREFUSED: this.handleConnectionError,\n      ETIMEDOUT: this.handleTimeoutError,\n      ENOSPC: this.handleDiskSpaceError,\n      HEAP_OUT_OF_MEMORY: this.handleMemoryError,\n    };\n\n    const handler = errorPatterns[this.getErrorType(error)];\n    return handler ? await handler(error) : this.handleUnknownError(error);\n  }\n}\n```\n\n### 4.2 복구 전략\n\n```typescript\nclass RecoveryStrategy {\n  async recover(downloadId: string, error: Error): Promise<boolean> {\n    const strategy = this.determineStrategy(error);\n\n    switch (strategy) {\n      case \"retry\":\n        return await this.retryDownload(downloadId);\n      case \"cleanup\":\n        return await this.cleanupAndRestart(downloadId);\n      case \"fallback\":\n        return await this.useFallbackMethod(downloadId);\n      default:\n        return false;\n    }\n  }\n}\n```\n\n## 5. 성능 최적화\n\n### 5.1 병목 지점 분석\n\n```typescript\nclass PerformanceAnalyzer {\n  private measurements: Map<string, number[]> = new Map();\n\n  measure(point: string, duration: number) {\n    if (!this.measurements.has(point)) {\n      this.measurements.set(point, []);\n    }\n    this.measurements.get(point)!.push(duration);\n  }\n\n  getBottlenecks(): BottleneckReport[] {\n    return Array.from(this.measurements.entries())\n      .map(([point, durations]) => ({\n        point,\n        avgDuration: this.calculateAverage(durations),\n        p95Duration: this.calculatePercentile(durations, 95),\n        count: durations.length,\n      }))\n      .sort((a, b) => b.avgDuration - a.avgDuration);\n  }\n}\n```\n\n### 5.2 최적화 포인트\n\n```typescript\nclass OptimizationPoints {\n  static readonly MEMORY = {\n    CHUNK_SIZE: \"Adjust chunk size based on available memory\",\n    BUFFER_LIMIT: \"Set buffer limits for streams\",\n    GC_TIMING: \"Optimize garbage collection timing\",\n  };\n\n  static readonly DISK_IO = {\n    WRITE_STRATEGY: \"Use appropriate write strategy\",\n    BUFFER_SIZE: \"Optimize buffer sizes for file operations\",\n    CONCURRENT_OPS: \"Limit concurrent file operations\",\n  };\n\n  static readonly NETWORK = {\n    BATCH_SIZE: \"Optimize batch sizes for network requests\",\n    CONNECTION_POOL: \"Manage connection pool size\",\n    TIMEOUT_VALUES: \"Set appropriate timeout values\",\n  };\n}\n```\n",
+    "date": "2024-03-20",
+    "category": "projects",
+    "tags": [
+      "React",
+      "Express",
+      "MySQL",
+      "Web3.js",
+      "AWS",
+      "Ganache",
+      "Truffle",
+      "ERC20",
+      "MetaMask",
+      "Figma"
+    ],
+    "thumbnail": "/images/entasys/entaasys_download_2.gif",
+    "translations": {
+      "ko": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">운영 및 디버깅 가이드</h1>\n<h2 id=\"heading-1\">1. 환경 설정</h2>\n<h3 id=\"heading-2\">1.1 주요 설정값</h3>\n<pre><code class=\"language-typescript\">interface SystemConfig {\n  // 다운로드 관련 설정\n  download: {\n    maxConcurrent: number; // 동시 다운로드 수\n    chunkSize: number; // 청크 크기 (bytes)\n    tempDir: string; // 임시 파일 저장 경로\n    timeout: number; // 타임아웃 (ms)\n  };\n\n  // OpenSearch 설정\n  opensearch: {\n    nodes: string[]; // 노드 주소 목록\n    maxRetries: number; // 최대 재시도 횟수\n    requestTimeout: number; // 요청 타임아웃\n    scrollTimeout: string; // 스크롤 타임아웃\n  };\n\n  // 메모리 관련 설정\n  memory: {\n    maxHeapSize: number; // 최대 힙 사이즈\n    gcInterval: number; // GC 간격\n    warningThreshold: number; // 경고 임계값\n  };\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 환경변수</h3>\n<pre><code class=\"language-bash\"># .env 예시\nNODE_ENV=production\nLOG_LEVEL=info\nMAX_CONCURRENT_DOWNLOADS=5\nCHUNK_SIZE=5242880\nTEMP_DIR=/tmp/downloads\nOPENSEARCH_NODES=[\"http://opensearch1:9200\",\"http://opensearch2:9200\"]\nMAX_HEAP_SIZE=4096\nGC_INTERVAL=30000\n</code></pre>\n<h2 id=\"heading-4\">2. 로깅 전략</h2>\n<h3 id=\"heading-5\">2.1 로그 설정</h3>\n<pre><code class=\"language-typescript\">const logger = winston.createLogger({\n  level: process.env.LOG_LEVEL || \"info\",\n  format: winston.format.combine(\n    winston.format.timestamp(),\n    winston.format.json()\n  ),\n  transports: [\n    new winston.transports.File({\n      filename: \"error.log\",\n      level: \"error\",\n      maxsize: 5242880,\n      maxFiles: 5,\n    }),\n    new winston.transports.File({\n      filename: \"combined.log\",\n      maxsize: 10485760,\n      maxFiles: 10,\n    }),\n  ],\n});\n</code></pre>\n<h3 id=\"heading-6\">2.2 주요 로깅 포인트</h3>\n<pre><code class=\"language-typescript\">class LoggingPoints {\n  static downloadStart(downloadId: string, params: DownloadParams) {\n    logger.info(\"Download started\", {\n      downloadId,\n      params,\n      timestamp: new Date().toISOString(),\n    });\n  }\n\n  static chunkProcessing(downloadId: string, chunkId: string, status: string) {\n    logger.debug(\"Chunk processing\", {\n      downloadId,\n      chunkId,\n      status,\n      memoryUsage: process.memoryUsage(),\n    });\n  }\n\n  static error(error: Error, context: string) {\n    logger.error(\"Error occurred\", {\n      error: error.message,\n      stack: error.stack,\n      context,\n      timestamp: new Date().toISOString(),\n    });\n  }\n}\n</code></pre>\n<h2 id=\"heading-7\">3. 모니터링</h2>\n<h3 id=\"heading-8\">3.1 성능 메트릭</h3>\n<pre><code class=\"language-typescript\">class PerformanceMonitor {\n  private metrics: Map&lt;string, Metric&gt; = new Map();\n\n  trackMetric(name: string, value: number, tags: Record&lt;string, string&gt;) {\n    const metric = {\n      value,\n      timestamp: Date.now(),\n      tags,\n    };\n\n    this.metrics.set(name, metric);\n    this.reportMetric(name, metric);\n  }\n\n  getMetrics(): Record&lt;string, Metric[]&gt; {\n    return Object.fromEntries(this.metrics);\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 헬스체크</h3>\n<pre><code class=\"language-typescript\">class HealthCheck {\n  async checkSystem(): Promise&lt;HealthStatus&gt; {\n    const checks = await Promise.all([\n      this.checkOpenSearch(),\n      this.checkFileSystem(),\n      this.checkMemory(),\n    ]);\n\n    return {\n      status: checks.every((c) =&gt; c.status === \"ok\") ? \"healthy\" : \"unhealthy\",\n      checks,\n      timestamp: new Date().toISOString(),\n    };\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">4. 문제 해결</h2>\n<h3 id=\"heading-11\">4.1 일반적인 에러 케이스</h3>\n<pre><code class=\"language-typescript\">class TroubleshootingGuide {\n  static async diagnose(error: Error): Promise&lt;DiagnosisResult&gt; {\n    const errorPatterns = {\n      ECONNREFUSED: this.handleConnectionError,\n      ETIMEDOUT: this.handleTimeoutError,\n      ENOSPC: this.handleDiskSpaceError,\n      HEAP_OUT_OF_MEMORY: this.handleMemoryError,\n    };\n\n    const handler = errorPatterns[this.getErrorType(error)];\n    return handler ? await handler(error) : this.handleUnknownError(error);\n  }\n}\n</code></pre>\n<h3 id=\"heading-12\">4.2 복구 전략</h3>\n<pre><code class=\"language-typescript\">class RecoveryStrategy {\n  async recover(downloadId: string, error: Error): Promise&lt;boolean&gt; {\n    const strategy = this.determineStrategy(error);\n\n    switch (strategy) {\n      case \"retry\":\n        return await this.retryDownload(downloadId);\n      case \"cleanup\":\n        return await this.cleanupAndRestart(downloadId);\n      case \"fallback\":\n        return await this.useFallbackMethod(downloadId);\n      default:\n        return false;\n    }\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. 성능 최적화</h2>\n<h3 id=\"heading-14\">5.1 병목 지점 분석</h3>\n<pre><code class=\"language-typescript\">class PerformanceAnalyzer {\n  private measurements: Map&lt;string, number[]&gt; = new Map();\n\n  measure(point: string, duration: number) {\n    if (!this.measurements.has(point)) {\n      this.measurements.set(point, []);\n    }\n    this.measurements.get(point)!.push(duration);\n  }\n\n  getBottlenecks(): BottleneckReport[] {\n    return Array.from(this.measurements.entries())\n      .map(([point, durations]) =&gt; ({\n        point,\n        avgDuration: this.calculateAverage(durations),\n        p95Duration: this.calculatePercentile(durations, 95),\n        count: durations.length,\n      }))\n      .sort((a, b) =&gt; b.avgDuration - a.avgDuration);\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 최적화 포인트</h3>\n<pre><code class=\"language-typescript\">class OptimizationPoints {\n  static readonly MEMORY = {\n    CHUNK_SIZE: \"Adjust chunk size based on available memory\",\n    BUFFER_LIMIT: \"Set buffer limits for streams\",\n    GC_TIMING: \"Optimize garbage collection timing\",\n  };\n\n  static readonly DISK_IO = {\n    WRITE_STRATEGY: \"Use appropriate write strategy\",\n    BUFFER_SIZE: \"Optimize buffer sizes for file operations\",\n    CONCURRENT_OPS: \"Limit concurrent file operations\",\n  };\n\n  static readonly NETWORK = {\n    BATCH_SIZE: \"Optimize batch sizes for network requests\",\n    CONNECTION_POOL: \"Manage connection pool size\",\n    TIMEOUT_VALUES: \"Set appropriate timeout values\",\n  };\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "운영 및 디버깅 가이드",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. 환경 설정",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 주요 설정값",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 환경변수",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "2. 로깅 전략",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "2.1 로그 설정",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2.2 주요 로깅 포인트",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "3. 모니터링",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "3.1 성능 메트릭",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "3.2 헬스체크",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "4. 문제 해결",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "4.1 일반적인 에러 케이스",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "4.2 복구 전략",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 600
+          },
+          {
+            "id": "heading-13",
+            "text": "5. 성능 최적화",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 650
+          },
+          {
+            "id": "heading-14",
+            "text": "5.1 병목 지점 분석",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "5.2 최적화 포인트",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
+          }
+        ]
+      },
+      "en": {
+        "title": "Entasys",
+        "description": "Development of Virtual Asset Exchange",
+        "content": "<h1 id=\"heading-0\">Operation and Debugging Guide</h1>\n<h2 id=\"heading-1\">1. Environment Setup</h2>\n<h3 id=\"heading-2\">1.1 Key Settings</h3>\n<pre><code class=\"language-typescript\">interface SystemConfig {\n  // Download-related settings\n  download: {\n    maxConcurrent: number; // Number of concurrent downloads\n    chunkSize: number; // Chunk size (bytes)\n    tempDir: string; // Temporary file storage path\n    timeout: number; // Timeout (ms)\n  };\n\n  // OpenSearch settings\n  opensearch: {\n    nodes: string[]; // List of node addresses\n    maxRetries: number; // Maximum number of retries\n    requestTimeout: number; // Request timeout\n    scrollTimeout: string; // Scroll timeout\n  };\n\n  // Memory-related settings\n  memory: {\n    maxHeapSize: number; // Maximum heap size\n    gcInterval: number; // GC interval\n    warningThreshold: number; // Warning threshold\n  };\n}\n</code></pre>\n<h3 id=\"heading-3\">1.2 Environment Variables</h3>\n<pre><code class=\"language-bash\"># .env example\nNODE_ENV=production\nLOG_LEVEL=info\nMAX_CONCURRENT_DOWNLOADS=5\nCHUNK_SIZE=5242880\nTEMP_DIR=/tmp/downloads\nOPENSEARCH_NODES=[\"http://opensearch1:9200\",\"http://opensearch2:9200\"]\nMAX_HEAP_SIZE=4096\nGC_INTERVAL=30000\n</code></pre>\n<h2 id=\"heading-4\">2. Logging Strategy</h2>\n<h3 id=\"heading-5\">2.1 Logging Configuration</h3>\n<pre><code class=\"language-typescript\">const logger = winston.createLogger({\n  level: process.env.LOG_LEVEL || \"info\",\n  format: winston.format.combine(\n    winston.format.timestamp(),\n    winston.format.json()\n  ),\n  transports: [\n    new winston.transports.File({\n      filename: \"error.log\",\n      level: \"error\",\n      maxsize: 5242880,\n      maxFiles: 5,\n    }),\n    new winston.transports.File({\n      filename: \"combined.log\",\n      maxsize: 10485760,\n      maxFiles: 10,\n    }),\n  ],\n});\n</code></pre>\n<h3 id=\"heading-6\">2.2 Key Logging Points</h3>\n<pre><code class=\"language-typescript\">class LoggingPoints {\n  static downloadStart(downloadId: string, params: DownloadParams) {\n    logger.info(\"Download started\", {\n      downloadId,\n      params,\n      timestamp: new Date().toISOString(),\n    });\n  }\n\n  static chunkProcessing(downloadId: string, chunkId: string, status: string) {\n    logger.debug(\"Chunk processing\", {\n      downloadId,\n      chunkId,\n      status,\n      memoryUsage: process.memoryUsage(),\n    });\n  }\n\n  static error(error: Error, context: string) {\n    logger.error(\"Error occurred\", {\n      error: error.message,\n      stack: error.stack,\n      context,\n      timestamp: new Date().toISOString(),\n    });\n  }\n}\n</code></pre>\n<h2 id=\"heading-7\">3. Monitoring</h2>\n<h3 id=\"heading-8\">3.1 Performance Metrics</h3>\n<pre><code class=\"language-typescript\">class PerformanceMonitor {\n  private metrics: Map&lt;string, Metric&gt; = new Map();\n\n  trackMetric(name: string, value: number, tags: Record&lt;string, string&gt;) {\n    const metric = {\n      value,\n      timestamp: Date.now(),\n      tags,\n    };\n\n    this.metrics.set(name, metric);\n    this.reportMetric(name, metric);\n  }\n\n  getMetrics(): Record&lt;string, Metric[]&gt; {\n    return Object.fromEntries(this.metrics);\n  }\n}\n</code></pre>\n<h3 id=\"heading-9\">3.2 Health Check</h3>\n<pre><code class=\"language-typescript\">class HealthCheck {\n  async checkSystem(): Promise&lt;HealthStatus&gt; {\n    const checks = await Promise.all([\n      this.checkOpenSearch(),\n      this.checkFileSystem(),\n      this.checkMemory(),\n    ]);\n\n    return {\n      status: checks.every((c) =&gt; c.status === \"ok\") ? \"healthy\" : \"unhealthy\",\n      checks,\n      timestamp: new Date().toISOString(),\n    };\n  }\n}\n</code></pre>\n<h2 id=\"heading-10\">4. Problem Solving</h2>\n<h3 id=\"heading-11\">4.1 Common Error Cases</h3>\n<pre><code class=\"language-typescript\">class TroubleshootingGuide {\n  static async diagnose(error: Error): Promise&lt;DiagnosisResult&gt; {\n    const errorPatterns = {\n      ECONNREFUSED: this.handleConnectionError,\n      ETIMEDOUT: this.handleTimeoutError,\n      ENOSPC: this.handleDiskSpaceError,\n      HEAP_OUT_OF_MEMORY: this.handleMemoryError,\n    };\n\n    const handler = errorPatterns[this.getErrorType(error)];\n    return handler ? await handler(error) : this.handleUnknownError(error);\n  }\n}\n</code></pre>\n<h3 id=\"heading-12\">4.2 Recovery Strategy</h3>\n<pre><code class=\"language-typescript\">class RecoveryStrategy {\n  async recover(downloadId: string, error: Error): Promise&lt;boolean&gt; {\n    const strategy = this.determineStrategy(error);\n\n    switch (strategy) {\n      case \"retry\":\n        return await this.retryDownload(downloadId);\n      case \"cleanup\":\n        return await this.cleanupAndRestart(downloadId);\n      case \"fallback\":\n        return await this.useFallbackMethod(downloadId);\n      default:\n        return false;\n    }\n  }\n}\n</code></pre>\n<h2 id=\"heading-13\">5. Performance Optimization</h2>\n<h3 id=\"heading-14\">5.1 Bottleneck Analysis</h3>\n<pre><code class=\"language-typescript\">class PerformanceAnalyzer {\n  private measurements: Map&lt;string, number[]&gt; = new Map();\n\n  measure(point: string, duration: number) {\n    if (!this.measurements.has(point)) {\n      this.measurements.set(point, []);\n    }\n    this.measurements.get(point)!.push(duration);\n  }\n\n  getBottlenecks(): BottleneckReport[] {\n    return Array.from(this.measurements.entries())\n      .map(([point, durations]) =&gt; ({\n        point,\n        avgDuration: this.calculateAverage(durations),\n        p95Duration: this.calculatePercentile(durations, 95),\n        count: durations.length,\n      }))\n      .sort((a, b) =&gt; b.avgDuration - a.avgDuration);\n  }\n}\n</code></pre>\n<h3 id=\"heading-15\">5.2 Optimization Points</h3>\n<pre><code class=\"language-typescript\">class OptimizationPoints {\n  static readonly MEMORY = {\n    CHUNK_SIZE: \"Adjust chunk size based on available memory\",\n    BUFFER_LIMIT: \"Set buffer limits for streams\",\n    GC_TIMING: \"Optimize garbage collection timing\",\n  };\n\n  static readonly DISK_IO = {\n    WRITE_STRATEGY: \"Use appropriate write strategy\",\n    BUFFER_SIZE: \"Optimize buffer sizes for file operations\",\n    CONCURRENT_OPS: \"Limit concurrent file operations\",\n  };\n\n  static readonly NETWORK = {\n    BATCH_SIZE: \"Optimize batch sizes for network requests\",\n    CONNECTION_POOL: \"Manage connection pool size\",\n    TIMEOUT_VALUES: \"Set appropriate timeout values\",\n  };\n}\n</code></pre>\n",
+        "tocItems": [
+          {
+            "id": "heading-0",
+            "text": "Operation and Debugging Guide",
+            "level": 1,
+            "isMainTopic": true,
+            "position": 0
+          },
+          {
+            "id": "heading-1",
+            "text": "1. Environment Setup",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 50
+          },
+          {
+            "id": "heading-2",
+            "text": "1.1 Key Settings",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 100
+          },
+          {
+            "id": "heading-3",
+            "text": "1.2 Environment Variables",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 150
+          },
+          {
+            "id": "heading-4",
+            "text": "2. Logging Strategy",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 200
+          },
+          {
+            "id": "heading-5",
+            "text": "2.1 Logging Configuration",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 250
+          },
+          {
+            "id": "heading-6",
+            "text": "2.2 Key Logging Points",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 300
+          },
+          {
+            "id": "heading-7",
+            "text": "3. Monitoring",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 350
+          },
+          {
+            "id": "heading-8",
+            "text": "3.1 Performance Metrics",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 400
+          },
+          {
+            "id": "heading-9",
+            "text": "3.2 Health Check",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 450
+          },
+          {
+            "id": "heading-10",
+            "text": "4. Problem Solving",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 500
+          },
+          {
+            "id": "heading-11",
+            "text": "4.1 Common Error Cases",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 550
+          },
+          {
+            "id": "heading-12",
+            "text": "4.2 Recovery Strategy",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 600
+          },
+          {
+            "id": "heading-13",
+            "text": "5. Performance Optimization",
+            "level": 2,
+            "isMainTopic": true,
+            "position": 650
+          },
+          {
+            "id": "heading-14",
+            "text": "5.1 Bottleneck Analysis",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 700
+          },
+          {
+            "id": "heading-15",
+            "text": "5.2 Optimization Points",
+            "level": 3,
+            "isMainTopic": false,
+            "position": 750
           }
         ]
       }
