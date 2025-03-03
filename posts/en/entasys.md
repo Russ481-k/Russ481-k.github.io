@@ -1,5 +1,5 @@
 ---
-title: "Entasis"
+title: "Entasys"
 date: "2024-03-20"
 category: "projects"
 description: "Development of Virtual Asset Exchange"
@@ -16,7 +16,7 @@ tags:
     "MetaMask",
     "Figma",
   ]
-thumbnail: "/images/entasis/entasis_circuit.gif"
+thumbnail: ""
 ---
 
 ## 1. Project Overview

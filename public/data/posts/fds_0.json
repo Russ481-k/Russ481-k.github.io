@@ -1,0 +1,256 @@
+{
+  "id": "fds_0",
+  "title": "FDS(Fraud Detection Service) - 구현 및 운영 방안",
+  "content": "\n# 가상자산 파생상품 FDS 시리즈 - 종합 인덱스 가이드\n\n## 📚 시리즈 개요\n\n이 시리즈는 가상자산 파생상품 시장의 이상거래 탐지 시스템(FDS)에 대한 포괄적인 가이드를 제공합니다.\n\n## 📋 목차 및 주요 내용\n\n### 📘 Part 1: 시장 현황과 문제점 분석\n\n- **시장 개요**\n  - 시장 규모 및 성장 추이\n  - 주요 거래 유형 분석\n- **현재 시장의 문제점**\n  - 구조적 위험 요소\n  - 운영적 위험 요소\n- **이상거래 사례 분석**\n  - 주요 시장 조작 사례\n  - 이상거래 유형 분류\n- **FDS 시스템의 필요성**\n\n🔍 _특히 주목할 점: 시장 규모 데이터와 실제 사례 분석_\n\n### 📗 Part 2: 이상거래 유형 및 패턴\n\n- **선물 시장 이상거래**\n  - 영구선물 시장 조작 패턴\n  - 가격 조작 기법\n- **옵션 시장 조작**\n  - 변동성 조작 기법\n  - 복합 옵션 전략 악용\n- **DeFi 관련 취약점**\n  - 스마트 컨트랙트 취약점\n  - AMM 기반 취약점\n\n💡 _핵심 포인트: 각 거래 유형별 구체적인 패턴 분석_\n\n### 📙 Part 3: 기술 아키텍처 및 시스템 설계\n\n- **전체 시스템 구조**\n  - 데이터 수집 레이어\n  - 처리 및 분석 레이어\n- **데이터 처리 시스템**\n  - 실시간 처리 엔진\n  - 배치 처리 시스템\n- **분석 엔진 설계**\n  - 패턴 인식 엔진\n  - 리스크 평가 시스템\n\n🛠 _실용적 팁: 확장 가능한 아키텍처 설계 방법_\n\n### 📕 Part 4: AI/ML 모델 및 분석 방법론\n\n- **이상거래 탐지 알고리즘**\n  - 비지도 학습 모델\n  - 시계열 분석 모델\n- **머신러닝 모델 설계**\n  - 특징 엔지니어링\n  - 모델 앙상블 기법\n- **실시간 패턴 인식**\n  - 딥러닝 기반 패턴 인식\n  - 예측 모델 구현\n\n🤖 _추천 사항: 최신 AI/ML 기술 적용 방안_\n\n### 📓 Part 5: 구현 및 운영 방안\n\n- **시스템 구현 전략**\n  - 마이크로서비스 아키텍처\n  - 데이터 파이프라인\n- **단계별 구현 계획**\n  - 인프라 구축\n  - 코어 기능 구현\n- **운영 관리**\n  - 모니터링 시스템\n  - 장애 대응 체계\n\n⚙️ _운영 팁: 효율적인 시스템 관리 방안_\n\n### 📔 Part 6: 규제 대응 및 향후 발전 방향\n\n- **규제 준수**\n  - FATF 권고사항 구현\n  - 글로벌 규제 대응\n- **기술 발전 방향**\n  - AI/ML 고도화\n  - 블록체인 통합\n- **시스템 확장**\n  - 크로스체인 모니터링\n  - 실시간 대응 시스템\n\n🔮 _미래 전망: 주목해야 할 기술 트렌드_\n\n## 💡 활용 가이드\n\n### 시리즈 활용 방법\n\n1. **단계별 학습**: Part 1부터 순차적으로 학습\n2. **실무 적용**: 각 파트의 코드 예제 활용\n3. **참고 자료**: 각 파트의 상세 설명 참조\n\n### 주요 코드 구현 위치\n\n- **시스템 코어**: Part 3, 4\n- **운영 관련**: Part 5\n- **규제 대응**: Part 6\n\n## 🔍 빠른 참조 가이드\n\n### 자주 찾는 주제별 위치\n\n- **시장 분석**: Part 1\n- **이상거래 패턴**: Part 2\n- **시스템 설계**: Part 3\n- **AI 모델**: Part 4\n- **운영 방안**: Part 5\n- **규제 대응**: Part 6\n\n## 📌 추가 참고사항\n\n- 각 파트는 독립적으로도 참조 가능\n- 실제 구현 시 환경에 맞게 조정 필요\n- 정기적인 업데이트 및 개선 권장\n\n## 🤝 지원 및 문의\n\n- 각 파트별 상세 내용 문의 가능\n- 구현 관련 기술 지원 제공\n- 지속적인 업데이트 및 개선사항 반영\n\n이 인덱스를 통해 필요한 정보를 쉽게 찾고 활용하실 수 있습니다. 추가 질문이나 상세한 설명이 필요하신 부분이 있다면 언제든 문의해 주시기 바랍니다.\n",
+  "date": "2024-03-25",
+  "category": "projects",
+  "tags": [
+    "Implementation",
+    "Operations",
+    "Performance",
+    "Security",
+    "Microservices"
+  ],
+  "thumbnail": "",
+  "translations": {
+    "ko": {
+      "title": "FDS(Fraud Detection Service) - 구현 및 운영 방안",
+      "description": "FDS 시스템의 구현 전략, 운영 관리, 성능 최적화 및 보안 방안",
+      "content": "<h1 id=\"heading-0\">가상자산 파생상품 FDS 시리즈 - 종합 인덱스 가이드</h1>\n<h2 id=\"heading-1\">📚 시리즈 개요</h2>\n<p>이 시리즈는 가상자산 파생상품 시장의 이상거래 탐지 시스템(FDS)에 대한 포괄적인 가이드를 제공합니다.</p>\n<h2 id=\"heading-2\">📋 목차 및 주요 내용</h2>\n<h3 id=\"heading-3\">📘 Part 1: 시장 현황과 문제점 분석</h3>\n<ul>\n<li><strong>시장 개요</strong>\n<ul>\n<li>시장 규모 및 성장 추이</li>\n<li>주요 거래 유형 분석</li>\n</ul>\n</li>\n<li><strong>현재 시장의 문제점</strong>\n<ul>\n<li>구조적 위험 요소</li>\n<li>운영적 위험 요소</li>\n</ul>\n</li>\n<li><strong>이상거래 사례 분석</strong>\n<ul>\n<li>주요 시장 조작 사례</li>\n<li>이상거래 유형 분류</li>\n</ul>\n</li>\n<li><strong>FDS 시스템의 필요성</strong></li>\n</ul>\n<p>🔍 <em>특히 주목할 점: 시장 규모 데이터와 실제 사례 분석</em></p>\n<h3 id=\"heading-4\">📗 Part 2: 이상거래 유형 및 패턴</h3>\n<ul>\n<li><strong>선물 시장 이상거래</strong>\n<ul>\n<li>영구선물 시장 조작 패턴</li>\n<li>가격 조작 기법</li>\n</ul>\n</li>\n<li><strong>옵션 시장 조작</strong>\n<ul>\n<li>변동성 조작 기법</li>\n<li>복합 옵션 전략 악용</li>\n</ul>\n</li>\n<li><strong>DeFi 관련 취약점</strong>\n<ul>\n<li>스마트 컨트랙트 취약점</li>\n<li>AMM 기반 취약점</li>\n</ul>\n</li>\n</ul>\n<p>💡 <em>핵심 포인트: 각 거래 유형별 구체적인 패턴 분석</em></p>\n<h3 id=\"heading-5\">📙 Part 3: 기술 아키텍처 및 시스템 설계</h3>\n<ul>\n<li><strong>전체 시스템 구조</strong>\n<ul>\n<li>데이터 수집 레이어</li>\n<li>처리 및 분석 레이어</li>\n</ul>\n</li>\n<li><strong>데이터 처리 시스템</strong>\n<ul>\n<li>실시간 처리 엔진</li>\n<li>배치 처리 시스템</li>\n</ul>\n</li>\n<li><strong>분석 엔진 설계</strong>\n<ul>\n<li>패턴 인식 엔진</li>\n<li>리스크 평가 시스템</li>\n</ul>\n</li>\n</ul>\n<p>🛠 <em>실용적 팁: 확장 가능한 아키텍처 설계 방법</em></p>\n<h3 id=\"heading-6\">📕 Part 4: AI/ML 모델 및 분석 방법론</h3>\n<ul>\n<li><strong>이상거래 탐지 알고리즘</strong>\n<ul>\n<li>비지도 학습 모델</li>\n<li>시계열 분석 모델</li>\n</ul>\n</li>\n<li><strong>머신러닝 모델 설계</strong>\n<ul>\n<li>특징 엔지니어링</li>\n<li>모델 앙상블 기법</li>\n</ul>\n</li>\n<li><strong>실시간 패턴 인식</strong>\n<ul>\n<li>딥러닝 기반 패턴 인식</li>\n<li>예측 모델 구현</li>\n</ul>\n</li>\n</ul>\n<p>🤖 <em>추천 사항: 최신 AI/ML 기술 적용 방안</em></p>\n<h3 id=\"heading-7\">📓 Part 5: 구현 및 운영 방안</h3>\n<ul>\n<li><strong>시스템 구현 전략</strong>\n<ul>\n<li>마이크로서비스 아키텍처</li>\n<li>데이터 파이프라인</li>\n</ul>\n</li>\n<li><strong>단계별 구현 계획</strong>\n<ul>\n<li>인프라 구축</li>\n<li>코어 기능 구현</li>\n</ul>\n</li>\n<li><strong>운영 관리</strong>\n<ul>\n<li>모니터링 시스템</li>\n<li>장애 대응 체계</li>\n</ul>\n</li>\n</ul>\n<p>⚙️ <em>운영 팁: 효율적인 시스템 관리 방안</em></p>\n<h3 id=\"heading-8\">📔 Part 6: 규제 대응 및 향후 발전 방향</h3>\n<ul>\n<li><strong>규제 준수</strong>\n<ul>\n<li>FATF 권고사항 구현</li>\n<li>글로벌 규제 대응</li>\n</ul>\n</li>\n<li><strong>기술 발전 방향</strong>\n<ul>\n<li>AI/ML 고도화</li>\n<li>블록체인 통합</li>\n</ul>\n</li>\n<li><strong>시스템 확장</strong>\n<ul>\n<li>크로스체인 모니터링</li>\n<li>실시간 대응 시스템</li>\n</ul>\n</li>\n</ul>\n<p>🔮 <em>미래 전망: 주목해야 할 기술 트렌드</em></p>\n<h2 id=\"heading-9\">💡 활용 가이드</h2>\n<h3 id=\"heading-10\">시리즈 활용 방법</h3>\n<ol>\n<li><strong>단계별 학습</strong>: Part 1부터 순차적으로 학습</li>\n<li><strong>실무 적용</strong>: 각 파트의 코드 예제 활용</li>\n<li><strong>참고 자료</strong>: 각 파트의 상세 설명 참조</li>\n</ol>\n<h3 id=\"heading-11\">주요 코드 구현 위치</h3>\n<ul>\n<li><strong>시스템 코어</strong>: Part 3, 4</li>\n<li><strong>운영 관련</strong>: Part 5</li>\n<li><strong>규제 대응</strong>: Part 6</li>\n</ul>\n<h2 id=\"heading-12\">🔍 빠른 참조 가이드</h2>\n<h3 id=\"heading-13\">자주 찾는 주제별 위치</h3>\n<ul>\n<li><strong>시장 분석</strong>: Part 1</li>\n<li><strong>이상거래 패턴</strong>: Part 2</li>\n<li><strong>시스템 설계</strong>: Part 3</li>\n<li><strong>AI 모델</strong>: Part 4</li>\n<li><strong>운영 방안</strong>: Part 5</li>\n<li><strong>규제 대응</strong>: Part 6</li>\n</ul>\n<h2 id=\"heading-14\">📌 추가 참고사항</h2>\n<ul>\n<li>각 파트는 독립적으로도 참조 가능</li>\n<li>실제 구현 시 환경에 맞게 조정 필요</li>\n<li>정기적인 업데이트 및 개선 권장</li>\n</ul>\n<h2 id=\"heading-15\">🤝 지원 및 문의</h2>\n<ul>\n<li>각 파트별 상세 내용 문의 가능</li>\n<li>구현 관련 기술 지원 제공</li>\n<li>지속적인 업데이트 및 개선사항 반영</li>\n</ul>\n<p>이 인덱스를 통해 필요한 정보를 쉽게 찾고 활용하실 수 있습니다. 추가 질문이나 상세한 설명이 필요하신 부분이 있다면 언제든 문의해 주시기 바랍니다.</p>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "가상자산 파생상품 FDS 시리즈 - 종합 인덱스 가이드",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "📚 시리즈 개요",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "📋 목차 및 주요 내용",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "📘 Part 1: 시장 현황과 문제점 분석",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "📗 Part 2: 이상거래 유형 및 패턴",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "📙 Part 3: 기술 아키텍처 및 시스템 설계",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "📕 Part 4: AI/ML 모델 및 분석 방법론",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "📓 Part 5: 구현 및 운영 방안",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "📔 Part 6: 규제 대응 및 향후 발전 방향",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "💡 활용 가이드",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "시리즈 활용 방법",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "주요 코드 구현 위치",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "🔍 빠른 참조 가이드",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "자주 찾는 주제별 위치",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "📌 추가 참고사항",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "🤝 지원 및 문의",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 750
+        }
+      ]
+    },
+    "en": {
+      "title": "FDS - Comprehensive Guide to Anomaly Detection System",
+      "description": "A comprehensive guide to the Fraud Detection System (FDS) for cryptocurrency derivatives market",
+      "content": "<h1 id=\"heading-0\">Cryptocurrency Derivatives FDS Series - Comprehensive Index Guide</h1>\n<h2 id=\"heading-1\">📚 Series Overview</h2>\n<p>This series provides a comprehensive guide to the Fraud Detection System (FDS) for cryptocurrency derivatives markets.</p>\n<h2 id=\"heading-2\">📋 Table of Contents and Key Points</h2>\n<h3 id=\"heading-3\">📘 Part 1: Market Status and Problem Analysis</h3>\n<ul>\n<li><strong>Market Overview</strong>\n<ul>\n<li>Market Size and Growth Trends</li>\n<li>Analysis of Major Trading Types</li>\n</ul>\n</li>\n<li><strong>Current Market Issues</strong>\n<ul>\n<li>Structural Risk Factors</li>\n<li>Operational Risk Factors</li>\n</ul>\n</li>\n<li><strong>Analysis of Abnormal Trading Cases</strong>\n<ul>\n<li>Major Market Manipulation Cases</li>\n<li>Classification of Abnormal Trading</li>\n</ul>\n</li>\n<li><strong>Need for FDS System</strong></li>\n</ul>\n<p>🔍 <em>Key Focus: Market Size Data and Real Case Analysis</em></p>\n<h3 id=\"heading-4\">📗 Part 2: Types and Patterns of Abnormal Trading</h3>\n<ul>\n<li><strong>Futures Market Abnormal Trading</strong>\n<ul>\n<li>Perpetual Futures Market Manipulation Patterns</li>\n<li>Price Manipulation Techniques</li>\n</ul>\n</li>\n<li><strong>Options Market Manipulation</strong>\n<ul>\n<li>Volatility Manipulation Techniques</li>\n<li>Complex Options Strategy Abuse</li>\n</ul>\n</li>\n<li><strong>DeFi-Related Vulnerabilities</strong>\n<ul>\n<li>Smart Contract Vulnerabilities</li>\n<li>AMM-Based Vulnerabilities</li>\n</ul>\n</li>\n</ul>\n<p>💡 <em>Key Point: Detailed Pattern Analysis for Each Trading Type</em></p>\n<h3 id=\"heading-5\">📙 Part 3: Technical Architecture and System Design</h3>\n<ul>\n<li><strong>Overall System Structure</strong>\n<ul>\n<li>Data Collection Layer</li>\n<li>Processing and Analysis Layer</li>\n</ul>\n</li>\n<li><strong>Data Processing System</strong>\n<ul>\n<li>Real-time Processing Engine</li>\n<li>Batch Processing System</li>\n</ul>\n</li>\n<li><strong>Analysis Engine Design</strong>\n<ul>\n<li>Pattern Recognition Engine</li>\n<li>Risk Assessment System</li>\n</ul>\n</li>\n</ul>\n<p>🛠 <em>Practical Tips: Scalable Architecture Design Methods</em></p>\n<h3 id=\"heading-6\">📕 Part 4: AI/ML Models and Analysis Methodology</h3>\n<ul>\n<li><strong>Abnormal Trading Detection Algorithms</strong>\n<ul>\n<li>Unsupervised Learning Models</li>\n<li>Time Series Analysis Models</li>\n</ul>\n</li>\n<li><strong>Machine Learning Model Design</strong>\n<ul>\n<li>Feature Engineering</li>\n<li>Model Ensemble Techniques</li>\n</ul>\n</li>\n<li><strong>Real-time Pattern Recognition</strong>\n<ul>\n<li>Deep Learning-based Pattern Recognition</li>\n<li>Predictive Model Implementation</li>\n</ul>\n</li>\n</ul>\n<p>🤖 <em>Recommendations: Application of Latest AI/ML Technologies</em></p>\n<h3 id=\"heading-7\">📓 Part 5: Implementation and Operation Strategy</h3>\n<ul>\n<li><strong>System Implementation Strategy</strong>\n<ul>\n<li>Microservice Architecture</li>\n<li>Data Pipeline</li>\n</ul>\n</li>\n<li><strong>Phased Implementation Plan</strong>\n<ul>\n<li>Infrastructure Setup</li>\n<li>Core Function Implementation</li>\n</ul>\n</li>\n<li><strong>Operation Management</strong>\n<ul>\n<li>Monitoring System</li>\n<li>Incident Response Framework</li>\n</ul>\n</li>\n</ul>\n<p>⚙️ <em>Operation Tips: Efficient System Management Methods</em></p>\n<h3 id=\"heading-8\">📔 Part 6: Regulatory Compliance and Future Development</h3>\n<ul>\n<li><strong>Regulatory Compliance</strong>\n<ul>\n<li>FATF Recommendation Implementation</li>\n<li>Global Regulatory Response</li>\n</ul>\n</li>\n<li><strong>Technology Development Direction</strong>\n<ul>\n<li>AI/ML Enhancement</li>\n<li>Blockchain Integration</li>\n</ul>\n</li>\n<li><strong>System Expansion</strong>\n<ul>\n<li>Cross-chain Monitoring</li>\n<li>Real-time Response System</li>\n</ul>\n</li>\n</ul>\n<p>🔮 <em>Future Outlook: Technology Trends to Watch</em></p>\n<h2 id=\"heading-9\">💡 Usage Guide</h2>\n<h3 id=\"heading-10\">How to Use the Series</h3>\n<ol>\n<li><strong>Step-by-Step Learning</strong>: Sequential learning from Part 1</li>\n<li><strong>Practical Application</strong>: Utilize code examples from each part</li>\n<li><strong>Reference Material</strong>: Refer to detailed explanations in each part</li>\n</ol>\n<h3 id=\"heading-11\">Key Code Implementation Locations</h3>\n<ul>\n<li><strong>System Core</strong>: Parts 3, 4</li>\n<li><strong>Operations</strong>: Part 5</li>\n<li><strong>Regulatory Response</strong>: Part 6</li>\n</ul>\n<h2 id=\"heading-12\">🔍 Quick Reference Guide</h2>\n<h3 id=\"heading-13\">Location by Common Topics</h3>\n<ul>\n<li><strong>Market Analysis</strong>: Part 1</li>\n<li><strong>Abnormal Trading Patterns</strong>: Part 2</li>\n<li><strong>System Design</strong>: Part 3</li>\n<li><strong>AI Models</strong>: Part 4</li>\n<li><strong>Operation Plans</strong>: Part 5</li>\n<li><strong>Regulatory Response</strong>: Part 6</li>\n</ul>\n<h2 id=\"heading-14\">📌 Additional Notes</h2>\n<ul>\n<li>Each part can be referenced independently</li>\n<li>Adjustments needed for actual implementation</li>\n<li>Regular updates and improvements recommended</li>\n</ul>\n<h2 id=\"heading-15\">🤝 Support and Inquiries</h2>\n<ul>\n<li>Detailed inquiries available for each part</li>\n<li>Technical support provided for implementation</li>\n<li>Continuous updates and improvements reflected</li>\n</ul>\n<p>This index allows you to easily find and utilize the necessary information. If you have any additional questions or need detailed explanations, please feel free to inquire.</p>\n",
+      "tocItems": [
+        {
+          "id": "heading-0",
+          "text": "Cryptocurrency Derivatives FDS Series - Comprehensive Index Guide",
+          "level": 1,
+          "isMainTopic": true,
+          "position": 0
+        },
+        {
+          "id": "heading-1",
+          "text": "📚 Series Overview",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 50
+        },
+        {
+          "id": "heading-2",
+          "text": "📋 Table of Contents and Key Points",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 100
+        },
+        {
+          "id": "heading-3",
+          "text": "📘 Part 1: Market Status and Problem Analysis",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 150
+        },
+        {
+          "id": "heading-4",
+          "text": "📗 Part 2: Types and Patterns of Abnormal Trading",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 200
+        },
+        {
+          "id": "heading-5",
+          "text": "📙 Part 3: Technical Architecture and System Design",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 250
+        },
+        {
+          "id": "heading-6",
+          "text": "📕 Part 4: AI/ML Models and Analysis Methodology",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 300
+        },
+        {
+          "id": "heading-7",
+          "text": "📓 Part 5: Implementation and Operation Strategy",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 350
+        },
+        {
+          "id": "heading-8",
+          "text": "📔 Part 6: Regulatory Compliance and Future Development",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 400
+        },
+        {
+          "id": "heading-9",
+          "text": "💡 Usage Guide",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 450
+        },
+        {
+          "id": "heading-10",
+          "text": "How to Use the Series",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 500
+        },
+        {
+          "id": "heading-11",
+          "text": "Key Code Implementation Locations",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 550
+        },
+        {
+          "id": "heading-12",
+          "text": "🔍 Quick Reference Guide",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 600
+        },
+        {
+          "id": "heading-13",
+          "text": "Location by Common Topics",
+          "level": 3,
+          "isMainTopic": false,
+          "position": 650
+        },
+        {
+          "id": "heading-14",
+          "text": "📌 Additional Notes",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 700
+        },
+        {
+          "id": "heading-15",
+          "text": "🤝 Support and Inquiries",
+          "level": 2,
+          "isMainTopic": true,
+          "position": 750
+        }
+      ]
+    }
+  },
+  "imageHeights": {}
+}

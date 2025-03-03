@@ -4,7 +4,7 @@ date: "2024-03-20"
 category: "frontend"
 description: "Development Rules"
 tags: ["Convention", "Document"]
-thumbnail: "/images/convention.png"
+thumbnail: ""
 ---
 
 ## 1. Purpose

@@ -3,8 +3,8 @@ title: "Convention Document"
 date: "2024-03-20"
 category: "frontend"
 description: "개발 규칙"
-tags: ["Convention", "Document"]
-thumbnail: "/images/convention.png"
+tags: ["Convention", "Documentation"]
+thumbnail: ""
 ---
 
 ## 1. 목적

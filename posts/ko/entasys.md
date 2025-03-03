@@ -1,5 +1,5 @@
 ---
-title: "Entasis"
+title: "Entasys"
 date: "2024-03-20"
 category: "projects"
 description: "가상자산 거래소 개발"
@@ -16,7 +16,7 @@ tags:
     "MetaMask",
     "Figma",
   ]
-thumbnail: "/images/entasis/entasis_circuit.gif"
+thumbnail: ""
 ---
 
 ## 1. 프로젝트 개요
