@@ -123,7 +123,6 @@ projects:
   - Achieved 95% voice recognition accuracy (using Levenshtein distance, Jaccard similarity, Korean-specific algorithms)
   - Reached 99% feature implementation rate
   - Developed Android signage client
-  - Implemented processing of 10,000 data points per second
 
 ---
 

@@ -74,75 +74,234 @@ class PerpetualFuturesManipulation:
    - 청산 가격 조작
    - 참조 가격 조작
 
-### 2. 옵션 시장 조작 기법
+### 2. 이상거래 패턴 분석
 
-#### 2.1 변동성 조작
+#### 2.1 시장 변동성 기반 패턴
 
 ```python
-class VolatilityManipulation:
-    def detect_vol_manipulation(self, options_data):
+class MarketVolatilityAnalysis:
+    def analyze_volatility_patterns(self, market_data):
         """
-        변동성 조작 탐지
-        - 변동성 스마일 왜곡
-        - 인위적 변동성 급등/급락
-        - 옵션 체인 조작
+        시장 변동성 기반 이상 패턴 분석
+        - 만기일 효과 분석
+        - 변동성 급증 패턴
+        - 가격 조작 시도 탐지
         """
-        vol_surface = self._construct_vol_surface(options_data)
-        smile_distortion = self._analyze_smile_distortion(vol_surface)
-        term_structure = self._analyze_term_structure(vol_surface)
-
-        return {
-            'surface_anomaly': vol_surface,
-            'smile_distortion': smile_distortion,
-            'term_structure_anomaly': term_structure
+        # 만기일 변동성 분석
+        expiry_volatility = {
+            'pre_expiry_vol': self._analyze_pre_expiry_volatility(),
+            'expiry_day_vol': self._analyze_expiry_day_patterns(),
+            'post_expiry_vol': self._analyze_post_expiry_effects()
         }
 
-    def detect_gamma_squeeze(self, market_data):
-        """
-        감마 스퀴즈 탐지
-        - 옵션 감마 집중
-        - 델타 헤지 압력
-        - 가격 증폭 효과
-        """
-        gamma_exposure = self._calculate_gamma_exposure(market_data)
-        hedge_pressure = self._estimate_hedge_pressure(gamma_exposure)
-        price_impact = self._analyze_price_impact(hedge_pressure)
+        # 고빈도 거래 패턴 분석
+        hft_patterns = {
+            'order_book_pressure': self._analyze_order_book_pressure(),
+            'tick_by_tick_analysis': self._analyze_tick_patterns(),
+            'quote_stuffing': self._detect_quote_stuffing()
+        }
 
         return {
-            'gamma_level': gamma_exposure,
-            'hedge_pressure': hedge_pressure,
-            'price_impact': price_impact
+            'expiry_analysis': expiry_volatility,
+            'hft_analysis': hft_patterns,
+            'risk_level': self._calculate_risk_level()
+        }
+
+    def _analyze_pre_expiry_volatility(self):
+        """만기 전 변동성 패턴 분석"""
+        return {
+            'vol_increase_rate': '시간당 변동성 증가율',
+            'volume_concentration': '거래량 집중도',
+            'price_trend': '가격 추세 분석'
+        }
+
+    def _analyze_expiry_day_patterns(self):
+        """만기일 패턴 분석"""
+        return {
+            'settlement_convergence': '정산가격 수렴성',
+            'manipulation_attempts': '조작 시도 지표',
+            'cascade_risks': '연쇄 청산 위험도'
+        }
+
+    def _analyze_order_book_pressure(self):
+        """호가창 압력 분석"""
+        return {
+            'bid_ask_imbalance': '매수/매도 불균형',
+            'depth_analysis': '호가창 깊이 분석',
+            'order_flow_toxicity': '주문흐름 독성도'
         }
 ```
 
-#### 2.2 복합 옵션 전략 조작
+#### 2.2 고빈도 거래 패턴
 
-1. **멀티레그 전략 악용**
+```python
+class HFTPatternAnalysis:
+    def analyze_hft_patterns(self, market_data):
+        """
+        고빈도 거래 패턴 분석
+        - 주문 제출/취소 패턴
+        - 시장 충격 분석
+        - 레이턴시 아비트라지
+        """
+        # 주문 패턴 분석
+        order_patterns = {
+            'submission_rate': self._analyze_submission_rate(),
+            'cancellation_rate': self._analyze_cancellation_rate(),
+            'order_to_trade': self._calculate_order_to_trade_ratio()
+        }
 
-   ```plaintext
-   [복합 전략 패턴]
-       │
-       ├─ 버터플라이 스프레드
-       │      ├─ 변동성 왜곡
-       │      └─ 프리미엄 조작
-       │
-       ├─ 캘린더 스프레드
-       │      ├─ 기간 구조 조작
-       │      └─ 롤오버 왜곡
-       │
-       └─ 콤보 전략
-              ├─ 델타 중립 가장
-              └─ 리스크 은폐
-   ```
+        # 시장 충격 분석
+        market_impact = {
+            'price_impact': self._analyze_price_impact(),
+            'liquidity_impact': self._analyze_liquidity_impact(),
+            'spread_impact': self._analyze_spread_impact()
+        }
 
-2. **옵션 차익거래 조작**
-   - 풋-콜 패리티 위반
-   - 합성 포지션 악용
-   - 크로스마켓 차익
+        # 레이턴시 분석
+        latency_analysis = {
+            'execution_speed': self._analyze_execution_speed(),
+            'order_timing': self._analyze_order_timing(),
+            'venue_latency': self._analyze_venue_latency()
+        }
 
-### 3. DeFi 파생상품 취약점
+        return {
+            'order_patterns': order_patterns,
+            'market_impact': market_impact,
+            'latency_analysis': latency_analysis
+        }
 
-#### 3.1 스마트 컨트랙트 취약점
+    def _analyze_submission_rate(self):
+        """주문 제출 비율 분석"""
+        return {
+            'peak_submission': '최대 주문 제출률',
+            'baseline_rate': '기준 제출률',
+            'abnormal_patterns': '이상 패턴 지표'
+        }
+
+    def _analyze_price_impact(self):
+        """가격 충격 분석"""
+        return {
+            'immediate_impact': '즉각적 가격 영향',
+            'permanent_impact': '영구적 가격 영향',
+            'reversion_pattern': '가격 복원 패턴'
+        }
+```
+
+#### 2.3 변동성 기반 위험 지표
+
+```python
+class VolatilityRiskMetrics:
+    def calculate_risk_metrics(self, market_data):
+        """
+        변동성 기반 위험 지표 계산
+        - 변동성 표면 왜곡
+        - 변동성 스마일 이상
+        - 기간 구조 왜곡
+        """
+        # 변동성 표면 분석
+        vol_surface = {
+            'surface_distortion': self._analyze_surface_distortion(),
+            'term_structure': self._analyze_term_structure(),
+            'strike_structure': self._analyze_strike_structure()
+        }
+
+        # 스마일 패턴 분석
+        smile_patterns = {
+            'skew_analysis': self._analyze_volatility_skew(),
+            'kurtosis': self._analyze_volatility_kurtosis(),
+            'wing_behavior': self._analyze_wing_behavior()
+        }
+
+        # 기간 구조 분석
+        term_structure = {
+            'curve_shape': self._analyze_curve_shape(),
+            'inversion_points': self._detect_inversions(),
+            'spread_analysis': self._analyze_time_spreads()
+        }
+
+        return {
+            'vol_surface': vol_surface,
+            'smile_patterns': smile_patterns,
+            'term_structure': term_structure
+        }
+
+    def _analyze_surface_distortion(self):
+        """변동성 표면 왜곡 분석"""
+        return {
+            'local_distortion': '국소 왜곡도',
+            'global_shape': '전체 형태 분석',
+            'arbitrage_opportunities': '차익거래 기회'
+        }
+
+    def _analyze_volatility_skew(self):
+        """변동성 스큐 분석"""
+        return {
+            'put_call_skew': '풋콜 스큐',
+            'strike_sensitivity': '행사가격 민감도',
+            'time_variation': '시간 변동성'
+        }
+```
+
+### 3. 실시간 모니터링 시스템
+
+#### 3.1 변동성 모니터링
+
+```python
+class RealTimeVolatilityMonitor:
+    def __init__(self):
+        self.vol_calculator = VolatilityCalculator()
+        self.pattern_detector = PatternDetector()
+
+    def monitor_realtime_volatility(self):
+        """
+        실시간 변동성 모니터링
+        - 변동성 지표 계산
+        - 패턴 감지
+        - 알림 생성
+        """
+        # 실시간 변동성 모니터링
+        vol_metrics = {
+            'implied_vol': self._calculate_implied_volatility(),
+            'realized_vol': self._calculate_realized_volatility(),
+            'vol_surface': self._generate_vol_surface()
+        }
+
+        # HFT 패턴 실시간 감지
+        hft_metrics = {
+            'order_flow_toxicity': self._calculate_toxicity(),
+            'market_impact': self._calculate_impact(),
+            'order_book_pressure': self._analyze_pressure()
+        }
+
+        # 알림 생성
+        alerts = self._generate_alerts(vol_metrics, hft_metrics)
+
+        return {
+            'volatility_metrics': vol_metrics,
+            'hft_metrics': hft_metrics,
+            'alerts': alerts
+        }
+
+    def _calculate_implied_volatility(self):
+        """내재 변동성 계산"""
+        return {
+            'current_level': '현재 변동성 수준',
+            'term_structure': '기간별 구조',
+            'surface_state': '변동성 표면 상태'
+        }
+
+    def _generate_alerts(self, vol_metrics, hft_metrics):
+        """알림 생성 로직"""
+        return {
+            'vol_alerts': self._check_vol_thresholds(vol_metrics),
+            'hft_alerts': self._check_hft_thresholds(hft_metrics),
+            'combined_risk': self._assess_combined_risk()
+        }
+```
+
+### 4. DeFi 파생상품 취약점
+
+#### 4.1 스마트 컨트랙트 취약점
 
 ```solidity
 contract VulnerableDerivativeProtocol {
@@ -173,7 +332,7 @@ contract VulnerableDerivativeProtocol {
 }
 ```
 
-#### 3.2 AMM 기반 취약점
+#### 4.2 AMM 기반 취약점
 
 1. **유동성 풀 조작**
 
@@ -186,9 +345,9 @@ contract VulnerableDerivativeProtocol {
    - 블록 타임스탬프 조작
    - 체인링크 지연 악용
 
-### 4. 복합 포지션을 통한 시장 조작
+### 5. 복합 포지션을 통한 시장 조작
 
-#### 4.1 크로스마켓 조작
+#### 5.1 크로스마켓 조작
 
 ```python
 class CrossMarketManipulation:
@@ -213,7 +372,7 @@ class CrossMarketManipulation:
         }
 ```
 
-#### 4.2 포트폴리오 은닉
+#### 5.2 포트폴리오 은닉
 
 1. **리스크 분산 기법**
 
@@ -226,9 +385,9 @@ class CrossMarketManipulation:
    - 프라이버시 코인 활용
    - 다층 거래 구조
 
-### 5. 탐지 및 대응 방안
+### 6. 탐지 및 대응 방안
 
-#### 5.1 실시간 모니터링 시스템
+#### 6.1 실시간 모니터링 시스템
 
 ```python
 class RealTimeMonitoring:
@@ -249,7 +408,7 @@ class RealTimeMonitoring:
             self.alert_system.generate_alert(risk_assessment)
 ```
 
-#### 5.2 대응 전략
+#### 6.2 대응 전략
 
 1. **즉각 대응**
 
@@ -262,15 +421,15 @@ class RealTimeMonitoring:
    - 마진 요구량 조정
    - 거래 모니터링 강화
 
-### 6. 향후 발전 방향
+### 7. 향후 발전 방향
 
-#### 6.1 기술적 개선
+#### 7.1 기술적 개선
 
 - AI/ML 모델 고도화
 - 실시간 처리 능력 향상
 - 크로스체인 통합 강화
 
-#### 6.2 규제 대응
+#### 7.2 규제 대응
 
 - 규제 준수 강화
 - 보고 체계 개선
