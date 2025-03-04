@@ -1,6 +1,6 @@
 <h1>가상자산 파생상품 FDS 시리즈 - 종합 인덱스 가이드</h1>
 <h2>📚 시리즈 개요</h2>
-<p>이 시리즈는 가상자산 파생상품 시장의 이상거래 탐지 시스템(FDS)에 대한 포괄적인 가이드를 제공합니다.</p>
+<p>이 시리즈는 가상자산 파생상품 시장의 이상거래 탐지 시스템(FDS)에 대한 포괄적인 가이드를 제공합니다. 특히 시장 변동성, 고빈도 거래(HFT), 만기일 효과 등 주요 위험 요소에 대한 탐지 및 대응 방안을 중점적으로 다룹니다.</p>
 <h2>📋 목차 및 주요 내용</h2>
 <h3>📘 Part 1: 시장 현황과 문제점 분석</h3>
 <ul>
@@ -8,35 +8,77 @@
 <ul>
 <li>시장 규모 및 성장 추이</li>
 <li>주요 거래 유형 분석</li>
+<li><strong>시장 변동성 특성</strong>
+<ul>
+<li>일중 변동성 패턴</li>
+<li>만기일 효과</li>
+<li>HFT 영향도</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>현재 시장의 문제점</strong>
 <ul>
 <li>구조적 위험 요소</li>
 <li>운영적 위험 요소</li>
+<li><strong>변동성 기반 위험</strong>
+<ul>
+<li>급격한 가격 변동</li>
+<li>시장 충격 영향</li>
+<li>연쇄 청산 위험</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>이상거래 사례 분석</strong>
 <ul>
 <li>주요 시장 조작 사례</li>
 <li>이상거래 유형 분류</li>
+<li><strong>고빈도 거래 남용 사례</strong>
+<ul>
+<li>시장 교란 행위</li>
+<li>플래시 크래시</li>
+<li>주문 폭주</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>FDS 시스템의 필요성</strong></li>
 </ul>
-<p>🔍 <em>특히 주목할 점: 시장 규모 데이터와 실제 사례 분석</em></p>
+<p>🔍 <em>특히 주목할 점: 변동성과 HFT가 시장에 미치는 영향 분석</em></p>
 <h3>📗 Part 2: 이상거래 유형 및 패턴</h3>
 <ul>
 <li><strong>선물 시장 이상거래</strong>
 <ul>
 <li>영구선물 시장 조작 패턴</li>
 <li>가격 조작 기법</li>
+<li><strong>시장 변동성 기반 패턴</strong>
+<ul>
+<li>만기일 효과 분석</li>
+<li>변동성 급증 패턴</li>
+<li>가격 조작 시도</li>
+</ul>
+</li>
+<li><strong>고빈도 거래(HFT) 패턴</strong>
+<ul>
+<li>주문 패턴 분석</li>
+<li>시장 충격 분석</li>
+<li>레이턴시 아비트라지</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>옵션 시장 조작</strong>
 <ul>
 <li>변동성 조작 기법</li>
 <li>복합 옵션 전략 악용</li>
+<li><strong>만기일 변동성 패턴</strong>
+<ul>
+<li>만기 전후 변동성 분석</li>
+<li>포지션 롤오버 패턴</li>
+<li>만기 시점 조작 탐지</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>DeFi 관련 취약점</strong>
@@ -46,13 +88,20 @@
 </ul>
 </li>
 </ul>
-<p>💡 <em>핵심 포인트: 각 거래 유형별 구체적인 패턴 분석</em></p>
+<p>💡 <em>핵심 포인트: 변동성 기반 패턴 및 HFT 분석 방법론</em></p>
 <h3>📙 Part 3: 기술 아키텍처 및 시스템 설계</h3>
 <ul>
 <li><strong>전체 시스템 구조</strong>
 <ul>
 <li>데이터 수집 레이어</li>
 <li>처리 및 분석 레이어</li>
+<li><strong>실시간 모니터링 레이어</strong>
+<ul>
+<li>변동성 모니터링</li>
+<li>HFT 패턴 감지</li>
+<li>만기일 효과 분석</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>데이터 처리 시스템</strong>
@@ -75,6 +124,13 @@
 <ul>
 <li>비지도 학습 모델</li>
 <li>시계열 분석 모델</li>
+<li><strong>변동성 기반 탐지 모델</strong>
+<ul>
+<li>만기일 효과 예측</li>
+<li>변동성 급증 감지</li>
+<li>HFT 패턴 분류</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>머신러닝 모델 설계</strong>
@@ -141,12 +197,26 @@
 <li><strong>단계별 학습</strong>: Part 1부터 순차적으로 학습</li>
 <li><strong>실무 적용</strong>: 각 파트의 코드 예제 활용</li>
 <li><strong>참고 자료</strong>: 각 파트의 상세 설명 참조</li>
+<li><strong>특화 기능 구현</strong>:
+<ul>
+<li>변동성 기반 탐지 시스템</li>
+<li>HFT 패턴 분석기</li>
+<li>만기일 모니터링 도구</li>
+</ul>
+</li>
 </ol>
 <h3>주요 코드 구현 위치</h3>
 <ul>
 <li><strong>시스템 코어</strong>: Part 3, 4</li>
 <li><strong>운영 관련</strong>: Part 5</li>
 <li><strong>규제 대응</strong>: Part 6</li>
+<li><strong>특화 기능</strong>:
+<ul>
+<li>변동성 분석: Part 2, 4</li>
+<li>HFT 모니터링: Part 2, 3</li>
+<li>만기일 대응: Part 2, 5</li>
+</ul>
+</li>
 </ul>
 <h2>🔍 빠른 참조 가이드</h2>
 <h3>자주 찾는 주제별 위치</h3>
@@ -157,6 +227,31 @@
 <li><strong>AI 모델</strong>: Part 4</li>
 <li><strong>운영 방안</strong>: Part 5</li>
 <li><strong>규제 대응</strong>: Part 6</li>
+<li><strong>특화 기능</strong>:
+<ul>
+<li><strong>변동성 분석</strong>:
+<ul>
+<li>기본 개념: Part 1</li>
+<li>탐지 방법: Part 2</li>
+<li>구현 방안: Part 4</li>
+</ul>
+</li>
+<li><strong>HFT 모니터링</strong>:
+<ul>
+<li>패턴 분석: Part 2</li>
+<li>실시간 탐지: Part 3</li>
+<li>대응 전략: Part 5</li>
+</ul>
+</li>
+<li><strong>만기일 대응</strong>:
+<ul>
+<li>위험 분석: Part 1</li>
+<li>모니터링: Part 3</li>
+<li>자동화 방안: Part 4</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2>📌 추가 참고사항</h2>
 <ul>
