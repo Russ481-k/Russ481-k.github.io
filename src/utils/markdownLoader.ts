@@ -1,100 +1,79 @@
-// import fs from "fs";
-// import path from "path";
-// import matter from "gray-matter";
-// import { Post } from "@/types/post";
-// import { remark } from "remark";
-// import remarkHtml from "remark-html";
-// import remarkGfm from "remark-gfm";
-// import { unified } from "unified";
-// import remarkParse from "remark-parse";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { Post, TocItem } from "@/types/post";
 
-// export async function getPost(id: string): Promise<Post> {
-//   const koContent = fs.readFileSync(
-//     path.join(process.cwd(), "posts", "ko", `${id}.md`),
-//     "utf-8"
-//   );
-//   const enContent = fs.readFileSync(
-//     path.join(process.cwd(), "posts", "en", `${id}.md`),
-//     "utf-8"
-//   );
+export async function getPost(id: string): Promise<Post> {
+  const postsDirectory = path.join(process.cwd(), "posts");
+  const koPath = path.join(postsDirectory, "ko", `${id}.md`);
+  const enPath = path.join(postsDirectory, "en", `${id}.md`);
 
-//   const koMatter = matter(koContent);
-//   const enMatter = matter(enContent);
+  // Helper to read and parse a file
+  const readFile = (filePath: string) => {
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, "utf-8");
+      return matter(fileContent);
+    }
+    return null;
+  };
 
-//   // 변환 전 마크다운 컨텐츠 확인
-//   console.log("Korean Markdown Content:", koMatter.content);
+  const koMatter = readFile(koPath);
+  const enMatter = readFile(enPath);
 
-//   // 마크다운 컨텐츠를 HTML로 변환
-//   const koHtmlContent = await markdownToHtml(koMatter.content);
-//   const enHtmlContent = await markdownToHtml(enMatter.content);
+  // If neither exists, throw or return null (handling basic case where at least KO exists)
+  if (!koMatter) {
+    throw new Error(`Post not found: ${id}`);
+  }
 
-//   // 변환 후 HTML 컨텐츠 확인
-//   console.log("Korean HTML Content:", koHtmlContent);
+  // Use KO data as base, fallback to EN if specific fields missing (though structure implies specific per-lang files)
+  const baseData = koMatter.data;
 
-//   return {
-//     id,
-//     date: koMatter.data.date,
-//     category: koMatter.data.category,
-//     tags: koMatter.data.tags,
-//     thumbnail: koMatter.data.thumbnail,
-//     title: koMatter.data.title,
-//     content: koHtmlContent, // HTML로 변환된 컨텐츠 사용
-//     translations: {
-//       ko: {
-//         title: koMatter.data.title,
-//         description: koMatter.data.description,
-//         content: koHtmlContent, // HTML로 변환된 컨텐츠 사용
-//         tocItems: [], // TOC 생성 로직 필요
-//       },
-//       en: {
-//         title: enMatter.data.title,
-//         description: enMatter.data.description,
-//         content: enHtmlContent, // HTML로 변환된 컨텐츠 사용
-//         tocItems: [], // TOC 생성 로직 필요
-//       },
-//     },
-//     imageHeights: koMatter.data.imageHeights || {},
-//   };
-// }
+  return {
+    id,
+    date: baseData.date,
+    category: baseData.category,
+    tags: baseData.tags,
+    thumbnail: baseData.thumbnail,
+    title: baseData.title,
+    content: koMatter.content, 
+    translations: {
+      ko: {
+        title: baseData.title,
+        description: baseData.description || "",
+        content: koMatter.content,
+        tocItems: [], // Client will parse this or we can parse here if needed. 
+                      // Plan said to return raw markdown, client parses it.
+      },
+      en: {
+        title: enMatter?.data.title || "",
+        description: enMatter?.data.description || "",
+        content: enMatter?.content || "",
+        tocItems: [],
+      },
+    },
+    imageHeights: baseData.imageHeights || {},
+  };
+}
 
-// export async function getAllPosts(): Promise<Post[]> {
-//   const files = fs.readdirSync(path.join(process.cwd(), "posts", "ko"));
-//   const posts = await Promise.all(
-//     files.map(async (filename) => {
-//       const id = filename.replace(/\.md$/, "");
-//       return await getPost(id);
-//     })
-//   );
-//   return posts;
-// }
+export async function getAllPosts(): Promise<Post[]> {
+  const postsDirectory = path.join(process.cwd(), "posts");
+  const koDirectory = path.join(postsDirectory, "ko");
+  
+  if (!fs.existsSync(koDirectory)) {
+    return [];
+  }
 
-// export async function markdownToHtml(markdown: string) {
-//   console.log("\n=== Markdown Conversion Process ===");
-//   console.log("\n1. Input Markdown:", markdown);
-
-//   // Parse 단계
-//   const parsed = await unified().use(remarkParse).parse(markdown);
-//   console.log("\n2. After remarkParse:", parsed);
-
-//   // GFM 처리 단계
-//   const gfmProcessed = await unified()
-//     .use(remarkParse)
-//     .use(remarkGfm)
-//     .runSync(parsed);
-//   console.log("\n3. After remarkGfm:", gfmProcessed);
-
-//   // HTML 변환 단계
-//   const result = await unified()
-//     .use(remarkParse)
-//     .use(remarkGfm)
-//     .use(remarkHtml, {
-//       sanitize: false,
-//     })
-//     .process(markdown);
-
-//   const htmlResult = result.toString();
-//   console.log("\n4. Final HTML Output:", htmlResult);
-//   console.log("\n===============================\n");
-
-//   return htmlResult;
-// }
+  const files = fs.readdirSync(koDirectory);
+  
+  const posts = await Promise.all(
+    files
+      .filter(filename => filename.endsWith('.md'))
+      .map(async (filename) => {
+        const id = filename.replace(/\.md$/, "");
+        return await getPost(id);
+      })
+  );
+  
+  // Sort by date desc
+  return posts.sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
+}

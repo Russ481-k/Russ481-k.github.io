@@ -1,0 +1,49 @@
+@import "./variables";
+
+// Media Queries
+@mixin mobile {
+    @media (max-width: #{$bp-mobile}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: #{$bp-tablet}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (max-width: #{$bp-desktop}) {
+        @content;
+    }
+}
+
+// Scrollbar
+@mixin custom-scrollbar($width: 6px, $bg: transparent, $thumb: rgba(255, 255, 255, 0.2)) {
+    &::-webkit-scrollbar {
+        width: $width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $bg;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $thumb;
+        border-radius: $width / 2;
+    }
+}
+
+// Flexbox Utilities
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

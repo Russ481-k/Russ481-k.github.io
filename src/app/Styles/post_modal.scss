@@ -76,18 +76,23 @@
 
           .title {
             font-size: 0.9rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: keep-all;
+            text-align: left;
+            line-height: 1.2;
+            max-width: 200px;
           }
+
           .nav_info_right {
             display: flex;
             align-items: flex-end;
           }
+
           .nav_info_left {
             display: flex;
             align-items: flex-end;
           }
+
           @media screen and (max-width: 768px) {
             .title {
               display: none;
@@ -101,6 +106,10 @@
 
         &.next .nav_info {
           flex-direction: row-reverse;
+
+          .title {
+            text-align: right;
+          }
         }
       }
     }
@@ -132,6 +141,7 @@
       padding-right: 8px;
       line-height: 1.8;
       font-size: 1.1rem;
+
       &::-webkit-scrollbar {
         width: 8px;
       }
@@ -149,6 +159,7 @@
           background: rgba(183, 237, 246, 0.5);
         }
       }
+
       .modal_thumbnail {
         margin: -42px -42px 32px -42px;
         height: 500px;
@@ -169,13 +180,12 @@
           left: 0;
           right: 0;
           height: 100px;
-          background: linear-gradient(
-            to bottom,
-            transparent,
-            rgba(0, 0, 0, 0.8)
-          );
+          background: linear-gradient(to bottom,
+              transparent,
+              rgba(0, 0, 0, 0.8));
         }
       }
+
       .content_wrapper {
         display: flex;
         gap: 2rem;
@@ -275,6 +285,7 @@
           @media screen and (max-width: 1024px) {
             max-width: 100%;
           }
+
           h1 {
             font-size: 2rem;
             margin: 2rem 0 1rem;
@@ -366,7 +377,7 @@
             }
           }
 
-          :not(pre) > code {
+          :not(pre)>code {
             padding: 0.2em 0.4em;
             background: #333;
             border-radius: 3px;
@@ -393,6 +404,7 @@
           ol {
             margin: 1rem 0;
             padding-left: 1.5rem;
+
             li {
               margin: 0.5rem 0;
               line-height: 1.6;
@@ -514,6 +526,7 @@
         min-width: 100%;
         flex-direction: column;
       }
+
       .table_of_contents {
         display: none;
       }
@@ -541,6 +554,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

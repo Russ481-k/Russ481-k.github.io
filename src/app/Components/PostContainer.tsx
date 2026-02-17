@@ -40,11 +40,18 @@ export const PostContainer = ({
   // searchTerm state를 제거하고 props로 받은 값 사용
   const debouncedSearchTerm = useDebounce(externalSearchTerm, 300);
 
-  const { register, handleSubmit } = useForm<SearchForm>({
+  const methods = useForm<SearchForm>({
     defaultValues: {
       searchTerm: externalSearchTerm,
     },
   });
+
+  const { register, handleSubmit, setValue, watch } = methods;
+
+  // Sync external search term with form
+  useEffect(() => {
+    setValue("searchTerm", externalSearchTerm);
+  }, [externalSearchTerm, setValue]);
 
   // 필터링 로직 메모이제이션
   const filteredPosts = useMemo(() => {
@@ -138,6 +145,12 @@ export const PostContainer = ({
           {...post}
           searchTerm={debouncedSearchTerm}
           posts={filteredPosts}
+          onTagClick={(tag) => {
+            onSearchChange(tag); // Update parent state
+            // Update react-hook-form value
+            const { setValue } = methods; // Need to access form methods
+            setValue("searchTerm", tag);
+          }}
         />
       ))}
     </div>

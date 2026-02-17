@@ -439,7 +439,6 @@ export const SideIndex = ({
         <div className="keyword_list" ref={keywordListRef}>
           <div className="keywords_container">
             {renderKeywords()}
-            {renderKeywords()} {/* 키워드 리스트 복제 */}
           </div>
         </div>
       </div>

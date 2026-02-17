@@ -11,6 +11,8 @@ import { getClientPost } from "@/utils/clientPosts";
 import { FiCopy } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import dynamic from "next/dynamic";
+import LexicalEditor from "./Lexical/Editor";
+import { extractHeadings } from "@/utils/markdownUtils";
 
 interface PostModalProps {
   post: Post;
@@ -19,6 +21,7 @@ interface PostModalProps {
   prevPost?: Post | null; // 이전 포스트
   nextPost?: Post | null; // 다음 포스트
   onPostChange: (post: Post) => void; // 포스트 변경 핸들러
+  onTagClick?: (tag: string) => void;
 }
 
 const PostModal = ({
@@ -28,16 +31,33 @@ const PostModal = ({
   prevPost,
   nextPost,
   onPostChange,
+  onTagClick,
 }: PostModalProps) => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language as "ko" | "en";
 
   const translation =
     post.translations?.[currentLang] || post.translations?.["en"];
-  const { title, content, tocItems } = translation;
+  const { title, content } = translation;
+  
+  // Use DB tocItems or fallback to calculating them from content
+  const tocItems = React.useMemo(() => {
+    const items = (translation.tocItems?.length > 0)
+      ? translation.tocItems 
+      : extractHeadings(content || "");
+    console.log("[PostModal] Calculated tocItems:", items.length);
+    return items;
+  }, [translation.tocItems, content]);
+
+  const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null);
+  
+  // Callback ref to handle DOM element mounting/unmounting
+  const onContentRefChange = useCallback((node: HTMLDivElement | null) => {
+    setContentElement(node);
+  }, []);
 
   const [activeId, setActiveId] = useState<string>("");
-  const contentRef = useRef<HTMLDivElement>(null);
+  // const contentRef = useRef<HTMLDivElement>(null); // Removed in favor of state+callback
   const [copiedStates, setCopiedStates] = useState<{ [key: string]: boolean }>(
     {}
   );
@@ -45,72 +65,139 @@ const PostModal = ({
   const scrollToHeading = useCallback(
     (id: string) => {
       const heading = tocItems?.find((h: TocItem) => h.id === id);
-      if (!heading || !contentRef.current) return;
+      if (!heading || !contentElement) return;
 
-      const headingElement = contentRef.current.querySelector(`#${id}`);
+      // Use attribute selector to handle IDs starting with specific characters (e.g. numbers)
+      const headingElement = contentElement.querySelector(`[id="${id}"]`);
       if (!headingElement) return;
 
-      const containerRect = contentRef.current.getBoundingClientRect();
+      const containerRect = contentElement.getBoundingClientRect();
       const headingRect = headingElement.getBoundingClientRect();
       const relativeTop =
-        headingRect.top - containerRect.top + contentRef.current.scrollTop;
+        headingRect.top - containerRect.top + contentElement.scrollTop;
       const containerPadding = 32;
 
-      contentRef.current.scrollTo({
+      contentElement.scrollTo({
         top: relativeTop - containerPadding,
         behavior: "smooth",
       });
     },
-    [tocItems]
+    [tocItems, contentElement]
   );
 
   const handleScroll = useCallback(() => {
-    if (!contentRef.current || !tocItems?.length) return;
+    if (!contentElement || !tocItems?.length) {
+        // console.log("[PostModal] handleScroll: aborted", { hasRef: !!contentElement, hasToc: !!tocItems?.length });
+        return;
+    }
+    // console.log("[PostModal] handleScroll: running");
 
-    const containerRect = contentRef.current.getBoundingClientRect();
-    const scrollTop = contentRef.current.scrollTop;
+    const { scrollTop, scrollHeight, clientHeight } = contentElement;
+    const containerRect = contentElement.getBoundingClientRect();
     const containerPadding = 32;
 
-    // 현재 화면에 보이는 헤딩 찾기
+    // Check if we are at the bottom of the content
+    // If so, highlight the last item regardless of its position
+    if (Math.abs(scrollHeight - clientHeight - scrollTop) < 50) {
+      setActiveId(tocItems[tocItems.length - 1].id);
+      return;
+    }
+
+    // Default: Find the last heading that has passed the top threshold
     let currentHeading = tocItems[0];
 
     for (const heading of tocItems) {
-      const headingElement = contentRef.current.querySelector(`#${heading.id}`);
+      // Use attribute selector here as well
+      const headingElement = contentElement.querySelector(
+        `[id="${heading.id}"]`
+      );
       if (!headingElement) continue;
 
       const headingRect = headingElement.getBoundingClientRect();
       const relativeTop = headingRect.top - containerRect.top;
 
-      // 헤딩이 컨테이너 상단 패딩 위치에 가까워지면 현재 헤딩으로 설정
-      if (relativeTop <= containerPadding + 10) {
-        // 10px의 여유 추가
+      // Check if the heading is above the threshold (with some buffer)
+      // Increased buffer slightly to make it feel more natural
+      if (relativeTop <= containerPadding + 100) {
         currentHeading = heading;
       } else {
         break;
       }
     }
 
+    // console.log("Current active ID:", currentHeading.id);
+    // console.log("[PostModal] handleScroll: Setting activeId", currentHeading.id);
     setActiveId(currentHeading.id);
-  }, [tocItems]);
+  }, [tocItems, contentElement]);
 
+  // Effect to attach observers when contentElement changes or handleScroll updates
   useEffect(() => {
-    const contentElement = contentRef.current;
-    if (!contentElement) return;
+    if (!contentElement) {
+        console.log("[PostModal] useEffect: no contentElement");
+        return;
+    }
+    console.log("[PostModal] useEffect: attaching observers");
 
     contentElement.addEventListener("scroll", handleScroll);
-    handleScroll(); // 초기 활성 헤딩 설정
+    
+    // ResizeObserver: 콘텐츠 크기가 변할 때
+    const resizeObserver = new ResizeObserver(() => {
+      handleScroll();
+    });
+    resizeObserver.observe(contentElement);
 
-    return () => contentElement.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+    // MutationObserver: ID 속성 변경 감지
+    const mutationObserver = new MutationObserver((mutations) => {
+      let shouldUpdate = false;
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes" && mutation.attributeName === "id") {
+          console.log("[PostModal] MutationObserver: ID changed", mutation.target);
+          shouldUpdate = true;
+        }
+      });
+      if (shouldUpdate) {
+        console.log("[PostModal] MutationObserver: Triggering handleScroll");
+        handleScroll();
+      }
+    });
+    
+    mutationObserver.observe(contentElement, {
+      attributes: true,
+      attributeFilter: ["id"],
+      subtree: true,
+    });
+
+    handleScroll(); // Initial check
+
+    return () => {
+      contentElement.removeEventListener("scroll", handleScroll);
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [contentElement, handleScroll]);
 
   const handlePostChange = async (newPost: Post) => {
     try {
       const fullPost = await getClientPost(newPost.id);
-      onPostChange(fullPost);
+      if (fullPost) {
+        onPostChange(fullPost);
+      } else {
+        console.error("Post not found");
+      }
     } catch (error) {
       console.error("Error fetching post:", error);
     }
   };
+
+  // 포스트 변경 시 스크롤 최상단 이동
+  useEffect(() => {
+    // console.log("[PostModal] useEffect[post.id]: reset scroll", post.id);
+    if (contentElement) {
+      contentElement.scrollTo(0, 0);
+      // console.log("[PostModal] contentRef.current.scrollTop after scrollTo:", contentElement.scrollTop);
+    }
+  }, [post.id, contentElement]);
+
 
   // 모달이 열리고 닫힐 때 body 스크롤 제어
   useEffect(() => {
@@ -172,9 +259,6 @@ const PostModal = ({
 
   const imageUrl = getPostImage(post.thumbnail);
 
-  console.log("Post headings:", tocItems); // 목차 데이터 확인
-  console.log("Current post:", post); // 전체 post 객체 확인
-
   const modalContent = (
     <div className="modal_overlay" onClick={onClose}>
       <div className="modal_content" onClick={(e) => e.stopPropagation()}>
@@ -218,12 +302,21 @@ const PostModal = ({
         <div className="modal_meta">
           <div className="tags">
             {post.tags.map((tag) => (
-              <Tag key={tag} name={tag} />
+              <Tag 
+                key={tag} 
+                name={tag} 
+                onClick={(t) => {
+                    if (onTagClick) {
+                        onTagClick(t);
+                        onClose(); // Close modal on tag click
+                    }
+                }} 
+              />
             ))}
           </div>
           <span className="date">{formattedDate}</span>
         </div>
-        <div className="modal_body" ref={contentRef}>
+        <div className="modal_body" ref={onContentRefChange}>
           {post.thumbnail && typeof imageUrl === "string" && (
             <div className="modal_thumbnail">
               <Image
@@ -236,12 +329,12 @@ const PostModal = ({
             </div>
           )}
           <div className="content_wrapper">
-            <div
-              className="content"
-              dangerouslySetInnerHTML={{
-                __html: post.translations[currentLang].content,
-              }}
-            />
+            <div className="content">
+              <LexicalEditor
+                initialMarkdown={post.translations[currentLang].content}
+                readOnly={true}
+              />
+            </div>
             {tocItems?.length > 0 && (
               <nav className="table_of_contents">
                 <h3>{t("modal.toc")}</h3>

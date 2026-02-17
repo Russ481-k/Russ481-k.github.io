@@ -1,17 +1,20 @@
 "use client";
+import ReactMarkdown from "react-markdown";
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import { highlightText } from "@/utils/highlightText";
 import { getPostImage } from "@/utils/getPostImage";
-import type { Post } from "@/types/post";
+import type { Post as PostType } from "@/types/post";
+import { Tag } from "./Tag";
 import PostModal from "./PostModal";
 import { useTranslation } from "react-i18next";
 
-interface PostProps extends Post {
+interface PostProps extends PostType {
   searchTerm?: string;
-  posts?: Post[];
+  posts?: PostType[];
+  onTagClick?: (tag: string) => void;
 }
 
 const Post = (props: PostProps) => {
@@ -21,7 +24,7 @@ const Post = (props: PostProps) => {
   // 현재 언어에 맞는 번역 데이터 선택
   const translation =
     props.translations[currentLang] || props.translations["en"];
-  const { title, description, content, tocItems } = translation;
+  const { title, content } = translation;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const imageUrl = getPostImage(props.thumbnail, {
@@ -98,9 +101,11 @@ const Post = (props: PostProps) => {
               <h1>{highlightText(title || "", props.searchTerm || "")}</h1>
               <div className="tags">
                 {visibleTags.map((tag, index) => (
-                  <span key={index} className="tag">
-                    {tag}
-                  </span>
+                  <Tag 
+                    key={`${tag}-${index}`} 
+                    name={tag} 
+                    onClick={props.onTagClick} 
+                  />
                 ))}
                 {remainingTags > 0 && (
                   <span className="more_tags">+{remainingTags}</span>
@@ -109,14 +114,11 @@ const Post = (props: PostProps) => {
             </div>
             <span className="date">{formattedDate}</span>
           </div>
-          <div
-            className="markdown-content"
-            dangerouslySetInnerHTML={{
-              __html: props.searchTerm
-                ? highlightText(content, props.searchTerm)
-                : content,
-            }}
-          />
+          <div className="markdown-content">
+            <ReactMarkdown>
+              {content.split("\n").slice(0, 8).join("\n")}
+            </ReactMarkdown>
+          </div>
         </div>
       </div>
       <PostModal
@@ -125,13 +127,14 @@ const Post = (props: PostProps) => {
         onClose={() => setIsModalOpen(false)}
         prevPost={prevPost}
         nextPost={nextPost}
-        onPostChange={(newPost: Post) => {
+        onPostChange={(newPost: PostType) => {
           setCurrentPost({
             ...newPost,
             searchTerm: props.searchTerm,
             posts: props.posts,
           });
         }}
+        onTagClick={props.onTagClick}
       />
     </>
   );

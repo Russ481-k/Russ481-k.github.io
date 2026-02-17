@@ -1,0 +1,59 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.editorContainer {
+    position: relative;
+    background: white;
+    border: 1px solid $color-gray-300;
+    border-radius: 8px;
+    overflow: hidden;
+    color: black;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+
+    &.readOnly {
+        border: none;
+        background: transparent;
+        color: inherit;
+        min-height: auto;
+
+        .editorInput {
+            padding: 0;
+            color: inherit;
+        }
+    }
+}
+
+.editorInner {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.editorInput {
+    min-height: 150px;
+    resize: none;
+    font-size: 1rem;
+    caret-color: rgb(5, 5, 5);
+    position: relative;
+    tab-size: 1;
+    outline: 0;
+    padding: 15px 10px;
+    flex: 1;
+    font-family: inherit;
+}
+
+.editorPlaceholder {
+    color: #999;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    top: 15px;
+    left: 10px;
+    font-size: 15px;
+    user-select: none;
+    display: inline-block;
+    pointer-events: none;
+}

@@ -1,15 +1,18 @@
+@import "./variables";
+@import "./mixins";
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(14, 41, 84, 0.65);
-  backdrop-filter: blur(10px);
+  background-color: $bg-glass;
+  backdrop-filter: blur($bg-glass-blur);
   transition: all 0.5s ease-in-out;
-  z-index: 100;
-  height: 40px;
+  z-index: $z-header;
+  height: $header-height;
 
-  @media screen and (max-width: 768px) {
+  @include mobile {
     display: none;
   }
 
@@ -18,24 +21,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, rgb(14, 41, 84), rgb(31, 113, 140));
+    background: linear-gradient(to bottom, $color-primary-dark, rgb(31, 113, 140));
 
     .header_content {
       .title {
         display: flex;
         font-size: 5rem;
-        color: white;
+        color: $color-white;
         margin: 0;
         opacity: 0;
         animation: fadeIn 1s ease-in-out forwards;
         cursor: pointer;
         text-align: center;
         transform-origin: center;
+
         @keyframes fadeIn {
           from {
             opacity: 0;
             transform: translateY(20px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
@@ -52,7 +57,7 @@
     justify-content: space-between;
     padding: 0 5%;
 
-    @media screen and (max-width: 1280px) {
+    @include desktop {
       padding: 0 12px;
     }
 
@@ -64,12 +69,12 @@
     .title {
       min-width: 180px;
       font-size: 1.5rem;
-      color: white;
+      color: $color-white;
       margin: 0;
       margin-right: 0;
       text-align: right;
 
-      @media screen and (max-width: 1280px) {
+      @include desktop {
         min-width: 180px;
       }
 
@@ -78,7 +83,7 @@
         text-decoration: none;
 
         &:hover {
-          color: #b7edf6;
+          color: $color-accent;
         }
       }
     }
@@ -86,8 +91,9 @@
     .language_selector {
       margin-left: auto;
       width: 40px;
+
       .lang_btn {
-        color: #b7edf6;
+        color: $color-accent;
       }
     }
 
@@ -98,13 +104,13 @@
       padding-right: 12px;
       align-items: center;
 
-      @media screen and (max-width: 1280px) {
+      @include desktop {
         width: 220px;
       }
 
       button,
       a {
-        color: white;
+        color: $color-white;
         text-decoration: none;
         font-size: 1rem;
         transition: color 0.3s ease;
@@ -114,7 +120,7 @@
         cursor: pointer;
 
         &:hover {
-          color: #b7edf6;
+          color: $color-accent;
         }
       }
 
@@ -123,6 +129,7 @@
         flex: 1;
         align-items: center;
         gap: 12px;
+
         .icon_link {
           padding: 8px;
           width: 24px;
@@ -133,7 +140,7 @@
           justify-content: center;
 
           &:hover {
-            color: #b7edf6;
+            color: $color-accent;
           }
         }
       }
@@ -143,5 +150,5 @@
 
 // Body 컴포넌트에 여백 추가
 .body {
-  margin-top: 40px; // 헤더 높이만큼 여백
+  margin-top: $header-height; // 헤더 높이만큼 여백
 }

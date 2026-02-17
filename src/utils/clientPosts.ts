@@ -1,17 +1,37 @@
 import { Post } from "@/types/post";
 
-export async function getClientPosts() {
-  const response = await fetch("/data/posts.json");
-  if (!response.ok) {
-    throw new Error("Failed to fetch posts");
+export async function getClientPosts(): Promise<Post[]> {
+  try {
+    const response = await fetch("/api/posts", {
+      cache: "no-store", 
+    });
+
+    if (!response.ok) {
+      console.error("Error fetching posts HTTP error", response.status);
+      return [];
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
   }
-  return response.json() as Promise<Post[]>;
 }
 
-export async function getClientPost(id: string) {
-  const response = await fetch(`/data/posts/${id}.json`);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch post: ${id}`);
+export async function getClientPost(id: string): Promise<Post | null> {
+  try {
+    const response = await fetch(`/api/post/${id}`, {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      console.error(`Error fetching post ${id} HTTP error`, response.status);
+      return null;
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching post ${id}:`, error);
+    return null;
   }
-  return response.json() as Promise<Post>;
 }

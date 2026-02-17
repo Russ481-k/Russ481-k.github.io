@@ -1,0 +1,163 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+
+    h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: $color-gray-900; // Force dark color
+        margin: 0;
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btnPrimary,
+.btnSecondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btnPrimary {
+    background: $color-primary-medium;
+    color: white;
+
+    &:hover {
+        background: darken($color-primary-medium, 10%);
+    }
+
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+}
+
+.btnSecondary {
+    background: $color-gray-200;
+    color: $color-gray-800;
+
+    &:hover {
+        background: $color-gray-300;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 2rem;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid $color-gray-200;
+}
+
+.tabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid $color-gray-200;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    color: $color-gray-500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+
+    &:hover {
+        color: $color-primary-medium;
+    }
+
+    &.active {
+        color: $color-primary-medium;
+        border-bottom-color: $color-primary-medium;
+    }
+}
+
+.field {
+    margin-bottom: 1.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: $color-gray-700;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid $color-gray-300;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+
+        // Force light theme
+        background-color: white;
+        color: $color-gray-900;
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary-medium;
+        }
+
+        &:disabled {
+            background-color: $color-gray-100;
+            color: $color-gray-500;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.editorWrapper {
+    border: 1px solid $color-gray-300;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white; // Ensure white background
+
+    // Ensure text within editor is dark
+    :global(.editorContainer) {
+        color: $color-gray-900;
+        min-height: 500px; // Increase default height
+    }
+
+    :global(.editor-input) {
+        min-height: 500px;
+    }
+}

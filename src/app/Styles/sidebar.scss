@@ -1,34 +1,28 @@
+@import "./variables";
+@import "./mixins";
+
 .sidebar {
   background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  min-width: 240px;
-  width: 240px;
+  color: $color-white;
+  min-width: $sidebar-width;
+  width: $sidebar-width;
   position: relative;
 
-  @media screen and (max-width: 1024px) {
+  @include tablet {
     width: 100%;
     min-width: 100%;
   }
 
-  @media screen and (max-width: 1280px) {
-    min-width: 220px;
-    width: 220px;
+  @include desktop {
+    min-width: $sidebar-width-sm;
+    width: $sidebar-width-sm;
   }
 
-  @media screen and (max-width: 768px) {
+  @include mobile {
     display: none;
   }
 
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: none;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-image: linear-gradient(180deg, #ffffff46 0%, #ffffffbb 99%);
-  }
+  @include custom-scrollbar;
 
   .contents {
     position: fixed;
@@ -40,12 +34,12 @@
     display: flex;
     flex-direction: column;
 
-    @media screen and (max-width: 1024px) {
+    @include tablet {
       position: relative;
       width: 100%;
     }
 
-    @media screen and (max-width: 1280px) {
+    @include desktop {
       padding: 12px;
 
       .profile_top {
@@ -56,28 +50,18 @@
       }
     }
 
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 3px;
-    }
+    @include custom-scrollbar(6px, transparent, rgba(255, 255, 255, 0.2));
 
     .profile_top {
       display: flex;
       justify-content: center;
+
       .profile_image {
         border-radius: 100%;
-        border: 2px solid #b7edf6;
+        border: 2px solid $color-accent;
       }
 
-      @media screen and (max-width: 768px) {
+      @include mobile {
         .profile_image {
           width: 48px;
           height: 48px;
@@ -85,30 +69,37 @@
         }
       }
     }
+
     .profile_text {
       .profile_name {
         text-align: center;
       }
+
       .profile_position {
         text-align: left;
       }
+
       .profile_social {
         text-align: left;
+
         .profile_social_notion {
-          color: #b7edf6;
+          color: $color-accent;
         }
       }
+
       .profile_email {
         text-align: left;
+
         .profile_email_link {
-          color: #b7edf6;
+          color: $color-accent;
         }
       }
+
       .profile_workplace {
         text-align: left;
       }
 
-      @media screen and (max-width: 768px) {
+      @include mobile {
         display: none;
 
         &.active {
@@ -120,7 +111,7 @@
           padding: 16px;
           border-radius: 8px;
           z-index: 100;
-          width: 240px;
+          width: $sidebar-width;
         }
       }
     }
@@ -130,8 +121,10 @@
       overflow-y: auto;
     }
   }
+
   .nav {
     justify-content: space-between;
+
     a {
       margin-right: 6px;
     }
@@ -191,7 +184,7 @@
   }
 
   &:hover .external_link {
-    color: #b7edf6;
+    color: $color-accent;
   }
 }
 
@@ -215,7 +208,7 @@
     }
 
     .info_link {
-      color: #b7edf6;
+      color: $color-accent;
       position: relative;
       cursor: pointer;
 
@@ -230,7 +223,7 @@
         right: 0;
         transform: none;
         background-color: rgba(0, 0, 0, 0.8);
-        color: white;
+        color: $color-white;
         padding: 4px 8px;
         border-radius: 4px;
         font-size: 0.8rem;
@@ -244,12 +237,15 @@
   0% {
     opacity: 0;
   }
+
   20% {
     opacity: 1;
   }
+
   80% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
   }
@@ -259,7 +255,7 @@
 .mobile_header {
   display: none;
 
-  @media screen and (max-width: 768px) {
+  @include mobile {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -270,7 +266,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: $z-modal;
 
     .logo {
       font-size: 1.2rem;

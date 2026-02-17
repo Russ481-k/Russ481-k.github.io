@@ -1,0 +1,43 @@
+// Colors
+$color-primary-dark: #0e2954;
+$color-primary-medium: #1f6e8c;
+$color-primary-light: #2e6b99;
+$color-accent: #b7edf6;
+$color-accent-hover: #88d3ce; // Derived or new/adjusted
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-gray-100: #f8f9fa;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #868e96;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
+
+// Backgrounds
+$bg-glass: rgba(14, 41, 84, 0.65);
+$bg-glass-blur: 10px;
+
+// Breakpoints
+$bp-mobile: 768px;
+$bp-tablet: 1024px;
+$bp-desktop: 1280px;
+
+// Z-Indices
+$z-header: 100;
+$z-sidebar: 90;
+$z-modal: 1000;
+$z-overlay: 999;
+
+// Spacing
+$header-height: 40px;
+$sidebar-width: 240px;
+$sidebar-width-sm: 220px;
+
+// Fonts
+$font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
