@@ -1,8 +1,8 @@
 ---
-title: "Entasis Engine - 인프라 구성도"
+title: "Entasis Engine -  "
 date: "2025-02-13"
 category: "projects"
-description: "가상자산 데이터 분석 시스템의 인프라 아키텍처 및 구성 상세"
+description: "        "
 tags:
   [
     "infrastructure",
@@ -16,54 +16,54 @@ tags:
 thumbnail: ""
 ---
 
-# 금융 데이터 분석 시스템 인프라 구성도
+#      
 
-## 🏗️ 시스템 아키텍처
+##   
 
-### 1. 전체 구성도
+### 1.  
 
 ```mermaid
 graph TB
-    subgraph External[외부 시스템]
-        API1[거래소 API]
-        API2[데이터 피드]
+    subgraph External[ ]
+        API1[ API]
+        API2[ ]
     end
 
-    subgraph LoadBalancer[로드 밸런서]
+    subgraph LoadBalancer[ ]
         LB1[AWS ALB]
-        LB2[내부 L4]
+        LB2[ L4]
     end
 
-    subgraph ServiceMesh[서비스 메시]
+    subgraph ServiceMesh[ ]
         direction TB
-        subgraph DataCollection[데이터 수집 계층]
+        subgraph DataCollection[  ]
             DC1[Collector-1]
             DC2[Collector-2]
         end
 
-        subgraph Processing[처리 계층]
+        subgraph Processing[ ]
             P1[Spark Cluster]
             P2[Stream Processing]
         end
 
-        subgraph AI[AI 분석 계층]
+        subgraph AI[AI  ]
             AI1[Model Serving]
             AI2[Training Pipeline]
         end
 
-        subgraph API[API 계층]
+        subgraph API[API ]
             API3[REST API]
             API4[WebSocket]
         end
     end
 
-    subgraph Storage[스토리지]
+    subgraph Storage[]
         DB1[(TimescaleDB)]
         DB2[(Redis)]
         S3[Object Storage]
     end
 
-    subgraph Monitoring[모니터링]
+    subgraph Monitoring[]
         M1[Prometheus]
         M2[Grafana]
         M3[ELK Stack]
@@ -75,9 +75,9 @@ graph TB
     ServiceMesh --> Monitoring
 ```
 
-## 🌐 네트워크 구성
+##   
 
-### 1. 네트워크 세그먼트
+### 1.  
 
 ```plaintext
 +------------------------+     +------------------------+
@@ -92,7 +92,7 @@ graph TB
            +------------------------------+
 ```
 
-### 2. 보안 그룹 설정
+### 2.   
 
 ```yaml
 security_groups:
@@ -118,9 +118,9 @@ security_groups:
         source: application_sg
 ```
 
-## 🚀 쿠버네티스 클러스터
+##   
 
-### 1. 노드 구성
+### 1.  
 
 ```yaml
 node_pools:
@@ -146,7 +146,7 @@ node_pools:
       role: data-processing
 ```
 
-### 2. 서비스 배포
+### 2.  
 
 ```yaml
 apiVersion: apps/v1
@@ -175,9 +175,9 @@ spec:
               memory: 4Gi
 ```
 
-## 📊 모니터링 시스템
+##   
 
-### 1. 메트릭 수집
+### 1.  
 
 ```yaml
 prometheus:
@@ -195,7 +195,7 @@ prometheus:
         - targets: ["trading-api:9090"]
 ```
 
-### 2. 알림 설정
+### 2.  
 
 ```yaml
 alertmanager:
@@ -213,9 +213,9 @@ alertmanager:
             send_resolved: true
 ```
 
-## 🔒 보안 설정
+##   
 
-### 1. 네트워크 정책
+### 1.  
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -239,7 +239,7 @@ spec:
           port: 8080
 ```
 
-### 2. 암호화 설정
+### 2.  
 
 ```yaml
 encryption:
@@ -253,9 +253,9 @@ encryption:
       - identity: {}
 ```
 
-## 🔄 스케일링 전략
+##   
 
-### 1. 수평적 확장
+### 1.  
 
 ```yaml
 apiVersion: autoscaling/v2
@@ -278,7 +278,7 @@ spec:
           averageUtilization: 70
 ```
 
-### 2. 수직적 확장
+### 2.  
 
 ```yaml
 apiVersion: autoscaling.k8s.io/v1
@@ -294,9 +294,9 @@ spec:
     updateMode: Auto
 ```
 
-## 🔧 운영 관리
+##   
 
-### 1. 로깅 설정
+### 1.  
 
 ```yaml
 filebeat:
@@ -312,11 +312,11 @@ filebeat:
                   logs_path: "/var/log/containers/"
 ```
 
-### 2. 백업 정책
+### 2.  
 
 ```yaml
 backup:
-  schedule: "0 1 * * *" # 매일 01:00
+  schedule: "0 1 * * *" #  01:00
   retention:
     hourly: 24
     daily: 7
@@ -328,4 +328,4 @@ backup:
     region: ap-northeast-2
 ```
 
-이 문서는 금융 데이터 분석 시스템의 인프라 구성을 상세히 설명합니다. 시스템의 안정성과 확장성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀
+         .       . 

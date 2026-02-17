@@ -18,7 +18,7 @@ thumbnail: ""
 
 # Financial Data Analysis System API Specification
 
-## 🔐 Authentication & Security
+##  Authentication & Security
 
 ### 1. Authentication Methods
 
@@ -44,7 +44,7 @@ thumbnail: ""
 - IP Whitelisting
 - SSL/TLS required
 
-## 📡 RESTful API Endpoints
+##  RESTful API Endpoints
 
 ### 1. Market Data API
 
@@ -166,7 +166,7 @@ Response 200:
 }
 ```
 
-## 🔄 WebSocket API
+##  WebSocket API
 
 ### 1. Market Data Stream
 
@@ -218,18 +218,18 @@ ws://api.example.com/ws/market
 }
 ```
 
-## 📊 Error Codes
+##  Error Codes
 
 ### 1. HTTP Status Codes
 
 ```json
 {
-  "400": "잘못된 요청",
-  "401": "인증 실패",
-  "403": "권한 없음",
-  "404": "리소스 없음",
-  "429": "요청 한도 초과",
-  "500": "서버 내부 오류"
+  "400": " ",
+  "401": " ",
+  "403": " ",
+  "404": " ",
+  "429": "  ",
+  "500": "  "
 }
 ```
 
@@ -237,16 +237,16 @@ ws://api.example.com/ws/market
 
 ```json
 {
-  "MARKET_001": "유효하지 않은 심볼",
-  "MARKET_002": "거래소 연결 실패",
-  "PORT_001": "잔액 부족",
-  "PORT_002": "포지션 한도 초과",
-  "AI_001": "모델 로딩 실패",
-  "AI_002": "예측 실패"
+  "MARKET_001": "  ",
+  "MARKET_002": "  ",
+  "PORT_001": " ",
+  "PORT_002": "  ",
+  "AI_001": "  ",
+  "AI_002": " "
 }
 ```
 
-## 📝 API Usage Examples
+##  API Usage Examples
 
 ### 1. REST API Call
 
@@ -296,4 +296,4 @@ ws.onmessage = (event) => {
 };
 ```
 
-This document provides the API specification for the financial data analysis system. APIs are continuously updated, and the latest version can be viewed through the Swagger UI. 🚀
+This document provides the API specification for the financial data analysis system. APIs are continuously updated, and the latest version can be viewed through the Swagger UI. 

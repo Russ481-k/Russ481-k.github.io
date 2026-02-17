@@ -2,7 +2,7 @@
 title: "Building an Outsourcing Crawler with FastAPI and PostgreSQL"
 date: "2025-02-12"
 category: "backend"
-description: "I implemented an encryption system in the crawler project! Using Fernet symmetric key encryption to securely protect project IDs and manage them conveniently with the CryptoUtil class. 🔒"
+description: "I implemented an encryption system in the crawler project! Using Fernet symmetric key encryption to securely protect project IDs and manage them conveniently with the CryptoUtil class. "
 tags:
   [
     "FastAPI",
@@ -151,6 +151,6 @@ We were able to implement the encryption and decryption functions simply using t
 
 Next, we will cover **improving API endpoints** and **applying asynchronous database queries**.
 
-Thank you! See you next time! 🚀
+Thank you! See you next time! 
 
 ---

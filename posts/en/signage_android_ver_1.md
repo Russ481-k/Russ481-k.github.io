@@ -9,11 +9,11 @@ thumbnail: "/images/react-native.png"
 
 ### My Journey of Troubleshooting APK Build with React Native Expo
 
-Hello everyone! Today I'd like to share my **troubleshooting experience while building an APK with React Native Expo**. I particularly struggled with `http://` API usage issues, and I hope this helps anyone facing similar problems. 😊
+Hello everyone! Today I'd like to share my **troubleshooting experience while building an APK with React Native Expo**. I particularly struggled with `http://` API usage issues, and I hope this helps anyone facing similar problems. 
 
 ---
 
-## 📦 First Build – `development` Build
+##  First Build – `development` Build
 
 Initially, I followed the Expo documentation and ran `eas build`. I configured `eas.json` as shown below and executed the build command.
 
@@ -37,7 +37,7 @@ eas build --profile development --platform android
 ```
 
 After the build is complete, download the APK from Expo.dev and run the app...  
-🤦‍♂️ **"development build" so it can only be run in the Expo Go environment.**  
+‍ **"development build" so it can only be run in the Expo Go environment.**  
 Oh no, this wasn't what I wanted.
 
 So I removed `development` and built again.
@@ -52,7 +52,7 @@ AAB is the format used when distributing to the Google Play Store, so **local AP
 
 ---
 
-## 🛠 Second Build – Creating APK
+##  Second Build – Creating APK
 
 To create an APK, I modified `eas.json` as follows.
 
@@ -74,14 +74,14 @@ And then build again!
 eas build -p android --profile preview
 ```
 
-Finally, the APK was created! 🎉  
+Finally, the APK was created!   
 However...  
-🤦‍♂️ **The data is not loaded from the API.**  
+‍ **The data is not loaded from the API.**  
 The data did not appear due to the "Network Error" error.
 
 ---
 
-## 🤔 Problem Analysis – `http://` API Blocked?!
+##  Problem Analysis – `http://` API Blocked?!
 
 When I checked the logs, I saw `AxiosError: Network Error`.  
 After searching Google and ChatGPT, I learned that **in Android 9 (Pie) and above, HTTP traffic is blocked by default**.
@@ -101,12 +101,12 @@ In Expo, you need to modify `app.json`.
 ```
 
 After modifying, I built again, but...  
-**Failed again**. 😭  
+**Failed again**.   
 This time, even when I changed to `fetch`, the same `Network request failed` error occurred.
 
 ---
 
-## 🔍 Final Solution – Installing the `expo-build-properties` Plugin
+##  Final Solution – Installing the `expo-build-properties` Plugin
 
 After searching Stack Overflow, I found the solution.  
 In Expo, **you need to install the `expo-build-properties` plugin and add the `useCleartextTraffic` setting**.
@@ -131,25 +131,25 @@ Then, I added the plugin in `app.json`.
 ```
 
 After building again, I decompiled the APK using `apktool` and checked it...  
-🤯 **`useCleartextTraffic` was not applied!!!**  
+ **`useCleartextTraffic` was not applied!!!**  
 What's this?
 
 I thought maybe the spelling was wrong, so I checked it again,  
 `useCleartextTraffic` → **`usesCleartextTraffic`(s added)**
 
 After modifying the spelling, I built again...  
-🎉 **Finally succeeded!!!**
+ **Finally succeeded!!!**
 
 ---
 
-## 🚨 Additional Problem – Emulator Connection Not Working?!
+##  Additional Problem – Emulator Connection Not Working?!
 
 After solving this, **the problem of API requests not working in the emulator occurred**.  
 I'm still looking for a solution, but it seems I need to look into Expo's network settings more.
 
 ---
 
-## 📌 Conclusion – What I Learned from the Process
+##  Conclusion – What I Learned from the Process
 
 1. **APK build requires adding the `buildType: "apk"` setting**
 2. **In Android 9 and above, `http://` API requires the `usesCleartextTraffic: true` setting**
@@ -157,4 +157,4 @@ I'm still looking for a solution, but it seems I need to look into Expo's networ
 4. **Be careful with typos... `useCleartextTraffic` is not `usesCleartextTraffic` (s is present)**
 
 I'm finally getting the hang of the build process.  
-If you're experiencing similar issues, I hope this helps you! 😆
+If you're experiencing similar issues, I hope this helps you! 

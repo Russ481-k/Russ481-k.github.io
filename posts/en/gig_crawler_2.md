@@ -2,7 +2,7 @@
 title: "Building an Outsourcing Crawler with FastAPI and PostgreSQL"
 date: "2025-02-12"
 category: "backend"
-description: "I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! 🚀"
+description: "I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! "
 tags:
   [
     "FastAPI",
@@ -18,15 +18,15 @@ tags:
 thumbnail: "/images/fastapi.png"
 ---
 
-# Implementing Asynchronous Database Operations with SQLAlchemy 🔄
+# Implementing Asynchronous Database Operations with SQLAlchemy 
 
 Hello! Today I'll share in detail how I implemented **asynchronous database operations** in my FastAPI crawler project.
 
-## 1. Introduction 🎯
+## 1. Introduction 
 
 Asynchronous processing has become a crucial element in modern web development. This is especially true for data-heavy applications like crawlers! In this post, I'll share my experience implementing asynchronous database operations using SQLAlchemy.
 
-## 2. Why Did We Need Async Processing? 🤔
+## 2. Why Did We Need Async Processing? 
 
 When using synchronous processing, we faced several issues:
 
@@ -106,4 +106,4 @@ Asynchronous processing is particularly useful when handling **API servers** or 
 
 In this post, we looked at the SQLAlchemy asynchronous configuration method. Next, we'll cover **integrating session management code** and **changing `database.py` to asynchronous mode**.
 
-See you next time! 😊
+See you next time! 

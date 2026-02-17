@@ -9,7 +9,7 @@ thumbnail: ""
 
 # Financial Data Analysis System Detailed Feature Definition
 
-## 📊 Core Features Detail
+##  Core Features Detail
 
 ### 1. Data Collection System
 
@@ -79,9 +79,9 @@ thumbnail: ""
 
 ---
 
-## 📋 Kanban Board Structure
+##  Kanban Board Structure
 
-### 🎯 Backlog
+###  Backlog
 
 #### High Priority
 
@@ -104,7 +104,7 @@ thumbnail: ""
 - [ ] API Documentation
 - [ ] Tutorial System
 
-### 🏃 In Progress
+###  In Progress
 
 #### Sprint 1: Foundation System
 
@@ -118,7 +118,7 @@ thumbnail: ""
 - [ ] Real-time Data Collection Implementation
 - [ ] Data Cleansing Pipeline
 
-### ✅ Done
+###  Done
 
 #### Initial Setup
 
@@ -128,6 +128,6 @@ thumbnail: ""
 
 ---
 
-## 📅 Sprint Work Items
+##  Sprint Work Items
 
 ### Sprint 1 (Weeks 1-2)

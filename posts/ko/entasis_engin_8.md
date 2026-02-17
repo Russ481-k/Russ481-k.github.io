@@ -1,8 +1,8 @@
 ---
-title: "Entasis Engine - UI/UX 디자인 가이드"
+title: "Entasis Engine - UI/UX  "
 date: "2025-02-13"
 category: "projects"
-description: "가상자산 데이터 분석 시스템의 사용자 인터페이스 및 경험 디자인 가이드"
+description: "         "
 tags:
   [
     "ui",
@@ -16,31 +16,31 @@ tags:
 thumbnail: ""
 ---
 
-# 금융 데이터 분석 시스템 UI/UX 디자인 가이드
+#     UI/UX  
 
-## 🎨 디자인 시스템
+##   
 
-### 1. 색상 팔레트
+### 1.  
 
 ```css
 :root {
-  /* 주요 색상 */
+  /*   */
   --primary-100: #e3f2fd;
   --primary-500: #2196f3;
   --primary-900: #0d47a1;
 
-  /* 보조 색상 */
+  /*   */
   --secondary-100: #f3e5f5;
   --secondary-500: #9c27b0;
   --secondary-900: #4a148c;
 
-  /* 상태 색상 */
+  /*   */
   --success: #4caf50;
   --warning: #ffc107;
   --error: #f44336;
   --info: #2196f3;
 
-  /* 중립 색상 */
+  /*   */
   --neutral-100: #f5f5f5;
   --neutral-300: #e0e0e0;
   --neutral-500: #9e9e9e;
@@ -49,15 +49,15 @@ thumbnail: ""
 }
 ```
 
-### 2. 타이포그래피
+### 2. 
 
 ```css
 :root {
-  /* 폰트 패밀리 */
+  /*   */
   --font-primary: "Inter", sans-serif;
   --font-secondary: "Roboto Mono", monospace;
 
-  /* 폰트 크기 */
+  /*   */
   --text-xs: 0.75rem; /* 12px */
   --text-sm: 0.875rem; /* 14px */
   --text-base: 1rem; /* 16px */
@@ -65,7 +65,7 @@ thumbnail: ""
   --text-xl: 1.25rem; /* 20px */
   --text-2xl: 1.5rem; /* 24px */
 
-  /* 폰트 두께 */
+  /*   */
   --font-light: 300;
   --font-regular: 400;
   --font-medium: 500;
@@ -73,7 +73,7 @@ thumbnail: ""
 }
 ```
 
-### 3. 그리드 시스템
+### 3.  
 
 ```css
 .container {
@@ -87,11 +87,11 @@ thumbnail: ""
 }
 ```
 
-## 📱 컴포넌트 라이브러리
+##   
 
-### 1. 차트 컴포넌트
+### 1.  
 
-#### 1.1 캔들스틱 차트
+#### 1.1  
 
 ```typescript
 interface CandlestickProps {
@@ -113,11 +113,11 @@ const Candlestick: React.FC<CandlestickProps> = ({
   height = 400,
   theme = "light",
 }) => {
-  // 차트 구현
+  //  
 };
 ```
 
-#### 1.2 기술적 지표
+#### 1.2  
 
 ```typescript
 interface TechnicalIndicatorProps {
@@ -130,7 +130,7 @@ interface TechnicalIndicatorProps {
 }
 ```
 
-### 2. 대시보드 레이아웃
+### 2.  
 
 ```typescript
 interface DashboardLayoutProps {
@@ -157,39 +157,39 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 );
 ```
 
-## 🔄 사용자 플로우
+##   
 
-### 1. 트레이딩 플로우
+### 1.  
 
 ```mermaid
 graph TD
-    A[대시보드 진입] --> B[시장 데이터 확인]
-    B --> C{분석 도구 선택}
-    C -->|기술적 분석| D[지표 설정]
-    C -->|AI 예측| E[모델 선택]
-    D --> F[매매 신호 확인]
+    A[ ] --> B[  ]
+    B --> C{  }
+    C -->| | D[ ]
+    C -->|AI | E[ ]
+    D --> F[  ]
     E --> F
-    F --> G[포지션 설정]
-    G --> H[주문 실행]
-    H --> I[모니터링]
+    F --> G[ ]
+    G --> H[ ]
+    H --> I[]
 ```
 
-### 2. 포트폴리오 관리
+### 2.  
 
 ```mermaid
 graph TD
-    A[포트폴리오 뷰] --> B[자산 배분 확인]
-    B --> C[리스크 분석]
-    C --> D{조정 필요?}
-    D -->|Yes| E[리밸런싱]
-    D -->|No| F[모니터링 유지]
-    E --> G[주문 실행]
+    A[ ] --> B[  ]
+    B --> C[ ]
+    C --> D{ ?}
+    D -->|Yes| E[]
+    D -->|No| F[ ]
+    E --> G[ ]
     G --> F
 ```
 
-## 📐 반응형 디자인
+##   
 
-### 1. 브레이크포인트
+### 1. 
 
 ```scss
 $breakpoints: (
@@ -208,7 +208,7 @@ $breakpoints: (
 }
 ```
 
-### 2. 레이아웃 조정
+### 2.  
 
 ```scss
 .trading-view {
@@ -229,9 +229,9 @@ $breakpoints: (
 }
 ```
 
-## ♿ 접근성
+##  
 
-### 1. ARIA 레이블
+### 1. ARIA 
 
 ```typescript
 const PriceAlert: React.FC = () => (
@@ -241,7 +241,7 @@ const PriceAlert: React.FC = () => (
 );
 ```
 
-### 2. 키보드 네비게이션
+### 2.  
 
 ```typescript
 const TradingPanel: React.FC = () => {
@@ -264,39 +264,39 @@ const TradingPanel: React.FC = () => {
       tabIndex={0}
       onKeyDown={handleKeyPress}
       role="region"
-      aria-label="거래 패널"
+      aria-label=" "
     >
-      {/* 거래 패널 내용 */}
+      {/*    */}
     </div>
   );
 };
 ```
 
-## 🎯 사용성 테스트
+##   
 
-### 1. 테스트 시나리오
+### 1.  
 
 ```typescript
 const usabilityTests = [
   {
-    name: "기본 거래 플로우",
+    name: "  ",
     steps: [
-      "대시보드 접속",
-      "차트 분석",
-      "주문 설정",
-      "주문 실행",
-      "결과 확인",
+      " ",
+      " ",
+      " ",
+      " ",
+      " ",
     ],
     success_criteria: [
-      "3분 이내 완료",
-      "오류 없는 실행",
-      "사용자 만족도 4/5 이상",
+      "3  ",
+      "  ",
+      "  4/5 ",
     ],
   },
 ];
 ```
 
-### 2. 피드백 수집
+### 2.  
 
 ```typescript
 interface UserFeedback {
@@ -308,4 +308,4 @@ interface UserFeedback {
 }
 ```
 
-이 문서는 금융 데이터 분석 시스템의 UI/UX 디자인 가이드를 제공합니다. 사용자 경험을 최적화하기 위해 지속적으로 업데이트되며, 피드백을 반영하여 개선됩니다. 🚀
+      UI/UX   .      ,   . 

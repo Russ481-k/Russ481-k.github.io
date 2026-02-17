@@ -18,7 +18,7 @@ thumbnail: ""
 
 # Financial Data Analysis System AI Model Design
 
-## 📊 Model Architecture Overview
+##  Model Architecture Overview
 
 ### 1. Prediction Model Structure
 
@@ -99,7 +99,7 @@ def analyze_market_sentiment(text_data):
     return aggregate_sentiment_scores(scores)
 ```
 
-## 🔄 Learning Pipeline
+##  Learning Pipeline
 
 ### 1. Data Preprocessing
 
@@ -163,7 +163,7 @@ def ensemble_predict(models, weights, X):
     return np.sum(predictions, axis=0)
 ```
 
-## 📈 Performance Evaluation
+##  Performance Evaluation
 
 ### 1. Evaluation Metrics
 
@@ -196,7 +196,7 @@ def backtest_strategy(model, historical_data, initial_capital=10000):
     return portfolio.calculate_returns()
 ```
 
-## 🔍 Risk Management
+##  Risk Management
 
 ### 1. Risk Monitoring
 
@@ -223,7 +223,7 @@ def calculate_position_size(prediction, confidence, account_size):
     return min(adjusted_size, account_size * 0.05)  # Maximum 5% limit
 ```
 
-## 🚀 Deployment & Monitoring
+##  Deployment & Monitoring
 
 ### 1. Model Serving
 
@@ -261,4 +261,4 @@ def monitor_model_performance(predictions, actuals):
     log_performance(metrics)
 ```
 
-This document provides the AI model design and implementation details for the financial data analysis system. The model is continuously improved, and the performance metrics and risk management strategies are also updated. 🚀
+This document provides the AI model design and implementation details for the financial data analysis system. The model is continuously improved, and the performance metrics and risk management strategies are also updated. 

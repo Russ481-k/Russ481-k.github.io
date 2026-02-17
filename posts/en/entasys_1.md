@@ -116,30 +116,30 @@ graph TD
 
 ```bash
 src/
-├── server/
-│   ├── lib/
-│   │   ├── downloadManager.ts      # Download management
-│   │   ├── downloadChunkManager.ts # Chunk processing
-│   │   ├── stateManager.ts        # State management
-│   │   ├── opensearch.ts          # DB connection
-│   │   └── utils/
-│   │       ├── logger.ts          # Logging
-│   │       └── errors.ts          # Error handling
-│   └── index.ts                   # Server entry point
-├── client/
-│   ├── components/
-│   │   ├── DownloadButton.tsx     # Download button
-│   │   ├── ProgressBar.tsx        # Progress display
-│   │   └── ErrorDisplay.tsx       # Error display
-│   ├── hooks/
-│   │   ├── useDownload.ts         # Download hook
-│   │   └── useWebSocket.ts        # WebSocket hook
-│   └── utils/
-│       ├── api.ts                 # API utilities
-│       └── format.ts              # Format utilities
-└── shared/
-    ├── types/                     # Type definitions
-    └── constants/                 # Constant definitions
+ server/
+    lib/
+       downloadManager.ts      # Download management
+       downloadChunkManager.ts # Chunk processing
+       stateManager.ts        # State management
+       opensearch.ts          # DB connection
+       utils/
+           logger.ts          # Logging
+           errors.ts          # Error handling
+    index.ts                   # Server entry point
+ client/
+    components/
+       DownloadButton.tsx     # Download button
+       ProgressBar.tsx        # Progress display
+       ErrorDisplay.tsx       # Error display
+    hooks/
+       useDownload.ts         # Download hook
+       useWebSocket.ts        # WebSocket hook
+    utils/
+        api.ts                 # API utilities
+        format.ts              # Format utilities
+ shared/
+     types/                     # Type definitions
+     constants/                 # Constant definitions
 ```
 
 ## 5. Configuration Management

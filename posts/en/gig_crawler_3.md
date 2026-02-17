@@ -2,7 +2,7 @@
 title: "Building an Outsourcing Crawler with FastAPI and PostgreSQL"
 date: "2025-02-12"
 category: "backend"
-description: "I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! 🚀"
+description: "I created a crawler that collects and analyzes project information from freelance platforms in real-time. I built an efficient system using FastAPI's asynchronous processing and PostgreSQL's powerful features! "
 tags:
   [
     "FastAPI",
@@ -138,7 +138,7 @@ By doing this, we can handle database I/O operations in API servers or crawlers 
 
 Next, we will cover **improving project models and updating fields**.
 
-Your feedback is a great help! See you next time! 🚀
+Your feedback is a great help! See you next time! 
 
 ---
 

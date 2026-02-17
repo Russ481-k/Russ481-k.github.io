@@ -18,14 +18,14 @@ tags:
 thumbnail: "/images/fastapi.png"
 ---
 
-# Getting Started: Setting up FastAPI and PostgreSQL Environment 🛠️
+# Getting Started: Setting up FastAPI and PostgreSQL Environment 
 
 Hello! Today I'll share how I set up the FastAPI and PostgreSQL environment for developing a freelance project crawler.
 
-### **The Easiest Way to Connect FastAPI and PostgreSQL! 🚀**
+### **The Easiest Way to Connect FastAPI and PostgreSQL! **
 
 Hi there! I'll explain how to connect **FastAPI** and **PostgreSQL** in a simple way.
-New to **FastAPI**? Don't worry! You'll understand quickly if you follow along step by step. 😃
+New to **FastAPI**? Don't worry! You'll understand quickly if you follow along step by step. 
 
 ---
 
@@ -35,18 +35,18 @@ First, let's organize the project folder like this:
 
 ```
 backend/
-├── .env                  # environment variable settings
-├── requirements.txt      # list of required packages
-└── app/
-    ├── main.py          # FastAPI main application
-    ├── config.py        # configuration file
-    ├── models/          # SQLAlchemy model files
-    ├── schemas/         # Pydantic schema files
-    ├── api/             # API endpoints
-    └── db/              # database related files
+ .env                  # environment variable settings
+ requirements.txt      # list of required packages
+ app/
+     main.py          # FastAPI main application
+     config.py        # configuration file
+     models/          # SQLAlchemy model files
+     schemas/         # Pydantic schema files
+     api/             # API endpoints
+     db/              # database related files
 ```
 
-Let's set it up one by one! 😊
+Let's set it up one by one! 
 
 ---
 
@@ -65,7 +65,7 @@ python-dotenv==1.0.0
 psycopg2-binary==2.9.9
 ```
 
-Run the following command in the terminal to install all packages at once! 🎯
+Run the following command in the terminal to install all packages at once! 
 
 ```bash
 pip install -r requirements.txt
@@ -86,8 +86,8 @@ POSTGRES_PORT=5432
 POSTGRES_DB=gig_crawler
 ```
 
-**✅ Why do we set it up this way?**  
-👉 To ensure security and maintainability, it is better to manage the DB information in the code as environment variables rather than directly in the code.
+** Why do we set it up this way?**  
+ To ensure security and maintainability, it is better to manage the DB information in the code as environment variables rather than directly in the code.
 
 ---
 
@@ -111,7 +111,7 @@ class Settings(BaseSettings):
 settings = Settings()
 ```
 
-Now, we can get the environment variables like `settings.POSTGRES_USER`! 🎉
+Now, we can get the environment variables like `settings.POSTGRES_USER`! 
 
 ---
 
@@ -181,11 +181,11 @@ Run `psql` in the terminal and input the following command.
 CREATE DATABASE gig_crawler WITH ENCODING 'UTF8' LC_COLLATE='Korean_Korea.949' LC_CTYPE='Korean_Korea.949';
 ```
 
-Now, the database is ready! 🎉
+Now, the database is ready! 
 
 ---
 
-## **8. Run the server! 🚀**
+## **8. Run the server! **
 
 This is the final step!  
 Run the following command to turn on the FastAPI server.
@@ -199,15 +199,15 @@ Now, if you access `http://127.0.0.1:8000/docs`, you can see the API documentati
 
 ---
 
-## **9. Conclusion 🎯**
+## **9. Conclusion **
 
 So far, we've set up the **FastAPI + PostgreSQL** connection!  
 If you encounter any issues while running, please check the following:
 
-✅ Did you save the `.env` file in UTF-8?  
-✅ Is the PostgreSQL server running?  
-✅ Is the database created?  
-✅ Did you run the `uvicorn app.main:app --reload` command?
+ Did you save the `.env` file in UTF-8?  
+ Is the PostgreSQL server running?  
+ Is the database created?  
+ Did you run the `uvicorn app.main:app --reload` command?
 
-Now, add **CRUD API** to this and create the project you want! 💡  
-If you have any questions, feel free to ask anytime! 😃
+Now, add **CRUD API** to this and create the project you want!   
+If you have any questions, feel free to ask anytime! 

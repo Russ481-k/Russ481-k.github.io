@@ -1,8 +1,8 @@
 ---
-title: "Entasis Engine - AI 모델 설계"
+title: "Entasis Engine - AI  "
 date: "2025-02-13"
 category: "projects"
-description: "가상자산 데이터 분석 시스템의 AI 모델 아키텍처 및 구현 상세"
+description: "    AI     "
 tags:
   [
     "ai",
@@ -16,13 +16,13 @@ tags:
 thumbnail: ""
 ---
 
-# 금융 데이터 분석 시스템 AI 모델 설계
+#     AI  
 
-## 📊 모델 아키텍처 개요
+##    
 
-### 1. 예측 모델 구조
+### 1.   
 
-#### 1.1 LSTM 기반 시계열 예측
+#### 1.1 LSTM   
 
 ```python
 class PricePredictionLSTM(nn.Module):
@@ -43,7 +43,7 @@ class PricePredictionLSTM(nn.Module):
         return predictions
 ```
 
-#### 1.2 앙상블 모델 구성
+#### 1.2   
 
 ```python
 class EnsembleModel:
@@ -62,13 +62,13 @@ class EnsembleModel:
         }
 ```
 
-### 2. 특징 엔지니어링
+### 2.  
 
-#### 2.1 기술적 지표
+#### 2.1  
 
 ```python
 def calculate_technical_indicators(df):
-    # 이동평균
+    # 
     df['sma_20'] = df['close'].rolling(window=20).mean()
     df['sma_50'] = df['close'].rolling(window=50).mean()
 
@@ -87,7 +87,7 @@ def calculate_technical_indicators(df):
     return df
 ```
 
-#### 2.2 시장 감성 분석
+#### 2.2   
 
 ```python
 def analyze_market_sentiment(text_data):
@@ -99,11 +99,11 @@ def analyze_market_sentiment(text_data):
     return aggregate_sentiment_scores(scores)
 ```
 
-## 🔄 학습 파이프라인
+##   
 
-### 1. 데이터 전처리
+### 1.  
 
-#### 1.1 시계열 데이터 준비
+#### 1.1   
 
 ```python
 def prepare_time_series(data, sequence_length):
@@ -119,7 +119,7 @@ def prepare_time_series(data, sequence_length):
     return np.array(sequences), np.array(targets)
 ```
 
-#### 1.2 데이터 정규화
+#### 1.2  
 
 ```python
 def normalize_features(data):
@@ -128,9 +128,9 @@ def normalize_features(data):
     return normalized_data, scaler
 ```
 
-### 2. 모델 학습
+### 2.  
 
-#### 2.1 LSTM 학습 프로세스
+#### 2.1 LSTM  
 
 ```python
 def train_lstm_model(model, train_loader, val_loader, epochs):
@@ -146,13 +146,13 @@ def train_lstm_model(model, train_loader, val_loader, epochs):
             loss.backward()
             optimizer.step()
 
-        # 검증
+        # 
         model.eval()
         val_loss = validate_model(model, val_loader, criterion)
         print(f'Epoch {epoch}: Val Loss = {val_loss:.4f}')
 ```
 
-#### 2.2 앙상블 모델 통합
+#### 2.2   
 
 ```python
 def ensemble_predict(models, weights, X):
@@ -163,11 +163,11 @@ def ensemble_predict(models, weights, X):
     return np.sum(predictions, axis=0)
 ```
 
-## 📈 성능 평가
+##   
 
-### 1. 평가 메트릭
+### 1.  
 
-#### 1.1 예측 정확도 평가
+#### 1.1   
 
 ```python
 def evaluate_predictions(y_true, y_pred):
@@ -180,7 +180,7 @@ def evaluate_predictions(y_true, y_pred):
     return metrics
 ```
 
-#### 1.2 백테스팅
+#### 1.2 
 
 ```python
 def backtest_strategy(model, historical_data, initial_capital=10000):
@@ -196,11 +196,11 @@ def backtest_strategy(model, historical_data, initial_capital=10000):
     return portfolio.calculate_returns()
 ```
 
-## 🔍 리스크 관리
+##   
 
-### 1. 리스크 모니터링
+### 1.  
 
-#### 1.1 Value at Risk (VaR) 계산
+#### 1.1 Value at Risk (VaR) 
 
 ```python
 def calculate_var(returns, confidence_level=0.95):
@@ -214,20 +214,20 @@ def calculate_expected_shortfall(returns, var):
     return returns[returns <= var].mean()
 ```
 
-### 2. 포지션 사이징
+### 2.  
 
 ```python
 def calculate_position_size(prediction, confidence, account_size):
-    base_size = account_size * 0.02  # 2% 리스크 룰
+    base_size = account_size * 0.02  # 2%  
     adjusted_size = base_size * confidence
-    return min(adjusted_size, account_size * 0.05)  # 최대 5% 제한
+    return min(adjusted_size, account_size * 0.05)  #  5% 
 ```
 
-## 🚀 배포 및 모니터링
+##    
 
-### 1. 모델 서빙
+### 1.  
 
-#### 1.1 모델 직렬화
+#### 1.1  
 
 ```python
 def save_model(model, path):
@@ -238,7 +238,7 @@ def save_model(model, path):
     }, path)
 ```
 
-#### 1.2 실시간 추론
+#### 1.2  
 
 ```python
 @app.route('/predict', methods=['POST'])
@@ -252,7 +252,7 @@ def predict():
     })
 ```
 
-### 2. 성능 모니터링
+### 2.  
 
 ```python
 def monitor_model_performance(predictions, actuals):
@@ -261,4 +261,4 @@ def monitor_model_performance(predictions, actuals):
     log_performance(metrics)
 ```
 
-이 문서는 금융 데이터 분석 시스템의 AI 모델 설계 및 구현 상세를 제공합니다. 모델은 지속적으로 개선되며, 성능 메트릭과 리스크 관리 전략도 함께 업데이트됩니다. 🚀
+      AI      .   ,       . 

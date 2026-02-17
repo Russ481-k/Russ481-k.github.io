@@ -19,11 +19,11 @@ tags:
 thumbnail: "/images/entasys/entaasys_search.gif"
 ---
 
-# 핵심 컴포넌트
+#  
 
 ## 1. DownloadManager
 
-### 1.1 기본 구조
+### 1.1  
 
 ```typescript
 class DownloadManager {
@@ -46,7 +46,7 @@ class DownloadManager {
 }
 ```
 
-### 1.2 다운로드 상태 관리
+### 1.2   
 
 ```typescript
 interface DownloadState {
@@ -72,7 +72,7 @@ class Download {
 
 ## 2. DownloadChunkManager
 
-### 2.1 청크 처리
+### 2.1  
 
 ```typescript
 class DownloadChunkManager {
@@ -93,7 +93,7 @@ class DownloadChunkManager {
 }
 ```
 
-### 2.2 메모리 관리
+### 2.2  
 
 ```typescript
 class ChunkProcess {
@@ -113,9 +113,9 @@ class ChunkProcess {
 }
 ```
 
-## 3. 파일 시스템 관리
+## 3.   
 
-### 3.1 파일 작업
+### 3.1  
 
 ```typescript
 class FileSystemManager {
@@ -134,7 +134,7 @@ class FileSystemManager {
 }
 ```
 
-### 3.2 스트림 처리
+### 3.2  
 
 ```typescript
 class StreamManager {
@@ -157,9 +157,9 @@ class StreamManager {
 }
 ```
 
-## 4. 상태 관리
+## 4.  
 
-### 4.1 상태 저장소
+### 4.1  
 
 ```typescript
 class StateStore {
@@ -178,7 +178,7 @@ class StateStore {
 }
 ```
 
-### 4.2 이벤트 관리
+### 4.2  
 
 ```typescript
 class EventManager extends EventEmitter {
@@ -195,9 +195,9 @@ class EventManager extends EventEmitter {
 }
 ```
 
-## 5. 의존성 관리
+## 5.  
 
-### 5.1 의존성 주입
+### 5.1  
 
 ```typescript
 interface Dependencies {
@@ -224,7 +224,7 @@ class DependencyContainer {
 }
 ```
 
-### 5.2 서비스 로케이터
+### 5.2  
 
 ```typescript
 class ServiceLocator {

@@ -19,11 +19,11 @@ tags:
 thumbnail: "/images/entasys/entaasys_search_term.gif"
 ---
 
-# 데이터 흐름
+#  
 
-## 1. OpenSearch 데이터 처리
+## 1. OpenSearch  
 
-### 1.1 쿼리 최적화
+### 1.1  
 
 ```typescript
 // opensearch.ts
@@ -44,12 +44,12 @@ export const buildOptimizedQuery = (searchParams: SearchParams) => {
                 },
               },
             },
-            // 추가 필터
+            //  
           ],
         },
       },
       sort: [{ "@timestamp": "asc" }],
-      _source: ["필요한 필드만 선택"],
+      _source: ["  "],
     },
     scroll: "2m",
     size: 1000,
@@ -57,7 +57,7 @@ export const buildOptimizedQuery = (searchParams: SearchParams) => {
 };
 ```
 
-### 1.2 스크롤 API 활용
+### 1.2  API 
 
 ```typescript
 async function* scrollSearch(client: Client, query: SearchParams) {
@@ -77,7 +77,7 @@ async function* scrollSearch(client: Client, query: SearchParams) {
 }
 ```
 
-### 1.3 Circuit Breaker 설정
+### 1.3 Circuit Breaker 
 
 ```yaml
 # opensearch.yml
@@ -86,7 +86,7 @@ indices.breaker.request.limit: 60%
 indices.breaker.fielddata.limit: 40%
 ```
 
-### 1.4 데이터 변환 파이프라인
+### 1.4   
 
 ```typescript
 interface TransformPipeline {
@@ -97,9 +97,9 @@ interface TransformPipeline {
 }
 ```
 
-## 2. 파일 처리 프로세스
+## 2.   
 
-### 2.1 청크 관리
+### 2.1  
 
 ```typescript
 interface ChunkManager {
@@ -113,7 +113,7 @@ interface ChunkManager {
 }
 ```
 
-### 2.2 스트림 처리
+### 2.2  
 
 ```typescript
 class DownloadStream extends Transform {
@@ -122,7 +122,7 @@ class DownloadStream extends Transform {
   }
 
   _transform(chunk: any, encoding: string, callback: Function) {
-    // 메모리 효율적인 변환 처리
+    //    
     const transformed = this.transformData(chunk);
     this.push(transformed);
     callback();
@@ -130,7 +130,7 @@ class DownloadStream extends Transform {
 }
 ```
 
-### 2.3 파일 시스템 작업
+### 2.3   
 
 ```typescript
 class FileManager {
@@ -149,9 +149,9 @@ class FileManager {
 }
 ```
 
-## 3. 진행률 추적
+## 3.  
 
-### 3.1 진행률 계산
+### 3.1  
 
 ```typescript
 interface ProgressTracker {
@@ -165,7 +165,7 @@ interface ProgressTracker {
 }
 ```
 
-### 3.2 상태 업데이트
+### 3.2  
 
 ```typescript
 class ProgressEmitter extends EventEmitter {
@@ -182,9 +182,9 @@ class ProgressEmitter extends EventEmitter {
 }
 ```
 
-## 4. 메모리 관리
+## 4.  
 
-### 4.1 메모리 모니터링
+### 4.1  
 
 ```typescript
 class MemoryMonitor {
@@ -203,7 +203,7 @@ class MemoryMonitor {
 }
 ```
 
-### 4.2 가비지 컬렉션 최적화
+### 4.2   
 
 ```typescript
 const gcOptimization = {
@@ -219,9 +219,9 @@ const gcOptimization = {
 };
 ```
 
-## 5. 에러 처리 전략
+## 5.   
 
-### 5.1 에러 타입 정의
+### 5.1   
 
 ```typescript
 enum DownloadError {
@@ -233,7 +233,7 @@ enum DownloadError {
 }
 ```
 
-### 5.2 재시도 메커니즘
+### 5.2  
 
 ```typescript
 class RetryManager {

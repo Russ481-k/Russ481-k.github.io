@@ -18,7 +18,7 @@ thumbnail: ""
 
 # Financial Data Analysis System UI/UX Design Guide
 
-## 🎨 Design System
+##  Design System
 
 ### 1. Color Palette
 
@@ -87,7 +87,7 @@ thumbnail: ""
 }
 ```
 
-## 📱 Component Library
+##  Component Library
 
 ### 1. Chart Component
 
@@ -157,7 +157,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({
 );
 ```
 
-## 🔄 User Flow
+##  User Flow
 
 ### 1. Trading Flow
 
@@ -187,7 +187,7 @@ graph TD
     G --> F
 ```
 
-## 📐 Responsive Design
+##  Responsive Design
 
 ### 1. Breakpoints
 
@@ -229,7 +229,7 @@ $breakpoints: (
 }
 ```
 
-## ♿ Accessibility
+##  Accessibility
 
 ### 1. ARIA Labels
 
@@ -264,7 +264,7 @@ const TradingPanel: React.FC = () => {
       tabIndex={0}
       onKeyDown={handleKeyPress}
       role="region"
-      aria-label="거래 패널"
+      aria-label=" "
     >
       {/* Trading panel content */}
     </div>
@@ -272,7 +272,7 @@ const TradingPanel: React.FC = () => {
 };
 ```
 
-## 🎯 Usability Testing
+##  Usability Testing
 
 ### 1. Test Scenarios
 
@@ -308,4 +308,4 @@ interface UserFeedback {
 }
 ```
 
-This document provides the UI/UX design guide for the financial data analysis system. It will be updated continuously to optimize user experience, reflecting feedback and improvements. 🚀
+This document provides the UI/UX design guide for the financial data analysis system. It will be updated continuously to optimize user experience, reflecting feedback and improvements. 

@@ -2,7 +2,7 @@
 title: "Building an Outsourcing Crawler with FastAPI and PostgreSQL"
 date: "2025-02-12"
 category: "backend"
-description: "I improved the data model and structure of the crawler project! With budget field separation, metadata field improvements, and new field additions, more systematic data management is now possible. 🔧"
+description: "I improved the data model and structure of the crawler project! With budget field separation, metadata field improvements, and new field additions, more systematic data management is now possible. "
 tags:
   [
     "FastAPI",
@@ -134,7 +134,7 @@ In this article, we looked at the project model improvements in detail.
 Managing the database model systematically is a big influence on the long-term maintenance and performance improvement of the application.  
 In the remaining articles, we will introduce more improvements such as **crawler scheduler implementation** and **encryption system introduction**, so please look forward to it!
 
-If you have any additional points or questions about the improvements, please leave a comment anytime. Your feedback is a big help! 🚀
+If you have any additional points or questions about the improvements, please leave a comment anytime. Your feedback is a big help! 
 
 ---
 

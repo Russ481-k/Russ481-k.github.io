@@ -18,7 +18,7 @@ thumbnail: ""
 
 # Financial Data Analysis System Infrastructure Architecture
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ### 1. Overall Architecture
 
@@ -75,7 +75,7 @@ graph TB
     ServiceMesh --> Monitoring
 ```
 
-## 🌐 Network Configuration
+##  Network Configuration
 
 ### 1. Network Segments
 
@@ -118,7 +118,7 @@ security_groups:
         source: application_sg
 ```
 
-## 🚀 Kubernetes Cluster
+##  Kubernetes Cluster
 
 ### 1. Node Configuration
 
@@ -175,7 +175,7 @@ spec:
               memory: 4Gi
 ```
 
-## 📊 Monitoring System
+##  Monitoring System
 
 ### 1. Metric Collection
 
@@ -213,7 +213,7 @@ alertmanager:
             send_resolved: true
 ```
 
-## 🔒 Security Configuration
+##  Security Configuration
 
 ### 1. Network Policy
 
@@ -253,7 +253,7 @@ encryption:
       - identity: {}
 ```
 
-## 🔄 Scaling Strategy
+##  Scaling Strategy
 
 ### 1. Horizontal Scaling
 
@@ -294,7 +294,7 @@ spec:
     updateMode: Auto
 ```
 
-## 🔧 Operations Management
+##  Operations Management
 
 ### 1. Logging Configuration
 
@@ -328,4 +328,4 @@ backup:
     region: ap-northeast-2
 ```
 
-This document provides the infrastructure architecture and configuration for the financial data analysis system. It will be updated continuously to ensure stability and scalability. 🚀
+This document provides the infrastructure architecture and configuration for the financial data analysis system. It will be updated continuously to ensure stability and scalability. 

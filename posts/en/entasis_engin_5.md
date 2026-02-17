@@ -18,7 +18,7 @@ thumbnail: ""
 
 # Financial Data Analysis System Database Design
 
-## 📊 Database Architecture
+##  Database Architecture
 
 ### 1. Database Selection Rationale
 
@@ -31,7 +31,7 @@ thumbnail: ""
 #### 2.1 Market Data Tables
 
 ```sql
--- 실시간 시장 데이터
+--   
 CREATE TABLE market_data (
     id BIGSERIAL PRIMARY KEY,
     symbol VARCHAR(20) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE market_data (
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 ) PARTITION BY RANGE (timestamp);
 
--- 옵션 데이터
+--  
 CREATE TABLE option_data (
     id BIGSERIAL PRIMARY KEY,
     underlying VARCHAR(20) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE option_data (
 ) PARTITION BY RANGE (timestamp);
 ```
 
-#### 2.2 분석 데이터 테이블
+#### 2.2   
 
 ```sql
 -- AI Model Prediction Results
@@ -128,7 +128,7 @@ CREATE TABLE market_data_y2024m02 PARTITION OF market_data
 - Aggregated data: Latest 1 year
 - Historical data: S3 archive
 
-## 📈 Performance Optimization
+##  Performance Optimization
 
 ### 1. Query Optimization
 
@@ -169,7 +169,7 @@ GROUP BY symbol, timeframe;
 - Documented disaster recovery scenarios
 - Planned recovery tests
 
-## 🔄 Data Flow
+##  Data Flow
 
 ### 1. Data Collection
 
@@ -187,7 +187,7 @@ graph LR
 - Batch processing
 - Anomaly detection and handling
 
-## ⚡ Considerations for Scalability
+##  Considerations for Scalability
 
 ### 1. Horizontal Scaling
 
@@ -201,4 +201,4 @@ graph LR
 - Set performance metrics
 - Define scaling thresholds
 
-This document provides the database design standards for the financial data analysis system. It will be updated continuously considering the system requirements and performance. 🚀
+This document provides the database design standards for the financial data analysis system. It will be updated continuously considering the system requirements and performance. 

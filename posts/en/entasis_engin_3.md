@@ -17,7 +17,7 @@ thumbnail: ""
 
 # Financial Data Analysis System Detailed Feature Definition
 
-## 📊 Core Features Detail
+##  Core Features Detail
 
 ### 1. Data Collection System
 
@@ -87,9 +87,9 @@ thumbnail: ""
 
 ---
 
-## 📋 Kanban Board Structure
+##  Kanban Board Structure
 
-### 🎯 Backlog
+###  Backlog
 
 #### High Priority
 
@@ -112,7 +112,7 @@ thumbnail: ""
 - [ ] API Documentation
 - [ ] Tutorial System
 
-### 🏃 In Progress
+###  In Progress
 
 #### Sprint 1: Foundation System
 
@@ -126,7 +126,7 @@ thumbnail: ""
 - [ ] Real-time Data Collection Implementation
 - [ ] Data Cleansing Pipeline
 
-### ✅ Done
+###  Done
 
 #### Initial Setup
 
@@ -136,7 +136,7 @@ thumbnail: ""
 
 ---
 
-## 📅 Sprint Work Items
+##  Sprint Work Items
 
 ### Sprint 1 (Weeks 1-2)
 
@@ -149,7 +149,7 @@ thumbnail: ""
 +------------------+     +------------------+     +------------------+
 ```
 
-### Sprint 2 (3-4주차)
+### Sprint 2 (3-4)
 
 ```plaintext
 +------------------+     +------------------+     +------------------+
@@ -162,7 +162,7 @@ thumbnail: ""
 
 ---
 
-## 🔄 Progress Tracking
+##  Progress Tracking
 
 ### Current Status
 
@@ -176,4 +176,4 @@ thumbnail: ""
 2. Sprint 2 Planning
 3. Risk Factor Review
 
-This document serves as a baseline for tracking and managing project progress. Each feature and task will be implemented sequentially, considering priorities and dependencies. 🚀
+This document serves as a baseline for tracking and managing project progress. Each feature and task will be implemented sequentially, considering priorities and dependencies. 

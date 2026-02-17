@@ -121,18 +121,18 @@ class VolatilityManipulation:
 
    ```plaintext
    [Complex Strategy Patterns]
-       │
-       ├─ Butterfly Spread
-       │      ├─ Volatility Distortion
-       │      └─ Premium Manipulation
-       │
-       ├─ Calendar Spread
-       │      ├─ Term Structure Manipulation
-       │      └─ Rollover Distortion
-       │
-       └─ Combo Strategy
-              ├─ Delta Neutral Disguise
-              └─ Risk Concealment
+       
+        Butterfly Spread
+              Volatility Distortion
+              Premium Manipulation
+       
+        Calendar Spread
+              Term Structure Manipulation
+              Rollover Distortion
+       
+        Combo Strategy
+               Delta Neutral Disguise
+               Risk Concealment
    ```
 
 2. **Options Arbitrage Manipulation**

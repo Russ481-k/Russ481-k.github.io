@@ -23,7 +23,7 @@ thumbnail: ""
 
 # Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture
 
-## 🚀 Project Overview
+##  Project Overview
 
 The importance of data-driven decision making in financial markets continues to grow. In particular, integrated analysis of spot, futures, and options market data combined with AI-based market prediction has become a core element of modern trading.
 
@@ -39,7 +39,7 @@ This project automates the entire process from **real-time data collection → h
 
 ---
 
-## 🛠️ Technology Stack & Architecture
+##  Technology Stack & Architecture
 
 ### 1. Data Pipeline
 
@@ -63,9 +63,9 @@ This project automates the entire process from **real-time data collection → h
 - **Visualization**: D3.js
 - **Real-time Communication**: WebSocket
 
-## 📊 System Architecture
+##  System Architecture
 
-## 📊 시스템 아키텍처
+##   
 
 ```plaintext
 +-------------------+       +-------------------+       +-------------------+
@@ -92,7 +92,7 @@ This project automates the entire process from **real-time data collection → h
 
 ---
 
-## 💡 Key Features & Implementation
+##  Key Features & Implementation
 
 ### 1. Data Integration System
 
@@ -120,7 +120,7 @@ This project automates the entire process from **real-time data collection → h
 
 ---
 
-## 🔄 Detailed Workflow
+##  Detailed Workflow
 
 1. **Data Collection Phase**
 
@@ -147,7 +147,7 @@ This project automates the entire process from **real-time data collection → h
 
 ---
 
-## 🎁 Expected Benefits
+##  Expected Benefits
 
 ### 1. Operational Efficiency
 
@@ -169,7 +169,7 @@ This project automates the entire process from **real-time data collection → h
 
 ---
 
-## 🚀 Future Development
+##  Future Development
 
 1. **Feature Expansion**
 
@@ -188,4 +188,4 @@ This project automates the entire process from **real-time data collection → h
    - Personalized notification system
    - API service provision
 
-This project aims to be a comprehensive solution that effectively analyzes financial market data and combines it with AI to provide practical investment insights. 🎯
+This project aims to be a comprehensive solution that effectively analyzes financial market data and combines it with AI to provide practical investment insights. 

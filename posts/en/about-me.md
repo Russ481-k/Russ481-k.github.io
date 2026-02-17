@@ -2,7 +2,7 @@
 title: "Introduction"
 date: "2024-03-20"
 category: "about"
-description: "Hello! 👋 I am a Full Stack Engineer specialized in Financial Engineering and Data Processing."
+description: "Hello!  I am a Full Stack Engineer specialized in Financial Engineering and Data Processing."
 tags: ["Full Stack", "Next.js", "Python", "Financial"]
 thumbnail: "/images/profile1.jpg"
 ---

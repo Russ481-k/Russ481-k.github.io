@@ -158,7 +158,7 @@ Optimizing the set operations after splitting the string improved computation ti
 
 #### 2.2.3 Initial Consonant Similarity
 
-In Korean voice recognition, comparing only the initial consonants—the core of pronunciation—has proven effective. For example, the words **"전송"** and **"전달"** can exhibit high similarity when only their initial consonants are compared.
+In Korean voice recognition, comparing only the initial consonants—the core of pronunciation—has proven effective. For example, the words **""** and **""** can exhibit high similarity when only their initial consonants are compared.
 
 ```tsx
 // Initial Consonant Extraction (Optimized Version)
@@ -193,25 +193,25 @@ A combined similarity calculation function was implemented to compute an overall
 
 ```tsx
 const initialConsonants = [
-  "ㄱ",
-  "ㄲ",
-  "ㄴ",
-  "ㄷ",
-  "ㄸ",
-  "ㄹ",
-  "ㅁ",
-  "ㅂ",
-  "ㅃ",
-  "ㅅ",
-  "ㅆ",
-  "ㅇ",
-  "ㅈ",
-  "ㅉ",
-  "ㅊ",
-  "ㅋ",
-  "ㅌ",
-  "ㅍ",
-  "ㅎ",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
 ];
 
 const similarityAlgorithm = (voiceText: string) => {
@@ -310,8 +310,8 @@ const similarityAlgorithm = (voiceText: string) => {
 };
 
 // Example usage
-const algorithm = similarityAlgorithm("사과나무");
-const targetText = "사과나물";
+const algorithm = similarityAlgorithm("");
+const targetText = "";
 
 console.log(
   "Initial Consonant Similarity:",

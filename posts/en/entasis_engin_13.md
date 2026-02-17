@@ -16,7 +16,7 @@ tags:
 thumbnail: ""
 ---
 
-Hello everyone! 😊
+Hello everyone! 
 
 Today, I'd like to share how we implemented a data collector based on **Spring Boot** that collects real-time spot and futures market data from Binance and stores it in **TimescaleDB**. In this post, I'll walk you through various implementation points including system architecture, API calls, service layer configuration, and error handling in a friendly way!
 
@@ -66,7 +66,7 @@ public class BinanceExchange {
 }
 ```
 
-> **Tip:** When an error occurs, logging helps easily identify the problem, and using `onErrorReturn(null)` makes it easy to continue with null checks. 😉
+> **Tip:** When an error occurs, logging helps easily identify the problem, and using `onErrorReturn(null)` makes it easy to continue with null checks. 
 
 ---
 
@@ -140,7 +140,7 @@ public class MarketDataScheduler {
 }
 ```
 
-> **Tip:** When collecting periodic data, it is important to ensure that the scheduler does not stop through exception handling. 😊
+> **Tip:** When collecting periodic data, it is important to ensure that the scheduler does not stop through exception handling. 
 
 ---
 
@@ -154,8 +154,8 @@ public class MarketDataScheduler {
 
 ## Conclusion
 
-In this way, we were able to collect and store the spot and futures market data from Binance in real-time and stably in **TimescaleDB**. During this process, we used various features of Spring Boot such as `WebClient`, scheduling, error handling, and logging, and we hope this will be helpful for your project! 🚀
+In this way, we were able to collect and store the spot and futures market data from Binance in real-time and stably in **TimescaleDB**. During this process, we used various features of Spring Boot such as `WebClient`, scheduling, error handling, and logging, and we hope this will be helpful for your project! 
 
-If you have any questions or comments, please feel free to contact me anytime! Have a good day! 😄
+If you have any questions or comments, please feel free to contact me anytime! Have a good day! 
 
 Happy Coding!
