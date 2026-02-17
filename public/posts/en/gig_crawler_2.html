@@ -1,13 +1,16 @@
 <h1>Implementing Asynchronous Database Operations with SQLAlchemy 🔄</h1>
-<p>Hello! Today I'll share in detail how I implemented <strong>asynchronous database operations</strong> in my FastAPI crawler project.</p>
-<h2>1. Introduction 🎯</h2>
-<p>Asynchronous processing has become a crucial element in modern web development. This is especially true for data-heavy applications like crawlers! In this post, I'll share my experience implementing asynchronous database operations using SQLAlchemy.</p>
-<h2>2. Why Did We Need Async Processing? 🤔</h2>
+<p>Hello! Today I'll share in detail how I implemented <strong>asynchronous database operations</strong> in my FastAPI
+    crawler project.</p>
+<h2>1. Introduction </h2>
+<p>Asynchronous processing has become a crucial element in modern web development. This is especially true for
+    data-heavy applications like crawlers! In this post, I'll share my experience implementing asynchronous database
+    operations using SQLAlchemy.</p>
+<h2>2. Why Did We Need Async Processing? </h2>
 <p>When using synchronous processing, we faced several issues:</p>
 <ol>
-<li><strong>Response Delays</strong>: Couldn't perform other tasks while waiting for database responses</li>
-<li><strong>Resource Waste</strong>: Server resources weren't being used efficiently</li>
-<li><strong>Scalability Limits</strong>: Struggled to handle many concurrent requests</li>
+    <li><strong>Response Delays</strong>: Couldn't perform other tasks while waiting for database responses</li>
+    <li><strong>Resource Waste</strong>: Server resources weren't being used efficiently</li>
+    <li><strong>Scalability Limits</strong>: Struggled to handle many concurrent requests</li>
 </ol>
 <p>These problems made it necessary to implement asynchronous processing!</p>
 <hr>
@@ -15,9 +18,9 @@
 <h3>3.1 Issues with Traditional Synchronous Approach</h3>
 <p>SQLAlchemy typically operates synchronously. However, this synchronous approach has several drawbacks:</p>
 <ul>
-<li><strong>I/O Blocking</strong>: Application must wait for database responses</li>
-<li><strong>Performance Degradation</strong>: Response times increase with concurrent requests</li>
-<li><strong>Limited Scalability</strong>: Difficulty handling multiple operations effectively</li>
+    <li><strong>I/O Blocking</strong>: Application must wait for database responses</li>
+    <li><strong>Performance Degradation</strong>: Response times increase with concurrent requests</li>
+    <li><strong>Limited Scalability</strong>: Difficulty handling multiple operations effectively</li>
 </ul>
 <p>We can address these issues using <strong>SQLAlchemy's async mode</strong>.</p>
 <hr>
@@ -50,28 +53,32 @@ async def get_user_by_id(user_id: int):
 <hr>
 <h2>4. Comparison with Traditional Synchronous Approach</h2>
 <table>
-<thead>
-<tr>
-<th>Approach</th>
-<th>Pros</th>
-<th>Cons</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Synchronous (Sync)</td>
-<td>Simple code, familiar pattern</td>
-<td>Slow response, limited scalability</td>
-</tr>
-<tr>
-<td>Asynchronous (Async)</td>
-<td>Fast response, high concurrency</td>
-<td>Slightly complex setup</td>
-</tr>
-</tbody>
+    <thead>
+        <tr>
+            <th>Approach</th>
+            <th>Pros</th>
+            <th>Cons</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Synchronous (Sync)</td>
+            <td>Simple code, familiar pattern</td>
+            <td>Slow response, limited scalability</td>
+        </tr>
+        <tr>
+            <td>Asynchronous (Async)</td>
+            <td>Fast response, high concurrency</td>
+            <td>Slightly complex setup</td>
+        </tr>
+    </tbody>
 </table>
-<p>Asynchronous processing is particularly useful when handling <strong>API servers</strong> or <strong>crawlers</strong> that require <strong>large amounts of requests</strong>.</p>
+<p>Asynchronous processing is particularly useful when handling <strong>API servers</strong> or
+    <strong>crawlers</strong> that require <strong>large amounts of requests</strong>.
+</p>
 <hr>
 <h2>5. Conclusion</h2>
-<p>In this post, we looked at the SQLAlchemy asynchronous configuration method. Next, we'll cover <strong>integrating session management code</strong> and <strong>changing <code>database.py</code> to asynchronous mode</strong>.</p>
-<p>See you next time! 😊</p>
+<p>In this post, we looked at the SQLAlchemy asynchronous configuration method. Next, we'll cover <strong>integrating
+        session management code</strong> and <strong>changing <code>database.py</code> to asynchronous mode</strong>.
+</p>
+<p>See you next time! </p>

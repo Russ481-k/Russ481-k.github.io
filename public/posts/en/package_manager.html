@@ -1,141 +1,152 @@
 <hr>
 <h1>Comparing JavaScript Package Managers: npm, Yarn, pnpm</h1>
-<p>Hello developers! 😊 Today, let's talk about <strong>package managers</strong> that are essential in JavaScript development. While most developers have probably run <code>npm install</code> at least once, <code>Yarn</code> and <code>pnpm</code> are also becoming increasingly popular. It's important to understand the characteristics of each to make the right choice.</p>
-<p>So! Let's compare <strong>npm, Yarn, and pnpm</strong> by looking at their advantages and disadvantages. 🚀</p>
+<p>Hello developers! Today, let's talk about <strong>package managers</strong> that are essential in JavaScript
+    development. While most developers have probably run <code>npm install</code> at least once, <code>Yarn</code> and
+    <code>pnpm</code> are also becoming increasingly popular. It's important to understand the characteristics of each
+    to make the right choice.
+</p>
+<p>So! Let's compare <strong>npm, Yarn, and pnpm</strong> by looking at their advantages and disadvantages.</p>
 <hr>
 <h2>1. npm (Node Package Manager)</h2>
-<p><strong>npm</strong> is the default package manager that comes bundled with Node.js. It's the most widely used package manager worldwide, allowing easy installation and management of numerous packages.</p>
+<p><strong>npm</strong> is the default package manager that comes bundled with Node.js. It's the most widely used
+    package manager worldwide, allowing easy installation and management of numerous packages.</p>
 <h3>✅ Advantages</h3>
 <ul>
-<li><strong>Built into Node.js</strong> so no separate installation is needed.</li>
-<li>Has a <strong>vast ecosystem</strong>, making it easy to find desired packages.</li>
+    <li><strong>Built into Node.js</strong> so no separate installation is needed.</li>
+    <li>Has a <strong>vast ecosystem</strong>, making it easy to find desired packages.</li>
 </ul>
 <h3>❌ Disadvantages</h3>
 <ul>
-<li>The <code>node_modules</code> folder can become very large, making <strong>project management difficult</strong>.</li>
-<li>Potential dependency issues can lead to <strong>management challenges</strong>.</li>
+    <li>The <code>node_modules</code> folder can become very large, making <strong>project management
+            difficult</strong>.</li>
+    <li>Potential dependency issues can lead to <strong>management challenges</strong>.</li>
 </ul>
 <blockquote>
-<p>📝 <strong>When should you choose npm?</strong></p>
-<ul>
-<li>When you don't want to install a separate package manager.</li>
-<li>When you want to develop in the most basic environment.</li>
-</ul>
+    <p><strong>When should you choose npm?</strong></p>
+    <ul>
+        <li>When you don't want to install a separate package manager.</li>
+        <li>When you want to develop in the most basic environment.</li>
+    </ul>
 </blockquote>
 <hr>
 <h2>2. Yarn (Yet Another Resource Negotiator)</h2>
-<p><strong>Yarn</strong> is a package manager created to address npm's shortcomings. Many companies use it for its enhanced <strong>speed and security</strong>.</p>
+<p><strong>Yarn</strong> is a package manager created to address npm's shortcomings. Many companies use it for its
+    enhanced <strong>speed and security</strong>.</p>
 <h3>✅ Advantages</h3>
 <ul>
-<li>Excellent stability through <strong>version management with lock files</strong> (<code>yarn.lock</code>).</li>
-<li><strong>Enhanced security</strong> enables installation of trusted packages.</li>
-<li>Supports <strong>parallel installation</strong> for faster package downloads.</li>
+    <li>Excellent stability through <strong>version management with lock files</strong> (<code>yarn.lock</code>).</li>
+    <li><strong>Enhanced security</strong> enables installation of trusted packages.</li>
+    <li>Supports <strong>parallel installation</strong> for faster package downloads.</li>
 </ul>
 <h3>❌ Disadvantages</h3>
 <ul>
-<li><code>yarn.lock</code> files may not be compatible with npm, leading to <strong>potential module conflicts</strong>.</li>
-<li>May use <strong>more disk space and memory</strong> than npm.</li>
+    <li><code>yarn.lock</code> files may not be compatible with npm, leading to <strong>potential module
+            conflicts</strong>.</li>
+    <li>May use <strong>more disk space and memory</strong> than npm.</li>
 </ul>
 <blockquote>
-<p>📝 <strong>When should you choose Yarn?</strong></p>
-<ul>
-<li>When you want to <strong>minimize dependency conflicts</strong> in large projects.</li>
-<li>When you need faster and more secure package management.</li>
-</ul>
+    <p><strong>When should you choose Yarn?</strong></p>
+    <ul>
+        <li>When you want to <strong>minimize dependency conflicts</strong> in large projects.</li>
+        <li>When you need faster and more secure package management.</li>
+    </ul>
 </blockquote>
 <hr>
 <h2>3. pnpm (Performant npm)</h2>
-<p><strong>pnpm</strong> is a package manager aimed at improving upon npm and Yarn's shortcomings, offering more efficient package management. It provides faster speeds while saving disk space.</p>
+<p><strong>pnpm</strong> is a package manager aimed at improving upon npm and Yarn's shortcomings, offering more
+    efficient package management. It provides faster speeds while saving disk space.</p>
 <h3>✅ Advantages</h3>
 <ul>
-<li>Prevents <code>node_modules</code> bloat through a <strong>disk space-saving</strong> structure.</li>
-<li><strong>About twice as fast</strong> as npm for installations.</li>
-<li>Reduces dependency issues using a <strong>nested <code>node_modules</code> structure</strong>.</li>
+    <li>Prevents <code>node_modules</code> bloat through a <strong>disk space-saving</strong> structure.</li>
+    <li><strong>About twice as fast</strong> as npm for installations.</li>
+    <li>Reduces dependency issues using a <strong>nested <code>node_modules</code> structure</strong>.</li>
 </ul>
 <h3>❌ Disadvantages</h3>
 <ul>
-<li>Having relatively fewer users than npm and Yarn means <strong>potentially less available information</strong>.</li>
+    <li>Having relatively fewer users than npm and Yarn means <strong>potentially less available information</strong>.
+    </li>
 </ul>
 <blockquote>
-<p>📝 <strong>When should you choose pnpm?</strong></p>
-<ul>
-<li>When you need a <strong>fast and lightweight package manager</strong>.</li>
-<li>When you want to <strong>save disk space</strong> by sharing packages across multiple projects.</li>
-</ul>
+    <p><strong>When should you choose pnpm?</strong></p>
+    <ul>
+        <li>When you need a <strong>fast and lightweight package manager</strong>.</li>
+        <li>When you want to <strong>save disk space</strong> by sharing packages across multiple projects.</li>
+    </ul>
 </blockquote>
 <hr>
 <h2>4. Feature Comparison</h2>
 <table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>pnpm</th>
-<th>Yarn</th>
-<th>npm</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Workspace Support</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Isolated node_modules</td>
-<td>✅ (default)</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Auto Peer Installation</td>
-<td>✅</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Plug'n'Play</td>
-<td>✅</td>
-<td>✅ (default)</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>Zero-Installs</td>
-<td>❌</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>Dependency Patching</td>
-<td>✅</td>
-<td>✅</td>
-<td>❌</td>
-</tr>
-<tr>
-<td>Content-addressable Store</td>
-<td>✅</td>
-<td>❌</td>
-<td>❌</td>
-</tr>
-</tbody>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>pnpm</th>
+            <th>Yarn</th>
+            <th>npm</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Workspace Support</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Isolated node_modules</td>
+            <td>✅ (default)</td>
+            <td>✅</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Auto Peer Installation</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>✅</td>
+        </tr>
+        <tr>
+            <td>Plug'n'Play</td>
+            <td>✅</td>
+            <td>✅ (default)</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td>Zero-Installs</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td>Dependency Patching</td>
+            <td>✅</td>
+            <td>✅</td>
+            <td>❌</td>
+        </tr>
+        <tr>
+            <td>Content-addressable Store</td>
+            <td>✅</td>
+            <td>❌</td>
+            <td>❌</td>
+        </tr>
+    </tbody>
 </table>
 <hr>
 <h2>5. Conclusion: Which Package Manager Should You Choose?</h2>
-<p><strong>📌 Choose npm when</strong></p>
+<p><strong>Choose npm when</strong></p>
 <ul>
-<li>You want to develop in a basic environment without additional installations.</li>
-<li>You want to leverage a large ecosystem.</li>
+    <li>You want to develop in a basic environment without additional installations.</li>
+    <li>You want to leverage a large ecosystem.</li>
 </ul>
-<p><strong>📌 Choose Yarn when</strong></p>
+<p><strong>Choose Yarn when</strong></p>
 <ul>
-<li>You want fast and stable package management.</li>
-<li>You need rigorous dependency management in team projects.</li>
+    <li>You want fast and stable package management.</li>
+    <li>You need rigorous dependency management in team projects.</li>
 </ul>
-<p><strong>📌 Choose pnpm when</strong></p>
+<p><strong>Choose pnpm when</strong></p>
 <ul>
-<li>You want fast installation while saving disk space.</li>
-<li>You want to actively utilize the latest technology.</li>
+    <li>You want fast installation while saving disk space.</li>
+    <li>You want to actively utilize the latest technology.</li>
 </ul>
 <hr>
-<h2>🔥 Final Thoughts</h2>
-<p>Each package manager has its own strengths and weaknesses. It's important to <strong>choose the most suitable package manager</strong> considering your team environment, project scale, and required features! 🚀</p>
+<h2>Final Thoughts</h2>
+<p>Each package manager has its own strengths and weaknesses. It's important to <strong>choose the most suitable package
+        manager</strong> considering your team environment, project scale, and required features!</p>

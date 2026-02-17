@@ -1,41 +1,45 @@
 <h1>Financial Data Analysis and AI Integration Solution - Technology Stack Selection and System Architecture</h1>
 <h2>🚀 Project Overview</h2>
-<p>The importance of data-driven decision making in financial markets continues to grow. In particular, integrated analysis of spot, futures, and options market data combined with AI-based market prediction has become a core element of modern trading.</p>
-<p>This project automates the entire process from <strong>real-time data collection → high-performance data processing → AI-based analysis → real-time dashboard delivery</strong> to provide users with data-driven investment insights.</p>
+<p>The importance of data-driven decision making in financial markets continues to grow. In particular, integrated
+    analysis of spot, futures, and options market data combined with AI-based market prediction has become a core
+    element of modern trading.</p>
+<p>This project automates the entire process from <strong>real-time data collection → high-performance data processing →
+        AI-based analysis → real-time dashboard delivery</strong> to provide users with data-driven investment insights.
+</p>
 <h3>Core Objectives</h3>
 <ul>
-<li>Real-time financial data integration and analysis</li>
-<li>Implementation of AI-based market prediction models</li>
-<li>Expected return calculation by position</li>
-<li>Risk management metrics provision</li>
-<li>User-friendly dashboard implementation</li>
+    <li>Real-time financial data integration and analysis</li>
+    <li>Implementation of AI-based market prediction models</li>
+    <li>Expected return calculation by position</li>
+    <li>Risk management metrics provision</li>
+    <li>User-friendly dashboard implementation</li>
 </ul>
 <hr>
-<h2>🛠️ Technology Stack &#x26; Architecture</h2>
+<h2> Technology Stack &#x26; Architecture</h2>
 <h3>1. Data Pipeline</h3>
 <ul>
-<li><strong>Data Collection</strong>: CCXT, Deribit API</li>
-<li><strong>Data Processing</strong>: Java, Apache Spark</li>
-<li><strong>Storage</strong>: PostgreSQL, TimescaleDB</li>
-<li><strong>Workflow</strong>: Apache Airflow</li>
+    <li><strong>Data Collection</strong>: CCXT, Deribit API</li>
+    <li><strong>Data Processing</strong>: Java, Apache Spark</li>
+    <li><strong>Storage</strong>: PostgreSQL, TimescaleDB</li>
+    <li><strong>Workflow</strong>: Apache Airflow</li>
 </ul>
 <h3>2. Analysis Engine</h3>
 <ul>
-<li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>
-<li><strong>Financial Engineering</strong>: Pandas, NumPy</li>
-<li><strong>Analysis Models</strong>:
-<ul>
-<li>Black-Scholes Model (Option Pricing)</li>
-<li>Heston Model (Volatility Analysis)</li>
-<li>LSTM Networks (Time Series Prediction)</li>
-</ul>
-</li>
+    <li><strong>AI/ML</strong>: Python, TensorFlow, Scikit-learn</li>
+    <li><strong>Financial Engineering</strong>: Pandas, NumPy</li>
+    <li><strong>Analysis Models</strong>:
+        <ul>
+            <li>Black-Scholes Model (Option Pricing)</li>
+            <li>Heston Model (Volatility Analysis)</li>
+            <li>LSTM Networks (Time Series Prediction)</li>
+        </ul>
+    </li>
 </ul>
 <h3>3. Frontend</h3>
 <ul>
-<li><strong>Framework</strong>: Next.js</li>
-<li><strong>Visualization</strong>: D3.js</li>
-<li><strong>Real-time Communication</strong>: WebSocket</li>
+    <li><strong>Framework</strong>: Next.js</li>
+    <li><strong>Visualization</strong>: D3.js</li>
+    <li><strong>Real-time Communication</strong>: WebSocket</li>
 </ul>
 <h2>📊 System Architecture</h2>
 <h2>📊 시스템 아키텍처</h2>
@@ -61,113 +65,114 @@
 +--------------------------------------------+
 </code></pre>
 <hr>
-<h2>💡 Key Features &#x26; Implementation</h2>
+<h2>Key Features &#x26; Implementation</h2>
 <h3>1. Data Integration System</h3>
 <ul>
-<li>Multi-exchange real-time data collection</li>
-<li>Time series data optimization storage</li>
-<li>Distributed processing for large-scale data</li>
+    <li>Multi-exchange real-time data collection</li>
+    <li>Time series data optimization storage</li>
+    <li>Distributed processing for large-scale data</li>
 </ul>
 <h3>2. AI-based Analysis Engine</h3>
 <ul>
-<li>Deep learning-based price prediction models</li>
-<li>Volatility prediction and risk analysis</li>
-<li>Portfolio optimization algorithms</li>
+    <li>Deep learning-based price prediction models</li>
+    <li>Volatility prediction and risk analysis</li>
+    <li>Portfolio optimization algorithms</li>
 </ul>
 <h3>3. Investment Strategy System</h3>
 <ul>
-<li>Real-time position analysis</li>
-<li>Risk-return profile generation</li>
-<li>Backtesting and scenario analysis</li>
+    <li>Real-time position analysis</li>
+    <li>Risk-return profile generation</li>
+    <li>Backtesting and scenario analysis</li>
 </ul>
 <h3>4. Real-time Monitoring</h3>
 <ul>
-<li>Interactive charts and indicators</li>
-<li>Real-time alert system</li>
-<li>Custom dashboard configuration</li>
+    <li>Interactive charts and indicators</li>
+    <li>Real-time alert system</li>
+    <li>Custom dashboard configuration</li>
 </ul>
 <hr>
-<h2>🔄 Detailed Workflow</h2>
+<h2>Detailed Workflow</h2>
 <ol>
-<li>
-<p><strong>Data Collection Phase</strong></p>
-<ul>
-<li>Exchange API integration and data collection</li>
-<li>Real-time data streaming via WebSocket</li>
-<li>Data consistency validation</li>
-</ul>
-</li>
-<li>
-<p><strong>Preprocessing &#x26; Storage Phase</strong></p>
-<ul>
-<li>Large-scale data processing with Apache Spark</li>
-<li>Time series data optimization storage</li>
-<li>Derivative variable calculation (volatility, Greeks, etc.)</li>
-</ul>
-</li>
-<li>
-<p><strong>Analysis &#x26; Prediction Phase</strong></p>
-<ul>
-<li>Machine learning model training and prediction</li>
-<li>Financial engineering model application</li>
-<li>Risk metric calculation</li>
-</ul>
-</li>
-<li>
-<p><strong>Visualization &#x26; Delivery Phase</strong></p>
-<ul>
-<li>Real-time dashboard updates</li>
-<li>Customized report generation</li>
-<li>Alert and notification delivery</li>
-</ul>
-</li>
+    <li>
+        <p><strong>Data Collection Phase</strong></p>
+        <ul>
+            <li>Exchange API integration and data collection</li>
+            <li>Real-time data streaming via WebSocket</li>
+            <li>Data consistency validation</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Preprocessing &#x26; Storage Phase</strong></p>
+        <ul>
+            <li>Large-scale data processing with Apache Spark</li>
+            <li>Time series data optimization storage</li>
+            <li>Derivative variable calculation (volatility, Greeks, etc.)</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Analysis &#x26; Prediction Phase</strong></p>
+        <ul>
+            <li>Machine learning model training and prediction</li>
+            <li>Financial engineering model application</li>
+            <li>Risk metric calculation</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Visualization &#x26; Delivery Phase</strong></p>
+        <ul>
+            <li>Real-time dashboard updates</li>
+            <li>Customized report generation</li>
+            <li>Alert and notification delivery</li>
+        </ul>
+    </li>
 </ol>
 <hr>
 <h2>🎁 Expected Benefits</h2>
 <h3>1. Operational Efficiency</h3>
 <ul>
-<li>Automated data collection and analysis</li>
-<li>Real-time market monitoring</li>
-<li>Quick decision support</li>
+    <li>Automated data collection and analysis</li>
+    <li>Real-time market monitoring</li>
+    <li>Quick decision support</li>
 </ul>
 <h3>2. Risk Management</h3>
 <ul>
-<li>Real-time portfolio risk monitoring</li>
-<li>Scenario-based stress testing</li>
-<li>Automated loss limitation strategies</li>
+    <li>Real-time portfolio risk monitoring</li>
+    <li>Scenario-based stress testing</li>
+    <li>Automated loss limitation strategies</li>
 </ul>
 <h3>3. Investment Performance</h3>
 <ul>
-<li>Data-driven investment strategy development</li>
-<li>AI-based market prediction</li>
-<li>Systematic portfolio management</li>
+    <li>Data-driven investment strategy development</li>
+    <li>AI-based market prediction</li>
+    <li>Systematic portfolio management</li>
 </ul>
 <hr>
 <h2>🚀 Future Development</h2>
 <ol>
-<li>
-<p><strong>Feature Expansion</strong></p>
-<ul>
-<li>Additional asset class support</li>
-<li>Advanced AI model integration</li>
-<li>Social trading functionality</li>
-</ul>
-</li>
-<li>
-<p><strong>Performance Enhancement</strong></p>
-<ul>
-<li>Processing speed optimization</li>
-<li>Scalability improvement</li>
-<li>Security enhancement</li>
-</ul>
-</li>
-<li>
-<p><strong>User Experience</strong></p>
-<ul>
-<li>Mobile app development</li>
-<li>Personalized notification system</li>
-<li>API service provision</li>
-</ul>
-</li>
+    <li>
+        <p><strong>Feature Expansion</strong></p>
+        <ul>
+            <li>Additional asset class support</li>
+            <li>Advanced AI model integration</li>
+            <li>Social trading functionality</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>Performance Enhancement</strong></p>
+        <ul>
+            <li>Processing speed optimization</li>
+            <li>Scalability improvement</li>
+            <li>Security enhancement</li>
+        </ul>
+    </li>
+    <li>
+        <p><strong>User Experience</strong></p>
+        <ul>
+            <li>Mobile app development</li>
+            <li>Personalized notification system</li>
+            <li>API service provision</li>
+        </ul>
+    </li>
 </ol>
-<p>This project aims to be a comprehensive solution that effectively analyzes financial market data and combines it with AI to provide practical investment insights. 🎯</p>
+<p>This project aims to be a comprehensive solution that effectively analyzes financial market data and combines it with
+    AI to provide practical investment insights. </p>

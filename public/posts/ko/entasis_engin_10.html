@@ -1,5 +1,5 @@
 <h1>금융 데이터 분석 시스템 테스트 계획서</h1>
-<h2>🎯 테스트 전략 개요</h2>
+<h2> 테스트 전략 개요</h2>
 <h3>1. 테스트 범위</h3>
 <pre><code class="language-mermaid">graph TD
     A[단위 테스트] --> B[통합 테스트]
@@ -68,7 +68,7 @@ public void testMarketDataProcessing() {
     assert np.all(predictions > 0)  # 가격은 항상 양수
     assert calculate_mape(test_data.y, predictions) &#x3C; 0.1  # MAPE &#x3C; 10%
 </code></pre>
-<h2>🔄 통합 테스트</h2>
+<h2>통합 테스트</h2>
 <h3>1. API 테스트</h3>
 <pre><code class="language-typescript">describe("Trading API Integration Tests", () => {
   it("should place market order successfully", async () => {
@@ -145,7 +145,7 @@ export default function () {
       - cpu_usage: &#x3C; 80%
       - memory_usage: &#x3C; 85%
 </code></pre>
-<h2>🔒 보안 테스트</h2>
+<h2> 보안 테스트</h2>
 <h3>1. 취약점 스캔</h3>
 <pre><code class="language-yaml">security_scan:
   tools:
@@ -241,4 +241,4 @@ export default function () {
     latency: &#x3C; 200ms
     accuracy: > 85%
 </code></pre>
-<p>이 문서는 금융 데이터 분석 시스템의 테스트 전략과 품질 보증 계획을 제공합니다. 시스템의 안정성과 신뢰성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀</p>
+<p>이 문서는 금융 데이터 분석 시스템의 테스트 전략과 품질 보증 계획을 제공합니다. 시스템의 안정성과 신뢰성을 보장하기 위해 지속적으로 업데이트됩니다.</p>

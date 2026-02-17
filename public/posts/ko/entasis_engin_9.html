@@ -169,7 +169,7 @@ spec:
           - channel: "#alerts"
             send_resolved: true
 </code></pre>
-<h2>🔒 보안 설정</h2>
+<h2> 보안 설정</h2>
 <h3>1. 네트워크 정책</h3>
 <pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
@@ -202,7 +202,7 @@ spec:
               secret: &#x3C;base64-encoded-key>
       - identity: {}
 </code></pre>
-<h2>🔄 스케일링 전략</h2>
+<h2>스케일링 전략</h2>
 <h3>1. 수평적 확장</h3>
 <pre><code class="language-yaml">apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -263,4 +263,4 @@ spec:
     bucket: backup-bucket
     region: ap-northeast-2
 </code></pre>
-<p>이 문서는 금융 데이터 분석 시스템의 인프라 구성을 상세히 설명합니다. 시스템의 안정성과 확장성을 보장하기 위해 지속적으로 업데이트됩니다. 🚀</p>
+<p>이 문서는 금융 데이터 분석 시스템의 인프라 구성을 상세히 설명합니다. 시스템의 안정성과 확장성을 보장하기 위해 지속적으로 업데이트됩니다.</p>

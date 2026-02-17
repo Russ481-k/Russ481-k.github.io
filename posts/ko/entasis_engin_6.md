@@ -166,7 +166,7 @@ Response 200:
 }
 ```
 
-##  WebSocket API
+## WebSocket API
 
 ### 1.   
 
@@ -218,7 +218,7 @@ ws://api.example.com/ws/market
 }
 ```
 
-##   
+## 에러 코드
 
 ### 1. HTTP  
 
@@ -246,7 +246,7 @@ ws://api.example.com/ws/market
 }
 ```
 
-##  API  
+## API 사용 예시
 
 ### 1. REST API 
 
@@ -296,4 +296,4 @@ ws.onmessage = (event) => {
 };
 ```
 
-      API  . API  ,   Swagger UI    . 
+이 문서는 금융 데이터 분석 시스템의 API 명세를 제공합니다. API는 지속적으로 업데이트되며, 최신 버전은 Swagger UI를 통해 확인할 수 있습니다.

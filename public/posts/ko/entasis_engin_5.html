@@ -2,9 +2,9 @@
 <h2>📊 데이터베이스 아키텍처</h2>
 <h3>1. 데이터베이스 선정 이유</h3>
 <ul>
-<li><strong>PostgreSQL</strong>: 안정성과 확장성이 검증된 RDBMS</li>
-<li><strong>TimescaleDB</strong>: 시계열 데이터 처리에 최적화된 확장</li>
-<li><strong>파티셔닝</strong>: 대용량 데이터의 효율적 관리</li>
+    <li><strong>PostgreSQL</strong>: 안정성과 확장성이 검증된 RDBMS</li>
+    <li><strong>TimescaleDB</strong>: 시계열 데이터 처리에 최적화된 확장</li>
+    <li><strong>파티셔닝</strong>: 대용량 데이터의 효율적 관리</li>
 </ul>
 <h3>2. 핵심 테이블 구조</h3>
 <h4>2.1 Market Data Tables</h4>
@@ -86,9 +86,9 @@ CREATE TABLE market_data_y2024m02 PARTITION OF market_data
 </code></pre>
 <h4>4.2 보관 정책</h4>
 <ul>
-<li>실시간 데이터: 최근 3개월</li>
-<li>집계 데이터: 최근 1년</li>
-<li>히스토리 데이터: S3 아카이브</li>
+    <li>실시간 데이터: 최근 3개월</li>
+    <li>집계 데이터: 최근 1년</li>
+    <li>히스토리 데이터: S3 아카이브</li>
 </ul>
 <h2>📈 성능 최적화</h2>
 <h3>1. 쿼리 최적화</h3>
@@ -108,24 +108,24 @@ GROUP BY symbol, timeframe;
 </code></pre>
 <h4>1.2 캐싱 전략</h4>
 <ul>
-<li>Redis 캐싱 레이어 구현</li>
-<li>실시간 데이터 메모리 캐싱</li>
-<li>집계 데이터 캐시 갱신 주기 설정</li>
+    <li>Redis 캐싱 레이어 구현</li>
+    <li>실시간 데이터 메모리 캐싱</li>
+    <li>집계 데이터 캐시 갱신 주기 설정</li>
 </ul>
 <h3>2. 백업 전략</h3>
 <h4>2.1 정기 백업</h4>
 <ul>
-<li>일일 증분 백업</li>
-<li>주간 전체 백업</li>
-<li>월간 아카이브</li>
+    <li>일일 증분 백업</li>
+    <li>주간 전체 백업</li>
+    <li>월간 아카이브</li>
 </ul>
 <h4>2.2 복구 계획</h4>
 <ul>
-<li>Point-in-Time Recovery 설정</li>
-<li>장애 복구 시나리오 문서화</li>
-<li>복구 테스트 계획</li>
+    <li>Point-in-Time Recovery 설정</li>
+    <li>장애 복구 시나리오 문서화</li>
+    <li>복구 테스트 계획</li>
 </ul>
-<h2>🔄 데이터 흐름</h2>
+<h2>데이터 흐름</h2>
 <h3>1. 데이터 수집</h3>
 <pre><code class="language-mermaid">graph LR
     A[거래소 API] --> B[데이터 수집기]
@@ -135,21 +135,21 @@ GROUP BY symbol, timeframe;
 </code></pre>
 <h3>2. 데이터 처리</h3>
 <ul>
-<li>실시간 스트림 처리</li>
-<li>배치 처리</li>
-<li>이상치 탐지 및 처리</li>
+    <li>실시간 스트림 처리</li>
+    <li>배치 처리</li>
+    <li>이상치 탐지 및 처리</li>
 </ul>
 <h2>⚡ 확장성 고려사항</h2>
 <h3>1. 수평적 확장</h3>
 <ul>
-<li>읽기 전용 복제본 구성</li>
-<li>샤딩 전략 수립</li>
-<li>로드 밸런싱 설정</li>
+    <li>읽기 전용 복제본 구성</li>
+    <li>샤딩 전략 수립</li>
+    <li>로드 밸런싱 설정</li>
 </ul>
 <h3>2. 수직적 확장</h3>
 <ul>
-<li>리소스 모니터링</li>
-<li>성능 지표 설정</li>
-<li>스케일 업 임계값 정의</li>
+    <li>리소스 모니터링</li>
+    <li>성능 지표 설정</li>
+    <li>스케일 업 임계값 정의</li>
 </ul>
-<p>이 문서는 금융 데이터 분석 시스템의 데이터베이스 설계 기준을 제공합니다. 시스템의 요구사항과 성능을 고려하여 지속적으로 업데이트될 예정입니다. 🚀</p>
+<p>이 문서는 금융 데이터 분석 시스템의 데이터베이스 설계 기준을 제공합니다. 시스템의 요구사항과 성능을 고려하여 지속적으로 업데이트될 예정입니다.</p>

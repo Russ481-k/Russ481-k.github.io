@@ -44,7 +44,7 @@
       channels:
         - slack: "#alerts-info"
 </code></pre>
-<h2>🔄 일상 운영 작업</h2>
+<h2>일상 운영 작업</h2>
 <h3>1. 데이터베이스 관리</h3>
 <pre><code class="language-sql">-- 일일 유지보수 쿼리
 -- 1. 인덱스 재구축
@@ -79,7 +79,7 @@ WHERE timestamp &#x3C; NOW() - INTERVAL '3 months';
     compression: true
     encryption: true
 </code></pre>
-<h2>🚨 장애 대응</h2>
+<h2>장애 대응</h2>
 <h3>1. 장애 레벨 정의</h3>
 <pre><code class="language-yaml">incident_levels:
   p1_critical:
@@ -155,7 +155,7 @@ kubectl scale deployment trading-api --replicas=3
 # 5. 상태 확인
 kubectl get pods -l app=trading-api
 </code></pre>
-<h2>🔒 보안 관리</h2>
+<h2> 보안 관리</h2>
 <h3>1. 접근 제어</h3>
 <pre><code class="language-yaml">access_control:
   production:
@@ -226,4 +226,4 @@ kubectl get pods -l app=trading-api
       cpu: 2
       memory: 4Gi
 </code></pre>
-<p>이 문서는 금융 데이터 분석 시스템의 운영 및 유지보수 가이드를 제공합니다. 시스템의 안정적인 운영을 위해 지속적으로 업데이트됩니다. 🚀</p>
+<p>이 문서는 금융 데이터 분석 시스템의 운영 및 유지보수 가이드를 제공합니다. 시스템의 안정적인 운영을 위해 지속적으로 업데이트됩니다.</p>

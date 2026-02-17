@@ -1,5 +1,5 @@
 <h1>Financial Data Analysis System Test Plan</h1>
-<h2>🎯 Test Strategy Overview</h2>
+<h2> Test Strategy Overview</h2>
 <h3>1. Test Scope</h3>
 <pre><code class="language-mermaid">graph TD
     A[Unit Test] --> B[Integration Test]
@@ -68,7 +68,7 @@ public void testMarketDataProcessing() {
     assert np.all(predictions > 0)  # Price is always positive
     assert calculate_mape(test_data.y, predictions) &#x3C; 0.1  # MAPE &#x3C; 10%
 </code></pre>
-<h2>🔄 Integration Test</h2>
+<h2>Integration Test</h2>
 <h3>1. API Test</h3>
 <pre><code class="language-typescript">describe("Trading API Integration Tests", () => {
   it("should place market order successfully", async () => {
@@ -145,7 +145,7 @@ export default function () {
       - cpu_usage: &#x3C; 80%
       - memory_usage: &#x3C; 85%
 </code></pre>
-<h2>🔒 Security Test</h2>
+<h2> Security Test</h2>
 <h3>1. Vulnerability Scan</h3>
 <pre><code class="language-yaml">security_scan:
   tools:
@@ -241,4 +241,5 @@ export default function () {
     latency: &#x3C; 200ms
     accuracy: > 85%
 </code></pre>
-<p>This document provides the test strategy and quality assurance plan for the financial data analysis system. It will be updated continuously to ensure the stability and reliability of the system. 🚀</p>
+<p>This document provides the test strategy and quality assurance plan for the financial data analysis system. It will
+  be updated continuously to ensure the stability and reliability of the system.</p>

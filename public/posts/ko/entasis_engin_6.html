@@ -13,9 +13,9 @@
 </code></pre>
 <h3>2. 보안 정책</h3>
 <ul>
-<li>Rate Limiting: 1000 requests/minute</li>
-<li>IP Whitelisting 지원</li>
-<li>SSL/TLS 필수</li>
+  <li>Rate Limiting: 1000 requests/minute</li>
+  <li>IP Whitelisting 지원</li>
+  <li>SSL/TLS 필수</li>
 </ul>
 <h2>📡 RESTful API 엔드포인트</h2>
 <h3>1. 시장 데이터 API</h3>
@@ -117,7 +117,7 @@ Response 200:
   "timestamp": "2024-03-21T09:30:00Z"
 }
 </code></pre>
-<h2>🔄 WebSocket API</h2>
+<h2>WebSocket API</h2>
 <h3>1. 시장 데이터 스트림</h3>
 <h4>1.1 실시간 시세 구독</h4>
 <pre><code class="language-javascript">// 연결
@@ -182,7 +182,7 @@ ws://api.example.com/ws/market
   "AI_002": "예측 실패"
 }
 </code></pre>
-<h2>📝 API 사용 예시</h2>
+<h2>API 사용 예시</h2>
 <h3>1. REST API 호출</h3>
 <pre><code class="language-python">import requests
 
@@ -225,4 +225,4 @@ ws.onmessage = (event) => {
   console.log(`${data.symbol}: ${data.price}`);
 };
 </code></pre>
-<p>이 문서는 금융 데이터 분석 시스템의 API 명세를 제공합니다. API는 지속적으로 업데이트되며, 최신 버전은 Swagger UI를 통해 확인할 수 있습니다. 🚀</p>
+<p>이 문서는 금융 데이터 분석 시스템의 API 명세를 제공합니다. API는 지속적으로 업데이트되며, 최신 버전은 Swagger UI를 통해 확인할 수 있습니다.</p>

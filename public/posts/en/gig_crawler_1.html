@@ -1,8 +1,9 @@
-<h1>Getting Started: Setting up FastAPI and PostgreSQL Environment 🛠️</h1>
-<p>Hello! Today I'll share how I set up the FastAPI and PostgreSQL environment for developing a freelance project crawler.</p>
-<h3><strong>The Easiest Way to Connect FastAPI and PostgreSQL! 🚀</strong></h3>
+<h1>Getting Started: Setting up FastAPI and PostgreSQL Environment </h1>
+<p>Hello! Today I'll share how I set up the FastAPI and PostgreSQL environment for developing a freelance project
+    crawler.</p>
+<h3><strong>The Easiest Way to Connect FastAPI and PostgreSQL!</strong></h3>
 <p>Hi there! I'll explain how to connect <strong>FastAPI</strong> and <strong>PostgreSQL</strong> in a simple way.
-New to <strong>FastAPI</strong>? Don't worry! You'll understand quickly if you follow along step by step. 😃</p>
+    New to <strong>FastAPI</strong>? Don't worry! You'll understand quickly if you follow along step by step. </p>
 <hr>
 <h2><strong>1. Creating Basic Project Structure</strong></h2>
 <p>First, let's organize the project folder like this:</p>
@@ -17,11 +18,11 @@ New to <strong>FastAPI</strong>? Don't worry! You'll understand quickly if you f
     ├── api/             # API endpoints
     └── db/              # database related files
 </code></pre>
-<p>Let's set it up one by one! 😊</p>
+<p>Let's set it up one by one! </p>
 <hr>
 <h2><strong>2. Install Required Packages</strong></h2>
 <p>To connect FastAPI and PostgreSQL, we need several packages.<br>
-First, create the <code>requirements.txt</code> file and add the following contents.</p>
+    First, create the <code>requirements.txt</code> file and add the following contents.</p>
 <pre><code class="language-text">fastapi==0.104.1
 uvicorn==0.24.0
 sqlalchemy==2.0.23
@@ -30,13 +31,13 @@ pydantic-settings==2.1.0
 python-dotenv==1.0.0
 psycopg2-binary==2.9.9
 </code></pre>
-<p>Run the following command in the terminal to install all packages at once! 🎯</p>
+<p>Run the following command in the terminal to install all packages at once! </p>
 <pre><code class="language-bash">pip install -r requirements.txt
 </code></pre>
 <hr>
 <h2><strong>3. Setting up environment variables (create .env file)</strong></h2>
 <p>We will save the PostgreSQL connection information in the <code>.env</code> file.<br>
-Create the <code>.env</code> file and input the following contents.</p>
+    Create the <code>.env</code> file and input the following contents.</p>
 <pre><code class="language-env">POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres123
 POSTGRES_HOST=localhost
@@ -44,7 +45,8 @@ POSTGRES_PORT=5432
 POSTGRES_DB=gig_crawler
 </code></pre>
 <p><strong>✅ Why do we set it up this way?</strong><br>
-👉 To ensure security and maintainability, it is better to manage the DB information in the code as environment variables rather than directly in the code.</p>
+    To ensure security and maintainability, it is better to manage the DB information in the code as environment
+    variables rather than directly in the code.</p>
 <hr>
 <h2><strong>4. Setting up configuration (create config.py file)</strong></h2>
 <p>Let's create the <code>config.py</code> file to get the environment variables from the <code>.env</code> file.</p>
@@ -108,29 +110,32 @@ app.add_middleware(
 def read_root():
     return {"message": "Hello, FastAPI &#x26; PostgreSQL!"}
 </code></pre>
-<p>Now, if you access <code>http://localhost:8000/</code>, you should see the <strong>"Hello, FastAPI &#x26; PostgreSQL!"</strong> message!</p>
+<p>Now, if you access <code>http://localhost:8000/</code>, you should see the <strong>"Hello, FastAPI &#x26;
+        PostgreSQL!"</strong> message!</p>
 <hr>
 <h2><strong>7. Create a PostgreSQL database</strong></h2>
 <p>Let's create the database to be used in PostgreSQL.<br>
-Run <code>psql</code> in the terminal and input the following command.</p>
+    Run <code>psql</code> in the terminal and input the following command.</p>
 <pre><code class="language-sql">CREATE DATABASE gig_crawler WITH ENCODING 'UTF8' LC_COLLATE='Korean_Korea.949' LC_CTYPE='Korean_Korea.949';
 </code></pre>
 <p>Now, the database is ready! 🎉</p>
 <hr>
-<h2><strong>8. Run the server! 🚀</strong></h2>
+<h2><strong>8. Run the server!</strong></h2>
 <p>This is the final step!<br>
-Run the following command to turn on the FastAPI server.</p>
+    Run the following command to turn on the FastAPI server.</p>
 <pre><code class="language-bash">uvicorn app.main:app --reload
 </code></pre>
-<p>The terminal should show <strong>"Uvicorn running on <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>"</strong> message.<br>
-Now, if you access <code>http://127.0.0.1:8000/docs</code>, you can see the API documentation automatically generated.</p>
+<p>The terminal should show <strong>"Uvicorn running on <a
+            href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>"</strong> message.<br>
+    Now, if you access <code>http://127.0.0.1:8000/docs</code>, you can see the API documentation automatically
+    generated.</p>
 <hr>
-<h2><strong>9. Conclusion 🎯</strong></h2>
+<h2><strong>9. Conclusion </strong></h2>
 <p>So far, we've set up the <strong>FastAPI + PostgreSQL</strong> connection!<br>
-If you encounter any issues while running, please check the following:</p>
+    If you encounter any issues while running, please check the following:</p>
 <p>✅ Did you save the <code>.env</code> file in UTF-8?<br>
-✅ Is the PostgreSQL server running?<br>
-✅ Is the database created?<br>
-✅ Did you run the <code>uvicorn app.main:app --reload</code> command?</p>
+    ✅ Is the PostgreSQL server running?<br>
+    ✅ Is the database created?<br>
+    ✅ Did you run the <code>uvicorn app.main:app --reload</code> command?</p>
 <p>Now, add <strong>CRUD API</strong> to this and create the project you want! 💡<br>
-If you have any questions, feel free to ask anytime! 😃</p>
+    If you have any questions, feel free to ask anytime! </p>

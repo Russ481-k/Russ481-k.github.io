@@ -44,7 +44,7 @@
       channels:
         - slack: "#alerts-info"
 </code></pre>
-<h2>🔄 Daily Operations</h2>
+<h2>Daily Operations</h2>
 <h3>1. Database Management</h3>
 <pre><code class="language-sql">-- Daily maintenance queries
 -- 1. Rebuild indexes
@@ -79,7 +79,7 @@ WHERE timestamp &#x3C; NOW() - INTERVAL '3 months';
     compression: true
     encryption: true
 </code></pre>
-<h2>🚨 Incident Response</h2>
+<h2>Incident Response</h2>
 <h3>1. Incident Level Definition</h3>
 <pre><code class="language-yaml">incident_levels:
   p1_critical:
@@ -155,7 +155,7 @@ kubectl scale deployment trading-api --replicas=3
 # 5. Status Check
 kubectl get pods -l app=trading-api
 </code></pre>
-<h2>🔒 Security Management</h2>
+<h2> Security Management</h2>
 <h3>1. Access Control</h3>
 <pre><code class="language-yaml">access_control:
   production:
@@ -226,4 +226,5 @@ kubectl get pods -l app=trading-api
       cpu: 2
       memory: 4Gi
 </code></pre>
-<p>This document provides the operations and maintenance guide for the financial data analysis system. It will be updated continuously to ensure the stability and reliability of the system. 🚀</p>
+<p>This document provides the operations and maintenance guide for the financial data analysis system. It will be
+  updated continuously to ensure the stability and reliability of the system.</p>

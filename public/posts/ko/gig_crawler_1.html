@@ -1,8 +1,8 @@
-<h1>프로젝트 시작하기: FastAPI와 PostgreSQL 환경 설정 🛠️</h1>
+<h1>프로젝트 시작하기: FastAPI와 PostgreSQL 환경 설정 </h1>
 <p>안녕하세요! 오늘은 프리랜서 프로젝트 크롤러 개발을 시작하면서 FastAPI와 PostgreSQL 환경을 어떻게 설정했는지 공유해볼게요.</p>
-<h3><strong>FastAPI와 PostgreSQL을 연동하는 가장 쉬운 방법! 🚀</strong></h3>
+<h3><strong>FastAPI와 PostgreSQL을 연동하는 가장 쉬운 방법!</strong></h3>
 <p>안녕하세요! 이번에는 <strong>FastAPI</strong>와 <strong>PostgreSQL</strong>을 연결하는 방법을 쉽게 설명해드릴게요.<br>
-혹시 <strong>FastAPI</strong>를 처음 써보신다면? 너무 걱정하지 마세요! 차근차근 따라오시면 금방 이해하실 거예요. 😃</p>
+    혹시 <strong>FastAPI</strong>를 처음 써보신다면? 너무 걱정하지 마세요! 차근차근 따라오시면 금방 이해하실 거예요. </p>
 <hr>
 <h2><strong>1. 프로젝트 기본 구조 만들기</strong></h2>
 <p>먼저, 프로젝트 폴더를 아래처럼 구성해볼게요.</p>
@@ -17,11 +17,11 @@
     ├── api/             # API 엔드포인트
     └── db/              # 데이터베이스 관련 파일
 </code></pre>
-<p>이제 하나씩 설정해봅시다! 😊</p>
+<p>이제 하나씩 설정해봅시다! </p>
 <hr>
 <h2><strong>2. 필요한 패키지 설치하기</strong></h2>
 <p>FastAPI와 PostgreSQL을 연동하려면 몇 가지 패키지가 필요해요.<br>
-먼저 <code>requirements.txt</code> 파일을 만들어서 아래 내용을 추가해주세요.</p>
+    먼저 <code>requirements.txt</code> 파일을 만들어서 아래 내용을 추가해주세요.</p>
 <pre><code class="language-text">fastapi==0.104.1
 uvicorn==0.24.0
 sqlalchemy==2.0.23
@@ -30,13 +30,14 @@ pydantic-settings==2.1.0
 python-dotenv==1.0.0
 psycopg2-binary==2.9.9
 </code></pre>
-<p>그리고 터미널에서 아래 명령어를 실행하면 한 번에 설치됩니다! 🎯</p>
+<p>그리고 터미널에서 아래 명령어를 실행하면 한 번에 설치됩니다! </p>
 <pre><code class="language-bash">pip install -r requirements.txt
 </code></pre>
 <hr>
 <h2><strong>3. 환경 변수 설정 (.env 파일 만들기)</strong></h2>
 <p>PostgreSQL 연결 정보를 <code>.env</code> 파일에 저장할 거예요.<br>
-<code>.env</code> 파일을 만들어서 아래 내용을 입력해주세요.</p>
+    <code>.env</code> 파일을 만들어서 아래 내용을 입력해주세요.
+</p>
 <pre><code class="language-env">POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres123
 POSTGRES_HOST=localhost
@@ -44,7 +45,7 @@ POSTGRES_PORT=5432
 POSTGRES_DB=gig_crawler
 </code></pre>
 <p><strong>✅ 왜 이렇게 설정할까요?</strong><br>
-👉 보안과 유지보수를 위해 코드에 직접 DB 정보를 적지 않고 환경 변수로 관리하는 게 좋아요!</p>
+    보안과 유지보수를 위해 코드에 직접 DB 정보를 적지 않고 환경 변수로 관리하는 게 좋아요!</p>
 <hr>
 <h2><strong>4. 설정 관리 (config.py 만들기)</strong></h2>
 <p>이제 <code>.env</code> 파일에 있는 환경 변수를 가져올 수 있도록 <code>config.py</code> 파일을 만들어봅시다.</p>
@@ -112,25 +113,26 @@ def read_root():
 <hr>
 <h2><strong>7. PostgreSQL 데이터베이스 생성하기</strong></h2>
 <p>이제 PostgreSQL에서 사용할 데이터베이스를 만들어봅시다.<br>
-터미널에서 <code>psql</code>을 실행한 다음, 아래 명령어를 입력하세요.</p>
+    터미널에서 <code>psql</code>을 실행한 다음, 아래 명령어를 입력하세요.</p>
 <pre><code class="language-sql">CREATE DATABASE gig_crawler WITH ENCODING 'UTF8' LC_COLLATE='Korean_Korea.949' LC_CTYPE='Korean_Korea.949';
 </code></pre>
 <p>이제 데이터베이스가 준비되었습니다! 🎉</p>
 <hr>
-<h2><strong>8. 서버 실행하기! 🚀</strong></h2>
+<h2><strong>8. 서버 실행하기!</strong></h2>
 <p>이제 마지막 단계입니다!<br>
-아래 명령어를 실행해서 FastAPI 서버를 켜볼까요?</p>
+    아래 명령어를 실행해서 FastAPI 서버를 켜볼까요?</p>
 <pre><code class="language-bash">uvicorn app.main:app --reload
 </code></pre>
-<p>터미널에 <strong>"Uvicorn running on <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>"</strong> 이런 메시지가 나오면 성공이에요!<br>
-이제 브라우저에서 <code>http://127.0.0.1:8000/docs</code> 로 들어가면 API 문서도 자동으로 생성된 걸 확인할 수 있어요.</p>
+<p>터미널에 <strong>"Uvicorn running on <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>"</strong> 이런 메시지가 나오면
+    성공이에요!<br>
+    이제 브라우저에서 <code>http://127.0.0.1:8000/docs</code> 로 들어가면 API 문서도 자동으로 생성된 걸 확인할 수 있어요.</p>
 <hr>
-<h2><strong>마무리 🎯</strong></h2>
+<h2><strong>마무리 </strong></h2>
 <p>지금까지 <strong>FastAPI + PostgreSQL</strong> 연동을 설정해봤어요!<br>
-혹시 실행하면서 문제가 생기면 아래 사항을 다시 확인해보세요.</p>
+    혹시 실행하면서 문제가 생기면 아래 사항을 다시 확인해보세요.</p>
 <p>✅ <code>.env</code> 파일을 UTF-8로 저장했나요?<br>
-✅ PostgreSQL 서버가 실행 중인가요?<br>
-✅ 데이터베이스가 생성되어 있나요?<br>
-✅ <code>uvicorn app.main:app --reload</code> 명령어를 실행했나요?</p>
+    ✅ PostgreSQL 서버가 실행 중인가요?<br>
+    ✅ 데이터베이스가 생성되어 있나요?<br>
+    ✅ <code>uvicorn app.main:app --reload</code> 명령어를 실행했나요?</p>
 <p>이제 여기에 <strong>CRUD API</strong>를 추가해서 원하는 프로젝트를 만들어보세요! 💡<br>
-궁금한 점 있으면 언제든지 질문하세요~! 😃</p>
+    궁금한 점 있으면 언제든지 질문하세요~! </p>

@@ -2,9 +2,9 @@
 <h2>📊 Database Architecture</h2>
 <h3>1. Database Selection Rationale</h3>
 <ul>
-<li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>
-<li><strong>TimescaleDB</strong>: Extension optimized for time-series data processing</li>
-<li><strong>Partitioning</strong>: Efficient management of large-scale data</li>
+    <li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>
+    <li><strong>TimescaleDB</strong>: Extension optimized for time-series data processing</li>
+    <li><strong>Partitioning</strong>: Efficient management of large-scale data</li>
 </ul>
 <h3>2. Core Table Structures</h3>
 <h4>2.1 Market Data Tables</h4>
@@ -86,9 +86,9 @@ CREATE TABLE market_data_y2024m02 PARTITION OF market_data
 </code></pre>
 <h4>4.2 Retention Policy</h4>
 <ul>
-<li>Real-time data: Latest 3 months</li>
-<li>Aggregated data: Latest 1 year</li>
-<li>Historical data: S3 archive</li>
+    <li>Real-time data: Latest 3 months</li>
+    <li>Aggregated data: Latest 1 year</li>
+    <li>Historical data: S3 archive</li>
 </ul>
 <h2>📈 Performance Optimization</h2>
 <h3>1. Query Optimization</h3>
@@ -108,24 +108,24 @@ GROUP BY symbol, timeframe;
 </code></pre>
 <h4>1.2 Caching Strategy</h4>
 <ul>
-<li>Implement Redis caching layer</li>
-<li>Real-time data memory caching</li>
-<li>Configure aggregated data cache refresh interval</li>
+    <li>Implement Redis caching layer</li>
+    <li>Real-time data memory caching</li>
+    <li>Configure aggregated data cache refresh interval</li>
 </ul>
 <h3>2. Backup Strategy</h3>
 <h4>2.1 Regular Backups</h4>
 <ul>
-<li>Daily incremental backups</li>
-<li>Weekly full backups</li>
-<li>Monthly archive</li>
+    <li>Daily incremental backups</li>
+    <li>Weekly full backups</li>
+    <li>Monthly archive</li>
 </ul>
 <h4>2.2 Recovery Plan</h4>
 <ul>
-<li>Point-in-Time Recovery setup</li>
-<li>Documented disaster recovery scenarios</li>
-<li>Planned recovery tests</li>
+    <li>Point-in-Time Recovery setup</li>
+    <li>Documented disaster recovery scenarios</li>
+    <li>Planned recovery tests</li>
 </ul>
-<h2>🔄 Data Flow</h2>
+<h2>Data Flow</h2>
 <h3>1. Data Collection</h3>
 <pre><code class="language-mermaid">graph LR
     A[Exchange API] --> B[Data Collector]
@@ -135,21 +135,22 @@ GROUP BY symbol, timeframe;
 </code></pre>
 <h3>2. Data Processing</h3>
 <ul>
-<li>Real-time stream processing</li>
-<li>Batch processing</li>
-<li>Anomaly detection and handling</li>
+    <li>Real-time stream processing</li>
+    <li>Batch processing</li>
+    <li>Anomaly detection and handling</li>
 </ul>
 <h2>⚡ Considerations for Scalability</h2>
 <h3>1. Horizontal Scaling</h3>
 <ul>
-<li>Configure read-only replicas</li>
-<li>Establish sharding strategy</li>
-<li>Set up load balancing</li>
+    <li>Configure read-only replicas</li>
+    <li>Establish sharding strategy</li>
+    <li>Set up load balancing</li>
 </ul>
 <h3>2. Vertical Scaling</h3>
 <ul>
-<li>Monitor resource usage</li>
-<li>Set performance metrics</li>
-<li>Define scaling thresholds</li>
+    <li>Monitor resource usage</li>
+    <li>Set performance metrics</li>
+    <li>Define scaling thresholds</li>
 </ul>
-<p>This document provides the database design standards for the financial data analysis system. It will be updated continuously considering the system requirements and performance. 🚀</p>
+<p>This document provides the database design standards for the financial data analysis system. It will be updated
+    continuously considering the system requirements and performance.</p>

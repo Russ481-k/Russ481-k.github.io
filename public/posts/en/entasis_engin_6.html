@@ -13,9 +13,9 @@
 </code></pre>
 <h3>2. Security Policies</h3>
 <ul>
-<li>Rate Limiting: 1000 requests/minute</li>
-<li>IP Whitelisting</li>
-<li>SSL/TLS required</li>
+  <li>Rate Limiting: 1000 requests/minute</li>
+  <li>IP Whitelisting</li>
+  <li>SSL/TLS required</li>
 </ul>
 <h2>📡 RESTful API Endpoints</h2>
 <h3>1. Market Data API</h3>
@@ -117,7 +117,7 @@ Response 200:
   "timestamp": "2024-03-21T09:30:00Z"
 }
 </code></pre>
-<h2>🔄 WebSocket API</h2>
+<h2>WebSocket API</h2>
 <h3>1. Market Data Stream</h3>
 <h4>1.1 Real-time Price Subscription</h4>
 <pre><code class="language-javascript">// Connection
@@ -182,7 +182,7 @@ ws://api.example.com/ws/market
   "AI_002": "예측 실패"
 }
 </code></pre>
-<h2>📝 API Usage Examples</h2>
+<h2>API Usage Examples</h2>
 <h3>1. REST API Call</h3>
 <pre><code class="language-python">import requests
 
@@ -225,4 +225,5 @@ ws.onmessage = (event) => {
   console.log(`${data.symbol}: ${data.price}`);
 };
 </code></pre>
-<p>This document provides the API specification for the financial data analysis system. APIs are continuously updated, and the latest version can be viewed through the Swagger UI. 🚀</p>
+<p>This document provides the API specification for the financial data analysis system. APIs are continuously updated,
+  and the latest version can be viewed through the Swagger UI.</p>
