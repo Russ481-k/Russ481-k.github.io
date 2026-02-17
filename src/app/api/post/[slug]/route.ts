@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
-import { getPost } from "@/utils/markdownLoader";
+import { getPost, getAllPosts } from "@/utils/markdownLoader";
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({
+    slug: post.id,
+  }));
+}
 
 export async function GET(
   request: Request,
