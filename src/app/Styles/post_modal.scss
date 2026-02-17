@@ -1,7 +1,7 @@
 .modal_overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,7 +10,7 @@
   backdrop-filter: blur(8px);
 
   .modal_content {
-    background-color: rgb(30, 30, 30);
+    background-color: #1e293b;
     border-radius: 8px;
     width: 100%;
     max-width: 1500px;
@@ -70,7 +70,7 @@
           }
 
           .label {
-            margin-left: 0rem;
+            margin-left: 0.5rem;
             margin-right: 0.5rem;
           }
 
@@ -206,7 +206,7 @@
             width: 100%;
             border-collapse: collapse;
             margin: 2rem 0;
-            background: rgba(30, 30, 30, 0.6);
+            background: rgba(30, 41, 59, 0.6);
             border-radius: 8px;
             overflow: hidden;
             font-size: 0.9rem;
@@ -319,15 +319,17 @@
             padding: 1em;
             padding-top: 2.5em;
             overflow-x: auto;
-            background: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 6px;
-            font-family: "Roboto Mono", monospace;
+            background: #0f172a; // Cool gray / Slate 900
+            border: 1px solid rgba(183, 237, 246, 0.1);
+            border-radius: 8px;
+            font-family: "JetBrains Mono", "Roboto Mono", monospace; // Updated font stack preference
             font-size: 0.9em;
-            line-height: 1.5;
+            line-height: 1.6;
             white-space: pre-wrap;
             word-wrap: break-word;
             max-width: 100%;
+            width: 100%; // Ensure full width
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
             &::before {
               content: attr(data-language);
@@ -335,56 +337,58 @@
               top: 0;
               left: 0;
               right: 0;
-              padding: 0.3em 1em;
-              background: #333;
-              color: #b7edf6;
-              font-size: 0.8em;
+              padding: 0.4em 1em;
+              background: rgba(30, 41, 59, 0.8); // Slate 800
+              color: #94a3b8; // Slate 400
+              font-size: 0.75em;
               font-family: "Inter", sans-serif;
-              border-radius: 6px 6px 0 0;
+              border-radius: 8px 8px 0 0;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+              border-bottom: 1px solid rgba(183, 237, 246, 0.05);
             }
 
             .copy-button {
               position: absolute;
-              top: 0.3em;
+              top: 0.4em;
               right: 0.5em;
-              padding: 0.2em 0.5em;
+              padding: 0.2em 0.6em;
               background: transparent;
-              border: none;
-              color: #b7edf6;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              border-radius: 4px;
+              color: #94a3b8;
               cursor: pointer;
-              font-size: 0.8em;
+              font-size: 0.75em;
               display: flex;
               align-items: center;
-              gap: 0.3em;
+              gap: 0.4em;
               opacity: 0.7;
-              transition: opacity 0.2s;
+              transition: all 0.2s;
+              z-index: 10;
 
               &:hover {
                 opacity: 1;
+                background: rgba(255, 255, 255, 0.05);
+                color: #b7edf6;
+                border-color: rgba(183, 237, 246, 0.3);
               }
 
               &.copied {
                 color: #4caf50;
+                border-color: #4caf50;
               }
             }
 
             code {
               display: block;
-              color: #e0e0e0;
+              color: #e2e8f0; // Slate 200
               padding: 0;
               background: none;
               font-size: inherit;
             }
           }
 
-          :not(pre)>code {
-            padding: 0.2em 0.4em;
-            background: #333;
-            border-radius: 3px;
-            font-family: "Roboto Mono", monospace;
-            font-size: 0.85em;
-            color: #e0e0e0;
-          }
+
 
           blockquote {
             margin: 1.5em 0;
@@ -584,9 +588,105 @@
   }
 }
 
-/* 언어별 구문 강조 스타일 재정의 */
+/* Lexical Code Block Styles */
+.editor-code {
+  display: block;
+  background-color: #0f172a; // Cool gray / Slate 900
+  color: #e2e8f0; // Slate 200
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  font-family: "JetBrains Mono", "Roboto Mono", monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+  white-space: pre; // Key for preserving formatting without wrapping
+  overflow-x: auto; // Horizontal scroll for long lines
+  tab-size: 2;
+  border: 1px solid rgba(183, 237, 246, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 100%; // Prevent overflow
+  box-sizing: border-box; // Include padding in width calculation
+
+  // Ensure internal spans (highlighting) are inline
+  span {
+    font-family: inherit;
+  }
+}
+
+/* Lexical Inline Code Styles */
+// Target specific class for inline code
+.editor-text-code {
+  padding: 0.2em 0.5em;
+  margin: 0 0.2em;
+  background: rgba(183, 237, 246, 0.15); // Cyan tint
+  border: 1px solid rgba(183, 237, 246, 0.2);
+  border-radius: 4px;
+  font-family: "JetBrains Mono", "Roboto Mono", monospace;
+  font-size: 0.85em;
+  color: #b7edf6; // Cyan text
+  font-weight: 500;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* 언어별 구문 강조 스타일 재정의 - Lexical Token Styles */
+.editor-tokenComment,
+.editor-tokenPunctuation,
+.editor-tokenProperty,
+.editor-tokenSelector,
+.editor-tokenOperator,
+.editor-tokenAttr,
+.editor-tokenVariable,
+.editor-tokenFunction {
+  font-family: inherit;
+}
+
+.editor-tokenComment {
+  color: #64748b;
+  font-style: italic;
+}
+
+// Slate 500
+.editor-tokenPunctuation {
+  color: #94a3b8;
+}
+
+// Slate 400
+.editor-tokenProperty {
+  color: #bae6fd;
+}
+
+// Sky 200
+.editor-tokenSelector {
+  color: #f0abfc;
+}
+
+// Fuchsia 300
+.editor-tokenOperator {
+  color: #cbd5e1;
+}
+
+// Slate 300
+.editor-tokenAttr {
+  color: #7dd3fc;
+}
+
+// Sky 300
+.editor-tokenVariable {
+  color: #fca5a5;
+}
+
+// Red 300
+.editor-tokenFunction {
+  color: #86efac;
+}
+
+// Green 300
+
+/* Legacy pre/code styles (kept for compatibility or ReactMarkdown) */
 .content pre[class*="language-"] {
-  background: #1e1e1e !important;
+  background: #0f172a !important; // Match the new cool gray
 
   code {
     background: none !important;

@@ -178,7 +178,9 @@ const PostModal = ({
 
   const handlePostChange = async (newPost: Post) => {
     try {
+      console.log("[PostModal] handlePostChange requesting:", newPost.id);
       const fullPost = await getClientPost(newPost.id);
+      console.log("[PostModal] handlePostChange received:", fullPost ? fullPost.id : "null");
       if (fullPost) {
         onPostChange(fullPost);
       } else {

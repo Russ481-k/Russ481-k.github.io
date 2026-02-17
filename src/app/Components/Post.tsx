@@ -57,11 +57,11 @@ const Post = (props: PostProps) => {
 
     return {
       prevPost:
-        currentIndex && currentIndex < (props.posts?.length ?? 0) - 1
+        currentIndex !== undefined && currentIndex !== -1 && currentIndex < (props.posts?.length ?? 0) - 1
           ? props.posts?.[currentIndex + 1]
           : null,
       nextPost:
-        currentIndex && currentIndex > 0
+        currentIndex !== undefined && currentIndex !== -1 && currentIndex > 0
           ? props.posts?.[currentIndex - 1]
           : null,
     };
