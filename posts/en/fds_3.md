@@ -75,24 +75,24 @@ class SystemComponents:
 
 ```plaintext
 [Data Sources]
-    
-     Exchange APIs
-           CEX Real-time Data
-           DEX Contract Events
-           Order Book Data
-           Transaction History
-    
-     Blockchain Nodes
-           Transaction Data
-           Smart Contract States
-           Event Logs
-           Block Data
-    
-     External Data
-            Oracle Prices
-            News Feeds
-            Social Media
-            Regulatory Information
+    │
+    ├─ Exchange APIs
+    │      ├─ CEX Real-time Data
+    │      ├─ DEX Contract Events
+    │      ├─ Order Book Data
+    │      └─ Transaction History
+    │
+    ├─ Blockchain Nodes
+    │      ├─ Transaction Data
+    │      ├─ Smart Contract States
+    │      ├─ Event Logs
+    │      └─ Block Data
+    │
+    └─ External Data
+           ├─ Oracle Prices
+           ├─ News Feeds
+           ├─ Social Media
+           └─ Regulatory Information
 ```
 
 ### 2. Data Collection and Processing System

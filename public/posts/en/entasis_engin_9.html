@@ -1,5 +1,5 @@
 <h1>Financial Data Analysis System Infrastructure Architecture</h1>
-<h2>🏗️ System Architecture</h2>
+<h2>System Architecture</h2>
 <h3>1. Overall Architecture</h3>
 <pre><code class="language-mermaid">graph TB
     subgraph External[External Systems]
@@ -88,7 +88,7 @@
       - port: 6379
         source: application_sg
 </code></pre>
-<h2>🚀 Kubernetes Cluster</h2>
+<h2> Kubernetes Cluster</h2>
 <h3>1. Node Configuration</h3>
 <pre><code class="language-yaml">node_pools:
   - name: general
@@ -138,7 +138,7 @@ spec:
               cpu: 2
               memory: 4Gi
 </code></pre>
-<h2>📊 Monitoring System</h2>
+<h2>Monitoring System</h2>
 <h3>1. Metric Collection</h3>
 <pre><code class="language-yaml">prometheus:
   scrape_configs:

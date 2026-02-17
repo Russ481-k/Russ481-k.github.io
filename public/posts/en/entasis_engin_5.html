@@ -1,5 +1,5 @@
 <h1>Financial Data Analysis System Database Design</h1>
-<h2>📊 Database Architecture</h2>
+<h2>Database Architecture</h2>
 <h3>1. Database Selection Rationale</h3>
 <ul>
     <li><strong>PostgreSQL</strong>: RDBMS proven for stability and scalability</li>
@@ -90,7 +90,7 @@ CREATE TABLE market_data_y2024m02 PARTITION OF market_data
     <li>Aggregated data: Latest 1 year</li>
     <li>Historical data: S3 archive</li>
 </ul>
-<h2>📈 Performance Optimization</h2>
+<h2>Performance Optimization</h2>
 <h3>1. Query Optimization</h3>
 <h4>1.1 Frequent Queries</h4>
 <pre><code class="language-sql">-- Query specific period OHLCV data
@@ -139,7 +139,7 @@ GROUP BY symbol, timeframe;
     <li>Batch processing</li>
     <li>Anomaly detection and handling</li>
 </ul>
-<h2>⚡ Considerations for Scalability</h2>
+<h2>Considerations for Scalability</h2>
 <h3>1. Horizontal Scaling</h3>
 <ul>
     <li>Configure read-only replicas</li>

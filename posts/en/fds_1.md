@@ -18,16 +18,16 @@ thumbnail: ""
 ```plaintext
 [2024 Q1 Market Status]
 Total Cryptocurrency Market: $2.8 Trillion
-    
-     Spot Market: $1.2 Trillion
-           CEX Volume: $58B/day
-           DEX Volume: $12B/day
-    
-     Derivatives Market: $1.6 Trillion
-            Perpetual Futures: $45B/day
-            Options: $18B/day
-            Synthetic Futures: $9B/day
-            DeFi Derivatives: $15B/day
+    │
+    ├─ Spot Market: $1.2 Trillion
+    │      ├─ CEX Volume: $58B/day
+    │      └─ DEX Volume: $12B/day
+    │
+    └─ Derivatives Market: $1.6 Trillion
+           ├─ Perpetual Futures: $45B/day
+           ├─ Options: $18B/day
+           ├─ Synthetic Futures: $9B/day
+           └─ DeFi Derivatives: $15B/day
 ```
 
 #### 1.2 Major Trading Types
@@ -219,30 +219,30 @@ def analyze_attack_pattern(transaction_data):
 
 ```plaintext
 [FDS System Requirements]
-    
-     Real-time Monitoring
-           Transaction Analysis
-           Position Tracking
-           Price Monitoring
-           Pattern Recognition
-    
-     Prediction and Prevention
-           Risk Prediction
-           Early Warning
-           Automated Response
-           Loss Prevention
-    
-     Integrated Analysis
-           Cross-chain Analysis
-           Complex Position Analysis
-           Related Transaction Tracking
-           Market Impact Assessment
-    
-     Regulatory Response
-            Report Generation
-            Evidence Collection
-            Audit Trail
-            Compliance
+    │
+    ├─ Real-time Monitoring
+    │      ├─ Transaction Analysis
+    │      ├─ Position Tracking
+    │      ├─ Price Monitoring
+    │      └─ Pattern Recognition
+    │
+    ├─ Prediction and Prevention
+    │      ├─ Risk Prediction
+    │      ├─ Early Warning
+    │      ├─ Automated Response
+    │      └─ Loss Prevention
+    │
+    ├─ Integrated Analysis
+    │      ├─ Cross-chain Analysis
+    │      ├─ Complex Position Analysis
+    │      ├─ Related Transaction Tracking
+    │      └─ Market Impact Assessment
+    │
+    └─ Regulatory Response
+           ├─ Report Generation
+           ├─ Evidence Collection
+           ├─ Audit Trail
+           └─ Compliance
 ```
 
 #### 4.3 Expected Effects

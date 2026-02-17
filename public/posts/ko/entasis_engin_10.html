@@ -103,7 +103,7 @@ public void testMarketDataProcessing() {
     assert_data_integrity(test_data, processed_data)
     assert_processing_latency() &#x3C; timedelta(milliseconds=100)
 </code></pre>
-<h2>📊 성능 테스트</h2>
+<h2>성능 테스트</h2>
 <h3>1. 부하 테스트</h3>
 <pre><code class="language-javascript">import { check } from "k6";
 import http from "k6/http";
@@ -213,7 +213,7 @@ export default function () {
       - refresh_rate: &#x3C; 1초
       - analysis_depth: 모든 지표 포함
 </code></pre>
-<h2>📈 품질 메트릭</h2>
+<h2>품질 메트릭</h2>
 <h3>1. 코드 품질</h3>
 <pre><code class="language-yaml">quality_metrics:
   code_coverage:

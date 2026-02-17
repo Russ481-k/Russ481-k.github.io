@@ -1,8 +1,8 @@
 ---
-title: "Entasis Engine - API "
+title: "Entasis Engine - API 명세서"
 date: "2025-02-12"
 category: "projects"
-description: "    RESTful API  WebSocket "
+description: "가상자산 데이터 분석 시스템의 RESTful API 및 WebSocket 명세"
 tags:
   [
     "api",
@@ -16,13 +16,13 @@ tags:
 thumbnail: ""
 ---
 
-#     API 
+# 금융 데이터 분석 시스템 API 명세서
 
-##    
+## 인증 및 보안
 
-### 1.  
+### 1. 인증 방식
 
-#### 1.1 JWT 
+#### 1.1 JWT 인증
 
 ```json
 {
@@ -30,7 +30,7 @@ thumbnail: ""
 }
 ```
 
-#### 1.2 API Key 
+#### 1.2 API Key 인증
 
 ```json
 {
@@ -38,17 +38,17 @@ thumbnail: ""
 }
 ```
 
-### 2.  
+### 2. 보안 정책
 
 - Rate Limiting: 1000 requests/minute
-- IP Whitelisting 
-- SSL/TLS 
+- IP Whitelisting 지원
+- SSL/TLS 필수
 
-##  RESTful API 
+## RESTful API 엔드포인트
 
-### 1.   API
+### 1. 시장 데이터 API
 
-#### 1.1   
+#### 1.1 실시간 시세 조회
 
 ```http
 GET /api/v1/market/price/{symbol}
@@ -63,7 +63,7 @@ Response 200:
 }
 ```
 
-#### 1.2   
+#### 1.2 과거 데이터 조회
 
 ```http
 GET /api/v1/market/history/{symbol}
@@ -88,9 +88,9 @@ Response 200:
 }
 ```
 
-### 2.  API
+### 2. 포트폴리오 API
 
-#### 2.1  
+#### 2.1 포지션 조회
 
 ```http
 GET /api/v1/portfolio/positions
@@ -110,7 +110,7 @@ Response 200:
 }
 ```
 
-#### 2.2  
+#### 2.2 포지션 생성
 
 ```http
 POST /api/v1/portfolio/positions
@@ -130,9 +130,9 @@ Response 201:
 }
 ```
 
-### 3. AI  API
+### 3. AI 분석 API
 
-#### 3.1  
+#### 3.1 가격 예측
 
 ```http
 GET /api/v1/analysis/prediction/{symbol}
@@ -151,7 +151,7 @@ Response 200:
 }
 ```
 
-#### 3.2  
+#### 3.2 리스크 분석
 
 ```http
 GET /api/v1/analysis/risk/{symbol}
@@ -168,22 +168,22 @@ Response 200:
 
 ## WebSocket API
 
-### 1.   
+### 1. 시장 데이터 스트림
 
-#### 1.1   
+#### 1.1 실시간 시세 구독
 
 ```javascript
-// 
+// 연결
 ws://api.example.com/ws/market
 
-//  
+// 구독 메시지
 {
   "action": "subscribe",
   "channel": "market",
   "symbols": ["BTC-USDT", "ETH-USDT"]
 }
 
-//  
+// 수신 데이터
 {
   "symbol": "BTC-USDT",
   "price": "65432.10",
@@ -192,10 +192,10 @@ ws://api.example.com/ws/market
 }
 ```
 
-#### 1.2  
+#### 1.2 주문북 구독
 
 ```javascript
-//  
+// 구독 메시지
 {
   "action": "subscribe",
   "channel": "orderbook",
@@ -203,7 +203,7 @@ ws://api.example.com/ws/market
   "depth": 10
 }
 
-//  
+// 수신 데이터
 {
   "symbol": "BTC-USDT",
   "bids": [
@@ -220,40 +220,40 @@ ws://api.example.com/ws/market
 
 ## 에러 코드
 
-### 1. HTTP  
+### 1. HTTP 상태 코드
 
 ```json
 {
-  "400": " ",
-  "401": " ",
-  "403": " ",
-  "404": " ",
-  "429": "  ",
-  "500": "  "
+  "400": "잘못된 요청",
+  "401": "인증 실패",
+  "403": "권한 없음",
+  "404": "리소스 없음",
+  "429": "요청 한도 초과",
+  "500": "서버 내부 오류"
 }
 ```
 
-### 2.   
+### 2. 비즈니스 에러 코드
 
 ```json
 {
-  "MARKET_001": "  ",
-  "MARKET_002": "  ",
-  "PORT_001": " ",
-  "PORT_002": "  ",
-  "AI_001": "  ",
-  "AI_002": " "
+  "MARKET_001": "유효하지 않은 심볼",
+  "MARKET_002": "거래소 연결 실패",
+  "PORT_001": "잔액 부족",
+  "PORT_002": "포지션 한도 초과",
+  "AI_001": "모델 로딩 실패",
+  "AI_002": "예측 실패"
 }
 ```
 
 ## API 사용 예시
 
-### 1. REST API 
+### 1. REST API 호출
 
 ```python
 import requests
 
-#   
+# 시장 데이터 조회
 def get_market_price(symbol):
     url = f"https://api.example.com/v1/market/price/{symbol}"
     headers = {
@@ -263,7 +263,7 @@ def get_market_price(symbol):
     response = requests.get(url, headers=headers)
     return response.json()
 
-#  
+# 포지션 생성
 def create_position(symbol, size):
     url = "https://api.example.com/v1/portfolio/positions"
     data = {
@@ -275,7 +275,7 @@ def create_position(symbol, size):
     return response.json()
 ```
 
-### 2. WebSocket 
+### 2. WebSocket 연결
 
 ```javascript
 const ws = new WebSocket("ws://api.example.com/ws/market");
@@ -296,4 +296,4 @@ ws.onmessage = (event) => {
 };
 ```
 
-이 문서는 금융 데이터 분석 시스템의 API 명세를 제공합니다. API는 지속적으로 업데이트되며, 최신 버전은 Swagger UI를 통해 확인할 수 있습니다.
+이 문서는 금융 데이터 분석 시스템의 API 명세를 제공합니다. API는 지속적으로 업데이트되며, 최신 버전은 Swagger UI를 통해 확인할 수 있습니다. 

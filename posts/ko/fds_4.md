@@ -1,8 +1,8 @@
 ---
-title: "FDS(Fraud Detection Service) - AI/ML    "
+title: "FDS(Fraud Detection Service) - AI/ML 모델 및 분석 방법론"
 date: "2024-06-18"
 category: "projects"
-description: "  FDS AI/ML  ,        "
+description: "가상자산 파생상품 FDS의 AI/ML 모델 설계, 분석 방법론 및 실시간 패턴 인식 구현 방안"
 tags:
   [
     "AI",
@@ -14,13 +14,13 @@ tags:
 thumbnail: ""
 ---
 
-#   FDS  - Part 4
+# 가상자산 파생상품 FDS 시리즈 - Part 4
 
-## AI/ML    
+## AI/ML 모델 및 분석 방법론
 
-### 1.   
+### 1. 이상거래 탐지 알고리즘
 
-#### 1.1   
+#### 1.1 비지도 학습 모델
 
 ```python
 class UnsupervisedDetection:
@@ -60,7 +60,7 @@ class UnsupervisedDetection:
         return self._combine_scores(if_scores, lof_scores, ae_scores)
 ```
 
-#### 1.2   
+#### 1.2 시계열 분석 모델
 
 ```python
 class TimeSeriesAnalysis:
@@ -81,13 +81,13 @@ class TimeSeriesAnalysis:
         return model
 
     def analyze_patterns(self, time_series_data):
-        # LSTM 
+        # LSTM 예측
         lstm_predictions = self.lstm_model.predict(time_series_data)
 
-        # Prophet 
+        # Prophet 예측
         prophet_predictions = self.prophet.predict(time_series_data)
 
-        # ARIMA 
+        # ARIMA 예측
         arima_predictions = self.arima.predict(time_series_data)
 
         return self._analyze_predictions(
@@ -97,9 +97,9 @@ class TimeSeriesAnalysis:
         )
 ```
 
-### 2.   
+### 2. 머신러닝 모델 설계
 
-#### 2.1  
+#### 2.1 특징 엔지니어링
 
 ```python
 class FeatureEngineering:
@@ -115,16 +115,16 @@ class FeatureEngineering:
         }
 
     def create_features(self, market_data):
-        #   
+        # 기본 특징 생성
         basic_features = self._create_basic_features(market_data)
 
-        #   
+        # 기술적 지표 생성
         technical_features = self._create_technical_features(market_data)
 
-        #   
+        # 통계적 특징 생성
         statistical_features = self._create_statistical_features(market_data)
 
-        #   
+        # 파생 특징 생성
         derived_features = self._create_derived_features(
             basic_features,
             technical_features,
@@ -139,7 +139,7 @@ class FeatureEngineering:
         )
 ```
 
-#### 2.2  
+#### 2.2 모델 앙상블
 
 ```python
 class ModelEnsemble:
@@ -153,31 +153,31 @@ class ModelEnsemble:
         self.meta_model = LogisticRegression()
 
     def train_ensemble(self, X, y):
-        #   
+        # 기본 모델 학습
         base_predictions = {}
         for name, model in self.models.items():
             base_predictions[name] = self._train_and_predict(model, X, y)
 
-        #   
+        # 메타 모델 학습
         meta_features = self._create_meta_features(base_predictions)
         self.meta_model.fit(meta_features, y)
 
     def predict(self, X):
-        #   
+        # 기본 모델 예측
         base_predictions = {}
         for name, model in self.models.items():
             base_predictions[name] = model.predict_proba(X)
 
-        #   
+        # 메타 모델 예측
         meta_features = self._create_meta_features(base_predictions)
         final_predictions = self.meta_model.predict_proba(meta_features)
 
         return final_predictions
 ```
 
-### 3.   
+### 3. 실시간 패턴 인식
 
-#### 3.1   
+#### 3.1 실시간 처리 파이프라인
 
 ```python
 class RealtimeProcessingPipeline:
@@ -188,13 +188,13 @@ class RealtimeProcessingPipeline:
 
     def process_stream(self, data_stream):
         for data in data_stream:
-            #  
+            # 특징 추출
             features = self.feature_processor.process(data)
 
-            #  
+            # 패턴 탐지
             patterns = self.pattern_detector.detect(features)
 
-            #  
+            # 이상 탐지
             anomalies = self.anomaly_detector.detect(features, patterns)
 
             if anomalies:
@@ -207,7 +207,7 @@ class RealtimeProcessingPipeline:
                 self._trigger_alert(anomaly, risk_level)
 ```
 
-#### 3.2    
+#### 3.2 딥러닝 기반 패턴 인식
 
 ```python
 class DeepLearningPatternRecognition:
@@ -241,9 +241,9 @@ class DeepLearningPatternRecognition:
         return model
 ```
 
-### 4.   
+### 4. 예측 모델 구현
 
-#### 4.1   
+#### 4.1 시장 리스크 예측
 
 ```python
 class MarketRiskPredictor:
@@ -255,13 +255,13 @@ class MarketRiskPredictor:
         }
 
     def predict_market_risk(self, market_data):
-        # VaR 
+        # VaR 계산
         var = self.risk_models['var'].calculate(market_data)
 
-        # Expected Shortfall 
+        # Expected Shortfall 계산
         es = self.risk_models['es'].calculate(market_data)
 
-        #  
+        # 스트레스 테스트
         stress_results = self.risk_models['stress'].run_tests(market_data)
 
         return {
@@ -271,7 +271,7 @@ class MarketRiskPredictor:
         }
 ```
 
-#### 4.2  
+#### 4.2 이상거래 예측
 
 ```python
 class FraudPredictor:
@@ -280,13 +280,13 @@ class FraudPredictor:
         self.graph_model = self._build_graph_model()
 
     def predict_fraud(self, transaction_data):
-        #   
+        # 시퀀스 기반 예측
         sequence_pred = self.sequence_model.predict(transaction_data)
 
-        #   
+        # 그래프 기반 예측
         graph_pred = self.graph_model.predict(transaction_data)
 
-        #  
+        # 예측 결합
         combined_pred = self._combine_predictions(
             sequence_pred,
             graph_pred
@@ -299,17 +299,17 @@ class FraudPredictor:
         }
 ```
 
-### 5.    
+### 5. 모델 평가 및 최적화
 
-#### 5.1  
+#### 5.1 성능 평가
 
 ```python
 class ModelEvaluator:
     def evaluate_model(self, model, test_data):
-        #  
+        # 예측 수행
         predictions = model.predict(test_data)
 
-        #   
+        # 성능 메트릭스 계산
         metrics = {
             'accuracy': accuracy_score(test_data.y, predictions),
             'precision': precision_score(test_data.y, predictions),
@@ -318,7 +318,7 @@ class ModelEvaluator:
             'auc': roc_auc_score(test_data.y, predictions)
         }
 
-        #  
+        # 혼동 행렬
         conf_matrix = confusion_matrix(test_data.y, predictions)
 
         return {
@@ -327,7 +327,7 @@ class ModelEvaluator:
         }
 ```
 
-#### 5.2  
+#### 5.2 하이퍼파라미터 최적화
 
 ```python
 class HyperparameterOptimizer:
@@ -339,7 +339,7 @@ class HyperparameterOptimizer:
 
     def optimize(self, model, train_data, valid_data):
         def objective(trial):
-            #   
+            # 하이퍼파라미터 공간 정의
             params = {
                 'learning_rate': trial.suggest_loguniform('learning_rate', 1e-5, 1e-1),
                 'num_layers': trial.suggest_int('num_layers', 1, 7),
@@ -347,16 +347,16 @@ class HyperparameterOptimizer:
                 'dropout': trial.suggest_uniform('dropout', 0.1, 0.5)
             }
 
-            #  
+            # 모델 학습
             model.set_params(**params)
             model.fit(train_data)
 
-            #  
+            # 성능 평가
             score = model.evaluate(valid_data)
 
             return score
 
-        #  
+        # 최적화 실행
         self.study.optimize(objective, n_trials=100)
 
         return self.study.best_params

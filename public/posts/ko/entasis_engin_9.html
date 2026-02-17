@@ -1,5 +1,5 @@
 <h1>금융 데이터 분석 시스템 인프라 구성도</h1>
-<h2>🏗️ 시스템 아키텍처</h2>
+<h2>시스템 아키텍처</h2>
 <h3>1. 전체 구성도</h3>
 <pre><code class="language-mermaid">graph TB
     subgraph External[외부 시스템]
@@ -88,7 +88,7 @@
       - port: 6379
         source: application_sg
 </code></pre>
-<h2>🚀 쿠버네티스 클러스터</h2>
+<h2> 쿠버네티스 클러스터</h2>
 <h3>1. 노드 구성</h3>
 <pre><code class="language-yaml">node_pools:
   - name: general
@@ -138,7 +138,7 @@ spec:
               cpu: 2
               memory: 4Gi
 </code></pre>
-<h2>📊 모니터링 시스템</h2>
+<h2>모니터링 시스템</h2>
 <h3>1. 메트릭 수집</h3>
 <pre><code class="language-yaml">prometheus:
   scrape_configs:

@@ -163,7 +163,7 @@ def ensemble_predict(models, weights, X):
     return np.sum(predictions, axis=0)
 ```
 
-## 📈 성능 평가
+## 성능 평가
 
 ### 1. 평가 메트릭
 

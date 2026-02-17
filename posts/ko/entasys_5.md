@@ -19,43 +19,43 @@ tags:
 thumbnail: "/images/entasys/entaasys_download_2.gif"
 ---
 
-#    
+# 운영 및 디버깅 가이드
 
-## 1.  
+## 1. 환경 설정
 
-### 1.1  
+### 1.1 주요 설정값
 
 ```typescript
 interface SystemConfig {
-  //   
+  // 다운로드 관련 설정
   download: {
-    maxConcurrent: number; //   
-    chunkSize: number; //   (bytes)
-    tempDir: string; //    
-    timeout: number; //  (ms)
+    maxConcurrent: number; // 동시 다운로드 수
+    chunkSize: number; // 청크 크기 (bytes)
+    tempDir: string; // 임시 파일 저장 경로
+    timeout: number; // 타임아웃 (ms)
   };
 
-  // OpenSearch 
+  // OpenSearch 설정
   opensearch: {
-    nodes: string[]; //   
-    maxRetries: number; //   
-    requestTimeout: number; //  
-    scrollTimeout: string; //  
+    nodes: string[]; // 노드 주소 목록
+    maxRetries: number; // 최대 재시도 횟수
+    requestTimeout: number; // 요청 타임아웃
+    scrollTimeout: string; // 스크롤 타임아웃
   };
 
-  //   
+  // 메모리 관련 설정
   memory: {
-    maxHeapSize: number; //   
-    gcInterval: number; // GC 
-    warningThreshold: number; //  
+    maxHeapSize: number; // 최대 힙 사이즈
+    gcInterval: number; // GC 간격
+    warningThreshold: number; // 경고 임계값
   };
 }
 ```
 
-### 1.2 
+### 1.2 환경변수
 
 ```bash
-# .env 
+# .env 예시
 NODE_ENV=production
 LOG_LEVEL=info
 MAX_CONCURRENT_DOWNLOADS=5
@@ -66,9 +66,9 @@ MAX_HEAP_SIZE=4096
 GC_INTERVAL=30000
 ```
 
-## 2.  
+## 2. 로깅 전략
 
-### 2.1  
+### 2.1 로그 설정
 
 ```typescript
 const logger = winston.createLogger({
@@ -93,7 +93,7 @@ const logger = winston.createLogger({
 });
 ```
 
-### 2.2   
+### 2.2 주요 로깅 포인트
 
 ```typescript
 class LoggingPoints {
@@ -125,9 +125,9 @@ class LoggingPoints {
 }
 ```
 
-## 3. 
+## 3. 모니터링
 
-### 3.1  
+### 3.1 성능 메트릭
 
 ```typescript
 class PerformanceMonitor {
@@ -150,7 +150,7 @@ class PerformanceMonitor {
 }
 ```
 
-### 3.2 
+### 3.2 헬스체크
 
 ```typescript
 class HealthCheck {
@@ -170,9 +170,9 @@ class HealthCheck {
 }
 ```
 
-## 4.  
+## 4. 문제 해결
 
-### 4.1   
+### 4.1 일반적인 에러 케이스
 
 ```typescript
 class TroubleshootingGuide {
@@ -190,7 +190,7 @@ class TroubleshootingGuide {
 }
 ```
 
-### 4.2  
+### 4.2 복구 전략
 
 ```typescript
 class RecoveryStrategy {
@@ -211,9 +211,9 @@ class RecoveryStrategy {
 }
 ```
 
-## 5.  
+## 5. 성능 최적화
 
-### 5.1   
+### 5.1 병목 지점 분석
 
 ```typescript
 class PerformanceAnalyzer {
@@ -239,7 +239,7 @@ class PerformanceAnalyzer {
 }
 ```
 
-### 5.2  
+### 5.2 최적화 포인트
 
 ```typescript
 class OptimizationPoints {

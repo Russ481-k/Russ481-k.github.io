@@ -1,5 +1,5 @@
 <h1>Financial Data Analysis System AI Model Design</h1>
-<h2>📊 Model Architecture Overview</h2>
+<h2>Model Architecture Overview</h2>
 <h3>1. Prediction Model Structure</h3>
 <h4>1.1 LSTM-based Time Series Prediction</h4>
 <pre><code class="language-python">class PricePredictionLSTM(nn.Module):
@@ -114,7 +114,7 @@
         predictions.append(pred * weights[model_name])
     return np.sum(predictions, axis=0)
 </code></pre>
-<h2>📈 Performance Evaluation</h2>
+<h2>Performance Evaluation</h2>
 <h3>1. Evaluation Metrics</h3>
 <h4>1.1 Prediction Accuracy Evaluation</h4>
 <pre><code class="language-python">def evaluate_predictions(y_true, y_pred):
@@ -155,7 +155,7 @@
     adjusted_size = base_size * confidence
     return min(adjusted_size, account_size * 0.05)  # Maximum 5% limit
 </code></pre>
-<h2>🚀 Deployment &#x26; Monitoring</h2>
+<h2> Deployment &#x26; Monitoring</h2>
 <h3>1. Model Serving</h3>
 <h4>1.1 Model Serialization</h4>
 <pre><code class="language-python">def save_model(model, path):

@@ -1,299 +1,109 @@
 ---
-title: "Entasis Engine - API 명세서"
-date: "2025-02-12"
-category: "projects"
-description: "가상자산 데이터 분석 시스템의 RESTful API 및 WebSocket 명세"
-tags:
-  [
-    "api",
-    "rest",
-    "websocket",
-    "swagger",
-    "endpoint",
-    "authentication",
-    "documentation",
-  ]
-thumbnail: ""
+title: "자기 소개서"
+date: "2024-03-20"
+category: "about"
+description: "안녕하세요! 금융공학과 데이터 처리에 특화된 풀스택 엔지니어입니다."
+tags: ["Full Stack", "Next.js", "Python", "Financial"]
+thumbnail: "/images/profile1.jpg"
 ---
 
-# 금융 데이터 분석 시스템 API 명세서
+## About Me
 
-## 🔐 인증 및 보안
+금융공학과 데이터 처리에 특화된 풀스택 엔지니어입니다. Next.js, Python, Java를 활용하여 대규모 데이터 처리 및 금융 시스템을 구축하며, 알고리즘 최적화와 안정적인 웹 솔루션 개발에 중점을 두고 있습니다.
 
-### 1. 인증 방식
+다양한 프로젝트 경험을 통해 복잡한 데이터 구조를 효율적으로 처리하고, 금융 모델을 실시간으로 구현하는 데 강점을 가지고 있습니다. 금융 플랫폼 개발에 있어 혁신적인 접근을 추구하며, 확장성 있는 웹 애플리케이션과 데이터를 활용한 전략적 시스템 구축을 통해 비즈니스 가치를 창출하고자 합니다.
 
-#### 1.1 JWT 인증
+## Contact
 
-```json
-{
-  "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-}
-```
+- **Location**: Busan, South Korea
+- **E-mail**: yunsubin481@gmail.com
+- **Notion**: [Bin's Space](https://binsspace.notion.site/Bin-s-Space)
 
-#### 1.2 API Key 인증
+## Research & Studies
 
-```json
-{
-  "X-API-Key": "your-api-key-here"
-}
-```
+- **금융공학**: 투자론, 거시경제, 회계 연구
+- **컴퓨터 과학**: 자료구조, 네트워크, 데이터베이스, AI 연구
+- **블록체인**: STO 기반 증권형 토큰 거래소, NFT 거래소 프로젝트 연구
 
-### 2. 보안 정책
+## Education
 
-- Rate Limiting: 1000 requests/minute
-- IP Whitelisting 지원
-- SSL/TLS 필수
+- **2018 - 2019**: Bachelor of Business (독학학위제)
+  - 금융공학, 투자론, 거시경제, 회계 전공
+- **2019 - 2024**: Bachelor of Computer Science (독학학위제)
+  - 자료구조, 네트워크, 데이터베이스, AI 전공
+- **2022 - 2023**: BootCamp BlockChain (CodeStates)
+  - STO, NFT, DeFi 플랫폼 개발 과정 수료
 
-## 📡 RESTful API 엔드포인트
+## Experience
 
-### 1. 시장 데이터 API
+### VISIONTEC (FullStack Developer)
 
-#### 1.1 실시간 시세 조회
+**2024-05 ~ 2025-01**
 
-```http
-GET /api/v1/market/price/{symbol}
+- 삼성화재, 한양대학교 데이터 관리 시스템 총괄
+- 실시간 데이터 처리 속도 최적화 (800건/초 → 25,000건/초)
+- 대규모 로그 데이터 분석 및 시각화 시스템 구축
+- Next.js, PostgreSQL, Prisma, Docker, ChakraUI
+- 기획 및 디자인 포함 기여도 100%
 
-Response 200:
-{
-  "symbol": "BTC-USDT",
-  "price": "65432.10",
-  "timestamp": "2024-03-21T09:30:00Z",
-  "volume": "123.45",
-  "exchange": "binance"
-}
-```
+**2024-01 ~ 2024-05**
 
-#### 1.2 과거 데이터 조회
+- 금융 ERP 시스템 마이그레이션
+- 레거시 시스템을 React와 Flask 기반으로 현대화
+- 실시간 금융 데이터 처리 및 성능 최적화
+- React, ChakraUI, Python Flask, MariaDB
+- 기여도 35%
 
-```http
-GET /api/v1/market/history/{symbol}
-Parameters:
-  - interval: "1m" | "5m" | "1h" | "1d"
-  - start: ISO8601
-  - end: ISO8601
+### IDINO (FullStack Developer)
 
-Response 200:
-{
-  "symbol": "BTC-USDT",
-  "data": [
-    {
-      "timestamp": "2024-03-21T09:00:00Z",
-      "open": "65000.00",
-      "high": "65100.00",
-      "low": "64900.00",
-      "close": "65050.00",
-      "volume": "234.56"
-    }
-  ]
-}
-```
+**2024-05 ~ 현재**
 
-### 2. 포트폴리오 API
+- 학사행정 시스템 개발
+- 마산대학교, 강원대학교, 여주대학교 장학생 관리 시스템 개발
+- 기업 협업 및 자문 결재 시스템 개발
+- 교원 평가 관리 및 학생 평가 관리 시스템 구축
+- JAVA JSP, WebSquare, MySQL
+- 기여도 35%
 
-#### 2.1 포지션 조회
+### KT, NAVER, KAKAO 연동 (Frontend Developer)
 
-```http
-GET /api/v1/portfolio/positions
+**2023-09 ~ 2024-01**
 
-Response 200:
-{
-  "positions": [
-    {
-      "symbol": "BTC-USDT",
-      "size": "1.5",
-      "entry_price": "64000.00",
-      "current_price": "65000.00",
-      "pnl": "1500.00",
-      "timestamp": "2024-03-21T09:30:00Z"
-    }
-  ]
-}
-```
+- 문자 대량 발송 상담 챗봇 관리 시스템 개발
+- Redux를 이용한 사용자 데이터 및 권한 관리 기능 구현
+- KT API를 통한 대량 문자 발송 기능 구현
+- 카카오톡 알림톡 대량 발송 기능 구현
+- 챗봇 시나리오 및 템플릿 관리 기능 구현
+- 기여도 90%
 
-#### 2.2 포지션 생성
+### NICEpay, 반응형 웹 (Frontend Developer)
 
-```http
-POST /api/v1/portfolio/positions
-Request:
-{
-  "symbol": "BTC-USDT",
-  "size": "1.5",
-  "type": "long",
-  "leverage": "1"
-}
+**2023-04 ~ 2023-09**
 
-Response 201:
-{
-  "position_id": "pos_123456",
-  "status": "success",
-  "timestamp": "2024-03-21T09:30:00Z"
-}
-```
+- 전자문서 및 전자고지 발송 기능 개발
+- NICEpay 결제 기능 연동
+- 통계 페이지 및 반응형 웹 기능 개발
 
-### 3. AI 분석 API
+![Profile Image 3](/images/profile3.jpg)
 
-#### 3.1 가격 예측
+## Core Competencies
 
-```http
-GET /api/v1/analysis/prediction/{symbol}
-Parameters:
-  - timeframe: "1h" | "4h" | "1d"
-  - model: "lstm" | "ensemble"
+### 금융 시스템 개발 전문성
 
-Response 200:
-{
-  "symbol": "BTC-USDT",
-  "prediction": "66000.00",
-  "confidence": 0.85,
-  "timeframe": "1h",
-  "model": "ensemble",
-  "timestamp": "2024-03-21T09:30:00Z"
-}
-```
+복잡한 금융 모델을 실시간으로 처리하고 시각화하는 시스템 개발에 전문성을 보유하고 있습니다.
+대규모 데이터 처리 시스템 구축 경험을 통해, 금융 시장의 빠른 변화에 대응할 수 있는 확장성 있는 솔루션을 제공합니다.
 
-#### 3.2 리스크 분석
+### 지속적인 학습과 혁신
 
-```http
-GET /api/v1/analysis/risk/{symbol}
+금융 시장과 기술의 빠른 변화에 대응하기 위해 끊임없이 새로운 것을 학습하고 있습니다.
+독학으로 금융공학과 컴퓨터 과학을 습득했으며, 블록체인과 같은 최신 기술을 금융 시스템에 접목시키는 시도를 지속하고 있습니다.
 
-Response 200:
-{
-  "symbol": "BTC-USDT",
-  "var_95": "3200.00",
-  "expected_shortfall": "3800.00",
-  "volatility": "0.45",
-  "timestamp": "2024-03-21T09:30:00Z"
-}
-```
+### 문제 해결 능력
 
-## WebSocket API
+복잡한 금융 데이터 처리 문제를 분석하고 효과적인 해결책을 찾아내는 과정에서 큰 성과를 이루어냈습니다.
+삼성화재와 한양대학교 프로젝트에서 데이터 처리 속도를 획기적으로 향상시킨 경험은 문제 해결에 대한 자신감을 더해주었습니다.
 
-### 1. 시장 데이터 스트림
+### 건강한 신체 관리
 
-#### 1.1 실시간 시세 구독
-
-```javascript
-// 연결
-ws://api.example.com/ws/market
-
-// 구독 메시지
-{
-  "action": "subscribe",
-  "channel": "market",
-  "symbols": ["BTC-USDT", "ETH-USDT"]
-}
-
-// 수신 데이터
-{
-  "symbol": "BTC-USDT",
-  "price": "65432.10",
-  "timestamp": "2024-03-21T09:30:00.123Z",
-  "volume": "1.23"
-}
-```
-
-#### 1.2 주문북 구독
-
-```javascript
-// 구독 메시지
-{
-  "action": "subscribe",
-  "channel": "orderbook",
-  "symbol": "BTC-USDT",
-  "depth": 10
-}
-
-// 수신 데이터
-{
-  "symbol": "BTC-USDT",
-  "bids": [
-    ["65000.00", "1.234"],
-    ["64999.00", "2.345"]
-  ],
-  "asks": [
-    ["65001.00", "1.234"],
-    ["65002.00", "2.345"]
-  ],
-  "timestamp": "2024-03-21T09:30:00.123Z"
-}
-```
-
-## 에러 코드
-
-### 1. HTTP 상태 코드
-
-```json
-{
-  "400": "잘못된 요청",
-  "401": "인증 실패",
-  "403": "권한 없음",
-  "404": "리소스 없음",
-  "429": "요청 한도 초과",
-  "500": "서버 내부 오류"
-}
-```
-
-### 2. 비즈니스 에러 코드
-
-```json
-{
-  "MARKET_001": "유효하지 않은 심볼",
-  "MARKET_002": "거래소 연결 실패",
-  "PORT_001": "잔액 부족",
-  "PORT_002": "포지션 한도 초과",
-  "AI_001": "모델 로딩 실패",
-  "AI_002": "예측 실패"
-}
-```
-
-## API 사용 예시
-
-### 1. REST API 호출
-
-```python
-import requests
-
-# 시장 데이터 조회
-def get_market_price(symbol):
-    url = f"https://api.example.com/v1/market/price/{symbol}"
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "X-API-Key": "your-api-key"
-    }
-    response = requests.get(url, headers=headers)
-    return response.json()
-
-# 포지션 생성
-def create_position(symbol, size):
-    url = "https://api.example.com/v1/portfolio/positions"
-    data = {
-        "symbol": symbol,
-        "size": size,
-        "type": "long"
-    }
-    response = requests.post(url, json=data, headers=headers)
-    return response.json()
-```
-
-### 2. WebSocket 연결
-
-```javascript
-const ws = new WebSocket("ws://api.example.com/ws/market");
-
-ws.onopen = () => {
-  ws.send(
-    JSON.stringify({
-      action: "subscribe",
-      channel: "market",
-      symbols: ["BTC-USDT"],
-    })
-  );
-};
-
-ws.onmessage = (event) => {
-  const data = JSON.parse(event.data);
-  console.log(`${data.symbol}: ${data.price}`);
-};
-```
-
-이 문서는 금융 데이터 분석 시스템의 API 명세를 제공합니다. API는 지속적으로 업데이트되며, 최신 버전은 Swagger UI를 통해 확인할 수 있습니다.
+지속적인 성과 창출을 위해 체력 관리를 중요하게 생각합니다.
+주 5회, 하루 1시간 30분의 꾸준한 운동을 통해 업무 효율성과 집중력을 유지하고 있습니다.

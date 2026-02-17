@@ -1,5 +1,5 @@
 <h1>금융 데이터 분석 시스템 AI 모델 설계</h1>
-<h2>📊 모델 아키텍처 개요</h2>
+<h2>모델 아키텍처 개요</h2>
 <h3>1. 예측 모델 구조</h3>
 <h4>1.1 LSTM 기반 시계열 예측</h4>
 <pre><code class="language-python">class PricePredictionLSTM(nn.Module):
@@ -114,7 +114,7 @@
         predictions.append(pred * weights[model_name])
     return np.sum(predictions, axis=0)
 </code></pre>
-<h2>📈 성능 평가</h2>
+<h2>성능 평가</h2>
 <h3>1. 평가 메트릭</h3>
 <h4>1.1 예측 정확도 평가</h4>
 <pre><code class="language-python">def evaluate_predictions(y_true, y_pred):
@@ -155,7 +155,7 @@
     adjusted_size = base_size * confidence
     return min(adjusted_size, account_size * 0.05)  # 최대 5% 제한
 </code></pre>
-<h2>🚀 배포 및 모니터링</h2>
+<h2> 배포 및 모니터링</h2>
 <h3>1. 모델 서빙</h3>
 <h4>1.1 모델 직렬화</h4>
 <pre><code class="language-python">def save_model(model, path):

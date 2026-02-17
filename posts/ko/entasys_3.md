@@ -19,32 +19,32 @@ tags:
 thumbnail: "/images/entasys/entaasys_login.gif"
 ---
 
-#  
+# 통신 프로토콜
 
-## 1. WebSocket  
+## 1. WebSocket 이벤트 정의
 
-### 1.1  
+### 1.1 이벤트 타입
 
 ```typescript
 enum WebSocketEvent {
-  //  
+  // 다운로드 관련
   DOWNLOAD_REQUEST = "download:request",
   DOWNLOAD_START = "download:start",
   DOWNLOAD_PROGRESS = "download:progress",
   DOWNLOAD_COMPLETE = "download:complete",
   DOWNLOAD_ERROR = "download:error",
 
-  //  
+  // 상태 관련
   STATUS_UPDATE = "status:update",
   STATUS_CHECK = "status:check",
 
-  //  
+  // 시스템 관련
   SYSTEM_ERROR = "system:error",
   CONNECTION_HEALTH = "connection:health",
 }
 ```
 
-### 1.2  
+### 1.2 메시지 포맷
 
 ```typescript
 interface WebSocketMessage<T = any> {
@@ -74,9 +74,9 @@ interface ProgressUpdate {
 }
 ```
 
-## 2.  
+## 2. 메시지 흐름
 
-### 2.1  
+### 2.1 다운로드 시작
 
 ```mermaid
 sequenceDiagram
@@ -88,7 +88,7 @@ sequenceDiagram
     Server->>Client: DOWNLOAD_COMPLETE
 ```
 
-### 2.2   
+### 2.2 에러 처리 흐름
 
 ```typescript
 interface ErrorResponse {
@@ -111,9 +111,9 @@ const errorHandler = {
 };
 ```
 
-## 3.  
+## 3. 상태 관리
 
-### 3.1   
+### 3.1 연결 상태 관리
 
 ```typescript
 class ConnectionManager {
@@ -131,7 +131,7 @@ class ConnectionManager {
 }
 ```
 
-### 3.2  
+### 3.2 세션 상태
 
 ```typescript
 interface SessionState {
@@ -142,9 +142,9 @@ interface SessionState {
 }
 ```
 
-## 4. 
+## 4. 보안
 
-### 4.1 
+### 4.1 인증
 
 ```typescript
 interface AuthenticatedMessage extends WebSocketMessage {
@@ -165,7 +165,7 @@ const authenticator = {
 };
 ```
 
-### 4.2  
+### 4.2 메시지 암호화
 
 ```typescript
 class MessageEncryption {
@@ -187,9 +187,9 @@ class MessageEncryption {
 }
 ```
 
-## 5.  
+## 5. 성능 최적화
 
-### 5.1  
+### 5.1 메시지 압축
 
 ```typescript
 class MessageCompression {
@@ -203,7 +203,7 @@ class MessageCompression {
 }
 ```
 
-### 5.2  
+### 5.2 배치 처리
 
 ```typescript
 class MessageBatcher {
