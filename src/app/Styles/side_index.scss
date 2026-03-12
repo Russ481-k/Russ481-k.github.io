@@ -1,3 +1,5 @@
+@import "./variables";
+
 .side_index {
   min-width: 240px;
   width: 240px;
@@ -71,7 +73,7 @@
         }
 
         .word {
-          color: #b7edf6;
+          color: $color-accent;
           display: flex;
           align-items: center;
           gap: 6px;
@@ -187,7 +189,7 @@
 
           .word {
             font-size: 0.9rem;
-            color: #b7edf6;
+            color: $color-accent;
           }
         }
 

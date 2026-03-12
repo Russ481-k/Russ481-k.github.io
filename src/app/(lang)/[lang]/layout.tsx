@@ -1,9 +1,10 @@
 import "../../Styles/globals.scss";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import ClientLayout from "./ClientLayout";
 import { languages } from "@/app/i18n/settings";
 import { Footer } from "@/app/Components/Footer";
-import { LanguageSelectorButton } from "@/app/Components/LanguageSelectorButton";
+import { LanguageSelector } from "@/app/Components/LanguageSelector";
 import { TopButton } from "@/app/TopButton";
 import { pretendard } from "@/app/Styles/fonts";
 
@@ -24,10 +25,11 @@ export default async function RootLayout({
   params: { lang: string };
 }) {
   if (!languages.includes(lang)) {
-    return null;
+    notFound();
   }
 
   return (
+    // TODO: Remove suppressHydrationWarning on <html> and <body> after i18n client/server initialization timing fix is verified
     <html lang={lang} className={pretendard.variable} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
@@ -37,7 +39,7 @@ export default async function RootLayout({
         <ClientLayout params={{ lang }}>
           {children}
           <TopButton />
-          <LanguageSelectorButton />
+          <LanguageSelector />
           <Footer />
         </ClientLayout>
         <div id="modal-root" />

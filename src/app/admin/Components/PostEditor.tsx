@@ -5,14 +5,27 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/utils/supabase";
 import styles from "./PostEditor.module.scss";
 import LexicalEditor from "../../Components/Lexical/Editor";
-import { extractHeadings } from "@/utils/markdownUtils";
+import { extractHeadings, slugify } from "@/utils/markdownUtils";
+import { CATEGORY_ORDER } from "@/constants/categoryOrder";
 
 // Simple markdown editor using textarea for now (can upgrade to a rich editor later)
 // We split content into Korean (ko) and English (en) tabs ideally, 
 // but for MVP let's focus on the structure.
 
+interface PostInitialData {
+  slug?: string;
+  category?: string;
+  tags?: string[];
+  thumbnail?: string;
+  date?: string;
+  title_ko?: string;
+  content_ko?: string;
+  title_en?: string;
+  content_en?: string;
+}
+
 interface PostEditorProps {
-  initialData?: any;
+  initialData?: PostInitialData;
   isNew?: boolean;
 }
 
@@ -23,7 +36,7 @@ export default function PostEditor({ initialData, isNew = false }: PostEditorPro
   
   const [formData, setFormData] = useState({
     slug: "",
-    category: "uncategorized",
+    category: CATEGORY_ORDER[0] as string,
     tags: "",
     thumbnail: "",
     date: new Date().toISOString().split("T")[0],
@@ -37,7 +50,7 @@ export default function PostEditor({ initialData, isNew = false }: PostEditorPro
     if (initialData) {
       setFormData({
         slug: initialData.slug || "",
-        category: initialData.category || "uncategorized",
+        category: initialData.category || CATEGORY_ORDER[0],
         tags: Array.isArray(initialData.tags) ? initialData.tags.join(", ") : "",
         thumbnail: initialData.thumbnail || "",
         date: initialData.date ? new Date(initialData.date).toISOString().split("T")[0] : new Date().toISOString().split("T")[0],
@@ -55,14 +68,8 @@ export default function PostEditor({ initialData, isNew = false }: PostEditorPro
   };
 
   const generateSlug = () => {
-    // Simple slug generator from title_ko if slug is empty
     if (!formData.slug && formData.title_ko) {
-      const slug = formData.title_ko
-        .toLowerCase()
-        .replace(/[^a-z0-9가-힣\s-]/g, "")
-        .trim()
-        .replace(/[\s]+/g, "-");
-      setFormData((prev) => ({ ...prev, slug }));
+      setFormData((prev) => ({ ...prev, slug: slugify(formData.title_ko) }));
     }
   };
 
@@ -139,9 +146,10 @@ export default function PostEditor({ initialData, isNew = false }: PostEditorPro
       alert("Post saved successfully!");
       router.push("/admin/posts");
       router.refresh();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error saving post:", error);
-      alert(`Error saving post: ${error.message}`);
+      const message = error instanceof Error ? error.message : String(error);
+      alert(`Error saving post: ${message}`);
     } finally {
       setSaving(false);
     }
@@ -254,10 +262,11 @@ export default function PostEditor({ initialData, isNew = false }: PostEditorPro
             <div className={styles.field}>
               <label>Category</label>
               <select name="category" value={formData.category} onChange={handleChange}>
-                <option value="uncategorized">Uncategorized</option>
-                <option value="dev">Dev</option>
-                <option value="life">Life</option>
-                <option value="project">Project</option>
+                {CATEGORY_ORDER.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
               </select>
             </div>
             <div className={styles.field}>

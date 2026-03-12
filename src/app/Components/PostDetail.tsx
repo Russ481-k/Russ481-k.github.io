@@ -1,17 +1,13 @@
-"use client";
 import { Post as PostType } from "@/types/post";
 import { Tag } from "./Tag";
 import Image from "next/image";
 import { getPostImage } from "@/utils/getPostImage";
+import { formatPostDate } from "@/utils/postFormatting";
 import "../Styles/post_detail.scss";
 
 export const PostDetail = ({ post }: { post: PostType }) => {
   const imageUrl = getPostImage(post.thumbnail);
-  const formattedDate = new Date(post.date).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatPostDate(post.date);
 
   return (
     <div className="post_detail">

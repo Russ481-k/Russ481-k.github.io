@@ -17,6 +17,8 @@ export async function getPost(id: string): Promise<Post> {
     return null;
   };
 
+  // Both ko and en files are read because the Post object always includes
+  // translations for both languages (used by the bilingual UI).
   const koMatter = readFile(koPath);
   const enMatter = readFile(enPath);
 

@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useCallback } from "react";
+import { useEffect, useMemo, useCallback, useState } from "react";
 import { Category, Post as PostType } from "@/types/post";
 import Post from "@/app/Components/Post";
 import { useDebounce } from "@/hooks/useDebounce";
 import "../Styles/post_container.scss";
 import { useCategories } from "@/data/categories";
 import { useTranslation } from "react-i18next";
+import { getPostTranslation } from "@/utils/postFormatting";
 import { CATEGORY_ORDER } from "@/constants/categoryOrder";
-import { useForm } from "react-hook-form";
 
 import { FaSearch } from "react-icons/fa";
 
@@ -18,10 +18,6 @@ interface PostContainerProps {
   onSearchChange: (value: string) => void;
   onSearchResults: (results: string[]) => void;
   posts: PostType[]; // 또는 더 구체적인 타입 (예: Post[])
-}
-
-interface SearchForm {
-  searchTerm: string;
 }
 
 export const PostContainer = ({
@@ -37,50 +33,52 @@ export const PostContainer = ({
     (cat: Category) => cat.id === selectedCategory
   );
 
+  const [localSearchTerm, setLocalSearchTerm] = useState(externalSearchTerm);
+
+  // Sync local state when external value changes
+  useEffect(() => {
+    setLocalSearchTerm(externalSearchTerm);
+  }, [externalSearchTerm]);
+
   // searchTerm state를 제거하고 props로 받은 값 사용
   const debouncedSearchTerm = useDebounce(externalSearchTerm, 300);
 
-  const methods = useForm<SearchForm>({
-    defaultValues: {
-      searchTerm: externalSearchTerm,
-    },
-  });
+  // Pre-compute stripped text per post to avoid re-running regex on every filter
+  const postsWithStrippedText = useMemo(() => {
+    const currentLang = i18n.language as "ko" | "en";
+    return externalPosts.map((post) => {
+      const translation = getPostTranslation(post, currentLang);
+      return {
+        post,
+        strippedContent: (translation?.content || "").replace(/<[^>]*>/g, "").toLowerCase(),
+        titleLower: (translation?.title || "").toLowerCase(),
+        searchText: `${translation?.title} ${translation?.content} ${translation?.description}`,
+      };
+    });
+  }, [externalPosts, i18n.language]);
 
-  const { register, handleSubmit, setValue, watch } = methods;
+  // 필터링 로직 메모이제이션 + search results consolidated
+  const { filteredPosts, searchResultTexts } = useMemo(() => {
+    const searchLower = debouncedSearchTerm.toLowerCase();
 
-  // Sync external search term with form
-  useEffect(() => {
-    setValue("searchTerm", externalSearchTerm);
-  }, [externalSearchTerm, setValue]);
-
-  // 필터링 로직 메모이제이션
-  const filteredPosts = useMemo(() => {
     // 먼저 카테고리로 필터링
     const categoryFiltered =
       selectedCategory === "all"
-        ? externalPosts
-        : externalPosts.filter((post) => post.category === selectedCategory);
+        ? postsWithStrippedText
+        : postsWithStrippedText.filter((p) => p.post.category === selectedCategory);
 
     // 그 다음 검색어로 필터링
-    const searchFiltered = categoryFiltered.filter((post) => {
-      const currentLang = i18n.language as "ko" | "en";
-      const translation =
-        post.translations?.[currentLang] || post.translations?.["en"];
-
+    const searchFiltered = categoryFiltered.filter((p) => {
       return (
-        translation?.content
-          .replace(/<[^>]*>/g, "")
-          .toLowerCase()
-          .includes(debouncedSearchTerm.toLowerCase()) ||
-        translation?.title
-          .toLowerCase()
-          .includes(debouncedSearchTerm.toLowerCase())
+        p.strippedContent.includes(searchLower) ||
+        p.titleLower.includes(searchLower)
       );
     });
 
     // 전체보기일 때만 카테고리 순서대로 정렬
+    let sorted = searchFiltered.map((p) => p.post);
     if (selectedCategory === "all") {
-      return searchFiltered
+      sorted = sorted
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .sort((a, b) => {
           const aIndex = CATEGORY_ORDER.indexOf(a.category);
@@ -89,29 +87,25 @@ export const PostContainer = ({
         });
     }
 
-    return searchFiltered;
-  }, [externalPosts, debouncedSearchTerm, selectedCategory, i18n.language]);
+    // 검색 결과 텍스트 추출 (consolidated - no separate useEffect)
+    const textsSource = searchFiltered.length === 0 ? postsWithStrippedText : searchFiltered;
+    const texts = textsSource.map((p) => p.searchText);
 
-  const onSubmit = useCallback(
-    (data: SearchForm) => {
-      onSearchChange(data.searchTerm);
-    },
-    [onSearchChange]
-  );
+    return { filteredPosts: sorted, searchResultTexts: texts };
+  }, [postsWithStrippedText, debouncedSearchTerm, selectedCategory]);
 
-  // 검색 결과 텍스트 추출
+  // Notify parent of search results
   useEffect(() => {
-    // 필터링된 포스트가 없으면 모든 포스트의 키워드 사용
-    const postsToUse =
-      filteredPosts.length === 0 ? externalPosts : filteredPosts;
-    const currentLang = i18n.language as "ko" | "en";
-    const texts = postsToUse.map((post) => {
-      const translation =
-        post.translations?.[currentLang] || post.translations?.["en"];
-      return `${translation?.title} ${translation?.content} ${translation?.description}`;
-    });
-    onSearchResults(texts);
-  }, [filteredPosts, externalPosts, onSearchResults, i18n.language]);
+    onSearchResults(searchResultTexts);
+  }, [searchResultTexts, onSearchResults]);
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      onSearchChange(localSearchTerm);
+    },
+    [onSearchChange, localSearchTerm]
+  );
 
   return (
     <div className="post_container">
@@ -120,13 +114,17 @@ export const PostContainer = ({
           <h2>{currentCategory?.name || t("categories.all")}</h2>
           <p className="category_description">{currentCategory?.description}</p>
         </div>
-        <form className="search_container" onSubmit={handleSubmit(onSubmit)}>
+        <form className="search_container" onSubmit={handleSubmit}>
           <div className="search_input_wrapper">
             <input
               type="text"
               placeholder={t("search.placeholder")}
               className="search_input"
-              {...register("searchTerm")}
+              value={localSearchTerm}
+              onChange={(e) => {
+                setLocalSearchTerm(e.target.value);
+                onSearchChange(e.target.value);
+              }}
             />
             <button type="submit" className="search_button">
               {/* @ts-ignore */}
@@ -147,9 +145,7 @@ export const PostContainer = ({
           posts={filteredPosts}
           onTagClick={(tag) => {
             onSearchChange(tag); // Update parent state
-            // Update react-hook-form value
-            const { setValue } = methods; // Need to access form methods
-            setValue("searchTerm", tag);
+            setLocalSearchTerm(tag);
           }}
         />
       ))}

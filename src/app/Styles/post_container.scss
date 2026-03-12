@@ -1,3 +1,5 @@
+@import "./variables";
+
 .post_container {
   color: white;
   padding: 8px;
@@ -6,7 +8,6 @@
   z-index: 0;
   flex: 1;
   margin: 0;
-  padding: 8px;
 
   @media screen and (max-width: 1280px) {
     max-width: 100%;
@@ -179,7 +180,7 @@
 
             .tag {
               background: rgba(183, 237, 246, 0.1);
-              color: #b7edf6;
+              color: $color-accent;
               padding: 4px 8px;
               margin: 0px;
               border-radius: 8px;
@@ -221,7 +222,7 @@
       }
       .highlight {
         background-color: rgba(183, 237, 246, 0.2);
-        color: #b7edf6;
+        color: $color-accent;
         padding: 0 2px;
         border-radius: 2px;
         font-weight: 500;
@@ -266,7 +267,7 @@
 
         .view_details {
           background-color: rgba(183, 237, 246, 0.1);
-          color: #b7edf6;
+          color: $color-accent;
           border: none;
           padding: 4px 12px;
           border-radius: 16px;
@@ -331,7 +332,7 @@
         margin: 0;
         opacity: 0.8;
         font-size: 0.9em;
-        color: #b7edf6;
+        color: $color-accent;
       }
     }
 

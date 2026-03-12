@@ -1,5 +1,4 @@
 import fs from "fs/promises";
-import * as fsSync from "fs";
 import path from "path";
 import { Post, TocItem } from "@/types/post";
 import { JSDOM } from "jsdom";
@@ -15,6 +14,12 @@ dotenv.config({ path: ".env.local" });
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Create the unified/remark pipeline once and reuse across all posts
+const markdownPipeline = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkHtml, { sanitize: false });
 
 async function getPostsFromDB(): Promise<Post[]> {
   const { data, error } = await supabase
@@ -53,116 +58,65 @@ async function getPostsFromDB(): Promise<Post[]> {
   }));
 }
 
-async function calculateActualHeights(content: string) {
-  const dom = new JSDOM(content);
-  const doc = dom.window.document;
-  const elements = doc.querySelectorAll("h1, h2, h3, h4, h5, h6, img");
-  const heights = new Map();
-
-  elements.forEach((el, index) => {
-    const type = el.tagName.toLowerCase();
-    const id = type === "img" ? `img-${index}` : `heading-${index}`;
-    const computedHeight = type === "img" ? 400 : 50;
-
-    heights.set(id, {
-      top: index * computedHeight,
-      height: computedHeight,
-      type,
-    });
-  });
-
-  return heights;
-}
-
 async function processMarkdown(content: string) {
-  const processedContent = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkHtml, { sanitize: false })
-    .process(content);
+  const processedContent = await markdownPipeline.process(content);
 
   const htmlContent = processedContent.toString();
   const dom = new JSDOM(htmlContent);
   const doc = dom.window.document;
 
-  const headings = doc.querySelectorAll("h1, h2, h3, h4, h5, h6");
+  // Extract headings and compute heights in a single DOM pass (no second JSDOM)
+  const elements = doc.querySelectorAll("h1, h2, h3, h4, h5, h6, img");
   const tocItems: TocItem[] = [];
+  const imageHeights: Record<string, number> = {};
+  let headingIndex = 0;
 
-  headings.forEach((heading, index) => {
-    const id = `heading-${index}`;
-    heading.id = id;
-    tocItems.push({
-      id,
-      text: heading.textContent || "",
-      level: parseInt(heading.tagName[1]),
-      isMainTopic: parseInt(heading.tagName[1]) <= 2,
-      position: 0,
-    });
-  });
+  elements.forEach((el, index) => {
+    const type = el.tagName.toLowerCase();
+    const computedHeight = type === "img" ? 400 : 50;
+    const top = index * computedHeight;
 
-  const actualHeights = await calculateActualHeights(doc.body.innerHTML);
-
-  tocItems.forEach((item) => {
-    const elementData = actualHeights.get(item.id);
-    if (elementData?.top !== undefined) {
-      item.position = elementData.top;
-    }
-  });
-
-  const imageHeights = new Map();
-  actualHeights.forEach((data, id) => {
-    if (data.type === "img") {
-      imageHeights.set(id, data.height);
+    if (type === "img") {
+      const imgId = `img-${index}`;
+      imageHeights[imgId] = computedHeight;
+    } else {
+      const id = `heading-${headingIndex}`;
+      el.id = id;
+      headingIndex++;
+      tocItems.push({
+        id,
+        text: el.textContent || "",
+        level: parseInt(el.tagName[1]),
+        isMainTopic: parseInt(el.tagName[1]) <= 2,
+        position: top,
+      });
     }
   });
 
   return {
     content: doc.body.innerHTML,
     tocItems,
-    imageHeights: Object.fromEntries(imageHeights),
+    imageHeights,
   };
 }
 
-async function convertMarkdownToHtml(markdown: string) {
-  const result = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkHtml, { sanitize: false })
-    .process(markdown);
-
-  return result.toString();
-}
-
-async function generatePosts() {
+async function generateAllPosts() {
   const posts = await getPostsFromDB();
-  const languages = ["ko", "en"];
 
-  for (const post of posts) {
-    for (const lang of languages) {
-      const markdownContent = lang === "ko" ? post.translations.ko.content : post.translations.en.content;
-      const htmlContent = await convertMarkdownToHtml(markdownContent);
-
-      const outputDir = path.join(process.cwd(), "public", "posts", lang);
-      if (!fsSync.existsSync(outputDir)) {
-        fsSync.mkdirSync(outputDir, { recursive: true });
-      }
-
-      fsSync.writeFileSync(
-        path.join(outputDir, `${post.id}.html`),
-        htmlContent
-      );
-    }
-  }
-}
-
-async function generatePostsJson() {
-  const posts = await getPostsFromDB();
   const dataDir = path.join(process.cwd(), "public", "data");
   const postsDir = path.join(dataDir, "posts");
+  const htmlKoDir = path.join(process.cwd(), "public", "posts", "ko");
+  const htmlEnDir = path.join(process.cwd(), "public", "posts", "en");
 
-  await fs.mkdir(dataDir, { recursive: true });
-  await fs.mkdir(postsDir, { recursive: true });
+  // Ensure all output directories exist
+  await Promise.all([
+    fs.mkdir(dataDir, { recursive: true }),
+    fs.mkdir(postsDir, { recursive: true }),
+    fs.mkdir(htmlKoDir, { recursive: true }),
+    fs.mkdir(htmlEnDir, { recursive: true }),
+  ]);
 
+  // Process each post once, reuse HTML for both JSON and HTML file output
   const processedPosts = await Promise.all(
     posts.map(async (post) => {
       const koProcessed = await processMarkdown(post.translations.ko.content);
@@ -170,6 +124,12 @@ async function generatePostsJson() {
 
       const koContent = koProcessed.content.replace(/<table>/g, '<table class="markdown-table">');
       const enContent = enProcessed.content.replace(/<table>/g, '<table class="markdown-table">');
+
+      // Write HTML files using the already-converted content
+      await Promise.all([
+        fs.writeFile(path.join(htmlKoDir, `${post.id}.html`), koContent),
+        fs.writeFile(path.join(htmlEnDir, `${post.id}.html`), enContent),
+      ]);
 
       return {
         ...post,
@@ -182,13 +142,13 @@ async function generatePostsJson() {
     })
   );
 
-  await fs.writeFile(path.join(dataDir, "posts.json"), JSON.stringify(processedPosts, null, 2));
-
-  await Promise.all(
-    processedPosts.map((post) =>
+  // Write JSON files
+  await Promise.all([
+    fs.writeFile(path.join(dataDir, "posts.json"), JSON.stringify(processedPosts, null, 2)),
+    ...processedPosts.map((post) =>
       fs.writeFile(path.join(postsDir, `${post.id}.json`), JSON.stringify(post, null, 2))
-    )
-  );
+    ),
+  ]);
 }
 
 const run = async () => {
@@ -196,8 +156,7 @@ const run = async () => {
     console.warn("Supabase credentials not found. Skipping DB fetch.");
     return;
   }
-  await generatePostsJson();
-  await generatePosts();
+  await generateAllPosts();
 };
 
 run().catch(console.error);

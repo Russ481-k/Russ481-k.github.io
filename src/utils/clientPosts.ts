@@ -3,7 +3,7 @@ import { Post } from "@/types/post";
 export async function getClientPosts(): Promise<Post[]> {
   try {
     const response = await fetch("/api/posts", {
-      cache: "no-store", 
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {
@@ -21,7 +21,7 @@ export async function getClientPosts(): Promise<Post[]> {
 export async function getClientPost(id: string): Promise<Post | null> {
   try {
     const response = await fetch(`/api/post/${id}`, {
-      cache: "no-store",
+      next: { revalidate: 3600 },
     });
 
     if (!response.ok) {

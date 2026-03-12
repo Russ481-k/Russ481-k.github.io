@@ -1,6 +1,3 @@
-"use client";
-
-import { useMemo } from "react";
 import { generateGradient } from "@/utils/generateGradient";
 
 interface DynamicThumbnailProps {
@@ -9,30 +6,31 @@ interface DynamicThumbnailProps {
   className?: string;
 }
 
+function getGradientStyle(postId: string) {
+  const { gradient } = generateGradient(postId);
+
+  return {
+    background: gradient,
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column" as const,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "2rem",
+    borderRadius: "8px",
+    color: "white",
+    textAlign: "center" as const,
+    boxShadow: `0 4px 20px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.1)`,
+  };
+}
+
 export const DynamicThumbnail = ({
   title,
   postId,
   className = "",
 }: DynamicThumbnailProps) => {
-  // 포스트 ID를 기반으로 그라디언트 생성
-  const gradientStyle = useMemo(() => {
-    const { gradient, colors } = generateGradient(postId);
-
-    return {
-      background: gradient,
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "column" as const,
-      justifyContent: "center",
-      alignItems: "center",
-      padding: "2rem",
-      borderRadius: "8px",
-      color: "white",
-      textAlign: "center" as const,
-      boxShadow: `0 4px 20px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.1)`,
-    };
-  }, [postId]);
+  const gradientStyle = getGradientStyle(postId);
 
   return (
     <div style={gradientStyle} className={className}>

@@ -1,3 +1,5 @@
+@import "./variables";
+
 .modal_overlay {
   position: fixed;
   inset: 0;
@@ -39,7 +41,7 @@
         margin: 0;
         font-size: 2rem;
         line-height: 1.4;
-        color: #b7edf6;
+        color: $color-accent;
         flex: 1;
         text-align: center;
       }
@@ -65,7 +67,7 @@
 
           .arrow {
             font-size: 1.2rem;
-            color: #b7edf6;
+            color: $color-accent;
             flex-shrink: 0;
           }
 
@@ -229,7 +231,7 @@
 
             th {
               background: rgba(183, 237, 246, 0.1);
-              color: #b7edf6;
+              color: $color-accent;
               font-weight: 600;
               white-space: nowrap;
             }
@@ -290,21 +292,21 @@
             font-size: 2rem;
             margin: 2rem 0 1rem;
             line-height: 1.4;
-            color: #b7edf6;
+            color: $color-accent;
           }
 
           h2 {
             font-size: 1.5rem;
             margin: 1.5rem 0 1rem;
             line-height: 1.4;
-            color: #b7edf6;
+            color: $color-accent;
           }
 
           h3 {
             font-size: 1.2rem;
             margin: 1.2rem 0 0.8rem;
             line-height: 1.4;
-            color: #b7edf6;
+            color: $color-accent;
           }
 
           p {
@@ -369,7 +371,7 @@
               &:hover {
                 opacity: 1;
                 background: rgba(255, 255, 255, 0.05);
-                color: #b7edf6;
+                color: $color-accent;
                 border-color: rgba(183, 237, 246, 0.3);
               }
 
@@ -452,7 +454,7 @@
           align-self: flex-start;
 
           h3 {
-            color: #b7edf6;
+            color: $color-accent;
             font-size: 1rem;
             margin-bottom: 0.2rem;
             font-weight: 600;
@@ -473,7 +475,7 @@
             border-radius: 4px;
 
             &.main_topic {
-              color: #b7edf6;
+              color: $color-accent;
               font-weight: 500;
               font-size: 0.9rem;
             }
@@ -485,12 +487,12 @@
             &:hover {
               opacity: 0.8;
               background: rgba(183, 237, 246, 0.05);
-              color: #b7edf6;
+              color: $color-accent;
             }
 
             &.active {
               background: rgba(183, 237, 246, 0.1);
-              color: #b7edf6;
+              color: $color-accent;
               font-weight: 500;
             }
           }
@@ -575,7 +577,7 @@
     background: rgba(183, 237, 246, 0.1);
     border: none;
     padding: 0.5rem 2rem;
-    color: #b7edf6;
+    color: $color-accent;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 8px;
@@ -624,7 +626,7 @@
   border-radius: 4px;
   font-family: "JetBrains Mono", "Roboto Mono", monospace;
   font-size: 0.85em;
-  color: #b7edf6; // Cyan text
+  color: $color-accent; // Cyan text
   font-weight: 500;
   vertical-align: middle;
   display: inline-block;

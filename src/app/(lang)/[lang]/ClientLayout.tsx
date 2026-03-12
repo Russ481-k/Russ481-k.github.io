@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import { Header } from "@/app/Components/Header";
-import { useTranslation } from "@/app/i18n";
+import { getTranslation } from "@/app/i18n";
 
 export default function ClientLayout({
   children,
@@ -10,9 +11,17 @@ export default function ClientLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  useTranslation(lang, "common").then(({ i18n }) => {
-    i18n.changeLanguage(lang);
-  });
+  useEffect(() => {
+    let cancelled = false;
+    getTranslation(lang, "common").then(({ i18n }) => {
+      if (!cancelled) {
+        i18n.changeLanguage(lang);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [lang]);
 
   return (
     <>

@@ -1,15 +1,18 @@
 "use client";
 import ReactMarkdown from "react-markdown";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Image from "next/image";
 import { highlightText } from "@/utils/highlightText";
 import { getPostImage } from "@/utils/getPostImage";
+import { getPostTranslation, formatPostDate } from "@/utils/postFormatting";
 import type { Post as PostType } from "@/types/post";
 import { Tag } from "./Tag";
 import PostModal from "./PostModal";
 import { useTranslation } from "react-i18next";
+
+let aosInitialized = false;
 
 interface PostProps extends PostType {
   searchTerm?: string;
@@ -22,8 +25,7 @@ const Post = (props: PostProps) => {
   const currentLang = i18n.language as "ko" | "en";
 
   // 현재 언어에 맞는 번역 데이터 선택
-  const translation =
-    props.translations[currentLang] || props.translations["en"];
+  const translation = getPostTranslation(props, currentLang);
   const { title, content } = translation;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,15 +34,19 @@ const Post = (props: PostProps) => {
     tags: props.tags,
     id: props.id,
   });
-  const formattedDate = new Date(props.date).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedDate = formatPostDate(props.date);
   const [currentPost, setCurrentPost] = useState(props);
 
+  const contentPreview = useMemo(
+    () => content.split("\n").slice(0, 8).join("\n"),
+    [content]
+  );
+
   useEffect(() => {
-    AOS.init();
+    if (!aosInitialized) {
+      AOS.init();
+      aosInitialized = true;
+    }
   }, []);
 
   const handleClick = () => {
@@ -50,7 +56,7 @@ const Post = (props: PostProps) => {
   const visibleTags = props.tags?.slice(0, 3) || [];
   const remainingTags = props.tags?.length > 3 ? props.tags.length - 3 : 0;
 
-  const getAdjacentPosts = (currentPost: PostProps) => {
+  const { prevPost, nextPost } = useMemo(() => {
     const currentIndex = props.posts?.findIndex(
       (post) => post.id === currentPost.id
     );
@@ -65,9 +71,7 @@ const Post = (props: PostProps) => {
           ? props.posts?.[currentIndex - 1]
           : null,
     };
-  };
-
-  const { prevPost, nextPost } = getAdjacentPosts(currentPost);
+  }, [currentPost.id, props.posts]);
 
   return (
     <>
@@ -116,7 +120,7 @@ const Post = (props: PostProps) => {
           </div>
           <div className="markdown-content">
             <ReactMarkdown>
-              {content.split("\n").slice(0, 8).join("\n")}
+              {contentPreview}
             </ReactMarkdown>
           </div>
         </div>

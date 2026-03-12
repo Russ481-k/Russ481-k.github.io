@@ -33,9 +33,8 @@ export const LanguageSelector = ({ disabled }: { disabled?: boolean }) => {
 
       console.log("New pathname:", newPathname);
 
+      await i18n.changeLanguage(nextLang);
       router.replace(newPathname);
-      // await i18n.changeLanguage(nextLang);
-      // replace 옵션을 사용하여 히스토리 스택에 추가하지 않고 현재 URL을 대체
     } catch (error) {
       console.error("Language toggle error:", error);
     }
