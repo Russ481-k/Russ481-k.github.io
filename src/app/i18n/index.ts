@@ -1,31 +1,33 @@
 "use client";
 
-import { createInstance } from "i18next";
+import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import { getOptions } from "./settings";
 import { resources } from "./resources";
 
-const initI18next = async (lng: string, ns: string) => {
-  const i18nInstance = createInstance();
-  await i18nInstance.use(initReactI18next).init({
+// Initialize a global i18next instance synchronously so that
+// react-i18next's useTranslation() works on the very first render.
+if (!i18next.isInitialized) {
+  i18next.use(initReactI18next).init({
     resources,
-    ...getOptions(lng, ns),
+    ...getOptions(),
   });
-  return i18nInstance;
-};
+}
 
 export async function getTranslation(
   lng: string,
   ns: string,
   options: { keyPrefix?: string } = {}
 ) {
-  const i18nextInstance = await initI18next(lng, ns);
+  if (i18next.language !== lng) {
+    await i18next.changeLanguage(lng);
+  }
   return {
-    t: i18nextInstance.getFixedT(
+    t: i18next.getFixedT(
       lng,
       Array.isArray(ns) ? ns[0] : ns,
       options.keyPrefix
     ),
-    i18n: i18nextInstance,
+    i18n: i18next,
   };
 }

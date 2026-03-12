@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Header } from "@/app/Components/Header";
-import { getTranslation } from "@/app/i18n";
+// Importing the module triggers the global i18next initialization
+import "@/app/i18n";
 
 export default function ClientLayout({
   children,
@@ -11,17 +13,13 @@ export default function ClientLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
+  const { i18n } = useTranslation();
+
   useEffect(() => {
-    let cancelled = false;
-    getTranslation(lang, "common").then(({ i18n }) => {
-      if (!cancelled) {
-        i18n.changeLanguage(lang);
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [lang]);
+    if (i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+  }, [lang, i18n]);
 
   return (
     <>
